@@ -132,17 +132,13 @@ def _build_scoring_guide(content_type: str, config: dict) -> str:
     """Build a condensed scoring guide so the writer knows what it'll be scored on."""
     client_id = config.get("client_id", "")
 
-    # Objection preemption patterns vary by client
-    if client_id == "farm-thru":
-        objection_signals = (
-            'Include these phrases: "no middlemen/wholesalers", mention Sydney/Brookvale delivery area, '
-            '"refundable" when mentioning deposit. CFE content: acknowledge risk ("can\'t promise", "no guarantee").'
-        )
-    else:
-        objection_signals = (
-            'Include: "no joining fee", "no waiting period", "cancel anytime", '
-            '"not insurance", "no claims/excess".'
-        )
+    # Objection preemption — config-driven, hardcoded fallback
+    objection_signals = config.get("prompt_objection_signals", "")
+    if not objection_signals:
+        if client_id == "farm-thru":
+            objection_signals = 'Include: "no middlemen/wholesalers", mention Sydney/Brookvale area, acknowledge risk for CFE content.'
+        else:
+            objection_signals = 'Include: "no joining fee", "no waiting period", "cancel anytime", "not insurance".'
 
     guide = f"""SCORING GUIDE:
 STRUCTURE (highest-weighted dimension): Hook → Proof → Bridge → CTA. Each section earns the next. "Velvet slide" — if removing a paragraph doesn't break the flow, cut it. Score 5 = "invisible structure." Score 1 = "list of features."
@@ -157,31 +153,23 @@ SENTENCES: 14-16 words avg. Conversational tone. Contractions OK. Omit needless 
 
 
 def _build_rules_summary(config: dict, content_type: str) -> str:
-    """Build a condensed rules summary so the writer avoids zero-score violations."""
-    client_id = config.get("client_id", "")
+    """Build a condensed rules summary from config. Falls back to hardcoded for backwards compat."""
+    # Config-driven rules (preferred)
+    prompt_rules = config.get("prompt_rules", {})
+    if isinstance(prompt_rules, dict) and content_type in prompt_rules:
+        return "RULES (violating ANY zeros your score — read carefully):\n" + prompt_rules[content_type]
 
+    # Hardcoded fallback for clients without prompt_rules in config
+    client_id = config.get("client_id", "")
     if client_id == "farm-thru":
         rules = """RULES (violating ANY zeros your score — read carefully):
 - NEVER name competitors: Woolworths, Coles, Aldi, Harris Farm. Say "supermarkets" or "the big chains"
 - NEVER say "delivered to your door/kitchen/doorstep" — FarmThru is hub-and-collect
-- BANNED WORDS in copy: subscription, subscribe, lock-in, membership, warehouse, depot, consumer, users, shoppers, artisan, eco-friendly, farm to table, paddock to plate, disrupt
 - Sentence case headlines only — NEVER Title Case
-- No market stats in meta ads ($130B market, 24% YoY growth)
-- Rachel Ward is a partner/supplier, NOT co-founder of FarmThru
-- No fabricated stats: "50+ farms" and "2,000+ customers" are FALSE
-- No fabricated testimonials: Sarah/Sydney and James/Northern Beaches don't exist"""
-        if content_type == "meta-ad":
-            rules += """
-- NO compliance disclaimers ANYWHERE in meta-ads (not primary_text, not headline, not description). "Not financial advice" = instant zero.
-- NO investment amounts ($50, $10K), "equity crowdfunding", "Birchal", "minimum investment" in ANY meta-ad field
-- CFE meta-ads: tease the opportunity ("be part of it", "own a piece"), never detail investment terms
-- Description must complement headline with benefit or proof — never compliance or investment details
-- Structure: customer pain/question → validation → product proof (specific) → "why act now" → CTA
-- Sentences: 13-18 words max. Killed ads averaged 23-28. Keep it tight."""
-        elif content_type in ("landing-page", "email"):
-            rules += """
-- Investment content MUST include financial disclaimer
-- When mentioning $5 deposit, must say "refundable" """
+- No fabricated stats: "50+ farms" and "2,000+ customers" are FALSE"""
+        ct_rules = prompt_rules.get(content_type, "")
+        if ct_rules:
+            rules += "\n" + ct_rules
     else:
         rules = """RULES:
 - No em-dashes (use full stops, commas, or colons)
@@ -275,18 +263,21 @@ The goal is exploration, not optimisation.
   "sections": [
     {"heading": "section heading", "body": "section body copy"},
     {"heading": "section heading", "body": "section body copy"},
-    {"heading": "Compliance", "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."}
+    {{"heading": "Compliance", "body": "{config.get('landing_page_compliance', 'Include relevant compliance disclaimer here.')}"}}
+
   ],
   "cta": "one of the approved CTAs",
   "creative_brief": "brief visual direction (1-2 sentences)"
 }"""
         content_label = "landing page variant"
-        extra_rules = """- Include financial disclaimer if discussing investment
+        config_extra = config.get("prompt_extra_rules", {}).get("landing-page", "")
+        if config_extra:
+            extra_rules = config_extra
+        else:
+            extra_rules = """- Include financial disclaimer if discussing investment
 - Risks and benefits must have equal prominence
 - No return projections or guarantees
-- Every number must trace to a verified fact above
-- Last section MUST be titled "Compliance" with the exact disclaimer text shown in the output format above
-- Do NOT omit the Compliance section even if the page doesn't discuss investment — include it for all CFE/waitlist pages"""
+- Every number must trace to a verified fact above"""
 
     elif content_type == "email":
         constraints_text = f"""- Subject: max {constraints.get('subject_max_chars', 60)} characters (6-10 words ideal)
@@ -303,12 +294,17 @@ The goal is exploration, not optimisation.
   "creative_brief": "brief email design direction (1-2 sentences)"
 }"""
         content_label = "email variant"
-        extra_rules = """- Single CTA per email
+        # Config-driven extra rules, fallback to generic
+        email_sender = config.get("email_sender", config.get("scoring_context", {}).get("sender", "the team"))
+        config_extra = config.get("prompt_extra_rules", {}).get("email", "")
+        if config_extra:
+            extra_rules = config_extra + f"\n- The sender must be '{email_sender}'"
+        else:
+            extra_rules = f"""- Single CTA per email
 - Short paragraphs (max 3 sentences each)
 - Founder voice when appropriate
 - Every number must trace to a verified fact above
-- If the email mentions investment, Birchal, equity, crowdfunding, $50, $5 deposit, or waitlist — add as the FINAL paragraph before the sign-off: "This is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal."
-- The sender must be 'Rachel & the FarmThru team'"""
+- The sender must be '{email_sender}'"""
 
     else:  # meta-ad (default)
         constraints_text = f"""- Primary text: max {constraints.get('primary_text_max_chars', 500)} characters
@@ -324,14 +320,16 @@ The goal is exploration, not optimisation.
   "creative_brief": "brief visual direction (1-2 sentences)"
 }"""
         content_label = "ad variant"
-        extra_rules = """- No em-dashes (use full stops, commas, or colons)
+        # Config-driven extra rules, fallback to generic
+        config_extra = config.get("prompt_extra_rules", {}).get("meta-ad", "")
+        if config_extra:
+            extra_rules = config_extra
+        else:
+            extra_rules = """- No em-dashes (use full stops, commas, or colons)
 - No commands ("stop", "add it up", "do the maths")
 - No condescension ("we'll wait", "simple maths")
 - Lead with value/benefit, not price
 - Every number must trace to a verified fact above
-- Structure: customer pain/question → acknowledgment/validation → product proof (specific) → transition ("why act now") → CTA
-- Sentences: 13-18 words max. Killed ads averaged 23-28. Keep it tight.
-- Objections to pre-empt: "No commitment. Order when you want. Collect from Brookvale Monday to Friday."
 - Description field should complement the headline, not repeat it"""
 
     return f"""Write ONE {content_label} for {client_name} — {product}.

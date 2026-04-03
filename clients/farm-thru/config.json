@@ -161,7 +161,35 @@
     "What is FarmThru?",
     "Where does the food come from?",
     "How is this different from the supermarket?",
-    "How do I invest / join the waitlist?",
-    "What's the minimum investment?"
-  ]
+    "How do I get involved?",
+    "Why should I act now?"
+  ],
+  "receptionist_test_patterns": [
+    ["what", "\\b(farm.?thru|regenerative|farm.to.door|food delivery|online grocer|grocery)\\b"],
+    ["source", "\\b(farm|paddock|regenerative|pasture|grass.fed|rachel|bundarra|kempsey|named farm)\\b"],
+    ["different", "(days?\\s+(?:old|not)|not\\s+weeks|cold storage|middlem|no warehouse|wholesal|direct|hub.and.collect)"],
+    ["how", "(waitlist|join|sign up|reserve|save.*spot|nearest hub|brookvale|collect|order)"],
+    ["why_now", "(be part of|own a piece|limited|first access|opening|launching|movement|vote.*wallet)"]
+  ],
+  "objection_preemption_patterns": [
+    ["no commitment", "no\\s+commitment|order when you want|no lock.in"],
+    ["hub clarity", "brookvale|nearest hub|collect from|hub.and.collect|monday.*friday"],
+    ["risk acknowledged", "can't\\s+promise|no\\s+guarantee|honest about"],
+    ["no middlemen", "no\\s+(?:warehouse|wholesaler|middlem)|direct|zero middlem"],
+    ["provenance", "named farm|know.*farmer|trace|where.*food.*comes|paddock"]
+  ],
+  "brand_names": ["FarmThru", "Farm Thru", "Rachel", "Bundarra", "Collins", "Brookvale", "Birchal", "Paris Creek", "Kempsey"],
+  "prompt_objection_signals": "Include: \"No commitment. Order when you want. Collect from Brookvale Monday to Friday.\" For CFE: \"be part of it\", \"own a piece\", acknowledge risk honestly.",
+  "email_sender": "Rachel & the FarmThru team",
+  "landing_page_compliance": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision.",
+  "prompt_rules": {
+    "meta-ad": "- NO compliance disclaimers ANYWHERE in meta-ads (not primary_text, not headline, not description). \"Not financial advice\" = instant zero.\n- NO investment amounts ($50, $10K), \"equity crowdfunding\", \"Birchal\", \"minimum investment\" in ANY meta-ad field\n- CFE meta-ads: tease the opportunity (\"be part of it\", \"own a piece\"), never detail investment terms\n- Description must complement headline with benefit or proof — never compliance or investment details\n- Structure: customer pain/question → validation → product proof (specific) → \"why act now\" → CTA\n- Sentences: 13-18 words max. Killed ads averaged 23-28. Keep it tight.",
+    "landing-page": "- Investment content MUST include financial disclaimer\n- When mentioning $5 deposit, must say \"refundable\"",
+    "email": "- Investment content MUST include financial disclaimer\n- When mentioning $5 deposit, must say \"refundable\""
+  },
+  "prompt_extra_rules": {
+    "meta-ad": "- No em-dashes (use full stops, commas, or colons)\n- No commands (\"stop\", \"add it up\", \"do the maths\")\n- No condescension (\"we'll wait\", \"simple maths\")\n- Lead with value/benefit, not price\n- Every number must trace to a verified fact above\n- Structure: customer pain/question → acknowledgment/validation → product proof (specific) → transition (\"why act now\") → CTA\n- Sentences: 13-18 words max. Killed ads averaged 23-28. Keep it tight.\n- Description field should complement the headline, not repeat it",
+    "landing-page": "- Include financial disclaimer if discussing investment\n- Risks and benefits must have equal prominence\n- No return projections or guarantees\n- Every number must trace to a verified fact above\n- Last section MUST be titled \"Compliance\" with the exact disclaimer text shown in the output format above\n- Do NOT omit the Compliance section even if the page doesn't discuss investment — include it for all CFE/waitlist pages",
+    "email": "- Single CTA per email\n- Short paragraphs (max 3 sentences each)\n- Founder voice when appropriate\n- Every number must trace to a verified fact above\n- If the email mentions investment, Birchal, equity, crowdfunding, $50, $5 deposit, or waitlist — add as the FINAL paragraph before the sign-off: \"This is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\""
+  }
 }
