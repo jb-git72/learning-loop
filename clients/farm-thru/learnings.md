@@ -85,6 +85,74 @@ BFP pattern: **Customer pain → Objection acknowledged → Systematic proof →
 
 ---
 
+## Email Copywriting Research (sourced 2026-04-03)
+
+### Frameworks by Angle
+- **PAS (Problem-Agitate-Solve)**: Best for pain-driven emails (transparency-safety, comparison-switching). Name a pain → twist the knife → present relief.
+- **BAB (Before-After-Bridge)**: Best for aspiration emails (cause-purpose, social-belonging). Current reality → desired state → how to get there.
+- **Rule of One**: One big idea, one reader, one offer, one promise, one CTA per email. +371% clicks for single-CTA emails.
+
+### Subject Line Rules
+- Under 50 characters / 7 words (+12% opens, +75% CTR)
+- Formulas: question, curiosity gap, number, announcement, scarcity
+- Personalized subjects with {first_name}: +26% opens
+- Examples: "Do you know where your beef comes from?" / "3 farms. 12km. Your weekly shop."
+
+### Email Drip Sequence (4 phases)
+1. **Pre-launch warmup** (1/week, 4-6 weeks): relationship + education
+2. **Launch week** (3-5 in 7 days): day-1 funding must hit 25%+ of goal
+3. **Mid-campaign** (1-2/week): momentum + social proof
+4. **Final 48 hours** (4 emails: 48h/24h/6h/1h): FOMO close — 20-30% of total funding
+
+### VIP vs Non-VIP Tracks
+- VIP deposits convert 20-40% vs 1-5% email-only
+- Non-VIP emails always include upgrade CTA
+- VIP emails reward commitment with exclusive access language
+
+### Food Email Patterns
+- **Sensory anchoring**: Min 2 sensory details per email (crisp, earthy, tender — not "fresh" or "nice"). Multi-sensory copy enhances actual taste perception.
+- **Named-farm story**: Name the farm, the farmer, the product, the day. Connect to reader's kitchen in 3 sentences.
+- **Recipe-as-CTA**: Lead with the dish ("Slow-braised lamb shoulder, 4 ingredients"), not the brand. CTA links to ordering.
+
+---
+
+## Landing Page Research (sourced 2026-04-03)
+
+### The 6-Second Hero Test
+50% of mobile users don't scroll past the first screen. Hero must contain:
+- Benefit-driven headline (customer outcome, not company description)
+- Tight subhead
+- Social proof micro-element (rating, counter, badge)
+- One CTA
+- All visible without scrolling
+
+### Scroll Structure (Investment LPs)
+1. Hero (headline + subhead + CTA + micro-proof)
+2. Problem/opportunity (customer pain, not market stats)
+3. Solution — how it works (3 steps max)
+4. Social proof layer 1 (numbers, logos, counters)
+5. Founder as GUIDE (StoryBrand: brand = guide, customer = hero)
+6. Social proof layer 2 (testimonials, named farms)
+7. The opportunity (investment framing — "be part of it")
+8. FAQ / objection handling
+9. Final CTA (urgency + risk reversal)
+10. Compliance
+
+### StoryBrand Principle
+Customer is the hero, FarmThru is the guide. Never lead with company story — lead with customer desire, then introduce FarmThru as the guide who helps them get there.
+
+### CTA Placement
+Minimum 3 positions: hero (above fold), mid-page (after problem/solution), footer (after all proof). Repeat CTA increases conversion.
+
+### Proof That Works
+- Social proof above fold: +40% conversion
+- Countdown timers: +30% average (real deadlines only)
+- Founder featured: +15-28% conversion
+- Certification badges: +42% trust
+- Pages under 125 words (lead capture): +15% email capture
+
+---
+
 ## What Works — Equity Crowdfunding Campaigns
 
 ### Pre-Launch Conversion Patterns
