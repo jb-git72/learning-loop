@@ -104,14 +104,37 @@ def _build_scoring_guide(content_type: str, config: dict) -> str:
             '"not insurance", "no claims/excess".'
         )
 
-    guide = f"""SCORING GUIDE (what you'll be scored on — optimise for these):
-- HOOK: Open with a specific moment ("Last Tuesday a farmer in Kempsey..."), a named person doing something ("Rachel was losing money on every kilo..."), a quoted objection ("I didn't think I could..."), or a question ending in ?. Generic statements like "Here's what we offer" score 1-2. Stories and quotes score 5.
-- SPECIFICITY: Include 5-7 concrete signals: dollar amounts ($50), numbers with context (2,400km, Monday-Friday), named farms/people (Rachel's Farm, Bundarra Farm, Brookvale hub). Vague claims score 1.
-- OBJECTION PREEMPTION: {objection_signals}
-- RECEPTIONIST TEST: Your copy must answer: What is this product? Where does the food come from? How is it different from supermarkets? How do I start/join?
-- ANGLE CLARITY: Score 5 = "Every sentence reinforces a single strategic position. A viewer could state the angle in one sentence." Lock in ONE angle before writing. Every hook, proof point, and CTA must serve that angle. Competing themes = score 2.
-- MOTIVATION MATCH: Score 5 = "Articulates what the audience feels but hasn't put into words. Immediate recognition." Score 1 = "Speaks to a need the audience does not feel." Don't sell features — tap the FELT need. Not "farm-direct grocery" but "I didn't know what my kids were eating." Not "hub-and-collect model" but "finally, food I don't have to second-guess."
-- TACTIC EXECUTION: Your copy is scored on narrative structure. Score 5 = "Each section builds on the last. The structure is invisible — it just reads naturally." Score 1 = "A list of features with no narrative logic." Your arc MUST be: HOOK (curiosity/recognition) → PROOF (the hook is real — specific facts) → BRIDGE (why it matters NOW) → CTA (earned, inevitable next step). Test: if removing any paragraph doesn't break the arc, that paragraph is filler. Cut it."""
+    guide = f"""COPYWRITING PRINCIPLES + SCORING GUIDE:
+
+"Copy cannot create desire. It can only take the hopes, dreams, fears, and desires that already exist in the hearts of people, and focus those desires onto a particular product." — Copywriter's Handbook
+
+NARRATIVE STRUCTURE (this is the #1 scoring dimension — score 5 = "invisible structure, reads naturally"):
+Your copy is a "velvet slide" — a smooth path from interest to action. No bumps, no filler.
+1. HEADLINE/HOOK: Promise a benefit or arouse curiosity. "Five times as many people read the headline as the body." If your headline doesn't sell, you've wasted 80% of the effort. Open with a specific moment, a real question, a named person, or a surprising fact. Generic = score 1.
+2. LEAD: Fulfill the headline's promise immediately. Show the reader's problem or need. "Did you lose...?" "When did we stop...?" Make the reader feel "that's me."
+3. BODY/PROOF: Give specific evidence the promise is real. Named farms, exact numbers, concrete details. "The surest way to hold attention is by being specific, definite, and concrete." Each paragraph must earn the next — if removing it doesn't break the flow, cut it.
+4. BRIDGE: Connect proof to why act NOW. Urgency, scarcity, or emotional payoff.
+5. CTA: The inevitable next step — earned by everything above. The reader should WANT to click.
+
+MOTIVATION (score 5 = "articulates what the audience feels but hasn't put into words"):
+- "People buy on emotion, then rationalize with logic." Provide justification for what they already want to do.
+- Reach prospects on three levels: intellectual (features), emotional (fears/desires), personal (their specific situation). Personal is most powerful.
+- Don't sell features. Sell what features DO for the reader. Not "farm-direct grocery" but "I didn't know what my kids were eating." Not "hub-and-collect" but "food I don't have to second-guess."
+- The felt need: what keeps them up at night? Tap that, not the rational category.
+
+ANGLE (score 5 = "every sentence reinforces a single strategic position"):
+- Each ad makes ONE proposition. "The proposition must be so strong it can move millions."
+- Lock in the angle BEFORE writing. Every hook, proof, and CTA serves that angle. Competing themes = score 2.
+
+SPECIFICITY: Include 5-7 concrete signals: dollar amounts, numbers with context, named farms/people. "Vague claims score 1. Specific, definite, concrete = score 5."
+
+OBJECTION PREEMPTION: {objection_signals}
+
+HEADLINE 4 U's: Urgent, Unique, Ultra-specific, Useful. If it doesn't have at least 2, rewrite it.
+
+SENTENCES: Average 14-16 words. Vary length for rhythm. One-sentence paragraphs create pace changes. "Omit needless words."
+
+CONVERSATIONAL TONE: "Write like you talk." Use pronouns (I, we, you). Use contractions. Use colloquial expressions. If you must choose between natural and grammatically correct, write naturally."""
     return guide
 
 
