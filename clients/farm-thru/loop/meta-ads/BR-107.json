@@ -1,0 +1,13 @@
+{
+  "ad_id": "BR-107",
+  "content_type": "meta-ad",
+  "angle": "comparison-switching",
+  "hook_type": "if_then",
+  "funnel": "MOF",
+  "tactic": "supply-chain-comparison",
+  "primary_text": "If your beef has been in cold storage for two weeks and travelled 2,400km, is it really fresh?\n\nSupermarkets move food through long supply chains. Farms to processors to distribution centres to shelves. It takes 14 to 21 days.\n\nFarmThru works differently. 50+ regenerative farms connect directly to our hub. You collect it the same week it left the farm. No unnecessary middlemen.\n\n100% grass-fed. No hormones. No feedlots.\n\nOrder when you want. No commitment.",
+  "headline": "2,400km and two weeks in cold storage",
+  "description": "FarmThru: farm to hub, same week. 100% grass-fed, no hormones, no feedlots.",
+  "cta": "Shop your local hub",
+  "creative_brief": "Animated map showing 2,400km journey vs short farm-to-hub line. Clean, data-viz style. Warm colour palette, not aggressive."
+}
