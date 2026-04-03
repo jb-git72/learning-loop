@@ -154,7 +154,8 @@ def build_html(scored_json_path: str, output_path: str):
 
         card = f"""
         <div class="card" data-verdict="{verdict}" data-type="{content_type}" data-angle="{angle}" data-id="{ad_id}">
-            <div class="card-top">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">{ad_id}</span>
                 <span class="type-badge" style="background:{type_color}">{type_label}</span>
                 <span class="angle-label">{angle}</span>
@@ -162,17 +163,19 @@ def build_html(scored_json_path: str, output_path: str):
                 <div class="card-right">
                     <span class="score-circle" style="background:{score_color}">{composite:.2f}</span>
                     <span class="verdict-label">{verdict_label}</span>
-                    <button class="btn btn-approve" onclick="setStatus('{ad_id}','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('{ad_id}','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('{ad_id}','kill',this)">Kill</button>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('{ad_id}','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('{ad_id}','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('{ad_id}','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">{score_line}</div>
-            {content_html}
-            {tags_html}
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="{ad_id}" placeholder="Add review notes..."></textarea>
+            <div class="card-body">
+                <div class="score-summary">{score_line}</div>
+                {content_html}
+                {tags_html}
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="{ad_id}" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>"""
         cards_html.append(card)
@@ -240,6 +243,12 @@ body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
 .notes-row {{ margin-top: 8px; }}
 .notes {{ width: 100%; height: 50px; padding: 8px; border: 1px solid #e0e0e0; border-radius: 6px; font-family: inherit; font-size: 13px; resize: vertical; }}
 .counter {{ max-width: 1400px; margin: 0 auto 12px; font-size: 13px; color: #888; }}
+.card-top {{ cursor: pointer; user-select: none; }}
+.card-top:hover {{ opacity: 0.85; }}
+.card-body {{ display: none; }}
+.card.expanded .card-body {{ display: block; }}
+.collapse-indicator {{ font-size: 12px; color: #aaa; margin-right: 4px; transition: transform 0.15s; }}
+.card.expanded .collapse-indicator {{ transform: rotate(90deg); }}
 </style>
 </head>
 <body>
@@ -263,6 +272,7 @@ body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
         <button class="tbtn" onclick="setFilter('status','revise',this)">Edited</button>
         <button class="tbtn" onclick="setFilter('status','kill',this)">Killed</button>
         <div class="toolbar-right">
+            <button class="tbtn" onclick="toggleAll()">Expand All</button>
             <button class="tbtn" onclick="saveJSON()">Save JSON</button>
             <button class="tbtn" onclick="exportCSV()">CSV</button>
         </div>
@@ -276,6 +286,20 @@ body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
 const statuses = {{}};
 const notes = {{}};
 const filters = {{ type: 'all', status: 'all' }};
+
+function toggleCard(topEl) {{
+    const card = topEl.closest('.card');
+    card.classList.toggle('expanded');
+}}
+
+function toggleAll() {{
+    const cards = document.querySelectorAll('.card');
+    const anyExpanded = document.querySelector('.card.expanded');
+    cards.forEach(c => {{
+        if (anyExpanded) c.classList.remove('expanded');
+        else c.classList.add('expanded');
+    }});
+}}
 
 function setStatus(id, status, btn) {{
     statuses[id] = status;
