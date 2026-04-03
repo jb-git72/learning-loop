@@ -132,9 +132,12 @@ def _build_rules_summary(config: dict, content_type: str) -> str:
 - No fabricated testimonials: Sarah/Sydney and James/Northern Beaches don't exist"""
         if content_type == "meta-ad":
             rules += """
-- CFE meta ads: add "Not financial advice." to description field
-- No compliance disclaimers in primary_text or headline
-- No investment amounts ($50, $10K) in meta ad body"""
+- NO compliance disclaimers ANYWHERE in meta-ads (not primary_text, not headline, not description). "Not financial advice" = instant zero.
+- NO investment amounts ($50, $10K), "equity crowdfunding", "Birchal", "minimum investment" in ANY meta-ad field
+- CFE meta-ads: tease the opportunity ("be part of it", "own a piece"), never detail investment terms
+- Description must complement headline with benefit or proof — never compliance or investment details
+- Structure: customer pain/question → validation → product proof (specific) → "why act now" → CTA
+- Sentences: 13-18 words max. Killed ads averaged 23-28. Keep it tight."""
         elif content_type in ("landing-page", "email"):
             rules += """
 - Investment content MUST include financial disclaimer
@@ -178,7 +181,7 @@ def _build_prompt(
         constraints = constraints[content_type]
 
     # Build facts context — relevant facts for this angle
-    facts_text = _select_relevant_facts(facts, angle)
+    facts_text = _select_relevant_facts(facts, angle, content_type)
 
     # Build scoring guide and rules summary
     scoring_guide = _build_scoring_guide(content_type, config)
@@ -309,7 +312,7 @@ TONE GUIDELINES:
 {tone[:600]}
 
 CREATIVE LEARNINGS:
-{learnings[:800]}
+{learnings[:1600]}
 
 VERIFIED FACTS (use only these — every number must trace back):
 {facts_text}
@@ -321,7 +324,7 @@ OUTPUT FORMAT (respond with ONLY this JSON, no other text):
 {output_format}"""
 
 
-def _select_relevant_facts(facts_data: dict, angle: str) -> str:
+def _select_relevant_facts(facts_data: dict, angle: str, content_type: str = "meta-ad") -> str:
     """Select facts most relevant to the given angle."""
     facts = facts_data.get("facts", [])
     lines = []
@@ -350,6 +353,11 @@ def _select_relevant_facts(facts_data: dict, angle: str) -> str:
         "comparison-switching": ["product_quality", "business_model", "positioning"],
     }
     extra = angle_categories.get(angle, [])
+
+    # Meta-ads must never include investment facts — they leak $50, Birchal, etc. into copy
+    if content_type == "meta-ad":
+        extra = [c for c in extra if c != "investment"]
+        priority_categories = [c for c in priority_categories if c != "investment"]
 
     shown = set()
     for fact in facts:

@@ -9,7 +9,7 @@
       "function": "_check_investment_disclaimer",
       "description": "When content discusses investment, it must include a financial disclaimer referencing independent advice or the Birchal disclosure document. Content that does not mention investment is exempt.",
       "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy"],
-      "investment_triggers": ["\\binvest(?:ing|ment|ors?)?\\b", "birchal", "crowdfund", "\\bequity\\b", "\\braising capital\\b|\\braise via\\b|\\braises\\b", "campaign opens", "\\$50 minimum", "\\$10.*cap"],
+      "investment_triggers": ["\\binvest(?:ing|ment|ors?)?\\b", "birchal", "crowdfund", "\\bequity\\b", "\\braising capital\\b|\\braise via\\b|\\braises (?:capital|funds|money)\\b", "campaign opens", "\\$50", "\\$10", "from \\$", "minimum.*invest", "cap(?:ped)?.*\\$"],
       "disclaimer_patterns": ["not financial advice", "disclosure document", "consider seeking independent", "seek independent financial advice"],
       "case_sensitive": false,
       "rationale": "ASIC RG 234 requires balanced disclosure for equity crowdfunding campaigns. Content that mentions investment must include disclaimers, but pure product/brand content is exempt."
@@ -279,7 +279,7 @@
       "severity": "medium",
       "type": "regex_absent",
       "description": "Block compliance disclaimer language in meta ad primary text and headline. Disclaimers belong in landing pages, not ads.",
-      "fields": ["primary_text", "headline"],
+      "fields": ["primary_text", "headline", "description"],
       "patterns": [
         "[Nn]ot financial advice",
         "[Nn]ot investment advice",
@@ -289,6 +289,28 @@
       ],
       "case_sensitive": false,
       "rationale": "Round 2 review: 'Not financial advice.' appearing in ad body looks jarring and breaks narrative flow. Compliance language belongs on landing pages where it can be properly presented."
+    },
+    {
+      "rule_id": "FMTH-017",
+      "name": "no_investment_terms_in_meta_ad_description",
+      "severity": "high",
+      "type": "regex_absent",
+      "description": "Block investment terminology in meta-ad description field. Investment details belong on landing pages, not in ad copy.",
+      "fields": ["description"],
+      "content_types": ["meta-ad"],
+      "patterns": [
+        "\\$50",
+        "\\$10",
+        "\\$5",
+        "from \\$",
+        "equity crowdfunding",
+        "\\bbirchal\\b",
+        "minimum investment",
+        "maximum.*investor",
+        "capped at"
+      ],
+      "case_sensitive": false,
+      "rationale": "Round 2 review: investment amounts and platform details don't belong in meta-ad descriptions. They break narrative flow and turn brand ads into investor pitches. Use landing pages for investment details."
     }
   ]
 }

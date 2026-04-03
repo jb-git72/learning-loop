@@ -1,87 +1,55 @@
 # FarmThru — Creative Learnings
 
-## Source: CFE Campaign Research (135+ benchmarks) + Brand Guidelines v1.1 + Calibration Rounds 1-2 Feedback
+## What Works (do more of this)
+
+- **BR-107 structure is BEST**: comparison hook (if-then), supply chain contrast, narrative arc
+- **Phrases that convert**: "own a piece of it", "be a partner", "be part of it", "vote for change with your wallet"
+- **Comparison data works**: 2,400km supermarket vs direct — when it flows from a narrative
+- **"How well do you know the farmer?"** — strong emotional question (BR-105, approved)
+- **Rachel's voice, first person** — authentic but transition to FarmThru must feel natural
+- **BFP winning structure**: Customer pain → Objection acknowledged → Systematic proof → Geographic CTA
+- Sentences: 13-18 words. Killed ads averaged 23-28. Keep it tight.
+- Customer-benefit stats only, never market stats or company traction
+
+## What Fails (never do this)
+
+- NEVER use "$50", "$10K", "equity crowdfunding", "Birchal", "Not financial advice" in meta-ads
+- NEVER fabricate stats: "50+ farms" and "2,000+ customers" are FALSE
+- NEVER name competitors (Woolworths, Coles). Say "supermarkets" or "the big chains"
+- NEVER say "delivered to your door" — FarmThru is hub-and-collect
+- NEVER use Title Case headlines — sentence case only
+- No VIP/$5 deposit in meta ads — landing pages/emails only
+- No market stats in consumer ads ($130B, 24% YoY)
+- Don't say "startup" — too cold for a food brand
+- Don't bolt on investment terms — if CFE, tease with "be part of it", never detail terms
+
+## Content Type Rules
+
+- **Meta ads**: EITHER brand/product OR CFE — never both. No investment details.
+- **Landing pages**: investment details, VIP deposit, compliance language belong HERE
+- **Emails**: VIP deposit upsell, detailed investment terms belong HERE
+- **Sender**: always "Rachel & the FarmThru team"
 
 ---
 
-## Calibration Round 1 — Human Review Feedback (2026-04-03)
+## Round 1 Review — Brand Issues Found (2026-04-03)
 
-### Critical Brand Issues Found
-- **Hub-and-collect model, NOT delivery** — all copy said "to your door/kitchen". Must say "from your nearest hub" or "paddock to pick-up"
-- **Named competitors in copy** — copy used "Woolworths", "Coles" directly. Brand guidelines: NEVER. Use "supermarkets" or "the big chains"
-- **Title Case headlines** — all meta ad headlines used Title Case. Must be sentence case
-- **VIP/$5 deposit in ads** — doesn't belong in meta ads. Reserve for landing pages, email flows, success pages
-- **Copy loses narrative flow** — starts strong with 2-3 good sentences then devolves into disconnected facts with full stops. Maintain story arc throughout
-- **"Risk" in headlines** — don't mention risk unless it's a compliance statement. "Real Risk" as a headline feature is off-brand
-- **"X days old, not weeks old"** — too literal/flat. Lean into fresher, more appetising framing
-- **Investment terms feel bolted on** — "Equity crowdfunding on Birchal. From $50." appears randomly. If investment messaging is included, it needs to flow from the narrative
-- **"FarmThru cuts out the middlemen. Farm to hub to kitchen."** — "hub" in the supply chain description sounds like a middleman. Frame the hub as bringing the farm closer, not as a step in a chain
-- **Description field often confusing** — don't restate the headline or cram disconnected facts. Descriptions should complement, not repeat
+- Hub-and-collect model, NOT delivery — say "from your nearest hub"
+- Copy loses narrative flow — maintain story arc throughout, don't list-dump
+- "Hub" in supply chain sounds like a middleman — frame as bringing the farm closer
+- Description field: complement headline, don't repeat or cram disconnected facts
 
-### What the Human Approved (Patterns to Keep)
-- "Now her beef goes direct to Sydney families via FarmThru" — clear, specific, flows
-- Comparison data (2,400km supermarket vs direct) — works when it flows from a narrative
-- Rachel's story as emotional anchor — but transition to FarmThru must feel natural, not abrupt
-- Transparency/honesty angle — "We can't promise returns" opening — but don't overdo compliance language in the body
+## Round 2 Review — Structural Issues (2026-04-03)
 
-### Content Type Guidance from Review
-- **Meta ads** — should be EITHER brand/product focused (grocery, food quality) OR CFE focused (investment opportunity). Don't try to be both in one ad
-- **Landing pages** — investment details, VIP deposit, compliance language belong HERE
-- **Emails** — VIP deposit upsell, detailed investment terms belong HERE
-- **CTAs must match phase** — waitlist CTA before campaign launch, invest CTA during campaign, product CTA for brand ads
+**Results: 5 approved, 12 edited, 1 killed**
 
----
-
-## Calibration Round 2 — Human Review Feedback (2026-04-03)
-
-**Results: 5 approved, 12 edited, 1 killed, 15 pending (landing pages/emails not reviewed)**
-
-### CRITICAL: Fabricated Statistics
-- "50+ regenerative farms" and "2,000+ customers" — could not be verified on farmthru.com.au. NEVER use unverifiable stats. Every number must trace to facts.json with HIGH confidence.
-- "$130B market" and "24% YoY growth" — market stats don't belong in consumer ads. Investor-pitch language only.
-
-### CRITICAL: Investment Terms Don't Belong in Ads
-- Never say "$50 minimum" or "$10K cap" in ad copy
-- Never say "Not financial advice." in ad body — compliance statement, not copy
-- Never say "startup" — too cold for a food brand
-- VIP/$5 deposit messaging only on landing pages/emails
-- Campaign date uncertain — don't hardcode months
-
-### CRITICAL: Sender Is "Rachel & the FarmThru team"
-- Not "FarmThru" or "Jeremy from FarmThru"
-
-### Why BFP Copy Was Better (Structure to Follow)
-BFP pattern: **Customer pain → Objection acknowledged → Systematic proof → Geographic CTA**
-- Starts with customer's ACTUAL anxiety ("too good to be true?", "I felt guilty")
-- Validates the reader ("There is not.", "You're not alone. 74% feel this way.")
-- Uses ONLY customer-benefit stats (save $800-1,300, $0 consults), never market stats
-- CTA is always actionable + specific ("Find a participating clinic near you")
-- Sentences average 13-18 words. Killed FarmThru ads averaged 23-28 words
-
-### Why Round 2 FarmThru Ads Failed
-- Led with company traction/market stats instead of customer benefit
-- Investor-pitch language bleeding into consumer ads
-- Founder story as HOOK instead of PROOF LAYER — Rachel's story should validate, not lead
-- Generic CTAs ("Learn more", "Join the waitlist") vs specific ones
-- "No commitment, no lock-in" is thin reassurance vs BFP's specific "No joining fee. No waiting period. Cancel anytime."
-- Copy tried to be BOTH brand ad AND investment ad — pick one per ad
-
-### What Was Approved in Round 2 (Patterns to Keep)
-- **BR-107**: Comparison hook (if-then), supply chain contrast — BEST structure
-- **BR-105**: "How well do you know the farmer?" — strong emotional question
-- **BR-109**: Rachel's voice, first person — authentic but needs transition
-- **CFE-108**: Founder story with "be part of it" language
-- **BR-106**: Product + origin specificity
-- Phrases that worked: "Now they can own a piece of it too", "be a partner", "be part of it", "vote for change with your wallet"
-
-### Specific Structural Requirements for Round 3
-- All ads need a narrative arc: hook → insight → product → transition → CTA
-- Brand ads need a "why act now" transition before CTA
+- Led with company traction instead of customer benefit
+- Founder story as HOOK instead of PROOF LAYER — Rachel validates, doesn't lead
+- Generic CTAs ("Learn more") vs specific ("Find your nearest hub")
+- Copy tried to be BOTH brand AND investment ad — pick one
+- All ads need narrative arc: hook → insight → product → transition → CTA
+- Brand ads need "why act now" transition before CTA
 - CFE ads need "be part of it" language, not investment terms
-- Remove ALL unverifiable stats until verified
-- Use customer-benefit framing, not company-traction framing
-- Sentences: 13-18 words (like BFP approved copy)
-- Headlines: sentence case only, never Title Case
 
 ---
 
