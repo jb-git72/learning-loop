@@ -1,13 +1,16 @@
 {
-  "email_id": "EM-002",
-  "content_type": "email",
   "angle": "empathy-founder",
-  "email_type": "founder-story",
+  "tactic": "general",
+  "hook_type": "story",
   "funnel": "TOF",
-  "subject": "The supermarket question I could not answer",
-  "preheader": "How a plastic tray of beef mince led to a different kind of grocery store.",
-  "body": "I want to tell you why FarmThru exists.\n\nA few years ago I was holding a tray of beef mince in a supermarket. Grey around the edges. The label said \"Product of Australia\" but nothing else. No farm name. No region. No idea how old it was or how far it had travelled.\n\nI had young kids at home. I was feeding them this every week. And I could not answer the most basic question: where did this come from?\n\nThat question stuck.\n\nI started visiting farms. Rachel Ward's property in Kempsey, where cattle graze on regenerative pasture. Bundarra Farm, raising pork in open paddocks. Collins Wild Caught, bringing in wild-caught Alaskan salmon from the South Coast.\n\nThese farmers were producing extraordinary food. The big chains were paying them barely enough to keep going.\n\nSo we built FarmThru. A grocery store that connects farms directly to families through a collection hub in Brookvale. No wholesalers in between. Food that is days old, not weeks. And the farmer earns a fairer price.\n\nRachel believed in what we were building. Her farm became one of our key partners. Her 100% grass-fed beef is some of the best you will find anywhere in NSW.\n\nI am not going to pretend this is easy. Building a new kind of grocery store is hard. But every time a family collects their order and says they can taste the difference, I know we are heading the right way.\n\nMore soon.\n\nRachel & the FarmThru team",
-  "cta": "Shop your local hub",
+  "content_type": "email",
+  "creative_brief": "Clean, personal layout with Rachel's photo. Emphasize the journey from struggle to hope with warm, authentic typography.",
+  "generated_at": "2026-04-03T21:41:00.324287",
+  "email_id": "EM-002",
+  "subject": "I thought I'd lost everything",
+  "preheader": "Then I discovered families who actually cared where their food came from",
+  "body": "Three years ago, I was ready to give up farming.\n\nDrought had decimated our pastures. Our cattle were stressed. And the wholesalers kept squeezing our margins until we were barely breaking even on beef that took us two years to raise with love.\n\nI remember sitting in our kitchen, staring at another rejection letter, thinking: \"There has to be families out there who care about how their food is raised. But how do I reach them?\"\n\nThat's when I met the FarmThru team.\n\nThey said something that changed everything: \"What if we could connect you directly to Sydney families? No wholesalers. No middlemen taking their cut. Just your regenerative beef going straight from your farm to their table.\"\n\nToday, our grass-fed beef goes direct to families via FarmThru's Brookvale hub. The cattle graze on healthy soil. We earn a fair price. And families know exactly where their food comes from — because we'll show them.\n\nIt's not just our farm anymore. Little Yarran, Bundarra Farm, Collins Wild Caught — we're all part of something bigger. A grocery store that actually gives a damn about farmers and the families we feed.\n\nThis is why I'm backing FarmThru's crowdfunding campaign. Because every family deserves to know their farmer's name.\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.",
+  "cta": "cfe_campaign",
   "sender_name": "Rachel & the FarmThru team",
-  "creative_brief": "Personal founder email. Plain text style with minimal formatting. Small headshot of the founder in the signature area. Single CTA button to the shop. Should feel like a genuine letter from someone who cares about food, not a marketing broadcast."
+  "email_type": "founder-story"
 }

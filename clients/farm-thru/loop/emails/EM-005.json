@@ -1,13 +1,16 @@
 {
-  "email_id": "EM-005",
-  "content_type": "email",
   "angle": "investment-thesis",
-  "email_type": "opportunity",
+  "tactic": "general",
+  "hook_type": "story",
   "funnel": "MOF",
-  "subject": "The investment case behind the food",
-  "preheader": "FarmThru is opening to investors on Birchal. Here is what you need to know.",
-  "body": "You have seen the food. You have met the farms. Now let us talk about what comes next.\n\nFarmThru is opening an equity crowdfunding campaign on Birchal in mid-2026. For the first time, you can own a share of the grocery store you buy from.\n\nHere is how the business works. Regenerative farms across NSW send their products to our Brookvale hub. Families order online and collect Monday to Friday. Zero wholesalers. Zero cold-storage warehousing. The food is days old, not weeks. The farmer earns a fairer price.\n\nThe Australian grocery market is estimated at $130 billion. Direct-to-consumer food is one of its fastest growing segments. Families increasingly want to know the farm behind every product. That is exactly what FarmThru provides.\n\nThe terms: minimum investment $50. Maximum $10,000 per investor. Full details, financials, and risk disclosure will be in the offer document on Birchal.\n\nWe want to be upfront. Investing in early-stage businesses carries real risk. You could lose some or all of your investment. We will not downplay that.\n\nIf you want first access before the campaign opens to everyone, a $5 refundable deposit secures your VIP spot. That means priority access, founder updates, and an exclusive Q&A.\n\nConsider seeking independent financial advice. The disclosure document will be available on Birchal when the campaign launches.\n\nRachel & the FarmThru team",
-  "cta": "Secure VIP Access",
+  "content_type": "email",
+  "creative_brief": "Clean, minimal design with emphasis on the 200kg figure and Rachel's Farm story. Include subtle visual of bulk ordering concept.",
+  "generated_at": "2026-04-03T21:41:40.429591",
+  "email_id": "EM-005",
+  "subject": "We just bought 200kg of beef from one farm",
+  "preheader": "Here's why that matters for your family's grocery bill",
+  "body": "Last Monday, we placed our biggest order yet with Rachel's Farm — 200kg of grass-fed beef from her property on the northern NSW coast.\n\nMost families never get access to this. The supermarkets want consistency and shelf life over quality. Rachel's beef goes to restaurants or export because she can't afford the margins the big chains demand.\n\nBut when you buy in bulk — like we're doing — the economics flip. Rachel gets a fair price. Families get restaurant-quality beef at prices that actually make sense.\n\nThat's the investment thesis behind FarmThru. We're building the infrastructure to make farm-direct food accessible to everyday Sydney families, not just the wealthy suburbs.\n\nNo middlemen inflating prices. No 2,400km supply chains. Just farms like Rachel's connecting directly to families through our Brookvale hub.\n\nWe're raising capital to scale this model across Sydney. Minimum investment is $50, and we can't promise returns — but we can promise transparency about where your money goes.\n\nJoin our waitlist to get first access when the campaign opens.\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.",
+  "cta": "cfe_waitlist",
   "sender_name": "Rachel & the FarmThru team",
-  "creative_brief": "Investment email. Clean, data-forward design. Key business model illustrated simply (farm to hub to family). VIP deposit CTA button below. Birchal badge in footer. Honest, confident tone. No hype."
+  "email_type": "opportunity"
 }

@@ -1,13 +1,16 @@
 {
-  "email_id": "EM-001",
-  "content_type": "email",
   "angle": "cause-purpose",
-  "email_type": "welcome",
+  "tactic": "general",
+  "hook_type": "story",
   "funnel": "TOF",
-  "subject": "You are in. Here is what to expect from us.",
-  "preheader": "A quick introduction to FarmThru, the farms we work with, and what comes next.",
-  "body": "Welcome.\n\nYou have just joined the waitlist for FarmThru's equity crowdfunding campaign on Birchal, launching mid-2026.\n\nBefore we go any further, a proper introduction.\n\nFarmThru is a grocery store. Not a meal kit. Not a box you cannot customise. A farm-direct grocery store where every product comes from a named regenerative farm in NSW.\n\nYou order online. Your food goes from the farm to our Brookvale hub. You collect it days later, not weeks. No middlemen marking it up. No mystery about where it came from.\n\nOver the next couple of weeks, we will introduce you to the farms, the food, the team, and the investment opportunity. No fluff. Just the information you need to decide if this is something you want to be part of.\n\nIf you are in Sydney, the Brookvale hub is open Monday to Friday. You do not have to wait for the campaign to try the food.\n\nWe will show you where your food comes from.\n\nThis is not financial advice. The disclosure document will be available on Birchal.\n\nRachel & the FarmThru team",
-  "cta": "See what's fresh this week",
+  "content_type": "email",
+  "creative_brief": "Clean layout with Rachel's farm photo at top. Highlight the $30k loss figure and contrast with current direct model.",
+  "generated_at": "2026-04-03T21:39:15.251410",
+  "email_id": "EM-001",
+  "subject": "Rachel lost $30k learning this lesson",
+  "preheader": "Now her regenerative beef goes direct to Sydney families — no middlemen taking their cut",
+  "body": "Last winter, Rachel Ward watched $30,000 worth of her best grass-fed beef disappear into the supermarket system.\n\nShe'd spent months raising cattle on regenerative pastures at her farm in Kempsey. The meat was exceptional — marbled, flavourful, ethically raised. But after the processors, distributors, and retailers all took their cut, Rachel barely broke even.\n\nMeanwhile, Sydney families were paying premium prices for beef that had travelled 2,400km through multiple warehouses, sitting for weeks before reaching the shelf.\n\n\"There had to be a better way,\" Rachel told us. \"One that's fairer for farmers and fresher for families.\"\n\nThat's why we built FarmThru — a farm-direct grocery store that cuts out the middlemen entirely. Rachel's beef now goes straight from her pastures to our Brookvale hub, where Sydney families collect it within days of processing.\n\nNo wholesalers. No markup chains. Just honest food from farms you can name, priced for everyday families.\n\nWe're opening our equity crowdfunding campaign soon — a chance to own part of the farm-direct future. Join the waitlist to invest from $50 when we launch.\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.",
+  "cta": "cfe_waitlist",
   "sender_name": "Rachel & the FarmThru team",
-  "creative_brief": "Clean welcome email. FarmThru logo header. Single CTA button linking to the shop. Brief, warm, expectation-setting. Simple product hero shot below the logo. No clutter."
+  "email_type": "welcome"
 }
