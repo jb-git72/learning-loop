@@ -39,6 +39,18 @@ Create `clients/{slug}/` with 5 files:
 
 Zero code changes to the engine.
 
+### New client checklist (follow in order — see LESSONS.md #8-9 for why)
+
+1. **Verify facts before generating** — WebFetch the client website, verify every claim in facts.json. Mark confidence levels. NEVER fabricate stats.
+2. **Structure learnings.md correctly** — "What Works" first (within 800 chars), "What Fails" second (within 1600 chars). Verify with `head -c 1600 clients/{slug}/learnings.md`.
+3. **Rules check ALL fields** — every rule must list ALL fields where a violation could appear. Don't omit `description` because you checked `primary_text`. Test: generate 3 sample ads, grep each field for the pattern.
+4. **writer.py rules must not contradict learnings** — after editing `_build_rules_summary()`, grep for contradictions: `grep -i "add\|include\|must have" writer.py` vs `grep -i "never\|don't\|no " clients/{slug}/learnings.md`.
+5. **Filter facts by content type** — if the client has content types with different rules (e.g., meta-ads vs landing pages), ensure `_select_relevant_facts()` excludes inappropriate fact categories per content type.
+6. **Test regex triggers against real copy** — write 3 sample ads, run the scorer. Check for false positives (farming "raises" ≠ financial "raises"). Fix regexes before generating at scale.
+7. **Integrate review feedback back** — after each human review round: (a) update learnings.md with new patterns, (b) apply per-ad decisions to content files, (c) verify critical feedback is within the 1600-char truncation window, (d) re-run scorer to confirm fixes land.
+8. **Hill-climb to strong_draft+** — only present content scoring >= 0.70 composite. Zero "rewrite" items should reach the user.
+9. **Add best-practice rules, not just compliance gates** — BFP's rules enforce what WORKS (e.g., "low_risk_trio_present"). Don't just block violations; encode approved patterns as rules too.
+
 ## API key
 
 Store in `.env` (gitignored): `ANTHROPIC_API_KEY=sk-ant-...`
