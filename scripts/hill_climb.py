@@ -61,6 +61,8 @@ def main():
     print(f"Loaded {len(all_items)} items. Target: {target_composite:.2f} (strong_draft)")
     print(f"Max iterations per item: {max_iterations}")
     print()
+
+    # Initial scoring
     for item in all_items:
         report = score_ad(item["ad"], client, existing_ads=all_ads, use_llm=True)
         item["score"] = report["composite"]

@@ -58,6 +58,14 @@ Auto-loaded by `run.py`.
 4. **Build HTML review** — `python3 scripts/build_review_html.py scored.json output.html` — uses proven layout
 5. **Present for human review** — Only after ALL items score >= 0.70 composite
 
+## Git workflow
+
+- **Always use worktrees** for code changes, new features, and scripts: `isolation: "worktree"` in Agent tool calls
+- Worktrees give each agent its own branch and repo copy — no merge conflicts between parallel agents
+- Main branch stays clean. Agents PR back to main when done.
+- Max 2-3 parallel worktree sessions
+- Add `.claude/worktrees/` to `.gitignore`
+
 ## Critical rules
 
 - `engine/` files are IMMUTABLE — the writer agent cannot modify them
@@ -65,7 +73,8 @@ Auto-loaded by `run.py`.
 - LLM scoring uses separate Haiku API call (no shared context with writer)
 - Every number in ad copy must trace to facts.json
 - ALWAYS hill-climb before human review — zero "rewrite" or "needs_work" items should reach the user
-- Plan mode before multi-agent work — one branch, explicit file ownership, no conflicting PRs
+- Plan mode before multi-agent work — map out worktree assignments, file ownership, merge order
+- Use git worktrees for ALL code/feature/script work — never have agents write to the same branch
 - Reuse the proven HTML review layout — toggle buttons, editable textareas, two-column, char counts
 - ID resolution: use `ad.get("ad_id", ad.get("page_id", ad.get("email_id")))` — scorer only checks ad_id
 - Read LESSONS.md at session start

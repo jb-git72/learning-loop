@@ -19,9 +19,11 @@ Mistakes made and patterns to avoid. Read this at session start.
 **Mistake:** Launched multiple agents without a plan. Result: agents created conflicting branches (claude/round3-meta-ads, feature/round3-landing-pages-emails), auto-merged PRs that caused merge conflicts, corrupted JSON files, same rule violations fixed 3+ times.
 
 **Rule:** Enter plan mode FIRST for any multi-agent task. Plan must include:
-- Single branch strategy (one branch, or worktrees with explicit merge order)
+- **Always use git worktrees** (`isolation: "worktree"`) for agents that write code, features, or scripts
+- Each agent gets its own branch via worktree — no merge conflicts
 - File ownership per agent (no overlapping writes)
-- Merge sequence
+- Agents PR back to main when done
+- NEVER have multiple agents writing to the same branch without worktrees
 
 ---
 
