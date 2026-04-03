@@ -12,8 +12,15 @@ import json
 import os
 import subprocess
 import random
+import sys
 from pathlib import Path
 from datetime import datetime
+
+_root = Path(__file__).parent
+if str(_root) not in sys.path:
+    sys.path.insert(0, str(_root))
+
+from scripts.lint_content import lint as lint_content
 
 
 # --- Hook type templates ---
@@ -84,6 +91,39 @@ def generate_variant(
 
     # Parse the output into canonical format
     ad = _parse_output(raw_output, angle, tactic, hook_type, funnel, content_type)
+
+    # Lint gate — retry up to 2 times if violations found
+    shared_dir = client_dir.parent.parent / "shared"
+    max_lint_retries = 2
+    for lint_attempt in range(max_lint_retries):
+        lint_result = lint_content(ad, client_dir, shared_dir)
+        if lint_result.passed:
+            break
+
+        # Build violation context for the retry prompt
+        violation_lines = [
+            f"- [{v['layer']}] {v['rule_id']} in {v['field']}: {v['detail']}"
+            for v in lint_result.violations[:5]
+        ]
+        violation_text = "\n".join(violation_lines)
+
+        retry_prompt = (
+            prompt
+            + f"\n\nPREVIOUS ATTEMPT FAILED LINT CHECK (attempt {lint_attempt + 1}):\n"
+            + violation_text
+            + "\n\nFix ALL of the above violations in your next attempt. "
+            + "Do NOT include any of the flagged terms or patterns."
+        )
+        raw_output = _call_llm(retry_prompt)
+        ad = _parse_output(raw_output, angle, tactic, hook_type, funnel, content_type)
+    else:
+        # All retries exhausted — attach lint failures for the caller
+        final_lint = lint_content(ad, client_dir, shared_dir)
+        if not final_lint.passed:
+            ad["_lint_failures"] = [
+                {"rule_id": v["rule_id"], "field": v["field"], "detail": v["detail"]}
+                for v in final_lint.violations
+            ]
 
     return ad
 
