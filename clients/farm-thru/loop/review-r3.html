@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmThru Round 3 Review</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; color: #1a1a1a; padding: 20px; }
+.header { max-width: 1200px; margin: 0 auto 20px; }
+.header h1 { font-size: 24px; margin-bottom: 8px; }
+.summary { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+.summary-card { background: white; border-radius: 8px; padding: 12px 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.summary-card .label { font-size: 12px; color: #666; text-transform: uppercase; }
+.summary-card .value { font-size: 24px; font-weight: 700; }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.filters select, .filters button { padding: 6px 12px; border: 1px solid #ddd; border-radius: 4px; background: white; cursor: pointer; }
+.filters button.active { background: #2563eb; color: white; border-color: #2563eb; }
+.cards { max-width: 1200px; margin: 0 auto; }
+.card { background: white; border-radius: 8px; margin-bottom: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); overflow: hidden; }
+.card.status-approved { border-left: 4px solid #22c55e; }
+.card.status-revise { border-left: 4px solid #f59e0b; }
+.card.status-kill { border-left: 4px solid #ef4444; }
+.card-header { display: flex; align-items: center; gap: 8px; padding: 12px 16px; cursor: pointer; flex-wrap: wrap; }
+.card-header:hover { background: #f1f5f9; }
+.card-id { font-weight: 700; font-size: 14px; min-width: 70px; }
+.badge { color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.composite { font-family: monospace; font-size: 14px; min-width: 50px; }
+.type-tag { background: #e2e8f0; padding: 2px 6px; border-radius: 3px; font-size: 11px; }
+.angle-tag { background: #fef3c7; padding: 2px 6px; border-radius: 3px; font-size: 11px; }
+.headline-preview { color: #666; font-size: 13px; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.status-buttons { display: flex; gap: 4px; margin-left: auto; }
+.status-buttons button { padding: 4px 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px; cursor: pointer; background: white; }
+.btn-approve:hover, .btn-approve.active { background: #22c55e; color: white; border-color: #22c55e; }
+.btn-revise:hover, .btn-revise.active { background: #f59e0b; color: white; border-color: #f59e0b; }
+.btn-kill:hover, .btn-kill.active { background: #ef4444; color: white; border-color: #ef4444; }
+.card-body { padding: 16px; border-top: 1px solid #eee; }
+.content-preview { margin-bottom: 16px; }
+.field { margin-bottom: 8px; }
+.field label { font-weight: 600; font-size: 12px; color: #666; text-transform: uppercase; display: block; }
+.field pre { white-space: pre-wrap; font-family: inherit; font-size: 14px; line-height: 1.5; margin-top: 4px; background: #f8f9fa; padding: 8px; border-radius: 4px; }
+.scoring-details { margin-top: 12px; }
+.scoring-details h4 { font-size: 13px; margin-bottom: 8px; color: #666; }
+.dim-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.dim-name { font-size: 12px; min-width: 160px; color: #444; }
+.dim-bar { flex: 1; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden; }
+.dim-fill { height: 100%; background: #3b82f6; border-radius: 4px; transition: width 0.3s; }
+.dim-score { font-size: 12px; min-width: 30px; text-align: right; font-family: monospace; }
+.failures { list-style: none; margin-top: 8px; }
+.fail-item { padding: 4px 8px; margin-bottom: 2px; background: #fef2f2; border-radius: 3px; font-size: 12px; color: #991b1b; }
+.fail-item.critical { background: #fee2e2; font-weight: 600; }
+.facts { list-style: none; margin-top: 4px; }
+.fact-verified { color: #166534; font-size: 12px; padding: 2px 8px; }
+.fact-unverified { color: #92400e; font-size: 12px; padding: 2px 8px; background: #fffbeb; }
+.fact-contradicted { color: #991b1b; font-size: 12px; padding: 2px 8px; background: #fef2f2; font-weight: 600; }
+.notes-section { margin-top: 12px; }
+.notes-section label { font-size: 12px; color: #666; font-weight: 600; }
+.notes { width: 100%; height: 60px; margin-top: 4px; padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; font-size: 13px; resize: vertical; }
+.actions { max-width: 1200px; margin: 20px auto; display: flex; gap: 8px; }
+.actions button { padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; }
+.btn-save { background: #2563eb; color: white; }
+.btn-export { background: #059669; color: white; }
+.btn-expand { background: #6b7280; color: white; }
+.counter { max-width: 1200px; margin: 0 auto 16px; font-size: 13px; color: #666; }
+</style>
+</head>
+<body>
+<div class="header">
+    <h1>FarmThru Round 3 Review</h1>
+    <p style="color:#666;font-size:13px">Generated 2026-04-03 19:57 | 33 items</p>
+    <div class="summary">
+        <div class="summary-card"><div class="label">Total</div><div class="value">33</div></div>
+        <div class="summary-card"><div class="label">Avg Score</div><div class="value">0.555</div></div>
+        <div class="summary-card"><div class="label">Critical Fails</div><div class="value" style="color:#22c55e">0</div></div>
+        <div class="summary-card"><div class="label">Production Ready</div><div class="value" style="color:#22c55e">0</div></div>
+        <div class="summary-card"><div class="label">Strong Draft</div><div class="value" style="color:#3b82f6">3</div></div>
+        <div class="summary-card"><div class="label">Needs Work</div><div class="value" style="color:#f59e0b">16</div></div>
+        <div class="summary-card"><div class="label">Rewrite</div><div class="value" style="color:#ef4444">14</div></div>
+    </div>
+    <div class="filters">
+        <select id="filterType" onchange="filterCards()">
+            <option value="all">All types</option>
+            <option value="meta-ad">Meta ads</option>
+            <option value="landing-page">Landing pages</option>
+            <option value="email">Emails</option>
+        </select>
+        <select id="filterVerdict" onchange="filterCards()">
+            <option value="all">All verdicts</option>
+            <option value="production_ready">Production ready</option>
+            <option value="strong_draft">Strong draft</option>
+            <option value="needs_work">Needs work</option>
+            <option value="rewrite">Rewrite</option>
+        </select>
+        <select id="filterStatus" onchange="filterCards()">
+            <option value="all">All statuses</option>
+            <option value="approved">Approved</option>
+            <option value="revise">Revise</option>
+            <option value="kill">Kill</option>
+            <option value="unreviewed">Unreviewed</option>
+        </select>
+        <button class="btn-expand" onclick="expandAll()">Expand all</button>
+        <button class="btn-expand" onclick="collapseAll()">Collapse all</button>
+    </div>
+</div>
+<div class="counter" id="counter"></div>
+<div class="cards" id="cards">
+    
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="quality-craft" data-id="BR-101">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">BR-101</span>
+                <span class="badge" style="background:#f59e0b">NEEDS WORK</span>
+                <span class="composite">0.584</span>
+                <span class="type-tag">meta-ad</span>
+                <span class="angle-tag">quality-craft</span>
+                <span class="headline-preview">Paddock on Tuesday, yours by Thursday</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'BR-101','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'BR-101','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'BR-101','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> Paddock on Tuesday, yours by Thursday</div>
+                <div class="field"><label>Primary text:</label><pre>Last Tuesday a farmer in Kempsey pulled beef from the cool room. By Thursday it was at the Brookvale hub.
+
+No middlemen. No distribution centre. No weeks in cold storage.
+
+Just 100% grass-fed beef, raised on open pasture. No hormones, no feedlots. The farm name is on every cut.
+
+The colour is different. Deeper red, not pale pink. The fat is golden. It smells clean when it hits the pan.
+
+Once you cook with beef this fresh, the supermarket version stops making sense.</pre></div>
+                <div class="field"><label>Description:</label> 100% grass-fed beef from named NSW farms. Collected fresh from the Brookvale hub.</div>
+                <div class="field"><label>CTA:</label> Shop your local hub</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">receptionist_test</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">platform_fit</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="facts"><li class="fact-verified">[VERIFIED] 100%</li><li class="fact-unverified">[UNVERIFIED] grass-fed</li><li class="fact-verified">[VERIFIED] no hormones/antibiotics</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="BR-101" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="rewrite" data-type="meta-ad" data-angle="quality-craft" data-id="BR-102">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">BR-102</span>
+                <span class="badge" style="background:#ef4444">REWRITE</span>
+                <span class="composite">0.477</span>
+                <span class="type-tag">meta-ad</span>
+                <span class="angle-tag">quality-craft</span>
+                <span class="headline-preview">2,400km and three weeks in cold storage</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'BR-102','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'BR-102','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'BR-102','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> 2,400km and three weeks in cold storage</div>
+                <div class="field"><label>Primary text:</label><pre>Industry data says the average supermarket beef travels 2,400km before it reaches your kitchen. It sits in cold storage for up to three weeks.
+
+FarmThru beef comes from named regenerative farms across NSW. It goes from the farm to our Brookvale hub within days.
+
+No hormones. No feedlots. No middlemen adding time and kilometres.
+
+100% grass-fed. Pasture-raised. You can trace every cut back to the paddock it came from.
+
+Order what you want, when you want. No strings. No commitment.</pre></div>
+                <div class="field"><label>Description:</label> Industry average for supermarket beef. FarmThru beef: farm to hub in days, not weeks.</div>
+                <div class="field"><label>CTA:</label> Find your nearest hub</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">receptionist_test</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">platform_fit</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="facts"><li class="fact-verified">[VERIFIED] 400km</li><li class="fact-verified">[VERIFIED] 100%</li><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] pasture-raised</li><li class="fact-unverified">[UNVERIFIED] grass-fed</li><li class="fact-verified">[VERIFIED] no hormones/antibiotics</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="BR-102" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="rewrite" data-type="meta-ad" data-angle="empathy-founder" data-id="BR-103">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">BR-103</span>
+                <span class="badge" style="background:#ef4444">REWRITE</span>
+                <span class="composite">0.401</span>
+                <span class="type-tag">meta-ad</span>
+                <span class="angle-tag">empathy-founder</span>
+                <span class="headline-preview">I never used to read the label</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'BR-103','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'BR-103','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'BR-103','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> I never used to read the label</div>
+                <div class="field"><label>Primary text:</label><pre>I used to grab whatever chicken was on special. Never read the label. Never thought about the farm.
+
+Then I visited a regenerative property in NSW. Chickens on actual pasture. I talked to the farmer who raised them.
+
+The meat was different. Firmer, more flavour, no water pooling in the tray.
+
+That's when I understood what I'd been settling for. FarmThru brings that same food to the Brookvale hub. Named farms, no middlemen, days old not weeks.
+
+You deserve to taste the difference.</pre></div>
+                <div class="field"><label>Description:</label> Pasture-raised chicken from named NSW farms. Collected from the Brookvale hub.</div>
+                <div class="field"><label>CTA:</label> Start your first order</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">receptionist_test</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">platform_fit</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="facts"><li class="fact-unverified">[UNVERIFIED] pasture-raised</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="BR-103" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="rewrite" data-type="meta-ad" data-angle="cause-purpose" data-id="BR-104">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">BR-104</span>
+                <span class="badge" style="background:#ef4444">REWRITE</span>
+                <span class="composite">0.456</span>
+                <span class="type-tag">meta-ad</span>
+                <span class="angle-tag">cause-purpose</span>
+                <span class="headline-preview">When did we stop knowing our farmers?</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'BR-104','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'BR-104','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'BR-104','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> When did we stop knowing our farmers?</div>
+                <div class="field"><label>Primary text:</label><pre>When did we stop knowing where our food comes from?
+
+Somewhere between the paddock and the plastic tray, we lost the connection. No farm name. No farmer's face. Just a barcode and a best-before date.
+
+FarmThru is rebuilding that link. Every product traces to a named regenerative farm in NSW. Bundarra Farm pork. Farmer Brown eggs. Collins Wild Caught salmon.
+
+You collect it fresh from the Brookvale hub. Days old, not weeks.
+
+We'll show you where your food comes from. Literally.</pre></div>
+                <div class="field"><label>Description:</label> Every product traces to a named farm. Collected fresh from the Brookvale hub.</div>
+                <div class="field"><label>CTA:</label> Meet the farmer</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">receptionist_test</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">platform_fit</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="facts"><li class="fact-unverified">[UNVERIFIED] regenerative farming</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="BR-104" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="rewrite" data-type="meta-ad" data-angle="social-belonging" data-id="BR-105">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">BR-105</span>
+                <span class="badge" style="background:#ef4444">REWRITE</span>
+                <span class="composite">0.434</span>
+                <span class="type-tag">meta-ad</span>
+                <span class="angle-tag">social-belonging</span>
+                <span class="headline-preview">Could you name the farm?</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'BR-105','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'BR-105','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'BR-105','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> Could you name the farm?</div>
+                <div class="field"><label>Primary text:</label><pre>Could you name the farm that raised your last steak?
+
+Most of us couldn't. We know the supermarket, the aisle, maybe the brand. But the farm? The farmer? That information never makes it to the shelf.
+
+FarmThru changes that. Every product comes from a named regenerative farm. Rachel's Farm beef from Kempsey. Paris Creek biodynamic dairy. Collins Wild Caught salmon.
+
+Real names. Real places. Food you can trace.
+
+Collect it fresh from the Brookvale hub, Monday to Friday.</pre></div>
+                <div class="field"><label>Description:</label> Every product traces to a real farm and a real farmer. Brookvale hub, Monday to Friday.</div>
+                <div class="field"><label>CTA:</label> See what's fresh this week</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">receptionist_test</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">platform_fit</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="facts"><li class="fact-unverified">[UNVERIFIED] regenerative farming</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="BR-105" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="transparency" data-id="BR-106">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">BR-106</span>
+                <span class="badge" style="background:#f59e0b">NEEDS WORK</span>
+                <span class="composite">0.558</span>
+                <span class="type-tag">meta-ad</span>
+                <span class="angle-tag">transparency</span>
+                <span class="headline-preview">Here's where your food comes from</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'BR-106','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'BR-106','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'BR-106','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> Here's where your food comes from</div>
+                <div class="field"><label>Primary text:</label><pre>Here's exactly what you're eating and where it came from.
+
+Beef: Rachel's Farm, Kempsey NSW. 100% grass-fed, pasture-raised, no hormones.
+
+Salmon: Collins Wild Caught, South Coast NSW. Wild-caught, never farmed.
+
+Dairy: Paris Creek Farms, Meadows SA. Biodynamic, carbon-neutral.
+
+Eggs: Farmer Brown, NSW. Pasture-raised.
+
+Every product on FarmThru traces to a named farm. Zero warehouses, zero wholesalers. Farm to hub to your table.
+
+The Brookvale hub is open Monday to Friday.</pre></div>
+                <div class="field"><label>Description:</label> Named farms, real farmers, full traceability. Collected from the Brookvale hub.</div>
+                <div class="field"><label>CTA:</label> See what's fresh this week</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">receptionist_test</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">platform_fit</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="facts"><li class="fact-verified">[VERIFIED] 100%</li><li class="fact-unverified">[UNVERIFIED] pasture-raised</li><li class="fact-unverified">[UNVERIFIED] grass-fed</li><li class="fact-verified">[VERIFIED] no hormones/antibiotics</li><li class="fact-verified">[VERIFIED] zero middlemen</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="BR-106" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="comparison-switching" data-id="BR-107">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">BR-107</span>
+                <span class="badge" style="background:#f59e0b">NEEDS WORK</span>
+                <span class="composite">0.565</span>
+                <span class="type-tag">meta-ad</span>
+                <span class="angle-tag">comparison-switching</span>
+                <span class="headline-preview">If it's been in cold storage for weeks</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'BR-107','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'BR-107','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'BR-107','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> If it's been in cold storage for weeks</div>
+                <div class="field"><label>Primary text:</label><pre>If your beef travelled 2,400km and sat in cold storage for weeks, is it really fresh?
+
+That's the industry average. Farms to processors to distribution centres to shelves. The farmer's name disappears along the way.
+
+FarmThru works differently. Named regenerative farms across NSW ship direct to the Brookvale hub. You collect it the same week it left the farm.
+
+100% grass-fed. No hormones. No feedlots. You know where it came from.
+
+Same week, not same month.</pre></div>
+                <div class="field"><label>Description:</label> Supermarket beef: weeks old, 2,400km journey. FarmThru: same week, named farms.</div>
+                <div class="field"><label>CTA:</label> Shop your local hub</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">receptionist_test</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">platform_fit</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="facts"><li class="fact-verified">[VERIFIED] 400km</li><li class="fact-verified">[VERIFIED] 100%</li><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] grass-fed</li><li class="fact-verified">[VERIFIED] no hormones/antibiotics</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="BR-107" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="rewrite" data-type="meta-ad" data-angle="quality-craft" data-id="BR-108">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">BR-108</span>
+                <span class="badge" style="background:#ef4444">REWRITE</span>
+                <span class="composite">0.417</span>
+                <span class="type-tag">meta-ad</span>
+                <span class="angle-tag">quality-craft</span>
+                <span class="headline-preview">These yolks are a different colour</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'BR-108','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'BR-108','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'BR-108','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> These yolks are a different colour</div>
+                <div class="field"><label>Primary text:</label><pre>This week's eggs from Farmer Brown are ridiculous. Deep orange yolks, firm whites, shells you actually have to crack.
+
+That's what happens when chickens live on pasture instead of in sheds. The difference shows up on your plate.
+
+FarmThru brings food like this from named regenerative farms across NSW. Pasture-raised chicken. Wild-caught salmon. 100% grass-fed beef. Biodynamic dairy.
+
+It arrives at the Brookvale hub days after it leaves the farm. Not weeks.
+
+Grab what's fresh before the weekend.</pre></div>
+                <div class="field"><label>Description:</label> Pasture-raised eggs and regenerative groceries. Brookvale hub, Monday to Friday.</div>
+                <div class="field"><label>CTA:</label> See what's fresh this week</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">receptionist_test</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">platform_fit</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="facts"><li class="fact-verified">[VERIFIED] 100%</li><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] pasture-raised</li><li class="fact-unverified">[UNVERIFIED] grass-fed</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="BR-108" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="empathy-founder" data-id="BR-109">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">BR-109</span>
+                <span class="badge" style="background:#f59e0b">NEEDS WORK</span>
+                <span class="composite">0.604</span>
+                <span class="type-tag">meta-ad</span>
+                <span class="angle-tag">empathy-founder</span>
+                <span class="headline-preview">I know what happens to the beef</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'BR-109','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'BR-109','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'BR-109','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> I know what happens to the beef</div>
+                <div class="field"><label>Primary text:</label><pre>I run a cattle farm in Kempsey. I know what it takes to raise beef properly. Open pasture. No hormones. No shortcuts.
+
+I also know what happens in the supermarket supply chain. Thousands of kilometres. Weeks in cold storage. The farm name disappears.
+
+That's why I partnered with FarmThru. My beef goes from our farm to the Brookvale hub within days. Your family gets it fresh. You know where it came from.
+
+Only food we'd feed our own.
+
+-- Rachel Ward, Rachel's Farm</pre></div>
+                <div class="field"><label>Description:</label> Rachel Ward, founder of Rachel's Farm, Kempsey NSW. Partner farm of FarmThru.</div>
+                <div class="field"><label>CTA:</label> Meet the farmer</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">receptionist_test</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">platform_fit</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="facts"><li class="fact-verified">[VERIFIED] no hormones/antibiotics</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="BR-109" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="rewrite" data-type="meta-ad" data-angle="cause-purpose" data-id="BR-110">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">BR-110</span>
+                <span class="badge" style="background:#ef4444">REWRITE</span>
+                <span class="composite">0.423</span>
+                <span class="type-tag">meta-ad</span>
+                <span class="angle-tag">cause-purpose</span>
+                <span class="headline-preview">A grocery store with no middlemen</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'BR-110','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'BR-110','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'BR-110','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> A grocery store with no middlemen</div>
+                <div class="field"><label>Primary text:</label><pre>A grocery store where every product comes from a named regenerative farm.
+
+Not a weekly box. Not a meal kit. A real grocery store where you pick what you want and collect it fresh from the hub.
+
+100% grass-fed beef. Wild-caught salmon. Pasture-raised chicken. Biodynamic dairy. All from farms you can visit.
+
+Zero warehouses. Zero wholesalers. Food that's days old, not weeks. Farmers earning a fairer deal.
+
+Brookvale hub. Monday to Friday. No lock-in.</pre></div>
+                <div class="field"><label>Description:</label> Named regenerative farms. Fresh food collected from the Brookvale hub. No lock-in.</div>
+                <div class="field"><label>CTA:</label> Start your first order</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">receptionist_test</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">platform_fit</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div>
+                    <ul class="failures"><li class="fail-item ">[NORMAL] FMTH-014: Pattern matched in primary_text: 'lock-in' (rule: FMTH-014)</li></ul><ul class="facts"><li class="fact-verified">[VERIFIED] 100%</li><li class="fact-verified">[VERIFIED] no lock-in</li><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] pasture-raised</li><li class="fact-unverified">[UNVERIFIED] grass-fed</li><li class="fact-verified">[VERIFIED] zero middlemen</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="BR-110" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="rewrite" data-type="meta-ad" data-angle="investment-thesis" data-id="CFE-101">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">CFE-101</span>
+                <span class="badge" style="background:#ef4444">REWRITE</span>
+                <span class="composite">0.511</span>
+                <span class="type-tag">meta-ad</span>
+                <span class="angle-tag">investment-thesis</span>
+                <span class="headline-preview">A grocery store you can own a piece of</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'CFE-101','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'CFE-101','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'CFE-101','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> A grocery store you can own a piece of</div>
+                <div class="field"><label>Primary text:</label><pre>A Brookvale hub open five days a week. Named regenerative farms across NSW. Families collecting food that was on the farm days ago.
+
+FarmThru is a farm-direct grocery store. No warehouses, no wholesalers. Food reaches families faster. Farmers keep more.
+
+The model is working. Mid-2026, FarmThru is launching equity crowdfunding on Birchal.
+
+If you believe food should work differently, this is your chance to be part of building it.</pre></div>
+                <div class="field"><label>Description:</label> FarmThru equity crowdfunding on Birchal, launching mid-2026. Join the waitlist. Not financial advice.</div>
+                <div class="field"><label>CTA:</label> Join the Waitlist</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">receptionist_test</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">platform_fit</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="facts"><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] not financial advice</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="CFE-101" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="rewrite" data-type="meta-ad" data-angle="investment-thesis" data-id="CFE-102">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">CFE-102</span>
+                <span class="badge" style="background:#ef4444">REWRITE</span>
+                <span class="composite">0.533</span>
+                <span class="type-tag">meta-ad</span>
+                <span class="angle-tag">investment-thesis</span>
+                <span class="headline-preview">Care about food? Now you can back it</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'CFE-102','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'CFE-102','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'CFE-102','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> Care about food? Now you can back it</div>
+                <div class="field"><label>Primary text:</label><pre>You already care about where your food comes from. What if you could help build the company that's making it easier to find?
+
+FarmThru is a farm-direct grocery store. Named regenerative farms across NSW. A Brookvale hub. Food that's days old, not weeks.
+
+Mid-2026, FarmThru is opening equity crowdfunding on Birchal. Everyday people can become part-owners of a business changing how food reaches families.
+
+Vote for change with your wallet.</pre></div>
+                <div class="field"><label>Description:</label> FarmThru equity crowdfunding launches mid-2026 on Birchal. Be part of what's next. Not financial advice.</div>
+                <div class="field"><label>CTA:</label> Learn More</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">receptionist_test</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">platform_fit</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="facts"><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] not financial advice</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="CFE-102" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="cause-purpose" data-id="CFE-103">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">CFE-103</span>
+                <span class="badge" style="background:#f59e0b">NEEDS WORK</span>
+                <span class="composite">0.620</span>
+                <span class="type-tag">meta-ad</span>
+                <span class="angle-tag">cause-purpose</span>
+                <span class="headline-preview">She raises the beef. You can back it</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'CFE-103','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'CFE-103','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'CFE-103','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> She raises the beef. You can back it</div>
+                <div class="field"><label>Primary text:</label><pre>A farmer in Kempsey raises cattle on open pasture. Regenerative land. No hormones. She knows every paddock by name.
+
+Her beef used to disappear into a supply chain that added weeks and thousands of kilometres. The farm name never reached the customer.
+
+FarmThru changed that. Now her beef goes from farm to the Brookvale hub in days. Families trace every cut to her paddock.
+
+Mid-2026, FarmThru is launching equity crowdfunding on Birchal. Be part of keeping farms and families connected.</pre></div>
+                <div class="field"><label>Description:</label> Farm-direct grocery, equity crowdfunding on Birchal mid-2026. Be part of it. Not financial advice.</div>
+                <div class="field"><label>CTA:</label> Join the Waitlist</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">receptionist_test</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">platform_fit</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="facts"><li class="fact-verified">[VERIFIED] no hormones/antibiotics</li><li class="fact-unverified">[UNVERIFIED] not financial advice</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="CFE-103" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="rewrite" data-type="meta-ad" data-angle="urgency-scarcity" data-id="CFE-104">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">CFE-104</span>
+                <span class="badge" style="background:#ef4444">REWRITE</span>
+                <span class="composite">0.477</span>
+                <span class="type-tag">meta-ad</span>
+                <span class="angle-tag">urgency-scarcity</span>
+                <span class="headline-preview">The waitlist gets first access</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'CFE-104','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'CFE-104','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'CFE-104','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> The waitlist gets first access</div>
+                <div class="field"><label>Primary text:</label><pre>When FarmThru's Birchal campaign opens mid-2026, the waitlist goes first.
+
+FarmThru is already running. A Brookvale hub open five days a week. Named regenerative farms across NSW. Fresh food reaching families within days of leaving the farm.
+
+The equity crowdfunding campaign will let everyday people become part-owners of this grocery model. Waitlist members get first access when the campaign goes live.
+
+Want to own a piece of how food should work? Get on the list before it opens.</pre></div>
+                <div class="field"><label>Description:</label> FarmThru equity crowdfunding on Birchal, mid-2026. Waitlist opens the door first. Not financial advice.</div>
+                <div class="field"><label>CTA:</label> Join the Waitlist</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">receptionist_test</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">platform_fit</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="facts"><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] not financial advice</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="CFE-104" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="transparency-safety" data-id="CFE-105">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">CFE-105</span>
+                <span class="badge" style="background:#f59e0b">NEEDS WORK</span>
+                <span class="composite">0.554</span>
+                <span class="type-tag">meta-ad</span>
+                <span class="angle-tag">transparency-safety</span>
+                <span class="headline-preview">We can't promise returns</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'CFE-105','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'CFE-105','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'CFE-105','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> We can't promise returns</div>
+                <div class="field"><label>Primary text:</label><pre>We can't promise returns. No early-stage company honestly can.
+
+Here's what we can show you. A Brookvale hub open Monday to Friday. Named regenerative farms across NSW. Fresh food reaching families in days, not weeks.
+
+Zero warehouses. Zero wholesalers. Farmers earning a fairer price. Families eating food they can trace.
+
+Mid-2026, we're opening equity crowdfunding on Birchal. We'll share the numbers, the risks, and the plan.
+
+If transparency matters to you, start here.</pre></div>
+                <div class="field"><label>Description:</label> Honest about the risks, open about the model. Equity crowdfunding on Birchal, mid-2026. Not financial advice.</div>
+                <div class="field"><label>CTA:</label> Learn More</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">receptionist_test</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">platform_fit</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="facts"><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] not financial advice</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li><li class="fact-verified">[VERIFIED] zero middlemen</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="CFE-105" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="rewrite" data-type="meta-ad" data-angle="social-belonging" data-id="CFE-106">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">CFE-106</span>
+                <span class="badge" style="background:#ef4444">REWRITE</span>
+                <span class="composite">0.514</span>
+                <span class="type-tag">meta-ad</span>
+                <span class="angle-tag">social-belonging</span>
+                <span class="headline-preview">Customers are becoming co-owners</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'CFE-106','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'CFE-106','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'CFE-106','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> Customers are becoming co-owners</div>
+                <div class="field"><label>Primary text:</label><pre>Families across Sydney already collect fresh food from the Brookvale hub every week. They know their farmers by name.
+
+Now they can own a piece of it too.
+
+FarmThru is a farm-direct grocery store. Named regenerative farms across NSW. No middlemen. Food that's days old, not weeks.
+
+Mid-2026, FarmThru is opening equity crowdfunding on Birchal. Customers, farmers, and anyone who believes food should work differently can become part-owners.
+
+Be a partner, not just a customer.</pre></div>
+                <div class="field"><label>Description:</label> FarmThru equity crowdfunding on Birchal, mid-2026. Own a piece of it. Not financial advice.</div>
+                <div class="field"><label>CTA:</label> Sign Up</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">receptionist_test</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">platform_fit</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div>
+                    <ul class="facts"><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] not financial advice</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="CFE-106" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="comparison-switching" data-id="CFE-107">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">CFE-107</span>
+                <span class="badge" style="background:#f59e0b">NEEDS WORK</span>
+                <span class="composite">0.599</span>
+                <span class="type-tag">meta-ad</span>
+                <span class="angle-tag">comparison-switching</span>
+                <span class="headline-preview">Two supply chains. One is broken</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'CFE-107','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'CFE-107','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'CFE-107','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> Two supply chains. One is broken</div>
+                <div class="field"><label>Primary text:</label><pre>The supermarket model: farm to processor to distributor to cold storage to shelf. Weeks pass. Thousands of kilometres. The farmer earns a fraction.
+
+FarmThru: farm to hub. Days, not weeks. The farmer keeps more. You know their name.
+
+It's a simpler model and it produces better food. But scaling it takes people who believe it should exist.
+
+Mid-2026, FarmThru is launching equity crowdfunding on Birchal. Help build the alternative to a system that stopped working for farmers and families.</pre></div>
+                <div class="field"><label>Description:</label> Help build the shorter one. FarmThru equity crowdfunding on Birchal, mid-2026. Not financial advice.</div>
+                <div class="field"><label>CTA:</label> Learn More</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">receptionist_test</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">platform_fit</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="facts"><li class="fact-unverified">[UNVERIFIED] not financial advice</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="CFE-107" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="rewrite" data-type="meta-ad" data-angle="empathy-founder" data-id="CFE-108">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">CFE-108</span>
+                <span class="badge" style="background:#ef4444">REWRITE</span>
+                <span class="composite">0.524</span>
+                <span class="type-tag">meta-ad</span>
+                <span class="angle-tag">empathy-founder</span>
+                <span class="headline-preview">We asked a simple question about food</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'CFE-108','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'CFE-108','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'CFE-108','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> We asked a simple question about food</div>
+                <div class="field"><label>Primary text:</label><pre>It started with a simple question: why can't families buy food direct from the farms that grow it?
+
+Not a subscription box. Not a middleman. A real grocery store where every product traces to a named regenerative farm.
+
+FarmThru built it. A Brookvale hub. Partner farms across NSW. Food reaching families days after leaving the paddock.
+
+Mid-2026, we're opening equity crowdfunding on Birchal. If you think food should work this way, be part of building it.
+
+Not just a customer. A partner.</pre></div>
+                <div class="field"><label>Description:</label> FarmThru is opening equity crowdfunding on Birchal, mid-2026. Be part of it. Not financial advice.</div>
+                <div class="field"><label>CTA:</label> Join the Waitlist</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">receptionist_test</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">platform_fit</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="failures"><li class="fail-item ">[NORMAL] FMTH-014: Pattern matched in primary_text: 'subscription' (rule: FMTH-014)</li></ul><ul class="facts"><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] not financial advice</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="CFE-108" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="landing-page" data-angle="cause-purpose" data-id="unknown">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">unknown</span>
+                <span class="badge" style="background:#f59e0b">NEEDS WORK</span>
+                <span class="composite">0.668</span>
+                <span class="type-tag">landing-page</span>
+                <span class="angle-tag">cause-purpose</span>
+                <span class="headline-preview">Own a piece of the grocery store that shows you wh</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'unknown','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'unknown','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'unknown','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> </div>
+                <div class="field"><label>Subhead:</label> </div>
+                <div class="field"><label>Hero copy:</label><pre></pre></div>
+                <div class="field"><label>Sections:</label><pre></pre></div>
+                <div class="field"><label>CTA:</label> Invest Now</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">hero_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">proof_density</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">cta_prominence</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">scroll_depth_pull</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div>
+                    <ul class="facts"><li class="fact-verified">[VERIFIED] $50</li><li class="fact-verified">[VERIFIED] $10,000</li><li class="fact-verified">[VERIFIED] $5</li><li class="fact-verified">[VERIFIED] 100%</li><li class="fact-verified">[VERIFIED] no lock-in</li><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] grass-fed</li><li class="fact-verified">[VERIFIED] no hormones/antibiotics</li><li class="fact-unverified">[UNVERIFIED] not financial advice</li><li class="fact-unverified">[UNVERIFIED] disclosure document</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li><li class="fact-verified">[VERIFIED] zero middlemen</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="unknown" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="landing-page" data-angle="transformation-storytelling" data-id="unknown">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">unknown</span>
+                <span class="badge" style="background:#f59e0b">NEEDS WORK</span>
+                <span class="composite">0.592</span>
+                <span class="type-tag">landing-page</span>
+                <span class="angle-tag">transformation-storytelling</span>
+                <span class="headline-preview">She survived the bushfires. It was the supermarket</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'unknown','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'unknown','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'unknown','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> </div>
+                <div class="field"><label>Subhead:</label> </div>
+                <div class="field"><label>Hero copy:</label><pre></pre></div>
+                <div class="field"><label>Sections:</label><pre></pre></div>
+                <div class="field"><label>CTA:</label> Invest Now</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">hero_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">proof_density</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">cta_prominence</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">scroll_depth_pull</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div>
+                    <ul class="facts"><li class="fact-verified">[VERIFIED] $50</li><li class="fact-verified">[VERIFIED] $10,000</li><li class="fact-verified">[VERIFIED] $5</li><li class="fact-verified">[VERIFIED] 100%</li><li class="fact-unverified">[UNVERIFIED] pasture-raised</li><li class="fact-unverified">[UNVERIFIED] grass-fed</li><li class="fact-unverified">[UNVERIFIED] not financial advice</li><li class="fact-unverified">[UNVERIFIED] disclosure document</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="unknown" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="landing-page" data-angle="quality-craft" data-id="unknown">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">unknown</span>
+                <span class="badge" style="background:#f59e0b">NEEDS WORK</span>
+                <span class="composite">0.695</span>
+                <span class="type-tag">landing-page</span>
+                <span class="angle-tag">quality-craft</span>
+                <span class="headline-preview">You will taste the difference when beef is days ol</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'unknown','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'unknown','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'unknown','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> </div>
+                <div class="field"><label>Subhead:</label> </div>
+                <div class="field"><label>Hero copy:</label><pre></pre></div>
+                <div class="field"><label>Sections:</label><pre></pre></div>
+                <div class="field"><label>CTA:</label> Invest Now</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">hero_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">proof_density</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">cta_prominence</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">scroll_depth_pull</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div>
+                    <ul class="facts"><li class="fact-verified">[VERIFIED] $50</li><li class="fact-verified">[VERIFIED] $10,000</li><li class="fact-verified">[VERIFIED] $5</li><li class="fact-verified">[VERIFIED] 100%</li><li class="fact-verified">[VERIFIED] no lock-in</li><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] grass-fed</li><li class="fact-verified">[VERIFIED] no hormones/antibiotics</li><li class="fact-unverified">[UNVERIFIED] not financial advice</li><li class="fact-unverified">[UNVERIFIED] disclosure document</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li><li class="fact-verified">[VERIFIED] zero middlemen</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="unknown" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="landing-page" data-angle="transparency-safety" data-id="unknown">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">unknown</span>
+                <span class="badge" style="background:#3b82f6">STRONG DRAFT</span>
+                <span class="composite">0.727</span>
+                <span class="type-tag">landing-page</span>
+                <span class="angle-tag">transparency-safety</span>
+                <span class="headline-preview">We cannot promise you returns. Here is what we can</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'unknown','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'unknown','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'unknown','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> </div>
+                <div class="field"><label>Subhead:</label> </div>
+                <div class="field"><label>Hero copy:</label><pre></pre></div>
+                <div class="field"><label>Sections:</label><pre></pre></div>
+                <div class="field"><label>CTA:</label> Invest Now</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">hero_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">proof_density</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">cta_prominence</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">scroll_depth_pull</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div>
+                    <ul class="facts"><li class="fact-verified">[VERIFIED] $50</li><li class="fact-verified">[VERIFIED] $10,000</li><li class="fact-verified">[VERIFIED] $5,</li><li class="fact-verified">[VERIFIED] 100%</li><li class="fact-unverified">[UNVERIFIED] grass-fed</li><li class="fact-verified">[VERIFIED] refundable deposit</li><li class="fact-unverified">[UNVERIFIED] not financial advice</li><li class="fact-unverified">[UNVERIFIED] disclosure document</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li><li class="fact-verified">[VERIFIED] zero middlemen</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="unknown" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="landing-page" data-angle="empathy-founder" data-id="unknown">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">unknown</span>
+                <span class="badge" style="background:#f59e0b">NEEDS WORK</span>
+                <span class="composite">0.630</span>
+                <span class="type-tag">landing-page</span>
+                <span class="angle-tag">empathy-founder</span>
+                <span class="headline-preview">I started asking where our meat came from. I did n</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'unknown','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'unknown','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'unknown','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> </div>
+                <div class="field"><label>Subhead:</label> </div>
+                <div class="field"><label>Hero copy:</label><pre></pre></div>
+                <div class="field"><label>Sections:</label><pre></pre></div>
+                <div class="field"><label>CTA:</label> Invest Now</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">hero_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">proof_density</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">cta_prominence</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">scroll_depth_pull</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div>
+                    <ul class="facts"><li class="fact-verified">[VERIFIED] $50</li><li class="fact-verified">[VERIFIED] $10,000</li><li class="fact-verified">[VERIFIED] $5</li><li class="fact-verified">[VERIFIED] 100%</li><li class="fact-verified">[VERIFIED] no lock-in</li><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] grass-fed</li><li class="fact-unverified">[UNVERIFIED] not financial advice</li><li class="fact-unverified">[UNVERIFIED] disclosure document</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="unknown" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="landing-page" data-angle="urgency-scarcity" data-id="unknown">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">unknown</span>
+                <span class="badge" style="background:#3b82f6">STRONG DRAFT</span>
+                <span class="composite">0.714</span>
+                <span class="type-tag">landing-page</span>
+                <span class="angle-tag">urgency-scarcity</span>
+                <span class="headline-preview">VIP spots are limited. First access to invest in F</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'unknown','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'unknown','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'unknown','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> </div>
+                <div class="field"><label>Subhead:</label> </div>
+                <div class="field"><label>Hero copy:</label><pre></pre></div>
+                <div class="field"><label>Sections:</label><pre></pre></div>
+                <div class="field"><label>CTA:</label> Invest Now</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">hero_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">proof_density</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">cta_prominence</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">scroll_depth_pull</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div>
+                    <ul class="facts"><li class="fact-verified">[VERIFIED] $5</li><li class="fact-verified">[VERIFIED] $50</li><li class="fact-verified">[VERIFIED] $10,000</li><li class="fact-verified">[VERIFIED] 100%</li><li class="fact-verified">[VERIFIED] no lock-in</li><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] grass-fed</li><li class="fact-verified">[VERIFIED] refundable deposit</li><li class="fact-unverified">[UNVERIFIED] not financial advice</li><li class="fact-unverified">[UNVERIFIED] disclosure document</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="unknown" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="landing-page" data-angle="investment-thesis" data-id="unknown">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">unknown</span>
+                <span class="badge" style="background:#3b82f6">STRONG DRAFT</span>
+                <span class="composite">0.712</span>
+                <span class="type-tag">landing-page</span>
+                <span class="angle-tag">investment-thesis</span>
+                <span class="headline-preview">Named farms. Real families. A grocery model that c</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'unknown','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'unknown','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'unknown','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> </div>
+                <div class="field"><label>Subhead:</label> </div>
+                <div class="field"><label>Hero copy:</label><pre></pre></div>
+                <div class="field"><label>Sections:</label><pre></pre></div>
+                <div class="field"><label>CTA:</label> Invest Now</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">hero_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">proof_density</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">cta_prominence</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">scroll_depth_pull</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div>
+                    <ul class="facts"><li class="fact-verified">[VERIFIED] $130</li><li class="fact-verified">[VERIFIED] $50</li><li class="fact-verified">[VERIFIED] $10,000</li><li class="fact-verified">[VERIFIED] $5,</li><li class="fact-verified">[VERIFIED] 24%</li><li class="fact-verified">[VERIFIED] no lock-in</li><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-verified">[VERIFIED] refundable deposit</li><li class="fact-unverified">[UNVERIFIED] not financial advice</li><li class="fact-unverified">[UNVERIFIED] disclosure document</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li><li class="fact-verified">[VERIFIED] zero middlemen</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="unknown" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="landing-page" data-angle="comparison-switching" data-id="unknown">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">unknown</span>
+                <span class="badge" style="background:#f59e0b">NEEDS WORK</span>
+                <span class="composite">0.692</span>
+                <span class="type-tag">landing-page</span>
+                <span class="angle-tag">comparison-switching</span>
+                <span class="headline-preview">Your supermarket beef might have travelled 2,400 k</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'unknown','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'unknown','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'unknown','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Headline:</label> </div>
+                <div class="field"><label>Subhead:</label> </div>
+                <div class="field"><label>Hero copy:</label><pre></pre></div>
+                <div class="field"><label>Sections:</label><pre></pre></div>
+                <div class="field"><label>CTA:</label> Invest Now</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">hero_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">proof_density</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">cta_prominence</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">scroll_depth_pull</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">objection_preemption</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div>
+                    <ul class="facts"><li class="fact-verified">[VERIFIED] $50 to $10,000</li><li class="fact-verified">[VERIFIED] $5</li><li class="fact-verified">[VERIFIED] 100%</li><li class="fact-verified">[VERIFIED] no lock-in</li><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] grass-fed</li><li class="fact-verified">[VERIFIED] no hormones/antibiotics</li><li class="fact-unverified">[UNVERIFIED] not financial advice</li><li class="fact-unverified">[UNVERIFIED] disclosure document</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="unknown" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="rewrite" data-type="email" data-angle="cause-purpose" data-id="unknown">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">unknown</span>
+                <span class="badge" style="background:#ef4444">REWRITE</span>
+                <span class="composite">0.437</span>
+                <span class="type-tag">email</span>
+                <span class="angle-tag">cause-purpose</span>
+                <span class="headline-preview">You are in. Here is what to expect from us.</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'unknown','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'unknown','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'unknown','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Subject:</label> It is live. You can invest in FarmThru now.</div>
+                <div class="field"><label>Preheader:</label> The equity crowdfunding campaign is open on Birchal. Here is how to invest.</div>
+                <div class="field"><label>Body:</label><pre>The campaign is live.
+
+FarmThru's equity crowdfunding raise is now open on Birchal. You can invest today.
+
+Over the past few weeks you have seen the food. You have met the farms. You have heard how the model works: regenerative farms across NSW, direct to our Brookvale hub, collected fresh by families. No middlemen. No mystery about provenance.
+
+Now you can own a piece of it.
+
+How to invest: click the link below to visit our campaign page on Birchal. Read the disclosure document first. It covers our financials, our risks, our team, and exactly how the funds will be used. If you are comfortable, you can invest from $50 up to $10,000.
+
+If you are a VIP member, you already have priority access. The campaign opens to the general waitlist shortly after.
+
+A note on risk. Investing in early-stage businesses means you could lose some or all of your investment. This is not financial advice. Consider seeking independent financial advice before making any investment decision. Full details in the disclosure document on Birchal.
+
+Thank you for being here from the start.
+
+Rachel &amp; the FarmThru team</pre></div>
+                <div class="field"><label>CTA:</label> Invest Now</div>
+                <div class="field"><label>Sender:</label> Rachel &amp; the FarmThru team</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">subject_line_power</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">body_flow</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">personalization</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div>
+                    <ul class="facts"><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] not financial advice</li><li class="fact-unverified">[UNVERIFIED] disclosure document</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="unknown" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="rewrite" data-type="email" data-angle="empathy-founder" data-id="unknown">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">unknown</span>
+                <span class="badge" style="background:#ef4444">REWRITE</span>
+                <span class="composite">0.464</span>
+                <span class="type-tag">email</span>
+                <span class="angle-tag">empathy-founder</span>
+                <span class="headline-preview">The supermarket question I could not answer</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'unknown','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'unknown','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'unknown','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Subject:</label> It is live. You can invest in FarmThru now.</div>
+                <div class="field"><label>Preheader:</label> The equity crowdfunding campaign is open on Birchal. Here is how to invest.</div>
+                <div class="field"><label>Body:</label><pre>The campaign is live.
+
+FarmThru's equity crowdfunding raise is now open on Birchal. You can invest today.
+
+Over the past few weeks you have seen the food. You have met the farms. You have heard how the model works: regenerative farms across NSW, direct to our Brookvale hub, collected fresh by families. No middlemen. No mystery about provenance.
+
+Now you can own a piece of it.
+
+How to invest: click the link below to visit our campaign page on Birchal. Read the disclosure document first. It covers our financials, our risks, our team, and exactly how the funds will be used. If you are comfortable, you can invest from $50 up to $10,000.
+
+If you are a VIP member, you already have priority access. The campaign opens to the general waitlist shortly after.
+
+A note on risk. Investing in early-stage businesses means you could lose some or all of your investment. This is not financial advice. Consider seeking independent financial advice before making any investment decision. Full details in the disclosure document on Birchal.
+
+Thank you for being here from the start.
+
+Rachel &amp; the FarmThru team</pre></div>
+                <div class="field"><label>CTA:</label> Invest Now</div>
+                <div class="field"><label>Sender:</label> Rachel &amp; the FarmThru team</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">subject_line_power</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">body_flow</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">personalization</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="facts"><li class="fact-verified">[VERIFIED] 100%</li><li class="fact-unverified">[UNVERIFIED] grass-fed</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="unknown" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="email" data-angle="quality-craft" data-id="unknown">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">unknown</span>
+                <span class="badge" style="background:#f59e0b">NEEDS WORK</span>
+                <span class="composite">0.593</span>
+                <span class="type-tag">email</span>
+                <span class="angle-tag">quality-craft</span>
+                <span class="headline-preview">This is what days-old beef actually looks like</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'unknown','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'unknown','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'unknown','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Subject:</label> It is live. You can invest in FarmThru now.</div>
+                <div class="field"><label>Preheader:</label> The equity crowdfunding campaign is open on Birchal. Here is how to invest.</div>
+                <div class="field"><label>Body:</label><pre>The campaign is live.
+
+FarmThru's equity crowdfunding raise is now open on Birchal. You can invest today.
+
+Over the past few weeks you have seen the food. You have met the farms. You have heard how the model works: regenerative farms across NSW, direct to our Brookvale hub, collected fresh by families. No middlemen. No mystery about provenance.
+
+Now you can own a piece of it.
+
+How to invest: click the link below to visit our campaign page on Birchal. Read the disclosure document first. It covers our financials, our risks, our team, and exactly how the funds will be used. If you are comfortable, you can invest from $50 up to $10,000.
+
+If you are a VIP member, you already have priority access. The campaign opens to the general waitlist shortly after.
+
+A note on risk. Investing in early-stage businesses means you could lose some or all of your investment. This is not financial advice. Consider seeking independent financial advice before making any investment decision. Full details in the disclosure document on Birchal.
+
+Thank you for being here from the start.
+
+Rachel &amp; the FarmThru team</pre></div>
+                <div class="field"><label>CTA:</label> Invest Now</div>
+                <div class="field"><label>Sender:</label> Rachel &amp; the FarmThru team</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">subject_line_power</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">body_flow</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">personalization</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div>
+                    <ul class="failures"><li class="fail-item ">[NORMAL] FMTH-014: Pattern matched in body: 'lock-in' (rule: FMTH-014)</li></ul><ul class="facts"><li class="fact-verified">[VERIFIED] 100%</li><li class="fact-verified">[VERIFIED] no lock-in</li><li class="fact-unverified">[UNVERIFIED] grass-fed</li><li class="fact-verified">[VERIFIED] no hormones/antibiotics</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="unknown" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="rewrite" data-type="email" data-angle="quality-craft" data-id="unknown">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">unknown</span>
+                <span class="badge" style="background:#ef4444">REWRITE</span>
+                <span class="composite">0.420</span>
+                <span class="type-tag">email</span>
+                <span class="angle-tag">quality-craft</span>
+                <span class="headline-preview">Meet Rachel Ward and the farm behind our beef</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'unknown','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'unknown','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'unknown','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Subject:</label> It is live. You can invest in FarmThru now.</div>
+                <div class="field"><label>Preheader:</label> The equity crowdfunding campaign is open on Birchal. Here is how to invest.</div>
+                <div class="field"><label>Body:</label><pre>The campaign is live.
+
+FarmThru's equity crowdfunding raise is now open on Birchal. You can invest today.
+
+Over the past few weeks you have seen the food. You have met the farms. You have heard how the model works: regenerative farms across NSW, direct to our Brookvale hub, collected fresh by families. No middlemen. No mystery about provenance.
+
+Now you can own a piece of it.
+
+How to invest: click the link below to visit our campaign page on Birchal. Read the disclosure document first. It covers our financials, our risks, our team, and exactly how the funds will be used. If you are comfortable, you can invest from $50 up to $10,000.
+
+If you are a VIP member, you already have priority access. The campaign opens to the general waitlist shortly after.
+
+A note on risk. Investing in early-stage businesses means you could lose some or all of your investment. This is not financial advice. Consider seeking independent financial advice before making any investment decision. Full details in the disclosure document on Birchal.
+
+Thank you for being here from the start.
+
+Rachel &amp; the FarmThru team</pre></div>
+                <div class="field"><label>CTA:</label> Invest Now</div>
+                <div class="field"><label>Sender:</label> Rachel &amp; the FarmThru team</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">subject_line_power</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">body_flow</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">personalization</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="facts"><li class="fact-verified">[VERIFIED] 100%</li><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] grass-fed</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="unknown" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="email" data-angle="investment-thesis" data-id="unknown">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">unknown</span>
+                <span class="badge" style="background:#f59e0b">NEEDS WORK</span>
+                <span class="composite">0.555</span>
+                <span class="type-tag">email</span>
+                <span class="angle-tag">investment-thesis</span>
+                <span class="headline-preview">The investment case behind the food</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'unknown','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'unknown','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'unknown','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Subject:</label> It is live. You can invest in FarmThru now.</div>
+                <div class="field"><label>Preheader:</label> The equity crowdfunding campaign is open on Birchal. Here is how to invest.</div>
+                <div class="field"><label>Body:</label><pre>The campaign is live.
+
+FarmThru's equity crowdfunding raise is now open on Birchal. You can invest today.
+
+Over the past few weeks you have seen the food. You have met the farms. You have heard how the model works: regenerative farms across NSW, direct to our Brookvale hub, collected fresh by families. No middlemen. No mystery about provenance.
+
+Now you can own a piece of it.
+
+How to invest: click the link below to visit our campaign page on Birchal. Read the disclosure document first. It covers our financials, our risks, our team, and exactly how the funds will be used. If you are comfortable, you can invest from $50 up to $10,000.
+
+If you are a VIP member, you already have priority access. The campaign opens to the general waitlist shortly after.
+
+A note on risk. Investing in early-stage businesses means you could lose some or all of your investment. This is not financial advice. Consider seeking independent financial advice before making any investment decision. Full details in the disclosure document on Birchal.
+
+Thank you for being here from the start.
+
+Rachel &amp; the FarmThru team</pre></div>
+                <div class="field"><label>CTA:</label> Invest Now</div>
+                <div class="field"><label>Sender:</label> Rachel &amp; the FarmThru team</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">subject_line_power</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">body_flow</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">personalization</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div>
+                    <ul class="failures"><li class="fail-item ">[NORMAL] FMTH-013: Pattern matched in body: 'consumer' (rule: FMTH-013)</li></ul><ul class="facts"><li class="fact-verified">[VERIFIED] $130</li><li class="fact-verified">[VERIFIED] $50</li><li class="fact-verified">[VERIFIED] $10,000</li><li class="fact-verified">[VERIFIED] $5</li><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] disclosure document</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li><li class="fact-verified">[VERIFIED] zero middlemen</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="unknown" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="email" data-angle="urgency-scarcity" data-id="unknown">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">unknown</span>
+                <span class="badge" style="background:#f59e0b">NEEDS WORK</span>
+                <span class="composite">0.608</span>
+                <span class="type-tag">email</span>
+                <span class="angle-tag">urgency-scarcity</span>
+                <span class="headline-preview">FarmThru opens to investors very soon</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'unknown','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'unknown','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'unknown','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Subject:</label> It is live. You can invest in FarmThru now.</div>
+                <div class="field"><label>Preheader:</label> The equity crowdfunding campaign is open on Birchal. Here is how to invest.</div>
+                <div class="field"><label>Body:</label><pre>The campaign is live.
+
+FarmThru's equity crowdfunding raise is now open on Birchal. You can invest today.
+
+Over the past few weeks you have seen the food. You have met the farms. You have heard how the model works: regenerative farms across NSW, direct to our Brookvale hub, collected fresh by families. No middlemen. No mystery about provenance.
+
+Now you can own a piece of it.
+
+How to invest: click the link below to visit our campaign page on Birchal. Read the disclosure document first. It covers our financials, our risks, our team, and exactly how the funds will be used. If you are comfortable, you can invest from $50 up to $10,000.
+
+If you are a VIP member, you already have priority access. The campaign opens to the general waitlist shortly after.
+
+A note on risk. Investing in early-stage businesses means you could lose some or all of your investment. This is not financial advice. Consider seeking independent financial advice before making any investment decision. Full details in the disclosure document on Birchal.
+
+Thank you for being here from the start.
+
+Rachel &amp; the FarmThru team</pre></div>
+                <div class="field"><label>CTA:</label> Invest Now</div>
+                <div class="field"><label>Sender:</label> Rachel &amp; the FarmThru team</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">subject_line_power</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">body_flow</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">personalization</span><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><span class="dim-score">3/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="failures"><li class="fail-item ">[NORMAL] FMTH-008: Pattern matched in body: '$50, maximum' (rule: FMTH-008)</li></ul><ul class="facts"><li class="fact-verified">[VERIFIED] $5</li><li class="fact-verified">[VERIFIED] $50,</li><li class="fact-verified">[VERIFIED] $10,000</li><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] disclosure document</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="unknown" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="email" data-angle="urgency-scarcity" data-id="unknown">
+            <div class="card-header" onclick="toggleCard(this)">
+                <span class="card-id">unknown</span>
+                <span class="badge" style="background:#f59e0b">NEEDS WORK</span>
+                <span class="composite">0.558</span>
+                <span class="type-tag">email</span>
+                <span class="angle-tag">urgency-scarcity</span>
+                <span class="headline-preview">It is live. You can invest in FarmThru now.</span>
+                <div class="status-buttons">
+                    <button class="btn-approve" onclick="setStatus(event,'unknown','approved')">Approve</button>
+                    <button class="btn-revise" onclick="setStatus(event,'unknown','revise')">Revise</button>
+                    <button class="btn-kill" onclick="setStatus(event,'unknown','kill')">Kill</button>
+                </div>
+            </div>
+            <div class="card-body" style="display:none">
+                
+            <div class="content-preview">
+                <div class="field"><label>Subject:</label> It is live. You can invest in FarmThru now.</div>
+                <div class="field"><label>Preheader:</label> The equity crowdfunding campaign is open on Birchal. Here is how to invest.</div>
+                <div class="field"><label>Body:</label><pre>The campaign is live.
+
+FarmThru's equity crowdfunding raise is now open on Birchal. You can invest today.
+
+Over the past few weeks you have seen the food. You have met the farms. You have heard how the model works: regenerative farms across NSW, direct to our Brookvale hub, collected fresh by families. No middlemen. No mystery about provenance.
+
+Now you can own a piece of it.
+
+How to invest: click the link below to visit our campaign page on Birchal. Read the disclosure document first. It covers our financials, our risks, our team, and exactly how the funds will be used. If you are comfortable, you can invest from $50 up to $10,000.
+
+If you are a VIP member, you already have priority access. The campaign opens to the general waitlist shortly after.
+
+A note on risk. Investing in early-stage businesses means you could lose some or all of your investment. This is not financial advice. Consider seeking independent financial advice before making any investment decision. Full details in the disclosure document on Birchal.
+
+Thank you for being here from the start.
+
+Rachel &amp; the FarmThru team</pre></div>
+                <div class="field"><label>CTA:</label> Invest Now</div>
+                <div class="field"><label>Sender:</label> Rachel &amp; the FarmThru team</div>
+            </div>
+                <div class="scoring-details">
+                    <h4>Rubric scores</h4>
+                    <div class="dim-row"><span class="dim-name">angle_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">motivation_match</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">tactic_execution</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">subject_line_power</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">body_flow</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">cta_clarity</span><div class="dim-bar"><div class="dim-fill" style="width:40%"></div></div><span class="dim-score">2/5</span></div><div class="dim-row"><span class="dim-name">personalization</span><div class="dim-bar"><div class="dim-fill" style="width:80%"></div></div><span class="dim-score">4/5</span></div><div class="dim-row"><span class="dim-name">specificity</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div><div class="dim-row"><span class="dim-name">scroll_stop_hook</span><div class="dim-bar"><div class="dim-fill" style="width:20%"></div></div><span class="dim-score">1/5</span></div><div class="dim-row"><span class="dim-name">differentiation</span><div class="dim-bar"><div class="dim-fill" style="width:100%"></div></div><span class="dim-score">5/5</span></div>
+                    <ul class="facts"><li class="fact-verified">[VERIFIED] $50</li><li class="fact-verified">[VERIFIED] $10,000</li><li class="fact-unverified">[UNVERIFIED] regenerative farming</li><li class="fact-unverified">[UNVERIFIED] not financial advice</li><li class="fact-unverified">[UNVERIFIED] disclosure document</li><li class="fact-verified">[VERIFIED] equity crowdfunding</li><li class="fact-verified">[VERIFIED] Birchal platform</li></ul>
+                </div>
+                <div class="notes-section">
+                    <label>Notes:</label>
+                    <textarea class="notes" data-id="unknown" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="actions">
+    <button class="btn-save" onclick="saveJSON()">Save review JSON</button>
+    <button class="btn-export" onclick="exportCSV()">Export CSV</button>
+</div>
+<script>
+const statuses = {};
+const notes = {};
+
+function toggleCard(header) {
+    const body = header.nextElementSibling;
+    body.style.display = body.style.display === 'none' ? 'block' : 'none';
+}
+
+function setStatus(e, id, status) {
+    e.stopPropagation();
+    statuses[id] = status;
+    const card = document.querySelector(`[data-id="${id}"]`);
+    card.className = card.className.replace(/status-\w+/g, '') + ` status-${status}`;
+    // Update button states
+    card.querySelectorAll('.status-buttons button').forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+    updateCounter();
+}
+
+function filterCards() {
+    const type = document.getElementById('filterType').value;
+    const verdict = document.getElementById('filterVerdict').value;
+    const status = document.getElementById('filterStatus').value;
+    document.querySelectorAll('.card').forEach(c => {
+        const matchType = type === 'all' || c.dataset.type === type;
+        const matchVerdict = verdict === 'all' || c.dataset.verdict === verdict;
+        const id = c.dataset.id;
+        const matchStatus = status === 'all' ||
+            (status === 'unreviewed' && !statuses[id]) ||
+            statuses[id] === status;
+        c.style.display = matchType && matchVerdict && matchStatus ? '' : 'none';
+    });
+    updateCounter();
+}
+
+function expandAll() { document.querySelectorAll('.card-body').forEach(b => b.style.display = 'block'); }
+function collapseAll() { document.querySelectorAll('.card-body').forEach(b => b.style.display = 'none'); }
+
+function updateCounter() {
+    const visible = document.querySelectorAll('.card:not([style*="display: none"])').length;
+    const total = document.querySelectorAll('.card').length;
+    const reviewed = Object.keys(statuses).length;
+    document.getElementById('counter').textContent = `Showing ${visible}/${total} | Reviewed: ${reviewed}/${total} | Approved: ${Object.values(statuses).filter(s=>s==='approved').length} | Revise: ${Object.values(statuses).filter(s=>s==='revise').length} | Kill: ${Object.values(statuses).filter(s=>s==='kill').length}`;
+}
+
+function saveJSON() {
+    // Collect notes from textareas
+    document.querySelectorAll('.notes').forEach(n => {
+        if (n.value.trim()) notes[n.dataset.id] = n.value.trim();
+    });
+    const data = { statuses, notes, exported: new Date().toISOString() };
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'review-r3-decisions.json';
+    a.click();
+}
+
+function exportCSV() {
+    document.querySelectorAll('.notes').forEach(n => {
+        if (n.value.trim()) notes[n.dataset.id] = n.value.trim();
+    });
+    let csv = 'id,type,angle,verdict,composite,status,notes\n';
+    document.querySelectorAll('.card').forEach(c => {
+        const id = c.dataset.id;
+        csv += `${id},${c.dataset.type},${c.dataset.angle},${c.dataset.verdict},` +
+               `${c.querySelector('.composite').textContent},${statuses[id]||'unreviewed'},` +
+               `"${(notes[id]||'').replace(/"/g,'""')}"\n`;
+    });
+    const blob = new Blob([csv], {type: 'text/csv'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'review-r3.csv';
+    a.click();
+}
+
+updateCounter();
+</script>
+</body>
+</html>
