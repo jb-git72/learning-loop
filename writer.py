@@ -230,7 +230,8 @@ The goal is exploration, not optimisation.
   "hero_copy": "above-the-fold body copy",
   "sections": [
     {"heading": "section heading", "body": "section body copy"},
-    {"heading": "section heading", "body": "section body copy"}
+    {"heading": "section heading", "body": "section body copy"},
+    {"heading": "Compliance", "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."}
   ],
   "cta": "one of the approved CTAs",
   "creative_brief": "brief visual direction (1-2 sentences)"
@@ -239,7 +240,9 @@ The goal is exploration, not optimisation.
         extra_rules = """- Include financial disclaimer if discussing investment
 - Risks and benefits must have equal prominence
 - No return projections or guarantees
-- Every number must trace to a verified fact above"""
+- Every number must trace to a verified fact above
+- Last section MUST be titled "Compliance" with the exact disclaimer text shown in the output format above
+- Do NOT omit the Compliance section even if the page doesn't discuss investment — include it for all CFE/waitlist pages"""
 
     elif content_type == "email":
         constraints_text = f"""- Subject: max {constraints.get('subject_max_chars', 60)} characters (6-10 words ideal)
@@ -259,7 +262,9 @@ The goal is exploration, not optimisation.
         extra_rules = """- Single CTA per email
 - Short paragraphs (max 3 sentences each)
 - Founder voice when appropriate
-- Every number must trace to a verified fact above"""
+- Every number must trace to a verified fact above
+- If the email mentions investment, Birchal, equity, crowdfunding, $50, $5 deposit, or waitlist — add as the FINAL paragraph before the sign-off: "This is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal."
+- The sender must be 'Rachel & the FarmThru team'"""
 
     else:  # meta-ad (default)
         constraints_text = f"""- Primary text: max {constraints.get('primary_text_max_chars', 500)} characters
