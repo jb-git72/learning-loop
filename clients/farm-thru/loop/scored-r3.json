@@ -1,18 +1,18 @@
 {
   "summary": {
     "total": 33,
-    "avg_composite": 0.6059,
+    "avg_composite": 0.6503,
     "verdicts": {
       "needs_work": 19,
-      "rewrite": 8,
-      "strong_draft": 6
+      "rewrite": 4,
+      "strong_draft": 10
     },
     "critical_failures": 0
   },
   "results": [
     {
       "ad_id": "BR-101",
-      "composite": 0.5838,
+      "composite": 0.6255,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
@@ -49,14 +49,14 @@
         ]
       },
       "rubric": {
-        "weighted_total": 38.5,
+        "weighted_total": 41.25,
         "max_possible": 63.75,
         "raw_scores": {
           "angle_clarity": 3,
           "motivation_match": 2,
           "tactic_execution": 4,
-          "specificity": 3,
-          "objection_preemption": 1,
+          "specificity": 4,
+          "objection_preemption": 2,
           "receptionist_test": 2,
           "scroll_stop_hook": 5,
           "cta_clarity": 2,
@@ -86,18 +86,18 @@
             "detail": "Heuristic: hook=True, body=True, cta=True"
           },
           "specificity": {
-            "score": 3,
+            "score": 4,
             "weight": 1.5,
-            "weighted": 4.5,
+            "weighted": 6.0,
             "method": "deterministic",
-            "detail": "0 dollar amounts, 2 numbers, 2 names = 4 specifics"
+            "detail": "0 dollar amounts, 2 numbers, 3 names = 5 specifics"
           },
           "objection_preemption": {
-            "score": 1,
+            "score": 2,
             "weight": 1.25,
-            "weighted": 1.25,
+            "weighted": 2.5,
             "method": "deterministic",
-            "detail": "1/5 objection signals: no middlemen"
+            "detail": "2/5 objection signals: no middlemen, delivery clarity"
           },
           "receptionist_test": {
             "score": 2,
@@ -132,7 +132,7 @@
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.13, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.16, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -157,27 +157,34 @@
     },
     {
       "ad_id": "BR-102",
-      "composite": 0.4804,
-      "verdict": "rewrite",
+      "composite": 0.596,
+      "verdict": "needs_work",
       "rule_compliance": {
-        "score": 1.0,
-        "passed": 27,
+        "score": 0.963,
+        "passed": 26,
         "total": 27,
-        "failures": [],
+        "failures": [
+          {
+            "rule_id": "FMTH-009",
+            "field": "primary_text",
+            "detail": "Pattern matched in primary_text: 'better than supermarket' (rule: FMTH-009)",
+            "severity": "normal"
+          }
+        ],
         "critical_failure": false
       },
       "fact_accuracy": {
-        "score": 0.25,
-        "claims_found": 6,
-        "verified": 2,
+        "score": 0.4444,
+        "claims_found": 9,
+        "verified": 5,
         "unverified": 4,
         "contradicted": 0,
         "details": [
           {
-            "claim": "14 days",
-            "fact_id": "",
-            "status": "unverified",
-            "confidence": ""
+            "claim": "21 days",
+            "fact_id": "PQ-005",
+            "status": "verified",
+            "confidence": "MEDIUM"
           },
           {
             "claim": "400km",
@@ -186,13 +193,13 @@
             "confidence": "MEDIUM"
           },
           {
-            "claim": "100%",
-            "fact_id": "PQ-001",
-            "status": "verified",
-            "confidence": "HIGH"
+            "claim": "300km",
+            "fact_id": "",
+            "status": "unverified",
+            "confidence": ""
           },
           {
-            "claim": "pasture-raised",
+            "claim": "regenerative farming",
             "fact_id": "",
             "status": "unverified",
             "confidence": ""
@@ -204,27 +211,45 @@
             "confidence": ""
           },
           {
+            "claim": "no hormones/antibiotics",
+            "fact_id": "PQ-003",
+            "status": "verified",
+            "confidence": "HIGH"
+          },
+          {
             "claim": "not financial advice",
             "fact_id": "",
             "status": "unverified",
             "confidence": ""
+          },
+          {
+            "claim": "equity crowdfunding",
+            "fact_id": "INV-005",
+            "status": "verified",
+            "confidence": "HIGH"
+          },
+          {
+            "claim": "Birchal platform",
+            "fact_id": "INV-005",
+            "status": "verified",
+            "confidence": "HIGH"
           }
         ]
       },
       "rubric": {
-        "weighted_total": 43.75,
+        "weighted_total": 46.75,
         "max_possible": 63.75,
         "raw_scores": {
           "angle_clarity": 3,
           "motivation_match": 2,
           "tactic_execution": 4,
           "specificity": 5,
-          "objection_preemption": 2,
-          "receptionist_test": 3,
+          "objection_preemption": 4,
+          "receptionist_test": 4,
           "scroll_stop_hook": 4,
           "cta_clarity": 5,
           "platform_fit": 3,
-          "differentiation": 5
+          "differentiation": 4
         },
         "dimension_details": {
           "angle_clarity": {
@@ -253,28 +278,28 @@
             "weight": 1.5,
             "weighted": 7.5,
             "method": "deterministic",
-            "detail": "0 dollar amounts, 5 numbers, 5 names = 10 specifics"
+            "detail": "0 dollar amounts, 4 numbers, 3 names = 7 specifics"
           },
           "objection_preemption": {
-            "score": 2,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 2.5,
+            "weighted": 5.0,
             "method": "deterministic",
-            "detail": "2/5 objection signals: not financial advice, no middlemen"
+            "detail": "4/5 objection signals: not financial advice, risk acknowledged, no middlemen, delivery clarity"
           },
           "receptionist_test": {
-            "score": 3,
+            "score": 4,
             "weight": 1.5,
-            "weighted": 4.5,
+            "weighted": 6.0,
             "method": "deterministic",
-            "detail": "3/5 answered: what: yes, source: yes, different: yes, invest/join: no, minimum: no"
+            "detail": "4/5 answered: what: yes, source: yes, different: yes, invest/join: yes, minimum: no"
           },
           "scroll_stop_hook": {
             "score": 4,
             "weight": 1.5,
             "weighted": 6.0,
             "method": "deterministic",
-            "detail": "Statistic/number hook: '14 days. That's how long supermarket beef sits in cold stora...'"
+            "detail": "Statistic/number hook: '21 days. That's how long supermarket beef sits in cold stora...'"
           },
           "cta_clarity": {
             "score": 5,
@@ -291,11 +316,11 @@
             "detail": "1 violation: headline: 41/40 chars"
           },
           "differentiation": {
-            "score": 5,
+            "score": 4,
             "weight": 1.0,
-            "weighted": 5.0,
+            "weighted": 4.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.17, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.22, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -305,7 +330,7 @@
       },
       "penalties": {
         "unverified_claims": 4,
-        "non_critical_rule_failures": 0
+        "non_critical_rule_failures": 1
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
@@ -315,12 +340,12 @@
       "_file": "clients/farm-thru/loop/meta-ads/BR-102.json",
       "content_type": "meta-ad",
       "angle": "quality-craft",
-      "headline": "14 days in cold storage before you buy it",
-      "primary_text": "14 days. That's how long supermarket beef sits in cold storage before reaching your kitchen. Add the 2,400km journey from feedlot to shelf, and you're eating meat that's weeks old. FarmThru beef comes"
+      "headline": "21 days in cold storage vs days from farm",
+      "primary_text": "21 days. That's how long supermarket beef sits in cold storage after its 2,400km journey from feedlot. Rachel Ward's grass-fed cattle graze 300km north of Sydney. Her beef reaches our Brookvale hub wi"
     },
     {
       "ad_id": "BR-103",
-      "composite": 0.5804,
+      "composite": 0.6706,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
@@ -345,16 +370,16 @@
         ]
       },
       "rubric": {
-        "weighted_total": 37.0,
+        "weighted_total": 42.75,
         "max_possible": 63.75,
         "raw_scores": {
           "angle_clarity": 3,
           "motivation_match": 2,
           "tactic_execution": 4,
           "specificity": 2,
-          "objection_preemption": 1,
+          "objection_preemption": 2,
           "receptionist_test": 3,
-          "scroll_stop_hook": 2,
+          "scroll_stop_hook": 5,
           "cta_clarity": 5,
           "platform_fit": 5,
           "differentiation": 5
@@ -386,14 +411,14 @@
             "weight": 1.5,
             "weighted": 3.0,
             "method": "deterministic",
-            "detail": "0 dollar amounts, 0 numbers, 1 names = 1 specifics"
+            "detail": "0 dollar amounts, 0 numbers, 2 names = 2 specifics"
           },
           "objection_preemption": {
-            "score": 1,
+            "score": 2,
             "weight": 1.25,
-            "weighted": 1.25,
+            "weighted": 2.5,
             "method": "deterministic",
-            "detail": "0/5 objection signals: none"
+            "detail": "2/5 objection signals: no middlemen, delivery clarity"
           },
           "receptionist_test": {
             "score": 3,
@@ -403,11 +428,11 @@
             "detail": "3/5 answered: what: yes, source: yes, different: yes, invest/join: no, minimum: no"
           },
           "scroll_stop_hook": {
-            "score": 2,
+            "score": 5,
             "weight": 1.5,
-            "weighted": 3.0,
+            "weighted": 7.5,
             "method": "deterministic",
-            "detail": "Generic opening: 'I built a grocery business because I was tired of lying to m...'"
+            "detail": "Quoted objection hook: '\"I never used to read the label.\" That's how it starts for m...'"
           },
           "cta_clarity": {
             "score": 5,
@@ -428,7 +453,7 @@
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.11, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.15, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -449,7 +474,7 @@
       "content_type": "meta-ad",
       "angle": "empathy-founder",
       "headline": "I was lying to my kids about food",
-      "primary_text": "I built a grocery business because I was tired of lying to my kids about where their food came from. 'Farm fresh' chicken that never saw grass. 'Free range' eggs from warehouses. I wanted to create wh"
+      "primary_text": "\"I never used to read the label.\" That's how it starts for most families. 'Farm fresh' chicken that never saw grass. 'Free range' eggs from warehouses. I wanted to create what didn't exist: real farm-"
     },
     {
       "ad_id": "BR-104",
@@ -573,7 +598,7 @@
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.17, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.20, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -598,7 +623,7 @@
     },
     {
       "ad_id": "BR-105",
-      "composite": 0.6275,
+      "composite": 0.6745,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
@@ -614,429 +639,6 @@
         "unverified": 0,
         "contradicted": 0,
         "details": []
-      },
-      "rubric": {
-        "weighted_total": 40.0,
-        "max_possible": 63.75,
-        "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
-          "tactic_execution": 4,
-          "specificity": 1,
-          "objection_preemption": 1,
-          "receptionist_test": 3,
-          "scroll_stop_hook": 5,
-          "cta_clarity": 5,
-          "platform_fit": 5,
-          "differentiation": 5
-        },
-        "dimension_details": {
-          "angle_clarity": {
-            "score": 3,
-            "weight": 1.25,
-            "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
-          },
-          "motivation_match": {
-            "score": 2,
-            "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
-          },
-          "tactic_execution": {
-            "score": 4,
-            "weight": 1.0,
-            "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
-          },
-          "specificity": {
-            "score": 1,
-            "weight": 1.5,
-            "weighted": 1.5,
-            "method": "deterministic",
-            "detail": "0 dollar amounts, 0 numbers, 0 names = 0 specifics"
-          },
-          "objection_preemption": {
-            "score": 1,
-            "weight": 1.25,
-            "weighted": 1.25,
-            "method": "deterministic",
-            "detail": "0/5 objection signals: none"
-          },
-          "receptionist_test": {
-            "score": 3,
-            "weight": 1.5,
-            "weighted": 4.5,
-            "method": "deterministic",
-            "detail": "3/5 answered: what: no, source: yes, different: yes, invest/join: yes, minimum: no"
-          },
-          "scroll_stop_hook": {
-            "score": 5,
-            "weight": 1.5,
-            "weighted": 7.5,
-            "method": "deterministic",
-            "detail": "Story hook with specific moment: 'Do you ever feel like you're the only one who cares where yo...'"
-          },
-          "cta_clarity": {
-            "score": 5,
-            "weight": 1.0,
-            "weighted": 5.0,
-            "method": "deterministic",
-            "detail": "CTA matches approved list: 'cfe_waitlist'"
-          },
-          "platform_fit": {
-            "score": 5,
-            "weight": 1.0,
-            "weighted": 5.0,
-            "method": "deterministic",
-            "detail": "All platform constraints met, conversational tone"
-          },
-          "differentiation": {
-            "score": 5,
-            "weight": 1.0,
-            "weighted": 5.0,
-            "method": "deterministic",
-            "detail": "Avg similarity: 0.09, max: 1.00 (vs 33 ads)"
-          }
-        }
-      },
-      "overrides": {
-        "critical_rule_failure": false,
-        "fact_contradiction": false
-      },
-      "penalties": {
-        "unverified_claims": 0,
-        "non_critical_rule_failures": 0
-      },
-      "scoring_method": {
-        "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
-      },
-      "_file": "clients/farm-thru/loop/meta-ads/BR-105.json",
-      "content_type": "meta-ad",
-      "angle": "social-belonging",
-      "headline": "Do you care where your food comes from?",
-      "primary_text": "Do you ever feel like you're the only one who cares where your food actually comes from? You're not. There's a whole community of families who've moved beyond supermarket guesswork to farm-direct groc"
-    },
-    {
-      "ad_id": "BR-106",
-      "composite": 0.6255,
-      "verdict": "needs_work",
-      "rule_compliance": {
-        "score": 1.0,
-        "passed": 27,
-        "total": 27,
-        "failures": [],
-        "critical_failure": false
-      },
-      "fact_accuracy": {
-        "score": 0.5,
-        "claims_found": 3,
-        "verified": 2,
-        "unverified": 1,
-        "contradicted": 0,
-        "details": [
-          {
-            "claim": "400km",
-            "fact_id": "PQ-006",
-            "status": "verified",
-            "confidence": "MEDIUM"
-          },
-          {
-            "claim": "no hormones/antibiotics",
-            "fact_id": "PQ-003",
-            "status": "verified",
-            "confidence": "HIGH"
-          },
-          {
-            "claim": "not financial advice",
-            "fact_id": "",
-            "status": "unverified",
-            "confidence": ""
-          }
-        ]
-      },
-      "rubric": {
-        "weighted_total": 41.25,
-        "max_possible": 63.75,
-        "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
-          "tactic_execution": 4,
-          "specificity": 4,
-          "objection_preemption": 2,
-          "receptionist_test": 3,
-          "scroll_stop_hook": 2,
-          "cta_clarity": 5,
-          "platform_fit": 5,
-          "differentiation": 5
-        },
-        "dimension_details": {
-          "angle_clarity": {
-            "score": 3,
-            "weight": 1.25,
-            "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
-          },
-          "motivation_match": {
-            "score": 2,
-            "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
-          },
-          "tactic_execution": {
-            "score": 4,
-            "weight": 1.0,
-            "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
-          },
-          "specificity": {
-            "score": 4,
-            "weight": 1.5,
-            "weighted": 6.0,
-            "method": "deterministic",
-            "detail": "0 dollar amounts, 1 numbers, 4 names = 5 specifics"
-          },
-          "objection_preemption": {
-            "score": 2,
-            "weight": 1.25,
-            "weighted": 2.5,
-            "method": "deterministic",
-            "detail": "2/5 objection signals: not financial advice, no middlemen"
-          },
-          "receptionist_test": {
-            "score": 3,
-            "weight": 1.5,
-            "weighted": 4.5,
-            "method": "deterministic",
-            "detail": "3/5 answered: what: yes, source: yes, different: yes, invest/join: no, minimum: no"
-          },
-          "scroll_stop_hook": {
-            "score": 2,
-            "weight": 1.5,
-            "weighted": 3.0,
-            "method": "deterministic",
-            "detail": "Generic opening: 'Do you know which farm your beef came from? Rachel's cattle ...'"
-          },
-          "cta_clarity": {
-            "score": 5,
-            "weight": 1.0,
-            "weighted": 5.0,
-            "method": "deterministic",
-            "detail": "CTA matches approved list: 'cfe_campaign'"
-          },
-          "platform_fit": {
-            "score": 5,
-            "weight": 1.0,
-            "weighted": 5.0,
-            "method": "deterministic",
-            "detail": "All platform constraints met, conversational tone"
-          },
-          "differentiation": {
-            "score": 5,
-            "weight": 1.0,
-            "weighted": 5.0,
-            "method": "deterministic",
-            "detail": "Avg similarity: 0.15, max: 1.00 (vs 33 ads)"
-          }
-        }
-      },
-      "overrides": {
-        "critical_rule_failure": false,
-        "fact_contradiction": false
-      },
-      "penalties": {
-        "unverified_claims": 1,
-        "non_critical_rule_failures": 0
-      },
-      "scoring_method": {
-        "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
-      },
-      "_file": "clients/farm-thru/loop/meta-ads/BR-106.json",
-      "content_type": "meta-ad",
-      "angle": "transparency",
-      "headline": "See your farm before you buy",
-      "primary_text": "Do you know which farm your beef came from? Rachel's cattle graze on regenerative pastures in Kempsey NSW. No hormones, no feedlots. Collins catches our salmon wild off the South Coast. Every product "
-    },
-    {
-      "ad_id": "BR-107",
-      "composite": 0.6293,
-      "verdict": "needs_work",
-      "rule_compliance": {
-        "score": 1.0,
-        "passed": 27,
-        "total": 27,
-        "failures": [],
-        "critical_failure": false
-      },
-      "fact_accuracy": {
-        "score": 0.5,
-        "claims_found": 3,
-        "verified": 2,
-        "unverified": 1,
-        "contradicted": 0,
-        "details": [
-          {
-            "claim": "400km",
-            "fact_id": "PQ-006",
-            "status": "verified",
-            "confidence": "MEDIUM"
-          },
-          {
-            "claim": "regenerative farming",
-            "fact_id": "",
-            "status": "unverified",
-            "confidence": ""
-          },
-          {
-            "claim": "zero middlemen",
-            "fact_id": "POS-002",
-            "status": "verified",
-            "confidence": "HIGH"
-          }
-        ]
-      },
-      "rubric": {
-        "weighted_total": 41.5,
-        "max_possible": 63.75,
-        "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
-          "tactic_execution": 4,
-          "specificity": 3,
-          "objection_preemption": 1,
-          "receptionist_test": 3,
-          "scroll_stop_hook": 4,
-          "cta_clarity": 5,
-          "platform_fit": 5,
-          "differentiation": 5
-        },
-        "dimension_details": {
-          "angle_clarity": {
-            "score": 3,
-            "weight": 1.25,
-            "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
-          },
-          "motivation_match": {
-            "score": 2,
-            "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
-          },
-          "tactic_execution": {
-            "score": 4,
-            "weight": 1.0,
-            "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
-          },
-          "specificity": {
-            "score": 3,
-            "weight": 1.5,
-            "weighted": 4.5,
-            "method": "deterministic",
-            "detail": "0 dollar amounts, 2 numbers, 1 names = 3 specifics"
-          },
-          "objection_preemption": {
-            "score": 1,
-            "weight": 1.25,
-            "weighted": 1.25,
-            "method": "deterministic",
-            "detail": "1/5 objection signals: delivery clarity"
-          },
-          "receptionist_test": {
-            "score": 3,
-            "weight": 1.5,
-            "weighted": 4.5,
-            "method": "deterministic",
-            "detail": "3/5 answered: what: yes, source: yes, different: yes, invest/join: no, minimum: no"
-          },
-          "scroll_stop_hook": {
-            "score": 4,
-            "weight": 1.5,
-            "weighted": 6.0,
-            "method": "deterministic",
-            "detail": "If/then hook: 'If supermarket beef travels 2,400km through multiple warehou...'"
-          },
-          "cta_clarity": {
-            "score": 5,
-            "weight": 1.0,
-            "weighted": 5.0,
-            "method": "deterministic",
-            "detail": "CTA matches approved list: 'brand'"
-          },
-          "platform_fit": {
-            "score": 5,
-            "weight": 1.0,
-            "weighted": 5.0,
-            "method": "deterministic",
-            "detail": "All platform constraints met, conversational tone"
-          },
-          "differentiation": {
-            "score": 5,
-            "weight": 1.0,
-            "weighted": 5.0,
-            "method": "deterministic",
-            "detail": "Avg similarity: 0.12, max: 1.00 (vs 33 ads)"
-          }
-        }
-      },
-      "overrides": {
-        "critical_rule_failure": false,
-        "fact_contradiction": false
-      },
-      "penalties": {
-        "unverified_claims": 1,
-        "non_critical_rule_failures": 0
-      },
-      "scoring_method": {
-        "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
-      },
-      "_file": "clients/farm-thru/loop/meta-ads/BR-107.json",
-      "content_type": "meta-ad",
-      "angle": "comparison-switching",
-      "headline": "If your beef travelled 2,400km first",
-      "primary_text": "If supermarket beef travels 2,400km through multiple warehouses, how much freshness survives? Our regenerative beef goes farm to hub in days, not weeks. Zero wholesalers, zero long-haul transport, zer"
-    },
-    {
-      "ad_id": "BR-108",
-      "composite": 0.4722,
-      "verdict": "rewrite",
-      "rule_compliance": {
-        "score": 1.0,
-        "passed": 27,
-        "total": 27,
-        "failures": [],
-        "critical_failure": false
-      },
-      "fact_accuracy": {
-        "score": 0.0,
-        "claims_found": 1,
-        "verified": 0,
-        "unverified": 1,
-        "contradicted": 0,
-        "details": [
-          {
-            "claim": "pasture-raised",
-            "fact_id": "",
-            "status": "unverified",
-            "confidence": ""
-          }
-        ]
       },
       "rubric": {
         "weighted_total": 43.0,
@@ -1080,14 +682,437 @@
             "weight": 1.5,
             "weighted": 4.5,
             "method": "deterministic",
-            "detail": "0 dollar amounts, 0 numbers, 4 names = 4 specifics"
+            "detail": "0 dollar amounts, 0 numbers, 3 names = 3 specifics"
           },
           "objection_preemption": {
             "score": 1,
             "weight": 1.25,
             "weighted": 1.25,
             "method": "deterministic",
-            "detail": "1/5 objection signals: no middlemen"
+            "detail": "0/5 objection signals: none"
+          },
+          "receptionist_test": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "deterministic",
+            "detail": "3/5 answered: what: no, source: yes, different: yes, invest/join: yes, minimum: no"
+          },
+          "scroll_stop_hook": {
+            "score": 5,
+            "weight": 1.5,
+            "weighted": 7.5,
+            "method": "deterministic",
+            "detail": "Story hook with specific moment: 'Do you ever wonder if other families feel as lost in the sup...'"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'brand'"
+          },
+          "platform_fit": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "All platform constraints met, conversational tone"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg similarity: 0.15, max: 1.00 (vs 33 ads)"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 0
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 7,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/farm-thru/loop/meta-ads/BR-105.json",
+      "content_type": "meta-ad",
+      "angle": "social-belonging",
+      "headline": "Are you tired of supermarket guesswork?",
+      "primary_text": "Do you ever wonder if other families feel as lost in the supermarket as you do? You're not alone. There's a growing community of Sydney families who've found something better: farm-direct groceries fr"
+    },
+    {
+      "ad_id": "BR-106",
+      "composite": 0.6444,
+      "verdict": "needs_work",
+      "rule_compliance": {
+        "score": 1.0,
+        "passed": 27,
+        "total": 27,
+        "failures": [],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 0.5,
+        "claims_found": 3,
+        "verified": 2,
+        "unverified": 1,
+        "contradicted": 0,
+        "details": [
+          {
+            "claim": "400km",
+            "fact_id": "PQ-006",
+            "status": "verified",
+            "confidence": "MEDIUM"
+          },
+          {
+            "claim": "no hormones/antibiotics",
+            "fact_id": "PQ-003",
+            "status": "verified",
+            "confidence": "HIGH"
+          },
+          {
+            "claim": "not financial advice",
+            "fact_id": "",
+            "status": "unverified",
+            "confidence": ""
+          }
+        ]
+      },
+      "rubric": {
+        "weighted_total": 42.5,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 4,
+          "objection_preemption": 3,
+          "receptionist_test": 3,
+          "scroll_stop_hook": 2,
+          "cta_clarity": 5,
+          "platform_fit": 5,
+          "differentiation": 5
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.25,
+            "weighted": 2.5,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 1 numbers, 5 names = 6 specifics"
+          },
+          "objection_preemption": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "deterministic",
+            "detail": "3/5 objection signals: not financial advice, no middlemen, delivery clarity"
+          },
+          "receptionist_test": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "deterministic",
+            "detail": "3/5 answered: what: yes, source: yes, different: yes, invest/join: no, minimum: no"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.5,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "Generic opening: 'Do you know the name of the farm that raised your last steak...'"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'cfe_campaign'"
+          },
+          "platform_fit": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "All platform constraints met, conversational tone"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg similarity: 0.18, max: 1.00 (vs 33 ads)"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 1,
+        "non_critical_rule_failures": 0
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 7,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/farm-thru/loop/meta-ads/BR-106.json",
+      "content_type": "meta-ad",
+      "angle": "transparency",
+      "headline": "See your farm before you buy",
+      "primary_text": "Do you know the name of the farm that raised your last steak? Rachel's cattle graze on regenerative pastures in Kempsey NSW. No hormones, no feedlots. Collins catches our salmon wild off the South Coa"
+    },
+    {
+      "ad_id": "BR-107",
+      "composite": 0.6482,
+      "verdict": "needs_work",
+      "rule_compliance": {
+        "score": 1.0,
+        "passed": 27,
+        "total": 27,
+        "failures": [],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 0.5,
+        "claims_found": 3,
+        "verified": 2,
+        "unverified": 1,
+        "contradicted": 0,
+        "details": [
+          {
+            "claim": "400km",
+            "fact_id": "PQ-006",
+            "status": "verified",
+            "confidence": "MEDIUM"
+          },
+          {
+            "claim": "regenerative farming",
+            "fact_id": "",
+            "status": "unverified",
+            "confidence": ""
+          },
+          {
+            "claim": "zero middlemen",
+            "fact_id": "POS-002",
+            "status": "verified",
+            "confidence": "HIGH"
+          }
+        ]
+      },
+      "rubric": {
+        "weighted_total": 42.75,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 3,
+          "objection_preemption": 2,
+          "receptionist_test": 3,
+          "scroll_stop_hook": 4,
+          "cta_clarity": 5,
+          "platform_fit": 5,
+          "differentiation": 5
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.25,
+            "weighted": 2.5,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 2 numbers, 2 names = 4 specifics"
+          },
+          "objection_preemption": {
+            "score": 2,
+            "weight": 1.25,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "2/5 objection signals: no middlemen, delivery clarity"
+          },
+          "receptionist_test": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "deterministic",
+            "detail": "3/5 answered: what: yes, source: yes, different: yes, invest/join: no, minimum: no"
+          },
+          "scroll_stop_hook": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "If/then hook: 'If supermarket beef travels 2,400km through multiple warehou...'"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'brand'"
+          },
+          "platform_fit": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "All platform constraints met, conversational tone"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg similarity: 0.17, max: 1.00 (vs 33 ads)"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 1,
+        "non_critical_rule_failures": 0
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 7,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/farm-thru/loop/meta-ads/BR-107.json",
+      "content_type": "meta-ad",
+      "angle": "comparison-switching",
+      "headline": "If your beef travelled 2,400km first",
+      "primary_text": "If supermarket beef travels 2,400km through multiple warehouses, how much freshness survives? Our regenerative beef goes farm to hub in days, not weeks. Zero wholesalers, zero long-haul transport, zer"
+    },
+    {
+      "ad_id": "BR-108",
+      "composite": 0.4859,
+      "verdict": "rewrite",
+      "rule_compliance": {
+        "score": 1.0,
+        "passed": 27,
+        "total": 27,
+        "failures": [],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 0.0,
+        "claims_found": 1,
+        "verified": 0,
+        "unverified": 1,
+        "contradicted": 0,
+        "details": [
+          {
+            "claim": "pasture-raised",
+            "fact_id": "",
+            "status": "unverified",
+            "confidence": ""
+          }
+        ]
+      },
+      "rubric": {
+        "weighted_total": 44.25,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 3,
+          "objection_preemption": 2,
+          "receptionist_test": 3,
+          "scroll_stop_hook": 5,
+          "cta_clarity": 5,
+          "platform_fit": 5,
+          "differentiation": 5
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.25,
+            "weighted": 2.5,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 0 numbers, 4 names = 4 specifics"
+          },
+          "objection_preemption": {
+            "score": 2,
+            "weight": 1.25,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "2/5 objection signals: no middlemen, delivery clarity"
           },
           "receptionist_test": {
             "score": 3,
@@ -1122,7 +1147,7 @@
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.12, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.15, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -1147,7 +1172,7 @@
     },
     {
       "ad_id": "BR-109",
-      "composite": 0.651,
+      "composite": 0.6706,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
@@ -1165,14 +1190,14 @@
         "details": []
       },
       "rubric": {
-        "weighted_total": 41.5,
+        "weighted_total": 42.75,
         "max_possible": 63.75,
         "raw_scores": {
           "angle_clarity": 3,
           "motivation_match": 2,
           "tactic_execution": 4,
           "specificity": 3,
-          "objection_preemption": 1,
+          "objection_preemption": 2,
           "receptionist_test": 3,
           "scroll_stop_hook": 4,
           "cta_clarity": 5,
@@ -1206,14 +1231,14 @@
             "weight": 1.5,
             "weighted": 4.5,
             "method": "deterministic",
-            "detail": "0 dollar amounts, 0 numbers, 3 names = 3 specifics"
+            "detail": "0 dollar amounts, 0 numbers, 4 names = 4 specifics"
           },
           "objection_preemption": {
-            "score": 1,
+            "score": 2,
             "weight": 1.25,
-            "weighted": 1.25,
+            "weighted": 2.5,
             "method": "deterministic",
-            "detail": "1/5 objection signals: no middlemen"
+            "detail": "2/5 objection signals: no middlemen, delivery clarity"
           },
           "receptionist_test": {
             "score": 3,
@@ -1248,7 +1273,7 @@
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.13, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.18, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -1273,8 +1298,8 @@
     },
     {
       "ad_id": "BR-110",
-      "composite": 0.5562,
-      "verdict": "needs_work",
+      "composite": 0.5449,
+      "verdict": "rewrite",
       "rule_compliance": {
         "score": 0.9259,
         "passed": 25,
@@ -1341,7 +1366,7 @@
         ]
       },
       "rubric": {
-        "weighted_total": 49.25,
+        "weighted_total": 48.25,
         "max_possible": 63.75,
         "raw_scores": {
           "angle_clarity": 3,
@@ -1353,7 +1378,7 @@
           "scroll_stop_hook": 5,
           "cta_clarity": 5,
           "platform_fit": 3,
-          "differentiation": 5
+          "differentiation": 4
         },
         "dimension_details": {
           "angle_clarity": {
@@ -1420,11 +1445,11 @@
             "detail": "1 violation: headline: 44/40 chars"
           },
           "differentiation": {
-            "score": 5,
+            "score": 4,
             "weight": 1.0,
-            "weighted": 5.0,
+            "weighted": 4.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.19, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.21, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -1449,8 +1474,8 @@
     },
     {
       "ad_id": "CFE-101",
-      "composite": 0.7176,
-      "verdict": "strong_draft",
+      "composite": 0.6118,
+      "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
         "passed": 27,
@@ -1459,26 +1484,14 @@
         "critical_failure": false
       },
       "fact_accuracy": {
-        "score": 0.5,
-        "claims_found": 7,
-        "verified": 4,
-        "unverified": 3,
+        "score": 0.375,
+        "claims_found": 4,
+        "verified": 2,
+        "unverified": 2,
         "contradicted": 0,
         "details": [
           {
-            "claim": "$5",
-            "fact_id": "INV-001",
-            "status": "verified",
-            "confidence": "HIGH"
-          },
-          {
-            "claim": "85%",
-            "fact_id": "",
-            "status": "unverified",
-            "confidence": ""
-          },
-          {
-            "claim": "200km",
+            "claim": "180km",
             "fact_id": "",
             "status": "unverified",
             "confidence": ""
@@ -1500,29 +1513,23 @@
             "fact_id": "INV-005",
             "status": "verified",
             "confidence": "HIGH"
-          },
-          {
-            "claim": "Birchal platform",
-            "fact_id": "INV-005",
-            "status": "verified",
-            "confidence": "HIGH"
           }
         ]
       },
       "rubric": {
-        "weighted_total": 52.5,
+        "weighted_total": 48.75,
         "max_possible": 63.75,
         "raw_scores": {
           "angle_clarity": 3,
           "motivation_match": 2,
           "tactic_execution": 4,
           "specificity": 5,
-          "objection_preemption": 5,
-          "receptionist_test": 5,
-          "scroll_stop_hook": 4,
+          "objection_preemption": 4,
+          "receptionist_test": 3,
+          "scroll_stop_hook": 5,
           "cta_clarity": 5,
           "platform_fit": 5,
-          "differentiation": 5
+          "differentiation": 4
         },
         "dimension_details": {
           "angle_clarity": {
@@ -1551,28 +1558,28 @@
             "weight": 1.5,
             "weighted": 7.5,
             "method": "deterministic",
-            "detail": "1 dollar amounts, 7 numbers, 5 names = 13 specifics"
+            "detail": "0 dollar amounts, 4 numbers, 6 names = 10 specifics"
           },
           "objection_preemption": {
-            "score": 5,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 6.25,
+            "weighted": 5.0,
             "method": "deterministic",
-            "detail": "5/5 objection signals: refundable, not financial advice, risk acknowledged, no middlemen, delivery clarity"
+            "detail": "4/5 objection signals: not financial advice, risk acknowledged, no middlemen, delivery clarity"
           },
           "receptionist_test": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "deterministic",
+            "detail": "3/5 answered: what: yes, source: yes, different: yes, invest/join: no, minimum: no"
+          },
+          "scroll_stop_hook": {
             "score": 5,
             "weight": 1.5,
             "weighted": 7.5,
             "method": "deterministic",
-            "detail": "5/5 answered: what: yes, source: yes, different: yes, invest/join: yes, minimum: yes"
-          },
-          "scroll_stop_hook": {
-            "score": 4,
-            "weight": 1.5,
-            "weighted": 6.0,
-            "method": "deterministic",
-            "detail": "Statistic/number hook: '85% of FarmThru's partner farms are within 200km of Sydney. ...'"
+            "detail": "Story hook with specific moment: 'Last Tuesday Rachel from Kempsey told us her cattle travel j...'"
           },
           "cta_clarity": {
             "score": 5,
@@ -1589,11 +1596,11 @@
             "detail": "All platform constraints met, conversational tone"
           },
           "differentiation": {
-            "score": 5,
+            "score": 4,
             "weight": 1.0,
-            "weighted": 5.0,
+            "weighted": 4.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.18, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.23, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -1602,7 +1609,7 @@
         "fact_contradiction": false
       },
       "penalties": {
-        "unverified_claims": 3,
+        "unverified_claims": 2,
         "non_critical_rule_failures": 0
       },
       "scoring_method": {
@@ -1613,13 +1620,13 @@
       "_file": "clients/farm-thru/loop/meta-ads/CFE-101.json",
       "content_type": "meta-ad",
       "angle": "investment-thesis",
-      "headline": "85% of our farms are under 200km away",
-      "primary_text": "85% of FarmThru's partner farms are within 200km of Sydney. Compare that to supermarket beef averaging 2,400km. Rachel's Farm cattle graze regenerative pastures near Kempsey. Her beef reaches our Broo"
+      "headline": "Rachel's beef travels 180km, not 2,400km",
+      "primary_text": "Last Tuesday Rachel from Kempsey told us her cattle travel just 180km to reach Sydney families. Compare that to supermarket beef averaging 2,400km. No wholesalers. No cold storage for weeks. Rachel's "
     },
     {
       "ad_id": "CFE-102",
-      "composite": 0.5333,
-      "verdict": "rewrite",
+      "composite": 0.5553,
+      "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
         "passed": 27,
@@ -1661,19 +1668,19 @@
         ]
       },
       "rubric": {
-        "weighted_total": 42.5,
+        "weighted_total": 44.25,
         "max_possible": 63.75,
         "raw_scores": {
           "angle_clarity": 3,
           "motivation_match": 2,
           "tactic_execution": 4,
           "specificity": 4,
-          "objection_preemption": 1,
+          "objection_preemption": 4,
           "receptionist_test": 4,
-          "scroll_stop_hook": 4,
-          "cta_clarity": 3,
+          "scroll_stop_hook": 2,
+          "cta_clarity": 5,
           "platform_fit": 5,
-          "differentiation": 5
+          "differentiation": 4
         },
         "dimension_details": {
           "angle_clarity": {
@@ -1702,14 +1709,14 @@
             "weight": 1.5,
             "weighted": 6.0,
             "method": "deterministic",
-            "detail": "0 dollar amounts, 0 numbers, 6 names = 6 specifics"
+            "detail": "0 dollar amounts, 0 numbers, 5 names = 5 specifics"
           },
           "objection_preemption": {
-            "score": 1,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 1.25,
+            "weighted": 5.0,
             "method": "deterministic",
-            "detail": "1/5 objection signals: not financial advice"
+            "detail": "4/5 objection signals: not financial advice, risk acknowledged, no middlemen, delivery clarity"
           },
           "receptionist_test": {
             "score": 4,
@@ -1719,18 +1726,18 @@
             "detail": "4/5 answered: what: yes, source: yes, different: yes, invest/join: yes, minimum: no"
           },
           "scroll_stop_hook": {
-            "score": 4,
+            "score": 2,
             "weight": 1.5,
-            "weighted": 6.0,
-            "method": "deterministic",
-            "detail": "Question hook: 'You already care about where your food comes from. What if y...'"
-          },
-          "cta_clarity": {
-            "score": 3,
-            "weight": 1.0,
             "weighted": 3.0,
             "method": "deterministic",
-            "detail": "CTA present but not on approved list: 'Learn More'"
+            "detail": "Generic opening: 'What if you could own a piece of the grocery store you buy f...'"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'cfe_campaign'"
           },
           "platform_fit": {
             "score": 5,
@@ -1740,11 +1747,11 @@
             "detail": "All platform constraints met, conversational tone"
           },
           "differentiation": {
-            "score": 5,
+            "score": 4,
             "weight": 1.0,
-            "weighted": 5.0,
+            "weighted": 4.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.17, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.25, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -1764,13 +1771,13 @@
       "_file": "clients/farm-thru/loop/meta-ads/CFE-102.json",
       "content_type": "meta-ad",
       "angle": "investment-thesis",
-      "headline": "Care about food? Now you can back it",
-      "primary_text": "You already care about where your food comes from. What if you could help build the company that's making it easier to find?\n\nFarmThru is a farm-direct grocery store. Named regenerative farms across N"
+      "headline": "Invest in the grocery store you want",
+      "primary_text": "What if you could own a piece of the grocery store you buy from? Rachel's beef from the NSW coast reaches Sydney families in days, not weeks. No wholesalers marking it up. FarmThru connects you direct"
     },
     {
       "ad_id": "CFE-103",
-      "composite": 0.6196,
-      "verdict": "needs_work",
+      "composite": 0.7241,
+      "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
         "passed": 27,
@@ -1779,18 +1786,12 @@
         "critical_failure": false
       },
       "fact_accuracy": {
-        "score": 0.75,
-        "claims_found": 4,
-        "verified": 3,
+        "score": 0.6667,
+        "claims_found": 3,
+        "verified": 2,
         "unverified": 1,
         "contradicted": 0,
         "details": [
-          {
-            "claim": "no hormones/antibiotics",
-            "fact_id": "PQ-003",
-            "status": "verified",
-            "confidence": "HIGH"
-          },
           {
             "claim": "not financial advice",
             "fact_id": "",
@@ -1812,16 +1813,16 @@
         ]
       },
       "rubric": {
-        "weighted_total": 39.5,
+        "weighted_total": 47.75,
         "max_possible": 63.75,
         "raw_scores": {
           "angle_clarity": 3,
           "motivation_match": 2,
           "tactic_execution": 4,
           "specificity": 4,
-          "objection_preemption": 1,
+          "objection_preemption": 4,
           "receptionist_test": 4,
-          "scroll_stop_hook": 2,
+          "scroll_stop_hook": 5,
           "cta_clarity": 3,
           "platform_fit": 5,
           "differentiation": 5
@@ -1856,11 +1857,11 @@
             "detail": "0 dollar amounts, 0 numbers, 5 names = 5 specifics"
           },
           "objection_preemption": {
-            "score": 1,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 1.25,
+            "weighted": 5.0,
             "method": "deterministic",
-            "detail": "1/5 objection signals: not financial advice"
+            "detail": "4/5 objection signals: not financial advice, risk acknowledged, no middlemen, delivery clarity"
           },
           "receptionist_test": {
             "score": 4,
@@ -1870,11 +1871,11 @@
             "detail": "4/5 answered: what: yes, source: yes, different: yes, invest/join: yes, minimum: no"
           },
           "scroll_stop_hook": {
-            "score": 2,
+            "score": 5,
             "weight": 1.5,
-            "weighted": 3.0,
+            "weighted": 7.5,
             "method": "deterministic",
-            "detail": "Generic opening: 'A farmer in Kempsey raises cattle on open pasture. Regenerat...'"
+            "detail": "Story hook with specific moment: 'Rachel Ward was losing money on every kilo of beef she sold ...'"
           },
           "cta_clarity": {
             "score": 3,
@@ -1895,7 +1896,7 @@
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.17, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.20, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -1916,11 +1917,11 @@
       "content_type": "meta-ad",
       "angle": "cause-purpose",
       "headline": "She raises the beef. You can back it",
-      "primary_text": "A farmer in Kempsey raises cattle on open pasture. Regenerative land. No hormones. She knows every paddock by name.\n\nHer beef used to disappear into a supply chain that added weeks and thousands of ki"
+      "primary_text": "Rachel Ward was losing money on every kilo of beef she sold through the supermarket supply chain.\n\nHer beef used to disappear into a supply chain that added weeks and thousands of kilometres. The farm"
     },
     {
       "ad_id": "CFE-104",
-      "composite": 0.6688,
+      "composite": 0.6318,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 0.963,
@@ -1937,9 +1938,9 @@
         "critical_failure": false
       },
       "fact_accuracy": {
-        "score": 0.5,
-        "claims_found": 7,
-        "verified": 4,
+        "score": 0.4167,
+        "claims_found": 6,
+        "verified": 3,
         "unverified": 3,
         "contradicted": 0,
         "details": [
@@ -1978,29 +1979,23 @@
             "fact_id": "INV-005",
             "status": "verified",
             "confidence": "HIGH"
-          },
-          {
-            "claim": "Birchal platform",
-            "fact_id": "INV-005",
-            "status": "verified",
-            "confidence": "HIGH"
           }
         ]
       },
       "rubric": {
-        "weighted_total": 51.5,
+        "weighted_total": 53.0,
         "max_possible": 63.75,
         "raw_scores": {
           "angle_clarity": 3,
           "motivation_match": 2,
           "tactic_execution": 4,
           "specificity": 5,
-          "objection_preemption": 3,
+          "objection_preemption": 5,
           "receptionist_test": 5,
           "scroll_stop_hook": 5,
           "cta_clarity": 5,
           "platform_fit": 5,
-          "differentiation": 5
+          "differentiation": 4
         },
         "dimension_details": {
           "angle_clarity": {
@@ -2032,11 +2027,11 @@
             "detail": "1 dollar amounts, 4 numbers, 5 names = 10 specifics"
           },
           "objection_preemption": {
-            "score": 3,
+            "score": 5,
             "weight": 1.25,
-            "weighted": 3.75,
+            "weighted": 6.25,
             "method": "deterministic",
-            "detail": "3/5 objection signals: refundable, not financial advice, no middlemen"
+            "detail": "5/5 objection signals: refundable, not financial advice, risk acknowledged, no middlemen, delivery clarity"
           },
           "receptionist_test": {
             "score": 5,
@@ -2067,11 +2062,11 @@
             "detail": "All platform constraints met, conversational tone"
           },
           "differentiation": {
-            "score": 5,
+            "score": 4,
             "weight": 1.0,
-            "weighted": 5.0,
+            "weighted": 4.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.18, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.22, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -2096,8 +2091,8 @@
     },
     {
       "ad_id": "CFE-105",
-      "composite": 0.5541,
-      "verdict": "needs_work",
+      "composite": 0.7089,
+      "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
         "passed": 27,
@@ -2106,12 +2101,18 @@
         "critical_failure": false
       },
       "fact_accuracy": {
-        "score": 0.6,
-        "claims_found": 5,
-        "verified": 3,
+        "score": 0.6667,
+        "claims_found": 6,
+        "verified": 4,
         "unverified": 2,
         "contradicted": 0,
         "details": [
+          {
+            "claim": "$50",
+            "fact_id": "INV-002",
+            "status": "verified",
+            "confidence": "HIGH"
+          },
           {
             "claim": "regenerative farming",
             "fact_id": "",
@@ -2145,19 +2146,19 @@
         ]
       },
       "rubric": {
-        "weighted_total": 39.25,
+        "weighted_total": 46.75,
         "max_possible": 63.75,
         "raw_scores": {
           "angle_clarity": 3,
           "motivation_match": 2,
           "tactic_execution": 4,
           "specificity": 3,
-          "objection_preemption": 2,
-          "receptionist_test": 4,
-          "scroll_stop_hook": 2,
+          "objection_preemption": 4,
+          "receptionist_test": 5,
+          "scroll_stop_hook": 5,
           "cta_clarity": 3,
           "platform_fit": 5,
-          "differentiation": 5
+          "differentiation": 4
         },
         "dimension_details": {
           "angle_clarity": {
@@ -2186,28 +2187,28 @@
             "weight": 1.5,
             "weighted": 4.5,
             "method": "deterministic",
-            "detail": "0 dollar amounts, 0 numbers, 3 names = 3 specifics"
+            "detail": "1 dollar amounts, 0 numbers, 3 names = 4 specifics"
           },
           "objection_preemption": {
-            "score": 2,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 2.5,
+            "weighted": 5.0,
             "method": "deterministic",
-            "detail": "2/5 objection signals: not financial advice, risk acknowledged"
+            "detail": "4/5 objection signals: not financial advice, risk acknowledged, no middlemen, delivery clarity"
           },
           "receptionist_test": {
-            "score": 4,
+            "score": 5,
             "weight": 1.5,
-            "weighted": 6.0,
+            "weighted": 7.5,
             "method": "deterministic",
-            "detail": "4/5 answered: what: yes, source: yes, different: yes, invest/join: yes, minimum: no"
+            "detail": "5/5 answered: what: yes, source: yes, different: yes, invest/join: yes, minimum: yes"
           },
           "scroll_stop_hook": {
-            "score": 2,
+            "score": 5,
             "weight": 1.5,
-            "weighted": 3.0,
+            "weighted": 7.5,
             "method": "deterministic",
-            "detail": "Generic opening: 'We can't promise returns. No early-stage company honestly ca...'"
+            "detail": "Quoted objection hook: '\"I thought I could invest in the food system for $50.\" That'...'"
           },
           "cta_clarity": {
             "score": 3,
@@ -2224,11 +2225,11 @@
             "detail": "All platform constraints met, conversational tone"
           },
           "differentiation": {
-            "score": 5,
+            "score": 4,
             "weight": 1.0,
-            "weighted": 5.0,
+            "weighted": 4.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.16, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.20, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -2249,12 +2250,12 @@
       "content_type": "meta-ad",
       "angle": "transparency-safety",
       "headline": "We can't promise returns",
-      "primary_text": "We can't promise returns. No early-stage company honestly can.\n\nHere's what we can show you. A Brookvale hub open Monday to Friday. Named regenerative farms across NSW. Fresh food reaching families in"
+      "primary_text": "\"I thought I could invest in the food system for $50.\" That's what one waitlist member told us.\n\nHere's what we can show you. A Brookvale hub open Monday to Friday. Named regenerative farms across NSW"
     },
     {
       "ad_id": "CFE-106",
-      "composite": 0.5396,
-      "verdict": "rewrite",
+      "composite": 0.5627,
+      "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
         "passed": 27,
@@ -2263,12 +2264,18 @@
         "critical_failure": false
       },
       "fact_accuracy": {
-        "score": 0.5,
-        "claims_found": 2,
+        "score": 0.3333,
+        "claims_found": 3,
         "verified": 1,
-        "unverified": 1,
+        "unverified": 2,
         "contradicted": 0,
         "details": [
+          {
+            "claim": "regenerative farming",
+            "fact_id": "",
+            "status": "unverified",
+            "confidence": ""
+          },
           {
             "claim": "not financial advice",
             "fact_id": "",
@@ -2284,15 +2291,15 @@
         ]
       },
       "rubric": {
-        "weighted_total": 43.0,
+        "weighted_total": 51.25,
         "max_possible": 63.75,
         "raw_scores": {
           "angle_clarity": 3,
           "motivation_match": 2,
           "tactic_execution": 4,
-          "specificity": 3,
-          "objection_preemption": 1,
-          "receptionist_test": 3,
+          "specificity": 4,
+          "objection_preemption": 4,
+          "receptionist_test": 5,
           "scroll_stop_hook": 5,
           "cta_clarity": 5,
           "platform_fit": 5,
@@ -2321,32 +2328,32 @@
             "detail": "Heuristic: hook=True, body=True, cta=True"
           },
           "specificity": {
-            "score": 3,
+            "score": 4,
             "weight": 1.5,
-            "weighted": 4.5,
+            "weighted": 6.0,
             "method": "deterministic",
-            "detail": "0 dollar amounts, 0 numbers, 4 names = 4 specifics"
+            "detail": "0 dollar amounts, 0 numbers, 6 names = 6 specifics"
           },
           "objection_preemption": {
-            "score": 1,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 1.25,
+            "weighted": 5.0,
             "method": "deterministic",
-            "detail": "1/5 objection signals: not financial advice"
+            "detail": "4/5 objection signals: not financial advice, risk acknowledged, no middlemen, delivery clarity"
           },
           "receptionist_test": {
-            "score": 3,
+            "score": 5,
             "weight": 1.5,
-            "weighted": 4.5,
+            "weighted": 7.5,
             "method": "deterministic",
-            "detail": "3/5 answered: what: yes, source: yes, different: no, invest/join: yes, minimum: no"
+            "detail": "5/5 answered: what: yes, source: yes, different: yes, invest/join: yes, minimum: yes"
           },
           "scroll_stop_hook": {
             "score": 5,
             "weight": 1.5,
             "weighted": 7.5,
             "method": "deterministic",
-            "detail": "Story hook with specific moment: 'Rachel Ward noticed something when she started FarmThru. The...'"
+            "detail": "Story hook with specific moment: 'When Rachel Ward started selling direct to FarmThru customer...'"
           },
           "cta_clarity": {
             "score": 5,
@@ -2367,7 +2374,7 @@
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.14, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.19, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -2376,7 +2383,7 @@
         "fact_contradiction": false
       },
       "penalties": {
-        "unverified_claims": 1,
+        "unverified_claims": 2,
         "non_critical_rule_failures": 0
       },
       "scoring_method": {
@@ -2387,12 +2394,12 @@
       "_file": "clients/farm-thru/loop/meta-ads/CFE-106.json",
       "content_type": "meta-ad",
       "angle": "social-belonging",
-      "headline": "From customers to co-owners",
-      "primary_text": "Rachel Ward noticed something when she started FarmThru. The families collecting from Brookvale weren't just customers anymore. They knew which paddock their beef came from. They asked about the soil "
+      "headline": "Customers are buying the farms",
+      "primary_text": "When Rachel Ward started selling direct to FarmThru customers, something unexpected happened. Families began asking to invest in the farms they bought from. Now Rachel's regenerative beef operation ha"
     },
     {
       "ad_id": "CFE-107",
-      "composite": 0.599,
+      "composite": 0.6331,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
@@ -2429,14 +2436,14 @@
         ]
       },
       "rubric": {
-        "weighted_total": 39.5,
+        "weighted_total": 41.75,
         "max_possible": 63.75,
         "raw_scores": {
           "angle_clarity": 3,
           "motivation_match": 2,
           "tactic_execution": 4,
-          "specificity": 4,
-          "objection_preemption": 1,
+          "specificity": 3,
+          "objection_preemption": 4,
           "receptionist_test": 4,
           "scroll_stop_hook": 2,
           "cta_clarity": 3,
@@ -2466,18 +2473,18 @@
             "detail": "Heuristic: hook=True, body=True, cta=True"
           },
           "specificity": {
-            "score": 4,
+            "score": 3,
             "weight": 1.5,
-            "weighted": 6.0,
+            "weighted": 4.5,
             "method": "deterministic",
-            "detail": "0 dollar amounts, 0 numbers, 5 names = 5 specifics"
+            "detail": "0 dollar amounts, 0 numbers, 4 names = 4 specifics"
           },
           "objection_preemption": {
-            "score": 1,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 1.25,
+            "weighted": 5.0,
             "method": "deterministic",
-            "detail": "1/5 objection signals: not financial advice"
+            "detail": "4/5 objection signals: not financial advice, risk acknowledged, no middlemen, delivery clarity"
           },
           "receptionist_test": {
             "score": 4,
@@ -2491,7 +2498,7 @@
             "weight": 1.5,
             "weighted": 3.0,
             "method": "deterministic",
-            "detail": "Generic opening: 'The supermarket model: farm to processor to distributor to c...'"
+            "detail": "Generic opening: 'Two supply chains feed Sydney families. One takes weeks and ...'"
           },
           "cta_clarity": {
             "score": 3,
@@ -2512,7 +2519,7 @@
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.13, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.17, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -2533,7 +2540,7 @@
       "content_type": "meta-ad",
       "angle": "comparison-switching",
       "headline": "Two supply chains. One is broken",
-      "primary_text": "The supermarket model: farm to processor to distributor to cold storage to shelf. Weeks pass. Thousands of kilometres. The farmer earns a fraction.\n\nFarmThru: farm to hub. Days, not weeks. The farmer "
+      "primary_text": "Two supply chains feed Sydney families. One takes weeks and thousands of kilometres. The other takes days.\n\nFarmThru: farm to hub. Days, not weeks. The farmer keeps more. You know their name.\n\nIt's a "
     },
     {
       "ad_id": "CFE-108",
@@ -2657,7 +2664,7 @@
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.15, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.17, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -2682,8 +2689,8 @@
     },
     {
       "ad_id": "LP-A",
-      "composite": 0.6679,
-      "verdict": "needs_work",
+      "composite": 0.7061,
+      "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
         "passed": 27,
@@ -2779,7 +2786,7 @@
         ]
       },
       "rubric": {
-        "weighted_total": 43.75,
+        "weighted_total": 46.25,
         "max_possible": 65.0,
         "raw_scores": {
           "angle_clarity": 2,
@@ -2790,7 +2797,7 @@
           "cta_prominence": 3,
           "specificity": 5,
           "scroll_depth_pull": 4,
-          "objection_preemption": 3,
+          "objection_preemption": 5,
           "differentiation": 4
         },
         "dimension_details": {
@@ -2841,7 +2848,7 @@
             "weight": 1.5,
             "weighted": 7.5,
             "method": "deterministic",
-            "detail": "3 dollar amounts, 1 numbers, 14 names = 18 specifics"
+            "detail": "3 dollar amounts, 1 numbers, 15 names = 19 specifics"
           },
           "scroll_depth_pull": {
             "score": 4,
@@ -2851,18 +2858,18 @@
             "detail": "4/5 scroll pull: 3 sections, all sections headed, benefit-oriented headings, sufficient depth"
           },
           "objection_preemption": {
-            "score": 3,
+            "score": 5,
             "weight": 1.25,
-            "weighted": 3.75,
+            "weighted": 6.25,
             "method": "deterministic",
-            "detail": "3/5 objection signals: refundable, not financial advice, no middlemen"
+            "detail": "5/5 objection signals: refundable, not financial advice, risk acknowledged, no middlemen, delivery clarity"
           },
           "differentiation": {
             "score": 4,
             "weight": 1.0,
             "weighted": 4.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.23, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.24, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -2887,7 +2894,7 @@
     },
     {
       "ad_id": "LP-B",
-      "composite": 0.5919,
+      "composite": 0.6265,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
@@ -2966,7 +2973,7 @@
         ]
       },
       "rubric": {
-        "weighted_total": 42.75,
+        "weighted_total": 45.25,
         "max_possible": 65.0,
         "raw_scores": {
           "angle_clarity": 2,
@@ -2977,7 +2984,7 @@
           "cta_prominence": 3,
           "specificity": 5,
           "scroll_depth_pull": 3,
-          "objection_preemption": 3,
+          "objection_preemption": 5,
           "differentiation": 4
         },
         "dimension_details": {
@@ -3028,7 +3035,7 @@
             "weight": 1.5,
             "weighted": 7.5,
             "method": "deterministic",
-            "detail": "3 dollar amounts, 2 numbers, 15 names = 20 specifics"
+            "detail": "3 dollar amounts, 2 numbers, 16 names = 21 specifics"
           },
           "scroll_depth_pull": {
             "score": 3,
@@ -3038,18 +3045,18 @@
             "detail": "3/5 scroll pull: 3 sections, all sections headed, sufficient depth"
           },
           "objection_preemption": {
-            "score": 3,
+            "score": 5,
             "weight": 1.25,
-            "weighted": 3.75,
+            "weighted": 6.25,
             "method": "deterministic",
-            "detail": "3/5 objection signals: refundable, not financial advice, no middlemen"
+            "detail": "5/5 objection signals: refundable, not financial advice, risk acknowledged, no middlemen, delivery clarity"
           },
           "differentiation": {
             "score": 4,
             "weight": 1.0,
             "weighted": 4.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.21, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.22, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -3074,8 +3081,8 @@
     },
     {
       "ad_id": "LP-D",
-      "composite": 0.6946,
-      "verdict": "needs_work",
+      "composite": 0.7519,
+      "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
         "passed": 27,
@@ -3171,7 +3178,7 @@
         ]
       },
       "rubric": {
-        "weighted_total": 45.5,
+        "weighted_total": 49.25,
         "max_possible": 65.0,
         "raw_scores": {
           "angle_clarity": 2,
@@ -3182,7 +3189,7 @@
           "cta_prominence": 3,
           "specificity": 5,
           "scroll_depth_pull": 5,
-          "objection_preemption": 2,
+          "objection_preemption": 5,
           "differentiation": 4
         },
         "dimension_details": {
@@ -3233,7 +3240,7 @@
             "weight": 1.5,
             "weighted": 7.5,
             "method": "deterministic",
-            "detail": "3 dollar amounts, 2 numbers, 14 names = 19 specifics"
+            "detail": "3 dollar amounts, 2 numbers, 15 names = 20 specifics"
           },
           "scroll_depth_pull": {
             "score": 5,
@@ -3243,18 +3250,18 @@
             "detail": "5/5 scroll pull: 4 sections (optimal), all sections headed, benefit-oriented headings, sufficient depth"
           },
           "objection_preemption": {
-            "score": 2,
+            "score": 5,
             "weight": 1.25,
-            "weighted": 2.5,
+            "weighted": 6.25,
             "method": "deterministic",
-            "detail": "2/5 objection signals: refundable, not financial advice"
+            "detail": "5/5 objection signals: refundable, not financial advice, risk acknowledged, no middlemen, delivery clarity"
           },
           "differentiation": {
             "score": 4,
             "weight": 1.0,
             "weighted": 4.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.22, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.24, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -3279,7 +3286,7 @@
     },
     {
       "ad_id": "LP-E",
-      "composite": 0.7423,
+      "composite": 0.7846,
       "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
@@ -3364,7 +3371,7 @@
         ]
       },
       "rubric": {
-        "weighted_total": 48.25,
+        "weighted_total": 51.0,
         "max_possible": 65.0,
         "raw_scores": {
           "angle_clarity": 2,
@@ -3375,8 +3382,8 @@
           "cta_prominence": 3,
           "specificity": 5,
           "scroll_depth_pull": 5,
-          "objection_preemption": 2,
-          "differentiation": 5
+          "objection_preemption": 5,
+          "differentiation": 4
         },
         "dimension_details": {
           "angle_clarity": {
@@ -3426,7 +3433,7 @@
             "weight": 1.5,
             "weighted": 7.5,
             "method": "deterministic",
-            "detail": "3 dollar amounts, 1 numbers, 14 names = 18 specifics"
+            "detail": "3 dollar amounts, 1 numbers, 15 names = 19 specifics"
           },
           "scroll_depth_pull": {
             "score": 5,
@@ -3436,18 +3443,18 @@
             "detail": "5/5 scroll pull: 4 sections (optimal), all sections headed, benefit-oriented headings, sufficient depth"
           },
           "objection_preemption": {
-            "score": 2,
+            "score": 5,
             "weight": 1.25,
-            "weighted": 2.5,
+            "weighted": 6.25,
             "method": "deterministic",
-            "detail": "2/5 objection signals: refundable, not financial advice"
+            "detail": "5/5 objection signals: refundable, not financial advice, risk acknowledged, no middlemen, delivery clarity"
           },
           "differentiation": {
-            "score": 5,
+            "score": 4,
             "weight": 1.0,
-            "weighted": 5.0,
+            "weighted": 4.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.20, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.22, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -3472,7 +3479,7 @@
     },
     {
       "ad_id": "LP-F",
-      "composite": 0.6302,
+      "composite": 0.6663,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
@@ -3557,7 +3564,7 @@
         ]
       },
       "rubric": {
-        "weighted_total": 43.75,
+        "weighted_total": 46.25,
         "max_possible": 65.0,
         "raw_scores": {
           "angle_clarity": 2,
@@ -3568,7 +3575,7 @@
           "cta_prominence": 3,
           "specificity": 5,
           "scroll_depth_pull": 4,
-          "objection_preemption": 3,
+          "objection_preemption": 5,
           "differentiation": 4
         },
         "dimension_details": {
@@ -3619,7 +3626,7 @@
             "weight": 1.5,
             "weighted": 7.5,
             "method": "deterministic",
-            "detail": "3 dollar amounts, 1 numbers, 13 names = 17 specifics"
+            "detail": "3 dollar amounts, 1 numbers, 14 names = 18 specifics"
           },
           "scroll_depth_pull": {
             "score": 4,
@@ -3629,18 +3636,18 @@
             "detail": "4/5 scroll pull: 5 sections (optimal), all sections headed, sufficient depth"
           },
           "objection_preemption": {
-            "score": 3,
+            "score": 5,
             "weight": 1.25,
-            "weighted": 3.75,
+            "weighted": 6.25,
             "method": "deterministic",
-            "detail": "3/5 objection signals: refundable, not financial advice, no middlemen"
+            "detail": "5/5 objection signals: refundable, not financial advice, risk acknowledged, no middlemen, delivery clarity"
           },
           "differentiation": {
             "score": 4,
             "weight": 1.0,
             "weighted": 4.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.22, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.23, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -3665,7 +3672,7 @@
     },
     {
       "ad_id": "LP-M",
-      "composite": 0.7138,
+      "composite": 0.7324,
       "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
@@ -3756,7 +3763,7 @@
         ]
       },
       "rubric": {
-        "weighted_total": 48.0,
+        "weighted_total": 49.25,
         "max_possible": 65.0,
         "raw_scores": {
           "angle_clarity": 2,
@@ -3767,7 +3774,7 @@
           "cta_prominence": 3,
           "specificity": 5,
           "scroll_depth_pull": 5,
-          "objection_preemption": 4,
+          "objection_preemption": 5,
           "differentiation": 4
         },
         "dimension_details": {
@@ -3828,18 +3835,18 @@
             "detail": "5/5 scroll pull: 4 sections (optimal), all sections headed, benefit-oriented headings, sufficient depth"
           },
           "objection_preemption": {
-            "score": 4,
+            "score": 5,
             "weight": 1.25,
-            "weighted": 5.0,
+            "weighted": 6.25,
             "method": "deterministic",
-            "detail": "4/5 objection signals: refundable, not financial advice, no middlemen, delivery clarity"
+            "detail": "5/5 objection signals: refundable, not financial advice, risk acknowledged, no middlemen, delivery clarity"
           },
           "differentiation": {
             "score": 4,
             "weight": 1.0,
             "weighted": 4.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.21, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.22, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -3864,7 +3871,7 @@
     },
     {
       "ad_id": "LP-N",
-      "composite": 0.7115,
+      "composite": 0.7692,
       "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
@@ -3961,7 +3968,7 @@
         ]
       },
       "rubric": {
-        "weighted_total": 46.25,
+        "weighted_total": 50.0,
         "max_possible": 65.0,
         "raw_scores": {
           "angle_clarity": 2,
@@ -3972,7 +3979,7 @@
           "cta_prominence": 3,
           "specificity": 5,
           "scroll_depth_pull": 4,
-          "objection_preemption": 2,
+          "objection_preemption": 5,
           "differentiation": 4
         },
         "dimension_details": {
@@ -4023,7 +4030,7 @@
             "weight": 1.5,
             "weighted": 7.5,
             "method": "deterministic",
-            "detail": "4 dollar amounts, 1 numbers, 15 names = 20 specifics"
+            "detail": "4 dollar amounts, 1 numbers, 16 names = 21 specifics"
           },
           "scroll_depth_pull": {
             "score": 4,
@@ -4033,18 +4040,18 @@
             "detail": "4/5 scroll pull: 4 sections (optimal), all sections headed, sufficient depth"
           },
           "objection_preemption": {
-            "score": 2,
+            "score": 5,
             "weight": 1.25,
-            "weighted": 2.5,
+            "weighted": 6.25,
             "method": "deterministic",
-            "detail": "2/5 objection signals: refundable, not financial advice"
+            "detail": "5/5 objection signals: refundable, not financial advice, risk acknowledged, no middlemen, delivery clarity"
           },
           "differentiation": {
             "score": 4,
             "weight": 1.0,
             "weighted": 4.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.21, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.22, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -4069,8 +4076,8 @@
     },
     {
       "ad_id": "LP-P",
-      "composite": 0.6915,
-      "verdict": "needs_work",
+      "composite": 0.7095,
+      "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
         "passed": 27,
@@ -4154,7 +4161,7 @@
         ]
       },
       "rubric": {
-        "weighted_total": 48.0,
+        "weighted_total": 49.25,
         "max_possible": 65.0,
         "raw_scores": {
           "angle_clarity": 2,
@@ -4165,7 +4172,7 @@
           "cta_prominence": 3,
           "specificity": 5,
           "scroll_depth_pull": 5,
-          "objection_preemption": 4,
+          "objection_preemption": 5,
           "differentiation": 4
         },
         "dimension_details": {
@@ -4226,18 +4233,18 @@
             "detail": "5/5 scroll pull: 4 sections (optimal), all sections headed, benefit-oriented headings, sufficient depth"
           },
           "objection_preemption": {
-            "score": 4,
+            "score": 5,
             "weight": 1.25,
-            "weighted": 5.0,
+            "weighted": 6.25,
             "method": "deterministic",
-            "detail": "4/5 objection signals: refundable, not financial advice, no middlemen, delivery clarity"
+            "detail": "5/5 objection signals: refundable, not financial advice, risk acknowledged, no middlemen, delivery clarity"
           },
           "differentiation": {
             "score": 4,
             "weight": 1.0,
             "weighted": 4.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.21, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.23, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -4262,7 +4269,7 @@
     },
     {
       "ad_id": "EM-001",
-      "composite": 0.448,
+      "composite": 0.5292,
       "verdict": "rewrite",
       "rule_compliance": {
         "score": 1.0,
@@ -4311,18 +4318,18 @@
         ]
       },
       "rubric": {
-        "weighted_total": 40.0,
+        "weighted_total": 47.25,
         "max_possible": 62.5,
         "raw_scores": {
           "angle_clarity": 2,
           "motivation_match": 2,
-          "tactic_execution": 2,
+          "tactic_execution": 4,
           "subject_line_power": 4,
           "body_flow": 4,
           "cta_clarity": 3,
-          "personalization": 3,
+          "personalization": 4,
           "specificity": 5,
-          "scroll_stop_hook": 1,
+          "scroll_stop_hook": 5,
           "differentiation": 5
         },
         "dimension_details": {
@@ -4341,11 +4348,11 @@
             "detail": "Heuristic: low emotional resonance"
           },
           "tactic_execution": {
-            "score": 2,
+            "score": 4,
             "weight": 1.0,
-            "weighted": 2.0,
+            "weighted": 4.0,
             "method": "heuristic",
-            "detail": "Heuristic: hook=False, body=False, cta=True"
+            "detail": "Heuristic: hook=True, body=True, cta=True"
           },
           "subject_line_power": {
             "score": 4,
@@ -4359,7 +4366,7 @@
             "weight": 1.25,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "4/5 flow: 1012 chars (within limit), 10 paragraphs, 1 long paragraphs"
+            "detail": "4/5 flow: 1109 chars (within limit), 12 paragraphs, 1 long paragraphs"
           },
           "cta_clarity": {
             "score": 3,
@@ -4369,32 +4376,32 @@
             "detail": "CTA present but not on approved list: 'See what's fresh this week'"
           },
           "personalization": {
-            "score": 3,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 3.75,
+            "weighted": 5.0,
             "method": "deterministic",
-            "detail": "3/5 personalization: references reader context, reader-focused (13 'you' refs)"
+            "detail": "4/5 personalization: has merge tags, references reader context, reader-focused (13 'you' refs)"
           },
           "specificity": {
             "score": 5,
             "weight": 1.5,
             "weighted": 7.5,
             "method": "deterministic",
-            "detail": "0 dollar amounts, 0 numbers, 9 names = 9 specifics"
+            "detail": "0 dollar amounts, 0 numbers, 10 names = 10 specifics"
           },
           "scroll_stop_hook": {
-            "score": 1,
+            "score": 5,
             "weight": 1.0,
-            "weighted": 1.0,
+            "weighted": 5.0,
             "method": "deterministic",
-            "detail": "No opening line found"
+            "detail": "Story hook with specific moment: '\"I didn't know where my chicken came from.\" That question ch...'"
           },
           "differentiation": {
             "score": 5,
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.18, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.20, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -4415,12 +4422,12 @@
       "content_type": "email",
       "angle": "cause-purpose",
       "headline": "You are in. Here is what to expect from us.",
-      "primary_text": "Welcome.\n\nYou have just joined the waitlist for FarmThru's equity crowdfunding campaign on Birchal, launching mid-2026.\n\nBefore we go any further, a proper introduction.\n\nFarmThru is a grocery store. "
+      "primary_text": "\"I didn't know where my chicken came from.\" That question changed everything."
     },
     {
       "ad_id": "EM-002",
-      "composite": 0.464,
-      "verdict": "rewrite",
+      "composite": 0.5728,
+      "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
         "passed": 27,
@@ -4450,18 +4457,18 @@
         ]
       },
       "rubric": {
-        "weighted_total": 36.25,
+        "weighted_total": 44.75,
         "max_possible": 62.5,
         "raw_scores": {
           "angle_clarity": 2,
           "motivation_match": 2,
-          "tactic_execution": 2,
+          "tactic_execution": 4,
           "subject_line_power": 4,
           "body_flow": 4,
           "cta_clarity": 2,
-          "personalization": 1,
+          "personalization": 3,
           "specificity": 5,
-          "scroll_stop_hook": 1,
+          "scroll_stop_hook": 5,
           "differentiation": 5
         },
         "dimension_details": {
@@ -4480,11 +4487,11 @@
             "detail": "Heuristic: low emotional resonance"
           },
           "tactic_execution": {
-            "score": 2,
+            "score": 4,
             "weight": 1.0,
-            "weighted": 2.0,
+            "weighted": 4.0,
             "method": "heuristic",
-            "detail": "Heuristic: hook=False, body=False, cta=True"
+            "detail": "Heuristic: hook=True, body=True, cta=True"
           },
           "subject_line_power": {
             "score": 4,
@@ -4498,7 +4505,7 @@
             "weight": 1.25,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "4/5 flow: 1394 chars (within limit), 11 paragraphs, 2 long paragraphs"
+            "detail": "4/5 flow: 1475 chars (within limit), 12 paragraphs, 2 long paragraphs"
           },
           "cta_clarity": {
             "score": 2,
@@ -4508,32 +4515,32 @@
             "detail": "Weak or unclear CTA: 'Shop your local hub'"
           },
           "personalization": {
-            "score": 1,
+            "score": 3,
             "weight": 1.25,
-            "weighted": 1.25,
+            "weighted": 3.75,
             "method": "deterministic",
-            "detail": "1/5 personalization: generic"
+            "detail": "3/5 personalization: has merge tags, reader-focused (3 'you' refs)"
           },
           "specificity": {
             "score": 5,
             "weight": 1.5,
             "weighted": 7.5,
             "method": "deterministic",
-            "detail": "0 dollar amounts, 1 numbers, 9 names = 10 specifics"
+            "detail": "0 dollar amounts, 1 numbers, 10 names = 11 specifics"
           },
           "scroll_stop_hook": {
-            "score": 1,
+            "score": 5,
             "weight": 1.0,
-            "weighted": 1.0,
+            "weighted": 5.0,
             "method": "deterministic",
-            "detail": "No opening line found"
+            "detail": "Story hook with specific moment: 'I want to tell you why FarmThru exists. A few years ago I wa...'"
           },
           "differentiation": {
             "score": 5,
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.14, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.15, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -4554,17 +4561,24 @@
       "content_type": "email",
       "angle": "empathy-founder",
       "headline": "The supermarket question I could not answer",
-      "primary_text": "I want to tell you why FarmThru exists.\n\nA few years ago I was holding a tray of beef mince in a supermarket. Grey around the edges. The label said \"Product of Australia\" but nothing else. No farm nam"
+      "primary_text": "I want to tell you why FarmThru exists. A few years ago I was holding a tray of beef mince in a supermarket."
     },
     {
       "ad_id": "EM-003",
-      "composite": 0.6379,
+      "composite": 0.6788,
       "verdict": "needs_work",
       "rule_compliance": {
-        "score": 1.0,
-        "passed": 27,
+        "score": 0.963,
+        "passed": 26,
         "total": 27,
-        "failures": [],
+        "failures": [
+          {
+            "rule_id": "no_em_dashes",
+            "field": "primary_text",
+            "detail": "Pattern matched in primary_text: '\u2014' (rule: no_em_dashes)",
+            "severity": "normal"
+          }
+        ],
         "critical_failure": false
       },
       "fact_accuracy": {
@@ -4619,18 +4633,18 @@
         ]
       },
       "rubric": {
-        "weighted_total": 45.75,
+        "weighted_total": 51.25,
         "max_possible": 62.5,
         "raw_scores": {
           "angle_clarity": 2,
           "motivation_match": 2,
-          "tactic_execution": 2,
+          "tactic_execution": 4,
           "subject_line_power": 5,
           "body_flow": 5,
           "cta_clarity": 5,
-          "personalization": 3,
+          "personalization": 5,
           "specificity": 5,
-          "scroll_stop_hook": 1,
+          "scroll_stop_hook": 2,
           "differentiation": 5
         },
         "dimension_details": {
@@ -4649,11 +4663,11 @@
             "detail": "Heuristic: low emotional resonance"
           },
           "tactic_execution": {
-            "score": 2,
+            "score": 4,
             "weight": 1.0,
-            "weighted": 2.0,
+            "weighted": 4.0,
             "method": "heuristic",
-            "detail": "Heuristic: hook=False, body=False, cta=True"
+            "detail": "Heuristic: hook=True, body=True, cta=True"
           },
           "subject_line_power": {
             "score": 5,
@@ -4667,7 +4681,7 @@
             "weight": 1.25,
             "weighted": 6.25,
             "method": "deterministic",
-            "detail": "5/5 flow: 1101 chars (within limit), 8 paragraphs, good paragraph length"
+            "detail": "5/5 flow: 1156 chars (within limit), 10 paragraphs, good paragraph length"
           },
           "cta_clarity": {
             "score": 5,
@@ -4677,32 +4691,32 @@
             "detail": "CTA matches approved list: 'cfe_waitlist'"
           },
           "personalization": {
-            "score": 3,
+            "score": 5,
             "weight": 1.25,
-            "weighted": 3.75,
+            "weighted": 6.25,
             "method": "deterministic",
-            "detail": "3/5 personalization: references reader context, reader-focused (4 'you' refs)"
+            "detail": "5/5 personalization: has merge tags, references reader context, reader-focused (4 'you' refs), time-specific"
           },
           "specificity": {
             "score": 5,
             "weight": 1.5,
             "weighted": 7.5,
             "method": "deterministic",
-            "detail": "1 dollar amounts, 3 numbers, 7 names = 11 specifics"
+            "detail": "1 dollar amounts, 4 numbers, 9 names = 14 specifics"
           },
           "scroll_stop_hook": {
-            "score": 1,
+            "score": 2,
             "weight": 1.0,
-            "weighted": 1.0,
+            "weighted": 2.0,
             "method": "deterministic",
-            "detail": "No opening line found"
+            "detail": "Generic opening: 'Last month, Rachel Ward watched the supermarket buyer taste ...'"
           },
           "differentiation": {
             "score": 5,
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.18, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.19, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -4712,7 +4726,7 @@
       },
       "penalties": {
         "unverified_claims": 3,
-        "non_critical_rule_failures": 0
+        "non_critical_rule_failures": 1
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
@@ -4723,12 +4737,12 @@
       "content_type": "email",
       "angle": "quality-craft",
       "headline": "Rachel's beef was too good for supermarkets",
-      "primary_text": "Last month, Rachel Ward watched the supermarket buyer taste her grass-fed beef and say \"this is exceptional\" \u2014 then offer her 40% less than it cost to raise.\n\nThat's when she decided to cut out the mi"
+      "primary_text": "Last month, Rachel Ward watched the supermarket buyer taste her grass-fed beef and say \"this is exceptional\" \u2014 then offer her 40% less than it cost to raise."
     },
     {
       "ad_id": "EM-004",
-      "composite": 0.4424,
-      "verdict": "rewrite",
+      "composite": 0.5544,
+      "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
         "passed": 27,
@@ -4770,18 +4784,18 @@
         ]
       },
       "rubric": {
-        "weighted_total": 39.5,
+        "weighted_total": 49.5,
         "max_possible": 62.5,
         "raw_scores": {
           "angle_clarity": 2,
           "motivation_match": 2,
-          "tactic_execution": 2,
+          "tactic_execution": 4,
           "subject_line_power": 4,
           "body_flow": 5,
           "cta_clarity": 5,
-          "personalization": 2,
-          "specificity": 3,
-          "scroll_stop_hook": 1,
+          "personalization": 4,
+          "specificity": 4,
+          "scroll_stop_hook": 5,
           "differentiation": 5
         },
         "dimension_details": {
@@ -4800,11 +4814,11 @@
             "detail": "Heuristic: low emotional resonance"
           },
           "tactic_execution": {
-            "score": 2,
+            "score": 4,
             "weight": 1.0,
-            "weighted": 2.0,
+            "weighted": 4.0,
             "method": "heuristic",
-            "detail": "Heuristic: hook=False, body=False, cta=True"
+            "detail": "Heuristic: hook=True, body=True, cta=True"
           },
           "subject_line_power": {
             "score": 4,
@@ -4818,7 +4832,7 @@
             "weight": 1.25,
             "weighted": 6.25,
             "method": "deterministic",
-            "detail": "5/5 flow: 1001 chars (within limit), 7 paragraphs, good paragraph length"
+            "detail": "5/5 flow: 1049 chars (within limit), 9 paragraphs, good paragraph length"
           },
           "cta_clarity": {
             "score": 5,
@@ -4828,25 +4842,25 @@
             "detail": "CTA matches approved list: 'cfe_campaign'"
           },
           "personalization": {
-            "score": 2,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 2.5,
+            "weighted": 5.0,
             "method": "deterministic",
-            "detail": "2/5 personalization: reader-focused (5 'you' refs)"
+            "detail": "4/5 personalization: has merge tags, reader-focused (5 'you' refs), time-specific"
           },
           "specificity": {
-            "score": 3,
+            "score": 4,
             "weight": 1.5,
-            "weighted": 4.5,
+            "weighted": 6.0,
             "method": "deterministic",
-            "detail": "0 dollar amounts, 3 numbers, 1 names = 4 specifics"
+            "detail": "0 dollar amounts, 3 numbers, 2 names = 5 specifics"
           },
           "scroll_stop_hook": {
-            "score": 1,
+            "score": 5,
             "weight": 1.0,
-            "weighted": 1.0,
+            "weighted": 5.0,
             "method": "deterministic",
-            "detail": "No opening line found"
+            "detail": "Story hook with specific moment: 'Yesterday, I watched James from Little Yarran Farm load the ...'"
           },
           "differentiation": {
             "score": 5,
@@ -4874,11 +4888,11 @@
       "content_type": "email",
       "angle": "quality-craft",
       "headline": "The craft behind your Sunday roast",
-      "primary_text": "Yesterday, I watched James from Little Yarran Farm load the last of his 18-month grass-fed cattle onto the truck.\n\nEighteen months. That's how long it takes to craft beef the way nature intended \u2014 no "
+      "primary_text": "Yesterday, I watched James from Little Yarran Farm load the last of his 18-month grass-fed cattle onto the truck."
     },
     {
       "ad_id": "EM-005",
-      "composite": 0.5548,
+      "composite": 0.6688,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 0.963,
@@ -4958,18 +4972,18 @@
         ]
       },
       "rubric": {
-        "weighted_total": 36.5,
+        "weighted_total": 44.0,
         "max_possible": 62.5,
         "raw_scores": {
           "angle_clarity": 2,
           "motivation_match": 2,
-          "tactic_execution": 2,
+          "tactic_execution": 4,
           "subject_line_power": 4,
           "body_flow": 4,
           "cta_clarity": 2,
-          "personalization": 2,
+          "personalization": 4,
           "specificity": 5,
-          "scroll_stop_hook": 1,
+          "scroll_stop_hook": 4,
           "differentiation": 4
         },
         "dimension_details": {
@@ -4988,11 +5002,11 @@
             "detail": "Heuristic: low emotional resonance"
           },
           "tactic_execution": {
-            "score": 2,
+            "score": 4,
             "weight": 1.0,
-            "weighted": 2.0,
+            "weighted": 4.0,
             "method": "heuristic",
-            "detail": "Heuristic: hook=False, body=False, cta=True"
+            "detail": "Heuristic: hook=True, body=True, cta=True"
           },
           "subject_line_power": {
             "score": 4,
@@ -5006,7 +5020,7 @@
             "weight": 1.25,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "4/5 flow: 1384 chars (within limit), 9 paragraphs, 1 long paragraphs"
+            "detail": "4/5 flow: 1439 chars (within limit), 10 paragraphs, 1 long paragraphs"
           },
           "cta_clarity": {
             "score": 2,
@@ -5016,11 +5030,11 @@
             "detail": "Weak or unclear CTA: 'Secure VIP Access'"
           },
           "personalization": {
-            "score": 2,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 2.5,
+            "weighted": 5.0,
             "method": "deterministic",
-            "detail": "2/5 personalization: reader-focused (8 'you' refs)"
+            "detail": "4/5 personalization: has merge tags, references reader context, reader-focused (9 'you' refs)"
           },
           "specificity": {
             "score": 5,
@@ -5030,11 +5044,11 @@
             "detail": "4 dollar amounts, 0 numbers, 10 names = 14 specifics"
           },
           "scroll_stop_hook": {
-            "score": 1,
+            "score": 4,
             "weight": 1.0,
-            "weighted": 1.0,
+            "weighted": 4.0,
             "method": "deterministic",
-            "detail": "No opening line found"
+            "detail": "Question hook: 'Since you signed up, you have seen the food and met the farm...'"
           },
           "differentiation": {
             "score": 4,
@@ -5062,11 +5076,11 @@
       "content_type": "email",
       "angle": "investment-thesis",
       "headline": "The investment case behind the food",
-      "primary_text": "You have seen the food. You have met the farms. Now let us talk about what comes next.\n\nFarmThru is opening an equity crowdfunding campaign on Birchal in mid-2026. For the first time, you can own a sh"
+      "primary_text": "Since you signed up, you have seen the food and met the farms. Here is the question: what if you could own a piece of this?"
     },
     {
       "ad_id": "EM-006",
-      "composite": 0.608,
+      "composite": 0.6502,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 0.963,
@@ -5083,9 +5097,9 @@
         "critical_failure": false
       },
       "fact_accuracy": {
-        "score": 0.7143,
-        "claims_found": 7,
-        "verified": 5,
+        "score": 0.6667,
+        "claims_found": 6,
+        "verified": 4,
         "unverified": 2,
         "contradicted": 0,
         "details": [
@@ -5120,12 +5134,6 @@
             "confidence": ""
           },
           {
-            "claim": "equity crowdfunding",
-            "fact_id": "INV-005",
-            "status": "verified",
-            "confidence": "HIGH"
-          },
-          {
             "claim": "Birchal platform",
             "fact_id": "INV-005",
             "status": "verified",
@@ -5134,18 +5142,18 @@
         ]
       },
       "rubric": {
-        "weighted_total": 40.0,
+        "weighted_total": 44.25,
         "max_possible": 62.5,
         "raw_scores": {
           "angle_clarity": 2,
           "motivation_match": 2,
-          "tactic_execution": 2,
+          "tactic_execution": 4,
           "subject_line_power": 4,
           "body_flow": 5,
           "cta_clarity": 2,
-          "personalization": 3,
+          "personalization": 4,
           "specificity": 5,
-          "scroll_stop_hook": 1,
+          "scroll_stop_hook": 2,
           "differentiation": 5
         },
         "dimension_details": {
@@ -5164,11 +5172,11 @@
             "detail": "Heuristic: low emotional resonance"
           },
           "tactic_execution": {
-            "score": 2,
+            "score": 4,
             "weight": 1.0,
-            "weighted": 2.0,
+            "weighted": 4.0,
             "method": "heuristic",
-            "detail": "Heuristic: hook=False, body=False, cta=True"
+            "detail": "Heuristic: hook=True, body=True, cta=True"
           },
           "subject_line_power": {
             "score": 4,
@@ -5182,7 +5190,7 @@
             "weight": 1.25,
             "weighted": 6.25,
             "method": "deterministic",
-            "detail": "5/5 flow: 1042 chars (within limit), 10 paragraphs, good paragraph length"
+            "detail": "5/5 flow: 1032 chars (within limit), 10 paragraphs, good paragraph length"
           },
           "cta_clarity": {
             "score": 2,
@@ -5192,32 +5200,32 @@
             "detail": "Weak or unclear CTA: 'Secure VIP Access'"
           },
           "personalization": {
-            "score": 3,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 3.75,
+            "weighted": 5.0,
             "method": "deterministic",
-            "detail": "3/5 personalization: references reader context, reader-focused (9 'you' refs)"
+            "detail": "4/5 personalization: has merge tags, references reader context, reader-focused (9 'you' refs)"
           },
           "specificity": {
             "score": 5,
             "weight": 1.5,
             "weighted": 7.5,
             "method": "deterministic",
-            "detail": "3 dollar amounts, 0 numbers, 8 names = 11 specifics"
+            "detail": "3 dollar amounts, 0 numbers, 11 names = 14 specifics"
           },
           "scroll_stop_hook": {
-            "score": 1,
+            "score": 2,
             "weight": 1.0,
-            "weighted": 1.0,
+            "weighted": 2.0,
             "method": "deterministic",
-            "detail": "No opening line found"
+            "detail": "Generic opening: 'In a few days, FarmThru opens to investors on Birchal....'"
           },
           "differentiation": {
             "score": 5,
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.15, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.14, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -5238,11 +5246,11 @@
       "content_type": "email",
       "angle": "urgency-scarcity",
       "headline": "FarmThru opens to investors very soon",
-      "primary_text": "Quick update.\n\nFarmThru's equity crowdfunding campaign on Birchal opens very soon. For the first time, you can invest in the grocery store that connects regenerative farms directly to families.\n\nHere "
+      "primary_text": "In a few days, FarmThru opens to investors on Birchal."
     },
     {
       "ad_id": "EM-007",
-      "composite": 0.7076,
+      "composite": 0.8197,
       "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
@@ -5279,18 +5287,18 @@
         ]
       },
       "rubric": {
-        "weighted_total": 45.75,
+        "weighted_total": 53.0,
         "max_possible": 62.5,
         "raw_scores": {
           "angle_clarity": 2,
           "motivation_match": 2,
-          "tactic_execution": 2,
+          "tactic_execution": 4,
           "subject_line_power": 5,
           "body_flow": 5,
           "cta_clarity": 5,
-          "personalization": 3,
+          "personalization": 4,
           "specificity": 5,
-          "scroll_stop_hook": 1,
+          "scroll_stop_hook": 5,
           "differentiation": 5
         },
         "dimension_details": {
@@ -5309,11 +5317,11 @@
             "detail": "Heuristic: low emotional resonance"
           },
           "tactic_execution": {
-            "score": 2,
+            "score": 4,
             "weight": 1.0,
-            "weighted": 2.0,
+            "weighted": 4.0,
             "method": "heuristic",
-            "detail": "Heuristic: hook=False, body=False, cta=True"
+            "detail": "Heuristic: hook=True, body=True, cta=True"
           },
           "subject_line_power": {
             "score": 5,
@@ -5327,7 +5335,7 @@
             "weight": 1.25,
             "weighted": 6.25,
             "method": "deterministic",
-            "detail": "5/5 flow: 993 chars (within limit), 10 paragraphs, good paragraph length"
+            "detail": "5/5 flow: 1038 chars (within limit), 12 paragraphs, good paragraph length"
           },
           "cta_clarity": {
             "score": 5,
@@ -5337,25 +5345,25 @@
             "detail": "CTA matches approved list: 'cfe_waitlist'"
           },
           "personalization": {
-            "score": 3,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 3.75,
+            "weighted": 5.0,
             "method": "deterministic",
-            "detail": "3/5 personalization: reader-focused (4 'you' refs), time-specific"
+            "detail": "4/5 personalization: has merge tags, reader-focused (4 'you' refs), time-specific"
           },
           "specificity": {
             "score": 5,
             "weight": 1.5,
             "weighted": 7.5,
             "method": "deterministic",
-            "detail": "3 dollar amounts, 3 numbers, 2 names = 8 specifics"
+            "detail": "3 dollar amounts, 4 numbers, 2 names = 9 specifics"
           },
           "scroll_stop_hook": {
-            "score": 1,
+            "score": 5,
             "weight": 1.0,
-            "weighted": 1.0,
+            "weighted": 5.0,
             "method": "deterministic",
-            "detail": "No opening line found"
+            "detail": "Story hook with specific moment: 'Yesterday at 3pm, Sarah from Manly refreshed her phone for t...'"
           },
           "differentiation": {
             "score": 5,
@@ -5383,7 +5391,7 @@
       "content_type": "email",
       "angle": "urgency-scarcity",
       "headline": "Last 48 hours: VIP spots closing",
-      "primary_text": "Yesterday at 3pm, Sarah from Manly refreshed her phone for the third time.\n\nShe'd been watching our VIP list grow for weeks. The $5 deposit (fully refundable) seemed like nothing \u2014 but she kept hesita"
+      "primary_text": "Yesterday at 3pm, Sarah from Manly refreshed her phone for the third time."
     }
   ]
 }
