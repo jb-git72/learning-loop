@@ -394,7 +394,7 @@ def _call_llm(prompt: str) -> str:
             import anthropic
             client = anthropic.Anthropic(api_key=api_key)
             response = client.messages.create(
-                model="claude-opus-4-20250514",
+                model="claude-opus-4-6-20250610",
                 max_tokens=2000,
                 temperature=0.7,
                 messages=[{"role": "user", "content": prompt}],
