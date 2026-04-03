@@ -45,90 +45,50 @@
     {
       "fact_id": "BM-003",
       "category": "business_model",
-      "claim": "50+ partner farms",
+      "claim": "Partner farms across NSW (exact count unverified)",
       "claim_patterns": [
-        "more than 50 farms",
-        "50 partner farms",
-        "50\\+ (partner )?farms",
-        "fifty.* farms",
-        "50 farms",
-        "over 50 farms",
-        "50+ farms",
-        "fifty farms",
-        "50\\+ farms",
-        "50+ partner farms"
+        "partner farms",
+        "farms across",
+        "regenerative farms",
+        "local farms"
       ],
       "source": "farmthru.com.au",
-      "confidence": "HIGH",
+      "confidence": "UNVERIFIED",
       "last_verified": "2026-04-03",
-      "value_range": {
-        "min": 50,
-        "max": null,
-        "unit": "farms"
-      },
-      "contradicts_if": "(100|200|300)\\+? (partner )?farms"
+      "note": "Round 2 review flagged '50+ farms' as potentially fabricated. DO NOT use specific farm count until verified on farmthru.com.au."
     },
     {
       "fact_id": "BM-004",
       "category": "business_model",
-      "claim": "Hub locations in Sydney area. Brookvale hub operating Monday-Friday. Three hubs in current growth phase.",
+      "claim": "Brookvale hub in Sydney, NSW. Monday-Friday collection. Hub count to be verified.",
       "claim_patterns": [
         "Brookvale hub",
+        "Brookvale",
         "Monday.*Friday",
-        "three hubs",
-        "3 hubs",
         "Sydney hub",
         "collection hub",
         "nearest hub",
-        "local hub"
+        "local hub",
+        "NSW"
       ],
       "source": "farmthru.com.au",
-      "confidence": "HIGH",
+      "confidence": "UNVERIFIED",
       "last_verified": "2026-04-03",
+      "note": "BM-004 and BM-005 contradicted on hub count (three vs single). Merged into one entry. Use 'Brookvale hub' or 'your nearest hub' — do NOT claim a specific hub count until verified.",
       "contradicts_if": "(Melbourne|Brisbane|Perth|Adelaide|Canberra|Gold Coast|nationwide|Australia.wide)"
-    },
-    {
-      "fact_id": "BM-005",
-      "category": "business_model",
-      "claim": "Operating hub in Brookvale, NSW. Monday-Friday collection.",
-      "claim_patterns": [
-        "Brookvale",
-        "NSW",
-        "Monday-Friday",
-        "collection hub",
-        "operating hub",
-        "single hub"
-      ],
-      "source": "farmthru.com.au",
-      "confidence": "HIGH",
-      "last_verified": "2026-04-03",
-      "contradicts_if": "(multiple hubs|two hubs|three hubs|second hub|new hub)"
     },
     {
       "fact_id": "BM-006",
       "category": "business_model",
-      "claim": "2,000+ customers",
+      "claim": "Customer base size unverified",
       "claim_patterns": [
-        "2,?000\\+? customers",
-        "2k\\+ customers",
-        "over 2,?000 customers",
-        "thousands of customers",
-        "2,000 customers",
-        "more than 2,?000 customers",
-        "2000+ customers",
-        "two thousand customers",
-        "over 2,000 customers",
-        "2,000+ customers"
+        "customers",
+        "families"
       ],
       "source": "farmthru.com.au",
-      "confidence": "HIGH",
+      "confidence": "UNVERIFIED",
       "last_verified": "2026-04-03",
-      "value_range": {
-        "min": 2000,
-        "max": null,
-        "unit": "customers"
-      },
-      "contradicts_if": "(10,?000|20,?000|50,?000)\\+? customers"
+      "note": "Round 2 review flagged '2,000+ customers' as potentially fabricated. DO NOT use specific customer count until verified on farmthru.com.au."
     },
     {
       "fact_id": "PQ-001",
@@ -189,13 +149,13 @@
     {
       "fact_id": "PQ-004",
       "category": "product_quality",
-      "claim": "Days old, not weeks old \u2014 2-3 days paddock to door",
+      "claim": "Days old, not weeks old \u2014 2-3 days paddock to pick-up",
       "claim_patterns": [
         "days old.*not weeks",
         "2.3 days",
         "two.to.three days",
-        "paddock to door",
-        "paddock.to.door",
+        "paddock to pick-up",
+        "paddock.to.pick.up",
         "days not weeks",
         "fresher than",
         "within days"
@@ -208,7 +168,7 @@
         "max": 3,
         "unit": "days"
       },
-      "contradicts_if": "(week|7 day|10 day|14 day).*to (your )?door"
+      "contradicts_if": "(week|7 day|10 day|14 day).*to (your )?(door|pick.up)"
     },
     {
       "fact_id": "PQ-005",
@@ -481,17 +441,17 @@
     {
       "fact_id": "INV-006",
       "category": "investment",
-      "claim": "Launch date: July 2026",
+      "claim": "Launch date: mid-2026 (exact month to be confirmed)",
       "claim_patterns": [
-        "July 2026",
-        "launching.*July",
-        "opens.*July",
-        "live.*July",
-        "July launch",
-        "mid.2026"
+        "mid.2026",
+        "launching.*2026",
+        "opens.*2026",
+        "live.*2026",
+        "2026 launch"
       ],
       "source": "farmthru.com.au / Birchal campaign",
-      "confidence": "HIGH",
+      "confidence": "UNVERIFIED",
+      "note": "Round 2 review said 'likely June, not July'. Do not hardcode a specific month — use 'mid-2026' or 'coming soon' until confirmed.",
       "last_verified": "2026-04-03",
       "contradicts_if": "(June|August|September|October|November|December|January|February|March|April|May) 2026.*(launch|open|live|go live)"
     },
@@ -533,17 +493,17 @@
     {
       "fact_id": "SP-001",
       "category": "social_proof",
-      "claim": "Testimonial \u2014 Sarah, Sydney: \"Finally, a grocery delivery that actually cares about where the food comes from. The quality is incredible.\"",
+      "claim": "Testimonial \u2014 Sarah, Sydney: \"Finally, a grocery store that actually cares about where the food comes from. The quality is incredible.\"",
       "claim_patterns": [
-        "Finally.*grocery delivery.*cares",
+        "Finally.*grocery store.*cares",
         "quality is incredible",
         "Sarah.*Sydney",
         "where the food comes from"
       ],
       "source": "farmthru.com.au / customer testimonials",
-      "confidence": "HIGH",
+      "confidence": "UNVERIFIED",
       "last_verified": "2026-04-03",
-      "note": "Use verbatim. Do not paraphrase or edit."
+      "note": "Original said 'grocery delivery' — corrected to 'grocery store' to match hub-and-collect model. Needs re-verification against website for exact wording."
     },
     {
       "fact_id": "SP-002",

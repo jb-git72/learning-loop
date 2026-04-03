@@ -1,6 +1,6 @@
 # FarmThru — Creative Learnings
 
-## Source: CFE Campaign Research (135+ benchmarks) + Brand Guidelines v1.1 + Calibration Round 1 Feedback
+## Source: CFE Campaign Research (135+ benchmarks) + Brand Guidelines v1.1 + Calibration Rounds 1-2 Feedback
 
 ---
 
@@ -29,6 +29,59 @@
 - **Landing pages** — investment details, VIP deposit, compliance language belong HERE
 - **Emails** — VIP deposit upsell, detailed investment terms belong HERE
 - **CTAs must match phase** — waitlist CTA before campaign launch, invest CTA during campaign, product CTA for brand ads
+
+---
+
+## Calibration Round 2 — Human Review Feedback (2026-04-03)
+
+**Results: 5 approved, 12 edited, 1 killed, 15 pending (landing pages/emails not reviewed)**
+
+### CRITICAL: Fabricated Statistics
+- "50+ regenerative farms" and "2,000+ customers" — could not be verified on farmthru.com.au. NEVER use unverifiable stats. Every number must trace to facts.json with HIGH confidence.
+- "$130B market" and "24% YoY growth" — market stats don't belong in consumer ads. Investor-pitch language only.
+
+### CRITICAL: Investment Terms Don't Belong in Ads
+- Never say "$50 minimum" or "$10K cap" in ad copy
+- Never say "Not financial advice." in ad body — compliance statement, not copy
+- Never say "startup" — too cold for a food brand
+- VIP/$5 deposit messaging only on landing pages/emails
+- Campaign date uncertain — don't hardcode months
+
+### CRITICAL: Sender Is "Rachel & the FarmThru team"
+- Not "FarmThru" or "Jeremy from FarmThru"
+
+### Why BFP Copy Was Better (Structure to Follow)
+BFP pattern: **Customer pain → Objection acknowledged → Systematic proof → Geographic CTA**
+- Starts with customer's ACTUAL anxiety ("too good to be true?", "I felt guilty")
+- Validates the reader ("There is not.", "You're not alone. 74% feel this way.")
+- Uses ONLY customer-benefit stats (save $800-1,300, $0 consults), never market stats
+- CTA is always actionable + specific ("Find a participating clinic near you")
+- Sentences average 13-18 words. Killed FarmThru ads averaged 23-28 words
+
+### Why Round 2 FarmThru Ads Failed
+- Led with company traction/market stats instead of customer benefit
+- Investor-pitch language bleeding into consumer ads
+- Founder story as HOOK instead of PROOF LAYER — Rachel's story should validate, not lead
+- Generic CTAs ("Learn more", "Join the waitlist") vs specific ones
+- "No commitment, no lock-in" is thin reassurance vs BFP's specific "No joining fee. No waiting period. Cancel anytime."
+- Copy tried to be BOTH brand ad AND investment ad — pick one per ad
+
+### What Was Approved in Round 2 (Patterns to Keep)
+- **BR-107**: Comparison hook (if-then), supply chain contrast — BEST structure
+- **BR-105**: "How well do you know the farmer?" — strong emotional question
+- **BR-109**: Rachel's voice, first person — authentic but needs transition
+- **CFE-108**: Founder story with "be part of it" language
+- **BR-106**: Product + origin specificity
+- Phrases that worked: "Now they can own a piece of it too", "be a partner", "be part of it", "vote for change with your wallet"
+
+### Specific Structural Requirements for Round 3
+- All ads need a narrative arc: hook → insight → product → transition → CTA
+- Brand ads need a "why act now" transition before CTA
+- CFE ads need "be part of it" language, not investment terms
+- Remove ALL unverifiable stats until verified
+- Use customer-benefit framing, not company-traction framing
+- Sentences: 13-18 words (like BFP approved copy)
+- Headlines: sentence case only, never Title Case
 
 ---
 
