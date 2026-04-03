@@ -9,7 +9,7 @@
       "function": "_check_investment_disclaimer",
       "description": "When content discusses investment, it must include a financial disclaimer referencing independent advice or the Birchal disclosure document. Content that does not mention investment is exempt.",
       "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy"],
-      "investment_triggers": ["invest", "birchal", "crowdfund", "equity", "raise", "campaign opens", "\\$50 minimum", "\\$10.*cap", "deposit"],
+      "investment_triggers": ["\\binvest(?:ing|ment|ors?)?\\b", "birchal", "crowdfund", "\\bequity\\b", "\\braising capital\\b|\\braise via\\b|\\braises\\b", "campaign opens", "\\$50 minimum", "\\$10.*cap"],
       "disclaimer_patterns": ["not financial advice", "disclosure document", "consider seeking independent", "seek independent financial advice"],
       "case_sensitive": false,
       "rationale": "ASIC RG 234 requires balanced disclosure for equity crowdfunding campaigns. Content that mentions investment must include disclaimers, but pure product/brand content is exempt."
@@ -148,21 +148,21 @@
     },
     {
       "rule_id": "FMTH-009",
-      "name": "no_supermarket_defamation",
+      "name": "no_negative_competitor_framing",
       "severity": "medium",
       "type": "regex_absent",
-      "description": "Block direct defamation of named competitors without factual comparison. Factual comparisons like 'Coles adds 47 stops' are allowed — only defamatory language is blocked.",
+      "description": "Frame FarmThru as a positive alternative, never as a negative reaction to competitors.",
       "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy"],
       "patterns": [
-        "coles.*poison",
-        "woolworths.*poison",
-        "coles.*kill",
-        "woolworths.*kill",
-        "coles.*toxic",
-        "woolworths.*toxic"
+        "better than.*supermarket",
+        "worse than.*farmthru",
+        "supermarket.*poison",
+        "supermarket.*kill",
+        "supermarket.*toxic",
+        "big chains.*fail"
       ],
       "case_sensitive": false,
-      "rationale": "Comparative advertising must be factual per ACL Section 18. Defamatory language about named competitors is a legal risk."
+      "rationale": "Brand guidelines: frame as positive alternative ('A new kind of grocery store'), not negative reaction ('Better than your supermarket')."
     },
     {
       "rule_id": "FMTH-010",
@@ -173,6 +173,86 @@
       "description": "When mentioning the $5 deposit, must also mention it is refundable.",
       "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy"],
       "rationale": "Consumer protection — deposits must be clearly described as refundable to avoid misleading consumers."
+    },
+    {
+      "rule_id": "FMTH-011",
+      "name": "no_named_competitors",
+      "severity": "high",
+      "type": "regex_absent",
+      "description": "Never name competitors in advertising copy. Use 'supermarkets' or 'the big chains' instead.",
+      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy"],
+      "patterns": [
+        "\\bwoolworths\\b",
+        "\\bwoolies\\b",
+        "\\bcoles\\b",
+        "\\baldi\\b",
+        "\\bharris farm\\b",
+        "\\bIGA\\b"
+      ],
+      "case_sensitive": false,
+      "rationale": "Brand guidelines v1.1: never name competitors. Frame FarmThru as a positive alternative, not a negative reaction."
+    },
+    {
+      "rule_id": "FMTH-012",
+      "name": "no_delivery_to_door_claims",
+      "severity": "high",
+      "type": "regex_absent",
+      "description": "FarmThru is a hub-and-collect model. Never claim delivery to door.",
+      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy"],
+      "patterns": [
+        "deliver.*to your door",
+        "to your kitchen",
+        "to your doorstep",
+        "delivered to you",
+        "direct to your door",
+        "on your doorstep",
+        "paddock to door",
+        "farm to door",
+        "to your plate"
+      ],
+      "case_sensitive": false,
+      "rationale": "FarmThru is hub-and-collect. Customers pick up from hubs. Claiming delivery misrepresents the business model."
+    },
+    {
+      "rule_id": "FMTH-013",
+      "name": "no_banned_brand_terms",
+      "severity": "medium",
+      "type": "regex_absent",
+      "description": "Block terms banned by brand guidelines.",
+      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy"],
+      "patterns": [
+        "\\bartisan",
+        "\\bartisanal",
+        "eco.friendly",
+        "farm to table",
+        "paddock to plate",
+        "\\bdisrupt",
+        "\\bconsumers?\\b",
+        "\\busers?\\b",
+        "\\bshoppers?\\b",
+        "\\bwarehouse\\b",
+        "\\bdepot\\b",
+        "fulfilment centre"
+      ],
+      "case_sensitive": false,
+      "rationale": "Brand guidelines v1.1 banned terms list. Use approved alternatives (regenerative, hub, farm-direct, everyday families)."
+    },
+    {
+      "rule_id": "FMTH-014",
+      "name": "no_subscription_language",
+      "severity": "medium",
+      "type": "regex_absent",
+      "description": "FarmThru is non-subscription, on-demand ordering. No lock-in messaging.",
+      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy"],
+      "patterns": [
+        "\\bsubscription\\b",
+        "\\bsubscribe\\b",
+        "lock.in",
+        "monthly plan",
+        "\\bmembership\\b"
+      ],
+      "case_sensitive": false,
+      "rationale": "Brand guidelines: non-subscription, on-demand ordering. No lock-in, no commitment pressure."
     }
   ]
 }

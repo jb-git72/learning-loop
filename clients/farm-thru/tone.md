@@ -1,61 +1,154 @@
-# FarmThru — Voice & Tone Guidelines
+# FarmThru — Voice & Tone Guide (Brand Guidelines v1.1)
 
-## Core Feeling
-Honest, grounded, founder-led. The reader should feel **informed and inspired**, not sold to. They should trust FarmThru because we're transparent — about what we know, what we don't know, and why we're doing this.
+## Brand Positioning
 
-## The Voice
-FarmThru sounds like a founder who genuinely cares about food — talking to a friend over dinner. Not a marketing department. Not a finance pitch deck. Not a sustainability brochure.
+FarmThru is a new kind of grocery store — farm-direct, regenerative, and priced for everyday families — with hubs designed to keep costs low and bring the farm closer to your door.
 
-## DO
-- **Founder voice** — first person when appropriate ("I started FarmThru because...")
-- **Specific and real** — name the farms, name the farmers, show the paddock
-- **Honest about risk** — "We don't know if FarmThru will succeed. Most startups don't."
-- **Food as hero** — sensory, appetising, real ("Days old, not weeks old. You'll taste the difference.")
-- **Supply chain as story** — the journey from paddock to door is the narrative, not a feature list
-- **Conversational but informed** — use data, but keep it human ("50+ farms across NSW and beyond")
-- **Australian English, relaxed** — "neighbours", "colour", no American spelling
-- **Let the reader decide** — inform, don't push. "Here's what we can show you."
-- **Acknowledge what we don't know** — radical transparency builds more trust than polished claims
+**Tagline:** "We'll show you where your food comes from."
 
-## DON'T
-- **Corporate sustainability speak** — "comprehensive sustainable solution", "eco-friendly", "carbon neutral" (unless certified)
-- **Investment hype** — "guaranteed returns", "can't-miss opportunity", "your money will grow"
-- **Health claims** — "boost your immune system", "cure", "heal" (TGA regulated)
-- **Greenwashing** — "save the planet", "100% sustainable", "zero carbon" (ACCC guidelines)
-- **Fear-based food messaging** — "your food is poisoning you", "supermarkets are killing you"
-- **Defamatory competitor language** — factual comparisons are fine ("14-21 days cold storage vs 2-3 days"), defamation is not
-- **Urgency without substance** — "Act now!", "Limited time!" unless genuinely time-bound (campaign close date is OK)
-- **Abstract jargon** — "regenerative agriculture" is fine because it's specific; "holistic food ecosystem" is not
-- **Overclaiming delivery** — we deliver to Sydney, Central Coast, and Wollongong. Not "Australia-wide."
+## Business Model (Critical for Copy Accuracy)
 
-## Tone by Content Type
+FarmThru operates a **hub-and-collect** model. Customers order online and collect from local hubs (e.g. Brookvale hub, Monday–Friday).
 
-### Meta Ads
-- Short, punchy, thumb-stopping
-- Lead with the food or the farmer, not the investment
-- One angle per ad, no hedging
-- Story hooks and quoted objections work best
+- NEVER say "delivered to your door", "to your kitchen", or imply home delivery.
+- USE "from your nearest hub", "paddock to pick-up", "collect from [Hub Name]".
 
-### Landing Pages
-- Progressive disclosure — hero earns the scroll, each section earns the next
-- Balance emotion (food quality, farmer stories) with rational (traction, investment terms)
-- ASIC compliance: risks and benefits must have equal visual prominence
-- End with clear, low-friction CTA
+Any copy implying delivery-to-door is a factual error and must be rejected.
 
-### Emails
-- Founder voice, personal, like a letter not a newsletter
-- Subject lines: specific, curiosity-driven, 6-10 words
-- Single CTA per email
-- Welcome sequence should build trust before asking for commitment
+---
 
-## Words to Use
-"regenerative", "paddock to door", "days old, not weeks", "your local farms", "50+ farms", "know your farmer", "straight from", "real food", "hand-packed", "Brookvale hub", "fair price", "refundable", "no obligation", "disclosure document"
+## Voice Pillars
 
-## Words to Avoid
-"sustainable" (vague), "eco-friendly" (vague), "guaranteed" (compliance), "risk-free" (compliance), "subscription box" (we're not that), "cheap" (we're not cheap — we're fair), "act now" (unless genuine deadline), "chemical-free" (unverifiable), "toxin-free" (unverifiable), "100% safe" (unverifiable)
+### 1. HONEST — say what's true, leave greenwashing to others
 
-## The Tagline
-"Only food we'd feed our own."
+- DO: "Our beef comes from Rachel's Farm on the northern NSW coast, where cattle are pasture-raised on regenerative land."
+- DON'T: "Our sustainably sourced, eco-friendly premium beef is better for the planet."
+
+### 2. WARM — talking to families, not consumers
+
+- DO: "This week's stone fruit is unreal — juicy, fragrant, straight from the orchard. Grab some before it's gone."
+- DON'T: "Explore our curated seasonal stone fruit offering, now available for a limited time."
+
+### 3. CONFIDENT — substance, not ego
+
+- DO: "You won't find this at the supermarket. That's the point." (NOTE: never name competitors in customer-facing copy)
+- DON'T: "We're disrupting the $130B Australian grocery market with our innovative platform."
+
+### 4. GROUNDED — real farms, real food, real people
+
+- DO: "Meet the Hendersons. They've been growing heirloom tomatoes in the Hawkesbury for 30 years."
+- DON'T: "Our supply chain partners are committed to best-practice agricultural standards."
+
+### 5. NEVER PREACHY — invite, don't guilt
+
+- DO: "Want to know what regenerative farming actually means? We'll show you — no jargon, no lecture."
+- DON'T: "Every purchase you make from a supermarket is contributing to soil degradation and environmental harm."
+
+---
+
+## Communication Hierarchy (MUST follow this order)
+
+Copy should lead with items higher in this hierarchy. Lower items support, never lead.
+
+1. **Great products** — lead with the food itself (taste, freshness, quality)
+2. **Human relationships** — the farmer who grew it, the family who'll eat it
+3. **Reconnection to food** — helping people understand what they eat
+4. **Learning and discovery** — education as value, not lecture
+5. **Model and technology** — ONLY reference when explaining how the above is made possible
+
+---
+
+## Tone by Channel
+
+### Social (Organic)
+Casual, playful, conversational. First-person voice. Emoji OK sparingly. Talk like a friend sharing something good, not a brand broadcasting.
+
+### Paid Ads (Meta)
+Punchy, benefit-led, clear CTA. Short sentences. Lead with what the customer gets. One angle per ad, no hedging. Thumb-stopping hooks.
+
+### Email
+Warm, personal, informative. Like a letter from someone who knows your name. Subject lines: specific, curiosity-driven, 6–10 words. Single CTA per email.
+
+### Website
+Clear, factual, rich. Lead with product, then farm, then practice. Progressive disclosure — hero earns the scroll, each section earns the next.
+
+---
+
+## Audience Segments
+
+### 1. The Conscious Family
+Parents 30–45, Northern Beaches. Lead with quality and provenance. Tone: warm, reassuring, practical.
+
+### 2. The Foodie / Quality Seeker
+Age 25–55, passionate cooks. Lead with product stories and farm detail. Tone: knowledgeable, enthusiastic.
+
+### 3. The Pragmatic Switcher
+Age 30–50, mainstream shoppers. Lead with value and convenience. Tone: direct, benefit-first.
+
+### 4. The Rachel Ward Audience
+Age 40+, trust her voice. Lead with Rachel's connection to farms. Tone: personal, intimate.
+
+---
+
+## Rachel Ward
+
+Co-founder. Actress, filmmaker, regenerative agriculture advocate. Primary brand voice. Her involvement is substantive, not cosmetic — she walks the paddocks, knows the farmers, and shaped the business model. Copy referencing Rachel should reflect genuine connection, not celebrity endorsement.
+
+---
+
+## Competitor Framing
+
+- NEVER name Woolworths, Coles, Aldi, or Harris Farm in customer-facing copy.
+- USE "supermarkets" or "the big chains" when contrast is needed.
+- Frame FarmThru as a positive alternative, not a negative reaction. Lead with what we are, not what they aren't.
+
+---
+
+## Preferred Terms
+
+"regenerative", "hub" / "collection hub", "farm-direct", "grocery store", "farmer" / "grower" / "producer", "everyday families", "honest pricing", "paddock to pick-up", "from your nearest hub"
+
+## Terms to AVOID
+
+- "sustainable" — too vague, overused
+- "organic" — unless the product is certified organic
+- "disrupt" / "disruptive" — startup jargon
+- "farm to table" / "paddock to plate" — cliched
+- "artisan" / "artisanal" — overused, loses meaning
+- "eco-friendly" / "green" — greenwashing territory
+- "consumers" / "users" / "shoppers" — we talk to families and people
+- "warehouse" / "depot" / "fulfilment centre" — it's a hub
+- "delivered to your door" — factually wrong (hub-and-collect model)
+- "cheap" — we're not cheap, we're fairly priced
+- "chemical-free" / "toxin-free" — unverifiable
+- "100% sustainable" / "zero carbon" — unverifiable without certification
+
+---
+
+## Headline Patterns
+
+Use these structures as starting points for ad copy and page headers:
+
+- **Product + Origin:** "Heirloom tomatoes from the Hawkesbury. Picked yesterday."
+- **Problem to Solution:** "Tired of mystery meat? Meet the farmer who raised yours."
+- **Challenge Assumption:** "Regenerative food for $12 a kilo. Surprised?"
+- **Invitation:** "Come see where your food actually comes from."
+- **Seasonal / Urgency:** "Stone fruit season is here. The orchard won't wait."
+- **Rachel's Voice:** "I've walked this paddock. I know this farmer. This is real food."
+
+## CTA Patterns
+
+Use these call-to-action structures. Keep CTAs action-oriented and hub-aware:
+
+- Shop your local hub
+- See what's fresh this week
+- Meet the farmer
+- Order from [Hub Name]
+- Find your nearest hub
+- Start your first order
+
+---
 
 ## Key Principle
-The food is the hero, not the returns. People invest in FarmThru because they believe in the mission and love the product — not because they expect to get rich. Every piece of content should make them hungry first and curious about investing second.
+
+The food is the hero. Every piece of copy should make the reader hungry first, curious about the farm second, and interested in FarmThru's model last. We inform and invite — we never guilt, greenwash, or oversell. Australian English throughout.

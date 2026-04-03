@@ -1,20 +1,36 @@
 {
   "page_id": "LP-A",
   "content_type": "landing-page",
-  "angle": "Cause & Purpose",
-  "hook_type": "bold_claim",
+  "angle": "cause-purpose",
+  "hook_type": "aspiration",
   "funnel": "TOF",
   "headline": "Own a piece of the future of food.",
-  "subhead": "FarmThru is opening investment to everyday Australians. Join the waitlist to invest when the campaign goes live on Birchal.",
-  "hero_copy": "Pre-Launch. Join the waitlist to be first in line when FarmThru opens equity investment on Birchal.",
+  "subhead": "FarmThru is building a new kind of grocery store. Farm-direct, regenerative, and priced for everyday families. Now you can help it grow.",
+  "hero_copy": "The way we buy food is broken. Farms are squeezed. Families get food that's travelled thousands of kilometres in cold storage. And the big chains pocket the difference.\n\nFarmThru changes that. We connect regenerative farms across NSW directly to families through local collection hubs. No middlemen. No warehouses. Just real food from real farms, collected fresh from your nearest hub.",
   "sections": [
-    {"heading": "Better food through a better supply chain.", "body": "FarmThru connects Australian families directly with regenerative farms. No middlemen. No guesswork. Straight from the farm, to the hub, to your kitchen. Now you can own a piece of it. FarmThru is raising equity through Birchal to scale operations, expand delivery areas, and bring honest food to more Australians."},
-    {"heading": "Regenerative farming", "body": "Every product comes from farms that raise animals on pasture, nourish their soils, and put quality before shortcuts."},
-    {"heading": "Direct supply chain", "body": "Farm to hub to kitchen. No middlemen means better prices for customers and fairer prices for farmers."},
-    {"heading": "Local partner farms", "body": "A growing network of 50+ Australian farms whose products are carefully vetted for safety and transparency."},
-    {"heading": "Get first access to invest.", "body": "Place a refundable $5 deposit to secure VIP status. VIP investors get priority access, exclusive founder updates, and early notice before the campaign opens to the public. First access when the campaign opens. Priority investor updates from the founders. Exclusive Q&A session with the FarmThru team. Fully refundable at any time."},
-    {"heading": "Don't miss out.", "body": "Join the waitlist now. It takes 10 seconds and you'll be first to know when FarmThru opens investment to the public. This is not financial advice. Consider seeking independent financial advice before making any investment decision."}
+    {
+      "heading": "How it works",
+      "body": "FarmThru operates a hub-and-collect model. You order online from 50+ regenerative farms across NSW. Your food goes from paddock to pick-up in 2-3 days. You collect from your nearest hub. That's it.\n\nNo subscription. No lock-in. Just great food, honestly priced, from farms you can actually visit."
+    },
+    {
+      "heading": "Why it matters",
+      "body": "Every order through FarmThru means farmers earn a fairer price for what they grow. It means food that's days old, not weeks old. It means 100% grass-fed beef, pasture-raised chicken, heritage pork, and wild-caught salmon from named farms you can trace.\n\nThis isn't a meal kit or a subscription box. It's a grocery store built around the food, the farmers, and the families who eat it."
+    },
+    {
+      "heading": "The opportunity",
+      "body": "FarmThru is opening an equity crowdfunding campaign on Birchal in July 2026. For the first time, you can own a piece of the business you buy your groceries from.\n\nMinimum investment: $50. Maximum cap: $10,000 per investor. Join the waitlist now for first access, priority updates, and exclusive Q&A with the founders.",
+      "proof": [
+        "50+ partner farms across NSW",
+        "2,000+ customers already ordering",
+        "Brookvale hub operating Monday-Friday",
+        "$130B Australian grocery market"
+      ]
+    },
+    {
+      "heading": "Compliance",
+      "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
+    }
   ],
-  "cta": "Join the Waitlist",
-  "creative_brief": "Clean, bright. Hero image of farm landscape. Trust stats: 50+ Partner Farms, Sydney+ Delivery, 100% Regenerative."
+  "cta": "Join the waitlist",
+  "creative_brief": "Hero image: aerial shot of green regenerative farmland meeting the coast. Warm morning light. Below-fold: farm partner portraits, product close-ups (beef, eggs, salmon), hub pick-up lifestyle shot. Clean, minimal design. Earthy palette. Single email capture form above the fold."
 }

@@ -1,19 +1,40 @@
 {
   "page_id": "LP-F",
   "content_type": "landing-page",
-  "angle": "Empathy & Founder",
-  "hook_type": "confession",
+  "angle": "empathy-founder",
+  "hook_type": "story",
   "funnel": "TOF",
   "headline": "I started FarmThru because my kids deserved better than supermarket meat.",
-  "subhead": "We deliver regenerative beef, chicken, and salmon straight from the farm to your kitchen. Days old, not weeks.",
-  "hero_copy": "A letter from the founder of FarmThru.",
+  "subhead": "A letter from our founder on why we built a different kind of grocery store.",
+  "hero_copy": "When my eldest asked me where our chicken came from, I didn't have a good answer. I knew it came from a plastic tray at the supermarket. I didn't know the farm. I didn't know how it was raised. I didn't know how far it had travelled.\n\nThat question stuck with me. And eventually, it became FarmThru.",
   "sections": [
-    {"heading": "Why I built FarmThru.", "body": "I used to buy everything from Woolworths. Then I started asking: why does this chicken taste like nothing? Why is this beef grey after two days? What I found was a broken system. Farmers get squeezed on price. Produce sits in cold storage for weeks. By the time it hits your fridge, the flavour and nutrition are gone."},
-    {"heading": "We believe", "body": "\"We believe everyone deserves access to food they can trust. Not just people who can afford farmers' markets on Saturday mornings.\""},
-    {"heading": "Farm to kitchen in three steps.", "body": "Browse 50+ farm partners. We pack fresh from Brookvale. Delivered to your door. Delivering across Sydney, Central Coast, and Wollongong. 100% Regenerative. Pasture-Raised. No Middlemen."},
-    {"heading": "I put everything into building this. All I'm asking for is your email.", "body": "Join the waitlist. You'll be first to know when FarmThru opens investment to the public. No commitment. Free to join. Not financial advice. A disclosure document will be available on Birchal."},
-    {"heading": "Get first access to invest.", "body": "Place a refundable $5 deposit to secure VIP status. Fully refundable at any time."}
+    {
+      "heading": "The problem I couldn't unsee",
+      "body": "The average piece of supermarket beef travels 2,400km before it reaches the shelf. It sits in cold storage for 14-21 days. The farmer who raised it earns a fraction of what you pay.\n\nI kept thinking: there are incredible regenerative farms right here in NSW. Farms where animals are raised on pasture, without hormones or feedlots. Farms run by people who care deeply about the land. Why can't families like mine buy directly from them?"
+    },
+    {
+      "heading": "So we built a hub",
+      "body": "FarmThru connects 50+ regenerative farms directly to families through local collection hubs. You order online. Your food goes from paddock to pick-up in 2-3 days. You collect from your nearest hub.\n\nNo subscription. No lock-in. No warehouses or wholesalers in between. Just an honest supply chain where the farmer earns a fair price and your family gets food that's actually fresh."
+    },
+    {
+      "heading": "2,000 families and counting",
+      "body": "What started as an idea has become a grocery store that 2,000+ families trust for their weekly shop. Rachel Ward, our co-founder, brings her own farm's regenerative beef through the platform. Bundarra Berkshires supplies heritage pork. Collins Wild Caught brings in wild-caught salmon from the South Coast.\n\nEvery product traces back to a named farm. That's the promise.",
+      "proof": [
+        "2,000+ families ordering",
+        "50+ partner farms across NSW",
+        "Rachel Ward, co-founder",
+        "Brookvale hub, Monday-Friday"
+      ]
+    },
+    {
+      "heading": "Join us",
+      "body": "We're opening an equity crowdfunding campaign on Birchal in July 2026. For the first time, you can own a piece of FarmThru. Minimum investment: $50. Cap: $10,000.\n\nJoin the waitlist to be first in when the campaign opens."
+    },
+    {
+      "heading": "Compliance",
+      "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
+    }
   ],
-  "cta": "Join the Waitlist",
-  "creative_brief": "Dark hero background, founder voice. Certification badges (Regenerative, Pasture-Raised, No Middlemen)."
+  "cta": "Join the waitlist",
+  "creative_brief": "Hero image: founder in a kitchen with family, natural and candid. Below-fold: the supply chain problem visualised simply, farm partner photos, hub pick-up lifestyle shot. Warm, personal photography. First-person tone throughout. Should feel like reading a letter, not a sales page."
 }

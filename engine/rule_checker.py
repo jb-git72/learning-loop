@@ -79,11 +79,10 @@ def _normalize_rules(rules: list[dict]) -> list[dict]:
         if n["check_type"] in ("custom", "custom_check"):
             n["check_type"] = "custom"
             n["function"] = rule.get("function", rule.get("rule_id", "").replace("-", "_"))
-            # For custom checks like low_risk_trio, carry extra config
-            if "required_phrases" in rule:
-                n["required_phrases"] = rule["required_phrases"]
-                n["match_mode"] = rule.get("match_mode", "all_required")
-                n["case_sensitive"] = rule.get("case_sensitive", False)
+            # Carry through all custom config keys
+            for key in rule:
+                if key not in n:
+                    n[key] = rule[key]
 
         # Length check
         if n["check_type"] == "length_max":
@@ -235,7 +234,9 @@ def _run_custom_check(rule: dict, ad: dict) -> dict:
     func_name = rule.get("function", rule["rule_id"])
 
     # Route to known custom functions
-    if func_name in ("check_lead_with_value_not_price", "lead_with_value_not_price"):
+    if func_name in ("check_no_title_case", "no_title_case_headlines"):
+        return _check_no_title_case(ad)
+    elif func_name in ("check_lead_with_value_not_price", "lead_with_value_not_price"):
         return _check_lead_with_value_not_price(ad)
     elif func_name in ("check_low_risk_trio", "low_risk_trio_present", "BFP-005"):
         return _check_low_risk_trio(rule, ad)
@@ -246,6 +247,51 @@ def _run_custom_check(rule: dict, ad: dict) -> dict:
     else:
         # Unknown custom function — pass by default
         return {"passed": True}
+
+
+def _check_no_title_case(ad: dict) -> dict:
+    """Check that headline uses sentence case, not Title Case."""
+    headline = ad.get("headline", "").strip()
+    if not headline or len(headline.split()) < 3:
+        return {"passed": True}
+
+    # Skip if headline starts with $ or number (e.g., "$130B market")
+    if headline[0] in "$0123456789":
+        return {"passed": True}
+
+    words = headline.split()
+    # Count words that start with uppercase (excluding first word, proper nouns, after punctuation)
+    proper_nouns = {
+        "FarmThru", "Birchal", "Rachel", "Woolworths", "Coles", "VIP",
+        "NSW", "Sydney", "Brookvale", "Kempsey", "Australia", "Australian",
+        "Best", "Pet", "VetChat", "I", "I'm",
+    }
+    upper_count = 0
+    after_punct = False
+    for i, w in enumerate(words):
+        if i == 0 or after_punct:
+            after_punct = False
+            if w.endswith((".", "!", "?")):
+                after_punct = True
+            continue
+        if w in proper_nouns or w.startswith("$") or w[0].isdigit():
+            if w.endswith((".", "!", "?")):
+                after_punct = True
+            continue
+        if len(w) > 1 and w[0].isupper() and w[1:].islower():
+            upper_count += 1
+        if w.endswith((".", "!", "?")):
+            after_punct = True
+
+    # If more than 40% of eligible words are Title Case, flag it
+    eligible = len(words) - 1  # exclude first word
+    if eligible > 0 and upper_count / eligible > 0.4:
+        return {
+            "passed": False,
+            "field": "headline",
+            "detail": f"Title Case detected in headline: '{headline[:50]}' ({upper_count} capitalised words)",
+        }
+    return {"passed": True}
 
 
 def _check_lead_with_value_not_price(ad: dict) -> dict:

@@ -1,18 +1,36 @@
 {
   "page_id": "LP-N",
   "content_type": "landing-page",
-  "angle": "Investment Thesis",
-  "hook_type": "statistic",
+  "angle": "investment-thesis",
+  "hook_type": "proof",
   "funnel": "TOF",
   "headline": "50+ farms. 2,000+ customers. Now opening to investors.",
-  "subhead": "FarmThru delivers regenerative beef, chicken, and salmon from farm to kitchen in days. The equity crowdfunding campaign opens on Birchal in July.",
-  "hero_copy": "Traction metrics. Market opportunity. Investment terms.",
+  "subhead": "FarmThru is raising through equity crowdfunding on Birchal. Here's what the numbers look like.",
+  "hero_copy": "FarmThru is a farm-direct grocery store with a hub-and-collect model. We connect regenerative farms across NSW directly to families, cutting out unnecessary middlemen. The food is fresher. The farmers earn more. And 2,000+ families already order every week.\n\nIn July 2026, we're opening an equity crowdfunding campaign on Birchal. For the first time, everyday investors can own a piece of FarmThru.",
   "sections": [
-    {"heading": "What we've built so far.", "body": "50+ Regenerative partner farms across NSW. 2,000+ Active customers receiving orders. 2-3 days Farm to kitchen delivery time."},
-    {"heading": "Australia's grocery market is worth $130 billion.", "body": "Regenerative agriculture is growing. Consumer demand for traceable, ethical food is growing faster. FarmThru connects regenerative farms directly to households, cutting out the middlemen who add cost and delay. The Birchal campaign lets everyday Australians invest from $50, capped at $10K per person."},
-    {"heading": "From the farm to your kitchen.", "body": "Browse: Pick from 50+ regenerative farms across NSW. We pack: Your order is packed fresh at the Brookvale hub. Delivered: On your doorstep within days. Sydney, Central Coast, Wollongong."},
-    {"heading": "Get first access to invest.", "body": "Place a refundable $5 deposit to secure VIP status. VIP investors get priority access and early notice before the campaign opens to the public. Fully refundable at any time. Not financial advice. Disclosure document on Birchal."}
+    {
+      "heading": "The traction",
+      "body": "50+ partner farms across NSW, from Rachel's Farm in Kempsey to Bundarra Berkshires and Collins Wild Caught on the South Coast. 2,000+ active customers. Brookvale hub operating Monday-Friday, with growth plans for additional hubs.\n\nThis isn't a concept. It's a working grocery store with real customers, real farms, and real revenue.",
+      "proof": [
+        "50+ partner farms",
+        "2,000+ customers",
+        "Brookvale hub, Monday-Friday",
+        "Co-founded by Rachel Ward"
+      ]
+    },
+    {
+      "heading": "The market",
+      "body": "The Australian grocery market is worth $130B. Farm-direct food is the fastest-growing segment, up 24% year-on-year. Families increasingly want to know where their food comes from, how it was raised, and who grew it.\n\nFarmThru sits at the intersection of these trends: regenerative agriculture, direct supply chains, and transparency. The hub-and-collect model keeps costs low while delivering food that's 2-3 days old, not 14-21 days in cold storage."
+    },
+    {
+      "heading": "The terms",
+      "body": "Equity crowdfunding on Birchal. Minimum investment: $50. Maximum cap: $10,000 per investor.\n\nInvesting in early-stage businesses carries risk. You could lose some or all of your investment. All details, financials, and risks will be disclosed in the offer document on Birchal. Consider seeking independent financial advice before making any investment decision."
+    },
+    {
+      "heading": "Compliance",
+      "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
+    }
   ],
-  "cta": "Join the Waitlist",
-  "creative_brief": "Data-led design. Fact cards with large numbers. Trust stats: $50 Minimum, $10K Cap, Birchal Licensed."
+  "cta": "Join the waitlist",
+  "creative_brief": "Hero: clean data-led design with key metrics displayed prominently (50+ farms, 2,000+ customers, $130B market). Below-fold: market opportunity chart, farm partner map of NSW, team photos, Birchal badge. Professional but warm. Traction speaks louder than promises."
 }
