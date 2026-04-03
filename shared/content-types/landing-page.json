@@ -1,0 +1,26 @@
+{
+  "version": "1.0",
+  "content_type": "landing-page",
+  "description": "Landing page copy. Used for campaign pages, pre-launch waitlists, equity crowdfunding, product launches. Evaluates the text content layer, not design/layout.",
+  "required_fields": ["page_id", "angle", "funnel", "headline", "subhead", "hero_copy", "sections", "cta"],
+  "optional_fields": ["hook_type", "tactic", "meta_title", "meta_description", "creative_brief", "motivation", "status", "feedback", "scores", "version_of", "round"],
+  "field_constraints": {
+    "headline": {"max_length": 80, "description": "H1 hero headline. The single most important line on the page."},
+    "subhead": {"max_length": 200, "description": "Supporting text below the headline. Clarifies the offer."},
+    "hero_copy": {"max_length": 500, "description": "Above-the-fold body copy. Sets context before the fold."},
+    "sections": {
+      "type": "array",
+      "description": "Page sections below the fold. Each section has a heading, body, and optional proof elements.",
+      "item_schema": {
+        "heading": {"type": "string", "max_length": 80},
+        "body": {"type": "string", "max_length": 1000},
+        "proof": {"type": "array", "description": "Stats, testimonials, or evidence items in this section."}
+      }
+    },
+    "cta": {"description": "Primary page CTA. Text + action (e.g., 'Join the Waitlist → email capture form')."},
+    "meta_title": {"max_length": 60, "description": "SEO page title."},
+    "meta_description": {"max_length": 160, "description": "SEO meta description."}
+  },
+  "platform": "web",
+  "rubric": "landing-page"
+}

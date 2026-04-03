@@ -239,6 +239,8 @@ def _run_custom_check(rule: dict, ad: dict) -> dict:
         return _check_lead_with_value_not_price(ad)
     elif func_name in ("check_low_risk_trio", "low_risk_trio_present", "BFP-005"):
         return _check_low_risk_trio(rule, ad)
+    elif func_name in ("check_deposit_refundable", "_check_deposit_refundable", "FMTH-010"):
+        return _check_deposit_refundable(ad)
     else:
         # Unknown custom function — pass by default
         return {"passed": True}
@@ -288,4 +290,29 @@ def _check_low_risk_trio(rule: dict, ad: dict) -> dict:
             "field": "primary_text",
             "detail": f"Missing low-risk phrases: {', '.join(missing)}",
         }
+    return {"passed": True}
+
+
+def _check_deposit_refundable(ad: dict) -> dict:
+    """Check that when $5 deposit is mentioned, 'refundable' is also present."""
+    # Collect all text fields
+    fields = [
+        "primary_text", "headline", "description",
+        "subject", "preheader", "body",
+        "hero_copy", "subhead",
+    ]
+    for field in fields:
+        text = ad.get(field, "")
+        if not text:
+            continue
+        text_lower = text.lower()
+        # Check if deposit is mentioned
+        if re.search(r'\$5\s*(?:deposit|vip|refundable)', text_lower) or "deposit" in text_lower:
+            # Must also mention refundable
+            if "refundable" not in text_lower:
+                return {
+                    "passed": False,
+                    "field": field,
+                    "detail": f"Deposit mentioned in {field} without 'refundable' disclaimer",
+                }
     return {"passed": True}

@@ -1,0 +1,166 @@
+{
+  "client_id": "farm-thru",
+  "client_name": "FarmThru",
+  "parent_company": "FarmThru Pty Ltd",
+  "industry": "food-delivery",
+  "product": "Regenerative farm-to-door food delivery + equity crowdfunding campaign",
+  "currency": "AUD",
+  "market": "AU",
+  "content_types": ["meta-ad", "landing-page", "email"],
+  "files": {
+    "rules": "rules.json",
+    "facts": "facts.json",
+    "tone": "tone.md",
+    "learnings": "learnings.md"
+  },
+  "scoring_context": {
+    "product": "FarmThru — online regenerative farm-to-door food delivery (50+ farms, Sydney/Central Coast/Wollongong). Currently running pre-launch equity crowdfunding campaign on Birchal (July 2026 launch). VIP waitlist with $5 refundable deposit.",
+    "audience": "Sydney households who care about food quality, provenance, and ethics. Mix of: (1) Food-conscious parents who want better for their families, (2) Values-driven consumers who support regenerative agriculture, (3) Sophisticated retail investors evaluating equity crowdfunding opportunities. Skews female, 30-55, higher income, inner-west/northern beaches/eastern suburbs.",
+    "key_motivations": [
+      "Trust & transparency — knowing exactly where food comes from and who grew it",
+      "Quality over convenience — days old, not weeks old; taste the difference",
+      "Values alignment — supporting regenerative agriculture and fair farmer compensation",
+      "Community — being part of a local food movement, not just another customer",
+      "Investment opportunity — owning a piece of a growing business they already believe in"
+    ],
+    "brand_values": "Honest, founder-voice, regenerative, anti-middleman. Never greenwash. Acknowledge what we don't know. Radical transparency about risk. The food is the hero, not the investment returns.",
+    "campaign_context": "Pre-launch equity crowdfunding via Birchal. This is NOT a product purchase funnel — it's an investment campaign. All content must comply with ASIC RG 234 (balanced disclosure, no return projections, risk acknowledgment). The conversion funnel is: awareness → waitlist signup → VIP deposit ($5 refundable) → actual investment ($50-$10K) when campaign goes live.",
+    "success_looks_like": "Reader understands what FarmThru is, feels aligned with the mission, trusts the founders, and joins the waitlist or makes a VIP deposit. For investment content: reader feels informed (not sold to), understands both opportunity and risk, and is motivated to invest when the campaign opens."
+  },
+  "rubric": {
+    "meta-ad": {
+      "weights": {
+        "angle_clarity": 1.25,
+        "motivation_match": 1.25,
+        "tactic_execution": 1.0,
+        "specificity": 1.5,
+        "objection_preemption": 1.25,
+        "receptionist_test": 1.5,
+        "scroll_stop_hook": 1.5,
+        "cta_clarity": 1.0,
+        "platform_fit": 1.0,
+        "differentiation": 1.0
+      },
+      "max_score": 63.75,
+      "thresholds": {
+        "production_ready": 51,
+        "strong_draft": 44,
+        "needs_work": 32,
+        "rewrite": 0
+      }
+    },
+    "landing-page": {
+      "weights": {
+        "angle_clarity": 1.25,
+        "motivation_match": 1.0,
+        "tactic_execution": 1.0,
+        "hero_clarity": 2.0,
+        "proof_density": 1.75,
+        "cta_prominence": 1.25,
+        "specificity": 1.5,
+        "scroll_depth_pull": 1.0,
+        "objection_preemption": 1.25,
+        "differentiation": 1.0
+      },
+      "max_score": 65.0,
+      "thresholds": {
+        "production_ready": 52,
+        "strong_draft": 45,
+        "needs_work": 32,
+        "rewrite": 0
+      }
+    },
+    "email": {
+      "weights": {
+        "angle_clarity": 1.0,
+        "motivation_match": 1.0,
+        "tactic_execution": 1.0,
+        "subject_line_power": 2.0,
+        "body_flow": 1.25,
+        "cta_clarity": 1.25,
+        "personalization": 1.25,
+        "specificity": 1.5,
+        "scroll_stop_hook": 1.0,
+        "differentiation": 1.0
+      },
+      "max_score": 62.5,
+      "thresholds": {
+        "production_ready": 50,
+        "strong_draft": 43,
+        "needs_work": 31,
+        "rewrite": 0
+      }
+    }
+  },
+  "composite_weights": {
+    "rubric": 0.5,
+    "rule_compliance": 0.3,
+    "fact_accuracy": 0.2
+  },
+  "platform_constraints": {
+    "meta-ad": {
+      "primary_text_max_chars": 500,
+      "headline_max_chars": 40,
+      "description_max_chars": 125,
+      "platform": "meta"
+    },
+    "landing-page": {
+      "headline_max_chars": 80,
+      "subhead_max_chars": 200,
+      "hero_copy_max_chars": 500,
+      "section_body_max_chars": 1000,
+      "platform": "web"
+    },
+    "email": {
+      "subject_max_chars": 60,
+      "preheader_max_chars": 100,
+      "body_max_chars": 2000,
+      "platform": "email"
+    }
+  },
+  "angles_in_use": [
+    "cause-purpose",
+    "transformation-storytelling",
+    "social-belonging",
+    "quality-craft",
+    "transparency-safety",
+    "empathy-founder",
+    "urgency-scarcity",
+    "investment-thesis",
+    "comparison-switching"
+  ],
+  "approved_ctas": {
+    "meta-ad": [
+      "Join the Waitlist",
+      "Learn More",
+      "Sign Up",
+      "Reserve Your Spot"
+    ],
+    "landing-page": [
+      "Join the Waitlist",
+      "Save My Spot",
+      "Reserve Your Spot",
+      "Secure VIP Access"
+    ],
+    "email": [
+      "Join the Waitlist",
+      "Reserve Your Spot",
+      "Secure VIP Access",
+      "See How It Works"
+    ]
+  },
+  "critical_rules": [
+    "no_condescension",
+    "no_commands",
+    "FMTH-001",
+    "FMTH-002",
+    "FMTH-003"
+  ],
+  "receptionist_test_questions": [
+    "What is FarmThru?",
+    "Where does the food come from?",
+    "How is this different from the supermarket?",
+    "How do I invest / join the waitlist?",
+    "What's the minimum investment?"
+  ]
+}

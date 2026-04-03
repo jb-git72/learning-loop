@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "content_type": "meta-ad",
+  "description": "Meta (Facebook/Instagram) ad copy. The original content type for this engine. Fields match the canonical ad-schema.json format.",
+  "required_fields": ["ad_id", "angle", "hook_type", "funnel", "primary_text", "headline", "cta"],
+  "optional_fields": ["tactic", "format", "description", "creative_brief", "motivation", "status", "feedback", "scores", "version_of", "round"],
+  "field_constraints": {
+    "primary_text": {"max_length": 500, "description": "Main body copy above the creative in Meta feed placements."},
+    "headline": {"max_length": 40, "description": "Bold headline below the creative image/video."},
+    "description": {"max_length": 125, "description": "Secondary text below the headline. Optional."},
+    "cta": {"description": "Platform CTA button text (e.g., Learn More, Sign Up, Shop Now)."}
+  },
+  "platform": "meta",
+  "rubric": "meta-ad"
+}

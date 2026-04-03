@@ -1,0 +1,7 @@
+{
+  "version": "1.0",
+  "content_type": "meta-ad",
+  "description": "Meta ad rubric. Identical to rubric-schema.json — the original 10-dimension rubric. Kept as a named file so the engine can load rubrics by content_type.",
+  "inherits": "rubric-schema.json",
+  "note": "This file exists for content-type routing. The canonical rubric dimensions live in shared/rubric-schema.json. Engine loads this file, sees 'inherits', and falls back to the base rubric."
+}

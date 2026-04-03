@@ -1,0 +1,629 @@
+{
+  "client_id": "farm-thru",
+  "last_verified": "2026-04-03",
+  "facts": [
+    {
+      "fact_id": "BM-001",
+      "category": "business_model",
+      "claim": "Farm-to-door regenerative food delivery (online grocery)",
+      "claim_patterns": [
+        "farm.to.door",
+        "farm to door",
+        "regenerative food delivery",
+        "online grocery",
+        "regenerative grocery",
+        "farm.to.table",
+        "farm to table",
+        "paddock to plate",
+        "paddock.to.door"
+      ],
+      "source": "farmthru.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03"
+    },
+    {
+      "fact_id": "BM-002",
+      "category": "business_model",
+      "claim": "Supply chain: farm to hub to kitchen \u2014 no warehouses, no wholesalers",
+      "claim_patterns": [
+        "farm.*hub.*kitchen",
+        "no warehouse",
+        "no wholesaler",
+        "direct from farm",
+        "farm to hub",
+        "hub to kitchen",
+        "cut.?out the middle",
+        "no middl",
+        "direct supply"
+      ],
+      "source": "farmthru.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03",
+      "contradicts_if": "(warehouse|wholesaler|distribution centre|distribution center|cold storage facility)"
+    },
+    {
+      "fact_id": "BM-003",
+      "category": "business_model",
+      "claim": "50+ partner farms",
+      "claim_patterns": [
+        "more than 50 farms",
+        "50 partner farms",
+        "50\\+ (partner )?farms",
+        "fifty.* farms",
+        "50 farms",
+        "over 50 farms",
+        "50+ farms",
+        "fifty farms",
+        "50\\+ farms",
+        "50+ partner farms"
+      ],
+      "source": "farmthru.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03",
+      "value_range": {
+        "min": 50,
+        "max": null,
+        "unit": "farms"
+      },
+      "contradicts_if": "(100|200|300)\\+? (partner )?farms"
+    },
+    {
+      "fact_id": "BM-004",
+      "category": "business_model",
+      "claim": "Delivery areas: Sydney, Central Coast, Wollongong",
+      "claim_patterns": [
+        "Sydney",
+        "Central Coast",
+        "Wollongong",
+        "delivery area",
+        "we deliver to",
+        "deliver.*Sydney",
+        "deliver.*Central Coast",
+        "deliver.*Wollongong"
+      ],
+      "source": "farmthru.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03",
+      "contradicts_if": "(Melbourne|Brisbane|Perth|Adelaide|Canberra|Gold Coast|nationwide|Australia.wide)"
+    },
+    {
+      "fact_id": "BM-005",
+      "category": "business_model",
+      "claim": "Operating hub: Brookvale, NSW (single hub)",
+      "claim_patterns": [
+        "Brookvale",
+        "single hub",
+        "one hub",
+        "our hub",
+        "Brookvale.*NSW"
+      ],
+      "source": "farmthru.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03",
+      "contradicts_if": "(multiple hubs|two hubs|three hubs|second hub|new hub)"
+    },
+    {
+      "fact_id": "BM-006",
+      "category": "business_model",
+      "claim": "2,000+ customers",
+      "claim_patterns": [
+        "2,?000\\+? customers",
+        "2k\\+ customers",
+        "over 2,?000 customers",
+        "thousands of customers",
+        "2,000 customers",
+        "more than 2,?000 customers",
+        "2000+ customers",
+        "two thousand customers",
+        "over 2,000 customers",
+        "2,000+ customers"
+      ],
+      "source": "farmthru.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03",
+      "value_range": {
+        "min": 2000,
+        "max": null,
+        "unit": "customers"
+      },
+      "contradicts_if": "(10,?000|20,?000|50,?000)\\+? customers"
+    },
+    {
+      "fact_id": "PQ-001",
+      "category": "product_quality",
+      "claim": "100% sourced from regenerative farms",
+      "claim_patterns": [
+        "entirely regenerative",
+        "100% regenerative",
+        "all regenerative",
+        "every product.*regenerative",
+        "100% sourced from regenerative",
+        "100% (sourced )?(from )?regenerative",
+        "only.*regenerative farms"
+      ],
+      "source": "farmthru.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03",
+      "contradicts_if": "(some|most|majority).*regenerative"
+    },
+    {
+      "fact_id": "PQ-002",
+      "category": "product_quality",
+      "claim": "Animals raised on pasture",
+      "claim_patterns": [
+        "raised on pasture",
+        "pasture.raised",
+        "pasture raised",
+        "free.range",
+        "free range",
+        "roam free",
+        "open paddock",
+        "out on pasture"
+      ],
+      "source": "farmthru.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03",
+      "contradicts_if": "(cage|barn|indoor|confined|feedlot|grain.fed|lot.fed)"
+    },
+    {
+      "fact_id": "PQ-003",
+      "category": "product_quality",
+      "claim": "No hormones, no antibiotics, no feedlot finishing",
+      "claim_patterns": [
+        "no hormone",
+        "hormone.free",
+        "no antibiotic",
+        "antibiotic.free",
+        "no feedlot",
+        "never.*feedlot",
+        "no growth promot",
+        "no HGP"
+      ],
+      "source": "farmthru.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03",
+      "contradicts_if": "(hormone|antibiotic|feedlot).*(sometimes|occasional|minimal|low.dose)"
+    },
+    {
+      "fact_id": "PQ-004",
+      "category": "product_quality",
+      "claim": "Days old, not weeks old \u2014 2-3 days paddock to door",
+      "claim_patterns": [
+        "days old.*not weeks",
+        "2.3 days",
+        "two.to.three days",
+        "paddock to door",
+        "paddock.to.door",
+        "days not weeks",
+        "fresher than",
+        "within days"
+      ],
+      "source": "farmthru.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03",
+      "value_range": {
+        "min": 2,
+        "max": 3,
+        "unit": "days"
+      },
+      "contradicts_if": "(week|7 day|10 day|14 day).*to (your )?door"
+    },
+    {
+      "fact_id": "PQ-005",
+      "category": "product_quality",
+      "claim": "Supermarket beef: 14-21 days cold storage",
+      "claim_patterns": [
+        "14.21 days",
+        "14 to 21 days",
+        "two to three weeks",
+        "weeks in cold storage",
+        "weeks old",
+        "supermarket.*cold storage",
+        "supermarket.*weeks"
+      ],
+      "source": "farmthru.com.au / industry data",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03",
+      "value_range": {
+        "min": 14,
+        "max": 21,
+        "unit": "days"
+      },
+      "contradicts_if": "Farm.?Thru.*(14|21|weeks).*cold storage"
+    },
+    {
+      "fact_id": "PQ-006",
+      "category": "product_quality",
+      "claim": "Supermarket beef: 2,400km average journey",
+      "claim_patterns": [
+        "2,?400 kilomet",
+        "2400km",
+        "2,400 km",
+        "2,400km",
+        "2400\\s?km",
+        "thousands of kilomet",
+        "average journey",
+        "2,?400\\s?km"
+      ],
+      "source": "farmthru.com.au / industry data",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03"
+    },
+    {
+      "fact_id": "PQ-007",
+      "category": "product_quality",
+      "claim": "Products: regenerative beef, pasture-raised chicken, wild-caught salmon, heritage pork, eggs",
+      "claim_patterns": [
+        "regenerative beef",
+        "pasture.raised chicken",
+        "wild.caught salmon",
+        "heritage pork",
+        "eggs",
+        "beef.*chicken.*salmon",
+        "full range"
+      ],
+      "source": "farmthru.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03"
+    },
+    {
+      "fact_id": "PQ-008",
+      "category": "product_quality",
+      "claim": "100% grass-fed beef",
+      "claim_patterns": [
+        "100% grass.fed",
+        "entirely grass.fed",
+        "only grass.fed",
+        "grass.fed beef",
+        "grass fed beef"
+      ],
+      "source": "farmthru.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03",
+      "contradicts_if": "(grain.fed|grain.finish|supplemented|mixed feed).*beef"
+    },
+    {
+      "fact_id": "FP-001",
+      "category": "farm_partners",
+      "claim": "Rachel's Farm: Kempsey NSW, regenerative beef, converted after 2020 bushfires, Rachel Ward (actress/documentarian)",
+      "claim_patterns": [
+        "bushfire",
+        "Rachel's Farm",
+        "Rachels Farm",
+        "2020 bushfire",
+        "Rachel('s)? Farm",
+        "actress.*farm",
+        "Kempsey",
+        "Rachel Ward",
+        "documentarian"
+      ],
+      "source": "farmthru.com.au / Rachel's Farm",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03"
+    },
+    {
+      "fact_id": "FP-002",
+      "category": "farm_partners",
+      "claim": "Bundarra Berkshires: Bundarra NSW, heritage Berkshire pork, outdoor-raised",
+      "claim_patterns": [
+        "Bundarra Berkshire",
+        "Bundarra.*pork",
+        "Berkshire pork",
+        "heritage.*pork",
+        "outdoor.raised.*pork"
+      ],
+      "source": "farmthru.com.au / Bundarra Berkshires",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03"
+    },
+    {
+      "fact_id": "FP-003",
+      "category": "farm_partners",
+      "claim": "Collins Wild Caught: South Coast NSW, wild-caught Alaskan salmon + seasonal Australian seafood",
+      "claim_patterns": [
+        "Collins Wild Caught",
+        "Collins.*salmon",
+        "Alaskan salmon",
+        "wild.caught.*salmon",
+        "South Coast.*seafood",
+        "seasonal.*seafood"
+      ],
+      "source": "farmthru.com.au / Collins Wild Caught",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03"
+    },
+    {
+      "fact_id": "FP-004",
+      "category": "farm_partners",
+      "claim": "Little Yarran Farm: NSW",
+      "claim_patterns": [
+        "Little Yarran",
+        "Yarran Farm"
+      ],
+      "source": "farmthru.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03"
+    },
+    {
+      "fact_id": "FP-005",
+      "category": "farm_partners",
+      "claim": "Farmer Brown: NSW, eggs",
+      "claim_patterns": [
+        "Farmer Brown",
+        "Farmer Brown.*eggs"
+      ],
+      "source": "farmthru.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03"
+    },
+    {
+      "fact_id": "FP-006",
+      "category": "farm_partners",
+      "claim": "Paris Creek Farms: Meadows SA, carbon-neutral bio-dynamic dairy",
+      "claim_patterns": [
+        "Paris Creek",
+        "carbon.neutral.*dairy",
+        "bio.dynamic dairy",
+        "biodynamic dairy",
+        "Meadows SA",
+        "Paris Creek.*dairy"
+      ],
+      "source": "farmthru.com.au / Paris Creek Farms",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03"
+    },
+    {
+      "fact_id": "INV-001",
+      "category": "investment",
+      "claim": "VIP deposit: $5 (refundable)",
+      "claim_patterns": [
+        "$5 deposit",
+        "VIP deposit",
+        "\\$5.*refundable",
+        "refundable.*\\$5",
+        "$5 VIP deposit",
+        "$5 refundable deposit",
+        "\\$5 refundable",
+        "five dollar deposit",
+        "\\$5 (VIP )?deposit",
+        "$5 refundable"
+      ],
+      "source": "farmthru.com.au / Birchal campaign",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03",
+      "contradicts_if": "\\$(([1-9][0-9])|[6-9])\\b.*(VIP )?(deposit|to (reserve|secure|join))"
+    },
+    {
+      "fact_id": "INV-002",
+      "category": "investment",
+      "claim": "Minimum investment: $50",
+      "claim_patterns": [
+        "minimum investment.*\\$50",
+        "minimum investment",
+        "$50 minimum",
+        "as little as \\$50",
+        "starting at \\$50",
+        "invest from \\$50",
+        "\\$50 minimum",
+        "invest.*from \\$50",
+        "minimum.*\\$50",
+        "from $50",
+        "invest from $50"
+      ],
+      "source": "farmthru.com.au / Birchal campaign",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03",
+      "contradicts_if": "(minimum|invest from|as (little|low) as) \\$([1-4]?[0-9]|[1-4])\\b"
+    },
+    {
+      "fact_id": "INV-003",
+      "category": "investment",
+      "claim": "Maximum investment cap: $10,000 per investor",
+      "claim_patterns": [
+        "10,000 cap",
+        "\\$10,?000 (cap|max|limit|per investor)",
+        "invest up to \\$10,?000",
+        "maximum.*\\$10,?000",
+        "$10,000",
+        "10K cap",
+        "up to \\$10,?000",
+        "$10000",
+        "cap.*\\$10,?000"
+      ],
+      "source": "farmthru.com.au / Birchal campaign",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03",
+      "contradicts_if": "(max|cap|up to|limit) \\$(([1-9][0-9],?[0-9]{3}|[2-9]0,?000))(?!.*10,?000)"
+    },
+    {
+      "fact_id": "INV-004",
+      "category": "investment",
+      "claim": "VIP perks: first access, priority updates, exclusive Q&A, fully refundable",
+      "claim_patterns": [
+        "early access",
+        "VIP perk",
+        "fully refundable",
+        "first access",
+        "priority access",
+        "exclusive Q and A",
+        "VIP early access",
+        "exclusive Q&A",
+        "VIP access",
+        "priority.*access",
+        "priority update",
+        "VIP (perk|benefit|access)"
+      ],
+      "source": "farmthru.com.au / Birchal campaign",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03"
+    },
+    {
+      "fact_id": "INV-005",
+      "category": "investment",
+      "claim": "Platform: Birchal (equity crowdfunding)",
+      "claim_patterns": [
+        "Birchal",
+        "equity crowdfund",
+        "crowd.?fund",
+        "equity raise",
+        "community.owned",
+        "own a piece",
+        "own a share"
+      ],
+      "source": "farmthru.com.au / Birchal",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03"
+    },
+    {
+      "fact_id": "INV-006",
+      "category": "investment",
+      "claim": "Launch date: July 2026",
+      "claim_patterns": [
+        "July 2026",
+        "launching.*July",
+        "opens.*July",
+        "live.*July",
+        "July launch",
+        "mid.2026"
+      ],
+      "source": "farmthru.com.au / Birchal campaign",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03",
+      "contradicts_if": "(June|August|September|October|November|December|January|February|March|April|May) 2026.*(launch|open|live|go live)"
+    },
+    {
+      "fact_id": "MKT-001",
+      "category": "market",
+      "claim": "Australian grocery market: $130B",
+      "claim_patterns": [
+        "Australian grocery.*130",
+        "\\$130\\s?[Bb](illion)?",
+        "grocery market.*\\$130",
+        "$130B",
+        "$130b",
+        "130 billion",
+        "\\$130B",
+        "$130 billion"
+      ],
+      "source": "IBISWorld, 2024",
+      "confidence": "MEDIUM",
+      "last_verified": "2026-04-03"
+    },
+    {
+      "fact_id": "MKT-002",
+      "category": "market",
+      "claim": "Direct-to-consumer food growth: 24% year-on-year",
+      "claim_patterns": [
+        "24%.*year.on.year",
+        "24%.*YoY",
+        "24% growth",
+        "growing.*24%",
+        "DTC.*24%",
+        "direct.to.consumer.*24%",
+        "24 per.?cent"
+      ],
+      "source": "Shopify Commerce Report",
+      "confidence": "MEDIUM",
+      "last_verified": "2026-04-03"
+    },
+    {
+      "fact_id": "SP-001",
+      "category": "social_proof",
+      "claim": "Testimonial \u2014 Sarah, Sydney: \"Finally, a grocery delivery that actually cares about where the food comes from. The quality is incredible.\"",
+      "claim_patterns": [
+        "Finally.*grocery delivery.*cares",
+        "quality is incredible",
+        "Sarah.*Sydney",
+        "where the food comes from"
+      ],
+      "source": "farmthru.com.au / customer testimonials",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03",
+      "note": "Use verbatim. Do not paraphrase or edit."
+    },
+    {
+      "fact_id": "SP-002",
+      "category": "social_proof",
+      "claim": "Testimonial \u2014 James, Northern Beaches: \"My kids can taste the difference. And I love knowing the farmers are getting a fair price.\"",
+      "claim_patterns": [
+        "kids can taste the difference",
+        "farmers are getting a fair price",
+        "James.*Northern Beaches"
+      ],
+      "source": "farmthru.com.au / customer testimonials",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03",
+      "note": "Use verbatim. Do not paraphrase or edit."
+    },
+    {
+      "fact_id": "POS-001",
+      "category": "positioning",
+      "claim": "\"Only food we'd feed our own\" (company tagline)",
+      "claim_patterns": [
+        "only food we'd feed our own",
+        "only food we would feed our own",
+        "feed our own",
+        "we'd feed our own"
+      ],
+      "source": "farmthru.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03"
+    },
+    {
+      "fact_id": "POS-002",
+      "category": "positioning",
+      "claim": "Zero warehouses, zero wholesalers, zero middlemen",
+      "claim_patterns": [
+        "zero warehouse",
+        "zero wholesaler",
+        "zero middlem",
+        "no warehouse",
+        "no wholesaler",
+        "no middlem",
+        "cut.?out.*middlem"
+      ],
+      "source": "farmthru.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03"
+    },
+    {
+      "fact_id": "POS-003",
+      "category": "positioning",
+      "claim": "Not a subscription box \u2014 an online grocery from regenerative farms",
+      "claim_patterns": [
+        "not a subscription box",
+        "isn't a subscription",
+        "not a box",
+        "not a meal kit",
+        "online grocery",
+        "more than a box",
+        "not another.*box"
+      ],
+      "source": "farmthru.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03",
+      "contradicts_if": "(subscription box|meal kit|curated box|mystery box|weekly box)"
+    },
+    {
+      "fact_id": "POS-004",
+      "category": "positioning",
+      "claim": "Direct supply chain = fresher food, fairer farmer compensation",
+      "claim_patterns": [
+        "fairer.*farmer",
+        "fair compensation",
+        "direct supply chain",
+        "farmer.*paid.*fair",
+        "fairer price",
+        "farmer.*fair(er)? (price|deal|pay|compensation)",
+        "fair deal",
+        "fair price.*farmer",
+        "fresher food",
+        "fair price",
+        "more.*goes.*(back )?to.*farmer"
+      ],
+      "source": "farmthru.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03"
+    }
+  ]
+}

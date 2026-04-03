@@ -31,13 +31,22 @@ def load_client(client_dir, shared_dir):
 
     rules = rule_checker.load_rules(shared_dir, client_dir)
     facts = fact_checker.load_facts(client_dir)
-    rubric = rubric_scorer.load_rubric(shared_dir)
+
+    # Load rubrics for all supported content types
+    rubrics = {}
+    content_types = config.get("content_types", ["meta-ad"])
+    for ct in content_types:
+        rubrics[ct] = rubric_scorer.load_rubric(shared_dir, content_type=ct)
+    # Backwards compat: also keep default rubric
+    if "meta-ad" not in rubrics:
+        rubrics["meta-ad"] = rubric_scorer.load_rubric(shared_dir)
 
     return {
         "config": config,
         "rules": rules,
         "facts": facts,
-        "rubric": rubric,
+        "rubric": rubrics.get("meta-ad", {}),  # backwards compat
+        "rubrics": rubrics,
         "client_dir": str(client_dir),
         "shared_dir": str(shared_dir),
     }
@@ -60,6 +69,10 @@ def score_ad(
     existing_ads = existing_ads or []
     config = client["config"]
 
+    # Determine content type from ad or default to meta-ad
+    content_type = ad.get("content_type", "meta-ad")
+    rubric = client.get("rubrics", {}).get(content_type, client.get("rubric", {}))
+
     # Gate 1: Rule compliance
     rules_result = rule_checker.check_rules(
         ad,
@@ -73,13 +86,18 @@ def score_ad(
     # The Score: Rubric (10 dimensions, LLM-scored where needed)
     rubric_result = rubric_scorer.score_rubric(
         ad,
-        client["rubric"],
+        rubric,
         config,
         existing_ads=existing_ads,
         use_llm=use_llm,
+        content_type=content_type,
     )
 
-    max_score = config.get("rubric", {}).get("max_score", 66.25)
+    rubric_config = config.get("rubric", {})
+    # Support per-content-type rubric config
+    if isinstance(rubric_config, dict) and content_type in rubric_config:
+        rubric_config = rubric_config[content_type]
+    max_score = rubric_config.get("max_score", 66.25)
     rubric_normalized = rubric_result["weighted_total"] / max_score if max_score > 0 else 0
 
     # Start with rubric as the base score

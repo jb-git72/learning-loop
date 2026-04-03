@@ -1,0 +1,181 @@
+{
+  "extends": "universal",
+  "rules": [
+    {
+      "rule_id": "FMTH-001",
+      "name": "csf_financial_disclaimer_required",
+      "severity": "critical",
+      "type": "regex_present",
+      "description": "Any content discussing investment must include a financial disclaimer referencing independent advice or the Birchal disclosure document.",
+      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy"],
+      "patterns": [
+        "not financial advice",
+        "disclosure document",
+        "consider seeking independent",
+        "seek independent financial advice"
+      ],
+      "case_sensitive": false,
+      "rationale": "ASIC RG 234 requires balanced disclosure for equity crowdfunding campaigns. All investment-related content must include appropriate disclaimers."
+    },
+    {
+      "rule_id": "FMTH-002",
+      "name": "no_guaranteed_returns",
+      "severity": "critical",
+      "type": "regex_absent",
+      "description": "Block any language promising or implying investment returns. No return projections permitted in CSF campaigns.",
+      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy"],
+      "patterns": [
+        "guaranteed return",
+        "guaranteed profit",
+        "you'll make",
+        "earn.*return",
+        "profit.*guaranteed",
+        "return on.*investment",
+        "your money will grow",
+        "you'll earn",
+        "investment return"
+      ],
+      "case_sensitive": false,
+      "rationale": "ASIC RG 234 prohibits return projections in CSF campaigns. Any language implying guaranteed or expected returns is a regulatory breach."
+    },
+    {
+      "rule_id": "FMTH-003",
+      "name": "no_minimisation_of_investment_risk",
+      "severity": "critical",
+      "type": "regex_absent",
+      "description": "Block language that downplays or minimises startup or investment risk.",
+      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy"],
+      "patterns": [
+        "risk.free",
+        "no risk",
+        "safe investment",
+        "can't lose",
+        "zero risk",
+        "guaranteed safe",
+        "no downside",
+        "100% safe"
+      ],
+      "case_sensitive": false,
+      "rationale": "ASIC RG 234 requires balanced presentation of risks and benefits. Minimising investment risk in CSF campaigns is a regulatory breach."
+    },
+    {
+      "rule_id": "FMTH-004",
+      "name": "no_unverified_health_claims",
+      "severity": "high",
+      "type": "regex_absent",
+      "description": "Block therapeutic or health benefit claims about food that are not backed by evidence.",
+      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy"],
+      "patterns": [
+        "\\bcures?\\b",
+        "\\bheals?\\b",
+        "\\bhealing\\b",
+        "treat.*disease",
+        "prevent.*cancer",
+        "boost.*immune",
+        "\\bmedicinal\\b",
+        "\\btherapeutic\\b",
+        "clinically proven"
+      ],
+      "case_sensitive": false,
+      "rationale": "TGA (Therapeutic Goods Administration) regulates health claims about food in Australia. Unverified therapeutic claims breach TGA guidelines."
+    },
+    {
+      "rule_id": "FMTH-005",
+      "name": "no_false_food_safety_claims",
+      "severity": "high",
+      "type": "regex_absent",
+      "description": "Block food safety claims that go beyond what is verifiable.",
+      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy"],
+      "patterns": [
+        "100% safe",
+        "zero contaminants",
+        "completely pure",
+        "toxin.free",
+        "chemical.free"
+      ],
+      "case_sensitive": false,
+      "rationale": "Food Standards Australia New Zealand (FSANZ) regulates food safety claims. Absolute safety claims are unverifiable and misleading."
+    },
+    {
+      "rule_id": "FMTH-006",
+      "name": "geographic_delivery_accuracy",
+      "severity": "high",
+      "type": "regex_absent",
+      "description": "Block delivery area claims beyond current service coverage (Sydney, Central Coast, Wollongong).",
+      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy"],
+      "patterns": [
+        "deliver.*Melbourne",
+        "deliver.*Brisbane",
+        "deliver.*nationwide",
+        "deliver.*Australia.wide",
+        "deliver.*Perth",
+        "deliver.*Adelaide",
+        "all of Australia"
+      ],
+      "case_sensitive": false,
+      "rationale": "Must not overclaim delivery coverage. Farm Thru currently delivers to Sydney, Central Coast, and Wollongong only."
+    },
+    {
+      "rule_id": "FMTH-007",
+      "name": "no_greenwashing",
+      "severity": "high",
+      "type": "regex_absent",
+      "description": "Block vague environmental claims that cannot be substantiated. 'Regenerative' is permitted as it is specific and verifiable. 'Carbon neutral' is blocked unless backed by certification.",
+      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy"],
+      "patterns": [
+        "save the planet",
+        "100% sustainable",
+        "zero carbon",
+        "carbon neutral",
+        "net zero",
+        "completely sustainable",
+        "eco.friendly"
+      ],
+      "case_sensitive": false,
+      "rationale": "ACCC greenwashing guidelines require substantiated environmental claims. Vague green language without certification or evidence is misleading."
+    },
+    {
+      "rule_id": "FMTH-008",
+      "name": "vip_deposit_accuracy",
+      "severity": "high",
+      "type": "regex_absent",
+      "description": "Block incorrect deposit or investment amounts. VIP deposit is $5, minimum investment is $50, maximum investment is $10,000.",
+      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy"],
+      "patterns": [
+        "\\$(?!5\\b)\\d+[^.\\n]*deposit",
+        "\\$(?!50\\b)\\d+[^.\\n]*minimum[^.\\n]*invest",
+        "\\$(?!10[,.]?000)\\d+[^.\\n]*maximum"
+      ],
+      "case_sensitive": false,
+      "rationale": "Financial accuracy is critical for CSF campaigns. Incorrect deposit or investment amounts breach ASIC disclosure requirements."
+    },
+    {
+      "rule_id": "FMTH-009",
+      "name": "no_supermarket_defamation",
+      "severity": "medium",
+      "type": "regex_absent",
+      "description": "Block direct defamation of named competitors without factual comparison. Factual comparisons like 'Coles adds 47 stops' are allowed — only defamatory language is blocked.",
+      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy"],
+      "patterns": [
+        "coles.*poison",
+        "woolworths.*poison",
+        "coles.*kill",
+        "woolworths.*kill",
+        "coles.*toxic",
+        "woolworths.*toxic"
+      ],
+      "case_sensitive": false,
+      "rationale": "Comparative advertising must be factual per ACL Section 18. Defamatory language about named competitors is a legal risk."
+    },
+    {
+      "rule_id": "FMTH-010",
+      "name": "refundable_deposit_disclaimer",
+      "severity": "medium",
+      "type": "custom",
+      "custom_function": "_check_deposit_refundable",
+      "description": "When mentioning the $5 deposit, must also mention it is refundable.",
+      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy"],
+      "rationale": "Consumer protection — deposits must be clearly described as refundable to avoid misleading consumers."
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "version": "1.0",
+  "content_type": "email",
+  "description": "Email copy evaluation rubric. 10 dimensions, weighted. Adapted from the meta-ad rubric for email-specific evaluation.",
+  "max_raw_score": 50,
+  "max_weighted_score": 62.5,
+  "thresholds": {
+    "production_ready": 50,
+    "strong_draft": 43,
+    "needs_work": 31,
+    "rewrite": 0
+  },
+  "dimensions": [
+    {
+      "id": "angle_clarity",
+      "name": "Angle Clarity",
+      "default_weight": 1.0,
+      "scoring_method": "llm",
+      "description": "Is the strategic angle unmistakable from the subject + first paragraph?",
+      "scoring_guide": {
+        "1": "No clear angle. Subject and body could be about anything. Reader deletes or skims.",
+        "2": "Angle is vaguely present but buried below the fold or muddled with multiple themes.",
+        "3": "Angle is present but competes with other themes. Reader needs effort to identify the core message.",
+        "4": "Angle is clear and dominant from subject through body. Minor distractions exist.",
+        "5": "Angle is unmistakable. Subject, preheader, and body all reinforce a single strategic position."
+      }
+    },
+    {
+      "id": "motivation_match",
+      "name": "Motivation Match",
+      "default_weight": 1.0,
+      "scoring_method": "llm",
+      "description": "Does the email hit the intended buying motivation — the felt need, not just the stated need?",
+      "scoring_guide": {
+        "1": "Motivation is absent or wrong. The email speaks to a need the audience does not feel.",
+        "2": "Motivation is present but superficial. Names the category without tapping the emotional driver.",
+        "3": "Motivation is addressed but at a rational level only. The felt need is implied, not activated.",
+        "4": "Motivation is clearly present and emotionally resonant. The reader sees themselves.",
+        "5": "Motivation is deeply felt. The email articulates what the audience feels but hasn't put into words."
+      }
+    },
+    {
+      "id": "tactic_execution",
+      "name": "Tactic Execution",
+      "default_weight": 1.0,
+      "scoring_method": "llm",
+      "description": "Is the email structure (hook → story/proof → CTA) properly executed?",
+      "scoring_guide": {
+        "1": "No recognisable structure. Email is a list of features or announcements with no narrative logic.",
+        "2": "Structure attempted but breaks down. Opening doesn't connect to body, or body doesn't lead to CTA.",
+        "3": "Structure present and mostly follows the framework, but one transition is weak or forced.",
+        "4": "Well-executed. Opening, body, and CTA form a coherent arc with smooth transitions.",
+        "5": "Flawlessly executed. Each section builds on the last. Structure is invisible — it just reads naturally."
+      }
+    },
+    {
+      "id": "subject_line_power",
+      "name": "Subject Line Power",
+      "default_weight": 1.75,
+      "scoring_method": "deterministic",
+      "description": "Would this subject line get opened? Evaluates curiosity, specificity, and relevance.",
+      "scoring_guide": {
+        "1": "Generic or spammy subject. 'Update from us' or 'Don't miss out!' No reason to open.",
+        "2": "Mildly relevant but bland. Could be any brand. Reader skips unless they're already engaged.",
+        "3": "Relevant and somewhat engaging. Would get opened by warm leads but not cold.",
+        "4": "Strong subject that creates curiosity or recognition. Most target readers would open.",
+        "5": "Exceptional subject. Specific, personal, and impossible to skip. Creates a knowledge gap that demands opening."
+      },
+      "deterministic_rules": {
+        "word_count_sweet_spot": "6-10 words = bonus",
+        "personalization": "Uses reader context (name, location, prior action) = bonus",
+        "specificity": "Contains number, name, or concrete detail = bonus",
+        "spam_triggers": "'Free', 'Act now', 'Limited', ALL CAPS, excessive punctuation = penalty"
+      }
+    },
+    {
+      "id": "body_flow",
+      "name": "Body Flow & Readability",
+      "default_weight": 1.25,
+      "scoring_method": "deterministic",
+      "description": "Is the email scannable, well-paced, and easy to read on mobile?",
+      "scoring_guide": {
+        "1": "Wall of text. No line breaks, no formatting. Reader abandons after 2 sentences.",
+        "2": "Some structure but dense paragraphs. Hard to scan on mobile.",
+        "3": "Reasonable structure. Short paragraphs but could be tighter. Some filler.",
+        "4": "Well-paced. Short paragraphs, clear rhythm. Easy to scan. Minor tightening possible.",
+        "5": "Perfect flow. Every line earns its place. Scannable, mobile-friendly, no filler. Reads in under 60 seconds."
+      },
+      "deterministic_rules": {
+        "max_paragraph_length": "3 sentences per paragraph",
+        "max_body_length": "2000 characters",
+        "line_break_frequency": "Every 2-3 sentences"
+      }
+    },
+    {
+      "id": "cta_clarity",
+      "name": "CTA Clarity",
+      "default_weight": 1.25,
+      "scoring_method": "deterministic",
+      "description": "Is there one clear, compelling call-to-action? Is it obvious what happens when they click?",
+      "scoring_guide": {
+        "1": "No CTA, or multiple competing CTAs. Reader doesn't know what to do.",
+        "2": "CTA exists but vague or buried at the bottom after reader has lost interest.",
+        "3": "CTA is clear but generic ('Click here', 'Learn more'). Not compelling.",
+        "4": "CTA is clear, compelling, and well-positioned. Reader knows what happens next.",
+        "5": "CTA is irresistible. Perfectly placed, action-specific, and creates urgency without being pushy."
+      }
+    },
+    {
+      "id": "personalization",
+      "name": "Personalization & Relevance",
+      "default_weight": 1.0,
+      "scoring_method": "deterministic",
+      "description": "Does the email feel personal and relevant to the reader's context?",
+      "scoring_guide": {
+        "1": "Mass blast. No personalization. Reads like it was sent to 100,000 people.",
+        "2": "Minimal personalization (first name only). Content is generic.",
+        "3": "Some relevance to the reader's situation. References their context (waitlist, interest area).",
+        "4": "Feels personal. References specific actions, timing, or context. Reader feels seen.",
+        "5": "Deeply personal. Reads like a 1:1 message from someone who knows their situation."
+      }
+    },
+    {
+      "id": "specificity",
+      "name": "Specificity",
+      "default_weight": 1.5,
+      "scoring_method": "deterministic",
+      "description": "Concrete numbers, names, and details — not vague claims.",
+      "scoring_guide": {
+        "1": "Entirely vague. No numbers, no concrete details.",
+        "2": "One concrete detail present but surrounded by vague claims.",
+        "3": "Multiple concrete details present. Some claims remain vague.",
+        "4": "Consistently specific throughout. Numbers are verifiable.",
+        "5": "Every claim is concrete and fact-checked. Specific costs, counts, timeframes."
+      }
+    },
+    {
+      "id": "scroll_stop_hook",
+      "name": "Opening Hook",
+      "default_weight": 1.25,
+      "scoring_method": "deterministic",
+      "description": "Does the first line of the email body (after opening) create enough pull to keep reading?",
+      "scoring_guide": {
+        "1": "Generic opener. 'Hi [name], just wanted to reach out...' No reason to continue.",
+        "2": "Mildly interesting but predictable. Reader skims ahead.",
+        "3": "Relevant and somewhat engaging. Would keep warm leads reading.",
+        "4": "Strong opener that creates curiosity or recognition. Most readers continue.",
+        "5": "Exceptional hook. Immediately personal, specific, and pulls the reader in."
+      }
+    },
+    {
+      "id": "differentiation",
+      "name": "Differentiation",
+      "default_weight": 1.0,
+      "scoring_method": "deterministic",
+      "description": "Is this email distinct from others in the sequence? Does it add new value?",
+      "scoring_guide": {
+        "1": "Duplicate of another email. Same message, same structure, same CTA.",
+        "2": "Surface-level differences only (different subject, same argument).",
+        "3": "Different hook or angle but core message overlaps with another email in sequence.",
+        "4": "Clearly distinct. Reader seeing both emails would recognize different messages.",
+        "5": "Completely unique perspective within the sequence. Different emotional entry point, different proof."
+      }
+    }
+  ]
+}
