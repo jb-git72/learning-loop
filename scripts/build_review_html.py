@@ -15,34 +15,15 @@ def build_html(scored_json_path: str, output_path: str):
     summary = data["summary"]
 
     root = Path(__file__).parent.parent
-    ads_by_id = {}
-    for r in results:
-        file_path = root / r["_file"]
-        if file_path.exists():
-            with open(file_path) as f:
-                ad = json.load(f)
-            # Use the correct ID field
-            aid = ad.get("ad_id", ad.get("page_id", ad.get("email_id", r["ad_id"])))
-            ads_by_id[aid] = ad
 
     cards_html = []
     for r in results:
-        ad = None
-        # Find the ad by trying all ID fields
-        for key in ["ad_id", "page_id", "email_id"]:
-            for a in ads_by_id.values():
-                if a.get(key) == r.get("ad_id") or a.get(key, "") in r.get("_file", ""):
-                    ad = a
-                    break
-            if ad:
-                break
-        if not ad:
-            # Fallback: match by file path
-            fp = root / r["_file"]
-            if fp.exists():
-                with open(fp) as f:
-                    ad = json.load(f)
-        if not ad:
+        # Load ad directly from its file path (most reliable)
+        fp = root / r["_file"]
+        if fp.exists():
+            with open(fp) as f:
+                ad = json.load(f)
+        else:
             ad = {}
 
         ad_id = ad.get("ad_id", ad.get("page_id", ad.get("email_id", "unknown")))
