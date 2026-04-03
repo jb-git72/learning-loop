@@ -4,33 +4,27 @@
   "angle": "transparency-safety",
   "hook_type": "pattern-interrupt",
   "funnel": "TOF",
-  "headline": "We can't promise returns. Here's what we can show you.",
+  "headline": "We cannot promise you returns. Here is what we can show you.",
   "subhead": "FarmThru is opening to investors on Birchal. We believe in full disclosure, not hype.",
-  "hero_copy": "Most investment pages lead with the upside. We're going to lead with honesty.\n\nFarmThru is an early-stage business. Investing in early-stage businesses carries real risk. You could lose some or all of your investment. We won't dress that up.",
+  "hero_copy": "Most investment pages lead with the upside. We are going to lead with honesty.\n\nFarmThru is an early-stage business. Investing in early-stage businesses carries real risk. You could lose some or all of your money. We will not minimise that.",
   "sections": [
     {
       "heading": "What we can show you",
-      "body": "We can show you 50+ regenerative farms across NSW that partner with us. We can show you 2,000+ families who already order through FarmThru. We can show you a hub-and-collect model that cuts out unnecessary middlemen and gets food from paddock to pick-up in 2-3 days.\n\nWe can show you a $130B Australian grocery market where farm-direct food is growing at 24% year-on-year. And we can show you every number, every farm, and every dollar in our disclosure document on Birchal."
+      "body": "We can show you every farm we work with. Rachel's Farm in Kempsey, raising 100% grass-fed beef on regenerative land. Bundarra Farm for pork. Collins Wild Caught for wild-caught Alaskan salmon. Paris Creek for biodynamic dairy. Farmer Brown for eggs.\n\nWe can show you the Brookvale hub where families collect their orders Monday to Friday. We can show you a supply chain with zero wholesalers, where food goes from farm to hub within days. And we can put every number, every farm, and every dollar into the disclosure document on Birchal for you to read."
     },
     {
-      "heading": "What we won't do",
-      "body": "We won't promise returns. We won't minimise the risks. We won't use words like \"guaranteed\" or \"safe\" because early-stage investing is neither.\n\nWhat we will do is give you every piece of information you need to make your own decision. The disclosure document on Birchal covers our financials, our risks, our team, and our plan. Read it. Consider seeking independent financial advice. Then decide."
+      "heading": "What we will not do",
+      "body": "We will not promise returns. We will not use the words \"guaranteed\" or \"safe\" because early-stage investing is neither of those things.\n\nWhat we will do is give you every piece of information you need to make your own decision. The disclosure document on Birchal will cover our financials, our risks, our team, and our plan. Read it. Consider seeking independent financial advice. Then decide."
     },
     {
       "heading": "The terms",
-      "body": "FarmThru's equity crowdfunding campaign launches on Birchal in July 2026.\n\nMinimum investment: $50. Maximum cap: $10,000 per investor. VIP deposit: $5 (fully refundable) for first access, priority updates, and exclusive Q&A with the founders.\n\nJoin the waitlist now. When the campaign opens, you'll have the full picture before anyone else.",
-      "proof": [
-        "50+ partner farms",
-        "2,000+ customers",
-        "Brookvale hub operating Monday-Friday",
-        "Platform: Birchal (regulated equity crowdfunding)"
-      ]
+      "body": "FarmThru's equity crowdfunding campaign launches on Birchal in mid-2026.\n\nMinimum investment: $50. Maximum: $10,000 per investor. VIP deposit: $5, fully refundable, for first access, priority updates, and an exclusive Q&A with the team.\n\nThis is not a commitment to invest. It is a commitment to being informed first."
     },
     {
       "heading": "Compliance",
       "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
     }
   ],
-  "cta": "Join the waitlist",
-  "creative_brief": "Clean, understated design. No hype. Hero: simple typography on white with a single farm landscape image. Below-fold: traction metrics displayed clearly, team photos, Birchal badge. Tone is calm confidence. Trust-building through restraint, not persuasion."
+  "cta": "Secure VIP Access",
+  "creative_brief": "Clean, understated design. No hype visuals. Hero: simple bold typography on white with a single wide-angle farm landscape. Below-fold: named farm list displayed plainly, team photo, Birchal platform badge. Tone is calm confidence built through restraint. Trust through honesty, not persuasion."
 }

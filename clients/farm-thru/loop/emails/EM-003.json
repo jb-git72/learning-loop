@@ -2,12 +2,12 @@
   "email_id": "EM-003",
   "content_type": "email",
   "angle": "quality-craft",
-  "email_type": "social_proof",
+  "email_type": "product-deep-dive",
   "funnel": "MOF",
-  "subject": "What 2,000 families say about the food",
-  "preheader": "Real reviews from real people who made the switch from the supermarket.",
-  "body": "We could tell you our food is better. But we'd rather let the families who eat it every week do the talking.\n\n\"My kids can taste the difference. And I love knowing the farmers are getting a fair price.\" - James, Northern Beaches\n\n\"Finally, a grocery delivery that actually cares about where the food comes from. The quality is incredible.\" - Sarah, Sydney\n\nMore than 2,000 families across Sydney now order through FarmThru. They collect from their nearest hub, and most of them never looked back.\n\nHere's what they're getting: 100% grass-fed beef from Rachel's Farm. Heritage Berkshire pork from Bundarra Berkshires. Wild-caught salmon from Collins Wild Caught. Pasture-raised chicken. Eggs from Farmer Brown.\n\nEvery product is from a named farm. No hormones, no antibiotics, no feedlot finishing. Food that's 2-3 days old, not 14-21 days in cold storage.\n\nThe Brookvale hub is open Monday to Friday. If you haven't tried it yet, this week is a good week to start.\n\nFarmThru",
-  "cta": "Shop your local hub",
-  "sender_name": "FarmThru",
-  "creative_brief": "Social proof email. Feature the two testimonials prominently with quote styling. Product photos below (beef, salmon, pork). Single CTA button to the shop. Warm, confident tone. Let the customers sell it."
+  "subject": "This is what days-old beef actually looks like",
+  "preheader": "100% grass-fed. Named farms. No hormones, no feedlots. Collected fresh from Brookvale.",
+  "body": "We talk a lot about where our food comes from. Today we want to talk about the food itself.\n\nStart with the beef. It comes from Rachel's Farm in Kempsey. 100% grass-fed cattle raised on regenerative pasture. No hormones. No feedlot finishing. When you open the pack, the colour is deep red, not grey. That is what fresh looks like.\n\nThe salmon is wild-caught Alaskan, supplied by Collins Wild Caught on the South Coast. It is firm, vibrant, and nothing like the pale farmed fillets you see at the supermarket.\n\nThe pork comes from Bundarra Farm. The dairy is biodynamic, from Paris Creek. The eggs are from Farmer Brown.\n\nEvery one of these products traces to a farm you can look up. That is the difference between a supplier code and a name.\n\nSupermarket beef can travel thousands of kilometres and sit in cold storage for weeks before you see it. Ours goes from the farm to our Brookvale hub within days. You collect it fresh, Monday to Friday.\n\nNo lock-in. No minimum order. Just real food from real farms, honestly priced.\n\nRachel & the FarmThru team",
+  "cta": "See what's fresh this week",
+  "sender_name": "Rachel & the FarmThru team",
+  "creative_brief": "Product-focused email. Hero image: close-up of 100% grass-fed steak, natural light on timber. Below: product grid showing salmon, pork, dairy, eggs alongside farm names. Single CTA to shop. Let the food sell itself."
 }

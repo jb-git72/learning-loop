@@ -4,37 +4,31 @@
   "angle": "empathy-founder",
   "hook_type": "story",
   "funnel": "TOF",
-  "headline": "I started FarmThru because my kids deserved better than supermarket meat.",
-  "subhead": "A letter from our founder on why we built a different kind of grocery store.",
-  "hero_copy": "When my eldest asked me where our chicken came from, I didn't have a good answer. I knew it came from a plastic tray at the supermarket. I didn't know the farm. I didn't know how it was raised. I didn't know how far it had travelled.\n\nThat question stuck with me. And eventually, it became FarmThru.",
+  "headline": "I started asking where our meat came from. I did not like the answer.",
+  "subhead": "A letter from our founder on why we built a grocery store where every product has a farm name on it.",
+  "hero_copy": "My youngest asked me once where chicken comes from. I said the supermarket. She meant the actual chicken.\n\nI did not know the farm. I did not know how the bird was raised, what it ate, or how far it had travelled to reach our kitchen. I just knew it came in a plastic tray and I bought it every week.\n\nThat question sat with me for months. Eventually it became FarmThru.",
   "sections": [
     {
-      "heading": "The problem I couldn't unsee",
-      "body": "The average piece of supermarket beef travels 2,400km before it reaches the shelf. It sits in cold storage for 14-21 days. The farmer who raised it earns a fraction of what you pay.\n\nI kept thinking: there are incredible regenerative farms right here in NSW. Farms where animals are raised on pasture, without hormones or feedlots. Farms run by people who care deeply about the land. Why can't families like mine buy directly from them?"
+      "heading": "The problem I could not unsee",
+      "body": "Industry data suggests supermarket beef can travel around 2,400 kilometres before reaching the shelf. It might sit in cold storage for up to two or three weeks. The farmer who raised it earns a fraction of what you pay.\n\nMeanwhile, there are regenerative farms right here in NSW producing extraordinary food. Rachel's Farm in Kempsey. Bundarra Farm. Collins Wild Caught on the South Coast. Farmer Brown. Why could families like mine not buy from them directly?"
     },
     {
       "heading": "So we built a hub",
-      "body": "FarmThru connects 50+ regenerative farms directly to families through local collection hubs. You order online. Your food goes from paddock to pick-up in 2-3 days. You collect from your nearest hub.\n\nNo subscription. No lock-in. No warehouses or wholesalers in between. Just an honest supply chain where the farmer earns a fair price and your family gets food that's actually fresh."
+      "body": "FarmThru connects regenerative farms directly to families through a hub-and-collect model. You order online. Your food goes from the farm to our Brookvale hub. You collect it Monday to Friday.\n\nNo lock-in. No middlemen marking it up. No food sitting in a cold chain for weeks. Just an honest supply chain where the farmer earns a fairer price and your family gets food that is days old, not weeks."
     },
     {
-      "heading": "2,000 families and counting",
-      "body": "What started as an idea has become a grocery store that 2,000+ families trust for their weekly shop. Rachel Ward, our co-founder, brings her own farm's regenerative beef through the platform. Bundarra Berkshires supplies heritage pork. Collins Wild Caught brings in wild-caught salmon from the South Coast.\n\nEvery product traces back to a named farm. That's the promise.",
-      "proof": [
-        "2,000+ families ordering",
-        "50+ partner farms across NSW",
-        "Rachel Ward, co-founder",
-        "Brookvale hub, Monday-Friday"
-      ]
+      "heading": "The food speaks for itself",
+      "body": "100% grass-fed beef from pasture, raised without hormones or feedlots. Wild-caught Alaskan salmon. Pork from Bundarra Farm. Biodynamic dairy from Paris Creek. Eggs from Farmer Brown. Pantry staples from producers we trust.\n\nEvery product traces to a named farm. That is the promise we built this business on."
     },
     {
-      "heading": "Join us",
-      "body": "We're opening an equity crowdfunding campaign on Birchal in July 2026. For the first time, you can own a piece of FarmThru. Minimum investment: $50. Cap: $10,000.\n\nJoin the waitlist to be first in when the campaign opens."
+      "heading": "Now you can be part of it",
+      "body": "We are launching an equity crowdfunding campaign on Birchal in mid-2026. Minimum investment: $50. Cap: $10,000 per investor.\n\nA $5 refundable deposit gets you VIP access: first in when the campaign opens, priority updates, and an exclusive Q&A.\n\nThis is early-stage investing. It carries real risk. Full details in the disclosure document on Birchal."
     },
     {
       "heading": "Compliance",
       "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
     }
   ],
-  "cta": "Join the waitlist",
-  "creative_brief": "Hero image: founder in a kitchen with family, natural and candid. Below-fold: the supply chain problem visualised simply, farm partner photos, hub pick-up lifestyle shot. Warm, personal photography. First-person tone throughout. Should feel like reading a letter, not a sales page."
+  "cta": "Reserve Your Spot",
+  "creative_brief": "Hero: candid shot of founder in a kitchen with family, natural light, warm tones. Below-fold: simple illustrated supply chain showing farm to hub to family. Named farm partner photos. Brookvale hub lifestyle shot. First-person letter tone throughout. Should feel like reading a personal note, not a sales page."
 }

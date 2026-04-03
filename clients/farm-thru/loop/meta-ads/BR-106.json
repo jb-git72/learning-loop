@@ -4,10 +4,10 @@
   "angle": "transparency",
   "hook_type": "direct_address",
   "funnel": "TOF",
-  "tactic": "product-origin",
-  "primary_text": "Heritage pork from Bundarra Berkshires, outdoor-raised in Bundarra NSW.\n\nWild-caught salmon from Collins Wild Caught on the South Coast.\n\nBio-dynamic dairy from Paris Creek Farms in Meadows SA.\n\nEvery product on FarmThru comes from a named farm. You know exactly what you're eating, where it came from, and who raised it.\n\n50+ regenerative farms. Collected fresh from your local hub. No middlemen, no mystery.\n\nWe'll show you where your food comes from.",
-  "headline": "Real farms, real names, real food",
-  "description": "Heritage pork, wild-caught salmon, bio-dynamic dairy. All from named farms.",
+  "tactic": "product-origin-specificity",
+  "primary_text": "Here's exactly what you're eating and where it came from.\n\nBeef: Rachel's Farm, Kempsey NSW. 100% grass-fed, pasture-raised, no hormones.\n\nSalmon: Collins Wild Caught, South Coast NSW. Wild-caught, never farmed.\n\nDairy: Paris Creek Farms, Meadows SA. Biodynamic, carbon-neutral.\n\nEggs: Farmer Brown, NSW. Pasture-raised.\n\nEvery product on FarmThru traces to a named farm. Zero warehouses, zero wholesalers. Farm to hub to your kitchen.\n\nThe Brookvale hub is open Monday to Friday.",
+  "headline": "Here's where your food comes from",
+  "description": "Named farms, real farmers, full traceability. Collected from the Brookvale hub.",
   "cta": "See what's fresh this week",
-  "creative_brief": "Grid of three product shots with farm name labels. Clean, editorial. Each product sits on its origin story: farm name, location, method."
+  "creative_brief": "Clean grid of four products, each with a small farm-name label beneath. Editorial food photography. Warm, honest lighting. No styling tricks."
 }

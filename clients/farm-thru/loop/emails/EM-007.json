@@ -2,12 +2,12 @@
   "email_id": "EM-007",
   "content_type": "email",
   "angle": "urgency-scarcity",
-  "email_type": "announcement",
+  "email_type": "final-call",
   "funnel": "BOF",
-  "subject": "It's live. You can invest in FarmThru now.",
-  "preheader": "The equity crowdfunding campaign is open on Birchal. Here's how to invest.",
-  "body": "The moment we've been building toward is here.\n\nFarmThru's equity crowdfunding campaign is now live on Birchal. You can invest today.\n\nOver the past few weeks, you've seen the food. You've met the farms. You've heard from our founder and from the 2,000+ families who already order through FarmThru. Now you can own a piece of it.\n\nHow to invest. Click the link below to visit our campaign page on Birchal. Read the disclosure document. It covers our financials, our risks, our team, and exactly how the funds will be used. If you're comfortable, you can invest from $50 up to $10,000.\n\nIf you're a VIP member, you have priority access right now. The campaign opens to the general waitlist shortly after.\n\nWhat you're backing. A farm-direct grocery store with 50+ regenerative farms across NSW. A hub-and-collect model that gets food from paddock to pick-up in 2-3 days. 100% grass-fed beef, pasture-raised chicken, heritage pork, wild-caught salmon. Every product from a named farm. And a team that includes co-founder Rachel Ward.\n\nA note on risk. Investing in early-stage businesses carries risk. You could lose some or all of your investment. This is not financial advice. Consider seeking independent financial advice before making any investment decision. Full details in the disclosure document on Birchal.\n\nThank you for being here from the start.\n\nJeremy",
-  "cta": "Invest now",
-  "sender_name": "Jeremy from FarmThru",
-  "creative_brief": "Launch day email. High energy but grounded. Bold header: 'We're Live'. Key stats as a visual strip. Single prominent CTA button to the Birchal campaign page. Birchal badge. Compliance disclaimer clearly formatted. Jeremy's signature with headshot. This is the most important email in the sequence."
+  "subject": "It is live. You can invest in FarmThru now.",
+  "preheader": "The equity crowdfunding campaign is open on Birchal. Here is how to invest.",
+  "body": "The campaign is live.\n\nFarmThru's equity crowdfunding raise is now open on Birchal. You can invest today.\n\nOver the past few weeks you have seen the food. You have met the farms. You have heard how the model works: regenerative farms across NSW, direct to our Brookvale hub, collected fresh by families. No middlemen. No mystery about provenance.\n\nNow you can own a piece of it.\n\nHow to invest: click the link below to visit our campaign page on Birchal. Read the disclosure document first. It covers our financials, our risks, our team, and exactly how the funds will be used. If you are comfortable, you can invest from $50 up to $10,000.\n\nIf you are a VIP member, you already have priority access. The campaign opens to the general waitlist shortly after.\n\nA note on risk. Investing in early-stage businesses means you could lose some or all of your investment. This is not financial advice. Consider seeking independent financial advice before making any investment decision. Full details in the disclosure document on Birchal.\n\nThank you for being here from the start.\n\nRachel & the FarmThru team",
+  "cta": "Invest Now",
+  "sender_name": "Rachel & the FarmThru team",
+  "creative_brief": "Launch day email. High energy but grounded. Bold 'We are live' header. Key model summary as a visual strip (farm to hub to family). Single prominent CTA to Birchal campaign page. Birchal badge. Compliance clearly formatted. This is the most important email in the sequence."
 }

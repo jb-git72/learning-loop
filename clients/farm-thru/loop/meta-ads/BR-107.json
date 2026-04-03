@@ -5,9 +5,9 @@
   "hook_type": "if_then",
   "funnel": "MOF",
   "tactic": "supply-chain-comparison",
-  "primary_text": "If your beef has been in cold storage for two weeks and travelled 2,400km, is it really fresh?\n\nSupermarkets move food through long supply chains. Farms to processors to distribution centres to shelves. It takes 14 to 21 days.\n\nFarmThru works differently. 50+ regenerative farms connect directly to our hub. You collect it the same week it left the farm. No unnecessary middlemen.\n\n100% grass-fed. No hormones. No feedlots.\n\nOrder when you want. No commitment.",
-  "headline": "2,400km and two weeks in cold storage",
-  "description": "FarmThru: farm to hub, same week. 100% grass-fed, no hormones, no feedlots.",
+  "primary_text": "If your beef travelled 2,400km and sat in cold storage for weeks, is it really fresh?\n\nThat's the industry average. Farms to processors to distribution centres to shelves. The farmer's name disappears along the way.\n\nFarmThru works differently. Named regenerative farms across NSW ship direct to the Brookvale hub. You collect it the same week it left the farm.\n\n100% grass-fed. No hormones. No feedlots. You know where it came from.\n\nSame week, not same month.",
+  "headline": "If it's been in cold storage for weeks",
+  "description": "Supermarket beef: weeks old, 2,400km journey. FarmThru: same week, named farms.",
   "cta": "Shop your local hub",
-  "creative_brief": "Animated map showing 2,400km journey vs short farm-to-hub line. Clean, data-viz style. Warm colour palette, not aggressive."
+  "creative_brief": "Animated map: long red supply chain route vs short green farm-to-hub line. Clean data-viz style. Warm palette, not aggressive."
 }
