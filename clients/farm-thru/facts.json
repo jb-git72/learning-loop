@@ -45,22 +45,22 @@
     {
       "fact_id": "BM-003",
       "category": "business_model",
-      "claim": "Partner farms across NSW (exact count unverified)",
+      "claim": "Partner farms and suppliers across NSW (~15-20 identified on site)",
       "claim_patterns": [
         "partner farms",
         "farms across",
         "regenerative farms",
         "local farms"
       ],
-      "source": "farmthru.com.au",
-      "confidence": "UNVERIFIED",
+      "source": "farmthru.com.au (verified 2026-04-03)",
+      "confidence": "HIGH",
       "last_verified": "2026-04-03",
-      "note": "Round 2 review flagged '50+ farms' as potentially fabricated. DO NOT use specific farm count until verified on farmthru.com.au."
+      "note": "VERIFIED: Site lists ~15-20 suppliers including Rachel's Farm, Bundarra Farm, Collins Wild Caught, Paris Creek, Farmer Brown, Nonies, Mandole Orchard, etc. '50+ farms' was FABRICATED — never use a specific count. Say 'partner farms across NSW' or 'named farms'."
     },
     {
       "fact_id": "BM-004",
       "category": "business_model",
-      "claim": "Brookvale hub in Sydney, NSW. Monday-Friday collection. Hub count to be verified.",
+      "claim": "Single hub: Brookvale (Unit 23, 10-18 Orchard Rd, Brookvale NSW 2100). Monday-Friday collection. Also offers delivery to Sydney, Central Coast, Wollongong.",
       "claim_patterns": [
         "Brookvale hub",
         "Brookvale",
@@ -69,26 +69,27 @@
         "collection hub",
         "nearest hub",
         "local hub",
-        "NSW"
+        "NSW",
+        "Orchard Road"
       ],
-      "source": "farmthru.com.au",
-      "confidence": "UNVERIFIED",
+      "source": "farmthru.com.au (verified 2026-04-03)",
+      "confidence": "HIGH",
       "last_verified": "2026-04-03",
-      "note": "BM-004 and BM-005 contradicted on hub count (three vs single). Merged into one entry. Use 'Brookvale hub' or 'your nearest hub' — do NOT claim a specific hub count until verified.",
-      "contradicts_if": "(Melbourne|Brisbane|Perth|Adelaide|Canberra|Gold Coast|nationwide|Australia.wide)"
+      "note": "VERIFIED: Only 1 hub (Brookvale). Site also mentions delivery (zone-based pricing). Do NOT say 'hubs' plural or claim multiple locations.",
+      "contradicts_if": "(Melbourne|Brisbane|Perth|Adelaide|Canberra|Gold Coast|nationwide|Australia.wide|three hubs|3 hubs|multiple hubs)"
     },
     {
       "fact_id": "BM-006",
       "category": "business_model",
-      "claim": "Customer base size unverified",
+      "claim": "Customer count not publicly stated",
       "claim_patterns": [
         "customers",
         "families"
       ],
-      "source": "farmthru.com.au",
+      "source": "farmthru.com.au (verified 2026-04-03)",
       "confidence": "UNVERIFIED",
       "last_verified": "2026-04-03",
-      "note": "Round 2 review flagged '2,000+ customers' as potentially fabricated. DO NOT use specific customer count until verified on farmthru.com.au."
+      "note": "VERIFIED ABSENT: No customer count appears anywhere on the website. '2,000+ customers' was FABRICATED. NEVER use a specific customer count."
     },
     {
       "fact_id": "PQ-001",
@@ -149,19 +150,19 @@
     {
       "fact_id": "PQ-004",
       "category": "product_quality",
-      "claim": "Days old, not weeks old \u2014 2-3 days paddock to pick-up",
+      "claim": "Days old, not weeks old \u2014 farm to hub to kitchen. Site phrase: 'Straight from their farm to our hub to your kitchen.'",
       "claim_patterns": [
         "days old.*not weeks",
-        "2.3 days",
-        "two.to.three days",
-        "paddock to pick-up",
-        "paddock.to.pick.up",
+        "farm to hub",
+        "hub to kitchen",
+        "farm.*hub.*kitchen",
         "days not weeks",
         "fresher than",
         "within days"
       ],
-      "source": "farmthru.com.au",
+      "source": "farmthru.com.au (verified 2026-04-03)",
       "confidence": "HIGH",
+      "note": "Site uses 'farm to hub to kitchen', NOT 'paddock to pick-up' or 'paddock to door'. The 2-3 days claim is implied but not explicitly stated on site.",
       "last_verified": "2026-04-03",
       "value_range": {
         "min": 2,
@@ -183,14 +184,15 @@
         "supermarket.*cold storage",
         "supermarket.*weeks"
       ],
-      "source": "farmthru.com.au / industry data",
-      "confidence": "HIGH",
+      "source": "Industry data (not stated on farmthru.com.au)",
+      "confidence": "MEDIUM",
       "last_verified": "2026-04-03",
       "value_range": {
         "min": 14,
         "max": 21,
         "unit": "days"
       },
+      "note": "VERIFIED ABSENT from farmthru.com.au. Site blog says supermarket meat 'might have been sitting in a display case for days (or even a week)' but does NOT cite 14-21 days. Use with caution.",
       "contradicts_if": "Farm.?Thru.*(14|21|weeks).*cold storage"
     },
     {
@@ -207,9 +209,10 @@
         "average journey",
         "2,?400\\s?km"
       ],
-      "source": "farmthru.com.au / industry data",
-      "confidence": "HIGH",
-      "last_verified": "2026-04-03"
+      "source": "Industry data (not stated on farmthru.com.au)",
+      "confidence": "MEDIUM",
+      "last_verified": "2026-04-03",
+      "note": "VERIFIED ABSENT from farmthru.com.au. Use with caution — cite as 'industry average' not as FarmThru claim."
     },
     {
       "fact_id": "PQ-007",
@@ -247,38 +250,38 @@
     {
       "fact_id": "FP-001",
       "category": "farm_partners",
-      "claim": "Rachel Ward \u2014 co-founder of FarmThru, acclaimed actress, filmmaker, regenerative agriculture advocate. Farm in Kempsey, NSW.",
+      "claim": "Rachel Ward \u2014 actor-turned-regenerative-farming advocate, founder of Rachel's Farm (Kempsey, NSW). Key partner and supplier to FarmThru, not titled co-founder.",
       "claim_patterns": [
         "2020 bushfire",
-        "documentarian",
+        "regenerative.*advocate",
         "actress.*farm",
+        "actor.*farm",
         "bushfire",
         "Kempsey",
-        "co-founder",
         "Rachels Farm",
         "Rachel('s)? Farm",
         "Rachel Ward",
         "Rachel's Farm",
-        "co-founded"
+        "partner.*supplier"
       ],
-      "source": "farmthru.com.au / Rachel's Farm",
+      "source": "farmthru.com.au (verified 2026-04-03)",
+      "note": "CORRECTED: Rachel is NOT co-founder of FarmThru. She is founder of Rachel's Farm (her own cattle farm) and a key partner/supplier. Do NOT call her 'co-founder of FarmThru'.",
       "confidence": "HIGH",
       "last_verified": "2026-04-03"
     },
     {
       "fact_id": "FP-002",
       "category": "farm_partners",
-      "claim": "Bundarra Berkshires: Bundarra NSW, heritage Berkshire pork, outdoor-raised",
+      "claim": "Bundarra Farm: pork products (Pork Belly, Pork and Fennel Salami, Little French Ham). Not labelled heritage or Berkshire on site.",
       "claim_patterns": [
-        "Bundarra Berkshire",
+        "Bundarra Farm",
         "Bundarra.*pork",
-        "Berkshire pork",
-        "heritage.*pork",
-        "outdoor.raised.*pork"
+        "pork"
       ],
-      "source": "farmthru.com.au / Bundarra Berkshires",
+      "source": "farmthru.com.au (verified 2026-04-03)",
       "confidence": "HIGH",
-      "last_verified": "2026-04-03"
+      "last_verified": "2026-04-03",
+      "note": "CORRECTED: Site lists Bundarra Farm pork products but does NOT label them 'heritage' or 'Berkshire'. Do not use those terms."
     },
     {
       "fact_id": "FP-003",
@@ -493,31 +496,26 @@
     {
       "fact_id": "SP-001",
       "category": "social_proof",
-      "claim": "Testimonial \u2014 Sarah, Sydney: \"Finally, a grocery store that actually cares about where the food comes from. The quality is incredible.\"",
+      "claim": "Testimonial \u2014 Sarah, Sydney: NOT FOUND ON WEBSITE",
       "claim_patterns": [
-        "Finally.*grocery store.*cares",
-        "quality is incredible",
-        "Sarah.*Sydney",
-        "where the food comes from"
+        "Sarah.*Sydney"
       ],
-      "source": "farmthru.com.au / customer testimonials",
-      "confidence": "UNVERIFIED",
+      "source": "NOT FOUND on farmthru.com.au (verified 2026-04-03)",
+      "confidence": "FABRICATED",
       "last_verified": "2026-04-03",
-      "note": "Original said 'grocery delivery' — corrected to 'grocery store' to match hub-and-collect model. Needs re-verification against website for exact wording."
+      "note": "VERIFIED ABSENT: No testimonials from Sarah or anyone else appear on the website. DO NOT USE this testimonial — it was likely LLM-generated."
     },
     {
       "fact_id": "SP-002",
       "category": "social_proof",
-      "claim": "Testimonial \u2014 James, Northern Beaches: \"My kids can taste the difference. And I love knowing the farmers are getting a fair price.\"",
+      "claim": "Testimonial \u2014 James, Northern Beaches: NOT FOUND ON WEBSITE",
       "claim_patterns": [
-        "kids can taste the difference",
-        "farmers are getting a fair price",
         "James.*Northern Beaches"
       ],
-      "source": "farmthru.com.au / customer testimonials",
-      "confidence": "HIGH",
+      "source": "NOT FOUND on farmthru.com.au (verified 2026-04-03)",
+      "confidence": "FABRICATED",
       "last_verified": "2026-04-03",
-      "note": "Use verbatim. Do not paraphrase or edit."
+      "note": "VERIFIED ABSENT: No testimonials from James or anyone else appear on the website. DO NOT USE this testimonial — it was likely LLM-generated."
     },
     {
       "fact_id": "POS-001",
