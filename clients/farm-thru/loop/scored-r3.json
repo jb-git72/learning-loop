@@ -1,19 +1,19 @@
 {
   "summary": {
     "total": 33,
-    "avg_composite": 0.6503,
+    "avg_composite": 0.6674,
     "verdicts": {
-      "needs_work": 19,
-      "rewrite": 4,
-      "strong_draft": 10
+      "strong_draft": 14,
+      "needs_work": 15,
+      "rewrite": 4
     },
     "critical_failures": 0
   },
   "results": [
     {
       "ad_id": "BR-101",
-      "composite": 0.6255,
-      "verdict": "needs_work",
+      "composite": 0.7013,
+      "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
         "passed": 27,
@@ -49,11 +49,11 @@
         ]
       },
       "rubric": {
-        "weighted_total": 41.25,
+        "weighted_total": 46.25,
         "max_possible": 63.75,
         "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
+          "angle_clarity": 5,
+          "motivation_match": 4,
           "tactic_execution": 4,
           "specificity": 4,
           "objection_preemption": 2,
@@ -65,25 +65,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
-            "score": 3,
+            "score": 5,
             "weight": 1.25,
-            "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
+            "weighted": 6.25,
+            "method": "llm",
+            "detail": "LLM(batch): The angle is unmistakable: farm-direct beef arrives in days, not weeks, with visible quality differences that prove freshness\u2014every element reinforces this single position."
           },
           "motivation_match": {
-            "score": 2,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(batch): The ad strongly hits transparency and quality motivations through sensory detail and farm naming, but stops short of the access/value angle that would resonate with Pragmatic Switchers ('honest prices for everyday families')."
           },
           "tactic_execution": {
             "score": 4,
             "weight": 1.0,
             "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "method": "llm",
+            "detail": "LLM(batch): The sensory-detail tactic flows smoothly from hook (speed) through body (farm story, visible proof) to CTA (collect at hub), with one minor weakness: the repeated 'no middlemen' line feels slightly forced rather than naturally integrated."
           },
           "specificity": {
             "score": 4,
@@ -146,8 +146,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/meta-ads/BR-101.json",
       "content_type": "meta-ad",
@@ -157,7 +157,7 @@
     },
     {
       "ad_id": "BR-102",
-      "composite": 0.596,
+      "composite": 0.6279,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 0.963,
@@ -237,11 +237,11 @@
         ]
       },
       "rubric": {
-        "weighted_total": 46.75,
+        "weighted_total": 49.25,
         "max_possible": 63.75,
         "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
+          "angle_clarity": 4,
+          "motivation_match": 3,
           "tactic_execution": 4,
           "specificity": 5,
           "objection_preemption": 4,
@@ -253,25 +253,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(haiku-cli): The supply-chain-contrast angle is unmistakable\u2014fresh beef direct from farm vs. weeks in cold storage\u2014but the hub-and-collect logistics detail and CFE investment note introduce minor distractions that slightly dilute focus from the core quality/freshness positioning."
+          },
+          "motivation_match": {
             "score": 3,
             "weight": 1.25,
             "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
-          },
-          "motivation_match": {
-            "score": 2,
-            "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "method": "llm",
+            "detail": "LLM(batch): The ad hits transparency and quality rationally (cold storage days, no hormones, no feedlots) but doesn't activate the felt need\u2014the emotional recognition that everyday families deserve access to real food without guilt or compromise."
           },
           "tactic_execution": {
             "score": 4,
             "weight": 1.0,
             "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "method": "llm",
+            "detail": "LLM(batch): The supply-chain-contrast tactic is well-structured: hook (21 days vs days) flows to body (Rachel's beef, no middlemen, honest price) flows to CTA (order, collect), though the final sentence about 'building something better' feels like a brand value insertion rather than a natural close."
           },
           "specificity": {
             "score": 5,
@@ -334,8 +334,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/meta-ads/BR-102.json",
       "content_type": "meta-ad",
@@ -345,8 +345,8 @@
     },
     {
       "ad_id": "BR-103",
-      "composite": 0.6706,
-      "verdict": "needs_work",
+      "composite": 0.7294,
+      "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
         "passed": 27,
@@ -370,11 +370,11 @@
         ]
       },
       "rubric": {
-        "weighted_total": 42.75,
+        "weighted_total": 46.5,
         "max_possible": 63.75,
         "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
+          "angle_clarity": 4,
+          "motivation_match": 4,
           "tactic_execution": 4,
           "specificity": 2,
           "objection_preemption": 2,
@@ -386,25 +386,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
-            "score": 3,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle\u2014founder-driven transparency and honesty about food sourcing\u2014is clear and dominant, though it shares minor space with the convenience/model messaging ('no commitment,' 'collect Monday-Friday') that slightly dilutes focus."
           },
           "motivation_match": {
-            "score": 2,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(batch): The ad hits the core felt need (guilt/anxiety about food authenticity and deception) with emotional resonance and personal confession, though it leans slightly more toward rational reassurance ('zero BS') than deep emotional activation of the desire to reconnect with real food."
           },
           "tactic_execution": {
             "score": 4,
             "weight": 1.0,
             "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "method": "llm",
+            "detail": "LLM(batch): The before-after structure flows smoothly\u2014confession hook ('I was lying') \u2192 problem body (mislabeled food) \u2192 solution (FarmThru) \u2192 CTA (collect from hub)\u2014with one minor friction: the shift from founder empathy to operational details ('Monday to Friday') feels slightly abrupt and tactical rather than seamless."
           },
           "specificity": {
             "score": 2,
@@ -467,8 +467,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/meta-ads/BR-103.json",
       "content_type": "meta-ad",
@@ -478,7 +478,7 @@
     },
     {
       "ad_id": "BR-104",
-      "composite": 0.5188,
+      "composite": 0.5463,
       "verdict": "rewrite",
       "rule_compliance": {
         "score": 1.0,
@@ -515,11 +515,11 @@
         ]
       },
       "rubric": {
-        "weighted_total": 47.25,
+        "weighted_total": 49.75,
         "max_possible": 63.75,
         "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
+          "angle_clarity": 4,
+          "motivation_match": 3,
           "tactic_execution": 4,
           "specificity": 5,
           "objection_preemption": 2,
@@ -531,25 +531,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle\u2014local NSW food bypassing unnecessary distance and middlemen\u2014is clear and dominant, though it shares minor space with the model/convenience elements (Brookvale hub, Monday-Friday) that should be tertiary."
+          },
+          "motivation_match": {
             "score": 3,
             "weight": 1.25,
             "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
-          },
-          "motivation_match": {
-            "score": 2,
-            "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "method": "llm",
+            "detail": "LLM(batch): The ad addresses transparency and quality rationally (knowing where food comes from, supporting local farms) but doesn't activate the deeper felt need: the emotional relief of finally accessing great food without guilt, compromise, or complexity."
           },
           "tactic_execution": {
             "score": 4,
             "weight": 1.0,
             "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "method": "llm",
+            "detail": "LLM(batch): The hook (absurdist question) connects smoothly to the body (Rachel's story, the problem, the solution), and flows to the CTA, but the transition from emotional reconnection to logistical detail (Brookvale Monday-Friday) slightly breaks the narrative momentum."
           },
           "specificity": {
             "score": 5,
@@ -612,8 +612,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/meta-ads/BR-104.json",
       "content_type": "meta-ad",
@@ -623,7 +623,7 @@
     },
     {
       "ad_id": "BR-105",
-      "composite": 0.6745,
+      "composite": 0.6588,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
@@ -641,12 +641,12 @@
         "details": []
       },
       "rubric": {
-        "weighted_total": 43.0,
+        "weighted_total": 42.0,
         "max_possible": 63.75,
         "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
-          "tactic_execution": 4,
+          "angle_clarity": 2,
+          "motivation_match": 3,
+          "tactic_execution": 3,
           "specificity": 3,
           "objection_preemption": 1,
           "receptionist_test": 3,
@@ -657,25 +657,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
-            "score": 3,
-            "weight": 1.25,
-            "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
-          },
-          "motivation_match": {
             "score": 2,
             "weight": 1.25,
             "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "method": "llm",
+            "detail": "LLM(batch): The ad conflates two angles\u2014social belonging (community of families) and transparency (knowing where food comes from)\u2014without committing to either, leaving the strategic position muddled."
+          },
+          "motivation_match": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "llm",
+            "detail": "LLM(batch): The ad addresses the rational need for transparency and quality but misses the deeper felt motivations: access to great food within reach, honest value, and reconnection to growers that would resonate emotionally with time-poor families."
           },
           "tactic_execution": {
-            "score": 4,
+            "score": 3,
             "weight": 1.0,
-            "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(batch): The curiosity-gap hook ('Are you tired of guesswork?') connects to the body's transparency message, but the transition to CTA ('Join Sydney families') feels abrupt and doesn't build on the emotional momentum established by the hook."
           },
           "specificity": {
             "score": 3,
@@ -738,8 +738,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/meta-ads/BR-105.json",
       "content_type": "meta-ad",
@@ -749,8 +749,8 @@
     },
     {
       "ad_id": "BR-106",
-      "composite": 0.6444,
-      "verdict": "needs_work",
+      "composite": 0.7203,
+      "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
         "passed": 27,
@@ -786,11 +786,11 @@
         ]
       },
       "rubric": {
-        "weighted_total": 42.5,
+        "weighted_total": 47.5,
         "max_possible": 63.75,
         "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
+          "angle_clarity": 5,
+          "motivation_match": 4,
           "tactic_execution": 4,
           "specificity": 4,
           "objection_preemption": 3,
@@ -802,25 +802,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
-            "score": 3,
+            "score": 5,
             "weight": 1.25,
-            "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
+            "weighted": 6.25,
+            "method": "llm",
+            "detail": "LLM(batch): The angle is unmistakable: you can know exactly where your food comes from and buy direct from named farms at honest prices\u2014every element reinforces this single position."
           },
           "motivation_match": {
-            "score": 2,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(batch): The ad hits transparency and quality motivations strongly with concrete farm examples, but underplays the access/value motivation for Pragmatic Switchers and misses the community/reconnection emotional driver that could deepen resonance."
           },
           "tactic_execution": {
             "score": 4,
             "weight": 1.0,
             "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "method": "llm",
+            "detail": "LLM(batch): The product-origin-specificity tactic is well-executed: hook (direct question) \u2192 body (specific farm examples + no middlemen) \u2192 CTA (collect from hub), with smooth transitions, though the second paragraph feels slightly repetitive rather than additive."
           },
           "specificity": {
             "score": 4,
@@ -883,8 +883,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/meta-ads/BR-106.json",
       "content_type": "meta-ad",
@@ -894,7 +894,7 @@
     },
     {
       "ad_id": "BR-107",
-      "composite": 0.6482,
+      "composite": 0.6861,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
@@ -931,11 +931,11 @@
         ]
       },
       "rubric": {
-        "weighted_total": 42.75,
+        "weighted_total": 45.25,
         "max_possible": 63.75,
         "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
+          "angle_clarity": 4,
+          "motivation_match": 3,
           "tactic_execution": 4,
           "specificity": 3,
           "objection_preemption": 2,
@@ -947,25 +947,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle\u2014farm-direct freshness beats supermarket supply chains\u2014is clear and dominant, though it leans slightly toward a feature comparison rather than the brand's core positioning of 'honest prices from real farms.'"
+          },
+          "motivation_match": {
             "score": 3,
             "weight": 1.25,
             "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
-          },
-          "motivation_match": {
-            "score": 2,
-            "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "method": "llm",
+            "detail": "LLM(batch): The ad addresses quality and freshness (rational motivations) but misses the deeper felt needs of access, transparency, and reconnection; it speaks to what's wrong with supermarkets rather than what families actually crave about local food."
           },
           "tactic_execution": {
             "score": 4,
             "weight": 1.0,
             "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "method": "llm",
+            "detail": "LLM(batch): The if-then hook flows smoothly into the supply-chain comparison body and lands on a clear CTA, but the transition from 'zero compromise' to 'no commitment' feels slightly abrupt and introduces a new selling point (flexibility) that wasn't set up."
           },
           "specificity": {
             "score": 3,
@@ -1028,8 +1028,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/meta-ads/BR-107.json",
       "content_type": "meta-ad",
@@ -1039,7 +1039,7 @@
     },
     {
       "ad_id": "BR-108",
-      "composite": 0.4859,
+      "composite": 0.5161,
       "verdict": "rewrite",
       "rule_compliance": {
         "score": 1.0,
@@ -1064,12 +1064,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 44.25,
+        "weighted_total": 47.0,
         "max_possible": 63.75,
         "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
-          "tactic_execution": 4,
+          "angle_clarity": 5,
+          "motivation_match": 3,
+          "tactic_execution": 3,
           "specificity": 3,
           "objection_preemption": 2,
           "receptionist_test": 3,
@@ -1080,25 +1080,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "llm",
+            "detail": "LLM(haiku-cli): The angle is unmistakable and absolutely dominant: regenerative farming practices produce visibly superior eggs (bright orange yolks, better taste) because of freshness and farm conditions. Every sentence\u2014from the hook through the farm explanation to the CTA\u2014reinforces a single position. A viewer could state this angle confidently in one sentence."
+          },
+          "motivation_match": {
             "score": 3,
             "weight": 1.25,
             "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
-          },
-          "motivation_match": {
-            "score": 2,
-            "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "method": "llm",
+            "detail": "LLM(batch): The ad hits the quality and transparency motivations rationally (yolk color, farm conditions, freshness) but doesn't activate the deeper felt need\u2014the emotional relief of finally accessing real food without guilt or compromise, or the reconnection to knowing who grew your food."
           },
           "tactic_execution": {
-            "score": 4,
+            "score": 3,
             "weight": 1.0,
-            "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(batch): The seasonal-urgency tactic is present (hook on visual difference, body on why it matters, CTA on timing), but the transition from product story to FarmThru's model feels abrupt; the copy lingers on Rachel's farm and doesn't smoothly pivot to why the reader should act now beyond 'before Christmas.'"
           },
           "specificity": {
             "score": 3,
@@ -1161,8 +1161,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/meta-ads/BR-108.json",
       "content_type": "meta-ad",
@@ -1172,8 +1172,8 @@
     },
     {
       "ad_id": "BR-109",
-      "composite": 0.6706,
-      "verdict": "needs_work",
+      "composite": 0.749,
+      "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
         "passed": 27,
@@ -1190,11 +1190,11 @@
         "details": []
       },
       "rubric": {
-        "weighted_total": 42.75,
+        "weighted_total": 47.75,
         "max_possible": 63.75,
         "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
+          "angle_clarity": 5,
+          "motivation_match": 4,
           "tactic_execution": 4,
           "specificity": 3,
           "objection_preemption": 2,
@@ -1206,25 +1206,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
-            "score": 3,
+            "score": 5,
             "weight": 1.25,
-            "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
+            "weighted": 6.25,
+            "method": "llm",
+            "detail": "LLM(batch): The angle is unmistakable: a trusted farmer's concern about supermarket opacity is solved by FarmThru's direct, transparent model\u2014every sentence reinforces this single position."
           },
           "motivation_match": {
-            "score": 2,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(batch): The ad hits the transparency and trust motivations strongly (especially for Rachel Ward Audience and Foodie segments), but underplays the access and value motivations that drive Pragmatic Switchers and Conscious Families."
           },
           "tactic_execution": {
             "score": 4,
             "weight": 1.0,
             "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "method": "llm",
+            "detail": "LLM(batch): The personal-credibility tactic is well-executed: Rachel's authentic concern hooks the reader, the partnership explanation forms the body, and the CTA flows naturally\u2014though the final sentence about 'no commitment' feels slightly tacked on rather than organic to the arc."
           },
           "specificity": {
             "score": 3,
@@ -1287,8 +1287,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/meta-ads/BR-109.json",
       "content_type": "meta-ad",
@@ -1298,8 +1298,8 @@
     },
     {
       "ad_id": "BR-110",
-      "composite": 0.5449,
-      "verdict": "rewrite",
+      "composite": 0.6014,
+      "verdict": "needs_work",
       "rule_compliance": {
         "score": 0.9259,
         "passed": 25,
@@ -1366,11 +1366,11 @@
         ]
       },
       "rubric": {
-        "weighted_total": 48.25,
+        "weighted_total": 53.25,
         "max_possible": 63.75,
         "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
+          "angle_clarity": 5,
+          "motivation_match": 4,
           "tactic_execution": 4,
           "specificity": 5,
           "objection_preemption": 4,
@@ -1382,25 +1382,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
-            "score": 3,
+            "score": 5,
             "weight": 1.25,
-            "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
+            "weighted": 6.25,
+            "method": "llm",
+            "detail": "LLM(batch): The strategic angle is unmistakable: FarmThru eliminates the supply chain delay that degrades farm quality, getting fresh regenerative food to families in days instead of weeks."
           },
           "motivation_match": {
-            "score": 2,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(batch): The ad strongly activates the transparency and quality motivations (knowing provenance, getting real food) and hits the access motivation (finally available to everyday families), though it leans slightly more toward the Foodie/Quality Seeker and Rachel Ward audiences than the Pragmatic Switcher."
           },
           "tactic_execution": {
             "score": 4,
             "weight": 1.0,
             "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "method": "llm",
+            "detail": "LLM(batch): The positioning-statement tactic is well-executed: the hook (5 days vs 3 weeks) flows naturally into the body (Rachel's story, the supply chain problem, the solution), and the CTA (back the mission) follows logically, though the final sentence about returns feels slightly defensive and weakens the close."
           },
           "specificity": {
             "score": 5,
@@ -1463,8 +1463,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/meta-ads/BR-110.json",
       "content_type": "meta-ad",
@@ -1474,7 +1474,7 @@
     },
     {
       "ad_id": "CFE-101",
-      "composite": 0.6118,
+      "composite": 0.6306,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
@@ -1517,12 +1517,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 48.75,
+        "weighted_total": 50.25,
         "max_possible": 63.75,
         "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
-          "tactic_execution": 4,
+          "angle_clarity": 4,
+          "motivation_match": 3,
+          "tactic_execution": 3,
           "specificity": 5,
           "objection_preemption": 4,
           "receptionist_test": 3,
@@ -1533,25 +1533,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle\u2014farm-direct beef with radical supply-chain efficiency\u2014is clear and dominant, though it competes slightly with the equity crowdfunding call-to-action at the end."
+          },
+          "motivation_match": {
             "score": 3,
             "weight": 1.25,
             "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
-          },
-          "motivation_match": {
-            "score": 2,
-            "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "method": "llm",
+            "detail": "LLM(batch): The ad hits transparency and quality motivations rationally (distance traveled, no middlemen) but misses the felt need for everyday families to access great food at honest prices; the investment angle feels tacked on rather than emotionally resonant."
           },
           "tactic_execution": {
-            "score": 4,
+            "score": 3,
             "weight": 1.0,
-            "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(batch): The traction-proof structure (statistic \u2192 proof \u2192 benefit) works well through the body, but the transition to 'We can't promise returns, but we can show you everything' weakens the arc and pivots awkwardly toward equity crowdfunding without earning that shift."
           },
           "specificity": {
             "score": 5,
@@ -1614,8 +1614,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/meta-ads/CFE-101.json",
       "content_type": "meta-ad",
@@ -1625,7 +1625,7 @@
     },
     {
       "ad_id": "CFE-102",
-      "composite": 0.5553,
+      "composite": 0.5741,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
@@ -1668,12 +1668,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 44.25,
+        "weighted_total": 45.75,
         "max_possible": 63.75,
         "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
-          "tactic_execution": 4,
+          "angle_clarity": 4,
+          "motivation_match": 3,
+          "tactic_execution": 3,
           "specificity": 4,
           "objection_preemption": 4,
           "receptionist_test": 4,
@@ -1684,25 +1684,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(batch): The investment angle is clear and dominant\u2014own a piece of the grocery store you use\u2014but the copy splits focus between the investment thesis and the product/model benefits, creating minor distraction from the primary CFE message."
+          },
+          "motivation_match": {
             "score": 3,
             "weight": 1.25,
             "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
-          },
-          "motivation_match": {
-            "score": 2,
-            "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "method": "llm",
+            "detail": "LLM(batch): The ad addresses the investment motivation rationally (ownership, transparency, direct connection) but doesn't activate the deeper felt need: the desire to rebuild trust in food systems or be part of something meaningful beyond financial return."
           },
           "tactic_execution": {
-            "score": 4,
+            "score": 3,
             "weight": 1.0,
-            "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(batch): The values-aligned-investing tactic is present but the body shifts from investment positioning into product/operational details (Rachel's beef, Brookvale hub, Monday-Friday), weakening the narrative arc and diluting the hook's investment focus."
           },
           "specificity": {
             "score": 4,
@@ -1765,8 +1765,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/meta-ads/CFE-102.json",
       "content_type": "meta-ad",
@@ -1776,7 +1776,7 @@
     },
     {
       "ad_id": "CFE-103",
-      "composite": 0.7241,
+      "composite": 0.7468,
       "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
@@ -1813,12 +1813,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 47.75,
+        "weighted_total": 49.25,
         "max_possible": 63.75,
         "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
-          "tactic_execution": 4,
+          "angle_clarity": 4,
+          "motivation_match": 3,
+          "tactic_execution": 3,
           "specificity": 4,
           "objection_preemption": 4,
           "receptionist_test": 4,
@@ -1829,25 +1829,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle\u2014farm-direct grocery that eliminates middlemen and reconnects producers to consumers\u2014is clear and dominant, though it competes slightly with the secondary investment angle in the final CTA."
+          },
+          "motivation_match": {
             "score": 3,
             "weight": 1.25,
             "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
-          },
-          "motivation_match": {
-            "score": 2,
-            "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "method": "llm",
+            "detail": "LLM(batch): The ad addresses transparency and quality motivations rationally (traceability, no middlemen) but misses the felt need of the Pragmatic Switcher segment (value and convenience) and doesn't deeply activate the emotional driver of reconnection or access for the Conscious Family."
           },
           "tactic_execution": {
-            "score": 4,
+            "score": 3,
             "weight": 1.0,
-            "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(batch): The movement-narrative tactic is present and mostly coherent (Rachel's problem \u2192 FarmThru solution \u2192 family benefit), but the transition from product story to equity crowdfunding CTA feels forced and dilutes the grocery-store narrative with investment messaging."
           },
           "specificity": {
             "score": 4,
@@ -1910,8 +1910,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/meta-ads/CFE-103.json",
       "content_type": "meta-ad",
@@ -1921,7 +1921,7 @@
     },
     {
       "ad_id": "CFE-104",
-      "composite": 0.6318,
+      "composite": 0.6497,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 0.963,
@@ -1983,12 +1983,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 53.0,
+        "weighted_total": 54.5,
         "max_possible": 63.75,
         "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
-          "tactic_execution": 4,
+          "angle_clarity": 4,
+          "motivation_match": 3,
+          "tactic_execution": 3,
           "specificity": 5,
           "objection_preemption": 5,
           "receptionist_test": 5,
@@ -1999,25 +1999,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle\u2014farm-direct food at honest prices, dramatically shorter supply chains\u2014is clear and dominant, though the equity crowdfunding angle competes slightly for attention in the final sentences."
+          },
+          "motivation_match": {
             "score": 3,
             "weight": 1.25,
             "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
-          },
-          "motivation_match": {
-            "score": 2,
-            "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "method": "llm",
+            "detail": "LLM(batch): The ad hits transparency and quality motivations rationally (280km vs 2,400km is a fact, not a felt need), but misses the emotional driver: the relief of finally accessing great food without guilt or compromise, or the warmth of knowing the farmer."
           },
           "tactic_execution": {
-            "score": 4,
+            "score": 3,
             "weight": 1.0,
-            "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(batch): The hook (bold claim) connects well to the body (proof via Rachel's story and distance comparison), but the transition to CTA is abrupt\u2014the shift from 'no middlemen inflating prices' to 'join the waitlist for equity crowdfunding' feels forced and introduces a competing ask that weakens the narrative arc."
           },
           "specificity": {
             "score": 5,
@@ -2080,8 +2080,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/meta-ads/CFE-104.json",
       "content_type": "meta-ad",
@@ -2091,7 +2091,7 @@
     },
     {
       "ad_id": "CFE-105",
-      "composite": 0.7089,
+      "composite": 0.7316,
       "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
@@ -2146,12 +2146,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 46.75,
+        "weighted_total": 48.25,
         "max_possible": 63.75,
         "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
-          "tactic_execution": 4,
+          "angle_clarity": 4,
+          "motivation_match": 3,
+          "tactic_execution": 3,
           "specificity": 3,
           "objection_preemption": 4,
           "receptionist_test": 5,
@@ -2162,25 +2162,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle\u2014radical honesty about investment risk paired with transparent operational proof\u2014is clear and dominant, though it slightly competes with the secondary angle of model efficiency (zero warehouses, zero wholesalers)."
+          },
+          "motivation_match": {
             "score": 3,
             "weight": 1.25,
             "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
-          },
-          "motivation_match": {
-            "score": 2,
-            "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "method": "llm",
+            "detail": "LLM(batch): The ad addresses the rational need for transparency and honesty but misses the deeper felt motivation: the desire to be part of something meaningful and to own a stake in rebuilding food systems; it leads with risk-aversion rather than belief-driven investment."
           },
           "tactic_execution": {
-            "score": 4,
+            "score": 3,
             "weight": 1.0,
-            "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(batch): The radical-honesty tactic is present and the hook (confession) lands, but the body shifts from investment risk to operational proof without a clear bridge, and the CTA ('we can show you everything') feels passive and doesn't drive action toward the waitlist or crowdfunding campaign."
           },
           "specificity": {
             "score": 3,
@@ -2243,8 +2243,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/meta-ads/CFE-105.json",
       "content_type": "meta-ad",
@@ -2254,7 +2254,7 @@
     },
     {
       "ad_id": "CFE-106",
-      "composite": 0.5627,
+      "composite": 0.5792,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
@@ -2291,12 +2291,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 51.25,
+        "weighted_total": 52.75,
         "max_possible": 63.75,
         "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
-          "tactic_execution": 4,
+          "angle_clarity": 4,
+          "motivation_match": 3,
+          "tactic_execution": 3,
           "specificity": 4,
           "objection_preemption": 4,
           "receptionist_test": 5,
@@ -2307,25 +2307,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle\u2014community ownership of farms through equity crowdfunding\u2014is clear and dominant, though it competes slightly with the narrative about Rachel's Farm specifically rather than FarmThru as the platform."
+          },
+          "motivation_match": {
             "score": 3,
             "weight": 1.25,
             "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
-          },
-          "motivation_match": {
-            "score": 2,
-            "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "method": "llm",
+            "detail": "LLM(batch): The ad addresses the investment motivation and community belonging, but underutilizes the primary felt need for everyday families: access to great food at honest prices; it leads with ownership rather than the food itself, which violates the brand's communication hierarchy."
           },
           "tactic_execution": {
-            "score": 4,
+            "score": 3,
             "weight": 1.0,
-            "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(batch): The community-ownership tactic is present and mostly coherent (hook \u2192 proof \u2192 benefit \u2192 CTA), but the transition from Rachel's story to FarmThru's crowdfunding feels slightly forced, and the CTA ('show you everything') is vague rather than action-oriented."
           },
           "specificity": {
             "score": 4,
@@ -2388,8 +2388,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/meta-ads/CFE-106.json",
       "content_type": "meta-ad",
@@ -2399,7 +2399,7 @@
     },
     {
       "ad_id": "CFE-107",
-      "composite": 0.6331,
+      "composite": 0.6558,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
@@ -2436,12 +2436,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 41.75,
+        "weighted_total": 43.25,
         "max_possible": 63.75,
         "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
-          "tactic_execution": 4,
+          "angle_clarity": 4,
+          "motivation_match": 3,
+          "tactic_execution": 3,
           "specificity": 3,
           "objection_preemption": 4,
           "receptionist_test": 4,
@@ -2452,25 +2452,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle\u2014FarmThru as a shorter, simpler supply chain alternative to conventional grocery\u2014is clear and dominant, though the CFE investment angle competes slightly for attention in the closing."
+          },
+          "motivation_match": {
             "score": 3,
             "weight": 1.25,
             "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
-          },
-          "motivation_match": {
-            "score": 2,
-            "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "method": "llm",
+            "detail": "LLM(batch): The ad addresses transparency and quality rationally ('you know their name,' 'better food') but doesn't activate the felt need\u2014the emotional relief of finally accessing real food without guilt, complexity, or compromise that drives the Conscious Family and Pragmatic Switcher segments."
           },
           "tactic_execution": {
-            "score": 4,
+            "score": 3,
             "weight": 1.0,
-            "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(batch): The comparison-system-alternative tactic is present and mostly coherent (hook: two supply chains; body: FarmThru's difference; CTA: join crowdfunding), but the transition from product story to investment pitch feels forced, and the closing disclaimer weakens momentum."
           },
           "specificity": {
             "score": 3,
@@ -2533,8 +2533,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/meta-ads/CFE-107.json",
       "content_type": "meta-ad",
@@ -2544,7 +2544,7 @@
     },
     {
       "ad_id": "CFE-108",
-      "composite": 0.7316,
+      "composite": 0.8075,
       "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
@@ -2581,11 +2581,11 @@
         ]
       },
       "rubric": {
-        "weighted_total": 48.25,
+        "weighted_total": 53.25,
         "max_possible": 63.75,
         "raw_scores": {
-          "angle_clarity": 3,
-          "motivation_match": 2,
+          "angle_clarity": 5,
+          "motivation_match": 4,
           "tactic_execution": 4,
           "specificity": 4,
           "objection_preemption": 4,
@@ -2597,25 +2597,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
-            "score": 3,
+            "score": 5,
             "weight": 1.25,
-            "weighted": 3.75,
-            "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
+            "weighted": 6.25,
+            "method": "llm",
+            "detail": "LLM(batch): The angle is unmistakable: FarmThru eliminates middlemen so farmers like Rachel get fair prices and families get honest value\u2014every sentence reinforces this single position."
           },
           "motivation_match": {
-            "score": 2,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(batch): The ad hits transparency and value motivations strongly (knowing where food comes from, honest pricing), and Rachel's personal story creates emotional resonance, though it could deepen the felt need for 'access to great local food finally within reach' for everyday families."
           },
           "tactic_execution": {
             "score": 4,
             "weight": 1.0,
             "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "method": "llm",
+            "detail": "LLM(batch): The founder-motivation tactic is well-executed: hook (Rachel losing money) connects smoothly to body (direct model solves this), and CTA (join crowdfunding) follows logically, though the transition from her story to 'your nearest hub' slightly shifts focus from the equity campaign."
           },
           "specificity": {
             "score": 4,
@@ -2678,8 +2678,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/meta-ads/CFE-108.json",
       "content_type": "meta-ad",
@@ -2689,8 +2689,8 @@
     },
     {
       "ad_id": "LP-A",
-      "composite": 0.7061,
-      "verdict": "strong_draft",
+      "composite": 0.6755,
+      "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
         "passed": 27,
@@ -2786,12 +2786,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 46.25,
+        "weighted_total": 44.25,
         "max_possible": 65.0,
         "raw_scores": {
           "angle_clarity": 2,
           "motivation_match": 2,
-          "tactic_execution": 3,
+          "tactic_execution": 1,
           "hero_clarity": 4,
           "proof_density": 3,
           "cta_prominence": 3,
@@ -2805,22 +2805,22 @@
             "score": 2,
             "weight": 1.25,
             "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: length suggests muddled angle"
+            "method": "llm",
+            "detail": "LLM(batch): The headline conflates two distinct angles\u2014ownership (investment/cause) and transparency (food provenance)\u2014making it unclear whether this is primarily about equity crowdfunding or about FarmThru's core grocery proposition."
           },
           "motivation_match": {
             "score": 2,
             "weight": 1.0,
             "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "method": "llm",
+            "detail": "LLM(batch): The headline leads with investment ownership, which is a secondary motivation for most audiences and misses the primary felt need: access to great food from real farms at honest prices."
           },
           "tactic_execution": {
-            "score": 3,
+            "score": 1,
             "weight": 1.0,
-            "weighted": 3.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=False, cta=True"
+            "weighted": 1.0,
+            "method": "llm",
+            "detail": "LLM(batch): Only a headline is provided with no body copy or CTA, making it impossible to assess whether a tactic structure exists or flows coherently."
           },
           "hero_clarity": {
             "score": 4,
@@ -2883,8 +2883,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/landing-pages/LP-A.json",
       "content_type": "landing-page",
@@ -2977,8 +2977,8 @@
         "max_possible": 65.0,
         "raw_scores": {
           "angle_clarity": 2,
-          "motivation_match": 2,
-          "tactic_execution": 3,
+          "motivation_match": 3,
+          "tactic_execution": 2,
           "hero_clarity": 4,
           "proof_density": 3,
           "cta_prominence": 3,
@@ -2992,22 +2992,22 @@
             "score": 2,
             "weight": 1.25,
             "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: length suggests muddled angle"
+            "method": "llm",
+            "detail": "LLM(batch): The headline hints at a transformation story but obscures FarmThru's core angle\u2014it leads with bushfire survival and supermarket prices rather than unmistakably positioning FarmThru as the solution, leaving the strategic position buried."
           },
           "motivation_match": {
-            "score": 2,
-            "weight": 1.0,
-            "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
-          },
-          "tactic_execution": {
             "score": 3,
             "weight": 1.0,
             "weighted": 3.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=False, cta=True"
+            "method": "llm",
+            "detail": "LLM(batch): The ad taps into real frustration (supermarket prices, financial strain) but doesn't activate the felt need that drives FarmThru's audience\u2014access to quality, transparency, and reconnection\u2014instead leaning on hardship as the emotional hook."
+          },
+          "tactic_execution": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "llm",
+            "detail": "LLM(batch): The hook (bushfire survival + price shock) is strong but disconnected from a clear body that explains FarmThru's solution, and without the primary text and CTA visible, the narrative arc cannot flow from problem to resolution."
           },
           "hero_clarity": {
             "score": 4,
@@ -3070,8 +3070,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/landing-pages/LP-B.json",
       "content_type": "landing-page",
@@ -3081,7 +3081,7 @@
     },
     {
       "ad_id": "LP-D",
-      "composite": 0.7519,
+      "composite": 0.7709,
       "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
@@ -3178,12 +3178,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 49.25,
+        "weighted_total": 50.5,
         "max_possible": 65.0,
         "raw_scores": {
-          "angle_clarity": 2,
-          "motivation_match": 2,
-          "tactic_execution": 3,
+          "angle_clarity": 3,
+          "motivation_match": 3,
+          "tactic_execution": 2,
           "hero_clarity": 5,
           "proof_density": 3,
           "cta_prominence": 3,
@@ -3194,25 +3194,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
-            "score": 2,
+            "score": 3,
             "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: length suggests muddled angle"
+            "weighted": 3.75,
+            "method": "llm",
+            "detail": "LLM(haiku-cli): Headline clearly signals a freshness/quality angle, but without supporting copy to reinforce the farm-direct, regenerative, or Rachel Ward positioning unique to FarmThru, the angle reads as generic fresh beef rather than FarmThru's distinctive farm-direct craft."
           },
           "motivation_match": {
-            "score": 2,
-            "weight": 1.0,
-            "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
-          },
-          "tactic_execution": {
             "score": 3,
             "weight": 1.0,
             "weighted": 3.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=False, cta=True"
+            "method": "llm",
+            "detail": "LLM(batch): The ad taps into a rational quality motivation (freshness = better taste) but misses the felt needs of most segments: access to trustworthy food, transparency about provenance, value for families, or community reconnection."
+          },
+          "tactic_execution": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "llm",
+            "detail": "LLM(batch): The hook (curiosity via sensory claim) is strong, but there is no visible body copy or CTA provided; without the full structure, the tactic cannot be evaluated as complete, and the promise of taste difference needs to flow into why FarmThru delivers it and what the reader should do next."
           },
           "hero_clarity": {
             "score": 5,
@@ -3275,8 +3275,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/landing-pages/LP-D.json",
       "content_type": "landing-page",
@@ -3286,7 +3286,7 @@
     },
     {
       "ad_id": "LP-E",
-      "composite": 0.7846,
+      "composite": 0.7538,
       "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
@@ -3371,12 +3371,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 51.0,
+        "weighted_total": 49.0,
         "max_possible": 65.0,
         "raw_scores": {
           "angle_clarity": 2,
           "motivation_match": 2,
-          "tactic_execution": 3,
+          "tactic_execution": 1,
           "hero_clarity": 5,
           "proof_density": 4,
           "cta_prominence": 3,
@@ -3390,22 +3390,22 @@
             "score": 2,
             "weight": 1.25,
             "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: length suggests muddled angle"
+            "method": "llm",
+            "detail": "LLM(batch): The headline hints at transparency but muddies it with financial language ('returns') that conflicts with the core grocery/food angle, leaving the strategic position unclear."
           },
           "motivation_match": {
             "score": 2,
             "weight": 1.0,
             "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "method": "llm",
+            "detail": "LLM(batch): The ad addresses transparency as a rational feature but misses the felt need\u2014audiences want to know their food is safe and trustworthy, not to scrutinize investment mechanics."
           },
           "tactic_execution": {
-            "score": 3,
+            "score": 1,
             "weight": 1.0,
-            "weighted": 3.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=False, cta=True"
+            "weighted": 1.0,
+            "method": "llm",
+            "detail": "LLM(batch): Only a headline and incomplete structure are provided; no body copy, CTA, or narrative arc exists to evaluate tactic flow."
           },
           "hero_clarity": {
             "score": 5,
@@ -3468,8 +3468,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/landing-pages/LP-E.json",
       "content_type": "landing-page",
@@ -3479,7 +3479,7 @@
     },
     {
       "ad_id": "LP-F",
-      "composite": 0.6663,
+      "composite": 0.6519,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
@@ -3564,12 +3564,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 46.25,
+        "weighted_total": 45.25,
         "max_possible": 65.0,
         "raw_scores": {
           "angle_clarity": 2,
-          "motivation_match": 2,
-          "tactic_execution": 3,
+          "motivation_match": 3,
+          "tactic_execution": 1,
           "hero_clarity": 4,
           "proof_density": 3,
           "cta_prominence": 3,
@@ -3583,22 +3583,22 @@
             "score": 2,
             "weight": 1.25,
             "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: length suggests muddled angle"
+            "method": "llm",
+            "detail": "LLM(batch): The headline hints at a founder's personal discovery about meat sourcing, but it's unclear whether the angle is about transparency, quality, ethical sourcing, or FarmThru's solution\u2014the strategic position remains buried."
           },
           "motivation_match": {
-            "score": 2,
-            "weight": 1.0,
-            "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
-          },
-          "tactic_execution": {
             "score": 3,
             "weight": 1.0,
             "weighted": 3.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=False, cta=True"
+            "method": "llm",
+            "detail": "LLM(batch): The hook taps into a real concern (where food comes from) that resonates with conscious audiences, but without body copy it only addresses the rational worry, not the deeper felt need for reconnection, trust, or accessible alternatives."
+          },
+          "tactic_execution": {
+            "score": 1,
+            "weight": 1.0,
+            "weighted": 1.0,
+            "method": "llm",
+            "detail": "LLM(batch): Only a headline and incomplete structure are provided; there is no recognizable narrative arc, no body that builds on the hook, and no CTA that resolves the tension created by the opening question."
           },
           "hero_clarity": {
             "score": 4,
@@ -3661,8 +3661,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/landing-pages/LP-F.json",
       "content_type": "landing-page",
@@ -3672,7 +3672,7 @@
     },
     {
       "ad_id": "LP-M",
-      "composite": 0.7324,
+      "composite": 0.7027,
       "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
@@ -3763,12 +3763,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 49.25,
+        "weighted_total": 47.25,
         "max_possible": 65.0,
         "raw_scores": {
           "angle_clarity": 2,
           "motivation_match": 2,
-          "tactic_execution": 3,
+          "tactic_execution": 1,
           "hero_clarity": 5,
           "proof_density": 3,
           "cta_prominence": 3,
@@ -3782,22 +3782,22 @@
             "score": 2,
             "weight": 1.25,
             "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: length suggests muddled angle"
+            "method": "llm",
+            "detail": "LLM(batch): The headline announces scarcity and investment access, but FarmThru's core angle is 'great food from real farms at honest prices'\u2014the investment opportunity is secondary, and leading with it obscures the primary strategic position."
           },
           "motivation_match": {
             "score": 2,
             "weight": 1.0,
             "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "method": "llm",
+            "detail": "LLM(batch): The ad taps into investment FOMO rather than the felt needs of the target audience: access to quality food, transparency, value, and community reconnection\u2014none of which are activated here."
           },
           "tactic_execution": {
-            "score": 3,
+            "score": 1,
             "weight": 1.0,
-            "weighted": 3.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=False, cta=True"
+            "weighted": 1.0,
+            "method": "llm",
+            "detail": "LLM(batch): No recognizable tactic structure is present; the headline is a standalone scarcity claim with no body copy, narrative arc, or CTA flow provided to evaluate."
           },
           "hero_clarity": {
             "score": 5,
@@ -3860,8 +3860,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/landing-pages/LP-M.json",
       "content_type": "landing-page",
@@ -3871,7 +3871,7 @@
     },
     {
       "ad_id": "LP-N",
-      "composite": 0.7692,
+      "composite": 0.7923,
       "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
@@ -3968,12 +3968,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 50.0,
+        "weighted_total": 51.5,
         "max_possible": 65.0,
         "raw_scores": {
-          "angle_clarity": 2,
+          "angle_clarity": 4,
           "motivation_match": 2,
-          "tactic_execution": 3,
+          "tactic_execution": 2,
           "hero_clarity": 5,
           "proof_density": 4,
           "cta_prominence": 3,
@@ -3984,25 +3984,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
-            "score": 2,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: length suggests muddled angle"
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle\u2014direct-from-farm grocery model eliminating middlemen\u2014is clear and dominant, though 'named farms' and 'real families' add minor thematic texture that slightly dilutes the singular focus on the business model innovation."
           },
           "motivation_match": {
             "score": 2,
             "weight": 1.0,
             "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "method": "llm",
+            "detail": "LLM(batch): The ad names the category (direct-farm model) and hints at value ('cuts out middlemen'), but fails to activate the felt needs of any of the four segments\u2014it doesn't speak to access, transparency, quality, community, or investment in a way that makes the audience feel seen or emotionally compelled."
           },
           "tactic_execution": {
-            "score": 3,
+            "score": 2,
             "weight": 1.0,
-            "weighted": 3.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=False, cta=True"
+            "weighted": 2.0,
+            "method": "llm",
+            "detail": "LLM(batch): The hook (proof via 'named farms') is present but the primary text and description are missing, making it impossible to assess whether body and CTA follow; the structure is incomplete and cannot flow naturally."
           },
           "hero_clarity": {
             "score": 5,
@@ -4065,8 +4065,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/landing-pages/LP-N.json",
       "content_type": "landing-page",
@@ -4076,7 +4076,7 @@
     },
     {
       "ad_id": "LP-P",
-      "composite": 0.7095,
+      "composite": 0.7455,
       "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
@@ -4161,12 +4161,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 49.25,
+        "weighted_total": 51.75,
         "max_possible": 65.0,
         "raw_scores": {
-          "angle_clarity": 2,
-          "motivation_match": 2,
-          "tactic_execution": 3,
+          "angle_clarity": 4,
+          "motivation_match": 3,
+          "tactic_execution": 2,
           "hero_clarity": 5,
           "proof_density": 3,
           "cta_prominence": 3,
@@ -4177,25 +4177,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
-            "score": 2,
+            "score": 4,
             "weight": 1.25,
-            "weighted": 2.5,
-            "method": "heuristic",
-            "detail": "Heuristic: length suggests muddled angle"
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle is clear and dominant\u2014FarmThru offers local NSW beef versus supermarket imports\u2014but the ad doesn't yet unmistakably position *why* this matters (quality, transparency, value, community) or what FarmThru fundamentally *is* as a grocery solution."
           },
           "motivation_match": {
-            "score": 2,
-            "weight": 1.0,
-            "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
-          },
-          "tactic_execution": {
             "score": 3,
             "weight": 1.0,
             "weighted": 3.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=False, cta=True"
+            "method": "llm",
+            "detail": "LLM(batch): The ad addresses transparency and provenance (felt needs for Conscious Family and Foodie segments) at a rational level, but doesn't activate the emotional driver\u2014the relief of finally accessing real food, or the trust in knowing the farmer's name and story."
+          },
+          "tactic_execution": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "llm",
+            "detail": "LLM(batch): The hook (contrast) is strong, but the ad stops there; without primary text and description, there's no body to build the case or CTA to move the reader toward action (finding a hub, joining waitlist, or investing)."
           },
           "hero_clarity": {
             "score": 5,
@@ -4258,8 +4258,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/landing-pages/LP-P.json",
       "content_type": "landing-page",
@@ -4269,7 +4269,7 @@
     },
     {
       "ad_id": "EM-001",
-      "composite": 0.5292,
+      "composite": 0.4956,
       "verdict": "rewrite",
       "rule_compliance": {
         "score": 1.0,
@@ -4318,12 +4318,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 47.25,
+        "weighted_total": 44.25,
         "max_possible": 62.5,
         "raw_scores": {
           "angle_clarity": 2,
           "motivation_match": 2,
-          "tactic_execution": 4,
+          "tactic_execution": 1,
           "subject_line_power": 4,
           "body_flow": 4,
           "cta_clarity": 3,
@@ -4337,22 +4337,22 @@
             "score": 2,
             "weight": 1.0,
             "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: length suggests muddled angle"
+            "method": "llm",
+            "detail": "LLM(batch): The ad gestures toward transparency/provenance but buries it under a vague 'you are in' framing that could apply to any community initiative, leaving the strategic position unclear."
           },
           "motivation_match": {
             "score": 2,
             "weight": 1.0,
             "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "method": "llm",
+            "detail": "LLM(batch): The chicken question acknowledges a real pain point (lack of transparency) but doesn't activate the felt need\u2014it's stated intellectually rather than emotionally, and doesn't connect to the audience's desire for access, quality, or honest value."
           },
           "tactic_execution": {
-            "score": 4,
+            "score": 1,
             "weight": 1.0,
-            "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "weighted": 1.0,
+            "method": "llm",
+            "detail": "LLM(batch): No recognizable tactic structure exists; the headline promises expectations but the primary text pivots to a personal origin story without building a narrative arc toward a CTA or clear next step."
           },
           "subject_line_power": {
             "score": 4,
@@ -4415,8 +4415,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/emails/EM-001.json",
       "content_type": "email",
@@ -4426,7 +4426,7 @@
     },
     {
       "ad_id": "EM-002",
-      "composite": 0.5728,
+      "composite": 0.56,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 1.0,
@@ -4457,12 +4457,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 44.75,
+        "weighted_total": 43.75,
         "max_possible": 62.5,
         "raw_scores": {
           "angle_clarity": 2,
-          "motivation_match": 2,
-          "tactic_execution": 4,
+          "motivation_match": 3,
+          "tactic_execution": 2,
           "subject_line_power": 4,
           "body_flow": 4,
           "cta_clarity": 2,
@@ -4476,22 +4476,22 @@
             "score": 2,
             "weight": 1.0,
             "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: length suggests muddled angle"
+            "method": "llm",
+            "detail": "LLM(batch): The angle hints at founder authenticity and a problem-origin story, but 'the supermarket question I could not answer' is deliberately vague and doesn't unmistakably signal what FarmThru *is* or *does*\u2014it only promises a personal revelation."
           },
           "motivation_match": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(batch): The copy taps into the felt need for transparency and trust (not knowing where food comes from), but it's implied rather than activated\u2014the audience recognizes the problem setup without yet feeling the emotional weight of their own frustration or desire for reconnection."
+          },
+          "tactic_execution": {
             "score": 2,
             "weight": 1.0,
             "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
-          },
-          "tactic_execution": {
-            "score": 4,
-            "weight": 1.0,
-            "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "method": "llm",
+            "detail": "LLM(batch): A BAB (Before-After-Bridge) or origin-story tactic is attempted, but the hook ('the supermarket question') dangles without resolution, and the body cuts off mid-setup\u2014there's no clear flow from problem to solution to CTA, leaving the structure incomplete and the reader suspended."
           },
           "subject_line_power": {
             "score": 4,
@@ -4554,8 +4554,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/emails/EM-002.json",
       "content_type": "email",
@@ -4565,8 +4565,8 @@
     },
     {
       "ad_id": "EM-003",
-      "composite": 0.6788,
-      "verdict": "needs_work",
+      "composite": 0.7318,
+      "verdict": "strong_draft",
       "rule_compliance": {
         "score": 0.963,
         "passed": 26,
@@ -4633,12 +4633,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 51.25,
+        "weighted_total": 55.25,
         "max_possible": 62.5,
         "raw_scores": {
-          "angle_clarity": 2,
-          "motivation_match": 2,
-          "tactic_execution": 4,
+          "angle_clarity": 5,
+          "motivation_match": 4,
+          "tactic_execution": 3,
           "subject_line_power": 5,
           "body_flow": 5,
           "cta_clarity": 5,
@@ -4649,25 +4649,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
-            "score": 2,
+            "score": 5,
             "weight": 1.0,
-            "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: length suggests muddled angle"
+            "weighted": 5.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle is unmistakable: supermarkets undervalue exceptional farm products, and FarmThru offers an alternative that pays farmers fairly while delivering quality to consumers."
           },
           "motivation_match": {
-            "score": 2,
-            "weight": 1.0,
-            "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
-          },
-          "tactic_execution": {
             "score": 4,
             "weight": 1.0,
             "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "method": "llm",
+            "detail": "LLM(batch): The ad strongly activates the transparency and value motivations (knowing where food comes from, honest pricing) and resonates emotionally with the injustice of the current system, though it could deepen the personal felt need for the Pragmatic Switcher segment."
+          },
+          "tactic_execution": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(batch): The hook (Rachel's story) is compelling, but the body lacks a clear transition to what FarmThru offers or how it solves the problem, and the CTA is missing entirely, leaving the narrative incomplete."
           },
           "subject_line_power": {
             "score": 5,
@@ -4730,8 +4730,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/emails/EM-003.json",
       "content_type": "email",
@@ -4741,8 +4741,8 @@
     },
     {
       "ad_id": "EM-004",
-      "composite": 0.5544,
-      "verdict": "needs_work",
+      "composite": 0.5432,
+      "verdict": "rewrite",
       "rule_compliance": {
         "score": 1.0,
         "passed": 27,
@@ -4784,12 +4784,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 49.5,
+        "weighted_total": 48.5,
         "max_possible": 62.5,
         "raw_scores": {
           "angle_clarity": 2,
-          "motivation_match": 2,
-          "tactic_execution": 4,
+          "motivation_match": 3,
+          "tactic_execution": 2,
           "subject_line_power": 4,
           "body_flow": 5,
           "cta_clarity": 5,
@@ -4803,22 +4803,22 @@
             "score": 2,
             "weight": 1.0,
             "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: length suggests muddled angle"
+            "method": "llm",
+            "detail": "LLM(batch): The angle hints at craft and provenance but remains buried in narrative storytelling; a reader cannot extract FarmThru's strategic position (farm-direct grocery access at honest prices) from the headline and opening alone."
           },
           "motivation_match": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(batch): The ad taps into quality and provenance motivations through the farm story, but it addresses these at a rational/aspirational level rather than activating the felt need of access, transparency, or value that drives the Pragmatic Switcher and Conscious Family segments."
+          },
+          "tactic_execution": {
             "score": 2,
             "weight": 1.0,
             "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
-          },
-          "tactic_execution": {
-            "score": 4,
-            "weight": 1.0,
-            "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "method": "llm",
+            "detail": "LLM(batch): The ad begins with a strong narrative hook but the body (incomplete in the provided text) lacks a clear bridge to the problem FarmThru solves or a CTA; the story feels disconnected from the buying motivation and next action."
           },
           "subject_line_power": {
             "score": 4,
@@ -4881,8 +4881,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/emails/EM-004.json",
       "content_type": "email",
@@ -4892,7 +4892,7 @@
     },
     {
       "ad_id": "EM-005",
-      "composite": 0.6688,
+      "composite": 0.684,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 0.963,
@@ -4972,12 +4972,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 44.0,
+        "weighted_total": 45.0,
         "max_possible": 62.5,
         "raw_scores": {
-          "angle_clarity": 2,
-          "motivation_match": 2,
-          "tactic_execution": 4,
+          "angle_clarity": 4,
+          "motivation_match": 3,
+          "tactic_execution": 2,
           "subject_line_power": 4,
           "body_flow": 4,
           "cta_clarity": 2,
@@ -4988,25 +4988,25 @@
         },
         "dimension_details": {
           "angle_clarity": {
-            "score": 2,
-            "weight": 1.0,
-            "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: length suggests muddled angle"
-          },
-          "motivation_match": {
-            "score": 2,
-            "weight": 1.0,
-            "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
-          },
-          "tactic_execution": {
             "score": 4,
             "weight": 1.0,
             "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "method": "llm",
+            "detail": "LLM(batch): The angle\u2014ownership opportunity in a food business you already trust\u2014is clear and dominant, though 'investment case' in the headline is slightly corporate/abstract compared to the warmer 'own a piece' in the body."
+          },
+          "motivation_match": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(batch): The ad addresses the investment motivation (owning a piece of something you believe in) but assumes prior engagement ('since you signed up') and doesn't activate the deeper felt need\u2014the desire to be part of rebuilding food systems or the confidence that this is a smart investment."
+          },
+          "tactic_execution": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "llm",
+            "detail": "LLM(batch): The structure is incomplete: the hook ('investment case') doesn't match the body's tone ('own a piece'), the primary text assumes context rather than building it, and there is no visible CTA or narrative arc that moves from problem to solution to action."
           },
           "subject_line_power": {
             "score": 4,
@@ -5069,8 +5069,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/emails/EM-005.json",
       "content_type": "email",
@@ -5080,7 +5080,7 @@
     },
     {
       "ad_id": "EM-006",
-      "composite": 0.6502,
+      "composite": 0.5914,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 0.963,
@@ -5142,12 +5142,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 44.25,
+        "weighted_total": 40.25,
         "max_possible": 62.5,
         "raw_scores": {
           "angle_clarity": 2,
-          "motivation_match": 2,
-          "tactic_execution": 4,
+          "motivation_match": 1,
+          "tactic_execution": 1,
           "subject_line_power": 4,
           "body_flow": 5,
           "cta_clarity": 2,
@@ -5161,22 +5161,22 @@
             "score": 2,
             "weight": 1.0,
             "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: length suggests muddled angle"
+            "method": "llm",
+            "detail": "LLM(batch): The angle is vaguely present (investment opportunity/urgency) but buried\u2014the ad leads with timing rather than the strategic position of what FarmThru actually is or why someone should care to invest."
           },
           "motivation_match": {
-            "score": 2,
+            "score": 1,
             "weight": 1.0,
-            "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "weighted": 1.0,
+            "method": "llm",
+            "detail": "LLM(batch): The ad speaks to investment scarcity but ignores the core felt needs of the audience (access to great food, transparency, quality, community, belief in the mission)\u2014it assumes investment motivation exists without establishing why someone should believe in FarmThru first."
           },
           "tactic_execution": {
-            "score": 4,
+            "score": 1,
             "weight": 1.0,
-            "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "weighted": 1.0,
+            "method": "llm",
+            "detail": "LLM(batch): No recognizable tactic structure; the ad is a bare announcement with no hook that creates tension, no body that builds a case, and no CTA that flows naturally from motivation\u2014it's a date stamp, not a narrative."
           },
           "subject_line_power": {
             "score": 4,
@@ -5239,8 +5239,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/emails/EM-006.json",
       "content_type": "email",
@@ -5250,7 +5250,7 @@
     },
     {
       "ad_id": "EM-007",
-      "composite": 0.8197,
+      "composite": 0.7888,
       "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
@@ -5287,12 +5287,12 @@
         ]
       },
       "rubric": {
-        "weighted_total": 53.0,
+        "weighted_total": 51.0,
         "max_possible": 62.5,
         "raw_scores": {
           "angle_clarity": 2,
           "motivation_match": 2,
-          "tactic_execution": 4,
+          "tactic_execution": 2,
           "subject_line_power": 5,
           "body_flow": 5,
           "cta_clarity": 5,
@@ -5306,22 +5306,22 @@
             "score": 2,
             "weight": 1.0,
             "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: length suggests muddled angle"
+            "method": "llm",
+            "detail": "LLM(batch): The headline signals urgency-scarcity, but the opening story about Sarah refreshing her phone is vague and doesn't unmistakably communicate what FarmThru is or why the VIP spot matters\u2014it could apply to any limited-access product."
           },
           "motivation_match": {
             "score": 2,
             "weight": 1.0,
             "weighted": 2.0,
-            "method": "heuristic",
-            "detail": "Heuristic: low emotional resonance"
+            "method": "llm",
+            "detail": "LLM(batch): The ad taps into FOMO (fear of missing out) rather than the core felt need: access to great local food at honest prices from real farms; it treats the crowdfunding campaign as the product, not the grocery store itself."
           },
           "tactic_execution": {
-            "score": 4,
+            "score": 2,
             "weight": 1.0,
-            "weighted": 4.0,
-            "method": "heuristic",
-            "detail": "Heuristic: hook=True, body=True, cta=True"
+            "weighted": 2.0,
+            "method": "llm",
+            "detail": "LLM(batch): The hook (Sarah's phone refresh) is narrative but disconnected from the body and CTA; there's no clear bridge explaining why this VIP spot matters, what it unlocks, or why the reader should act\u2014the structure breaks down after the opening."
           },
           "subject_line_power": {
             "score": 5,
@@ -5384,8 +5384,8 @@
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
-        "llm_judged_dimensions": 0,
-        "heuristic_dimensions": 3
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
       },
       "_file": "clients/farm-thru/loop/emails/EM-007.json",
       "content_type": "email",
