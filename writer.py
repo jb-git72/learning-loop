@@ -386,8 +386,23 @@ def _select_relevant_facts(facts_data: dict, angle: str) -> str:
 
 
 def _call_llm(prompt: str) -> str:
-    """Call LLM to generate ad copy. Uses Claude CLI with Opus model."""
-    # Primary: claude CLI with opus model (uses Claude Code subscription)
+    """Call LLM to generate ad copy. Opus 4.6 via API, CLI fallback."""
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if api_key:
+        try:
+            import anthropic
+            client = anthropic.Anthropic(api_key=api_key)
+            response = client.messages.create(
+                model="claude-opus-4-6-20250610",
+                max_tokens=2000,
+                temperature=0.7,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            return response.content[0].text
+        except Exception:
+            pass
+
+    # Fallback: claude CLI with opus
     try:
         result = subprocess.run(
             ["claude", "--model", "opus", "--print", "-p", prompt],
