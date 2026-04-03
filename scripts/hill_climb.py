@@ -20,6 +20,7 @@ if env_path.exists():
                 os.environ.setdefault(key.strip(), val.strip())
 
 from engine.scorer import load_client, score_ad
+from scripts.lint_content import lint
 from writer import generate_variant
 
 
@@ -109,6 +110,14 @@ def main():
                 for key in ["ad_id", "page_id", "email_id", "email_type"]:
                     if key in ad:
                         new_ad[key] = ad[key]
+
+                # Lint gate — catch violations before spending an API call
+                lint_result = lint(new_ad, client_dir, shared_dir)
+                if not lint_result.passed:
+                    details = "; ".join(v["detail"][:60] for v in lint_result.violations[:3])
+                    recent_failures.append(f"{ad_id}: lint failed — {details}")
+                    print(f"LINT FAIL ({len(lint_result.violations)} critical), skipped scoring")
+                    continue
 
                 # Score the new version
                 new_report = score_ad(new_ad, client, existing_ads=all_ads, use_llm=True)
