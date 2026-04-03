@@ -129,3 +129,25 @@ Template: `scripts/build_review_html.py`
 ```
 
 **How to verify:** Run `head -c 1600 clients/{slug}/learnings.md` — if the critical "what works" and "what fails" sections aren't fully visible, restructure.
+
+---
+
+## 10. Brand-specific content must live in config, not code
+
+**Mistake:** writer.py and rubric_scorer.py had FarmThru-specific content (compliance disclaimers, sender names, objection signals, scoring patterns) hardcoded in if/else blocks. This caused:
+- FarmThru compliance text appearing in all landing page templates (Birchal disclaimer)
+- "Rachel & the FarmThru team" hardcoded as email sender for ALL clients
+- `_score_objection_preemption` using content-based regex detection to guess which brand — misclassifying ads
+- "Collect from Brookvale" objection signal in all meta-ad prompts regardless of client
+
+**Rule:** ALL brand-specific content belongs in `clients/{slug}/config.json`, not in source code. New config keys for each brand:
+- `receptionist_test_patterns` — scorer dimension patterns
+- `objection_preemption_patterns` — scorer dimension patterns
+- `prompt_rules` — per content-type writer rules
+- `prompt_extra_rules` — per content-type extra rules
+- `prompt_objection_signals` — scoring guide signals
+- `email_sender` — email sender name
+- `landing_page_compliance` — compliance disclaimer text
+- `brand_names` — for specificity scoring
+
+**How to verify for new brands:** Search writer.py and engine/ for any hardcoded references to the brand name. There should be zero. Everything should load from config with a generic fallback.

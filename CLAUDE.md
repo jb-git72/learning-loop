@@ -37,7 +37,7 @@ Create `clients/{slug}/` with 5 files:
 - `tone.md` — voice guidelines (prose, for LLM context)
 - `learnings.md` — accumulated creative learnings
 
-Zero code changes to the engine.
+Zero code changes to the engine or writer.py. Everything is config-driven.
 
 ### New client checklist (follow in order — see LESSONS.md #8-9 for why)
 
@@ -60,7 +60,9 @@ Auto-loaded by `run.py`.
 
 - `scripts/score_batch.py` — Score all content in a client's loop dir, output JSON
 - `scripts/hill_climb.py` — Generate-score-iterate loop to reach strong_draft+
-- `scripts/build_review_html.py` — Build interactive HTML review (proven layout with editable textareas, toggle buttons, two-column, char counts)
+- `scripts/build_review_html.py` — Build interactive HTML review (proven layout with editable textareas, toggle buttons, two-column, char counts, collapsible cards)
+- `scripts/lint_content.py` — Pre-flight content linter (3 layers: rules, learnings, structural). Run before scoring to catch violations early
+- `scripts/clean_meta_ads.py` — Clean investment language from meta-ad descriptions
 
 ## Workflow: calibration rounds
 
