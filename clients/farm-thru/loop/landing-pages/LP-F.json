@@ -4,24 +4,24 @@
   "hook_type": "story",
   "funnel": "TOF",
   "content_type": "landing-page",
-  "creative_brief": "Hero image: founder crouching in a farm field with a young child, natural light, no stock-photo polish. Below the fold, candid photos from actual supplier farms (Bundarra, Collins, Paris Creek). Earthy palette — soil browns, leaf greens, warm whites. Typography is clean and personal, not corporate. The page should feel like a letter, not a pitch deck.",
-  "generated_at": "2026-04-03T23:36:23.484852",
+  "creative_brief": "Hero image: founder standing in a regenerative farm field at golden hour, looking directly at camera — warm, honest, unpolished. Below-the-fold sections use close-up photography of named supplier produce (Bundarra pork, Collins seafood) with farm-name captions. Earthy palette, no stock imagery. The page should feel like a letter, not a pitch deck.",
+  "generated_at": "2026-04-04T09:24:12.055750",
   "page_id": "LP-F",
-  "headline": "I started this company the morning my daughter asked why her apple tasted like nothing",
-  "subhead": "FarmThru exists because one parent got tired of pretending the big chains sold real food. Now we're building a grocery store that only stocks from farms we've visited ourselves.",
-  "hero_copy": "She was four. She bit into it, made a face, and said \"this doesn't taste like Grandma's ones.\" She was right. I'd been buying whatever was cheapest, from wherever. I couldn't name a single farm behind a single thing in my fridge. That morning I started calling farmers directly. What I learned changed everything — and became FarmThru.",
+  "headline": "I spent 22 years pretending the food system worked",
+  "subhead": "Then I started tracing what my family actually ate — where it grew, how far it travelled, who got paid. The answers changed everything I thought I knew about groceries.",
+  "hero_copy": "For two decades I bought what the big chains told me was fresh. I trusted the labels. I fed my kids without asking questions. Then one afternoon I stood in Rachel Ward's farmhouse kitchen in Kempsey, watching her pull vegetables from soil she'd spent years regenerating — and I realised I'd never once met the person who grew my family's food. That's the moment FarmThru started. Not with a business plan. With a feeling I couldn't shake: we deserve to know.",
   "sections": [
     {
-      "heading": "What I found when I started asking questions",
-      "body": "Most of the produce in supermarkets passes through three or four middlemen before it reaches the shelf. Farmers get squeezed. Food sits in transit. Nutrients fade. Flavour disappears. I spoke with Rachel Ward at her regenerative farm in Kempsey, NSW. She told me the same thing every farmer told me: \"We grow incredible food. The system between us and families is broken.\" So we built a different system. Zero warehouses. Zero wholesalers. Zero middlemen. FarmThru orders go from the farm to our Brookvale hub, and you collect when it's ready. That's it. No complicated supply chain eating margin and freshness along the way."
+      "heading": "The thing I couldn't unsee",
+      "body": "Rachel showed me what regenerative farming actually looks like. Soil that holds water. Land that gets healthier each season. Animals raised the way your grandparents would recognise. Then she told me what the big chains paid her neighbours for the same quality produce — pennies after the middlemen took their cut. I drove home through 400 kilometres of farmland and couldn't stop thinking: there are farmers doing extraordinary work, and families who'd pay fairly for it, and the only thing between them is a broken supply chain. Zero warehouses. Zero wholesalers. Zero middlemen. That became our rule. FarmThru connects you directly to farms like Bundarra (pork from NSW), Collins Wild Caught (South Coast seafood), Paris Creek Farms (carbon-neutral dairy from South Australia), and Farmer Brown (eggs, NSW). You order online. You collect from our Brookvale hub, Monday to Friday. The food is fresher because it hasn't spent weeks in cold storage. The farmers earn more because nobody skimmed the middle."
     },
     {
-      "heading": "These are real farms, and I've stood on every one of them",
-      "body": "Bundarra Farm supplies our pork belly, pork and fennel salami, and little French ham. Collins Wild Caught brings in wild-caught Alaskan salmon and seasonal Australian seafood from the South Coast of NSW. Paris Creek Farms in Meadows, SA produces carbon-neutral biodynamic dairy. Farmer Brown supplies our eggs. Little Yarran Farm in NSW rounds out our growers. We're not a subscription box. We're an online grocery store stocked entirely by regenerative farms. Every product on our shelves is something we'd feed our own kids. That's not a slogan — it's our sourcing rule."
+      "heading": "This isn't a subscription box — it's a grocery store with a conscience",
+      "body": "I built FarmThru as the shop I wished existed. A real online grocery store stocked with regenerative produce, priced for Tuesday-night dinners, not just special occasions. Every product traces back to a named farm. We'll show you where your food comes from — that's not a slogan, it's a promise printed on every order. Our hub-and-collect model keeps overhead low so we can pay farmers fairly and keep your weekly shop honest. No lock-in. No gimmicks. Just food we'd feed our own kids. Because that's exactly what we do."
     },
     {
-      "heading": "Why I'm asking you to help us grow",
-      "body": "We're preparing an equity crowdfunding campaign so everyday people — not just venture capitalists — can own a piece of this. I can't promise returns. I can't guarantee we'll get everything right. Building a new kind of grocery store is genuinely hard. But I can promise you this: every dollar of investment goes toward connecting more farms to more families across Sydney, starting from our Brookvale hub. If that matters to you, join the waitlist. A refundable $5 deposit holds your spot and tells us this model has legs. No lock-in. No obligation. Just a signal that you believe food should come from somewhere you can point to on a map."
+      "heading": "We're building this together — and you can be part of it",
+      "body": "FarmThru is preparing an equity crowdfunding campaign. That means everyday people — not just venture capitalists — can own a piece of what we're growing. I can't promise returns. I can't guarantee success. Building a new kind of grocery store is genuinely hard, and investing in any early-stage company carries real risk. But if you believe families deserve to know where their food comes from, and farmers deserve a fair price for growing it, I'd love you to join the waitlist. A refundable $5 deposit secures your spot and tells us you want in when the campaign goes live. No obligation. No pressure. Just a signal that you think food can work differently."
     },
     {
       "heading": "Compliance",

@@ -4,11 +4,11 @@
   "hook_type": "statistic",
   "funnel": "TOF",
   "content_type": "meta-ad",
-  "creative_brief": "Split-screen visual: left shows industrial truck convoy on highway, right shows green pastures with cattle grazing under open sky.",
-  "generated_at": "2026-04-03T22:20:27.623732",
+  "creative_brief": "Split-screen: left side shows a cold, fluorescent-lit supermarket meat shelf with a '14-21 days in storage' label fading in; right side shows vibrant, freshly cut grass-fed beef on butcher paper with 'Days old' label. Warm, natural light on the right. FarmThru logo bottom-right.",
+  "generated_at": "2026-04-04T09:09:48.731179",
   "ad_id": "BR-102",
-  "primary_text": "2,400km. That's the average journey for supermarket beef before it hits cold storage for weeks. Rachel Ward raises grass-fed cattle 300km north of Sydney on regenerative pastures. No feedlots, no hormones, no antibiotics. Her beef reaches our Brookvale hub within days of processing. You can taste the difference. No commitment. Order when you want. Collect from Brookvale Monday to Friday. Own a piece of the farm-direct future.",
-  "headline": "2,400km journey vs 300km from pasture",
-  "description": "Rachel Ward's grass-fed beef reaches Brookvale hub days after processing.",
-  "cta": "cfe_campaign"
+  "primary_text": "14 to 21 days. That's how long supermarket beef sits in cold storage before you cook it.\n\nAt FarmThru, our beef is days old when you collect it. Rachel Ward's 100% grass-fed cattle graze regenerative pastures in Kempsey, NSW. No hormones. No antibiotics. No feedlots.\n\nYou can taste the difference when food hasn't travelled 2,400km in a refrigerated truck.\n\nNo middlemen. No wholesalers. Just real farms like Bundarra, Collins Wild Caught, and Farmer Brown sending food straight to our Brookvale hub.\n\nCollect when it suits you, Monday to Friday. No commitment.",
+  "headline": "Days old, not weeks old",
+  "description": "Farm-direct beef, chicken, salmon and eggs. Collect from Brookvale, no lock-in.",
+  "cta": "brand"
 }
