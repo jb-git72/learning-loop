@@ -241,6 +241,8 @@ def _run_custom_check(rule: dict, ad: dict) -> dict:
         return _check_low_risk_trio(rule, ad)
     elif func_name in ("check_deposit_refundable", "_check_deposit_refundable", "FMTH-010"):
         return _check_deposit_refundable(ad)
+    elif func_name in ("check_investment_disclaimer", "_check_investment_disclaimer", "FMTH-001"):
+        return _check_investment_disclaimer(rule, ad)
     else:
         # Unknown custom function — pass by default
         return {"passed": True}
@@ -291,6 +293,68 @@ def _check_low_risk_trio(rule: dict, ad: dict) -> dict:
             "detail": f"Missing low-risk phrases: {', '.join(missing)}",
         }
     return {"passed": True}
+
+
+def _check_investment_disclaimer(rule: dict, ad: dict) -> dict:
+    """Check that content discussing investment includes a financial disclaimer.
+
+    Only triggers if investment language is present. Pure product/brand content passes.
+    """
+    fields = [
+        "primary_text", "headline", "description",
+        "subject", "preheader", "body",
+        "hero_copy", "subhead",
+    ]
+    # Collect all text
+    all_text = ""
+    for field in fields:
+        text = ad.get(field, "")
+        if text:
+            all_text += " " + text
+    # Also check sections (landing pages)
+    for section in ad.get("sections", []):
+        if isinstance(section, dict):
+            for key in ("heading", "body"):
+                text = section.get(key, "")
+                if text:
+                    all_text += " " + text
+
+    all_text_lower = all_text.lower()
+
+    # Check if investment is discussed
+    triggers = rule.get("investment_triggers", [
+        "invest", "birchal", "crowdfund", "equity", "raise",
+        "campaign opens", "\\$50 minimum", "\\$10.*cap", "deposit",
+    ])
+    investment_mentioned = False
+    for trigger in triggers:
+        try:
+            if re.search(trigger, all_text_lower, re.IGNORECASE):
+                investment_mentioned = True
+                break
+        except re.error:
+            if trigger.lower() in all_text_lower:
+                investment_mentioned = True
+                break
+
+    if not investment_mentioned:
+        # No investment language — rule doesn't apply
+        return {"passed": True}
+
+    # Investment is discussed — check for disclaimer
+    disclaimers = rule.get("disclaimer_patterns", [
+        "not financial advice", "disclosure document",
+        "consider seeking independent", "seek independent financial advice",
+    ])
+    for disclaimer in disclaimers:
+        if disclaimer.lower() in all_text_lower:
+            return {"passed": True}
+
+    return {
+        "passed": False,
+        "field": "all",
+        "detail": "Content discusses investment but missing financial disclaimer (FMTH-001)",
+    }
 
 
 def _check_deposit_refundable(ad: dict) -> dict:

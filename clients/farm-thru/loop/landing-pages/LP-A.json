@@ -1,0 +1,20 @@
+{
+  "page_id": "LP-A",
+  "content_type": "landing-page",
+  "angle": "Cause & Purpose",
+  "hook_type": "bold_claim",
+  "funnel": "TOF",
+  "headline": "Own a piece of the future of food.",
+  "subhead": "FarmThru is opening investment to everyday Australians. Join the waitlist to invest when the campaign goes live on Birchal.",
+  "hero_copy": "Pre-Launch. Join the waitlist to be first in line when FarmThru opens equity investment on Birchal.",
+  "sections": [
+    {"heading": "Better food through a better supply chain.", "body": "FarmThru connects Australian families directly with regenerative farms. No middlemen. No guesswork. Straight from the farm, to the hub, to your kitchen. Now you can own a piece of it. FarmThru is raising equity through Birchal to scale operations, expand delivery areas, and bring honest food to more Australians."},
+    {"heading": "Regenerative farming", "body": "Every product comes from farms that raise animals on pasture, nourish their soils, and put quality before shortcuts."},
+    {"heading": "Direct supply chain", "body": "Farm to hub to kitchen. No middlemen means better prices for customers and fairer prices for farmers."},
+    {"heading": "Local partner farms", "body": "A growing network of 50+ Australian farms whose products are carefully vetted for safety and transparency."},
+    {"heading": "Get first access to invest.", "body": "Place a refundable $5 deposit to secure VIP status. VIP investors get priority access, exclusive founder updates, and early notice before the campaign opens to the public. First access when the campaign opens. Priority investor updates from the founders. Exclusive Q&A session with the FarmThru team. Fully refundable at any time."},
+    {"heading": "Don't miss out.", "body": "Join the waitlist now. It takes 10 seconds and you'll be first to know when FarmThru opens investment to the public. This is not financial advice. Consider seeking independent financial advice before making any investment decision."}
+  ],
+  "cta": "Join the Waitlist",
+  "creative_brief": "Clean, bright. Hero image of farm landscape. Trust stats: 50+ Partner Farms, Sydney+ Delivery, 100% Regenerative."
+}

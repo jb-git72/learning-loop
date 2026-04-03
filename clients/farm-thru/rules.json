@@ -5,17 +5,14 @@
       "rule_id": "FMTH-001",
       "name": "csf_financial_disclaimer_required",
       "severity": "critical",
-      "type": "regex_present",
-      "description": "Any content discussing investment must include a financial disclaimer referencing independent advice or the Birchal disclosure document.",
+      "type": "custom",
+      "function": "_check_investment_disclaimer",
+      "description": "When content discusses investment, it must include a financial disclaimer referencing independent advice or the Birchal disclosure document. Content that does not mention investment is exempt.",
       "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy"],
-      "patterns": [
-        "not financial advice",
-        "disclosure document",
-        "consider seeking independent",
-        "seek independent financial advice"
-      ],
+      "investment_triggers": ["invest", "birchal", "crowdfund", "equity", "raise", "campaign opens", "\\$50 minimum", "\\$10.*cap", "deposit"],
+      "disclaimer_patterns": ["not financial advice", "disclosure document", "consider seeking independent", "seek independent financial advice"],
       "case_sensitive": false,
-      "rationale": "ASIC RG 234 requires balanced disclosure for equity crowdfunding campaigns. All investment-related content must include appropriate disclaimers."
+      "rationale": "ASIC RG 234 requires balanced disclosure for equity crowdfunding campaigns. Content that mentions investment must include disclaimers, but pure product/brand content is exempt."
     },
     {
       "rule_id": "FMTH-002",

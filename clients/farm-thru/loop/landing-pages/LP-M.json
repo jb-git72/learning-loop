@@ -1,0 +1,16 @@
+{
+  "page_id": "LP-M",
+  "content_type": "landing-page",
+  "angle": "Urgency & Scarcity",
+  "hook_type": "bold_claim",
+  "funnel": "TOF",
+  "headline": "200 spots. First access to invest in FarmThru.",
+  "subhead": "When these are gone, you join the public waitlist. VIP investors get priority access, early notice, and founder updates before anyone else.",
+  "hero_copy": "Claim your spot on the VIP waitlist before it fills.",
+  "sections": [
+    {"heading": "Early investors get access before the public.", "body": "Join now: Claim your spot on the VIP waitlist before it fills. Get first access: When the campaign opens on Birchal, VIP investors go first. Invest from $50: Minimum $50. Capped at $10K. Full disclosure document before you commit."},
+    {"heading": "Skip the queue entirely.", "body": "Place a refundable $5 deposit to lock in VIP status. VIP investors get notified first and can invest before the public campaign opens. First access when the campaign opens. Priority investor updates from the founders. Fully refundable at any time. Not financial advice. Disclosure document on Birchal."}
+  ],
+  "cta": "Save My Spot",
+  "creative_brief": "Countdown timer in hero. Social proof counter: X of 200 spots claimed. Lean page: hero + process + trust + VIP + footer."
+}

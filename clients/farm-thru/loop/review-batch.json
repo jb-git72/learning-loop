@@ -1,0 +1,579 @@
+[
+  {
+    "ad_id": "CP-101",
+    "content_type": "meta-ad",
+    "angle": "cause-purpose",
+    "hook_type": "story",
+    "funnel": "TOF",
+    "tactic": "before-after",
+    "primary_text": "Rachel Ward spent years watching her Kempsey cattle farm lose money selling to supermarkets. After the 2020 bushfires, she rebuilt the whole operation as regenerative.\n\nNow her beef reaches your kitchen in 2-3 days. Not 14-21 days in cold storage.\n\nFarmThru exists to make stories like Rachel's the norm, not the exception. 50+ farms. Zero middlemen. Real food, direct to your door.\n\n$5 refundable deposit secures VIP access when the Birchal campaign opens in July.\n\nNot financial advice.",
+    "headline": "From Bushfire to Your Table",
+    "description": "Rachel rebuilt her farm as regenerative. Now her beef goes direct to Sydney families via FarmThru.",
+    "cta": "Join the Waitlist",
+    "creative_brief": "Lead with Rachel's Farm transformation as emotional proof of the FarmThru mission. Bushfire-to-regenerative arc shows real stakes. Transition from her story to the broader movement, then soft investment CTA. Food is the hero."
+  },
+  {
+    "ad_id": "CP-102",
+    "content_type": "meta-ad",
+    "angle": "cause-purpose",
+    "hook_type": "bold_claim",
+    "funnel": "TOF",
+    "tactic": "movement-participation",
+    "primary_text": "Own a piece of the future of food.\n\nFarmThru is opening equity crowdfunding on Birchal this July. The families who buy from us can now invest in us.\n\nFrom $50. Cap at $10,000 per investor.\n\nWe deliver regenerative meat, dairy and seafood from 50+ farms to 2,000+ Sydney households. Now we grow with the people who believe in this.\n\n$5 refundable deposit locks in VIP access.\n\nNot financial advice. Read the disclosure document on Birchal before investing.",
+    "headline": "Own a Piece of the Future of Food",
+    "description": "Equity crowdfunding on Birchal. Invest from $50. Join 2,000+ families already eating better.",
+    "cta": "Reserve Your Spot",
+    "creative_brief": "Bold aspiration lead. 'Own a piece of the future of food' is the strongest cause-purpose hook from testing. Stack traction proof (50+ farms, 2,000+ customers) quickly, then investment terms. Full compliance language included."
+  },
+  {
+    "ad_id": "CS-101",
+    "content_type": "meta-ad",
+    "angle": "comparison-switching",
+    "hook_type": "if_then",
+    "funnel": "TOF",
+    "tactic": "loss-aversion",
+    "primary_text": "If your beef travelled 2,400km to reach your fridge, it's not fresh. It's survived.\n\nSupermarket meat sits in cold storage for 14-21 days. By the time you cook it, the best of it is gone.\n\nFarmThru delivers 100% grass-fed, regenerative beef from NSW farms to your door in 2-3 days. No hormones. No feedlots. No middlemen.\n\n50+ farms. Sydney, Central Coast and Wollongong.\n\nTaste the difference for yourself.",
+    "headline": "Your Beef Travelled 2,400km",
+    "description": "Supermarket beef: 14-21 days cold storage. FarmThru: 2-3 days paddock to door. You decide.",
+    "cta": "Learn More",
+    "creative_brief": "If-then structure creates instant cognitive dissonance. Loss aversion framing (what you're losing by staying with supermarket) is 2x more powerful than gain framing. Specific numbers (2,400km, 14-21 days) make it concrete. Invitation to taste, not pressure to switch."
+  },
+  {
+    "ad_id": "CS-102",
+    "content_type": "meta-ad",
+    "angle": "comparison-switching",
+    "hook_type": "story",
+    "funnel": "TOF",
+    "tactic": "educational",
+    "primary_text": "Here's how your supermarket steak gets to you. Farm in Queensland. Trucked to a wholesaler. Stored in a warehouse. Shipped to a distribution centre. Delivered to the store. Sits on the shelf. 14-21 days later, you buy it.\n\nHere's how FarmThru works. Regenerative farm in NSW. Packed at our Brookvale hub. Delivered to your door. 2-3 days.\n\nZero warehouses. Zero wholesalers. 50+ farms, direct.\n\nOnly food we'd feed our own.",
+    "headline": "Two Supply Chains. One Choice.",
+    "description": "Supermarket: 6 stops, 14-21 days. FarmThru: 3 stops, 2-3 days. From 50+ regenerative farms.",
+    "cta": "Learn More",
+    "creative_brief": "Side-by-side supply chain narrative. Walk the reader through the supermarket chain step by step (each step = more time, more middlemen), then contrast with FarmThru's simplicity. Educational tone, let the comparison do the persuading. Tagline close."
+  },
+  {
+    "ad_id": "EF-101",
+    "content_type": "meta-ad",
+    "angle": "empathy-founder",
+    "hook_type": "story",
+    "funnel": "TOF",
+    "tactic": "origin-story",
+    "primary_text": "I started FarmThru because my kids deserved better than supermarket meat.\n\nI wanted to know the farmer. I wanted beef that was days old, not weeks old. I wanted animals raised on pasture, not in feedlots.\n\nSo I drove to Kempsey, met Rachel, and started delivering her regenerative beef direct to families in Sydney.\n\nThat was the beginning. Now we work with 50+ farms and deliver to 2,000+ households across Sydney, Central Coast and Wollongong.\n\nOnly food we'd feed our own.\n\nNot financial advice. Disclosure document on Birchal.",
+    "headline": "My Kids Deserved Better",
+    "description": "Founder-led. 50+ regenerative farms. Delivered direct to Sydney families in 2-3 days.",
+    "cta": "Learn More",
+    "creative_brief": "Founder origin story. Personal motivation (kids, food quality) makes the brand human. Specific details (Kempsey, Rachel) ground the narrative. Scale from personal moment to 50+ farms and 2,000+ customers. Tagline close. No investment CTA here, pure brand building."
+  },
+  {
+    "ad_id": "EF-102",
+    "content_type": "meta-ad",
+    "angle": "empathy-founder",
+    "hook_type": "confession",
+    "funnel": "TOF",
+    "tactic": "vulnerability",
+    "primary_text": "I used to buy everything from Woolworths. Meat, dairy, eggs. I never thought about where it came from.\n\nThen I visited a regenerative farm in Kempsey and watched cattle graze open paddocks. No feedlots. No hormones. The farmer knew every animal by name.\n\nI couldn't go back to supermarket beef after that. So I built FarmThru.\n\n50+ farms. 2,000+ families. 2-3 days paddock to door. Sydney, Central Coast and Wollongong.\n\nJoin the waitlist to see what real food looks like.",
+    "headline": "I Never Used to Think About My Food",
+    "description": "From supermarket shopper to building FarmThru. 50+ regenerative farms, delivered in days.",
+    "cta": "Join the Waitlist",
+    "creative_brief": "Vulnerability-first founder confession. Start where the audience is (supermarket shopper who doesn't think about provenance), then show the moment of transformation. Relatable entry point, no judgment. Invitation to discover, not pressure to act."
+  },
+  {
+    "ad_id": "IT-101",
+    "content_type": "meta-ad",
+    "angle": "investment-thesis",
+    "hook_type": "statistic",
+    "funnel": "MOF",
+    "tactic": "traction-lead",
+    "primary_text": "50+ regenerative farms. 2,000+ customers. Delivering across Sydney, Central Coast and Wollongong from our Brookvale hub.\n\nFarmThru isn't an idea. It's an operating business with real traction.\n\nWe cut out warehouses and wholesalers. Farm to hub to kitchen. Farmers get a fairer price. You get food that's 2-3 days old, not weeks.\n\nEquity crowdfunding on Birchal, July 2026. Invest from $50.\n\nNot financial advice. Read the Birchal disclosure document before investing.",
+    "headline": "Real Traction. Real Food. Real Risk.",
+    "description": "50+ farms, 2,000+ customers, operating hub in Brookvale. Invest from $50 on Birchal.",
+    "cta": "Learn More",
+    "creative_brief": "Traction-first for investment-minded audience. Stack the metrics (farms, customers, geography, hub) to show this is a real business. Honest headline includes 'Real Risk' for balance. Business model clarity (direct supply chain) as proof of unit economics logic."
+  },
+  {
+    "ad_id": "IT-102",
+    "content_type": "meta-ad",
+    "angle": "investment-thesis",
+    "hook_type": "direct_address",
+    "funnel": "MOF",
+    "tactic": "market-opportunity",
+    "primary_text": "The Australian grocery market is worth $130B. Two supermarkets control most of it.\n\nFarmThru goes direct. 50+ regenerative farms to your door. No warehouses. No wholesalers. Farmers get a fair price and you get food that's actually fresh.\n\nDirect-to-consumer food is growing 24% year on year. We already have 2,000+ customers across Sydney.\n\nEquity crowdfunding on Birchal. From $50, capped at $10,000.\n\n$5 refundable deposit for VIP access. Not financial advice.",
+    "headline": "$130B Market. Two Gatekeepers.",
+    "description": "FarmThru goes direct to your door. 50+ farms, 2,000+ customers. Invest from $50 on Birchal.",
+    "cta": "Learn More",
+    "creative_brief": "Market opportunity frame for sophisticated retail investors. $130B market size and duopoly framing sets up the disruption thesis. Growth data (24% DTC) and traction (2,000+ customers) provide evidence. Still leads with food and farmer benefit, not pure finance."
+  },
+  {
+    "ad_id": "QC-101",
+    "content_type": "meta-ad",
+    "angle": "quality-craft",
+    "hook_type": "story",
+    "funnel": "TOF",
+    "tactic": "sensory-experience",
+    "primary_text": "The first time I cooked a FarmThru steak, I thought I'd been eating cardboard my whole life.\n\n100% grass-fed beef from regenerative farms. No hormones. No feedlots. The animal lived on pasture. You can taste it.\n\nThis isn't fancy marketing. It's what happens when beef is 2-3 days old instead of 14-21 days in cold storage.\n\n50+ farms. Delivered across Sydney, Central Coast and Wollongong.\n\nOnly food we'd feed our own.",
+    "headline": "Days Old, Not Weeks Old",
+    "description": "100% grass-fed regenerative beef. No hormones, no feedlots. Paddock to door in 2-3 days.",
+    "cta": "Learn More",
+    "creative_brief": "First-person sensory moment creates visceral engagement. Stack the quality credentials (grass-fed, no hormones, pasture-raised) then explain WHY it tastes different with the freshness comparison. Tagline close. No investment CTA, pure food-as-hero."
+  },
+  {
+    "ad_id": "QC-102",
+    "content_type": "meta-ad",
+    "angle": "quality-craft",
+    "hook_type": "statistic",
+    "funnel": "TOF",
+    "tactic": "comparison",
+    "primary_text": "Supermarket beef: 14-21 days in cold storage. Average journey: 2,400km.\n\nFarmThru beef: 2-3 days paddock to door. From regenerative farms you can actually visit.\n\n100% grass-fed. No hormones. No antibiotics. No feedlot finishing. Animals raised on open pasture the way they should be.\n\nWe work with 50+ farms across NSW and deliver to Sydney, Central Coast and Wollongong.\n\nDays old, not weeks old. You will taste the difference.\n\nNot financial advice. Disclosure document on Birchal.",
+    "headline": "14-21 Days vs 2-3 Days",
+    "description": "Your supermarket beef sat in cold storage for weeks. Ours came from the paddock days ago.",
+    "cta": "Learn More",
+    "creative_brief": "Lead with the stark data comparison. Two supply chains side by side: supermarket (14-21 days, 2,400km) vs FarmThru (2-3 days, local). Then stack quality credentials. No investment angle. Pure product superiority through verified numbers."
+  },
+  {
+    "ad_id": "SB-101",
+    "content_type": "meta-ad",
+    "angle": "social-belonging",
+    "hook_type": "question",
+    "funnel": "TOF",
+    "tactic": "local-identity",
+    "primary_text": "How far does your dinner travel before it reaches your plate?\n\nSupermarket beef averages 2,400km. Then sits in cold storage for 14-21 days.\n\nFarmThru delivers regenerative meat and dairy from 50+ farms across NSW. Paddock to your door in 2-3 days. Sydney, Central Coast and Wollongong.\n\n2,000+ families already get their weekly shop this way.\n\nJoin the waitlist. See why your neighbours switched.",
+    "headline": "Your Neighbours Already Switched",
+    "description": "2,000+ Sydney families get regenerative food delivered in 2-3 days. Not 14-21 days cold storage.",
+    "cta": "Join the Waitlist",
+    "creative_brief": "Question hook triggers curiosity about food provenance. Stack the comparison data (2,400km vs local, 14-21 days vs 2-3 days), then pivot to social proof with local belonging cue. 'Your neighbours' creates proximity and FOMO without hype."
+  },
+  {
+    "ad_id": "SB-102",
+    "content_type": "meta-ad",
+    "angle": "social-belonging",
+    "hook_type": "direct_address",
+    "funnel": "TOF",
+    "tactic": "social-proof",
+    "primary_text": "You care about where your food comes from. So do 2,000+ other Sydney families.\n\nThey get regenerative beef, heritage pork, wild-caught salmon and pasture-raised chicken delivered from 50+ farms. No warehouses. No wholesalers. Straight from the paddock to your door in 2-3 days.\n\nFarmThru is now opening investment to the community via Birchal. From $50.\n\nJoin the waitlist. $5 refundable deposit secures VIP access.\n\nNot financial advice.",
+    "headline": "2,000+ Families Know Their Farmer",
+    "description": "Regenerative food from 50+ farms, delivered in days. Sydney, Central Coast, Wollongong.",
+    "cta": "Sign Up",
+    "creative_brief": "Direct address validates the reader's existing values, then shows them a community that shares those values. Product range specificity (beef, pork, salmon, chicken) makes it tangible. Belonging + investment CTA combined."
+  },
+  {
+    "ad_id": "TS-101",
+    "content_type": "meta-ad",
+    "angle": "transformation-storytelling",
+    "hook_type": "story",
+    "funnel": "TOF",
+    "tactic": "narrative-arc",
+    "primary_text": "The 2020 bushfires nearly destroyed Rachel Ward's cattle property in Kempsey. Instead of rebuilding the old way, she went regenerative.\n\nNo feedlots. No hormones. Animals on pasture, soil improving every season.\n\nHer beef travels from Kempsey to our Brookvale hub, then to your door. 2-3 days, not weeks.\n\nFarmThru works with 50+ farms like Rachel's. More people should know where their food comes from.\n\nJoin the waitlist. $5 refundable deposit for VIP access.\n\nNot financial advice.",
+    "headline": "She Lost Everything. Then Rebuilt.",
+    "description": "Rachel's regenerative beef goes from Kempsey to your kitchen in 2-3 days. No middlemen.",
+    "cta": "Learn More",
+    "creative_brief": "Full transformation arc: destruction (bushfires) to rebuilding (regenerative) to outcome (fresh beef direct to families). Rachel's story humanises the supply chain. Specificity on location (Kempsey, Brookvale hub) grounds the narrative. Soft CTA."
+  },
+  {
+    "ad_id": "TS-102",
+    "content_type": "meta-ad",
+    "angle": "transformation-storytelling",
+    "hook_type": "quoted_objection",
+    "funnel": "TOF",
+    "tactic": "problem-agitation",
+    "primary_text": "\"I was losing money on every kilo I sold to the supermarket. They didn't care about the animal, the land, or my family.\"\n\nThat's the reality for thousands of Australian farmers. The system is broken. Farms go under while supermarkets post record profits.\n\nFarmThru cuts out the middlemen entirely. Farm to hub to your kitchen. 50+ regenerative farms paid a fair price.\n\nWe're raising on Birchal this July. Invest from $50.\n\n$5 refundable deposit for VIP access. Not financial advice.",
+    "headline": "The System Is Broken. We Built Around It",
+    "description": "50+ farms get a fair price. You get food that's 2-3 days old, not weeks. No middlemen.",
+    "cta": "Join the Waitlist",
+    "creative_brief": "Open with a farmer's voice expressing real frustration with the supermarket system. Agitate the structural problem (farmer margin squeeze), then position FarmThru as the direct alternative. Farmer-as-hero framing, not brand-as-hero."
+  },
+  {
+    "ad_id": "TS2-101",
+    "content_type": "meta-ad",
+    "angle": "transparency-safety",
+    "hook_type": "confession",
+    "funnel": "MOF",
+    "tactic": "radical-honesty",
+    "primary_text": "We can't promise returns. Here's what we can show you.\n\n50+ regenerative farms across NSW. 2,000+ families already ordering every week. A supply chain with zero warehouses and zero wholesalers. Food that's 2-3 days old, not weeks.\n\nFarmThru is raising via equity crowdfunding on Birchal this July. Invest from $50. Cap at $10,000.\n\nWe believe in what we're building. But startups carry real risk. Read the disclosure document on Birchal before investing.\n\n$5 refundable deposit for VIP access.",
+    "headline": "We Can't Promise Returns",
+    "description": "50+ farms. 2,000+ customers. Real traction, real risk. Read the Birchal disclosure first.",
+    "cta": "Learn More",
+    "creative_brief": "Lead with radical honesty about investment risk. This builds trust by going against every instinct in advertising. Then stack the real proof points (farms, customers, supply chain). Let the reader decide. Compliance built into the creative, not bolted on."
+  },
+  {
+    "ad_id": "TS2-102",
+    "content_type": "meta-ad",
+    "angle": "transparency-safety",
+    "hook_type": "contrarian",
+    "funnel": "MOF",
+    "tactic": "cost-of-inaction",
+    "primary_text": "Most startups fail. We know that.\n\nBut the supermarket model is already failing farmers. 50+ regenerative farms lose margin to warehouses and wholesalers. We built FarmThru to go direct. Farm to hub to kitchen.\n\n2,000+ families order from us. They get beef, pork, salmon, chicken and dairy that's days old, not weeks.\n\nRaising on Birchal this July. From $50. Not financial advice. Read the disclosure document before investing.\n\n$5 refundable deposit for VIP access.",
+    "headline": "Most Startups Fail. We Know That.",
+    "description": "2,000+ customers. 50+ farms. We're honest about the risk. We're showing you the traction.",
+    "cta": "Learn More",
+    "creative_brief": "Contrarian opener acknowledges the harsh reality of startup investing. Then reframe: the real failure is the existing system that squeezes farmers. Stack traction as evidence (not promises). Full compliance, transparent tone throughout."
+  },
+  {
+    "ad_id": "US-101",
+    "content_type": "meta-ad",
+    "angle": "urgency-scarcity",
+    "hook_type": "bold_claim",
+    "funnel": "BOF",
+    "tactic": "scarcity-frame",
+    "primary_text": "200 VIP spots. First access to invest in FarmThru when the Birchal campaign opens in July.\n\nVIP gets you priority access, exclusive founder Q&A and updates before anyone else. $5 refundable deposit to secure your spot.\n\nFarmThru delivers regenerative food from 50+ farms to 2,000+ Sydney families. Invest from $50, capped at $10,000.\n\nThis is not financial advice. Read the Birchal disclosure document before making any investment decision.",
+    "headline": "200 VIP Spots. Then the Queue.",
+    "description": "First access to invest in FarmThru. $5 refundable deposit. 50+ farms, 2,000+ customers.",
+    "cta": "Reserve Your Spot",
+    "creative_brief": "Authentic scarcity with VIP spots. Clean structure: what's scarce, what VIP gets you, what FarmThru is, terms. Scarcity is real (campaign mechanics) not manufactured. Full compliance language. Reserve Your Spot CTA matches scarcity frame."
+  },
+  {
+    "ad_id": "US-102",
+    "content_type": "meta-ad",
+    "angle": "urgency-scarcity",
+    "hook_type": "statistic",
+    "funnel": "BOF",
+    "tactic": "social-proof-momentum",
+    "primary_text": "2,000+ families already order from FarmThru every week. Now we're opening investment to the community.\n\nEquity crowdfunding on Birchal. July 2026. From $50, capped at $10,000 per investor.\n\nThis is the first time our customers can become our owners. 50+ regenerative farms. Zero middlemen. Food that's days old, not weeks.\n\n$5 refundable deposit secures VIP access and priority when the campaign goes live.\n\nNot financial advice. Read the disclosure document on Birchal.",
+    "headline": "From Customer to Owner",
+    "description": "2,000+ families already buy from us. Now you can invest. Birchal, July 2026. From $50.",
+    "cta": "Reserve Your Spot",
+    "creative_brief": "Lead with existing traction as social proof, then create urgency through the transition from customer base to investor opportunity. 'Customer to owner' reframe is powerful for community-backed brands. Compliance woven in naturally."
+  },
+  {
+    "page_id": "LP-A",
+    "content_type": "landing-page",
+    "angle": "Cause & Purpose",
+    "hook_type": "bold_claim",
+    "funnel": "TOF",
+    "headline": "Own a piece of the future of food.",
+    "subhead": "FarmThru is opening investment to everyday Australians. Join the waitlist to invest when the campaign goes live on Birchal.",
+    "hero_copy": "Pre-Launch. Join the waitlist to be first in line when FarmThru opens equity investment on Birchal.",
+    "sections": [
+      {
+        "heading": "Better food through a better supply chain.",
+        "body": "FarmThru connects Australian families directly with regenerative farms. No middlemen. No guesswork. Straight from the farm, to the hub, to your kitchen. Now you can own a piece of it. FarmThru is raising equity through Birchal to scale operations, expand delivery areas, and bring honest food to more Australians."
+      },
+      {
+        "heading": "Regenerative farming",
+        "body": "Every product comes from farms that raise animals on pasture, nourish their soils, and put quality before shortcuts."
+      },
+      {
+        "heading": "Direct supply chain",
+        "body": "Farm to hub to kitchen. No middlemen means better prices for customers and fairer prices for farmers."
+      },
+      {
+        "heading": "Local partner farms",
+        "body": "A growing network of 50+ Australian farms whose products are carefully vetted for safety and transparency."
+      },
+      {
+        "heading": "Get first access to invest.",
+        "body": "Place a refundable $5 deposit to secure VIP status. VIP investors get priority access, exclusive founder updates, and early notice before the campaign opens to the public. First access when the campaign opens. Priority investor updates from the founders. Exclusive Q&A session with the FarmThru team. Fully refundable at any time."
+      },
+      {
+        "heading": "Don't miss out.",
+        "body": "Join the waitlist now. It takes 10 seconds and you'll be first to know when FarmThru opens investment to the public. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
+      }
+    ],
+    "cta": "Join the Waitlist",
+    "creative_brief": "Clean, bright. Hero image of farm landscape. Trust stats: 50+ Partner Farms, Sydney+ Delivery, 100% Regenerative."
+  },
+  {
+    "page_id": "LP-B",
+    "content_type": "landing-page",
+    "angle": "Transformation & Storytelling",
+    "hook_type": "story",
+    "funnel": "TOF",
+    "headline": "Rachel was losing money on every kilo she sold to Woolworths.",
+    "subhead": "So she changed everything. Now you can too.",
+    "hero_copy": "After the 2020 bushfires devastated her Kempsey property, Rachel Ward asked a question: there must be a better way.",
+    "sections": [
+      {
+        "heading": "Rachel's story",
+        "body": "She read Charles Massey. Watched Allan Savory. Converted her entire farm to regenerative agriculture. Then made a documentary about it. FarmThru exists because of farmers like Rachel. We connect them directly to your kitchen. No middlemen. No cold storage. Days old, not weeks."
+      },
+      {
+        "heading": "From the farm",
+        "body": "\"Know Your Farmer is a common quip from us folk trying to reach you, but the farmer had to come to you.\" \u2014 Rachel Ward"
+      },
+      {
+        "heading": "Rachel put her farm on the line. We're asking for your email.",
+        "body": "Join the waitlist now. It takes 10 seconds and you'll be first to know when FarmThru opens investment to the public."
+      },
+      {
+        "heading": "Get first access to invest.",
+        "body": "Place a refundable $5 deposit to secure VIP status. VIP investors get priority access, exclusive founder updates, and early notice before the campaign opens to the public. Fully refundable at any time. This is not financial advice. A disclosure document will be available on Birchal."
+      }
+    ],
+    "cta": "Join the Waitlist",
+    "creative_brief": "Full-bleed Rachel + cow hero image with dark overlay text. Farm video autoplay muted. Trust stats bar."
+  },
+  {
+    "page_id": "LP-D",
+    "content_type": "landing-page",
+    "angle": "Quality & Craft",
+    "hook_type": "statistic",
+    "funnel": "TOF",
+    "headline": "Days old, not weeks old. You'll taste the difference.",
+    "subhead": "Regenerative beef, pasture-raised chicken, wild-caught salmon. Delivered to your door.",
+    "hero_copy": "Real food from real farms. Browse the products FarmThru delivers from regenerative farms to your kitchen.",
+    "sections": [
+      {
+        "heading": "What's in the box",
+        "body": "Rachel's Farm Beef Box: 100% grass-fed. No hormones. No antibiotics. Pasture-Raised Chicken: Free range. Slow grown. The way chicken should taste. Wild-Caught Salmon: Wild-caught Alaskan salmon. Never farmed. Bundarra Berkshire Sausages: Heritage breed. Outdoor raised. Small batch."
+      },
+      {
+        "heading": "Know what you're eating.",
+        "body": "Supermarket beef: 14-21 days in cold storage. Feedlot finished. 2,400km average journey. Bulk processed. FarmThru beef: 2-3 days paddock to door. 100% grass-fed. Regenerative farming. Hand-packed at Brookvale."
+      },
+      {
+        "heading": "Customer testimonial",
+        "body": "\"My kids can taste the difference. And I love knowing the farmers are getting a fair price.\" \u2014 James, Northern Beaches"
+      },
+      {
+        "heading": "Farm to kitchen in three steps.",
+        "body": "Browse the 50+ farm partners. We pack fresh from Brookvale. Delivered to your door. Delivering across Sydney, Central Coast, and Wollongong."
+      },
+      {
+        "heading": "Get first access to invest.",
+        "body": "Place a refundable $5 deposit to secure VIP status. Fully refundable at any time. This is not financial advice. A disclosure document will be available on Birchal."
+      }
+    ],
+    "cta": "Join the Waitlist",
+    "creative_brief": "Full-bleed salmon close-up hero. Product grid below fold. Side-by-side comparison table."
+  },
+  {
+    "page_id": "LP-E",
+    "content_type": "landing-page",
+    "angle": "Transparency & Safety",
+    "hook_type": "confession",
+    "funnel": "TOF",
+    "headline": "We can't promise returns. Here's what we can show you.",
+    "subhead": "$50 minimum. Capped at $10K. Full disclosure before you commit a cent.",
+    "hero_copy": "This page is the introduction. The disclosure document on Birchal is where the real information lives.",
+    "sections": [
+      {
+        "heading": "Cited facts. No spin.",
+        "body": "$130B Australian grocery market (IBISWorld, 2024). 50+ Partner farms across NSW (FarmThru, verified). 3 Delivery areas and growing (Sydney, Central Coast, Wollongong)."
+      },
+      {
+        "heading": "Here's What We Don't Know",
+        "body": "We don't know if FarmThru will succeed. Most startups don't. That's the honest truth. We don't know what returns look like. Nobody honestly can at this stage. Anyone who tells you otherwise is selling something. We do know this: the disclosure document on Birchal will have full financials, use of funds, and risk factors. You'll see everything before committing a cent."
+      },
+      {
+        "heading": "Here's why people are signing up anyway.",
+        "body": "They're customers who want the product to exist. They want priority access when the raise goes live. They believe in regenerative agriculture. Every purchase supports farms that nourish their soils and raise animals on pasture."
+      },
+      {
+        "heading": "Four steps. No surprises.",
+        "body": "Sign up now: Free. No commitment. Takes 10 seconds. We notify you when the Birchal campaign goes live. Read the disclosure: Full financials. Full risk factors. Everything you need to make an informed decision. Invest from $50 if it makes sense for you. No pressure. No deadline tricks."
+      },
+      {
+        "heading": "Get first access to invest.",
+        "body": "Place a refundable $5 deposit to secure VIP status. Fully refundable at any time. Not financial advice. Consider seeking independent financial advice."
+      }
+    ],
+    "cta": "Join the Waitlist",
+    "creative_brief": "Clean, minimal design. Trust chips in hero ($50 minimum, $10K cap, Birchal disclosure). Fact cards with citations."
+  },
+  {
+    "page_id": "LP-F",
+    "content_type": "landing-page",
+    "angle": "Empathy & Founder",
+    "hook_type": "confession",
+    "funnel": "TOF",
+    "headline": "I started FarmThru because my kids deserved better than supermarket meat.",
+    "subhead": "We deliver regenerative beef, chicken, and salmon straight from the farm to your kitchen. Days old, not weeks.",
+    "hero_copy": "A letter from the founder of FarmThru.",
+    "sections": [
+      {
+        "heading": "Why I built FarmThru.",
+        "body": "I used to buy everything from Woolworths. Then I started asking: why does this chicken taste like nothing? Why is this beef grey after two days? What I found was a broken system. Farmers get squeezed on price. Produce sits in cold storage for weeks. By the time it hits your fridge, the flavour and nutrition are gone."
+      },
+      {
+        "heading": "We believe",
+        "body": "\"We believe everyone deserves access to food they can trust. Not just people who can afford farmers' markets on Saturday mornings.\""
+      },
+      {
+        "heading": "Farm to kitchen in three steps.",
+        "body": "Browse 50+ farm partners. We pack fresh from Brookvale. Delivered to your door. Delivering across Sydney, Central Coast, and Wollongong. 100% Regenerative. Pasture-Raised. No Middlemen."
+      },
+      {
+        "heading": "I put everything into building this. All I'm asking for is your email.",
+        "body": "Join the waitlist. You'll be first to know when FarmThru opens investment to the public. No commitment. Free to join. Not financial advice. A disclosure document will be available on Birchal."
+      },
+      {
+        "heading": "Get first access to invest.",
+        "body": "Place a refundable $5 deposit to secure VIP status. Fully refundable at any time."
+      }
+    ],
+    "cta": "Join the Waitlist",
+    "creative_brief": "Dark hero background, founder voice. Certification badges (Regenerative, Pasture-Raised, No Middlemen)."
+  },
+  {
+    "page_id": "LP-M",
+    "content_type": "landing-page",
+    "angle": "Urgency & Scarcity",
+    "hook_type": "bold_claim",
+    "funnel": "TOF",
+    "headline": "200 spots. First access to invest in FarmThru.",
+    "subhead": "When these are gone, you join the public waitlist. VIP investors get priority access, early notice, and founder updates before anyone else.",
+    "hero_copy": "Claim your spot on the VIP waitlist before it fills.",
+    "sections": [
+      {
+        "heading": "Early investors get access before the public.",
+        "body": "Join now: Claim your spot on the VIP waitlist before it fills. Get first access: When the campaign opens on Birchal, VIP investors go first. Invest from $50: Minimum $50. Capped at $10K. Full disclosure document before you commit."
+      },
+      {
+        "heading": "Skip the queue entirely.",
+        "body": "Place a refundable $5 deposit to lock in VIP status. VIP investors get notified first and can invest before the public campaign opens. First access when the campaign opens. Priority investor updates from the founders. Fully refundable at any time. Not financial advice. Disclosure document on Birchal."
+      }
+    ],
+    "cta": "Save My Spot",
+    "creative_brief": "Countdown timer in hero. Social proof counter: X of 200 spots claimed. Lean page: hero + process + trust + VIP + footer."
+  },
+  {
+    "page_id": "LP-N",
+    "content_type": "landing-page",
+    "angle": "Investment Thesis",
+    "hook_type": "statistic",
+    "funnel": "TOF",
+    "headline": "50+ farms. 2,000+ customers. Now opening to investors.",
+    "subhead": "FarmThru delivers regenerative beef, chicken, and salmon from farm to kitchen in days. The equity crowdfunding campaign opens on Birchal in July.",
+    "hero_copy": "Traction metrics. Market opportunity. Investment terms.",
+    "sections": [
+      {
+        "heading": "What we've built so far.",
+        "body": "50+ Regenerative partner farms across NSW. 2,000+ Active customers receiving orders. 2-3 days Farm to kitchen delivery time."
+      },
+      {
+        "heading": "Australia's grocery market is worth $130 billion.",
+        "body": "Regenerative agriculture is growing. Consumer demand for traceable, ethical food is growing faster. FarmThru connects regenerative farms directly to households, cutting out the middlemen who add cost and delay. The Birchal campaign lets everyday Australians invest from $50, capped at $10K per person."
+      },
+      {
+        "heading": "From the farm to your kitchen.",
+        "body": "Browse: Pick from 50+ regenerative farms across NSW. We pack: Your order is packed fresh at the Brookvale hub. Delivered: On your doorstep within days. Sydney, Central Coast, Wollongong."
+      },
+      {
+        "heading": "Get first access to invest.",
+        "body": "Place a refundable $5 deposit to secure VIP status. VIP investors get priority access and early notice before the campaign opens to the public. Fully refundable at any time. Not financial advice. Disclosure document on Birchal."
+      }
+    ],
+    "cta": "Join the Waitlist",
+    "creative_brief": "Data-led design. Fact cards with large numbers. Trust stats: $50 Minimum, $10K Cap, Birchal Licensed."
+  },
+  {
+    "page_id": "LP-P",
+    "content_type": "landing-page",
+    "angle": "Comparison & Switching",
+    "hook_type": "statistic",
+    "funnel": "TOF",
+    "headline": "Your supermarket beef travelled 1,500km. Ours travelled 50.",
+    "subhead": "FarmThru connects regenerative farms directly to your kitchen. No warehouses. No middlemen. We're opening investment on Birchal.",
+    "hero_copy": "Most meat sits in cold storage for weeks before it reaches your plate.",
+    "sections": [
+      {
+        "heading": "The supermarket problem",
+        "body": "The average supermarket supply chain moves product through 3-4 warehouses over 2-3 weeks. By the time it's on the shelf, the farmer who raised it has already been paid a fraction of what you're paying. You're covering the logistics. The packaging. The shelf space. Not the farming."
+      },
+      {
+        "heading": "We cut the chain to three steps.",
+        "body": "Farm: 50+ regenerative farms across NSW raise the animals on pasture. Hub: Your order is packed fresh at the Brookvale hub. One stop. No warehouses. Kitchen: On your doorstep in 2-3 days. Sydney, Central Coast, Wollongong."
+      },
+      {
+        "heading": "The difference is in the detail.",
+        "body": "Rachel's Farm Beef: Grass-fed on 500 acres in Kempsey. You can visit the farm. Try that with Coles. Pasture-Raised Chicken: Slow grown on open pasture. Not a shed. Not a factory. A paddock. Wild-Caught Salmon: Never farmed. Caught off the coast and delivered before supermarket stock even ships."
+      },
+      {
+        "heading": "Get first access to invest.",
+        "body": "Place a refundable $5 deposit to secure VIP status. VIP investors get priority access and early notice before the campaign opens to the public. Fully refundable at any time. Not financial advice. Disclosure document on Birchal."
+      }
+    ],
+    "cta": "Save My Spot",
+    "creative_brief": "Side-by-side comparison visual. Supply chain diagram. Product photography with provenance labels."
+  },
+  {
+    "email_id": "EM-001",
+    "content_type": "email",
+    "angle": "cause-purpose",
+    "email_type": "welcome",
+    "funnel": "TOF",
+    "subject": "You're on the waitlist. Here's what happens next.",
+    "preheader": "Welcome to FarmThru. Your spot is confirmed and your $5 deposit is fully refundable.",
+    "body": "Welcome to FarmThru.\n\nYou're now on the VIP waitlist for our equity crowdfunding campaign on Birchal, launching July 2026. Your $5 refundable deposit is confirmed.\n\nHere's what that means for you:\n\n1. You get first access when the campaign goes live.\n2. You'll receive priority updates from us before anyone else.\n3. You're invited to an exclusive founder Q&A before launch.\n4. Your deposit is fully refundable at any time, no questions asked.\n\nA bit about us, if you're new. FarmThru delivers regenerative food from 50+ farms across NSW direct to families in Sydney, Central Coast and Wollongong. No warehouses. No wholesalers. Paddock to your door in 2-3 days.\n\n2,000+ families already order from us. Now we're opening investment to our community.\n\nOver the next couple of weeks, we'll share more about how FarmThru works, who our farmers are, and what the investment looks like. No pressure. Just information to help you decide.\n\nThis is not financial advice. We'll share the Birchal disclosure document when the campaign opens.\n\nTalk soon.\n\nThe FarmThru Team\n\nP.S. Questions? Just reply. A real person will answer.",
+    "cta": "See How It Works",
+    "sender_name": "FarmThru Team",
+    "creative_brief": "Welcome email. Must land immediately after signup. Confirm the deposit, set expectations for the VIP experience (4 clear benefits), introduce FarmThru briefly for new visitors, and preview the email sequence coming. Warm, no-pressure tone. Reply-friendly."
+  },
+  {
+    "email_id": "EM-002",
+    "content_type": "email",
+    "angle": "empathy-founder",
+    "email_type": "founder_story",
+    "funnel": "TOF",
+    "subject": "Why I started FarmThru (the honest version)",
+    "preheader": "It started with a steak that didn't taste like anything. Then I visited a farm in Kempsey.",
+    "body": "I want to tell you why FarmThru exists. The real version, not the polished one.\n\nA few years ago I was cooking dinner for my kids. Steak from the supermarket. It didn't taste like anything. I started wondering how old it was, where it came from, what the animal had eaten.\n\nI couldn't find answers. Not on the packaging. Not on the website. Nobody could tell me.\n\nSo I drove up to Kempsey and visited Rachel's Farm. Rachel Ward, the actress turned farmer, had converted her property to regenerative agriculture after the 2020 bushfires. Her cattle grazed open paddocks. No feedlots. No hormones. The land was actually improving.\n\nI bought some beef and brought it home. My kids noticed the difference before I said a word.\n\nThat visit changed everything. I started connecting regenerative farms with families who cared about where their food came from. One farm became ten. Ten became fifty. Now FarmThru works with 50+ farms and delivers to 2,000+ households across Sydney, Central Coast and Wollongong.\n\nOur model is simple. Farm to our Brookvale hub to your kitchen. No warehouses, no wholesalers. Farmers get a fairer price. You get food that's 2-3 days old, not 14-21 days in cold storage.\n\nWe're not perfect. We're still small. But we know what good food tastes like and we know the farmers who grow it.\n\nMore soon.\n\nJeremy",
+    "cta": "Join the Waitlist",
+    "sender_name": "Jeremy from FarmThru",
+    "creative_brief": "Founder story, day 3. First person from Jeremy. Personal origin moment (cooking for kids, tasteless supermarket steak) to discovery (Rachel's Farm visit) to building FarmThru. Must feel like a genuine letter, not marketing. Vulnerability about being small. No investment CTA in this email."
+  },
+  {
+    "email_id": "EM-003",
+    "content_type": "email",
+    "angle": "quality-craft",
+    "email_type": "social_proof",
+    "funnel": "MOF",
+    "subject": "What 2,000+ families already know about their food",
+    "preheader": "Real customers, real words. Here's why Sydney families are switching to FarmThru.",
+    "body": "We could tell you FarmThru is different. But our customers say it better.\n\n\"Finally, a grocery delivery that actually cares about where the food comes from. The quality is incredible.\" - Sarah, Sydney\n\n\"My kids can taste the difference. And I love knowing the farmers are getting a fair price.\" - James, Northern Beaches\n\nThose aren't made up. They're real people who order from us every week.\n\nHere's the picture right now:\n\n50+ regenerative farms across NSW and beyond. 2,000+ families ordering regularly. Delivery across Sydney, Central Coast and Wollongong. Food that arrives 2-3 days from the paddock, not 14-21 days in cold storage.\n\nEvery product is 100% sourced from regenerative farms. Beef is grass-fed. Chicken is pasture-raised. Pork is heritage Berkshire from Bundarra. Salmon is wild-caught from Collins Wild Caught on the South Coast.\n\nWe don't have a marketing budget that can compete with the supermarkets. What we have is food that speaks for itself and customers who keep coming back.\n\nIf you haven't tried FarmThru yet, the quality is the best argument we can make.\n\nThe FarmThru Team\n\nNot financial advice. Disclosure document on Birchal.",
+    "cta": "See How It Works",
+    "sender_name": "FarmThru Team",
+    "creative_brief": "Social proof email, day 6. Lead with verbatim customer testimonials (Sarah, James). Stack traction metrics and product specificity (named farms, named products). Let the social proof do the heavy lifting. No investment CTA yet. Food-as-hero."
+  },
+  {
+    "email_id": "EM-004",
+    "content_type": "email",
+    "angle": "quality-craft",
+    "email_type": "nurture",
+    "funnel": "MOF",
+    "subject": "Meet the farms behind your food",
+    "preheader": "Rachel's Farm in Kempsey. Bundarra Berkshires. Collins Wild Caught. Real farms, real names.",
+    "body": "One of the things that sets FarmThru apart is that we can tell you exactly where your food comes from. Not a region. Not a brand name. The actual farm.\n\nHere are some of the people we work with:\n\nRachel's Farm, Kempsey NSW. Rachel Ward runs a regenerative cattle property that she rebuilt after the 2020 bushfires. 100% grass-fed beef, no hormones, no feedlots. Her animals graze open paddocks and the land gets better every year.\n\nBundarra Berkshires, Bundarra NSW. Heritage Berkshire pork, outdoor-raised. These are old breed pigs raised the way they should be, not in sheds.\n\nCollins Wild Caught, South Coast NSW. Wild-caught Alaskan salmon and seasonal Australian seafood. Not farmed. Not frozen for months.\n\nParis Creek Farms, Meadows SA. Bio-dynamic dairy from a family farm that has been producing for decades.\n\nEvery one of our 50+ partner farms meets the same standard. Regenerative practices. Animals on pasture. No shortcuts.\n\nThe supply chain is simple. Farm to our Brookvale hub, then to your door. 2-3 days from paddock to plate, compared to 14-21 days in supermarket cold storage.\n\nThat's the difference you can taste.\n\nThe FarmThru Team\n\nNot financial advice. Disclosure document on Birchal.",
+    "cta": "See How It Works",
+    "sender_name": "FarmThru Team",
+    "creative_brief": "Product deep-dive, day 9. Spotlight named farm partners with specific details (location, product, farming practice). This is the 'know your farmer' email. Educational tone, building trust through specificity. Supply chain comparison at the end. Still no investment CTA."
+  },
+  {
+    "email_id": "EM-005",
+    "content_type": "email",
+    "angle": "investment-thesis",
+    "email_type": "nurture",
+    "funnel": "MOF",
+    "subject": "The investment opportunity (and the risks)",
+    "preheader": "Equity crowdfunding on Birchal. From $50. Here's what you should know before deciding.",
+    "body": "You've heard about the food. Now here's the investment side.\n\nFarmThru is raising via equity crowdfunding on Birchal, launching July 2026. For the first time, everyday Australians can invest in FarmThru alongside the people who already buy from us.\n\nHere are the terms:\n\nMinimum investment: $50. Maximum: $10,000 per investor. The campaign will be hosted on Birchal, Australia's leading equity crowdfunding platform. Your $5 refundable deposit has already secured your VIP access and priority when the campaign opens.\n\nHere's the traction:\n\n50+ regenerative farm partners. 2,000+ regular customers. Delivering across Sydney, Central Coast and Wollongong from our Brookvale hub. Direct supply chain with zero warehouses and zero wholesalers.\n\nThe Australian grocery market is worth $130B. Direct-to-consumer food delivery is growing at 24% year on year. We believe there's a real opportunity here.\n\nBut we also need to be straight with you. Investing in startups carries real risk. Most startups don't succeed. Your investment is not guaranteed and you could lose some or all of your money.\n\nWe're not asking you to take our word for it. When the campaign goes live, the Birchal disclosure document will have everything you need to make an informed decision. We'd encourage you to read it carefully and consider seeking independent financial advice.\n\nThis is not financial advice.\n\nMore soon.\n\nJeremy",
+    "cta": "Reserve Your Spot",
+    "sender_name": "Jeremy from FarmThru",
+    "creative_brief": "Investment thesis email, day 12. First email that directly addresses the investment opportunity. Clear terms (min/max, platform). Traction stacked as evidence. Market size and growth data. Then mandatory risk disclosure, delivered honestly not as boilerplate. Full ASIC compliance. From Jeremy for personal accountability."
+  },
+  {
+    "email_id": "EM-006",
+    "content_type": "email",
+    "angle": "urgency-scarcity",
+    "email_type": "countdown",
+    "funnel": "BOF",
+    "subject": "Tomorrow. The FarmThru campaign goes live.",
+    "preheader": "Your VIP access is confirmed. Here's exactly what to expect when the Birchal campaign opens.",
+    "body": "This is the email we've been building towards.\n\nTomorrow, the FarmThru equity crowdfunding campaign goes live on Birchal.\n\nAs a VIP waitlist member, you get first access. Here's what that means:\n\nYou'll receive an email tomorrow morning with a direct link to the Birchal campaign page. VIP members get priority access before the campaign opens to the public. Your $5 refundable deposit is still fully refundable if you decide not to invest.\n\nHere's what you'll find on the campaign page:\n\nThe full disclosure document with financials, risks and business details. Investment options from $50 to $10,000. The FarmThru story, traction and plans in full.\n\nA few things to remember:\n\nRead the disclosure document before investing. This is a startup investment and carries real risk. Consider seeking independent financial advice if you're unsure. Your $5 deposit is refundable at any time, no questions asked.\n\nWe've spent months preparing for this. 50+ regenerative farms. 2,000+ customers. A supply chain that gets real food to your door in days, not weeks.\n\nNow it's up to you to decide if you want to be part of what comes next.\n\nWe'll see you tomorrow.\n\nThe FarmThru Team",
+    "cta": "Reserve Your Spot",
+    "sender_name": "FarmThru Team",
+    "creative_brief": "Countdown email, day before launch. Build anticipation with clear logistics (what happens tomorrow, what VIP access means). Remind them the deposit is refundable. Set expectations for the campaign page. Reiterate risk disclosure naturally. Confidence without hype."
+  },
+  {
+    "email_id": "EM-007",
+    "content_type": "email",
+    "angle": "urgency-scarcity",
+    "email_type": "announcement",
+    "funnel": "BOF",
+    "subject": "It's live. FarmThru is open for investment.",
+    "preheader": "The Birchal campaign is open. VIP members get priority access right now.",
+    "body": "The FarmThru equity crowdfunding campaign is live on Birchal.\n\nYou can invest right now.\n\nAs a VIP member, you have priority access. Your $5 refundable deposit has been held for this moment.\n\nHow to invest:\n\nClick the link below to go to the FarmThru campaign on Birchal. Read the disclosure document. It has everything: financials, risks, the business plan, the team. Choose your investment amount. Minimum $50, maximum $10,000. Complete your investment through Birchal's secure platform.\n\nWhy now:\n\nFarmThru delivers regenerative food from 50+ farms to 2,000+ families across Sydney, Central Coast and Wollongong. We've built a direct supply chain that cuts out the warehouses and wholesalers. Food arrives 2-3 days from the paddock. Farmers get a fairer price.\n\nWe're growing. And for the first time, the people who eat our food can own a piece of the business that delivers it.\n\nImportant:\n\nThis is an investment in a startup. It carries real risk including the possibility of losing your entire investment. This is not financial advice. Please read the Birchal disclosure document in full and consider seeking independent financial advice before making any investment decision.\n\nIf you decide not to invest, your $5 deposit is fully refundable.\n\nThank you for being here from the beginning.\n\nJeremy",
+    "cta": "Secure VIP Access",
+    "sender_name": "Jeremy from FarmThru",
+    "creative_brief": "Launch day email. Campaign is LIVE. Clear how-to-invest steps (link, read disclosure, choose amount, complete). Restate the business case briefly. Strong compliance paragraph with explicit risk language. From Jeremy for personal weight. Gratitude close."
+  }
+]

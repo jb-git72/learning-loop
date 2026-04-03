@@ -1,0 +1,19 @@
+{
+  "page_id": "LP-D",
+  "content_type": "landing-page",
+  "angle": "Quality & Craft",
+  "hook_type": "statistic",
+  "funnel": "TOF",
+  "headline": "Days old, not weeks old. You'll taste the difference.",
+  "subhead": "Regenerative beef, pasture-raised chicken, wild-caught salmon. Delivered to your door.",
+  "hero_copy": "Real food from real farms. Browse the products FarmThru delivers from regenerative farms to your kitchen.",
+  "sections": [
+    {"heading": "What's in the box", "body": "Rachel's Farm Beef Box: 100% grass-fed. No hormones. No antibiotics. Pasture-Raised Chicken: Free range. Slow grown. The way chicken should taste. Wild-Caught Salmon: Wild-caught Alaskan salmon. Never farmed. Bundarra Berkshire Sausages: Heritage breed. Outdoor raised. Small batch."},
+    {"heading": "Know what you're eating.", "body": "Supermarket beef: 14-21 days in cold storage. Feedlot finished. 2,400km average journey. Bulk processed. FarmThru beef: 2-3 days paddock to door. 100% grass-fed. Regenerative farming. Hand-packed at Brookvale."},
+    {"heading": "Customer testimonial", "body": "\"My kids can taste the difference. And I love knowing the farmers are getting a fair price.\" — James, Northern Beaches"},
+    {"heading": "Farm to kitchen in three steps.", "body": "Browse the 50+ farm partners. We pack fresh from Brookvale. Delivered to your door. Delivering across Sydney, Central Coast, and Wollongong."},
+    {"heading": "Get first access to invest.", "body": "Place a refundable $5 deposit to secure VIP status. Fully refundable at any time. This is not financial advice. A disclosure document will be available on Birchal."}
+  ],
+  "cta": "Join the Waitlist",
+  "creative_brief": "Full-bleed salmon close-up hero. Product grid below fold. Side-by-side comparison table."
+}
