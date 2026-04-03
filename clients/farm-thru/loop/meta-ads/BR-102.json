@@ -4,11 +4,11 @@
   "hook_type": "statistic",
   "funnel": "TOF",
   "content_type": "meta-ad",
-  "creative_brief": "Split image: left shows industrial cold storage facility with calendar pages, right shows fresh beef cuts at bright FarmThru hub with Rachel's Farm branding visible.",
-  "generated_at": "2026-04-03T20:59:24.878966",
+  "creative_brief": "Split-screen visual: left shows industrial cold storage facility with '21 DAYS' overlay, right shows Rachel's cattle grazing green pastures with 'DAYS FROM FARM' text.",
+  "generated_at": "2026-04-03T21:27:51.206299",
   "ad_id": "BR-102",
-  "primary_text": "14 days. That's how long supermarket beef sits in cold storage before reaching your kitchen. Add the 2,400km journey from feedlot to shelf, and you're eating meat that's weeks old. FarmThru beef comes straight from Rachel's Farm in Kempsey. 100% grass-fed, pasture-raised, no middlemen. Days old, not weeks. Collect from Brookvale hub Monday to Friday. No commitment required.",
-  "headline": "14 days in cold storage before you buy it",
-  "description": "Rachel's Farm beef reaches Brookvale in days, not weeks. 100% grass-fed, pasture-raised. Not financial advice.",
+  "primary_text": "21 days. That's how long supermarket beef sits in cold storage after its 2,400km journey from feedlot. Rachel Ward's grass-fed cattle graze 300km north of Sydney. Her beef reaches our Brookvale hub within days of processing. No feedlots. No hormones. No middlemen marking up the price. Order when you want. Collect Monday to Friday. We can't promise returns, but we're building something better than supermarkets.",
+  "headline": "21 days in cold storage vs days from farm",
+  "description": "Grass-fed beef direct from NSW regenerative farms. Equity crowdfunding now open on Birchal. Not financial advice.",
   "cta": "cfe_campaign"
 }

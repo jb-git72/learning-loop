@@ -4,11 +4,11 @@
   "hook_type": "question",
   "funnel": "TOF",
   "content_type": "meta-ad",
-  "creative_brief": "Show diverse families at a warm, welcoming hub collection point, with farmers' photos/stories visible on product displays.",
-  "generated_at": "2026-04-03T20:19:09.710854",
+  "creative_brief": "Warm, welcoming shot of diverse families at farmers market or farm gate, with produce boxes in background showing the community aspect.",
+  "generated_at": "2026-04-03T21:25:07.322575",
   "ad_id": "BR-105",
-  "primary_text": "Do you ever feel like you're the only one who cares where your food actually comes from? You're not. There's a whole community of families who've moved beyond supermarket guesswork to farm-direct groceries. Real farmers, real stories, real food you can collect from your nearest hub.",
-  "headline": "Do you care where your food comes from?",
-  "description": "Join families choosing farm-direct groceries. Collect from local hubs, skip the supermarket guesswork.",
-  "cta": "cfe_waitlist"
+  "primary_text": "Do you ever wonder if other families feel as lost in the supermarket as you do? You're not alone. There's a growing community of Sydney families who've found something better: farm-direct groceries from places like Rachel's Farm in Kempsey and Bundarra Farm. No middlemen. No guesswork about where your beef or eggs actually come from. Just real food from real farms, ready to collect from Brookvale Monday to Friday.",
+  "headline": "Are you tired of supermarket guesswork?",
+  "description": "Join Sydney families getting farm-direct groceries. No commitment required.",
+  "cta": "brand"
 }
