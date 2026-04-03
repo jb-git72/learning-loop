@@ -1,13 +1,14 @@
 {
-  "ad_id": "BR-110",
-  "content_type": "meta-ad",
   "angle": "cause-purpose",
+  "tactic": "positioning-statement",
   "hook_type": "bold_claim",
   "funnel": "TOF",
-  "tactic": "positioning-statement",
-  "primary_text": "A grocery store where every product comes from a named regenerative farm.\n\nNot a weekly box. Not a meal kit. A real grocery store where you pick what you want and collect it fresh from the hub.\n\n100% grass-fed beef. Wild-caught salmon. Pasture-raised chicken. Biodynamic dairy. All from farms you can visit.\n\nZero warehouses. Zero wholesalers. Food that's days old, not weeks. Farmers earning a fairer deal.\n\nBrookvale hub. Monday to Friday. No lock-in.",
-  "headline": "A grocery store with no middlemen",
-  "description": "Named regenerative farms. Fresh food collected from the Brookvale hub. No lock-in.",
-  "cta": "Start your first order",
-  "creative_brief": "Clean brand statement on warm background. Below: row of four products (beef, salmon, eggs, dairy) each labelled with their farm name. Confident, minimal."
+  "content_type": "meta-ad",
+  "creative_brief": "Split screen showing fresh cattle grazing vs warehouse storage with day counters: Day 1 vs Day 21.",
+  "generated_at": "2026-04-03T21:00:36.871450",
+  "ad_id": "BR-110",
+  "primary_text": "Last Monday Rachel Ward watched her regenerative beef sit in cold storage for 21 days before reaching Sydney shelves. Her Kempsey cattle graze chemical-free pastures, but the big chains add weeks to your plate. Now her beef reaches families in 5 days via FarmThru. No wholesalers. No warehouses. Farm to Brookvale hub to your kitchen. We can't promise returns, but we can show you exactly where your food comes from.",
+  "headline": "Rachel's beef: 5 days fresh, not 3 weeks old",
+  "description": "Back our farm-direct grocery mission. Equity crowdfunding live on Birchal. Not financial advice.",
+  "cta": "cfe_campaign"
 }

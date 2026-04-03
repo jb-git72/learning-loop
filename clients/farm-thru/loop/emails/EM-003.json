@@ -1,13 +1,16 @@
 {
-  "email_id": "EM-003",
-  "content_type": "email",
   "angle": "quality-craft",
-  "email_type": "product-deep-dive",
+  "tactic": "general",
+  "hook_type": "story",
   "funnel": "MOF",
-  "subject": "This is what days-old beef actually looks like",
-  "preheader": "100% grass-fed. Named farms. No hormones, no feedlots. Collected fresh from Brookvale.",
-  "body": "We talk a lot about where our food comes from. Today we want to talk about the food itself.\n\nStart with the beef. It comes from Rachel's Farm in Kempsey. 100% grass-fed cattle raised on regenerative pasture. No hormones. No feedlot finishing. When you open the pack, the colour is deep red, not grey. That is what fresh looks like.\n\nThe salmon is wild-caught Alaskan, supplied by Collins Wild Caught on the South Coast. It is firm, vibrant, and nothing like the pale farmed fillets you see at the supermarket.\n\nThe pork comes from Bundarra Farm. The dairy is biodynamic, from Paris Creek. The eggs are from Farmer Brown.\n\nEvery one of these products traces to a farm you can look up. That is the difference between a supplier code and a name.\n\nSupermarket beef can travel thousands of kilometres and sit in cold storage for weeks before you see it. Ours goes from the farm to our Brookvale hub within days. You collect it fresh, Monday to Friday.\n\nNo lock-in. No minimum order. Just real food from real farms, honestly priced.\n\nRachel & the FarmThru team",
-  "cta": "See what's fresh this week",
-  "sender_name": "Rachel & the FarmThru team",
-  "creative_brief": "Product-focused email. Hero image: close-up of 100% grass-fed steak, natural light on timber. Below: product grid showing salmon, pork, dairy, eggs alongside farm names. Single CTA to shop. Let the food sell itself."
+  "content_type": "email",
+  "creative_brief": "Clean, story-driven layout with Rachel's farm photo. Emphasize the contrast between supermarket rejection and direct-to-family success.",
+  "generated_at": "2026-04-03T20:58:12.597193",
+  "email_id": "EM-003",
+  "subject": "Rachel's beef was too good for supermarkets",
+  "preheader": "So she started selling direct. Now Sydney families get pasture-raised beef days old, not weeks.",
+  "body": "Last month, Rachel Ward watched the supermarket buyer taste her grass-fed beef and say \"this is exceptional\" — then offer her 40% less than it cost to raise.\n\nThat's when she decided to cut out the middlemen entirely.\n\nNow her pasture-raised cattle from the NSW coast go straight to Sydney families via FarmThru's Brookvale hub. No 2,400km journeys. No 14-21 days in cold storage. Just grass-fed beef that's days old, not weeks old.\n\nThe difference? You can taste it in the first bite. Rich, clean flavour that only comes from cattle raised on regenerative pastures — no hormones, no antibiotics, no feedlot finishing.\n\nThis is what supermarkets can't offer: beef with a story, a farmer you can name, and quality that speaks for itself.\n\nRachel's beef arrives at our Brookvale hub Monday-Friday. Order online, collect fresh. It's that simple.\n\nWant to try what the supermarket buyer called \"exceptional\"? Join the waitlist for early access when we launch — just a $5 refundable deposit holds your spot.\n\nWe can't promise this will change how you think about beef. But Rachel's story suggests it might.",
+  "cta": "cfe_waitlist",
+  "sender_name": "FarmThru",
+  "email_type": "product-deep-dive"
 }

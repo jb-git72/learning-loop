@@ -1,13 +1,14 @@
 {
-  "ad_id": "BR-105",
-  "content_type": "meta-ad",
   "angle": "social-belonging",
+  "tactic": "curiosity-gap",
   "hook_type": "question",
   "funnel": "TOF",
-  "tactic": "curiosity-gap",
-  "primary_text": "Could you name the farm that raised your last steak?\n\nMost of us couldn't. We know the supermarket, the aisle, maybe the brand. But the farm? The farmer? That information never makes it to the shelf.\n\nFarmThru changes that. Every product comes from a named regenerative farm. Rachel's Farm beef from Kempsey. Paris Creek biodynamic dairy. Collins Wild Caught salmon.\n\nReal names. Real places. Food you can trace.\n\nCollect it fresh from the Brookvale hub, Monday to Friday.",
-  "headline": "Could you name the farm?",
-  "description": "Every product traces to a real farm and a real farmer. Brookvale hub, Monday to Friday.",
-  "cta": "See what's fresh this week",
-  "creative_brief": "Farmer portrait, direct to camera, warm smile. Name and farm location overlaid. Feels like an introduction, not marketing."
+  "content_type": "meta-ad",
+  "creative_brief": "Warm, welcoming shot of diverse families at farmers market or farm gate, with produce boxes in background showing the community aspect.",
+  "generated_at": "2026-04-03T21:25:07.322575",
+  "ad_id": "BR-105",
+  "primary_text": "Do you ever wonder if other families feel as lost in the supermarket as you do? You're not alone. There's a growing community of Sydney families who've found something better: farm-direct groceries from places like Rachel's Farm in Kempsey and Bundarra Farm. No middlemen. No guesswork about where your beef or eggs actually come from. Just real food from real farms, ready to collect from Brookvale Monday to Friday.",
+  "headline": "Are you tired of supermarket guesswork?",
+  "description": "Join Sydney families getting farm-direct groceries. No commitment required.",
+  "cta": "brand"
 }

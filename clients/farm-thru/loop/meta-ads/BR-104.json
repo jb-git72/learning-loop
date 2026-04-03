@@ -1,13 +1,14 @@
 {
-  "ad_id": "BR-104",
-  "content_type": "meta-ad",
   "angle": "cause-purpose",
+  "tactic": "reconnection",
   "hook_type": "invitation",
   "funnel": "TOF",
-  "tactic": "reconnection",
-  "primary_text": "When did we stop knowing where our food comes from?\n\nSomewhere between the paddock and the plastic tray, we lost the connection. No farm name. No farmer's face. Just a barcode and a best-before date.\n\nFarmThru is rebuilding that link. Every product traces to a named regenerative farm in NSW. Bundarra Farm pork. Farmer Brown eggs. Collins Wild Caught salmon.\n\nYou collect it fresh from the Brookvale hub. Days old, not weeks.\n\nWe'll show you where your food comes from. Literally.",
-  "headline": "When did we stop knowing our farmers?",
-  "description": "Every product traces to a named farm. Collected fresh from the Brookvale hub.",
-  "cta": "Meet the farmer",
-  "creative_brief": "Side-by-side: anonymous barcode on plastic-wrapped meat vs hand-written farm label on brown paper. Warm light on the right, cool fluorescent on the left."
+  "content_type": "meta-ad",
+  "creative_brief": "Split screen showing a long-haul truck on highway vs Rachel's cattle peacefully grazing in green NSW pastures.",
+  "generated_at": "2026-04-03T20:59:43.529627",
+  "ad_id": "BR-104",
+  "primary_text": "Last Tuesday Rachel Ward watched another truck full of Queensland beef drive past her regenerative farm in Kempsey. Sydney families were eating meat that had travelled 2,400km while her pasture-raised cattle grazed right here in NSW. Now her beef goes direct to Sydney families via FarmThru. No middlemen. No 2,400km journeys. Just fresh food from farms you can actually visit. Order when you want. Collect from Brookvale Monday to Friday.",
+  "headline": "Why was Sydney eating Queensland beef?",
+  "description": "Rachel's NSW cattle were right there. Now Sydney families can buy direct from her farm via FarmThru's Brookvale hub.",
+  "cta": "brand"
 }

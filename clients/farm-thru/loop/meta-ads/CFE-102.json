@@ -1,13 +1,14 @@
 {
-  "ad_id": "CFE-102",
-  "content_type": "meta-ad",
   "angle": "investment-thesis",
+  "tactic": "values-aligned-investing",
   "hook_type": "direct_address",
   "funnel": "TOF",
-  "tactic": "values-aligned-investing",
-  "primary_text": "You already care about where your food comes from. What if you could help build the company that's making it easier to find?\n\nFarmThru is a farm-direct grocery store. Named regenerative farms across NSW. A Brookvale hub. Food that's days old, not weeks.\n\nMid-2026, FarmThru is opening equity crowdfunding on Birchal. Everyday people can become part-owners of a business changing how food reaches families.\n\nVote for change with your wallet.",
-  "headline": "Care about food? Now you can back it",
-  "description": "FarmThru equity crowdfunding launches mid-2026 on Birchal. Be part of what's next.",
-  "cta": "Learn More",
-  "creative_brief": "Clean split: top half shows beautiful regenerative produce, bottom half shows the Birchal campaign page preview. Warm, approachable, not corporate."
+  "content_type": "meta-ad",
+  "creative_brief": "Split image showing supermarket produce shelf vs Rachel at her farm with cattle, emphasizing the direct connection and freshness difference.",
+  "generated_at": "2026-04-03T21:25:54.286067",
+  "ad_id": "CFE-102",
+  "primary_text": "You know supermarket food travels 2,400km on average? Rachel's beef from the NSW coast reaches Sydney families in days, not weeks. No wholesalers marking it up. FarmThru connects you direct to named regenerative farms across NSW. Order what you want, collect from Brookvale Monday to Friday. Now you can invest from $50 and help build the grocery store you actually want.",
+  "headline": "Invest in the grocery store you want",
+  "description": "Farm-direct food from named NSW farms. Equity crowdfunding live on Birchal. Not financial advice.",
+  "cta": "cfe_campaign"
 }

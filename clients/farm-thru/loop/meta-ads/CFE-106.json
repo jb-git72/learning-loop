@@ -1,13 +1,14 @@
 {
-  "ad_id": "CFE-106",
-  "content_type": "meta-ad",
   "angle": "social-belonging",
+  "tactic": "community-ownership",
   "hook_type": "social_proof",
   "funnel": "TOF",
-  "tactic": "community-ownership",
-  "primary_text": "Families across Sydney already collect fresh food from the Brookvale hub every week. They know their farmers by name.\n\nNow they can own a piece of it too.\n\nFarmThru is a farm-direct grocery store. Named regenerative farms across NSW. No middlemen. Food that's days old, not weeks.\n\nMid-2026, FarmThru is opening equity crowdfunding on Birchal. Customers, farmers, and anyone who believes food should work differently can become part-owners.\n\nBe a partner, not just a customer.",
-  "headline": "Customers are becoming co-owners",
-  "description": "FarmThru equity crowdfunding on Birchal, mid-2026. Own a piece of it.",
-  "cta": "Sign Up",
-  "creative_brief": "Warm community moment at the Brookvale hub -- real people collecting bags. Overlaid text: 'Customers are becoming co-owners'. Not staged."
+  "content_type": "meta-ad",
+  "creative_brief": "Close-up of hands holding rich, dark soil with cattle grazing peacefully in soft-focus background, warm golden hour lighting suggesting community connection to land.",
+  "generated_at": "2026-04-03T21:30:38.640575",
+  "ad_id": "CFE-106",
+  "primary_text": "When Rachel Ward started selling direct to FarmThru customers, something unexpected happened. Families began asking to invest in the farms they bought from. Now Rachel's regenerative beef operation has 47 community investors. Her cattle graze the same paddocks, but the profits stay local instead of flowing to distant shareholders. FarmThru is opening equity investment to all customers. No middlemen in the supply chain, no middlemen in the ownership.",
+  "headline": "Customers are buying the farms",
+  "description": "Rachel's Farm now has 47 community investors. FarmThru's equity crowdfunding lets you own what you eat. Not financial advice.",
+  "cta": "cfe_campaign"
 }

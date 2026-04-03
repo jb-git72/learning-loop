@@ -1,13 +1,14 @@
 {
-  "ad_id": "BR-109",
-  "content_type": "meta-ad",
   "angle": "empathy-founder",
+  "tactic": "personal-credibility",
   "hook_type": "Rachel_voice",
   "funnel": "TOF",
-  "tactic": "personal-credibility",
-  "primary_text": "I run a cattle farm in Kempsey. I know what it takes to raise beef properly. Open pasture. No hormones. No shortcuts.\n\nI also know what happens in the supermarket supply chain. Thousands of kilometres. Weeks in cold storage. The farm name disappears.\n\nThat's why I partnered with FarmThru. My beef goes from our farm to the Brookvale hub within days. Your family gets it fresh. You know where it came from.\n\nOnly food we'd feed our own.\n\n-- Rachel Ward, Rachel's Farm",
-  "headline": "I know what happens to the beef",
-  "description": "Rachel Ward, founder of Rachel's Farm, Kempsey NSW. Partner farm of FarmThru.",
-  "cta": "Meet the farmer",
-  "creative_brief": "Rachel walking through her Kempsey paddock, mid-stride, natural expression. Cattle grazing behind her. Documentary style, not posed."
+  "content_type": "meta-ad",
+  "creative_brief": "Close-up of Rachel Ward looking thoughtfully at cattle grazing in open pasture, authentic farming setting.",
+  "generated_at": "2026-04-03T20:25:44.265921",
+  "ad_id": "BR-109",
+  "primary_text": "I've been farming cattle in Kempsey for years. When I see beef in supermarkets, I wonder: which farm? What feed? How many trucks and warehouses did it pass through?\n\nThat's why I partnered with FarmThru. Every piece of beef comes direct from named farms. No middlemen. You'll know exactly where it came from.",
+  "headline": "I wonder about supermarket beef",
+  "description": "Rachel Ward, Kempsey farmer, on why she partnered with FarmThru for transparent farm-direct groceries.",
+  "cta": "cfe_campaign"
 }

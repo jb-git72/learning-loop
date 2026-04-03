@@ -1,13 +1,14 @@
 {
-  "ad_id": "CFE-108",
-  "content_type": "meta-ad",
   "angle": "empathy-founder",
+  "tactic": "founder-motivation",
   "hook_type": "story",
   "funnel": "TOF",
-  "tactic": "founder-motivation",
-  "primary_text": "It started with a simple question: why can't families buy food direct from the farms that grow it?\n\nNot a subscription box. Not a middleman. A real grocery store where every product traces to a named regenerative farm.\n\nFarmThru built it. A Brookvale hub. Partner farms across NSW. Food reaching families days after leaving the paddock.\n\nMid-2026, we're opening equity crowdfunding on Birchal. If you think food should work this way, be part of building it.\n\nNot just a customer. A partner.",
-  "headline": "We asked a simple question about food",
-  "description": "FarmThru is opening equity crowdfunding on Birchal, mid-2026. Be part of it.",
-  "cta": "Join the Waitlist",
-  "creative_brief": "Founder in the Brookvale hub, surrounded by fresh produce from named farms. Casual, warm. Text overlay with the founding question. Documentary tone."
+  "content_type": "meta-ad",
+  "creative_brief": "Close-up of Rachel Ward on her farm, weathered hands holding fresh produce, with rolling green pastures in the background.",
+  "generated_at": "2026-04-03T21:01:56.694819",
+  "ad_id": "CFE-108",
+  "primary_text": "Three months ago, Rachel Ward told me she was losing $2 on every kilo of beef she sold. The wholesalers took their cut. The supermarkets took theirs. Rachel got what was left. Now her beef goes direct to Sydney families via FarmThru. No middlemen. No markup games. Just Rachel's Farm to your nearest hub. We can't promise returns, but we can promise transparency.",
+  "headline": "She was losing money on every kilo",
+  "description": "Equity crowdfunding now live. Help us connect more farms direct to families. Not financial advice.",
+  "cta": "cfe_campaign"
 }

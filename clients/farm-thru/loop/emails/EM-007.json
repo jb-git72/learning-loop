@@ -1,13 +1,16 @@
 {
-  "email_id": "EM-007",
-  "content_type": "email",
   "angle": "urgency-scarcity",
-  "email_type": "final-call",
+  "tactic": "general",
+  "hook_type": "story",
   "funnel": "BOF",
-  "subject": "It is live. You can invest in FarmThru now.",
-  "preheader": "The equity crowdfunding campaign is open on Birchal. Here is how to invest.",
-  "body": "The campaign is live.\n\nFarmThru's equity crowdfunding raise is now open on Birchal. You can invest today.\n\nOver the past few weeks you have seen the food. You have met the farms. You have heard how the model works: regenerative farms across NSW, direct to our Brookvale hub, collected fresh by families. No middlemen. No mystery about provenance.\n\nNow you can own a piece of it.\n\nHow to invest: click the link below to visit our campaign page on Birchal. Read the disclosure document first. It covers our financials, our risks, our team, and exactly how the funds will be used. If you are comfortable, you can invest from $50 up to $10,000.\n\nIf you are a VIP member, you already have priority access. The campaign opens to the general waitlist shortly after.\n\nA note on risk. Investing in early-stage businesses means you could lose some or all of your investment. This is not financial advice. Consider seeking independent financial advice before making any investment decision. Full details in the disclosure document on Birchal.\n\nThank you for being here from the start.\n\nRachel & the FarmThru team",
-  "cta": "Invest Now",
-  "sender_name": "Rachel & the FarmThru team",
-  "creative_brief": "Launch day email. High energy but grounded. Bold 'We are live' header. Key model summary as a visual strip (farm to hub to family). Single prominent CTA to Birchal campaign page. Birchal badge. Compliance clearly formatted. This is the most important email in the sequence."
+  "content_type": "email",
+  "creative_brief": "Clean layout with countdown timer element. Highlight the $5 refundable deposit and 48-hour deadline prominently.",
+  "generated_at": "2026-04-03T20:24:20.893594",
+  "email_id": "EM-007",
+  "subject": "Last 48 hours: VIP spots closing",
+  "preheader": "Only $5 to secure your place before we launch mid-2026. Fully refundable.",
+  "body": "Yesterday at 3pm, Sarah from Manly refreshed her phone for the third time.\n\nShe'd been watching our VIP list grow for weeks. The $5 deposit (fully refundable) seemed like nothing — but she kept hesitating.\n\nThen she saw the update: VIP access closes in 48 hours.\n\nSarah realised something. She's been shopping at supermarkets her whole life, never knowing which farm her carrots came from, never meeting the people who grew her food.\n\nFarmThru changes that. We're building NSW's first farm-direct grocery hub where you'll know exactly where your food comes from — and collect it fresh from our Brookvale hub.\n\nNo middlemen marking up prices. No mystery supply chains. Just real food from real farms, priced for everyday families.\n\nSarah secured her VIP spot at 3:17pm.\n\nThe question is: will you?\n\nVIP perks include first access when we launch mid-2026, priority updates, and exclusive founder Q&As. Your $5 deposit is fully refundable — but VIP access isn't available forever.\n\n48 hours left.",
+  "cta": "cfe_waitlist",
+  "sender_name": "Tom, FarmThru Founder",
+  "email_type": "final-call"
 }

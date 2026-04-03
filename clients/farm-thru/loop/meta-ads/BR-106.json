@@ -1,13 +1,14 @@
 {
-  "ad_id": "BR-106",
-  "content_type": "meta-ad",
   "angle": "transparency",
+  "tactic": "product-origin-specificity",
   "hook_type": "direct_address",
   "funnel": "TOF",
-  "tactic": "product-origin-specificity",
-  "primary_text": "Here's exactly what you're eating and where it came from.\n\nBeef: Rachel's Farm, Kempsey NSW. 100% grass-fed, pasture-raised, no hormones.\n\nSalmon: Collins Wild Caught, South Coast NSW. Wild-caught, never farmed.\n\nDairy: Paris Creek Farms, Meadows SA. Biodynamic, carbon-neutral.\n\nEggs: Farmer Brown, NSW. Pasture-raised.\n\nEvery product on FarmThru traces to a named farm. Zero warehouses, zero wholesalers. Farm to hub to your table.\n\nThe Brookvale hub is open Monday to Friday.",
-  "headline": "Here's where your food comes from",
-  "description": "Named farms, real farmers, full traceability. Collected from the Brookvale hub.",
-  "cta": "See what's fresh this week",
-  "creative_brief": "Clean grid of four products, each with a small farm-name label beneath. Editorial food photography. Warm, honest lighting. No styling tricks."
+  "content_type": "meta-ad",
+  "creative_brief": "Split screen showing a product label with farm details next to the actual farm/farmer photo, emphasizing the direct connection.",
+  "generated_at": "2026-04-03T21:00:07.926786",
+  "ad_id": "BR-106",
+  "primary_text": "Do you know which farm your beef came from? Rachel's cattle graze on regenerative pastures in Kempsey NSW. No hormones, no feedlots. Collins catches our salmon wild off the South Coast. Every product shows the farm name, the farmer's story, and how it was grown. No middlemen marking up prices along a 2,400km supply chain. Collect fresh from Brookvale hub Monday to Friday. No commitment required.",
+  "headline": "See your farm before you buy",
+  "description": "Every product shows the farmer's name and story. Collect from Brookvale hub. Not financial advice.",
+  "cta": "cfe_campaign"
 }

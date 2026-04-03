@@ -53,6 +53,9 @@ def main():
     for ad in all_ads:
         file_path = ad.pop("_file")
         report = score_ad(ad, client, existing_ads=all_ads, use_llm=use_llm)
+        # Resolve ID from all possible fields (scorer only checks ad_id)
+        resolved_id = ad.get("ad_id", ad.get("page_id", ad.get("email_id", "unknown")))
+        report["ad_id"] = resolved_id
         report["_file"] = file_path
         report["content_type"] = ad.get("content_type", "meta-ad")
         report["angle"] = ad.get("angle", "")
