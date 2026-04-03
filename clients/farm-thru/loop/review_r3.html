@@ -55,6 +55,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .notes-row { margin-top: 8px; }
 .notes { width: 100%; height: 50px; padding: 8px; border: 1px solid #e0e0e0; border-radius: 6px; font-family: inherit; font-size: 13px; resize: vertical; }
 .counter { max-width: 1400px; margin: 0 auto 12px; font-size: 13px; color: #888; }
+.card-top { cursor: pointer; user-select: none; }
+.card-top:hover { opacity: 0.85; }
+.card-body { display: none; }
+.card.expanded .card-body { display: block; }
+.collapse-indicator { font-size: 12px; color: #aaa; margin-right: 4px; transition: transform 0.15s; }
+.card.expanded .collapse-indicator { transform: rotate(90deg); }
 </style>
 </head>
 <body>
@@ -78,6 +84,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
         <button class="tbtn" onclick="setFilter('status','revise',this)">Edited</button>
         <button class="tbtn" onclick="setFilter('status','kill',this)">Killed</button>
         <div class="toolbar-right">
+            <button class="tbtn" onclick="toggleAll()">Expand All</button>
             <button class="tbtn" onclick="saveJSON()">Save JSON</button>
             <button class="tbtn" onclick="exportCSV()">CSV</button>
         </div>
@@ -86,22 +93,24 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 <div class="counter" id="counter"></div>
 <div class="cards" id="cards">
     
-        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="quality-craft" data-id="BR-101">
-            <div class="card-top">
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="quality-craft" data-id="BR-101">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">BR-101</span>
                 <span class="type-badge" style="background:#2563eb">AD</span>
                 <span class="angle-label">quality-craft</span>
                 <span class="hl-preview">Paddock on Tuesday, yours by Thursday</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#f59e0b">0.63</span>
-                    <span class="verdict-label">NEEDS WORK</span>
-                    <button class="btn btn-approve" onclick="setStatus('BR-101','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('BR-101','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('BR-101','kill',this)">Kill</button>
+                    <span class="score-circle" style="background:#22c55e">0.76</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-101','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-101','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-101','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.6255 &nbsp; Rubric: 41.2/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 0.67 &nbsp; Hook: story</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7620 &nbsp; Rubric: 50.2/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 0.67 &nbsp; Hook: story</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">PRIMARY TEXT</div>
@@ -125,75 +134,89 @@ No middlemen. No commitment. Sydney families collect from the Brookvale hub, Mon
                     <div class="char-count">81/125</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: Shop your local hub</span>
             <span class="tag">Tactic: sensory-detail</span>
             <span class="tag">Funnel: TOF</span>
         </div><div class="creative-brief"><em>Close-up of deep red, marbled grass-fed steak on a timber board. Golden fat visible. Natural kitchen light. No props. Let the colour tell the story.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="BR-101" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-101" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
-        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="quality-craft" data-id="BR-102">
-            <div class="card-top">
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="quality-craft" data-id="BR-102">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">BR-102</span>
                 <span class="type-badge" style="background:#2563eb">AD</span>
                 <span class="angle-label">quality-craft</span>
-                <span class="hl-preview">2,400km journey vs 300km from pasture</span>
+                <span class="hl-preview">Days old, not weeks old</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#f59e0b">0.56</span>
-                    <span class="verdict-label">NEEDS WORK</span>
-                    <button class="btn btn-approve" onclick="setStatus('BR-102','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('BR-102','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('BR-102','kill',this)">Kill</button>
+                    <span class="score-circle" style="background:#22c55e">0.71</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-102','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-102','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-102','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.5584 &nbsp; Rubric: 44.5/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 0.38 &nbsp; Hook: statistic</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7129 &nbsp; Rubric: 50.5/63.8 &nbsp; Rules: 26/28 &nbsp; Facts: 0.67 &nbsp; Hook: statistic</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">PRIMARY TEXT</div>
-                    <textarea class="field-edit" data-id="BR-102" data-field="primary_text" rows="8">2,400km. That's the average journey for supermarket beef before it hits cold storage for weeks. Rachel Ward raises grass-fed cattle 300km north of Sydney on regenerative pastures. No feedlots, no hormones, no antibiotics. Her beef reaches our Brookvale hub within days of processing. You can taste the difference. No commitment. Order when you want. Collect from Brookvale Monday to Friday. Own a piece of the farm-direct future.</textarea>
-                    <div class="char-count">429/500</div>
+                    <textarea class="field-edit" data-id="BR-102" data-field="primary_text" rows="8">14 to 21 days. That's how long supermarket beef sits in cold storage before you cook it.
+
+At FarmThru, our beef is days old when you collect it. Rachel Ward's 100% grass-fed cattle graze regenerative pastures in Kempsey, NSW. No hormones. No antibiotics. No feedlots.
+
+You can taste the difference when food hasn't travelled 2,400km in a refrigerated truck.
+
+No middlemen. No wholesalers. Just real farms like Bundarra, Collins Wild Caught, and Farmer Brown sending food straight to our Brookvale hub.
+
+Collect when it suits you, Monday to Friday. No commitment.</textarea>
+                    <div class="char-count">562/500</div>
                 </div>
                 <div class="col-right">
                     <div class="field-label">HEADLINE</div>
-                    <textarea class="field-edit" data-id="BR-102" data-field="headline" rows="2">2,400km journey vs 300km from pasture</textarea>
-                    <div class="char-count">37/40</div>
+                    <textarea class="field-edit" data-id="BR-102" data-field="headline" rows="2">Days old, not weeks old</textarea>
+                    <div class="char-count">23/40</div>
                     <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
-                    <textarea class="field-edit" data-id="BR-102" data-field="description" rows="3">Rachel Ward's grass-fed beef reaches Brookvale hub days after processing.</textarea>
-                    <div class="char-count">73/125</div>
+                    <textarea class="field-edit" data-id="BR-102" data-field="description" rows="3">Farm-direct beef, chicken, salmon and eggs. Collect from Brookvale, no lock-in.</textarea>
+                    <div class="char-count">79/125</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
-            <span class="tag">CTA: cfe_campaign</span>
+            <span class="tag">CTA: brand</span>
             <span class="tag">Tactic: supply-chain-contrast</span>
             <span class="tag">Funnel: TOF</span>
-        </div><div class="creative-brief"><em>Split-screen visual: left shows industrial truck convoy on highway, right shows green pastures with cattle grazing under open sky.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="BR-102" placeholder="Add review notes..."></textarea>
+        </div><div class="creative-brief"><em>Split-screen: left side shows a cold, fluorescent-lit supermarket meat shelf with a '14-21 days in storage' label fading in; right side shows vibrant, freshly cut grass-fed beef on butcher paper with 'Days old' label. Warm, natural light on the right. FarmThru logo bottom-right.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-102" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
-        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="empathy-founder" data-id="BR-103">
-            <div class="card-top">
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="empathy-founder" data-id="BR-103">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">BR-103</span>
                 <span class="type-badge" style="background:#2563eb">AD</span>
                 <span class="angle-label">empathy-founder</span>
                 <span class="hl-preview">I was lying to my kids about food</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#f59e0b">0.67</span>
-                    <span class="verdict-label">NEEDS WORK</span>
-                    <button class="btn btn-approve" onclick="setStatus('BR-103','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('BR-103','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('BR-103','kill',this)">Kill</button>
+                    <span class="score-circle" style="background:#22c55e">0.77</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-103','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-103','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-103','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.6706 &nbsp; Rubric: 42.8/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 1.00 &nbsp; Hook: confession</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7725 &nbsp; Rubric: 49.2/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 1.00 &nbsp; Hook: confession</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">PRIMARY TEXT</div>
@@ -211,33 +234,36 @@ No middlemen. No commitment. Sydney families collect from the Brookvale hub, Mon
                     <div class="char-count">119/125</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: cfe_campaign</span>
             <span class="tag">Tactic: before-after</span>
             <span class="tag">Funnel: TOF</span>
         </div><div class="creative-brief"><em>Split screen: founder with young children in kitchen vs. vibrant farm scene with animals on pasture, suggesting the honest connection FarmThru creates.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="BR-103" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-103" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
-        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="cause-purpose" data-id="BR-104">
-            <div class="card-top">
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="cause-purpose" data-id="BR-104">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">BR-104</span>
                 <span class="type-badge" style="background:#2563eb">AD</span>
                 <span class="angle-label">cause-purpose</span>
                 <span class="hl-preview">When did we stop knowing our farmers?</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#f59e0b">0.67</span>
-                    <span class="verdict-label">NEEDS WORK</span>
-                    <button class="btn btn-approve" onclick="setStatus('BR-104','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('BR-104','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('BR-104','kill',this)">Kill</button>
+                    <span class="score-circle" style="background:#22c55e">0.78</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-104','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-104','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-104','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.6745 &nbsp; Rubric: 43.0/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 1.00 &nbsp; Hook: invitation</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7804 &nbsp; Rubric: 49.8/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 1.00 &nbsp; Hook: invitation</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">PRIMARY TEXT</div>
@@ -259,79 +285,91 @@ Collect from the Brookvale hub, Monday to Friday. No commitment. Days old, not w
                     <div class="char-count">88/125</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: brand</span>
             <span class="tag">Tactic: reconnection</span>
             <span class="tag">Funnel: TOF</span>
         </div><div class="creative-brief"><em>Split screen showing a long-haul truck on highway vs Rachel's cattle peacefully grazing in green NSW pastures.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="BR-104" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-104" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
-        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="social-belonging" data-id="BR-105">
-            <div class="card-top">
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="social-belonging" data-id="BR-105">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">BR-105</span>
                 <span class="type-badge" style="background:#2563eb">AD</span>
                 <span class="angle-label">social-belonging</span>
-                <span class="hl-preview">You are not the only one asking</span>
+                <span class="hl-preview">Ever feel proud buying groceries?</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#f59e0b">0.65</span>
-                    <span class="verdict-label">NEEDS WORK</span>
-                    <button class="btn btn-approve" onclick="setStatus('BR-105','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('BR-105','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('BR-105','kill',this)">Kill</button>
+                    <span class="score-circle" style="background:#22c55e">0.77</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-105','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-105','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-105','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.6471 &nbsp; Rubric: 41.2/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 1.00 &nbsp; Hook: question</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7675 &nbsp; Rubric: 51.5/63.8 &nbsp; Rules: 27/28 &nbsp; Facts: 1.00 &nbsp; Hook: question</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">PRIMARY TEXT</div>
-                    <textarea class="field-edit" data-id="BR-105" data-field="primary_text" rows="8">You know that feeling when you pick up a pack of chicken and have no idea where it came from? You are not the only one.
+                    <textarea class="field-edit" data-id="BR-105" data-field="primary_text" rows="8">When was the last time you bought groceries and actually felt good about it?
 
-Sydney families are choosing something different. Buying direct from farms they can name. Rachel's Farm in Kempsey. Bundarra Farm. Farmer Brown. Real food from regenerative land in NSW.
+Not guilty. Not confused by labels. Just genuinely proud of what you're feeding your family.
 
-FarmThru makes it simple. Collect from the Brookvale hub, Monday to Friday. No middlemen. No commitment. Just food you do not have to second-guess.</textarea>
-                    <div class="char-count">455/500</div>
+That feeling isn't random. It comes from knowing your food's story.
+
+FarmThru connects you directly with farms like Bundarra (pork from real paddocks) and Collins Wild Caught (seafood off the South Coast). No middlemen. No wholesalers. Just honest food from people who grow it.
+
+No commitment. Order when you want. Collect from Brookvale Monday to Friday.
+
+Hundreds of Sydney families already know this feeling. Come find out why.</textarea>
+                    <div class="char-count">602/500</div>
                 </div>
                 <div class="col-right">
                     <div class="field-label">HEADLINE</div>
-                    <textarea class="field-edit" data-id="BR-105" data-field="headline" rows="2">You are not the only one asking</textarea>
-                    <div class="char-count">31/40</div>
+                    <textarea class="field-edit" data-id="BR-105" data-field="headline" rows="2">Ever feel proud buying groceries?</textarea>
+                    <div class="char-count">33/40</div>
                     <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
-                    <textarea class="field-edit" data-id="BR-105" data-field="description" rows="3">Sydney families buying direct from named NSW farms. Zero middlemen. No commitment. Collect from Brookvale.</textarea>
-                    <div class="char-count">106/125</div>
+                    <textarea class="field-edit" data-id="BR-105" data-field="description" rows="3">Farm-direct groceries from NSW farms you can actually name. Order online, collect from Brookvale.</textarea>
+                    <div class="char-count">97/125</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: brand</span>
             <span class="tag">Tactic: curiosity-gap</span>
             <span class="tag">Funnel: TOF</span>
-        </div><div class="creative-brief"><em>Warm, welcoming shot of diverse families at farmers market or farm gate, with produce boxes in background showing the community aspect.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="BR-105" placeholder="Add review notes..."></textarea>
+        </div><div class="creative-brief"><em>Warm overhead shot of a family unpacking a FarmThru bag on a kitchen bench: recognisable whole foods (pork cuts in brown paper, wild-caught fish, farm eggs). Soft natural light, relaxed weekend mood. Small FarmThru logo bottom-right.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-105" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
-        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="transparency" data-id="BR-106">
-            <div class="card-top">
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="transparency" data-id="BR-106">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">BR-106</span>
                 <span class="type-badge" style="background:#2563eb">AD</span>
                 <span class="angle-label">transparency</span>
                 <span class="hl-preview">See your farm before you buy</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#f59e0b">0.65</span>
-                    <span class="verdict-label">NEEDS WORK</span>
-                    <button class="btn btn-approve" onclick="setStatus('BR-106','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('BR-106','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('BR-106','kill',this)">Kill</button>
+                    <span class="score-circle" style="background:#22c55e">0.79</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-106','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-106','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-106','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.6471 &nbsp; Rubric: 41.2/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 0.75 &nbsp; Hook: direct_address</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7882 &nbsp; Rubric: 50.2/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 0.75 &nbsp; Hook: direct_address</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">PRIMARY TEXT</div>
@@ -349,33 +387,36 @@ No middlemen. No commitment. Sydney families collect from the Brookvale hub, Mon
                     <div class="char-count">76/125</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: cfe_campaign</span>
             <span class="tag">Tactic: product-origin-specificity</span>
             <span class="tag">Funnel: TOF</span>
         </div><div class="creative-brief"><em>Split screen showing a product label with farm details next to the actual farm/farmer photo, emphasizing the direct connection.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="BR-106" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-106" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
-        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="comparison-switching" data-id="BR-107">
-            <div class="card-top">
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="comparison-switching" data-id="BR-107">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">BR-107</span>
                 <span class="type-badge" style="background:#2563eb">AD</span>
                 <span class="angle-label">comparison-switching</span>
                 <span class="hl-preview">If your beef travelled 2,400km first</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#f59e0b">0.61</span>
-                    <span class="verdict-label">NEEDS WORK</span>
-                    <button class="btn btn-approve" onclick="setStatus('BR-107','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('BR-107','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('BR-107','kill',this)">Kill</button>
+                    <span class="score-circle" style="background:#22c55e">0.71</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-107','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-107','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-107','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.6141 &nbsp; Rubric: 43.5/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 0.50 &nbsp; Hook: if_then</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7059 &nbsp; Rubric: 50.0/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 0.50 &nbsp; Hook: if_then</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">PRIMARY TEXT</div>
@@ -397,33 +438,36 @@ No commitment. Sydney families collect from Brookvale, Monday to Friday.</textar
                     <div class="char-count">91/125</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: brand</span>
             <span class="tag">Tactic: supply-chain-comparison</span>
             <span class="tag">Funnel: MOF</span>
         </div><div class="creative-brief"><em>Split-screen visual: left shows long truck convoy and cold-storage maze, right shows simple farm-to-hub direct line with fresh product.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="BR-107" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-107" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
-        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="quality-craft" data-id="BR-108">
-            <div class="card-top">
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="quality-craft" data-id="BR-108">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">BR-108</span>
                 <span class="type-badge" style="background:#2563eb">AD</span>
                 <span class="angle-label">quality-craft</span>
                 <span class="hl-preview">You can tell by the colour of the yolk</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#f59e0b">0.60</span>
-                    <span class="verdict-label">NEEDS WORK</span>
-                    <button class="btn btn-approve" onclick="setStatus('BR-108','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('BR-108','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('BR-108','kill',this)">Kill</button>
+                    <span class="score-circle" style="background:#22c55e">0.72</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-108','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-108','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-108','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.6027 &nbsp; Rubric: 39.8/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 0.67 &nbsp; Hook: seasonal</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7203 &nbsp; Rubric: 47.5/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 0.67 &nbsp; Hook: seasonal</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">PRIMARY TEXT</div>
@@ -445,33 +489,36 @@ No middlemen. No commitment. Sydney families collect from Brookvale, Monday to F
                     <div class="char-count">78/125</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: brand</span>
             <span class="tag">Tactic: seasonal-urgency</span>
             <span class="tag">Funnel: TOF</span>
         </div><div class="creative-brief"><em>Close-up of cracked egg showing vivid orange yolk against white shell, natural lighting on rustic wooden surface.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="BR-108" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-108" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
-        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="empathy-founder" data-id="BR-109">
-            <div class="card-top">
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="empathy-founder" data-id="BR-109">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">BR-109</span>
                 <span class="type-badge" style="background:#2563eb">AD</span>
                 <span class="angle-label">empathy-founder</span>
                 <span class="hl-preview">I wonder about supermarket beef</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#f59e0b">0.67</span>
-                    <span class="verdict-label">NEEDS WORK</span>
-                    <button class="btn btn-approve" onclick="setStatus('BR-109','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('BR-109','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('BR-109','kill',this)">Kill</button>
+                    <span class="score-circle" style="background:#22c55e">0.81</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-109','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-109','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-109','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.6706 &nbsp; Rubric: 42.8/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 1.00 &nbsp; Hook: Rachel_voice</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.8118 &nbsp; Rubric: 51.8/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 1.00 &nbsp; Hook: Rachel_voice</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">PRIMARY TEXT</div>
@@ -491,75 +538,91 @@ No middlemen. No commitment. Sydney families collect from the Brookvale hub, Mon
                     <div class="char-count">102/125</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: cfe_campaign</span>
             <span class="tag">Tactic: personal-credibility</span>
             <span class="tag">Funnel: TOF</span>
         </div><div class="creative-brief"><em>Close-up of Rachel Ward looking thoughtfully at cattle grazing in open pasture, authentic farming setting.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="BR-109" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-109" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
-        <div class="card" data-verdict="rewrite" data-type="meta-ad" data-angle="cause-purpose" data-id="BR-110">
-            <div class="card-top">
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="cause-purpose" data-id="BR-110">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">BR-110</span>
                 <span class="type-badge" style="background:#2563eb">AD</span>
                 <span class="angle-label">cause-purpose</span>
-                <span class="hl-preview">Rachel's beef: 5 days fresh, not 3 weeks old</span>
+                <span class="hl-preview">A grocery store that names every farmer</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#ef4444">0.46</span>
-                    <span class="verdict-label">REWRITE</span>
-                    <button class="btn btn-approve" onclick="setStatus('BR-110','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('BR-110','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('BR-110','kill',this)">Kill</button>
+                    <span class="score-circle" style="background:#22c55e">0.72</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-110','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-110','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-110','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.4595 &nbsp; Rubric: 46.5/63.8 &nbsp; Rules: 26/28 &nbsp; Facts: 0.17 &nbsp; Hook: bold_claim</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7227 &nbsp; Rubric: 48.5/63.8 &nbsp; Rules: 27/28 &nbsp; Facts: 0.75 &nbsp; Hook: bold_claim</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">PRIMARY TEXT</div>
-                    <textarea class="field-edit" data-id="BR-110" data-field="primary_text" rows="8">Last Monday Rachel Ward watched her regenerative beef sit in cold storage for 21 days before reaching Sydney shelves. Her Kempsey cattle graze chemical-free pastures, but the big chains add weeks to your plate. Now her beef reaches families in 5 days via FarmThru. No wholesalers. No warehouses. Farm to Brookvale hub to your kitchen. We can't promise returns, but we can show you exactly where your food comes from.</textarea>
-                    <div class="char-count">416/500</div>
+                    <textarea class="field-edit" data-id="BR-110" data-field="primary_text" rows="8">Every week you buy groceries that quietly erase the farmer who grew them.
+
+No name. No face. No story. Just a barcode and a 2,400km cold chain.
+
+FarmThru exists because that erasure isn't inevitable. It's a choice.
+
+We built a grocery store with zero wholesalers, zero middlemen. Pork from Bundarra Farm. Wild-caught fish from Collins on the South Coast. Eggs from Farmer Brown. Every product traceable to the person who raised it.
+
+No commitment. Order when you want. Collect from Brookvale Monday to Friday.
+
+Own a piece of the grocery store that pays farmers first.</textarea>
+                    <div class="char-count">568/500</div>
                 </div>
                 <div class="col-right">
                     <div class="field-label">HEADLINE</div>
-                    <textarea class="field-edit" data-id="BR-110" data-field="headline" rows="2">Rachel's beef: 5 days fresh, not 3 weeks old</textarea>
-                    <div class="char-count">44/40</div>
+                    <textarea class="field-edit" data-id="BR-110" data-field="headline" rows="2">A grocery store that names every farmer</textarea>
+                    <div class="char-count">39/40</div>
                     <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
-                    <textarea class="field-edit" data-id="BR-110" data-field="description" rows="3">Back our farm-direct grocery mission.</textarea>
-                    <div class="char-count">37/125</div>
+                    <textarea class="field-edit" data-id="BR-110" data-field="description" rows="3">Farm-direct. No middlemen. Real names behind every product you collect.</textarea>
+                    <div class="char-count">71/125</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: cfe_campaign</span>
             <span class="tag">Tactic: positioning-statement</span>
             <span class="tag">Funnel: TOF</span>
-        </div><div class="creative-brief"><em>Split screen showing fresh cattle grazing vs warehouse storage with day counters: Day 1 vs Day 21.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="BR-110" placeholder="Add review notes..."></textarea>
+        </div><div class="creative-brief"><em>Split frame: left side shows a generic supermarket barcode on shrink-wrapped meat, right side shows a named Bundarra Farm pork belly with the farmer's portrait and farm location. Warm natural light on the right, cold fluorescent on the left. FarmThru logo bottom right.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-110" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
         <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="investment-thesis" data-id="CFE-101">
-            <div class="card-top">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">CFE-101</span>
                 <span class="type-badge" style="background:#2563eb">AD</span>
                 <span class="angle-label">investment-thesis</span>
                 <span class="hl-preview">Rachel's beef travels 180km, not 2,400km</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#f59e0b">0.61</span>
+                    <span class="score-circle" style="background:#f59e0b">0.68</span>
                     <span class="verdict-label">NEEDS WORK</span>
-                    <button class="btn btn-approve" onclick="setStatus('CFE-101','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('CFE-101','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('CFE-101','kill',this)">Kill</button>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('CFE-101','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('CFE-101','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('CFE-101','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.6149 &nbsp; Rubric: 49.0/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 0.25 &nbsp; Hook: statistic</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.6808 &nbsp; Rubric: 54.2/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 0.25 &nbsp; Hook: statistic</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">PRIMARY TEXT</div>
@@ -577,75 +640,89 @@ No middlemen. Sydney families already collect from the Brookvale hub. We can't p
                     <div class="char-count">63/125</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: cfe_campaign</span>
             <span class="tag">Tactic: traction-proof</span>
             <span class="tag">Funnel: TOF</span>
         </div><div class="creative-brief"><em>Split image: Rachel with cattle in green pastures on left, fresh beef cuts at Brookvale hub on right. Clean, honest photography showing the short journey.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="CFE-101" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="CFE-101" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
-        <div class="card" data-verdict="rewrite" data-type="meta-ad" data-angle="investment-thesis" data-id="CFE-102">
-            <div class="card-top">
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="investment-thesis" data-id="CFE-102">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">CFE-102</span>
                 <span class="type-badge" style="background:#2563eb">AD</span>
                 <span class="angle-label">investment-thesis</span>
-                <span class="hl-preview">Own the grocery store fixing food</span>
+                <span class="hl-preview">Your fridge changed. Your portfolio?</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#ef4444">0.52</span>
-                    <span class="verdict-label">REWRITE</span>
-                    <button class="btn btn-approve" onclick="setStatus('CFE-102','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('CFE-102','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('CFE-102','kill',this)">Kill</button>
+                    <span class="score-circle" style="background:#22c55e">0.75</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('CFE-102','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('CFE-102','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('CFE-102','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.5176 &nbsp; Rubric: 41.2/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 0.25 &nbsp; Hook: direct_address</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7451 &nbsp; Rubric: 47.5/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 1.00 &nbsp; Hook: direct_address</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">PRIMARY TEXT</div>
-                    <textarea class="field-edit" data-id="CFE-102" data-field="primary_text" rows="8">You know the grocery system is broken when your beef travels 2,400km through multiple warehouses before reaching your plate. Rachel raises cattle on regenerative pastures in northern NSW. Her beef reaches FarmThru's Brookvale hub in 3 days. No wholesalers. No markups. Just direct connection between her farm and Sydney families who want to know where their food comes from.</textarea>
-                    <div class="char-count">374/500</div>
+                    <textarea class="field-edit" data-id="CFE-102" data-field="primary_text" rows="8">You switched to regenerative groceries because the old system felt wrong.
+
+So why is your money still backing that same system?
+
+FarmThru is building a farm-direct grocery store with no middlemen or wholesalers. Real farms across NSW, a collect hub in Brookvale, and food that travels kilometres instead of thousands.
+
+Now you can own a piece of what you already believe in.
+
+No guarantees. But values and money finally pointing the same direction? That's rare.</textarea>
+                    <div class="char-count">461/500</div>
                 </div>
                 <div class="col-right">
                     <div class="field-label">HEADLINE</div>
-                    <textarea class="field-edit" data-id="CFE-102" data-field="headline" rows="2">Own the grocery store fixing food</textarea>
-                    <div class="char-count">33/40</div>
+                    <textarea class="field-edit" data-id="CFE-102" data-field="headline" rows="2">Your fridge changed. Your portfolio?</textarea>
+                    <div class="char-count">36/40</div>
                     <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
-                    <textarea class="field-edit" data-id="CFE-102" data-field="description" rows="3">A farm-direct grocery model that's already working. Be part of what comes next.</textarea>
-                    <div class="char-count">79/125</div>
+                    <textarea class="field-edit" data-id="CFE-102" data-field="description" rows="3">Own a piece of the farm-direct grocery store you'd actually shop at.</textarea>
+                    <div class="char-count">68/125</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: cfe_campaign</span>
             <span class="tag">Tactic: values-aligned-investing</span>
             <span class="tag">Funnel: TOF</span>
-        </div><div class="creative-brief"><em>Split screen: left shows industrial warehouse/truck convoy, right shows Rachel on her green pastures with cattle grazing naturally.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="CFE-102" placeholder="Add review notes..."></textarea>
+        </div><div class="creative-brief"><em>Split screen: left side shows a hand placing regenerative produce into a reusable bag at the Brookvale hub. Right side shows the same hand on a laptop, with a subtle FarmThru ownership page visible. Warm, natural light. No stock imagery.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="CFE-102" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
-        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="cause-purpose" data-id="CFE-103">
-            <div class="card-top">
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="cause-purpose" data-id="CFE-103">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">CFE-103</span>
                 <span class="type-badge" style="background:#2563eb">AD</span>
                 <span class="angle-label">cause-purpose</span>
                 <span class="hl-preview">She raises the beef. You can back it</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#f59e0b">0.68</span>
-                    <span class="verdict-label">NEEDS WORK</span>
-                    <button class="btn btn-approve" onclick="setStatus('CFE-103','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('CFE-103','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('CFE-103','kill',this)">Kill</button>
+                    <span class="score-circle" style="background:#22c55e">0.77</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('CFE-103','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('CFE-103','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('CFE-103','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.6824 &nbsp; Rubric: 43.5/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 1.00 &nbsp; Hook: story</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7725 &nbsp; Rubric: 49.2/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 1.00 &nbsp; Hook: story</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">PRIMARY TEXT</div>
@@ -667,217 +744,244 @@ No middlemen. Sydney families already collect from the Brookvale hub. We can't p
                     <div class="char-count">66/125</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: Join the Waitlist</span>
             <span class="tag">Tactic: movement-narrative</span>
             <span class="tag">Funnel: TOF</span>
         </div><div class="creative-brief"><em>Documentary-style shot of a female farmer with cattle on green pasture. Golden light. Story feels personal and grounded, not promotional.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="CFE-103" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="CFE-103" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
-        <div class="card" data-verdict="rewrite" data-type="meta-ad" data-angle="urgency-scarcity" data-id="CFE-104">
-            <div class="card-top">
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="urgency-scarcity" data-id="CFE-104">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">CFE-104</span>
                 <span class="type-badge" style="background:#2563eb">AD</span>
                 <span class="angle-label">urgency-scarcity</span>
-                <span class="hl-preview">Her beef travels 280km, not 2,400km</span>
+                <span class="hl-preview">Only 280km from farm to your next meal</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#ef4444">0.52</span>
-                    <span class="verdict-label">REWRITE</span>
-                    <button class="btn btn-approve" onclick="setStatus('CFE-104','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('CFE-104','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('CFE-104','kill',this)">Kill</button>
+                    <span class="score-circle" style="background:#f59e0b">0.70</span>
+                    <span class="verdict-label">NEEDS WORK</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('CFE-104','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('CFE-104','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('CFE-104','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.5216 &nbsp; Rubric: 50.0/63.8 &nbsp; Rules: 27/28 &nbsp; Facts: 0.17 &nbsp; Hook: bold_claim</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.6960 &nbsp; Rubric: 51.0/63.8 &nbsp; Rules: 26/28 &nbsp; Facts: 0.50 &nbsp; Hook: bold_claim</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">PRIMARY TEXT</div>
-                    <textarea class="field-edit" data-id="CFE-104" data-field="primary_text" rows="8">Last Tuesday Rachel Ward told me something that shocked me. Her regenerative beef travels just 280km from pasture to your plate. The same cut at supermarkets? 2,400km through multiple warehouses. FarmThru's Brookvale hub opens Monday to Friday. Direct from named NSW farms. No middlemen inflating prices.
+                    <textarea class="field-edit" data-id="CFE-104" data-field="primary_text" rows="8">Most grocery runs feel routine. But what if I told you the food in your fridge travelled further than your last holiday?
 
-No middlemen. Sydney families already collect from the Brookvale hub. We can't promise returns, but we can show you everything.</textarea>
-                    <div class="char-count">433/500</div>
+The big chains move a single cut of beef up to 2,400km through cold storage before it reaches you. Rachel Ward's regenerative cattle travel just 280km from her farm to our Brookvale hub.
+
+Same quality. Fraction of the distance. No middlemen, no wholesalers inflating the price.
+
+We're building something different and the waitlist is how you get first access. Early spots are limited. Once our hub capacity fills, new orders queue behind existing collectors.
+
+No lock-in. No commitment. Order when you want, collect from Brookvale Monday to Friday.</textarea>
+                    <div class="char-count">670/500</div>
                 </div>
                 <div class="col-right">
                     <div class="field-label">HEADLINE</div>
-                    <textarea class="field-edit" data-id="CFE-104" data-field="headline" rows="2">Her beef travels 280km, not 2,400km</textarea>
-                    <div class="char-count">35/40</div>
+                    <textarea class="field-edit" data-id="CFE-104" data-field="headline" rows="2">Only 280km from farm to your next meal</textarea>
+                    <div class="char-count">38/40</div>
                     <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
-                    <textarea class="field-edit" data-id="CFE-104" data-field="description" rows="3">Waitlist members get first access. Secure your spot now.</textarea>
-                    <div class="char-count">56/125</div>
+                    <textarea class="field-edit" data-id="CFE-104" data-field="description" rows="3">Waitlist members get first access to FarmThru's Brookvale hub. Spots are limited.</textarea>
+                    <div class="char-count">81/125</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: cfe_waitlist</span>
             <span class="tag">Tactic: waitlist-priority</span>
             <span class="tag">Funnel: MOF</span>
-        </div><div class="creative-brief"><em>Split image: left shows Rachel Ward with cattle on green pasture, right shows the Brookvale hub with fresh meat display.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="CFE-104" placeholder="Add review notes..."></textarea>
+        </div><div class="creative-brief"><em>Split-screen visual: left side shows a long, winding highway with a refrigerated truck (overlaid text '2,400km'), right side shows a short country road from green pasture to the Brookvale hub (overlaid text '280km'). Clean, warm tones. FarmThru logo bottom right.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="CFE-104" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
-        <div class="card" data-verdict="rewrite" data-type="meta-ad" data-angle="transparency-safety" data-id="CFE-105">
-            <div class="card-top">
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="transparency-safety" data-id="CFE-105">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">CFE-105</span>
                 <span class="type-badge" style="background:#2563eb">AD</span>
                 <span class="angle-label">transparency-safety</span>
-                <span class="hl-preview">We can't promise returns</span>
+                <span class="hl-preview">We asked where your food's been</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#ef4444">0.49</span>
-                    <span class="verdict-label">REWRITE</span>
-                    <button class="btn btn-approve" onclick="setStatus('CFE-105','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('CFE-105','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('CFE-105','kill',this)">Kill</button>
+                    <span class="score-circle" style="background:#22c55e">0.81</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('CFE-105','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('CFE-105','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('CFE-105','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.4894 &nbsp; Rubric: 39.0/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 0.50 &nbsp; Hook: confession</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.8118 &nbsp; Rubric: 51.8/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 1.00 &nbsp; Hook: confession</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">PRIMARY TEXT</div>
-                    <textarea class="field-edit" data-id="CFE-105" data-field="primary_text" rows="8">Could a grocery store actually change the food system? Here's what one waitlist member asked us.
-
-Here's what we can show you. A Brookvale hub open Monday to Friday. Named regenerative farms across NSW. Fresh food reaching families in days, not weeks.
-
-Zero warehouses. Zero wholesalers. Farmers earning a fairer price. Families eating food they can trace.
-
-No middlemen. Sydney families already collect from the Brookvale hub. We can't promise returns, but we can show you everything.</textarea>
-                    <div class="char-count">485/500</div>
+                    <textarea class="field-edit" data-id="CFE-105" data-field="primary_text" rows="8">Honest moment: we can't tell you what's in most supermarket food. Neither can they. That's not a scandal. It's just how long supply chains work. Traceability gets lost between the farm gate and the shelf. FarmThru exists because we thought you deserved better than a shrug. Every product traces back to a named NSW farm or supplier. No middlemen, no wholesalers. Just a short chain you can actually follow. No commitment. Order when you want. Collect from Brookvale Monday to Friday.</textarea>
+                    <div class="char-count">483/500</div>
                 </div>
                 <div class="col-right">
                     <div class="field-label">HEADLINE</div>
-                    <textarea class="field-edit" data-id="CFE-105" data-field="headline" rows="2">We can't promise returns</textarea>
-                    <div class="char-count">24/40</div>
+                    <textarea class="field-edit" data-id="CFE-105" data-field="headline" rows="2">We asked where your food's been</textarea>
+                    <div class="char-count">31/40</div>
                     <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
-                    <textarea class="field-edit" data-id="CFE-105" data-field="description" rows="3">Honest about the risks, open about the model. See the full picture.</textarea>
-                    <div class="char-count">67/125</div>
+                    <textarea class="field-edit" data-id="CFE-105" data-field="description" rows="3">Farm-direct groceries from named NSW farms. Traceable from paddock to pick-up.</textarea>
+                    <div class="char-count">78/125</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
-            <span class="tag">CTA: Learn More</span>
+            <span class="tag">CTA: brand</span>
             <span class="tag">Tactic: radical-honesty</span>
             <span class="tag">Funnel: MOF</span>
-        </div><div class="creative-brief"><em>Clean white background. Direct, honest copy as the hero element. Small product photo below. Trust built through simplicity and negative space.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="CFE-105" placeholder="Add review notes..."></textarea>
+        </div><div class="creative-brief"><em>Split screen: left side shows a blurred, generic supermarket aisle with a large question mark overlay. Right side shows a clear photo of a named NSW farm with produce and a visible farm name tag. Clean, honest aesthetic. No text overlay needed beyond the brand logo.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="CFE-105" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
-        <div class="card" data-verdict="rewrite" data-type="meta-ad" data-angle="social-belonging" data-id="CFE-106">
-            <div class="card-top">
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="social-belonging" data-id="CFE-106">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">CFE-106</span>
                 <span class="type-badge" style="background:#2563eb">AD</span>
                 <span class="angle-label">social-belonging</span>
-                <span class="hl-preview">Customers are buying the farms</span>
+                <span class="hl-preview">They didn't want to shop here. They wanted to own it.</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#ef4444">0.50</span>
-                    <span class="verdict-label">REWRITE</span>
-                    <button class="btn btn-approve" onclick="setStatus('CFE-106','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('CFE-106','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('CFE-106','kill',this)">Kill</button>
+                    <span class="score-circle" style="background:#22c55e">0.74</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('CFE-106','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('CFE-106','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('CFE-106','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.4996 &nbsp; Rubric: 45.5/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 0.00 &nbsp; Hook: social_proof</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7376 &nbsp; Rubric: 49.5/63.8 &nbsp; Rules: 27/28 &nbsp; Facts: 1.00 &nbsp; Hook: social_proof</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">PRIMARY TEXT</div>
-                    <textarea class="field-edit" data-id="CFE-106" data-field="primary_text" rows="8">When Rachel Ward started selling direct to FarmThru customers, something unexpected happened. Families started asking how they could be part of the farms they bought from. Now Rachel's regenerative beef operation has 47 community supporters. Her cattle graze the same paddocks, but the value stays local instead of flowing to distant shareholders.
+                    <textarea class="field-edit" data-id="CFE-106" data-field="primary_text" rows="8">When Rachel Ward started supplying us from her farm in Kempsey, something shifted.
 
-No middlemen. Sydney families already collect from the Brookvale hub. We can't promise returns, but we can show you everything.</textarea>
-                    <div class="char-count">476/500</div>
+Families collecting from our Brookvale hub started talking to each other. Swapping recipes. Asking which farm grew the carrots their kids actually ate.
+
+Then they started asking a different question: &quot;How do we become part of this?&quot;
+
+Not as customers. As co-owners.
+
+Because when you know your eggs come from Farmer Brown and your salmon comes wild-caught off the South Coast, you stop feeling like a transaction. You feel like you belong to something.
+
+No middlemen. No wholesalers. Just a community that owns what it eats.
+
+We can't promise where this goes. But we can show you where your food comes from.</textarea>
+                    <div class="char-count">691/500</div>
                 </div>
                 <div class="col-right">
                     <div class="field-label">HEADLINE</div>
-                    <textarea class="field-edit" data-id="CFE-106" data-field="headline" rows="2">Customers are buying the farms</textarea>
-                    <div class="char-count">30/40</div>
+                    <textarea class="field-edit" data-id="CFE-106" data-field="headline" rows="2">They didn't want to shop here. They wanted to own it.</textarea>
+                    <div class="char-count">53/40</div>
                     <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
-                    <textarea class="field-edit" data-id="CFE-106" data-field="description" rows="3">Own a piece of the farm-direct grocery movement. Be part of it.</textarea>
-                    <div class="char-count">63/125</div>
+                    <textarea class="field-edit" data-id="CFE-106" data-field="description" rows="3">Be part of a farm-direct grocery store built by the people who eat from it.</textarea>
+                    <div class="char-count">75/125</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: cfe_campaign</span>
             <span class="tag">Tactic: community-ownership</span>
             <span class="tag">Funnel: TOF</span>
-        </div><div class="creative-brief"><em>Close-up of hands holding rich, dark soil with cattle grazing peacefully in soft-focus background, warm golden hour lighting suggesting community connection to land.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="CFE-106" placeholder="Add review notes..."></textarea>
+        </div><div class="creative-brief"><em>Warm, candid photo of real families gathered at the Brookvale hub, reusable bags in hand, mid-conversation with a sense of community. Natural light, no stock-photo polish. Small FarmThru logo in corner.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="CFE-106" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
-        <div class="card" data-verdict="rewrite" data-type="meta-ad" data-angle="comparison-switching" data-id="CFE-107">
-            <div class="card-top">
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="comparison-switching" data-id="CFE-107">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">CFE-107</span>
                 <span class="type-badge" style="background:#2563eb">AD</span>
                 <span class="angle-label">comparison-switching</span>
-                <span class="hl-preview">Two supply chains. One is broken</span>
+                <span class="hl-preview">Same beef, two completely different stories</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#ef4444">0.55</span>
-                    <span class="verdict-label">REWRITE</span>
-                    <button class="btn btn-approve" onclick="setStatus('CFE-107','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('CFE-107','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('CFE-107','kill',this)">Kill</button>
+                    <span class="score-circle" style="background:#22c55e">0.71</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('CFE-107','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('CFE-107','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('CFE-107','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.5490 &nbsp; Rubric: 35.0/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 1.00 &nbsp; Hook: narrative</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7078 &nbsp; Rubric: 47.5/63.8 &nbsp; Rules: 27/28 &nbsp; Facts: 0.62 &nbsp; Hook: narrative</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">PRIMARY TEXT</div>
-                    <textarea class="field-edit" data-id="CFE-107" data-field="primary_text" rows="8">Two supply chains feed Sydney families. One moves food thousands of kilometres through cold storage over weeks. The other moves it from a named NSW farm to the Brookvale hub in days.
+                    <textarea class="field-edit" data-id="CFE-107" data-field="primary_text" rows="8">Last week I opened a pack of supermarket beef. The label said Australian. The fine print said it travelled 2,400km and sat in cold storage for up to three weeks.
 
-FarmThru built the shorter one. Zero middlemen. The farmer earns more. You know their name.
+Then I opened a box from FarmThru. Grass-fed beef from a named NSW farm. Days old, not weeks. No hormones, no antibiotics, no feedlot finishing.
 
-Scaling a better system takes people who believe it should exist.
+Same country. Completely different food system.
 
-If you think food should travel less and farmers should earn more, be part of what comes next.</textarea>
-                    <div class="char-count">438/500</div>
+FarmThru is a farm-direct grocery store. Zero wholesalers, zero middlemen. You order online, collect from the Brookvale hub Monday to Friday. No commitment. Order when you want.
+
+We're building something worth owning. Be part of it.</textarea>
+                    <div class="char-count">590/500</div>
                 </div>
                 <div class="col-right">
                     <div class="field-label">HEADLINE</div>
-                    <textarea class="field-edit" data-id="CFE-107" data-field="headline" rows="2">Two supply chains. One is broken</textarea>
-                    <div class="char-count">32/40</div>
+                    <textarea class="field-edit" data-id="CFE-107" data-field="headline" rows="2">Same beef, two completely different stories</textarea>
+                    <div class="char-count">43/40</div>
                     <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
-                    <textarea class="field-edit" data-id="CFE-107" data-field="description" rows="3">Help build the shorter supply chain. Be part of what comes next.</textarea>
-                    <div class="char-count">64/125</div>
+                    <textarea class="field-edit" data-id="CFE-107" data-field="description" rows="3">Farm-direct grocery. Days old, not weeks. Collect from Brookvale or get Sydney delivery.</textarea>
+                    <div class="char-count">88/125</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
-            <span class="tag">CTA: Learn More</span>
+            <span class="tag">CTA: cfe_campaign</span>
             <span class="tag">Tactic: system-alternative</span>
             <span class="tag">Funnel: TOF</span>
-        </div><div class="creative-brief"><em>Two-frame animation. Frame 1: long chain with 5 steps, grey tones. Frame 2: short 2-step chain, green and warm. Simple, visual, immediate.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="CFE-107" placeholder="Add review notes..."></textarea>
+        </div><div class="creative-brief"><em>Split-screen visual: left side shows a supermarket styrofoam tray with generic beef and a long dotted-line map route across Australia. Right side shows a FarmThru brown paper package with a visible farm name label and a short direct arrow from farm to hub. Clean, warm lighting on the right. Muted, fluorescent feel on the left.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="CFE-107" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
         <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="empathy-founder" data-id="CFE-108">
-            <div class="card-top">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">CFE-108</span>
                 <span class="type-badge" style="background:#2563eb">AD</span>
                 <span class="angle-label">empathy-founder</span>
                 <span class="hl-preview">She was losing money on every kilo</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#22c55e">0.74</span>
+                    <span class="score-circle" style="background:#22c55e">0.81</span>
                     <span class="verdict-label">STRONG DRAFT</span>
-                    <button class="btn btn-approve" onclick="setStatus('CFE-108','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('CFE-108','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('CFE-108','kill',this)">Kill</button>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('CFE-108','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('CFE-108','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('CFE-108','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.7373 &nbsp; Rubric: 47.0/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 1.00 &nbsp; Hook: story</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.8078 &nbsp; Rubric: 51.5/63.8 &nbsp; Rules: 28/28 &nbsp; Facts: 1.00 &nbsp; Hook: story</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">PRIMARY TEXT</div>
@@ -893,151 +997,184 @@ If you think food should travel less and farmers should earn more, be part of wh
                     <div class="char-count">58/125</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: cfe_campaign</span>
             <span class="tag">Tactic: founder-motivation</span>
             <span class="tag">Funnel: TOF</span>
         </div><div class="creative-brief"><em>Close-up of Rachel Ward on her farm, weathered hands holding fresh produce, with rolling green pastures in the background.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="CFE-108" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="CFE-108" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
         <div class="card" data-verdict="strong_draft" data-type="landing-page" data-angle="cause-purpose" data-id="LP-A">
-            <div class="card-top">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">LP-A</span>
                 <span class="type-badge" style="background:#7c3aed">PAGE</span>
                 <span class="angle-label">cause-purpose</span>
-                <span class="hl-preview">What if the way you buy groceries could heal the land?</span>
+                <span class="hl-preview">Your grocery run could regenerate Australian farmland</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#22c55e">0.71</span>
+                    <span class="score-circle" style="background:#22c55e">0.72</span>
                     <span class="verdict-label">STRONG DRAFT</span>
-                    <button class="btn btn-approve" onclick="setStatus('LP-A','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('LP-A','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('LP-A','kill',this)">Kill</button>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('LP-A','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('LP-A','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('LP-A','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.7099 &nbsp; Rubric: 50.2/65.0 &nbsp; Rules: 27/28 &nbsp; Facts: 0.67 &nbsp; Hook: aspiration</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7176 &nbsp; Rubric: 48.2/65.0 &nbsp; Rules: 28/28 &nbsp; Facts: 0.61 &nbsp; Hook: aspiration</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">HERO COPY</div>
-                    <textarea class="field-edit" data-id="LP-A" data-field="hero_copy" rows="6">Somewhere in Kempsey, Rachel Ward's regenerative farm is restoring soil that industrial agriculture stripped bare. On the South Coast, Collins Wild Caught is pulling seasonal seafood from clean waters. At Bundarra Farm, pork is raised the way it should be — slowly, carefully, honestly. These farmers don't need a middleman. They need a direct line to families who care. FarmThru is that line. No wholesalers. No unnecessary middlemen. Just real food from regenerative farms, ordered online and collected from our Brookvale hub or delivered across Sydney, Central Coast, and Wollongong.</textarea>
-                    <div class="char-count">586/500</div>
+                    <textarea class="field-edit" data-id="LP-A" data-field="hero_copy" rows="6">Right now, most food travels over 2,400km through cold storage, wholesalers, and distribution centres before it reaches you. Farmers get squeezed. Soil gets depleted. And you get produce that's been off the ground for weeks.
+
+FarmThru cuts all of that. No middlemen. No wholesalers. Just regenerative farms connected directly to families across Sydney — through our Brookvale hub and local delivery.
+
+We're opening an equity crowdfunding campaign so you can own a piece of the grocery store that's trying to fix this.</textarea>
+                    <div class="char-count">517/500</div>
                     <div class="field-label" style="margin-top:12px">SECTIONS</div>
-                    <textarea class="field-edit" data-id="LP-A" data-field="sections" rows="12">## You already feel it — something's wrong with how we eat
-You read the labels. You try to buy local. But the big chains make it almost impossible to know where your food actually comes from, who grew it, or what it cost the land. Every week you compromise — not because you don't care, but because the system wasn't built for people who do.
+                    <textarea class="field-edit" data-id="LP-A" data-field="sections" rows="12">## This isn't about shopping differently — it's about what your money builds
+Every dollar you spend at a supermarket reinforces a system that degrades soil, underpays farmers, and ships food thousands of kilometres.
 
-FarmThru was built for exactly that. We work directly with roughly 15–20 partner farms and suppliers across NSW and beyond. Paris Creek Farms in South Australia produces carbon-neutral biodynamic dairy. Little Yarran Farm and Farmer Brown supply eggs and produce from NSW. We'll show you where your food comes from — because you deserve to know.
+Every dollar through FarmThru does the opposite.
 
-## A grocery store that works like food should
-FarmThru isn't a box scheme. There's no lock-in. No fees to join. You order what you want, when you want it, and collect from our Brookvale hub on your schedule, Monday to Friday. Or choose delivery across Sydney, the Central Coast, or Wollongong.
+Rachel Ward — actor, regenerative farming advocate, and founder of Rachel's Farm in Kempsey, NSW — supplies FarmThru because she's seen what happens when farmers get a direct line to families. Paris Creek Farms in South Australia produces carbon-neutral bio-dynamic dairy. Collins Wild Caught brings seasonal seafood straight from the South Coast of NSW. Bundarra Farm supplies pork from animals raised right.
 
-Our model is simple: farm to hub to you. Zero wholesalers sitting in the middle inflating prices. That direct supply chain means fresher food arriving days — not weeks — after harvest. It means farmers get paid fairly for the work they do. And bulk buying options reward your commitment with real savings.
+These aren't labels on a shelf. They're real people farming regeneratively — and FarmThru exists so their work actually reaches your kitchen.
 
-This is grocery shopping rebuilt around one principle: only food we'd feed our own.
+## How it works: simpler than you think
+Order online from our full regenerative grocery range — not a box, not a subscription. You choose exactly what your family needs, when you need it. No lock-in. No fees.
 
-## This is your chance to own a piece of the fix
-We're preparing an equity crowdfunding campaign so everyday people — not just venture capitalists — can own part of FarmThru. This is an invitation to help build something that matters: a food system where regenerative farming isn't niche, it's normal.
+Collect from our Brookvale hub (Unit 23, 10-18 Orchard Rd) Monday to Friday, or get it delivered across Sydney, the Central Coast, or Wollongong.
 
-We can't promise returns. We can't guarantee success. Building a new kind of grocery store is hard, and investing in early-stage companies carries real risk — including the possibility of losing your entire investment. But if you believe the way we grow, sell, and buy food needs to change, this is a concrete way to put your money where your values are.
+Because we skip the big chains' supply chain entirely — zero warehouses, zero wholesalers — your food is fresher and farmers keep more of what they earn. Bulk buying options mean you save too.
 
-Join the waitlist now with a refundable $5 deposit to be first in line when the campaign opens. No obligation. Fully refundable if you change your mind.
+We'll show you where your food comes from. Every product. Every farm. Every time.
+
+## Be a partner in something that matters
+We're preparing an equity crowdfunding campaign — a chance for everyday people to own a piece of FarmThru.
+
+This isn't a donation. It's not a gift card. It's real ownership in a farm-direct grocery store built on the belief that food should regenerate land, not destroy it.
+
+We can't promise returns. There's no guarantee this will be easy. Building an alternative to the biggest chains in Australia is genuinely hard. But if you believe the way we buy food should change — not just for your family, but for the soil, the farmers, and the next generation — this is your chance to vote for that change with your wallet.
+
+Join the waitlist now with a refundable $5 deposit to be first in line when the campaign opens. You'll get early access, founder updates, and a seat at the table before anyone else.
 
 ## Compliance
 This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision.</textarea>
                 </div>
                 <div class="col-right">
                     <div class="field-label">HEADLINE</div>
-                    <textarea class="field-edit" data-id="LP-A" data-field="headline" rows="2">What if the way you buy groceries could heal the land?</textarea>
-                    <div class="char-count">54/80</div>
+                    <textarea class="field-edit" data-id="LP-A" data-field="headline" rows="2">Your grocery run could regenerate Australian farmland</textarea>
+                    <div class="char-count">53/80</div>
                     <div class="field-label" style="margin-top:12px">SUBHEAD</div>
-                    <textarea class="field-edit" data-id="LP-A" data-field="subhead" rows="3">FarmThru is building a farm-direct grocery store where every dollar you spend supports regenerative farms, fair prices for farmers, and food you can actually trust. Now you can help own it.</textarea>
-                    <div class="char-count">189/200</div>
+                    <textarea class="field-edit" data-id="LP-A" data-field="subhead" rows="3">FarmThru is a farm-direct grocery store where every order supports regenerative farming, fair prices for farmers, and food you can actually trace. Now you can help build it.</textarea>
+                    <div class="char-count">173/200</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: cfe_waitlist</span>
             <span class="tag">Tactic: general</span>
             <span class="tag">Funnel: TOF</span>
-        </div><div class="creative-brief"><em>Hero image: aerial split-screen — one half showing degraded, dry farmland; the other showing lush regenerative pasture with visible livestock. Earthy, warm palette. Below the fold, candid portraits of real partner farms (Rachel Ward at her Kempsey property, Bundarra Farm pigs in open paddock). No stock photography. Typography is clean, grounded, unhurried — sentence case throughout. Final CTA section uses a subtle soil-texture background with a single prominent button.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="LP-A" placeholder="Add review notes..."></textarea>
+        </div><div class="creative-brief"><em>Hero image: aerial split-screen — one side showing degraded conventional farmland (dry, brown), the other showing lush regenerative pasture with visible soil life. Below the fold, warm photography of real partner farms (Rachel's Farm, Bundarra, Collins Wild Caught) with farmers' hands in frame. Earthy palette — deep greens, warm browns, cream. No stock photography. Typography is clean, grounded, sentence case throughout.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="LP-A" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
         <div class="card" data-verdict="strong_draft" data-type="landing-page" data-angle="transformation-storytelling" data-id="LP-B">
-            <div class="card-top">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">LP-B</span>
                 <span class="type-badge" style="background:#7c3aed">PAGE</span>
                 <span class="angle-label">transformation-storytelling</span>
-                <span class="hl-preview">The day Rachel watched 20 years of farming burn to the groun</span>
+                <span class="hl-preview">Rachel counted 47 dead cattle after the fires took her farm</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#22c55e">0.70</span>
+                    <span class="score-circle" style="background:#22c55e">0.72</span>
                     <span class="verdict-label">STRONG DRAFT</span>
-                    <button class="btn btn-approve" onclick="setStatus('LP-B','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('LP-B','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('LP-B','kill',this)">Kill</button>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('LP-B','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('LP-B','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('LP-B','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.7027 &nbsp; Rubric: 50.8/65.0 &nbsp; Rules: 28/28 &nbsp; Facts: 0.55 &nbsp; Hook: story</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7180 &nbsp; Rubric: 49.5/65.0 &nbsp; Rules: 28/28 &nbsp; Facts: 0.57 &nbsp; Hook: story</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">HERO COPY</div>
-                    <textarea class="field-edit" data-id="LP-B" data-field="hero_copy" rows="6">Rachel Ward spent two decades building Rachel's Farm on the NSW coast. Regenerative pastures. Grass-fed cattle. Then the bushfires came. What nearly broke her wasn't the flames — it was learning the supermarkets sold her premium beef for $45/kg while paying her $3.</textarea>
-                    <div class="char-count">265/500</div>
+                    <textarea class="field-edit" data-id="LP-B" data-field="hero_copy" rows="6">In 2019, bushfires swept through Kempsey, NSW and nearly destroyed everything Rachel Ward had spent years growing. She could have walked away. Instead, she doubled down on regenerative farming — soil-first, pasture-raised, no shortcuts. When she called us, she said one thing: &quot;I don't want my beef sitting in cold storage for three weeks. I want families eating it days after it leaves my farm.&quot; That conversation became FarmThru. A farm-direct grocery store where nothing travels 2,400km in a refrigerated truck. Where no middlemen or wholesalers stand between the farmer and your family.</textarea>
+                    <div class="char-count">590/500</div>
                     <div class="field-label" style="margin-top:12px">SECTIONS</div>
-                    <textarea class="field-edit" data-id="LP-B" data-field="sections" rows="12">## The farm that refused to give up
-Rachel rebuilt. But this time, she asked a different question: what if families could buy direct from the farm? No wholesalers taking their cut. No 2,400km journeys in cold storage. Just beef that's days old, not weeks old, from pastures you can actually visit.
+                    <textarea class="field-edit" data-id="LP-B" data-field="sections" rows="12">## What Rachel's farm looks like versus what the big chains sell
+Supermarket beef spends 14 to 21 days in cold storage. It travels an average of 2,400km before it reaches a shelf. By the time you cook it, the farmer who raised it has already been paid a fraction of what it's worth.
 
-## From Rachel's farm to your nearest hub
-That's how FarmThru started. Rachel's grass-fed beef now goes direct to Sydney families via our Brookvale hub. Along with wild-caught salmon from Collins on the South Coast. Heritage pork from Bundarra Farm. Eggs from Farmer Brown. All 100% regenerative. All collected fresh from your local hub, not delivered after weeks in a warehouse.
+Rachel's beef is 100% grass-fed, raised on pasture in Kempsey. No hormones. No antibiotics. No feedlot finishing. It arrives at our Brookvale hub days old, not weeks old. You order online, collect from the hub Monday through Friday, and take home food you can trace back to one person, one farm, one postcode.
 
-## Own a piece of the change
-We're preparing an equity crowdfunding campaign so families like yours can own part of FarmThru. Join the waitlist with a $5 refundable deposit and you'll be first to invest when we launch on Birchal. Because the people eating the food should own the system that brings it to them.
+This isn't just beef. We carry pasture-raised chicken, wild-caught Alaskan salmon from Collins Wild Caught on the South Coast, pork from Bundarra Farm, eggs from Farmer Brown, and bio-dynamic dairy from Paris Creek Farms in South Australia. Every supplier is a regenerative farm. Every product is 100% sourced from regenerative land.
+
+## The day I stopped trusting the label on the packet
+You've probably had this moment. Standing in a supermarket aisle, reading &quot;free range&quot; or &quot;grass fed&quot; and wondering what that actually means. Who raised this animal? How far did it travel? How long ago was it alive?
+
+We built FarmThru because those questions deserve real answers — not marketing language on shrink wrap. Our hub-and-collect model in Brookvale keeps costs low. No massive retail leases. No middlemen taking a cut. Straight from their farm to our hub to your kitchen. That's the promise, and we can show you every step.
+
+We're not asking you to pay more for better food. We're asking you to stop paying a premium that goes to everyone except the farmer.
+
+## You can be part of what we're building
+FarmThru is preparing an equity crowdfunding campaign. That means you could own a piece of the grocery store that's changing how Sydney families eat.
+
+We can't promise returns. We can't guarantee success. Building something new carries real financial risk, and we want you to understand that before you put a dollar in. But if you believe the food system is broken — if you've felt that quiet frustration in the supermarket aisle — this is your chance to vote for change with your wallet.
+
+Join the waitlist now with a fully refundable $5 deposit. You'll be first to know when the campaign goes live. No lock-in. No obligation. Just a seat at the table when it matters.
 
 ## Compliance
 This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision.</textarea>
                 </div>
                 <div class="col-right">
                     <div class="field-label">HEADLINE</div>
-                    <textarea class="field-edit" data-id="LP-B" data-field="headline" rows="2">The day Rachel watched 20 years of farming burn to the ground</textarea>
-                    <div class="char-count">61/80</div>
+                    <textarea class="field-edit" data-id="LP-B" data-field="headline" rows="2">Rachel counted 47 dead cattle after the fires took her farm</textarea>
+                    <div class="char-count">59/80</div>
                     <div class="field-label" style="margin-top:12px">SUBHEAD</div>
-                    <textarea class="field-edit" data-id="LP-B" data-field="subhead" rows="3">Then she discovered what the supermarkets were really paying her for beef</textarea>
-                    <div class="char-count">73/200</div>
+                    <textarea class="field-edit" data-id="LP-B" data-field="subhead" rows="3">Then she rebuilt — not for supermarkets, but for families who want to know exactly where their food comes from. This is the grocery store she helped us build.</textarea>
+                    <div class="char-count">158/200</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: cfe_waitlist</span>
             <span class="tag">Tactic: general</span>
             <span class="tag">Funnel: TOF</span>
-        </div><div class="creative-brief"><em>Split-screen image: left side shows Rachel Ward on her regenerative farm with cattle in green pastures; right side shows a family collecting fresh groceries from a modern FarmThru hub.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="LP-B" placeholder="Add review notes..."></textarea>
+        </div><div class="creative-brief"><em>Hero image: Rachel Ward standing in a green, recovering paddock in Kempsey — golden hour, cattle grazing behind her. No studio lighting, no polish. Below the fold, split-screen showing a supermarket cold storage facility versus a FarmThru hub box being handed to a real customer. Earthy palette — greens, warm browns, cream. Typography is clean, warm, and grounded.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="LP-B" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
         <div class="card" data-verdict="strong_draft" data-type="landing-page" data-angle="quality-craft" data-id="LP-D">
-            <div class="card-top">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">LP-D</span>
                 <span class="type-badge" style="background:#7c3aed">PAGE</span>
                 <span class="angle-label">quality-craft</span>
                 <span class="hl-preview">You will taste the difference when beef is days old, not wee</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#22c55e">0.75</span>
+                    <span class="score-circle" style="background:#22c55e">0.79</span>
                     <span class="verdict-label">STRONG DRAFT</span>
-                    <button class="btn btn-approve" onclick="setStatus('LP-D','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('LP-D','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('LP-D','kill',this)">Kill</button>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('LP-D','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('LP-D','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('LP-D','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.7519 &nbsp; Rubric: 49.2/65.0 &nbsp; Rules: 28/28 &nbsp; Facts: 0.69 &nbsp; Hook: curiosity</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7900 &nbsp; Rubric: 51.8/65.0 &nbsp; Rules: 28/28 &nbsp; Facts: 0.69 &nbsp; Hook: curiosity</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">HERO COPY</div>
@@ -1073,33 +1210,36 @@ This is a pre-registration page for an upcoming equity crowdfunding campaign. No
                     <div class="char-count">90/200</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: Secure VIP Access</span>
             <span class="tag">Tactic: </span>
             <span class="tag">Funnel: TOF</span>
         </div><div class="creative-brief"><em>Hero: close-up of beautifully marbled grass-fed steak on a timber board under natural light, no heavy styling. Below-fold: illustrated supply chain comparison (supermarket journey vs FarmThru direct). Named farm partner portraits with their hero products. Brookvale hub collection photo. Let the food be the hero.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="LP-D" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="LP-D" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
         <div class="card" data-verdict="strong_draft" data-type="landing-page" data-angle="transparency-safety" data-id="LP-E">
-            <div class="card-top">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">LP-E</span>
                 <span class="type-badge" style="background:#7c3aed">PAGE</span>
                 <span class="angle-label">transparency-safety</span>
                 <span class="hl-preview">We cannot promise you returns. Here is what we can show you.</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#22c55e">0.78</span>
+                    <span class="score-circle" style="background:#22c55e">0.72</span>
                     <span class="verdict-label">STRONG DRAFT</span>
-                    <button class="btn btn-approve" onclick="setStatus('LP-E','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('LP-E','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('LP-E','kill',this)">Kill</button>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('LP-E','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('LP-E','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('LP-E','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.7846 &nbsp; Rubric: 51.0/65.0 &nbsp; Rules: 28/28 &nbsp; Facts: 0.73 &nbsp; Hook: pattern-interrupt</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7154 &nbsp; Rubric: 46.5/65.0 &nbsp; Rules: 28/28 &nbsp; Facts: 0.73 &nbsp; Hook: pattern-interrupt</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">HERO COPY</div>
@@ -1137,87 +1277,93 @@ This is a pre-registration page for an upcoming equity crowdfunding campaign. No
                     <div class="char-count">85/200</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: Secure VIP Access</span>
             <span class="tag">Tactic: </span>
             <span class="tag">Funnel: TOF</span>
         </div><div class="creative-brief"><em>Clean, understated design. No hype visuals. Hero: simple bold typography on white with a single wide-angle farm landscape. Below-fold: named farm list displayed plainly, team photo, Birchal platform badge. Tone is calm confidence built through restraint. Trust through honesty, not persuasion.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="LP-E" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="LP-E" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
-        <div class="card" data-verdict="needs_work" data-type="landing-page" data-angle="empathy-founder" data-id="LP-F">
-            <div class="card-top">
+        <div class="card" data-verdict="strong_draft" data-type="landing-page" data-angle="empathy-founder" data-id="LP-F">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">LP-F</span>
                 <span class="type-badge" style="background:#7c3aed">PAGE</span>
                 <span class="angle-label">empathy-founder</span>
-                <span class="hl-preview">I started this company the morning my daughter asked why her</span>
+                <span class="hl-preview">I spent 22 years pretending the food system worked</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#f59e0b">0.69</span>
-                    <span class="verdict-label">NEEDS WORK</span>
-                    <button class="btn btn-approve" onclick="setStatus('LP-F','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('LP-F','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('LP-F','kill',this)">Kill</button>
+                    <span class="score-circle" style="background:#22c55e">0.73</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('LP-F','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('LP-F','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('LP-F','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.6938 &nbsp; Rubric: 48.8/65.0 &nbsp; Rules: 28/28 &nbsp; Facts: 0.62 &nbsp; Hook: story</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7258 &nbsp; Rubric: 51.0/65.0 &nbsp; Rules: 28/28 &nbsp; Facts: 0.62 &nbsp; Hook: story</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">HERO COPY</div>
-                    <textarea class="field-edit" data-id="LP-F" data-field="hero_copy" rows="6">She was four. She bit into it, made a face, and said &quot;this doesn't taste like Grandma's ones.&quot; She was right. I'd been buying whatever was cheapest, from wherever. I couldn't name a single farm behind a single thing in my fridge. That morning I started calling farmers directly. What I learned changed everything — and became FarmThru.</textarea>
-                    <div class="char-count">335/500</div>
+                    <textarea class="field-edit" data-id="LP-F" data-field="hero_copy" rows="6">For two decades I bought what the big chains told me was fresh. I trusted the labels. I fed my kids without asking questions. Then one afternoon I stood in Rachel Ward's farmhouse kitchen in Kempsey, watching her pull vegetables from soil she'd spent years regenerating — and I realised I'd never once met the person who grew my family's food. That's the moment FarmThru started. Not with a business plan. With a feeling I couldn't shake: we deserve to know.</textarea>
+                    <div class="char-count">458/500</div>
                     <div class="field-label" style="margin-top:12px">SECTIONS</div>
-                    <textarea class="field-edit" data-id="LP-F" data-field="sections" rows="12">## What I found when I started asking questions
-Most of the produce in supermarkets passes through three or four middlemen before it reaches the shelf. Farmers get squeezed. Food sits in transit. Nutrients fade. Flavour disappears. I spoke with Rachel Ward at her regenerative farm in Kempsey, NSW. She told me the same thing every farmer told me: &quot;We grow incredible food. The system between us and families is broken.&quot; So we built a different system. Zero warehouses. Zero wholesalers. Zero middlemen. FarmThru orders go from the farm to our Brookvale hub, and you collect when it's ready. That's it. No complicated supply chain eating margin and freshness along the way.
+                    <textarea class="field-edit" data-id="LP-F" data-field="sections" rows="12">## The thing I couldn't unsee
+Rachel showed me what regenerative farming actually looks like. Soil that holds water. Land that gets healthier each season. Animals raised the way your grandparents would recognise. Then she told me what the big chains paid her neighbours for the same quality produce — pennies after the middlemen took their cut. I drove home through 400 kilometres of farmland and couldn't stop thinking: there are farmers doing extraordinary work, and families who'd pay fairly for it, and the only thing between them is a broken supply chain. Zero warehouses. Zero wholesalers. Zero middlemen. That became our rule. FarmThru connects you directly to farms like Bundarra (pork from NSW), Collins Wild Caught (South Coast seafood), Paris Creek Farms (carbon-neutral dairy from South Australia), and Farmer Brown (eggs, NSW). You order online. You collect from our Brookvale hub, Monday to Friday. The food is fresher because it hasn't spent weeks in cold storage. The farmers earn more because nobody skimmed the middle.
 
-## These are real farms, and I've stood on every one of them
-Bundarra Farm supplies our pork belly, pork and fennel salami, and little French ham. Collins Wild Caught brings in wild-caught Alaskan salmon and seasonal Australian seafood from the South Coast of NSW. Paris Creek Farms in Meadows, SA produces carbon-neutral biodynamic dairy. Farmer Brown supplies our eggs. Little Yarran Farm in NSW rounds out our growers. We're not a subscription box. We're an online grocery store stocked entirely by regenerative farms. Every product on our shelves is something we'd feed our own kids. That's not a slogan — it's our sourcing rule.
+## This isn't a subscription box — it's a grocery store with a conscience
+I built FarmThru as the shop I wished existed. A real online grocery store stocked with regenerative produce, priced for Tuesday-night dinners, not just special occasions. Every product traces back to a named farm. We'll show you where your food comes from — that's not a slogan, it's a promise printed on every order. Our hub-and-collect model keeps overhead low so we can pay farmers fairly and keep your weekly shop honest. No lock-in. No gimmicks. Just food we'd feed our own kids. Because that's exactly what we do.
 
-## Why I'm asking you to help us grow
-We're preparing an equity crowdfunding campaign so everyday people — not just venture capitalists — can own a piece of this. I can't promise returns. I can't guarantee we'll get everything right. Building a new kind of grocery store is genuinely hard. But I can promise you this: every dollar of investment goes toward connecting more farms to more families across Sydney, starting from our Brookvale hub. If that matters to you, join the waitlist. A refundable $5 deposit holds your spot and tells us this model has legs. No lock-in. No obligation. Just a signal that you believe food should come from somewhere you can point to on a map.
+## We're building this together — and you can be part of it
+FarmThru is preparing an equity crowdfunding campaign. That means everyday people — not just venture capitalists — can own a piece of what we're growing. I can't promise returns. I can't guarantee success. Building a new kind of grocery store is genuinely hard, and investing in any early-stage company carries real risk. But if you believe families deserve to know where their food comes from, and farmers deserve a fair price for growing it, I'd love you to join the waitlist. A refundable $5 deposit secures your spot and tells us you want in when the campaign goes live. No obligation. No pressure. Just a signal that you think food can work differently.
 
 ## Compliance
 This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision.</textarea>
                 </div>
                 <div class="col-right">
                     <div class="field-label">HEADLINE</div>
-                    <textarea class="field-edit" data-id="LP-F" data-field="headline" rows="2">I started this company the morning my daughter asked why her apple tasted like nothing</textarea>
-                    <div class="char-count">86/80</div>
+                    <textarea class="field-edit" data-id="LP-F" data-field="headline" rows="2">I spent 22 years pretending the food system worked</textarea>
+                    <div class="char-count">50/80</div>
                     <div class="field-label" style="margin-top:12px">SUBHEAD</div>
-                    <textarea class="field-edit" data-id="LP-F" data-field="subhead" rows="3">FarmThru exists because one parent got tired of pretending the big chains sold real food. Now we're building a grocery store that only stocks from farms we've visited ourselves.</textarea>
-                    <div class="char-count">177/200</div>
+                    <textarea class="field-edit" data-id="LP-F" data-field="subhead" rows="3">Then I started tracing what my family actually ate — where it grew, how far it travelled, who got paid. The answers changed everything I thought I knew about groceries.</textarea>
+                    <div class="char-count">168/200</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: cfe_waitlist</span>
             <span class="tag">Tactic: general</span>
             <span class="tag">Funnel: TOF</span>
-        </div><div class="creative-brief"><em>Hero image: founder crouching in a farm field with a young child, natural light, no stock-photo polish. Below the fold, candid photos from actual supplier farms (Bundarra, Collins, Paris Creek). Earthy palette — soil browns, leaf greens, warm whites. Typography is clean and personal, not corporate. The page should feel like a letter, not a pitch deck.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="LP-F" placeholder="Add review notes..."></textarea>
+        </div><div class="creative-brief"><em>Hero image: founder standing in a regenerative farm field at golden hour, looking directly at camera — warm, honest, unpolished. Below-the-fold sections use close-up photography of named supplier produce (Bundarra pork, Collins seafood) with farm-name captions. Earthy palette, no stock imagery. The page should feel like a letter, not a pitch deck.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="LP-F" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
         <div class="card" data-verdict="strong_draft" data-type="landing-page" data-angle="urgency-scarcity" data-id="LP-M">
-            <div class="card-top">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">LP-M</span>
                 <span class="type-badge" style="background:#7c3aed">PAGE</span>
                 <span class="angle-label">urgency-scarcity</span>
                 <span class="hl-preview">VIP spots are limited. First access to invest in FarmThru.</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#22c55e">0.73</span>
+                    <span class="score-circle" style="background:#22c55e">0.70</span>
                     <span class="verdict-label">STRONG DRAFT</span>
-                    <button class="btn btn-approve" onclick="setStatus('LP-M','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('LP-M','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('LP-M','kill',this)">Kill</button>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('LP-M','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('LP-M','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('LP-M','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.7324 &nbsp; Rubric: 49.2/65.0 &nbsp; Rules: 28/28 &nbsp; Facts: 0.67 &nbsp; Hook: scarcity</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7027 &nbsp; Rubric: 47.2/65.0 &nbsp; Rules: 28/28 &nbsp; Facts: 0.67 &nbsp; Hook: scarcity</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">HERO COPY</div>
@@ -1253,33 +1399,36 @@ This is a pre-registration page for an upcoming equity crowdfunding campaign. No
                     <div class="char-count">109/200</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: Save My Spot</span>
             <span class="tag">Tactic: </span>
             <span class="tag">Funnel: TOF</span>
         </div><div class="creative-brief"><em>Hero: bold typography with a live counter showing remaining VIP spots. Below-fold: named farm partner grid, VIP perks checklist, Brookvale hub photo. Urgency through clarity, not desperation. Clean single-form design: name, email, $5 deposit button. Birchal badge visible in footer.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="LP-M" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="LP-M" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
         <div class="card" data-verdict="strong_draft" data-type="landing-page" data-angle="investment-thesis" data-id="LP-N">
-            <div class="card-top">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">LP-N</span>
                 <span class="type-badge" style="background:#7c3aed">PAGE</span>
                 <span class="angle-label">investment-thesis</span>
                 <span class="hl-preview">Named farms. Real families. A grocery model that cuts out th</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#22c55e">0.77</span>
+                    <span class="score-circle" style="background:#22c55e">0.79</span>
                     <span class="verdict-label">STRONG DRAFT</span>
-                    <button class="btn btn-approve" onclick="setStatus('LP-N','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('LP-N','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('LP-N','kill',this)">Kill</button>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('LP-N','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('LP-N','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('LP-N','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.7692 &nbsp; Rubric: 50.0/65.0 &nbsp; Rules: 28/28 &nbsp; Facts: 0.69 &nbsp; Hook: proof</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7923 &nbsp; Rubric: 51.5/65.0 &nbsp; Rules: 28/28 &nbsp; Facts: 0.69 &nbsp; Hook: proof</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">HERO COPY</div>
@@ -1315,33 +1464,36 @@ This is a pre-registration page for an upcoming equity crowdfunding campaign. No
                     <div class="char-count">110/200</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: Secure VIP Access</span>
             <span class="tag">Tactic: </span>
             <span class="tag">Funnel: TOF</span>
         </div><div class="creative-brief"><em>Hero: clean data-led design with the business model illustrated simply (farm to hub to family). Below-fold: market context, named farm partner map of NSW, team photos, Birchal badge. Professional but warm. Substance over sizzle.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="LP-N" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="LP-N" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
         <div class="card" data-verdict="strong_draft" data-type="landing-page" data-angle="comparison-switching" data-id="LP-P">
-            <div class="card-top">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">LP-P</span>
                 <span class="type-badge" style="background:#7c3aed">PAGE</span>
                 <span class="angle-label">comparison-switching</span>
                 <span class="hl-preview">Your supermarket beef might have travelled 2,400 kilometres.</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#22c55e">0.71</span>
+                    <span class="score-circle" style="background:#22c55e">0.75</span>
                     <span class="verdict-label">STRONG DRAFT</span>
-                    <button class="btn btn-approve" onclick="setStatus('LP-P','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('LP-P','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('LP-P','kill',this)">Kill</button>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('LP-P','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('LP-P','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('LP-P','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.7095 &nbsp; Rubric: 49.2/65.0 &nbsp; Rules: 28/28 &nbsp; Facts: 0.64 &nbsp; Hook: contrast</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7455 &nbsp; Rubric: 51.8/65.0 &nbsp; Rules: 28/28 &nbsp; Facts: 0.64 &nbsp; Hook: contrast</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">HERO COPY</div>
@@ -1377,33 +1529,36 @@ This is a pre-registration page for an upcoming equity crowdfunding campaign. No
                     <div class="char-count">109/200</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: Secure VIP Access</span>
             <span class="tag">Tactic: </span>
             <span class="tag">Funnel: TOF</span>
         </div><div class="creative-brief"><em>Hero: split-screen visual. Left side: plastic-wrapped supermarket meat under fluorescent lights. Right side: fresh grass-fed steak on timber board in natural light. Below-fold: animated supply chain comparison graphic. Named farm partner portraits. Brookvale hub lifestyle shot. Let the contrast do the selling.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="LP-P" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="LP-P" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
         <div class="card" data-verdict="needs_work" data-type="email" data-angle="cause-purpose" data-id="EM-001">
-            <div class="card-top">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">EM-001</span>
                 <span class="type-badge" style="background:#059669">EMAIL</span>
                 <span class="angle-label">cause-purpose</span>
                 <span class="hl-preview">Last Tuesday, a farmer called me in tears</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#f59e0b">0.66</span>
+                    <span class="score-circle" style="background:#f59e0b">0.61</span>
                     <span class="verdict-label">NEEDS WORK</span>
-                    <button class="btn btn-approve" onclick="setStatus('EM-001','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('EM-001','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('EM-001','kill',this)">Kill</button>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('EM-001','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('EM-001','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('EM-001','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.6600 &nbsp; Rubric: 41.2/62.5 &nbsp; Rules: 28/28 &nbsp; Facts: 0.71 &nbsp; Hook: story</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.6120 &nbsp; Rubric: 38.2/62.5 &nbsp; Rules: 28/28 &nbsp; Facts: 0.71 &nbsp; Hook: story</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">BODY</div>
@@ -1451,107 +1606,115 @@ Rachel &amp; the FarmThru team</textarea>
                     <div class="field-static">Rachel &amp; the FarmThru team</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: cfe_waitlist</span>
             <span class="tag">Tactic: general</span>
             <span class="tag">Funnel: TOF</span>
         </div><div class="creative-brief"><em>Clean, minimal design. No hero image — let the story breathe. Single green CTA button mid-lower body reading 'Join the waitlist — $5 refundable deposit'. Small-format partner farm logos (Bundarra, Collins, Paris Creek, Rachel's Farm) as a horizontal strip near the bottom for social proof.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="EM-001" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="EM-001" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
         <div class="card" data-verdict="needs_work" data-type="email" data-angle="empathy-founder" data-id="EM-002">
-            <div class="card-top">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">EM-002</span>
                 <span class="type-badge" style="background:#059669">EMAIL</span>
                 <span class="angle-label">empathy-founder</span>
-                <span class="hl-preview">I spent $47 on salmon and couldn't name the boat</span>
+                <span class="hl-preview">The morning I couldn't answer my daughter's question</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#f59e0b">0.60</span>
+                    <span class="score-circle" style="background:#f59e0b">0.61</span>
                     <span class="verdict-label">NEEDS WORK</span>
-                    <button class="btn btn-approve" onclick="setStatus('EM-002','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('EM-002','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('EM-002','kill',this)">Kill</button>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('EM-002','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('EM-002','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('EM-002','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.6030 &nbsp; Rubric: 43.2/62.5 &nbsp; Rules: 28/28 &nbsp; Facts: 0.57 &nbsp; Hook: story</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.6120 &nbsp; Rubric: 38.2/62.5 &nbsp; Rules: 28/28 &nbsp; Facts: 0.64 &nbsp; Hook: story</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">BODY</div>
-                    <textarea class="field-edit" data-id="EM-002" data-field="body" rows="12">I was standing in the checkout queue holding a $47 piece of salmon.
+                    <textarea class="field-edit" data-id="EM-002" data-field="body" rows="12">Last March, my daughter picked up a tray of chicken from the fridge and asked me a simple question.
 
-The label said &quot;wild caught&quot; and &quot;sustainably sourced.&quot; I turned the packet over looking for something — anything — that told me where it actually came from. A boat name. A coastline. A person.
+&quot;Mum, where did this chicken live?&quot;
 
-Nothing.
+I froze. I had no idea. Not the farm. Not the state. Not even whether it had ever touched grass. I'd bought it two days earlier and the only thing I knew was the price.
 
-Forty-seven dollars, and I couldn't tell my daughter a single true thing about what we were about to eat for dinner.
+That moment broke something in me.
 
-That's the moment I stopped being frustrated and started building FarmThru.
+I'd spent years on my own farm in Kempsey, learning what regenerative land actually looks like — soil that holds water, animals that move freely, produce that tastes like it's supposed to. But when I stood in my own kitchen, I realised even I couldn't trace most of what my family ate.
 
-I'm Rachel, and I want to tell you what we've done since that evening.
+If I couldn't, how could anyone?
 
-FarmThru is a grocery store — not a box scheme, not a weekend market — built on one rule: every product traces back to a real farm and a real name.
+That's the gap FarmThru exists to close. Not with vague promises on packaging. With actual transparency — every product traced to a real farm you can look up.
 
-Collins Wild Caught lands their Alaskan salmon and seasonal Australian seafood off the South Coast of NSW. I can tell you the waters. Bundarra Farm raises the pork for their belly cuts and fennel salami. Paris Creek Farms in Meadows, SA, produces carbon-neutral biodynamic dairy. Farmer Brown supplies our eggs from NSW.
+Here's how it works: you order online, then collect from our Brookvale hub. No middlemen. No wholesalers. No cold chain running 2,400km before food hits the shelf.
 
-No middlemen. No wholesalers. No anonymous supply chains.
+Instead, your pork comes straight from Bundarra Farm. Your eggs from Farmer Brown in NSW. Your salmon from Collins Wild Caught on the South Coast. Your dairy from Paris Creek Farms in South Australia — carbon-neutral, bio-dynamic.
 
-When a farm sells through us, they're paid fairly because there's nobody standing between their gate and your hands. And because we run a hub-and-collect model — you order online, then pick up from our Brookvale hub — we keep our costs honest without pretending home delivery is free.
+Every single supplier, named. Every farm, real.
 
-This isn't luxury grocery shopping. It's grocery shopping that doesn't require you to lie to your kids when they ask where dinner came from.
+This isn't a niche box for people who already shop at farmers' markets. It's a grocery store — priced for families who do a weekly shop and want to stop guessing what they're feeding their kids.
 
-We're opening FarmThru to everyday investors through equity crowdfunding on Birchal. You can join the waitlist now with a fully refundable $5 deposit to get early access before the campaign goes live.
+We're building something that doesn't exist yet in Sydney. And right now, we're inviting people to own a piece of it through our equity crowdfunding campaign.
 
-I can't promise returns. I can't guarantee anything except that we'll keep doing what the big chains won't — showing you exactly where your food comes from.
+You can join the waitlist with a fully refundable $5 deposit — just to hold your spot before the campaign opens.
 
-If that $47 salmon moment sounds familiar, I'd love you to be part of what we're building.
+I started FarmThru because I wanted to answer my daughter's question. I think a lot of parents want the same thing.
+
+Join the waitlist and be part of what we're building →
 
 This is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.
 
 Rachel &amp; the FarmThru team</textarea>
-                    <div class="char-count">2107/2000</div>
+                    <div class="char-count">2070/2000</div>
                 </div>
                 <div class="col-right">
                     <div class="field-label">SUBJECT</div>
-                    <textarea class="field-edit" data-id="EM-002" data-field="subject" rows="2">I spent $47 on salmon and couldn't name the boat</textarea>
-                    <div class="char-count">48/60</div>
+                    <textarea class="field-edit" data-id="EM-002" data-field="subject" rows="2">The morning I couldn't answer my daughter's question</textarea>
+                    <div class="char-count">52/60</div>
                     <div class="field-label" style="margin-top:12px">PREHEADER</div>
-                    <textarea class="field-edit" data-id="EM-002" data-field="preheader" rows="2">That moment in the checkout line changed everything for me.</textarea>
-                    <div class="char-count">59/100</div>
+                    <textarea class="field-edit" data-id="EM-002" data-field="preheader" rows="2">She asked where her chicken came from. I had nothing.</textarea>
+                    <div class="char-count">53/100</div>
                     <div class="field-label" style="margin-top:12px">SENDER</div>
                     <div class="field-static">Rachel &amp; the FarmThru team</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: cfe_waitlist</span>
             <span class="tag">Tactic: general</span>
             <span class="tag">Funnel: TOF</span>
-        </div><div class="creative-brief"><em>Clean, minimal design with a single hero image of raw salmon on brown paper (unbranded, editorial feel). Muted earth tones, one accent-color CTA button. No stock photography — real texture, real food.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="EM-002" placeholder="Add review notes..."></textarea>
+        </div><div class="creative-brief"><em>Clean, warm layout with a single hero image of a real farm (Bundarra or Rachel's Farm). Muted earth tones, no stock photography. CTA button in brand green, placed after the waitlist paragraph. Minimal design — let the story breathe.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="EM-002" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
-        <div class="card" data-verdict="needs_work" data-type="email" data-angle="quality-craft" data-id="EM-003">
-            <div class="card-top">
+        <div class="card" data-verdict="strong_draft" data-type="email" data-angle="quality-craft" data-id="EM-003">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">EM-003</span>
                 <span class="type-badge" style="background:#059669">EMAIL</span>
                 <span class="angle-label">quality-craft</span>
                 <span class="hl-preview">Rachel's beef was too good for supermarkets</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#f59e0b">0.68</span>
-                    <span class="verdict-label">NEEDS WORK</span>
-                    <button class="btn btn-approve" onclick="setStatus('EM-003','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('EM-003','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('EM-003','kill',this)">Kill</button>
+                    <span class="score-circle" style="background:#22c55e">0.73</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('EM-003','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('EM-003','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('EM-003','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.6788 &nbsp; Rubric: 51.2/62.5 &nbsp; Rules: 27/28 &nbsp; Facts: 0.43 &nbsp; Hook: story</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7318 &nbsp; Rubric: 55.2/62.5 &nbsp; Rules: 27/28 &nbsp; Facts: 0.43 &nbsp; Hook: story</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">BODY</div>
@@ -1587,33 +1750,36 @@ We can't promise this will change how you think about beef. But Rachel's story s
                     <div class="field-static">FarmThru</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: cfe_waitlist</span>
             <span class="tag">Tactic: general</span>
             <span class="tag">Funnel: MOF</span>
         </div><div class="creative-brief"><em>Clean, story-driven layout with Rachel's farm photo. Emphasize the contrast between supermarket rejection and direct-to-family success.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="EM-003" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="EM-003" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
         <div class="card" data-verdict="strong_draft" data-type="email" data-angle="quality-craft" data-id="EM-004">
-            <div class="card-top">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">EM-004</span>
                 <span class="type-badge" style="background:#059669">EMAIL</span>
                 <span class="angle-label">quality-craft</span>
                 <span class="hl-preview">Meet Rachel Ward and her cattle in Kempsey</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#22c55e">0.75</span>
+                    <span class="score-circle" style="background:#22c55e">0.76</span>
                     <span class="verdict-label">STRONG DRAFT</span>
-                    <button class="btn btn-approve" onclick="setStatus('EM-004','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('EM-004','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('EM-004','kill',this)">Kill</button>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('EM-004','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('EM-004','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('EM-004','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.7480 &nbsp; Rubric: 46.8/62.5 &nbsp; Rules: 28/28 &nbsp; Facts: 0.75 &nbsp; Hook: story</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7640 &nbsp; Rubric: 47.8/62.5 &nbsp; Rules: 28/28 &nbsp; Facts: 0.75 &nbsp; Hook: story</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">BODY</div>
@@ -1643,33 +1809,36 @@ Rachel &amp; the FarmThru team</textarea>
                     <div class="field-static">Rachel &amp; the FarmThru team</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: cfe_campaign</span>
             <span class="tag">Tactic: general</span>
             <span class="tag">Funnel: MOF</span>
         </div><div class="creative-brief"><em>Clean, minimal design with a hero image of cattle on pasture. Emphasis on the 18-month timeline with visual contrast against industrial alternatives.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="EM-004" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="EM-004" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
-        <div class="card" data-verdict="needs_work" data-type="email" data-angle="investment-thesis" data-id="EM-005">
-            <div class="card-top">
+        <div class="card" data-verdict="strong_draft" data-type="email" data-angle="investment-thesis" data-id="EM-005">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">EM-005</span>
                 <span class="type-badge" style="background:#059669">EMAIL</span>
                 <span class="angle-label">investment-thesis</span>
                 <span class="hl-preview">You have seen the food. Here is the business.</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#f59e0b">0.65</span>
-                    <span class="verdict-label">NEEDS WORK</span>
-                    <button class="btn btn-approve" onclick="setStatus('EM-005','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('EM-005','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('EM-005','kill',this)">Kill</button>
+                    <span class="score-circle" style="background:#22c55e">0.70</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('EM-005','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('EM-005','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('EM-005','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.6520 &nbsp; Rubric: 40.8/62.5 &nbsp; Rules: 28/28 &nbsp; Facts: 0.75 &nbsp; Hook: </div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7000 &nbsp; Rubric: 43.8/62.5 &nbsp; Rules: 28/28 &nbsp; Facts: 0.75 &nbsp; Hook: </div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">BODY</div>
@@ -1703,33 +1872,36 @@ Rachel &amp; the FarmThru team</textarea>
                     <div class="field-static">Rachel &amp; the FarmThru team</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: Secure VIP Access</span>
             <span class="tag">Tactic: </span>
             <span class="tag">Funnel: MOF</span>
         </div><div class="creative-brief"><em>Investment email. Clean, data-forward design. Key business model illustrated simply (farm to hub to family). VIP deposit CTA button below. Birchal badge in footer. Honest, confident tone. No hype.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="EM-005" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="EM-005" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
         <div class="card" data-verdict="needs_work" data-type="email" data-angle="urgency-scarcity" data-id="EM-006">
-            <div class="card-top">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">EM-006</span>
                 <span class="type-badge" style="background:#059669">EMAIL</span>
                 <span class="angle-label">urgency-scarcity</span>
                 <span class="hl-preview">The window is smaller than you think</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#f59e0b">0.65</span>
+                    <span class="score-circle" style="background:#f59e0b">0.60</span>
                     <span class="verdict-label">NEEDS WORK</span>
-                    <button class="btn btn-approve" onclick="setStatus('EM-006','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('EM-006','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('EM-006','kill',this)">Kill</button>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('EM-006','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('EM-006','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('EM-006','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.6460 &nbsp; Rubric: 42.5/62.5 &nbsp; Rules: 27/28 &nbsp; Facts: 0.75 &nbsp; Hook: story</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.6004 &nbsp; Rubric: 39.5/62.5 &nbsp; Rules: 27/28 &nbsp; Facts: 0.75 &nbsp; Hook: story</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">BODY</div>
@@ -1775,33 +1947,36 @@ Rachel &amp; the FarmThru team</textarea>
                     <div class="field-static">Rachel &amp; the FarmThru team</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: cfe_waitlist</span>
             <span class="tag">Tactic: general</span>
             <span class="tag">Funnel: BOF</span>
         </div><div class="creative-brief"><em>Clean, minimal design. Hero image of real produce at the Brookvale hub — soil on carrots, natural light. Single green CTA button mid-email. No stock photography. Warm, urgent tone without countdown gimmicks.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="EM-006" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="EM-006" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
         <div class="card" data-verdict="strong_draft" data-type="email" data-angle="urgency-scarcity" data-id="EM-007">
-            <div class="card-top">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">EM-007</span>
                 <span class="type-badge" style="background:#059669">EMAIL</span>
                 <span class="angle-label">urgency-scarcity</span>
                 <span class="hl-preview">Last 48 hours: VIP spots closing</span>
                 <div class="card-right">
-                    <span class="score-circle" style="background:#22c55e">0.82</span>
+                    <span class="score-circle" style="background:#22c55e">0.79</span>
                     <span class="verdict-label">STRONG DRAFT</span>
-                    <button class="btn btn-approve" onclick="setStatus('EM-007','approved',this)">Approve</button>
-                    <button class="btn btn-revise" onclick="setStatus('EM-007','revise',this)">Revise</button>
-                    <button class="btn btn-kill" onclick="setStatus('EM-007','kill',this)">Kill</button>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('EM-007','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('EM-007','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('EM-007','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="score-summary">Composite: 0.8197 &nbsp; Rubric: 53.0/62.5 &nbsp; Rules: 28/28 &nbsp; Facts: 0.67 &nbsp; Hook: story</div>
-            
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7888 &nbsp; Rubric: 51.0/62.5 &nbsp; Rules: 28/28 &nbsp; Facts: 0.67 &nbsp; Hook: story</div>
+                
             <div class="two-col">
                 <div class="col-left">
                     <div class="field-label">BODY</div>
@@ -1841,15 +2016,16 @@ VIP perks include first access when we launch mid-2026, priority updates, and ex
                     <div class="field-static">Tom, FarmThru Founder</div>
                 </div>
             </div>
-            
+                
         <div class="tags-row">
             <span class="tag">CTA: cfe_waitlist</span>
             <span class="tag">Tactic: general</span>
             <span class="tag">Funnel: BOF</span>
         </div><div class="creative-brief"><em>Clean layout with countdown timer element. Highlight the $5 refundable deposit and 48-hour deadline prominently.</em></div>
-            <div class="notes-row">
-                <div class="field-label">NOTES</div>
-                <textarea class="notes" data-id="EM-007" placeholder="Add review notes..."></textarea>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="EM-007" placeholder="Add review notes..."></textarea>
+                </div>
             </div>
         </div>
 </div>
@@ -1857,6 +2033,20 @@ VIP perks include first access when we launch mid-2026, priority updates, and ex
 const statuses = {};
 const notes = {};
 const filters = { type: 'all', status: 'all' };
+
+function toggleCard(topEl) {
+    const card = topEl.closest('.card');
+    card.classList.toggle('expanded');
+}
+
+function toggleAll() {
+    const cards = document.querySelectorAll('.card');
+    const anyExpanded = document.querySelector('.card.expanded');
+    cards.forEach(c => {
+        if (anyExpanded) c.classList.remove('expanded');
+        else c.classList.add('expanded');
+    });
+}
 
 function setStatus(id, status, btn) {
     statuses[id] = status;

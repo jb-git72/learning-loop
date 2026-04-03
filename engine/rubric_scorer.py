@@ -216,11 +216,11 @@ def _score_receptionist_test(ad: dict, config: dict) -> tuple[int, str]:
     # Client-specific question patterns
     if client_id == "farm-thru":
         checks = [
-            ("what", r'\b(farm.?thru|regenerative|farm.to.door|food delivery|online grocer)\b'),
-            ("source", r'\b(farm|paddock|regenerative|pasture|grass.fed|rachel|bundarra|kempsey)\b'),
-            ("different", r'(days?\s+(?:old|not)|not\s+weeks|cold storage|middlem|no warehouse|wholesal|direct)'),
-            ("invest/join", r'(waitlist|join|invest|sign up|deposit|birchal|reserve|save.*spot)'),
-            ("minimum", r'(\$50|\$5.*deposit|\$10|minimum.*invest|invest.*from)'),
+            ("what", r'\b(farm.?thru|regenerative|farm.to.door|food delivery|online grocer|grocery)\b'),
+            ("source", r'\b(farm|paddock|regenerative|pasture|grass.fed|rachel|bundarra|kempsey|named farm)\b'),
+            ("different", r'(days?\s+(?:old|not)|not\s+weeks|cold storage|middlem|no warehouse|wholesal|direct|hub.and.collect)'),
+            ("how", r'(waitlist|join|sign up|reserve|save.*spot|nearest hub|brookvale|collect|order)'),
+            ("why_now", r'(be part of|own a piece|limited|first access|opening|launching|movement|vote.*wallet)'),
         ]
     else:  # best-for-pet (default)
         checks = [
@@ -330,15 +330,15 @@ def _score_objection_preemption(ad: dict) -> tuple[int, str]:
     found = []
 
     # Detect which client context by content signals
-    is_farmthru = bool(re.search(r'farm.?thru|regenerative|birchal|paddock', text))
+    is_farmthru = bool(re.search(r'farm.?thru|regenerative|brookvale|paddock|hub.and.collect', text))
 
     if is_farmthru:
         checks = [
-            ("refundable", r'refundable'),
-            ("not financial advice", r'not\s+financial\s+advice|disclosure\s+document'),
-            ("risk acknowledged", r'don\'t\s+know|most\s+startups|can\'t\s+promise|no\s+guarantee'),
-            ("no middlemen", r'no\s+(?:warehouse|wholesaler|middlem)'),
-            ("delivery clarity", r'sydney|central\s+coast|wollongong|deliver'),
+            ("no commitment", r'no\s+commitment|order when you want|no lock.in'),
+            ("hub clarity", r'brookvale|nearest hub|collect from|hub.and.collect|monday.*friday'),
+            ("risk acknowledged", r'can\'t\s+promise|no\s+guarantee|honest about'),
+            ("no middlemen", r'no\s+(?:warehouse|wholesaler|middlem)|direct|zero middlem'),
+            ("provenance", r'named farm|know.*farmer|trace|where.*food.*comes|paddock'),
         ]
     else:
         checks = [

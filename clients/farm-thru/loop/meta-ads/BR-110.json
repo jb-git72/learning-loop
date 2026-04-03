@@ -4,11 +4,11 @@
   "hook_type": "bold_claim",
   "funnel": "TOF",
   "content_type": "meta-ad",
-  "creative_brief": "Split screen showing fresh cattle grazing vs warehouse storage with day counters: Day 1 vs Day 21.",
-  "generated_at": "2026-04-03T21:00:36.871450",
+  "creative_brief": "Split frame: left side shows a generic supermarket barcode on shrink-wrapped meat, right side shows a named Bundarra Farm pork belly with the farmer's portrait and farm location. Warm natural light on the right, cold fluorescent on the left. FarmThru logo bottom right.",
+  "generated_at": "2026-04-04T09:10:48.502254",
   "ad_id": "BR-110",
-  "primary_text": "Last Monday Rachel Ward watched her regenerative beef sit in cold storage for 21 days before reaching Sydney shelves. Her Kempsey cattle graze chemical-free pastures, but the big chains add weeks to your plate. Now her beef reaches families in 5 days via FarmThru. No wholesalers. No warehouses. Farm to Brookvale hub to your kitchen. We can't promise returns, but we can show you exactly where your food comes from.",
-  "headline": "Rachel's beef: 5 days fresh, not 3 weeks old",
-  "description": "Back our farm-direct grocery mission.",
+  "primary_text": "Every week you buy groceries that quietly erase the farmer who grew them.\n\nNo name. No face. No story. Just a barcode and a 2,400km cold chain.\n\nFarmThru exists because that erasure isn't inevitable. It's a choice.\n\nWe built a grocery store with zero wholesalers, zero middlemen. Pork from Bundarra Farm. Wild-caught fish from Collins on the South Coast. Eggs from Farmer Brown. Every product traceable to the person who raised it.\n\nNo commitment. Order when you want. Collect from Brookvale Monday to Friday.\n\nOwn a piece of the grocery store that pays farmers first.",
+  "headline": "A grocery store that names every farmer",
+  "description": "Farm-direct. No middlemen. Real names behind every product you collect.",
   "cta": "cfe_campaign"
 }
