@@ -1,15 +1,16 @@
 {
-  "email_id": "EM-006",
-  "content_type": "email",
   "angle": "urgency-scarcity",
-  "email_type": "countdown",
+  "tactic": "general",
+  "hook_type": "story",
   "funnel": "BOF",
-  "subject": "FarmThru opens to investors very soon",
-  "preheader": "The Birchal campaign is almost live. VIP members get first access.",
-  "body": "Hi {first_name},\n\nIn a few days, FarmThru opens to investors on Birchal. For the first time, you can invest in the grocery store that connects regenerative farms directly to families.\n\nHere is what to expect.\n\nThe campaign page on Birchal will include our full disclosure document. It covers our financials, our risks, the team, and how the funds will be used. Read it carefully. Take your time.\n\nIf you are a VIP member, you get early access before the campaign opens to everyone. That means you can review the disclosure document and invest before the general waitlist.\n\nIf you have not secured VIP access yet, there is still time. A $5 refundable deposit is all it takes.\n\nThe terms: minimum investment $50, maximum $10,000 per investor.\n\nInvesting in early-stage businesses carries real risk. You could lose some or all of your investment. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\n\nWe will send you the link the moment the campaign goes live.\n\nRachel & the FarmThru team",
-  "cta": "Secure VIP Access",
+  "content_type": "email",
+  "creative_brief": "Clean, minimal design. Hero image of real produce at the Brookvale hub — soil on carrots, natural light. Single green CTA button mid-email. No stock photography. Warm, urgent tone without countdown gimmicks.",
+  "generated_at": "2026-04-03T23:27:27.750461",
+  "email_id": "EM-006",
+  "subject": "The window is smaller than you think",
+  "preheader": "Once the Birchal campaign fills, there's no second round at this price.",
+  "body": "Last Tuesday, I watched a mum at our Brookvale hub load three bags of regenerative produce into her car. Carrots still flecked with soil. Eggs from a farm she could name.\n\nShe paused and said something I haven't stopped thinking about: \"Why did it take this long for someone to build this?\"\n\nHonest answer? Because the big chains have spent decades making sure nobody could.\n\nFarmThru exists to prove them wrong. We're a farm-direct grocery store — no middlemen, no wholesalers inflating the price between the farmer and your family. You order online, collect from our Brookvale hub (or get delivery across Sydney, Central Coast, and Wollongong), and pay less for food that's actually worth eating.\n\nRight now, we're raising equity through Birchal. And here's the part that matters if you've been watching from the sidelines:\n\nThe minimum is $50. The cap is $10,000 per investor. When it fills, it's done.\n\nWe're not a pitch deck and a dream. We have a working hub. We have 15-20 partner farms and suppliers across NSW. We have families ordering bulk produce every week — no lock-in, no ongoing fees, just real food priced for real budgets.\n\nBut we can't hold spots. Birchal campaigns don't reopen once they close. There's no waitlist after the cap.\n\nIf you've been considering it, the smartest move is the simplest one: secure your $5 refundable deposit now. That gets you VIP access — first in line when the campaign goes live, priority updates, and an exclusive Q&A before the public sees a thing.\n\nFive dollars. Fully refundable if you change your mind. But it puts you ahead of everyone still thinking about it.\n\n→ Reserve your VIP spot for $5 (refundable)\n\nI can't promise returns. No one honestly can. What I can tell you is that this model works, the food is real, and the people buying it keep coming back.\n\nThat window won't stay open.\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\n\nRachel & the FarmThru team",
+  "cta": "cfe_waitlist",
   "sender_name": "Rachel & the FarmThru team",
-  "creative_brief": "Countdown email. Short, punchy paragraphs. Countdown visual or 'launching soon' badge in header. Single VIP CTA button. Birchal badge. Compliance clearly visible but not dominating. Urgency through clarity, not artificial pressure.",
-  "primary_text": "In a few days, FarmThru opens to investors on Birchal.",
-  "headline": "FarmThru opens to investors very soon"
+  "email_type": "countdown"
 }

@@ -1,26 +1,32 @@
 {
-  "page_id": "LP-B",
-  "content_type": "landing-page",
   "angle": "transformation-storytelling",
+  "tactic": "general",
   "hook_type": "story",
   "funnel": "TOF",
-  "headline": "She survived the bushfires. It was the supermarket price that nearly broke her.",
-  "subhead": "Rachel Ward rebuilt her Kempsey cattle farm with regenerative practices. Then she found a better way to get her beef to the families who want it.",
-  "hero_copy": "In 2020, fire tore through Rachel Ward's property on the northern NSW coast. She lost fences, pasture, years of work. But the cattle survived. She rebuilt.\n\nWhat nearly finished her was not the fire. It was what the big chains paid for her beef. Pasture-raised, 100% grass-fed, regenerative. They priced it the same as feedlot meat. Rachel knew the system was broken.",
+  "content_type": "landing-page",
+  "creative_brief": "Split-screen image: left side shows Rachel Ward on her regenerative farm with cattle in green pastures; right side shows a family collecting fresh groceries from a modern FarmThru hub.",
+  "generated_at": "2026-04-03T22:22:36.480247",
+  "page_id": "LP-B",
+  "headline": "The day Rachel watched 20 years of farming burn to the ground",
+  "subhead": "Then she discovered what the supermarkets were really paying her for beef",
+  "hero_copy": "Rachel Ward spent two decades building Rachel's Farm on the NSW coast. Regenerative pastures. Grass-fed cattle. Then the bushfires came. What nearly broke her wasn't the flames — it was learning the supermarkets sold her premium beef for $45/kg while paying her $3.",
   "sections": [
     {
-      "heading": "From paddock to pick-up, without the middlemen",
-      "body": "Rachel became a key partner and supplier to FarmThru. Her farm in Kempsey now sends 100% grass-fed beef straight to families through FarmThru's Brookvale hub.\n\nNo wholesaler takes a cut. No cold-storage facility holds her beef for weeks. Families order online, then collect from the hub. The beef is days old, not weeks. And Rachel earns a fairer price for every kilo.\n\nShe is not the only farmer who made this choice. Bundarra Farm supplies pork. Collins Wild Caught brings in wild-caught Alaskan salmon. Paris Creek provides biodynamic dairy. Each one is a named farm you can look up. Sydney families collect from the Brookvale hub."
+      "heading": "The farm that refused to give up",
+      "body": "Rachel rebuilt. But this time, she asked a different question: what if families could buy direct from the farm? No wholesalers taking their cut. No 2,400km journeys in cold storage. Just beef that's days old, not weeks old, from pastures you can actually visit."
     },
     {
-      "heading": "Now you can be part of what they are building",
-      "body": "FarmThru is launching an equity crowdfunding campaign on Birchal in mid-2026. For the first time, you can own a share of the grocery store these farmers sell through.\n\nMinimum investment: $50. Cap: $10,000 per investor. A $5 refundable deposit secures VIP access with first-in priority, founder updates, and an exclusive Q&A.\n\nThis is an early-stage business. You could lose some or all of your investment. The full disclosure document will be on Birchal. We can't promise returns \u2014 early-stage investing carries real risk."
+      "heading": "From Rachel's farm to your nearest hub",
+      "body": "That's how FarmThru started. Rachel's grass-fed beef now goes direct to Sydney families via our Brookvale hub. Along with wild-caught salmon from Collins on the South Coast. Heritage pork from Bundarra Farm. Eggs from Farmer Brown. All 100% regenerative. All collected fresh from your local hub, not delivered after weeks in a warehouse."
+    },
+    {
+      "heading": "Own a piece of the change",
+      "body": "We're preparing an equity crowdfunding campaign so families like yours can own part of FarmThru. Join the waitlist with a $5 refundable deposit and you'll be first to invest when we launch on Birchal. Because the people eating the food should own the system that brings it to them."
     },
     {
       "heading": "Compliance",
       "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
     }
   ],
-  "cta": "Reserve Your Spot",
-  "creative_brief": "Hero: Rachel on her farm in Kempsey, natural light, cattle grazing behind her. Below-fold: timeline visual from bushfires to regenerative rebuild to FarmThru partnership. Product close-ups of grass-fed cuts. Brookvale hub collection shot. Documentary-style photography. Warm, grounded."
+  "cta": "cfe_waitlist"
 }

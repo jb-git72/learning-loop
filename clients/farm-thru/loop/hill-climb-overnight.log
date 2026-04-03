@@ -1,0 +1,67 @@
+Loaded 33 items. Target: 0.70 (strong_draft)
+Max iterations per item: 3
+
+Initial: 17 at target, 16 below target
+
+--- Iteration 1: 16 items below target ---
+  BR-102 (meta-ad): 0.624 [needs_work] -> generating... 0.619 no improvement, kept original
+  BR-104 (meta-ad): 0.698 [needs_work] -> generating... 0.483 no improvement, kept original
+  BR-105 (meta-ad): 0.671 [needs_work] -> generating... 0.542 no improvement, kept original
+  BR-107 (meta-ad): 0.649 [needs_work] -> generating... 0.533 no improvement, kept original
+  BR-108 (meta-ad): 0.679 [needs_work] -> generating... 0.454 no improvement, kept original
+  BR-110 (meta-ad): 0.601 [needs_work] -> generating... 0.456 no improvement, kept original
+  CFE-101 (meta-ad): 0.631 [needs_work] -> generating... 0.534 no improvement, kept original
+  CFE-104 (meta-ad): 0.650 [needs_work] -> generating... 0.618 no improvement, kept original
+  CFE-106 (meta-ad): 0.579 [needs_work] -> generating... 0.551 no improvement, kept original
+  CFE-107 (meta-ad): 0.682 [needs_work] -> generating... 0.462 no improvement, kept original
+  LP-A (landing-page): 0.636 [needs_work] -> generating... 0.615 no improvement, kept original
+  LP-B (landing-page): 0.644 [needs_work] -> generating... 0.609 no improvement, kept original
+  LP-F (landing-page): 0.627 [needs_work] -> generating... 0.645 [needs_work] IMPROVED (+0.018)
+  EM-001 (email): 0.541 [rewrite] -> generating... 0.612 [needs_work] IMPROVED (+0.071)
+  EM-002 (email): 0.560 [needs_work] -> generating... 0.392 no improvement, kept original
+  EM-006 (email): 0.591 [needs_work] -> generating... 0.600 [needs_work] IMPROVED (+0.009)
+
+--- Iteration 2: 16 items below target ---
+  BR-102 (meta-ad): 0.624 [needs_work] -> generating... 0.477 no improvement, kept original
+  BR-104 (meta-ad): 0.698 [needs_work] -> generating... 0.516 no improvement, kept original
+  BR-105 (meta-ad): 0.671 [needs_work] -> generating... 0.569 no improvement, kept original
+  BR-107 (meta-ad): 0.649 [needs_work] -> generating... 0.551 no improvement, kept original
+  BR-108 (meta-ad): 0.679 [needs_work] -> generating... 0.475 no improvement, kept original
+  BR-110 (meta-ad): 0.601 [needs_work] -> generating... 0.368 no improvement, kept original
+  CFE-101 (meta-ad): 0.631 [needs_work] -> generating... 0.545 no improvement, kept original
+  CFE-104 (meta-ad): 0.650 [needs_work] -> generating... 0.561 no improvement, kept original
+  CFE-106 (meta-ad): 0.579 [needs_work] -> generating... 0.501 no improvement, kept original
+  CFE-107 (meta-ad): 0.682 [needs_work] -> generating... 0.627 no improvement, kept original
+  LP-A (landing-page): 0.636 [needs_work] -> generating... 0.682 [needs_work] IMPROVED (+0.046)
+  LP-B (landing-page): 0.644 [needs_work] -> generating... 0.621 no improvement, kept original
+  LP-F (landing-page): 0.645 [needs_work] -> generating... 0.619 no improvement, kept original
+  EM-001 (email): 0.612 [needs_work] -> generating... 0.581 no improvement, kept original
+  EM-002 (email): 0.560 [needs_work] -> generating... 0.507 no improvement, kept original
+  EM-006 (email): 0.600 [needs_work] -> generating... 0.599 no improvement, kept original
+
+--- Iteration 3: 16 items below target ---
+  BR-102 (meta-ad): 0.624 [needs_work] -> generating... 0.511 no improvement, kept original
+  BR-104 (meta-ad): 0.698 [needs_work] -> generating... 0.435 no improvement, kept original
+  BR-105 (meta-ad): 0.671 [needs_work] -> generating... 0.485 no improvement, kept original
+  BR-107 (meta-ad): 0.649 [needs_work] -> generating... 0.508 no improvement, kept original
+  BR-108 (meta-ad): 0.679 [needs_work] -> generating... 0.415 no improvement, kept original
+  BR-110 (meta-ad): 0.601 [needs_work] -> generating... 0.426 no improvement, kept original
+  CFE-101 (meta-ad): 0.631 [needs_work] -> generating... 0.607 no improvement, kept original
+  CFE-104 (meta-ad): 0.650 [needs_work] -> generating... 0.630 no improvement, kept original
+  CFE-106 (meta-ad): 0.579 [needs_work] -> generating... 0.501 no improvement, kept original
+  CFE-107 (meta-ad): 0.682 [needs_work] -> generating... 0.501 no improvement, kept original
+  LP-A (landing-page): 0.682 [needs_work] -> generating... 0.662 no improvement, kept original
+  LP-B (landing-page): 0.644 [needs_work] -> generating... 0.621 no improvement, kept original
+  LP-F (landing-page): 0.645 [needs_work] -> generating... 0.708 [strong_draft] IMPROVED (+0.063)
+  EM-001 (email): 0.612 [needs_work] -> generating... 0.600 no improvement, kept original
+  EM-002 (email): 0.560 [needs_work] -> generating... 0.561 [needs_work] IMPROVED (+0.001)
+  EM-006 (email): 0.600 [needs_work] -> generating... 0.600 no improvement, kept original
+
+=== HILL-CLIMB COMPLETE ===
+Improvements made: 6
+Avg composite: 0.6956
+Still below target: 15
+  production_ready: 0
+  strong_draft: 18
+  needs_work: 15
+  rewrite: 0

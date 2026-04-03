@@ -1,34 +1,32 @@
 {
-  "page_id": "LP-F",
-  "content_type": "landing-page",
   "angle": "empathy-founder",
+  "tactic": "general",
   "hook_type": "story",
   "funnel": "TOF",
-  "headline": "I asked where our meat came from. The answer changed everything.",
-  "subhead": "A letter from our founder on why we built a grocery store where every product has a farm name on it.",
-  "hero_copy": "My youngest asked me where chicken comes from. I said the supermarket. She meant the actual chicken.\n\nI did not know the farm. I did not know how the bird was raised, what it ate, or how far it had travelled. I just knew it came in a plastic tray and I bought it every week.\n\nSo I started looking. What I found changed the way I feed my family.",
+  "content_type": "landing-page",
+  "creative_brief": "Hero image: founder crouching in a farm field with a young child, natural light, no stock-photo polish. Below the fold, candid photos from actual supplier farms (Bundarra, Collins, Paris Creek). Earthy palette — soil browns, leaf greens, warm whites. Typography is clean and personal, not corporate. The page should feel like a letter, not a pitch deck.",
+  "generated_at": "2026-04-03T23:36:23.484852",
+  "page_id": "LP-F",
+  "headline": "I started this company the morning my daughter asked why her apple tasted like nothing",
+  "subhead": "FarmThru exists because one parent got tired of pretending the big chains sold real food. Now we're building a grocery store that only stocks from farms we've visited ourselves.",
+  "hero_copy": "She was four. She bit into it, made a face, and said \"this doesn't taste like Grandma's ones.\" She was right. I'd been buying whatever was cheapest, from wherever. I couldn't name a single farm behind a single thing in my fridge. That morning I started calling farmers directly. What I learned changed everything — and became FarmThru.",
   "sections": [
     {
-      "heading": "What I found",
-      "body": "Industry data suggests supermarket beef can travel around 2,400 kilometres before reaching the shelf. It might sit in cold storage for weeks. The farmer who raised it earns a fraction of what you pay.\n\nBut right here in NSW, there are regenerative farms producing extraordinary food. Rachel's Farm in Kempsey raises 100% grass-fed cattle on pasture. Farmer Brown's hens roam free. Collins Wild Caught brings in wild-caught Alaskan salmon from the South Coast. These farmers exist. Most families just have no way to buy from them."
+      "heading": "What I found when I started asking questions",
+      "body": "Most of the produce in supermarkets passes through three or four middlemen before it reaches the shelf. Farmers get squeezed. Food sits in transit. Nutrients fade. Flavour disappears. I spoke with Rachel Ward at her regenerative farm in Kempsey, NSW. She told me the same thing every farmer told me: \"We grow incredible food. The system between us and families is broken.\" So we built a different system. Zero warehouses. Zero wholesalers. Zero middlemen. FarmThru orders go from the farm to our Brookvale hub, and you collect when it's ready. That's it. No complicated supply chain eating margin and freshness along the way."
     },
     {
-      "heading": "What I built",
-      "body": "FarmThru is a farm-direct grocery store. You order online from named regenerative farms in NSW. Your food goes from the farm to our Brookvale hub. You collect it Monday to Friday.\n\nZero middlemen. No commitment. The food is days old, not weeks. The farmer earns a fairer price. You know exactly where every product came from because we show you."
+      "heading": "These are real farms, and I've stood on every one of them",
+      "body": "Bundarra Farm supplies our pork belly, pork and fennel salami, and little French ham. Collins Wild Caught brings in wild-caught Alaskan salmon and seasonal Australian seafood from the South Coast of NSW. Paris Creek Farms in Meadows, SA produces carbon-neutral biodynamic dairy. Farmer Brown supplies our eggs. Little Yarran Farm in NSW rounds out our growers. We're not a subscription box. We're an online grocery store stocked entirely by regenerative farms. Every product on our shelves is something we'd feed our own kids. That's not a slogan — it's our sourcing rule."
     },
     {
-      "heading": "The food speaks for itself",
-      "body": "100% grass-fed beef raised without hormones or feedlots. Wild-caught Alaskan salmon. Pork from Bundarra Farm. Biodynamic dairy from Paris Creek. Eggs from Farmer Brown.\n\nEvery product traces to a named farm. That is the promise. We will show you where your food comes from."
-    },
-    {
-      "heading": "Be part of it",
-      "body": "We are launching an equity crowdfunding campaign on Birchal in mid-2026. Minimum investment: $50. Cap: $10,000 per investor.\n\nA $5 refundable deposit gets you VIP access: first in when the campaign opens, priority updates, and an exclusive Q&A.\n\nWe cannot promise returns. Early-stage investing carries real risk. Full details will be in the disclosure document on Birchal."
+      "heading": "Why I'm asking you to help us grow",
+      "body": "We're preparing an equity crowdfunding campaign so everyday people — not just venture capitalists — can own a piece of this. I can't promise returns. I can't guarantee we'll get everything right. Building a new kind of grocery store is genuinely hard. But I can promise you this: every dollar of investment goes toward connecting more farms to more families across Sydney, starting from our Brookvale hub. If that matters to you, join the waitlist. A refundable $5 deposit holds your spot and tells us this model has legs. No lock-in. No obligation. Just a signal that you believe food should come from somewhere you can point to on a map."
     },
     {
       "heading": "Compliance",
       "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
     }
   ],
-  "cta": "Reserve Your Spot",
-  "creative_brief": "Hero: candid shot of founder in a kitchen with family, natural light, warm tones. Below-fold: simple illustrated supply chain showing farm to hub to family. Named farm partner photos. Brookvale hub lifestyle shot. First-person letter tone throughout. Should feel like reading a personal note, not a sales page."
+  "cta": "cfe_waitlist"
 }

@@ -1,26 +1,32 @@
 {
-  "page_id": "LP-A",
-  "content_type": "landing-page",
   "angle": "cause-purpose",
+  "tactic": "general",
   "hook_type": "aspiration",
   "funnel": "TOF",
-  "headline": "The food system is broken. This is how we fix it.",
-  "subhead": "FarmThru is a farm-direct grocery store connecting regenerative NSW farms to families. Zero middlemen. Now opening to everyday investors on Birchal.",
-  "hero_copy": "Your beef might travel an industry average of 2,400 kilometres before it reaches the shelf. It can sit in cold storage for weeks. The farmer who raised it earns a fraction of what you pay. And you will never know their name.\n\nFarmThru was built to fix that. We are a farm-direct grocery store. You order online from named regenerative farms in NSW. Your food goes from the farm to our Brookvale hub. You collect it days later, not weeks. Zero middlemen.",
+  "content_type": "landing-page",
+  "creative_brief": "Hero image: aerial split-screen — one half showing degraded, dry farmland; the other showing lush regenerative pasture with visible livestock. Earthy, warm palette. Below the fold, candid portraits of real partner farms (Rachel Ward at her Kempsey property, Bundarra Farm pigs in open paddock). No stock photography. Typography is clean, grounded, unhurried — sentence case throughout. Final CTA section uses a subtle soil-texture background with a single prominent button.",
+  "generated_at": "2026-04-03T23:29:54.949727",
+  "page_id": "LP-A",
+  "headline": "What if the way you buy groceries could heal the land?",
+  "subhead": "FarmThru is building a farm-direct grocery store where every dollar you spend supports regenerative farms, fair prices for farmers, and food you can actually trust. Now you can help own it.",
+  "hero_copy": "Somewhere in Kempsey, Rachel Ward's regenerative farm is restoring soil that industrial agriculture stripped bare. On the South Coast, Collins Wild Caught is pulling seasonal seafood from clean waters. At Bundarra Farm, pork is raised the way it should be — slowly, carefully, honestly. These farmers don't need a middleman. They need a direct line to families who care. FarmThru is that line. No wholesalers. No unnecessary middlemen. Just real food from regenerative farms, ordered online and collected from our Brookvale hub or delivered across Sydney, Central Coast, and Wollongong.",
   "sections": [
     {
-      "heading": "Every product has a farm name on it",
-      "body": "Rachel's Farm in Kempsey for 100% grass-fed beef. Bundarra Farm for pork. Collins Wild Caught for wild-caught Alaskan salmon. Paris Creek for biodynamic dairy. Farmer Brown for eggs.\n\nNo hormones. No antibiotics. No feedlot finishing. The farmer earns a fairer price. Your family gets food that is genuinely fresh.\n\nThis is not a meal kit or a box you cannot customise. It is on-demand ordering. No commitment. Sydney families collect from the Brookvale hub, Monday to Friday."
+      "heading": "You already feel it — something's wrong with how we eat",
+      "body": "You read the labels. You try to buy local. But the big chains make it almost impossible to know where your food actually comes from, who grew it, or what it cost the land. Every week you compromise — not because you don't care, but because the system wasn't built for people who do.\n\nFarmThru was built for exactly that. We work directly with roughly 15–20 partner farms and suppliers across NSW and beyond. Paris Creek Farms in South Australia produces carbon-neutral biodynamic dairy. Little Yarran Farm and Farmer Brown supply eggs and produce from NSW. We'll show you where your food comes from — because you deserve to know."
     },
     {
-      "heading": "You can own a piece of it",
-      "body": "The people who buy the food should have the chance to own a piece of the business that supplies it.\n\nFarmThru is launching an equity crowdfunding campaign on Birchal in mid-2026. Minimum investment: $50. Maximum: $10,000 per investor. A $5 refundable VIP deposit gets you first access, priority updates, and an exclusive Q&A before the campaign opens to everyone.\n\nWe cannot promise returns. Early-stage investing carries real risk. You could lose some or all of your investment. We will not dress that up. Full details will be in the disclosure document on Birchal."
+      "heading": "A grocery store that works like food should",
+      "body": "FarmThru isn't a box scheme. There's no lock-in. No fees to join. You order what you want, when you want it, and collect from our Brookvale hub on your schedule, Monday to Friday. Or choose delivery across Sydney, the Central Coast, or Wollongong.\n\nOur model is simple: farm to hub to you. Zero wholesalers sitting in the middle inflating prices. That direct supply chain means fresher food arriving days — not weeks — after harvest. It means farmers get paid fairly for the work they do. And bulk buying options reward your commitment with real savings.\n\nThis is grocery shopping rebuilt around one principle: only food we'd feed our own."
+    },
+    {
+      "heading": "This is your chance to own a piece of the fix",
+      "body": "We're preparing an equity crowdfunding campaign so everyday people — not just venture capitalists — can own part of FarmThru. This is an invitation to help build something that matters: a food system where regenerative farming isn't niche, it's normal.\n\nWe can't promise returns. We can't guarantee success. Building a new kind of grocery store is hard, and investing in early-stage companies carries real risk — including the possibility of losing your entire investment. But if you believe the way we grow, sell, and buy food needs to change, this is a concrete way to put your money where your values are.\n\nJoin the waitlist now with a refundable $5 deposit to be first in line when the campaign opens. No obligation. Fully refundable if you change your mind."
     },
     {
       "heading": "Compliance",
       "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
     }
   ],
-  "cta": "Secure VIP Access",
-  "creative_brief": "Hero: wide-angle shot of green NSW farmland in early morning light. Below-fold: grid of named farm partner portraits alongside their products. Brookvale hub lifestyle shot. Earthy palette, clean typography. Single email capture form above the fold."
+  "cta": "cfe_waitlist"
 }

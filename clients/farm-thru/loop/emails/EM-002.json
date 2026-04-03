@@ -1,15 +1,16 @@
 {
-  "email_id": "EM-002",
-  "content_type": "email",
   "angle": "empathy-founder",
-  "email_type": "founder-story",
+  "tactic": "general",
+  "hook_type": "story",
   "funnel": "TOF",
-  "subject": "The supermarket question I could not answer",
-  "preheader": "How a plastic tray of beef mince led to a different kind of grocery store.",
-  "body": "Hi {first_name},\n\nI want to tell you why FarmThru exists.\n\nA few years ago I was holding a tray of beef mince in a supermarket. Grey around the edges. The label said \"Product of Australia\" but nothing else. No farm name. No region. No idea how old it was or how far it had travelled.\n\nI had young kids at home. I was feeding them this every week. And I could not answer the most basic question: where did this come from?\n\nThat question stuck.\n\nI started visiting farms. Rachel Ward's property in Kempsey, where cattle graze on regenerative pasture. Bundarra Farm, raising pork in open paddocks. Collins Wild Caught, bringing in wild-caught Alaskan salmon from the South Coast.\n\nThese farmers were producing extraordinary food. The big chains were paying them barely enough to keep going.\n\nSo we built FarmThru. A grocery store that connects farms directly to families through a collection hub in Brookvale. No wholesalers in between. Food that is days old, not weeks. And the farmer earns a fairer price.\n\nRachel believed in what we were building. Her farm became one of our key partners. Her 100% grass-fed beef is some of the best you will find anywhere in NSW.\n\nI am not going to pretend this is easy. Building a new kind of grocery store is hard. But every time a family collects their order and says they can taste the difference, I know we are heading the right way.\n\nOver the next few days, we'll show you the farms and the food. More soon.\n\nRachel & the FarmThru team",
-  "cta": "Shop your local hub",
+  "content_type": "email",
+  "creative_brief": "Clean, minimal design with a single hero image of raw salmon on brown paper (unbranded, editorial feel). Muted earth tones, one accent-color CTA button. No stock photography — real texture, real food.",
+  "generated_at": "2026-04-03T23:37:04.331511",
+  "email_id": "EM-002",
+  "subject": "I spent $47 on salmon and couldn't name the boat",
+  "preheader": "That moment in the checkout line changed everything for me.",
+  "body": "I was standing in the checkout queue holding a $47 piece of salmon.\n\nThe label said \"wild caught\" and \"sustainably sourced.\" I turned the packet over looking for something — anything — that told me where it actually came from. A boat name. A coastline. A person.\n\nNothing.\n\nForty-seven dollars, and I couldn't tell my daughter a single true thing about what we were about to eat for dinner.\n\nThat's the moment I stopped being frustrated and started building FarmThru.\n\nI'm Rachel, and I want to tell you what we've done since that evening.\n\nFarmThru is a grocery store — not a box scheme, not a weekend market — built on one rule: every product traces back to a real farm and a real name.\n\nCollins Wild Caught lands their Alaskan salmon and seasonal Australian seafood off the South Coast of NSW. I can tell you the waters. Bundarra Farm raises the pork for their belly cuts and fennel salami. Paris Creek Farms in Meadows, SA, produces carbon-neutral biodynamic dairy. Farmer Brown supplies our eggs from NSW.\n\nNo middlemen. No wholesalers. No anonymous supply chains.\n\nWhen a farm sells through us, they're paid fairly because there's nobody standing between their gate and your hands. And because we run a hub-and-collect model — you order online, then pick up from our Brookvale hub — we keep our costs honest without pretending home delivery is free.\n\nThis isn't luxury grocery shopping. It's grocery shopping that doesn't require you to lie to your kids when they ask where dinner came from.\n\nWe're opening FarmThru to everyday investors through equity crowdfunding on Birchal. You can join the waitlist now with a fully refundable $5 deposit to get early access before the campaign goes live.\n\nI can't promise returns. I can't guarantee anything except that we'll keep doing what the big chains won't — showing you exactly where your food comes from.\n\nIf that $47 salmon moment sounds familiar, I'd love you to be part of what we're building.\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\n\nRachel & the FarmThru team",
+  "cta": "cfe_waitlist",
   "sender_name": "Rachel & the FarmThru team",
-  "creative_brief": "Personal founder email. Plain text style with minimal formatting. Small headshot of the founder in the signature area. Single CTA button to the shop. Should feel like a genuine letter from someone who cares about food, not a marketing broadcast.",
-  "primary_text": "I want to tell you why FarmThru exists. A few years ago I was holding a tray of beef mince in a supermarket.",
-  "headline": "The supermarket question I could not answer"
+  "email_type": "founder-story"
 }

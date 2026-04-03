@@ -1,15 +1,16 @@
 {
-  "email_id": "EM-001",
-  "content_type": "email",
   "angle": "cause-purpose",
-  "email_type": "welcome",
+  "tactic": "general",
+  "hook_type": "story",
   "funnel": "TOF",
-  "subject": "Welcome. Here is what you signed up for.",
-  "preheader": "The farms, the food, and what happens next.",
-  "body": "Hi {first_name},\n\nYou signed up because something about the way we buy food stopped making sense. Maybe it was picking up a pack of chicken and realising you had no idea where it came from. Maybe it was wondering why fresh food never tasted the way you remembered.\n\nYou are not alone. That is exactly why FarmThru exists.\n\nFarmThru is a farm-direct grocery store. Not a meal kit. Not a box you cannot customise. Every product comes from a named regenerative farm in NSW. Rachel's Farm in Kempsey. Bundarra Farm. Farmer Brown. You will always know the farm behind your food.\n\nYou order online. Your food goes from the farm to our Brookvale hub. You collect it days later, not weeks. Zero middlemen. No commitment.\n\nHere is what is coming next. Over the next few emails, we will introduce you to the farms, the food, and the team. We will also share details about our equity crowdfunding campaign on Birchal, launching mid-2026. No fluff. Just what you need to decide if this is something you want to be part of.\n\nIf you are in Sydney, the Brookvale hub is open Monday to Friday. You do not have to wait for the campaign to try the food.\n\nThis is not financial advice. The disclosure document will be available on Birchal.\n\nRachel & the FarmThru team",
-  "cta": "See what's fresh this week",
+  "content_type": "email",
+  "creative_brief": "Clean, minimal design. No hero image — let the story breathe. Single green CTA button mid-lower body reading 'Join the waitlist — $5 refundable deposit'. Small-format partner farm logos (Bundarra, Collins, Paris Creek, Rachel's Farm) as a horizontal strip near the bottom for social proof.",
+  "generated_at": "2026-04-03T23:26:45.580276",
+  "email_id": "EM-001",
+  "subject": "Last Tuesday, a farmer called me in tears",
+  "preheader": "She'd just been told her price was being cut again. Here's what we did.",
+  "body": "Last Tuesday morning, a call came through from a cattle farmer outside Kempsey.\n\nShe'd just been told by her buyer — a wholesaler who supplies the big chains — that her price per kilo was dropping. Again. Third time in eighteen months. She said she wasn't sure she could keep the farm going past winter.\n\nI sat with that call for a long time.\n\nBecause this is the part most people never see. The quiet exit. The farmer who loved the land, did everything right — raised animals on pasture, rebuilt soil, refused shortcuts — and still couldn't make the numbers work. Not because the food wasn't worth it. Because too many hands touched it before it reached you.\n\nThat's the system we built FarmThru to replace.\n\nNo wholesalers. No middlemen. Farm to hub to you. When you order from FarmThru and collect from our Brookvale hub, the farmer who grew your food gets paid what it's actually worth. And you pay less than you'd expect, because we stripped out every cost that doesn't belong.\n\nThis isn't abstract. Here's what it looks like right now:\n\nBundarra Farm sends us pork belly and fennel salami direct. Collins Wild Caught brings in wild-caught salmon from the South Coast. Paris Creek Farms in South Australia supplies carbon-neutral biodynamic dairy. Rachel Ward's own farm in Kempsey grows regenerative produce that goes straight to our shelves.\n\nEvery product traces back to a real person on real land. We'll show you where your food comes from — that's not a slogan, it's a promise printed on every order.\n\nBut here's the thing. We can only keep this promise if we grow. More customers means more orders, which means more farmers get a fair price, which means more land gets farmed regeneratively. It's a loop — and right now, you can help us widen it.\n\nWe're raising funds through equity crowdfunding on Birchal. For as little as $50, you can own a piece of FarmThru and help us bring this model to more families across Sydney, the Central Coast, and Wollongong.\n\nYou can join the waitlist now with a fully refundable $5 deposit to get early access before the campaign opens to the public.\n\nThat farmer outside Kempsey? She's one of our newest partners. Her price didn't drop. It went up.\n\nThat's what this is for.\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\n\nRachel & the FarmThru team",
+  "cta": "cfe_waitlist",
   "sender_name": "Rachel & the FarmThru team",
-  "creative_brief": "Clean welcome email. FarmThru logo header. Single CTA button linking to the shop. Brief, warm, expectation-setting. Simple product hero shot below the logo. No clutter.",
-  "primary_text": "You signed up because something about the way we buy food stopped making sense.",
-  "headline": "Welcome. Here is what you signed up for."
+  "email_type": "welcome"
 }
