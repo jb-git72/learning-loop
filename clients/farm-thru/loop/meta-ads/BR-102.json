@@ -4,10 +4,10 @@
   "angle": "quality-craft",
   "hook_type": "statistic",
   "funnel": "TOF",
-  "tactic": "comparison",
-  "primary_text": "Supermarket beef: 14 to 21 days in cold storage. 2,400km average journey from farm to shelf.\n\nFarmThru beef: collected from the hub the same week it left the farm. 50+ regenerative farms across NSW.\n\nNo hormones. No feedlots. 100% grass-fed.\n\nWe'll show you where your food comes from. The farm name. The farmer's name. The paddock it was raised on.\n\nOrder when you want. No commitment, no lock-in. Just honest food at honest prices.",
-  "headline": "14 days in cold storage vs same week",
-  "description": "Regenerative beef from NSW farms. Collected fresh from your nearest hub.",
+  "tactic": "supply-chain-contrast",
+  "primary_text": "Industry data says the average supermarket beef travels 2,400km before it reaches your kitchen. It sits in cold storage for up to three weeks.\n\nFarmThru beef comes from named regenerative farms across NSW. It goes from the farm to our Brookvale hub within days.\n\nNo hormones. No feedlots. No middlemen adding time and kilometres.\n\n100% grass-fed. Pasture-raised. You can trace every cut back to the paddock it came from.\n\nOrder what you want, when you want. No subscription, no lock-in.",
+  "headline": "2,400km and three weeks in cold storage",
+  "description": "Industry average for supermarket beef. FarmThru beef: farm to hub in days, not weeks.",
   "cta": "Find your nearest hub",
-  "creative_brief": "Split screen. Left: industrial cold storage facility, blue tint. Right: sunlit paddock with cattle grazing. Clean sans-serif stat overlay."
+  "creative_brief": "Split screen. Left: long highway with refrigerated truck, blue-grey tint. Right: green NSW paddock with cattle. Clean stat overlay on each side."
 }

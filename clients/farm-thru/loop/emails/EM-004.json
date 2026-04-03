@@ -2,12 +2,12 @@
   "email_id": "EM-004",
   "content_type": "email",
   "angle": "quality-craft",
-  "email_type": "nurture",
+  "email_type": "farm-spotlight",
   "funnel": "MOF",
-  "subject": "The farms behind your next meal",
-  "preheader": "Rachel's Farm, Bundarra Berkshires, and the people who grow what you eat.",
-  "body": "One of the things that makes FarmThru different is that every product traces back to a real farm, run by a real person. Not a supplier code. A name.\n\nHere are two of our partners.\n\nRachel's Farm, Kempsey NSW. Rachel Ward is a co-founder of FarmThru and a regenerative agriculture advocate. Her cattle are 100% grass-fed, raised on pasture without hormones or feedlots. After the 2020 bushfires nearly destroyed her property, she rebuilt with regenerative practices. Her beef is some of the best in the country.\n\nBundarra Berkshires, Bundarra NSW. Heritage Berkshire pigs, raised outdoors on open paddocks. Berkshire is one of the oldest pig breeds in the world, known for rich marbling and deep flavour. You won't find this at the supermarket.\n\nThese farmers aren't anonymous suppliers. They're partners. FarmThru's hub-and-collect model means their food goes from paddock to pick-up in 2-3 days. No warehouses. No wholesalers. Just a shorter, more honest supply chain.\n\nWe work with 50+ farms like these across NSW. Each one is regenerative. Each one is named. And each one earns a fairer price for their work.\n\nHave a look at what's available this week.\n\nFarmThru",
-  "cta": "See what's fresh this week",
-  "sender_name": "FarmThru",
-  "creative_brief": "Farm spotlight email. Hero images of Rachel's Farm and Bundarra Berkshires (landscape shots with farmers visible). Product photos below each farm story. Single CTA to shop. Educational but appetising. Food first, story second."
+  "subject": "Meet Rachel Ward and the farm behind our beef",
+  "preheader": "Kempsey, NSW. Regenerative pasture. 100% grass-fed cattle. This is where it starts.",
+  "body": "One of the things that makes FarmThru different is that every product traces to a real farm, run by a real person.\n\nToday we want to introduce you to one of our most important partners.\n\nRachel's Farm sits on the northern NSW coast near Kempsey. Rachel Ward, actor and regenerative farming advocate, founded it. Her cattle are 100% grass-fed, raised on pasture without hormones or feedlots. After the 2020 bushfires nearly destroyed her property, she rebuilt using regenerative practices.\n\nHer beef is some of the best in the state. Deep red, beautifully marbled, with a flavour that comes from animals eating what they are supposed to eat: grass, on open land, in clean air.\n\nRachel is not just a supplier. She is a key partner who helped shape how FarmThru works. She understood from the start that farmers needed a shorter path to families. No wholesalers taking a cut. No cold-storage facilities holding meat for weeks.\n\nThat is what the hub-and-collect model does. Rachel's beef goes from her farm to our Brookvale hub. You collect it days later. The difference is in every bite.\n\nWe work with named farms like hers across NSW. Each one is regenerative. Each one earns a fairer price.\n\nRachel & the FarmThru team",
+  "cta": "Shop your local hub",
+  "sender_name": "Rachel & the FarmThru team",
+  "creative_brief": "Farm spotlight email. Hero image: Rachel's Farm landscape with cattle grazing, golden hour light. Below: portrait of Rachel with her property. Product shots of grass-fed beef cuts. Single CTA. Educational but appetising. Make the reader hungry and curious."
 }

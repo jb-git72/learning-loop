@@ -253,6 +253,42 @@
       ],
       "case_sensitive": false,
       "rationale": "Brand guidelines: non-subscription, on-demand ordering. No lock-in, no commitment pressure."
+    },
+    {
+      "rule_id": "FMTH-015",
+      "name": "no_market_stats_in_consumer_ads",
+      "severity": "medium",
+      "type": "regex_absent",
+      "description": "Block market statistics in consumer-facing meta ads. Market stats ($130B, 24% YoY) belong in investor content only.",
+      "fields": ["primary_text", "headline", "description"],
+      "patterns": [
+        "\\$\\d+\\s?[Bb](illion)?\\s*(market|industry)",
+        "\\d+%.*([Yy]o[Yy]|year.on.year|growth)",
+        "\\$\\d+[Bb]\\b",
+        "market size",
+        "market opportunity",
+        "TAM",
+        "addressable market"
+      ],
+      "case_sensitive": false,
+      "rationale": "Round 2 review: market stats don't belong in consumer ads. '$130B market' and '24% YoY growth' are investor-pitch language, not grocery-shopping motivation."
+    },
+    {
+      "rule_id": "FMTH-016",
+      "name": "no_compliance_disclaimers_in_ad_body",
+      "severity": "medium",
+      "type": "regex_absent",
+      "description": "Block compliance disclaimer language in meta ad primary text and headline. Disclaimers belong in landing pages, not ads.",
+      "fields": ["primary_text", "headline"],
+      "patterns": [
+        "[Nn]ot financial advice",
+        "[Nn]ot investment advice",
+        "[Ss]eek independent",
+        "[Cc]onsider seeking",
+        "[Dd]isclosure document"
+      ],
+      "case_sensitive": false,
+      "rationale": "Round 2 review: 'Not financial advice.' appearing in ad body looks jarring and breaks narrative flow. Compliance language belongs on landing pages where it can be properly presented."
     }
   ]
 }

@@ -4,34 +4,27 @@
   "angle": "urgency-scarcity",
   "hook_type": "scarcity",
   "funnel": "TOF",
-  "headline": "200 spots. First access to invest in FarmThru.",
-  "subhead": "VIP members get priority when the equity crowdfunding campaign opens on Birchal in July 2026.",
-  "hero_copy": "FarmThru is opening to investors for the first time. Before the campaign goes live, we're giving 200 people early access.\n\nA $5 refundable deposit secures your VIP spot. That means first access to invest, priority updates from the founders, and an exclusive Q&A before the campaign opens to everyone.",
+  "headline": "VIP spots are limited. First access to invest in FarmThru.",
+  "subhead": "A $5 refundable deposit gets you priority when the equity crowdfunding campaign opens on Birchal in mid-2026.",
+  "hero_copy": "FarmThru is opening to investors for the first time. Before the campaign goes live on Birchal, we are giving a limited number of people early access.\n\nA $5 refundable deposit secures your VIP spot. You get first access to invest, priority updates on our progress, and an exclusive Q&A with the team. Your deposit is fully refundable at any time, no questions asked.",
   "sections": [
     {
       "heading": "What VIP access gets you",
-      "body": "First access to invest when the Birchal campaign opens. Priority updates on FarmThru's progress, financials, and plans. An exclusive Q&A session with the founding team. And your $5 deposit is fully refundable at any time, no questions asked.\n\nThis isn't a commitment to invest. It's a commitment to being informed first."
+      "body": "First access to invest when the Birchal campaign opens. Priority updates on FarmThru's progress and plans. An exclusive Q&A session with the founding team. And your $5 deposit returned in full if you change your mind.\n\nThis is not a commitment to invest. It is a commitment to being informed before everyone else."
     },
     {
-      "heading": "What you're investing in",
-      "body": "FarmThru is a farm-direct grocery store. 50+ regenerative farms across NSW. 2,000+ families already ordering. A hub-and-collect model that gets food from paddock to pick-up in 2-3 days.\n\n100% grass-fed beef. Pasture-raised chicken. Heritage pork. Wild-caught salmon. Every product from a named farm. No hormones, no feedlots, no unnecessary middlemen.",
-      "proof": [
-        "50+ partner farms across NSW",
-        "2,000+ customers",
-        "Brookvale hub, Monday-Friday",
-        "$130B Australian grocery market",
-        "Farm-direct food growing 24% YoY"
-      ]
+      "heading": "What you are getting early access to",
+      "body": "FarmThru is a farm-direct grocery store. Regenerative farms across NSW deliver to our Brookvale hub, and families collect on-demand. No middlemen. No lock-in.\n\n100% grass-fed beef from Rachel's Farm. Wild-caught Alaskan salmon from Collins Wild Caught. Pork from Bundarra Farm. Biodynamic dairy from Paris Creek. Eggs from Farmer Brown. Every product from a named farm, raised without hormones, antibiotics, or feedlot finishing."
     },
     {
       "heading": "The terms",
-      "body": "Equity crowdfunding campaign on Birchal, launching July 2026. Minimum investment: $50. Maximum cap: $10,000 per investor.\n\nVIP deposit: $5 (fully refundable). Only 200 VIP spots available."
+      "body": "Equity crowdfunding campaign on Birchal, launching mid-2026. Minimum investment: $50. Maximum: $10,000 per investor.\n\nInvesting in early-stage businesses carries real risk. You could lose some or all of your investment. All details, financials, and risks will be disclosed in the offer document on Birchal."
     },
     {
       "heading": "Compliance",
       "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
     }
   ],
-  "cta": "Save my spot",
-  "creative_brief": "Hero: bold typography with a live counter showing remaining VIP spots (e.g. '147 of 200 spots remaining'). Below-fold: traction metrics, farm partner grid, VIP perks checklist. Urgency without desperation. Clean design with a single form: name, email, $5 deposit button. Birchal badge visible."
+  "cta": "Save My Spot",
+  "creative_brief": "Hero: bold typography with a live counter showing remaining VIP spots. Below-fold: named farm partner grid, VIP perks checklist, Brookvale hub photo. Urgency through clarity, not desperation. Clean single-form design: name, email, $5 deposit button. Birchal badge visible in footer."
 }
