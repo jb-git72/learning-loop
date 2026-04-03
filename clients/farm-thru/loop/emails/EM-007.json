@@ -9,8 +9,10 @@
   "email_id": "EM-007",
   "subject": "Last 48 hours: VIP spots closing",
   "preheader": "Only $5 to secure your place before we launch mid-2026. Fully refundable.",
-  "body": "Yesterday at 3pm, Sarah from Manly refreshed her phone for the third time.\n\nShe'd been watching our VIP list grow for weeks. The $5 deposit (fully refundable) seemed like nothing — but she kept hesitating.\n\nThen she saw the update: VIP access closes in 48 hours.\n\nSarah realised something. She's been shopping at supermarkets her whole life, never knowing which farm her carrots came from, never meeting the people who grew her food.\n\nFarmThru changes that. We're building NSW's first farm-direct grocery hub where you'll know exactly where your food comes from — and collect it fresh from our Brookvale hub.\n\nNo middlemen marking up prices. No mystery supply chains. Just real food from real farms, priced for everyday families.\n\nSarah secured her VIP spot at 3:17pm.\n\nThe question is: will you?\n\nVIP perks include first access when we launch mid-2026, priority updates, and exclusive founder Q&As. Your $5 deposit is fully refundable — but VIP access isn't available forever.\n\n48 hours left.",
+  "body": "Hi {first_name},\n\nToday is the last chance.\n\nYesterday at 3pm, Sarah from Manly refreshed her phone for the third time.\n\nShe'd been watching our VIP list grow for weeks. The $5 deposit (fully refundable) seemed like nothing \u2014 but she kept hesitating.\n\nThen she saw the update: VIP access closes in 48 hours.\n\nSarah realised something. She's been shopping at supermarkets her whole life, never knowing which farm her carrots came from, never meeting the people who grew her food.\n\nFarmThru changes that. We're building NSW's first farm-direct grocery hub where you'll know exactly where your food comes from \u2014 and collect it fresh from our Brookvale hub.\n\nNo middlemen marking up prices. No mystery supply chains. Just real food from real farms, priced for everyday families.\n\nSarah secured her VIP spot at 3:17pm.\n\nThe question is: will you?\n\nVIP perks include first access when we launch mid-2026, priority updates, and exclusive founder Q&As. Your $5 deposit is fully refundable \u2014 but VIP access isn't available forever.\n\n48 hours left.",
   "cta": "cfe_waitlist",
   "sender_name": "Tom, FarmThru Founder",
-  "email_type": "final-call"
+  "email_type": "final-call",
+  "primary_text": "Yesterday at 3pm, Sarah from Manly refreshed her phone for the third time.",
+  "headline": "Last 48 hours: VIP spots closing"
 }
