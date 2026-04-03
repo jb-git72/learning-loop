@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build an interactive HTML review page from scored content JSON."""
+"""Build an interactive HTML review page matching the proven loop-review layout."""
 
 import json
 import sys
@@ -14,127 +14,193 @@ def build_html(scored_json_path: str, output_path: str):
     results = data["results"]
     summary = data["summary"]
 
-    # Load the actual ad content for display
     root = Path(__file__).parent.parent
     ads_by_id = {}
     for r in results:
         file_path = root / r["_file"]
         if file_path.exists():
             with open(file_path) as f:
-                ads_by_id[r["ad_id"]] = json.load(f)
+                ad = json.load(f)
+            # Use the correct ID field
+            aid = ad.get("ad_id", ad.get("page_id", ad.get("email_id", r["ad_id"])))
+            ads_by_id[aid] = ad
 
     cards_html = []
     for r in results:
-        ad_id = r["ad_id"]
-        ad = ads_by_id.get(ad_id, {})
-        content_type = r.get("content_type", "meta-ad")
-        angle = r.get("angle", "")
+        ad = None
+        # Find the ad by trying all ID fields
+        for key in ["ad_id", "page_id", "email_id"]:
+            for a in ads_by_id.values():
+                if a.get(key) == r.get("ad_id") or a.get(key, "") in r.get("_file", ""):
+                    ad = a
+                    break
+            if ad:
+                break
+        if not ad:
+            # Fallback: match by file path
+            fp = root / r["_file"]
+            if fp.exists():
+                with open(fp) as f:
+                    ad = json.load(f)
+        if not ad:
+            ad = {}
+
+        ad_id = ad.get("ad_id", ad.get("page_id", ad.get("email_id", "unknown")))
+        content_type = ad.get("content_type", r.get("content_type", "meta-ad"))
+        angle = ad.get("angle", r.get("angle", ""))
+        hook_type = ad.get("hook_type", "")
+        tactic = ad.get("tactic", "")
+        funnel = ad.get("funnel", "")
         verdict = r["verdict"]
         composite = r["composite"]
-        headline = r.get("headline", "")
-        primary = r.get("primary_text", "")
 
-        # Verdict badge color
-        colors = {
-            "production_ready": "#22c55e",
-            "strong_draft": "#3b82f6",
-            "needs_work": "#f59e0b",
-            "rewrite": "#ef4444",
-        }
-        badge_color = colors.get(verdict, "#6b7280")
+        # Type badge
+        type_labels = {"meta-ad": "AD", "landing-page": "PAGE", "email": "EMAIL"}
+        type_colors = {"meta-ad": "#2563eb", "landing-page": "#7c3aed", "email": "#059669"}
+        type_label = type_labels.get(content_type, "?")
+        type_color = type_colors.get(content_type, "#666")
 
-        # Build failure list
-        failures_html = ""
-        rule_failures = r.get("rule_compliance", {}).get("failures", [])
-        if rule_failures:
-            items = "".join(
-                f'<li class="fail-item {"critical" if f["severity"]=="critical" else ""}">'
-                f'[{f["severity"].upper()}] {f["rule_id"]}: {_esc(f["detail"][:120])}</li>'
-                for f in rule_failures
-            )
-            failures_html = f'<ul class="failures">{items}</ul>'
+        # Score circle color
+        if composite >= 0.85:
+            score_color = "#22c55e"
+        elif composite >= 0.70:
+            score_color = "#22c55e"
+        elif composite >= 0.55:
+            score_color = "#f59e0b"
+        else:
+            score_color = "#ef4444"
 
-        fact_details = r.get("fact_accuracy", {}).get("details", [])
-        if fact_details:
-            items = "".join(
-                f'<li class="fact-{d["status"]}">[{d["status"].upper()}] {_esc(d["claim"][:80])}</li>'
-                for d in fact_details
-            )
-            failures_html += f'<ul class="facts">{items}</ul>'
+        # Verdict label
+        verdict_label = verdict.replace("_", " ").upper()
 
-        # Rubric dimensions
-        dims_html = ""
-        for dim_id, detail in r.get("rubric", {}).get("dimension_details", {}).items():
-            bar_width = detail["score"] * 20
-            dims_html += (
-                f'<div class="dim-row">'
-                f'<span class="dim-name">{dim_id}</span>'
-                f'<div class="dim-bar"><div class="dim-fill" style="width:{bar_width}%"></div></div>'
-                f'<span class="dim-score">{detail["score"]}/5</span>'
-                f'</div>'
-            )
+        # Headline preview
+        headline = ad.get("headline", ad.get("subject", ""))
 
-        # Full content display
+        # Score summary line
+        rubric_total = r.get("rubric", {}).get("weighted_total", 0)
+        rubric_max = r.get("rubric", {}).get("max_possible", 63.75)
+        rules_passed = r.get("rule_compliance", {}).get("passed", 0)
+        rules_total = r.get("rule_compliance", {}).get("total", 0)
+        facts_score = r.get("fact_accuracy", {}).get("score", 1.0) if "fact_accuracy" in r else 1.0
+        score_line = f"Composite: {composite:.4f} &nbsp; Rubric: {rubric_total:.1f}/{rubric_max:.1f} &nbsp; Rules: {rules_passed}/{rules_total} &nbsp; Facts: {facts_score:.2f} &nbsp; Hook: {hook_type}"
+
+        # Build content fields based on type
         if content_type == "meta-ad":
+            pt = ad.get("primary_text", "")
+            hl = ad.get("headline", "")
+            desc = ad.get("description", "")
+            pt_max = 500
+            hl_max = 40
+            desc_max = 125
             content_html = f"""
-            <div class="content-preview">
-                <div class="field"><label>Headline:</label> {_esc(ad.get("headline", ""))}</div>
-                <div class="field"><label>Primary text:</label><pre>{_esc(ad.get("primary_text", ""))}</pre></div>
-                <div class="field"><label>Description:</label> {_esc(ad.get("description", ""))}</div>
-                <div class="field"><label>CTA:</label> {_esc(ad.get("cta", ""))}</div>
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="{ad_id}" data-field="primary_text" rows="8">{_esc(pt)}</textarea>
+                    <div class="char-count">{len(pt)}/{pt_max}</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="{ad_id}" data-field="headline" rows="2">{_esc(hl)}</textarea>
+                    <div class="char-count">{len(hl)}/{hl_max}</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="{ad_id}" data-field="description" rows="3">{_esc(desc)}</textarea>
+                    <div class="char-count">{len(desc)}/{desc_max}</div>
+                </div>
             </div>"""
         elif content_type == "email":
+            subj = ad.get("subject", "")
+            pre = ad.get("preheader", "")
+            body = ad.get("body", "")
+            sender = ad.get("sender_name", "")
             content_html = f"""
-            <div class="content-preview">
-                <div class="field"><label>Subject:</label> {_esc(ad.get("subject", ""))}</div>
-                <div class="field"><label>Preheader:</label> {_esc(ad.get("preheader", ""))}</div>
-                <div class="field"><label>Body:</label><pre>{_esc(ad.get("body", ""))}</pre></div>
-                <div class="field"><label>CTA:</label> {_esc(ad.get("cta", ""))}</div>
-                <div class="field"><label>Sender:</label> {_esc(ad.get("sender_name", ""))}</div>
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">BODY</div>
+                    <textarea class="field-edit" data-id="{ad_id}" data-field="body" rows="12">{_esc(body)}</textarea>
+                    <div class="char-count">{len(body)}/2000</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">SUBJECT</div>
+                    <textarea class="field-edit" data-id="{ad_id}" data-field="subject" rows="2">{_esc(subj)}</textarea>
+                    <div class="char-count">{len(subj)}/60</div>
+                    <div class="field-label" style="margin-top:12px">PREHEADER</div>
+                    <textarea class="field-edit" data-id="{ad_id}" data-field="preheader" rows="2">{_esc(pre)}</textarea>
+                    <div class="char-count">{len(pre)}/100</div>
+                    <div class="field-label" style="margin-top:12px">SENDER</div>
+                    <div class="field-static">{_esc(sender)}</div>
+                </div>
             </div>"""
         else:  # landing-page
+            hl = ad.get("headline", "")
+            sub = ad.get("subhead", "")
+            hero = ad.get("hero_copy", "")
+            sections = ad.get("sections", [])
             sections_text = ""
-            for s in ad.get("sections", []):
+            for s in sections:
                 if isinstance(s, dict):
-                    sections_text += f"\n\n## {s.get('heading', '')}\n{s.get('body', '')}"
+                    sections_text += f"\n## {s.get('heading', '')}\n{s.get('body', '')}\n"
             content_html = f"""
-            <div class="content-preview">
-                <div class="field"><label>Headline:</label> {_esc(ad.get("headline", ""))}</div>
-                <div class="field"><label>Subhead:</label> {_esc(ad.get("subhead", ""))}</div>
-                <div class="field"><label>Hero copy:</label><pre>{_esc(ad.get("hero_copy", ""))}</pre></div>
-                <div class="field"><label>Sections:</label><pre>{_esc(sections_text)}</pre></div>
-                <div class="field"><label>CTA:</label> {_esc(ad.get("cta", ""))}</div>
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">HERO COPY</div>
+                    <textarea class="field-edit" data-id="{ad_id}" data-field="hero_copy" rows="6">{_esc(hero)}</textarea>
+                    <div class="char-count">{len(hero)}/500</div>
+                    <div class="field-label" style="margin-top:12px">SECTIONS</div>
+                    <textarea class="field-edit" data-id="{ad_id}" data-field="sections" rows="12">{_esc(sections_text.strip())}</textarea>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="{ad_id}" data-field="headline" rows="2">{_esc(hl)}</textarea>
+                    <div class="char-count">{len(hl)}/80</div>
+                    <div class="field-label" style="margin-top:12px">SUBHEAD</div>
+                    <textarea class="field-edit" data-id="{ad_id}" data-field="subhead" rows="3">{_esc(sub)}</textarea>
+                    <div class="char-count">{len(sub)}/200</div>
+                </div>
             </div>"""
+
+        # Tags row
+        cta = ad.get("cta", "")
+        creative = ad.get("creative_brief", "")
+        tags_html = f"""
+        <div class="tags-row">
+            <span class="tag">CTA: {_esc(cta)}</span>
+            <span class="tag">Tactic: {_esc(tactic)}</span>
+            <span class="tag">Funnel: {_esc(funnel)}</span>
+        </div>"""
+        if creative:
+            tags_html += f'<div class="creative-brief"><em>{_esc(creative)}</em></div>'
 
         card = f"""
         <div class="card" data-verdict="{verdict}" data-type="{content_type}" data-angle="{angle}" data-id="{ad_id}">
-            <div class="card-header" onclick="toggleCard(this)">
+            <div class="card-top">
                 <span class="card-id">{ad_id}</span>
-                <span class="badge" style="background:{badge_color}">{verdict.replace("_"," ").upper()}</span>
-                <span class="composite">{composite:.3f}</span>
-                <span class="type-tag">{content_type}</span>
-                <span class="angle-tag">{angle}</span>
-                <span class="headline-preview">{_esc(headline[:50])}</span>
-                <div class="status-buttons">
-                    <button class="btn-approve" onclick="setStatus(event,'{ad_id}','approved')">Approve</button>
-                    <button class="btn-revise" onclick="setStatus(event,'{ad_id}','revise')">Revise</button>
-                    <button class="btn-kill" onclick="setStatus(event,'{ad_id}','kill')">Kill</button>
+                <span class="type-badge" style="background:{type_color}">{type_label}</span>
+                <span class="angle-label">{angle}</span>
+                <span class="hl-preview">{_esc(headline[:60])}</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:{score_color}">{composite:.2f}</span>
+                    <span class="verdict-label">{verdict_label}</span>
+                    <button class="btn btn-approve" onclick="setStatus('{ad_id}','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="setStatus('{ad_id}','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="setStatus('{ad_id}','kill',this)">Kill</button>
                 </div>
             </div>
-            <div class="card-body" style="display:none">
-                {content_html}
-                <div class="scoring-details">
-                    <h4>Rubric scores</h4>
-                    {dims_html}
-                    {failures_html}
-                </div>
-                <div class="notes-section">
-                    <label>Notes:</label>
-                    <textarea class="notes" data-id="{ad_id}" placeholder="Add review notes..."></textarea>
-                </div>
+            <div class="score-summary">{score_line}</div>
+            {content_html}
+            {tags_html}
+            <div class="notes-row">
+                <div class="field-label">NOTES</div>
+                <textarea class="notes" data-id="{ad_id}" placeholder="Add review notes..."></textarea>
             </div>
         </div>"""
         cards_html.append(card)
+
+    # Status counts
+    n_total = summary["total"]
+    n_approved = summary["verdicts"].get("production_ready", 0)
+    n_edited = summary["verdicts"].get("strong_draft", 0) + summary["verdicts"].get("needs_work", 0)
+    n_rewrite = summary["verdicts"].get("rewrite", 0)
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -144,162 +210,155 @@ def build_html(scored_json_path: str, output_path: str):
 <title>FarmThru Round 3 Review</title>
 <style>
 * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; color: #1a1a1a; padding: 20px; }}
-.header {{ max-width: 1200px; margin: 0 auto 20px; }}
-.header h1 {{ font-size: 24px; margin-bottom: 8px; }}
-.summary {{ display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }}
-.summary-card {{ background: white; border-radius: 8px; padding: 12px 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }}
-.summary-card .label {{ font-size: 12px; color: #666; text-transform: uppercase; }}
-.summary-card .value {{ font-size: 24px; font-weight: 700; }}
-.filters {{ display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }}
-.filters select, .filters button {{ padding: 6px 12px; border: 1px solid #ddd; border-radius: 4px; background: white; cursor: pointer; }}
-.filters button.active {{ background: #2563eb; color: white; border-color: #2563eb; }}
-.cards {{ max-width: 1200px; margin: 0 auto; }}
-.card {{ background: white; border-radius: 8px; margin-bottom: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); overflow: hidden; }}
-.card.status-approved {{ border-left: 4px solid #22c55e; }}
-.card.status-revise {{ border-left: 4px solid #f59e0b; }}
-.card.status-kill {{ border-left: 4px solid #ef4444; }}
-.card-header {{ display: flex; align-items: center; gap: 8px; padding: 12px 16px; cursor: pointer; flex-wrap: wrap; }}
-.card-header:hover {{ background: #f1f5f9; }}
-.card-id {{ font-weight: 700; font-size: 14px; min-width: 70px; }}
-.badge {{ color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }}
-.composite {{ font-family: monospace; font-size: 14px; min-width: 50px; }}
-.type-tag {{ background: #e2e8f0; padding: 2px 6px; border-radius: 3px; font-size: 11px; }}
-.angle-tag {{ background: #fef3c7; padding: 2px 6px; border-radius: 3px; font-size: 11px; }}
-.headline-preview {{ color: #666; font-size: 13px; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }}
-.status-buttons {{ display: flex; gap: 4px; margin-left: auto; }}
-.status-buttons button {{ padding: 4px 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px; cursor: pointer; background: white; }}
-.btn-approve:hover, .btn-approve.active {{ background: #22c55e; color: white; border-color: #22c55e; }}
-.btn-revise:hover, .btn-revise.active {{ background: #f59e0b; color: white; border-color: #f59e0b; }}
-.btn-kill:hover, .btn-kill.active {{ background: #ef4444; color: white; border-color: #ef4444; }}
-.card-body {{ padding: 16px; border-top: 1px solid #eee; }}
-.content-preview {{ margin-bottom: 16px; }}
-.field {{ margin-bottom: 8px; }}
-.field label {{ font-weight: 600; font-size: 12px; color: #666; text-transform: uppercase; display: block; }}
-.field pre {{ white-space: pre-wrap; font-family: inherit; font-size: 14px; line-height: 1.5; margin-top: 4px; background: #f8f9fa; padding: 8px; border-radius: 4px; }}
-.scoring-details {{ margin-top: 12px; }}
-.scoring-details h4 {{ font-size: 13px; margin-bottom: 8px; color: #666; }}
-.dim-row {{ display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }}
-.dim-name {{ font-size: 12px; min-width: 160px; color: #444; }}
-.dim-bar {{ flex: 1; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden; }}
-.dim-fill {{ height: 100%; background: #3b82f6; border-radius: 4px; transition: width 0.3s; }}
-.dim-score {{ font-size: 12px; min-width: 30px; text-align: right; font-family: monospace; }}
-.failures {{ list-style: none; margin-top: 8px; }}
-.fail-item {{ padding: 4px 8px; margin-bottom: 2px; background: #fef2f2; border-radius: 3px; font-size: 12px; color: #991b1b; }}
-.fail-item.critical {{ background: #fee2e2; font-weight: 600; }}
-.facts {{ list-style: none; margin-top: 4px; }}
-.fact-verified {{ color: #166534; font-size: 12px; padding: 2px 8px; }}
-.fact-unverified {{ color: #92400e; font-size: 12px; padding: 2px 8px; background: #fffbeb; }}
-.fact-contradicted {{ color: #991b1b; font-size: 12px; padding: 2px 8px; background: #fef2f2; font-weight: 600; }}
-.notes-section {{ margin-top: 12px; }}
-.notes-section label {{ font-size: 12px; color: #666; font-weight: 600; }}
-.notes {{ width: 100%; height: 60px; margin-top: 4px; padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; font-size: 13px; resize: vertical; }}
-.actions {{ max-width: 1200px; margin: 20px auto; display: flex; gap: 8px; }}
-.actions button {{ padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; }}
-.btn-save {{ background: #2563eb; color: white; }}
-.btn-export {{ background: #059669; color: white; }}
-.btn-expand {{ background: #6b7280; color: white; }}
-.counter {{ max-width: 1200px; margin: 0 auto 16px; font-size: 13px; color: #666; }}
+body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #1a1a1a; padding: 16px 20px; }}
+.header {{ max-width: 1400px; margin: 0 auto 12px; }}
+.header-info {{ font-size: 13px; color: #666; margin-bottom: 10px; }}
+.status-bar {{ display: flex; gap: 12px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }}
+.status-pill {{ padding: 4px 12px; border-radius: 4px; font-size: 13px; font-weight: 500; background: #f0f0f0; }}
+.status-pill.green {{ border: 1.5px solid #22c55e; color: #166534; }}
+.status-pill.blue {{ border: 1.5px solid #3b82f6; color: #1d4ed8; }}
+.status-pill.red {{ border: 1.5px solid #ef4444; color: #991b1b; }}
+.toolbar {{ display: flex; gap: 0; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }}
+.toolbar .sep {{ width: 16px; }}
+.tbtn {{ padding: 6px 14px; border: 1px solid #ddd; background: white; cursor: pointer; font-size: 13px; font-weight: 500; color: #555; }}
+.tbtn:first-child {{ border-radius: 6px 0 0 6px; }}
+.tbtn:last-child {{ border-radius: 0 6px 6px 0; }}
+.tbtn:not(:first-child) {{ border-left: none; }}
+.tbtn.active {{ background: #1a1a1a; color: white; border-color: #1a1a1a; }}
+.toolbar-right {{ margin-left: auto; display: flex; gap: 6px; }}
+.toolbar-right .tbtn {{ border-radius: 6px; border: 1px solid #ddd; }}
+.toolbar-right .tbtn:not(:first-child) {{ border-left: 1px solid #ddd; }}
+.cards {{ max-width: 1400px; margin: 0 auto; }}
+.card {{ background: white; border-radius: 8px; margin-bottom: 12px; padding: 16px 20px; border-left: 4px solid transparent; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }}
+.card.status-approved {{ border-left-color: #22c55e; }}
+.card.status-revise {{ border-left-color: #3b82f6; }}
+.card.status-kill {{ border-left-color: #ef4444; }}
+.card-top {{ display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }}
+.card-id {{ font-weight: 700; font-size: 16px; }}
+.type-badge {{ color: white; padding: 2px 10px; border-radius: 3px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; }}
+.angle-label {{ color: #666; font-size: 13px; }}
+.hl-preview {{ color: #444; font-size: 13px; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }}
+.card-right {{ display: flex; align-items: center; gap: 8px; margin-left: auto; flex-shrink: 0; }}
+.score-circle {{ color: white; font-weight: 700; font-size: 13px; padding: 4px 10px; border-radius: 20px; min-width: 50px; text-align: center; }}
+.verdict-label {{ font-size: 12px; font-weight: 600; color: #666; text-transform: uppercase; min-width: 80px; text-align: center; }}
+.btn {{ padding: 5px 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px; cursor: pointer; background: white; font-weight: 500; }}
+.btn-approve.active {{ background: #22c55e; color: white; border-color: #22c55e; }}
+.btn-revise.active {{ background: #3b82f6; color: white; border-color: #3b82f6; }}
+.btn-kill.active {{ background: #ef4444; color: white; border-color: #ef4444; }}
+.btn:hover {{ opacity: 0.85; }}
+.score-summary {{ font-size: 12px; color: #888; margin-bottom: 12px; }}
+.two-col {{ display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 12px; }}
+.field-label {{ font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }}
+.field-edit {{ width: 100%; padding: 10px; border: 1px solid #e0e0e0; border-radius: 6px; font-family: inherit; font-size: 14px; line-height: 1.6; resize: vertical; color: #1a1a1a; }}
+.field-edit:focus {{ outline: none; border-color: #3b82f6; box-shadow: 0 0 0 2px rgba(59,130,246,0.15); }}
+.field-static {{ font-size: 14px; color: #444; padding: 4px 0; }}
+.char-count {{ font-size: 11px; color: #aaa; text-align: right; margin-top: 2px; }}
+.tags-row {{ display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }}
+.tag {{ background: #f0f0f0; padding: 3px 10px; border-radius: 4px; font-size: 12px; color: #555; }}
+.creative-brief {{ font-size: 13px; color: #777; margin-bottom: 10px; }}
+.notes-row {{ margin-top: 8px; }}
+.notes {{ width: 100%; height: 50px; padding: 8px; border: 1px solid #e0e0e0; border-radius: 6px; font-family: inherit; font-size: 13px; resize: vertical; }}
+.counter {{ max-width: 1400px; margin: 0 auto 12px; font-size: 13px; color: #888; }}
 </style>
 </head>
 <body>
 <div class="header">
-    <h1>FarmThru Round 3 Review</h1>
-    <p style="color:#666;font-size:13px">Generated {datetime.now().strftime("%Y-%m-%d %H:%M")} | {summary['total']} items</p>
-    <div class="summary">
-        <div class="summary-card"><div class="label">Total</div><div class="value">{summary['total']}</div></div>
-        <div class="summary-card"><div class="label">Avg Score</div><div class="value">{summary['avg_composite']:.3f}</div></div>
-        <div class="summary-card"><div class="label">Critical Fails</div><div class="value" style="color:{'#ef4444' if summary['critical_failures'] > 0 else '#22c55e'}">{summary['critical_failures']}</div></div>
-        <div class="summary-card"><div class="label">Production Ready</div><div class="value" style="color:#22c55e">{summary['verdicts'].get('production_ready', 0)}</div></div>
-        <div class="summary-card"><div class="label">Strong Draft</div><div class="value" style="color:#3b82f6">{summary['verdicts'].get('strong_draft', 0)}</div></div>
-        <div class="summary-card"><div class="label">Needs Work</div><div class="value" style="color:#f59e0b">{summary['verdicts'].get('needs_work', 0)}</div></div>
-        <div class="summary-card"><div class="label">Rewrite</div><div class="value" style="color:#ef4444">{summary['verdicts'].get('rewrite', 0)}</div></div>
+    <div class="header-info">{n_total} items | Brand guidelines v1.1 | Hub-and-collect | No named competitors | {summary['critical_failures']} critical failures</div>
+    <div class="status-bar" id="statusBar">
+        <span class="status-pill">{n_total} items</span>
+        <span class="status-pill" id="pillPending">Pending: {n_total}</span>
+        <span class="status-pill green" id="pillApproved">Approved: 0</span>
+        <span class="status-pill blue" id="pillEdited">Edited: 0</span>
+        <span class="status-pill red" id="pillKilled">Killed: 0</span>
     </div>
-    <div class="filters">
-        <select id="filterType" onchange="filterCards()">
-            <option value="all">All types</option>
-            <option value="meta-ad">Meta ads</option>
-            <option value="landing-page">Landing pages</option>
-            <option value="email">Emails</option>
-        </select>
-        <select id="filterVerdict" onchange="filterCards()">
-            <option value="all">All verdicts</option>
-            <option value="production_ready">Production ready</option>
-            <option value="strong_draft">Strong draft</option>
-            <option value="needs_work">Needs work</option>
-            <option value="rewrite">Rewrite</option>
-        </select>
-        <select id="filterStatus" onchange="filterCards()">
-            <option value="all">All statuses</option>
-            <option value="approved">Approved</option>
-            <option value="revise">Revise</option>
-            <option value="kill">Kill</option>
-            <option value="unreviewed">Unreviewed</option>
-        </select>
-        <button class="btn-expand" onclick="expandAll()">Expand all</button>
-        <button class="btn-expand" onclick="collapseAll()">Collapse all</button>
+    <div class="toolbar">
+        <button class="tbtn active" onclick="setFilter('type','all',this)">All</button>
+        <button class="tbtn" onclick="setFilter('type','meta-ad',this)">Ads</button>
+        <button class="tbtn" onclick="setFilter('type','landing-page',this)">Pages</button>
+        <button class="tbtn" onclick="setFilter('type','email',this)">Emails</button>
+        <div class="sep"></div>
+        <button class="tbtn" onclick="setFilter('status','unreviewed',this)">Pending</button>
+        <button class="tbtn" onclick="setFilter('status','approved',this)">Approved</button>
+        <button class="tbtn" onclick="setFilter('status','revise',this)">Edited</button>
+        <button class="tbtn" onclick="setFilter('status','kill',this)">Killed</button>
+        <div class="toolbar-right">
+            <button class="tbtn" onclick="saveJSON()">Save JSON</button>
+            <button class="tbtn" onclick="exportCSV()">CSV</button>
+        </div>
     </div>
 </div>
 <div class="counter" id="counter"></div>
 <div class="cards" id="cards">
     {"".join(cards_html)}
 </div>
-<div class="actions">
-    <button class="btn-save" onclick="saveJSON()">Save review JSON</button>
-    <button class="btn-export" onclick="exportCSV()">Export CSV</button>
-</div>
 <script>
 const statuses = {{}};
 const notes = {{}};
+const filters = {{ type: 'all', status: 'all' }};
 
-function toggleCard(header) {{
-    const body = header.nextElementSibling;
-    body.style.display = body.style.display === 'none' ? 'block' : 'none';
-}}
-
-function setStatus(e, id, status) {{
-    e.stopPropagation();
+function setStatus(id, status, btn) {{
     statuses[id] = status;
     const card = document.querySelector(`[data-id="${{id}}"]`);
     card.className = card.className.replace(/status-\\w+/g, '') + ` status-${{status}}`;
-    // Update button states
-    card.querySelectorAll('.status-buttons button').forEach(b => b.classList.remove('active'));
-    e.target.classList.add('active');
+    card.querySelectorAll('.card-right .btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    updatePills();
     updateCounter();
+}}
+
+function setFilter(group, value, btn) {{
+    filters[group] = value;
+    // Update active state in toolbar
+    if (group === 'type') {{
+        document.querySelectorAll('.toolbar .tbtn').forEach((b, i) => {{
+            if (i < 4) b.classList.remove('active');
+        }});
+    }}
+    btn.classList.add('active');
+    filterCards();
 }}
 
 function filterCards() {{
-    const type = document.getElementById('filterType').value;
-    const verdict = document.getElementById('filterVerdict').value;
-    const status = document.getElementById('filterStatus').value;
     document.querySelectorAll('.card').forEach(c => {{
-        const matchType = type === 'all' || c.dataset.type === type;
-        const matchVerdict = verdict === 'all' || c.dataset.verdict === verdict;
+        const matchType = filters.type === 'all' || c.dataset.type === filters.type;
         const id = c.dataset.id;
-        const matchStatus = status === 'all' ||
-            (status === 'unreviewed' && !statuses[id]) ||
-            statuses[id] === status;
-        c.style.display = matchType && matchVerdict && matchStatus ? '' : 'none';
+        const matchStatus = filters.status === 'all' ||
+            (filters.status === 'unreviewed' && !statuses[id]) ||
+            statuses[id] === filters.status;
+        c.style.display = matchType && matchStatus ? '' : 'none';
     }});
     updateCounter();
 }}
 
-function expandAll() {{ document.querySelectorAll('.card-body').forEach(b => b.style.display = 'block'); }}
-function collapseAll() {{ document.querySelectorAll('.card-body').forEach(b => b.style.display = 'none'); }}
+function updatePills() {{
+    const counts = {{ approved: 0, revise: 0, kill: 0 }};
+    Object.values(statuses).forEach(s => {{ if (counts[s] !== undefined) counts[s]++; }});
+    const total = {n_total};
+    const reviewed = Object.keys(statuses).length;
+    document.getElementById('pillPending').textContent = `Pending: ${{total - reviewed}}`;
+    document.getElementById('pillApproved').textContent = `Approved: ${{counts.approved}}`;
+    document.getElementById('pillEdited').textContent = `Edited: ${{counts.revise}}`;
+    document.getElementById('pillKilled').textContent = `Killed: ${{counts.kill}}`;
+}}
 
 function updateCounter() {{
     const visible = document.querySelectorAll('.card:not([style*="display: none"])').length;
-    const total = document.querySelectorAll('.card').length;
-    const reviewed = Object.keys(statuses).length;
-    document.getElementById('counter').textContent = `Showing ${{visible}}/${{total}} | Reviewed: ${{reviewed}}/${{total}} | Approved: ${{Object.values(statuses).filter(s=>s==='approved').length}} | Revise: ${{Object.values(statuses).filter(s=>s==='revise').length}} | Kill: ${{Object.values(statuses).filter(s=>s==='kill').length}}`;
+    document.getElementById('counter').textContent = `Showing ${{visible}}/{n_total}`;
 }}
 
 function saveJSON() {{
-    // Collect notes from textareas
     document.querySelectorAll('.notes').forEach(n => {{
         if (n.value.trim()) notes[n.dataset.id] = n.value.trim();
     }});
-    const data = {{ statuses, notes, exported: new Date().toISOString() }};
+    // Also collect edited field values
+    const edits = {{}};
+    document.querySelectorAll('.field-edit').forEach(el => {{
+        const id = el.dataset.id;
+        const field = el.dataset.field;
+        if (!edits[id]) edits[id] = {{}};
+        edits[id][field] = el.value;
+    }});
+    const data = {{ statuses, notes, edits, exported: new Date().toISOString() }};
     const blob = new Blob([JSON.stringify(data, null, 2)], {{type: 'application/json'}});
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
@@ -315,7 +374,7 @@ function exportCSV() {{
     document.querySelectorAll('.card').forEach(c => {{
         const id = c.dataset.id;
         csv += `${{id}},${{c.dataset.type}},${{c.dataset.angle}},${{c.dataset.verdict}},` +
-               `${{c.querySelector('.composite').textContent}},${{statuses[id]||'unreviewed'}},` +
+               `${{c.querySelector('.score-circle').textContent}},${{statuses[id]||'pending'}},` +
                `"${{(notes[id]||'').replace(/"/g,'""')}}"\\n`;
     }});
     const blob = new Blob([csv], {{type: 'text/csv'}});
