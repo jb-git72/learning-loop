@@ -1,0 +1,18 @@
+{
+  "page_id": "LP-P",
+  "content_type": "landing-page",
+  "angle": "Comparison & Switching",
+  "hook_type": "statistic",
+  "funnel": "TOF",
+  "headline": "Your supermarket beef travelled 1,500km. Ours travelled 50.",
+  "subhead": "FarmThru connects regenerative farms directly to your kitchen. No warehouses. No middlemen. We're opening investment on Birchal.",
+  "hero_copy": "Most meat sits in cold storage for weeks before it reaches your plate.",
+  "sections": [
+    {"heading": "The supermarket problem", "body": "The average supermarket supply chain moves product through 3-4 warehouses over 2-3 weeks. By the time it's on the shelf, the farmer who raised it has already been paid a fraction of what you're paying. You're covering the logistics. The packaging. The shelf space. Not the farming."},
+    {"heading": "We cut the chain to three steps.", "body": "Farm: 50+ regenerative farms across NSW raise the animals on pasture. Hub: Your order is packed fresh at the Brookvale hub. One stop. No warehouses. Kitchen: On your doorstep in 2-3 days. Sydney, Central Coast, Wollongong."},
+    {"heading": "The difference is in the detail.", "body": "Rachel's Farm Beef: Grass-fed on 500 acres in Kempsey. You can visit the farm. Try that with Coles. Pasture-Raised Chicken: Slow grown on open pasture. Not a shed. Not a factory. A paddock. Wild-Caught Salmon: Never farmed. Caught off the coast and delivered before supermarket stock even ships."},
+    {"heading": "Get first access to invest.", "body": "Place a refundable $5 deposit to secure VIP status. VIP investors get priority access and early notice before the campaign opens to the public. Fully refundable at any time. Not financial advice. Disclosure document on Birchal."}
+  ],
+  "cta": "Save My Spot",
+  "creative_brief": "Side-by-side comparison visual. Supply chain diagram. Product photography with provenance labels."
+}

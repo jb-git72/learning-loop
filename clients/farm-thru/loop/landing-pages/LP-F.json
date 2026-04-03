@@ -1,0 +1,19 @@
+{
+  "page_id": "LP-F",
+  "content_type": "landing-page",
+  "angle": "Empathy & Founder",
+  "hook_type": "confession",
+  "funnel": "TOF",
+  "headline": "I started FarmThru because my kids deserved better than supermarket meat.",
+  "subhead": "We deliver regenerative beef, chicken, and salmon straight from the farm to your kitchen. Days old, not weeks.",
+  "hero_copy": "A letter from the founder of FarmThru.",
+  "sections": [
+    {"heading": "Why I built FarmThru.", "body": "I used to buy everything from Woolworths. Then I started asking: why does this chicken taste like nothing? Why is this beef grey after two days? What I found was a broken system. Farmers get squeezed on price. Produce sits in cold storage for weeks. By the time it hits your fridge, the flavour and nutrition are gone."},
+    {"heading": "We believe", "body": "\"We believe everyone deserves access to food they can trust. Not just people who can afford farmers' markets on Saturday mornings.\""},
+    {"heading": "Farm to kitchen in three steps.", "body": "Browse 50+ farm partners. We pack fresh from Brookvale. Delivered to your door. Delivering across Sydney, Central Coast, and Wollongong. 100% Regenerative. Pasture-Raised. No Middlemen."},
+    {"heading": "I put everything into building this. All I'm asking for is your email.", "body": "Join the waitlist. You'll be first to know when FarmThru opens investment to the public. No commitment. Free to join. Not financial advice. A disclosure document will be available on Birchal."},
+    {"heading": "Get first access to invest.", "body": "Place a refundable $5 deposit to secure VIP status. Fully refundable at any time."}
+  ],
+  "cta": "Join the Waitlist",
+  "creative_brief": "Dark hero background, founder voice. Certification badges (Regenerative, Pasture-Raised, No Middlemen)."
+}

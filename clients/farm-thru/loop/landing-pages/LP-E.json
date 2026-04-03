@@ -1,0 +1,19 @@
+{
+  "page_id": "LP-E",
+  "content_type": "landing-page",
+  "angle": "Transparency & Safety",
+  "hook_type": "confession",
+  "funnel": "TOF",
+  "headline": "We can't promise returns. Here's what we can show you.",
+  "subhead": "$50 minimum. Capped at $10K. Full disclosure before you commit a cent.",
+  "hero_copy": "This page is the introduction. The disclosure document on Birchal is where the real information lives.",
+  "sections": [
+    {"heading": "Cited facts. No spin.", "body": "$130B Australian grocery market (IBISWorld, 2024). 50+ Partner farms across NSW (FarmThru, verified). 3 Delivery areas and growing (Sydney, Central Coast, Wollongong)."},
+    {"heading": "Here's What We Don't Know", "body": "We don't know if FarmThru will succeed. Most startups don't. That's the honest truth. We don't know what returns look like. Nobody honestly can at this stage. Anyone who tells you otherwise is selling something. We do know this: the disclosure document on Birchal will have full financials, use of funds, and risk factors. You'll see everything before committing a cent."},
+    {"heading": "Here's why people are signing up anyway.", "body": "They're customers who want the product to exist. They want priority access when the raise goes live. They believe in regenerative agriculture. Every purchase supports farms that nourish their soils and raise animals on pasture."},
+    {"heading": "Four steps. No surprises.", "body": "Sign up now: Free. No commitment. Takes 10 seconds. We notify you when the Birchal campaign goes live. Read the disclosure: Full financials. Full risk factors. Everything you need to make an informed decision. Invest from $50 if it makes sense for you. No pressure. No deadline tricks."},
+    {"heading": "Get first access to invest.", "body": "Place a refundable $5 deposit to secure VIP status. Fully refundable at any time. Not financial advice. Consider seeking independent financial advice."}
+  ],
+  "cta": "Join the Waitlist",
+  "creative_brief": "Clean, minimal design. Trust chips in hero ($50 minimum, $10K cap, Birchal disclosure). Fact cards with citations."
+}

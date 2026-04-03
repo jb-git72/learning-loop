@@ -1,0 +1,18 @@
+{
+  "page_id": "LP-N",
+  "content_type": "landing-page",
+  "angle": "Investment Thesis",
+  "hook_type": "statistic",
+  "funnel": "TOF",
+  "headline": "50+ farms. 2,000+ customers. Now opening to investors.",
+  "subhead": "FarmThru delivers regenerative beef, chicken, and salmon from farm to kitchen in days. The equity crowdfunding campaign opens on Birchal in July.",
+  "hero_copy": "Traction metrics. Market opportunity. Investment terms.",
+  "sections": [
+    {"heading": "What we've built so far.", "body": "50+ Regenerative partner farms across NSW. 2,000+ Active customers receiving orders. 2-3 days Farm to kitchen delivery time."},
+    {"heading": "Australia's grocery market is worth $130 billion.", "body": "Regenerative agriculture is growing. Consumer demand for traceable, ethical food is growing faster. FarmThru connects regenerative farms directly to households, cutting out the middlemen who add cost and delay. The Birchal campaign lets everyday Australians invest from $50, capped at $10K per person."},
+    {"heading": "From the farm to your kitchen.", "body": "Browse: Pick from 50+ regenerative farms across NSW. We pack: Your order is packed fresh at the Brookvale hub. Delivered: On your doorstep within days. Sydney, Central Coast, Wollongong."},
+    {"heading": "Get first access to invest.", "body": "Place a refundable $5 deposit to secure VIP status. VIP investors get priority access and early notice before the campaign opens to the public. Fully refundable at any time. Not financial advice. Disclosure document on Birchal."}
+  ],
+  "cta": "Join the Waitlist",
+  "creative_brief": "Data-led design. Fact cards with large numbers. Trust stats: $50 Minimum, $10K Cap, Birchal Licensed."
+}
