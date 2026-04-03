@@ -1,0 +1,27 @@
+commit	composite	rubric	rules	facts	status	slot	ad_id	description
+9ccbd2c	0.8969	53.0	1.00	0.91	keep	outcome-results--story	OR-101	story hook dental save, tightened to 489 chars
+7cd9976	0.8567	49.8	1.00	0.82	keep	price-value--if_then	PV-101	if/then hook, itemised cost breakdown
+7cd9976	0.8630	50.2	1.00	0.86	keep	empathy-understanding--quoted_objection	EU-101	quoted objection love/dread, 76% stat
+7cd9976	0.8245	47.0	0.94	0.82	keep	anti-insurance--confession	AI-101	confession hook, premium increase story
+ab9f4f9	0.8412	46.5	1.00	0.82	keep	safety-risk--confession	SR-101	confession hook, 2am Google story
+ab9f4f9	0.8491	48.8	1.00	0.86	keep	simplicity-clarity--bold_claim	SC-101	bold claim, one fee everything covered
+ab9f4f9	0.8347	45.0	1.00	0.82	keep	guilt-free--story	GF-101	story hook, cat off food, guilt
+ab9f4f9	0.9008	53.5	1.00	0.91	keep	outcome-results--quoted_objection	OR-102	quoted objection, too good to be true, $800-$1300 savings
+327dec3	0.8563	50.5	1.00	0.82	discard	outcome-results--story	OR-103	story hook allergy dog, did not beat OR-102
+327dec3	0.8340	44.0	1.00	0.86	keep	anti-insurance--contrarian	AI-102	contrarian hook, insurance doesn't cover routine
+327dec3	0.8280	46.0	1.00	0.82	keep	predictability-control--question	PC-101	question hook, unpredictability is the problem
+327dec3	0.8588	50.5	1.00	0.82	keep	price-value--statistic	PV-102	statistic hook, $800-$1300 anchor, beats PV-101
+180f6cd	0.8391	47.0	1.00	0.82	discard	empathy-understanding--story	EU-102	story hook friend tears, did not beat EU-101
+180f6cd	0.7878	40.0	0.94	0.82	discard	empathy-understanding--confession	EU-103	confession hook, 76% stat, body 2 chars over
+180f6cd	0.8792	52.0	1.00	0.82	keep	simplicity-clarity--question	SC-102	question hook what if one fee, beats SC-101
+180f6cd	0.8455	49.0	1.00	0.82	discard	outcome-results--statistic	OR-104	statistic hook $800-$1300 saved, did not beat OR-102
+e8ef0d0	0.8718	51.0	1.00	0.82	discard	outcome-results--if_then	OR-105	if/then two visits, did not beat OR-102
+e8ef0d0	0.8475	48.0	1.00	0.82	keep	guilt-free--confession	GF-102	confession delayed booking, 74% stat, beats GF-101
+e8ef0d0	0.8324	46.0	1.00	0.82	discard	empathy-understanding--direct_address	EU-104	direct address love/dread/not alone, did not beat EU-101
+e8ef0d0	0.8475	48.0	1.00	0.82	keep	predictability-control--bold_claim	PC-102	bold claim $50 entire budget, beats PC-101
+32fc28b	0.7890	52.2	1.00	0.82	keep	price-value--pattern_interrupt	PV-201	pattern interrupt "not pet insurance", LLM angle=5
+32fc28b	0.7090	47.0	1.00	0.82	keep	empathy-understanding--story	EU-201	peer recommendation story, friend told me
+32fc28b	0.7090	47.0	1.00	0.82	keep	safety-risk--question	SR-201	question "when did pet last see vet"
+32fc28b	0.7210	47.8	1.00	0.82	keep	outcome-results--direct_address	OR-201	direct address "you spend $800/yr"
+32fc28b	0.6560	45.8	0.94	0.82	keep	anti-insurance--if_then	AI-201	if/then "check what insurance covers"
+32fc28b	0.7770	51.5	1.00	0.82	keep	simplicity-clarity--story	SC-201	story "signed up Tuesday, vet Wednesday, $0"

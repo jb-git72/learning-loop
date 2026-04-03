@@ -1,0 +1,131 @@
+{
+  "extends": "universal",
+  "rules": [
+    {
+      "rule_id": "BFP-001",
+      "name": "no_vet_villain",
+      "severity": "critical",
+      "type": "regex_absent",
+      "description": "Never make the vet the villain. The system is the problem, not the local vet. Damages the clinic network trust.",
+      "patterns": [
+        "paying \\$\\d+ just to be told",
+        "ripped off by",
+        "vets overcharge",
+        "vet(s)? (are|is) (ripping|gouging|fleecing)",
+        "your vet charges",
+        "vet(s)? (take|steal|grab) your money"
+      ],
+      "rationale": "VetPartners owns the clinics. Making vets look bad undermines the network that delivers the product."
+    },
+    {
+      "rule_id": "BFP-002",
+      "name": "no_time_bound_claims",
+      "severity": "high",
+      "type": "regex_absent",
+      "description": "No time-bound claims that break when the ad runs past the date. Use visit-count framing instead.",
+      "patterns": [
+        "before (Easter|Christmas|New Year|end of|summer|winter|spring|autumn)",
+        "this (week|month|weekend|fortnight)",
+        "limited time",
+        "offer ends",
+        "act (now|fast|quickly|today)",
+        "don't miss out",
+        "hurry",
+        "only \\d+ (days?|hours?|spots?) left"
+      ],
+      "rationale": "Evergreen ads must not contain time-sensitive language. 'Before Easter' shown in May breaks trust."
+    },
+    {
+      "rule_id": "BFP-003",
+      "name": "no_geographic_specificity",
+      "severity": "high",
+      "type": "regex_absent",
+      "description": "No city or region names in ad copy. Geo-targeting is handled at ad set level, not in creative.",
+      "patterns": [
+        "(dog|cat|pet) owners? in (Sydney|Melbourne|Brisbane|Perth|Adelaide|Canberra|Hobart|Darwin|Gold Coast)",
+        "(?i)(sydne|melbourn|brisban|perth|adelaid|canberr|hobart|darwin|gold coast|newcastle|wollongong|geelong|cairns|townsville|sunshine coast)"
+      ],
+      "rationale": "Ads are geo-targeted at platform level. City names in copy limit creative reuse and can feel invasive."
+    },
+    {
+      "rule_id": "BFP-004",
+      "name": "clinic_count_current",
+      "severity": "high",
+      "type": "regex_absent",
+      "description": "Block outdated clinic count '190+ clinics'. Current approved figure is '270+ clinics'.",
+      "patterns": [
+        "190\\+? (clinics|vets|vet clinics|locations|practices)",
+        "over 190",
+        "more than 190"
+      ],
+      "rationale": "Clinic count updated from 190+ to 270+. Outdated figures understate the network and contradict current marketing materials.",
+      "replacement_guidance": "Use '270+ clinics' or '270+ participating clinics'"
+    },
+    {
+      "rule_id": "BFP-005",
+      "name": "low_risk_trio_present",
+      "severity": "high",
+      "type": "custom_check",
+      "description": "Body copy must contain all three low-risk signals: 'no joining fee' AND 'no waiting period' AND 'cancel anytime'. These pre-empt the top three objections.",
+      "required_phrases": [
+        "no joining fee",
+        "no waiting period",
+        "cancel anytime"
+      ],
+      "match_mode": "all_required",
+      "case_sensitive": false,
+      "rationale": "The low-risk trio was distilled from 6 review cycles. Omitting any one leaves a major objection unaddressed. Always close with all three together."
+    },
+    {
+      "rule_id": "BFP-006",
+      "name": "not_insurance_disclaimer",
+      "severity": "high",
+      "type": "regex_present",
+      "description": "Every ad must contain a 'not insurance' or equivalent disclaimer. Failure to distinguish from insurance is misleading.",
+      "patterns": [
+        "not insurance",
+        "isn't insurance",
+        "is not insurance",
+        "this isn't insurance",
+        "it's not insurance",
+        "it is not insurance",
+        "wellness plan.{0,20}not.{0,10}insurance",
+        "no claims?.{0,10}no excess"
+      ],
+      "case_sensitive": false,
+      "rationale": "Best for Pet is a wellness plan, NOT insurance. Misidentification risks consumer confusion and regulatory issues under Australian Consumer Law."
+    },
+    {
+      "rule_id": "BFP-007",
+      "name": "no_subscription_language",
+      "severity": "medium",
+      "type": "regex_absent",
+      "description": "Avoid 'subscription' and 'subscribe'. Use 'plan' or 'membership' instead to avoid subscription fatigue.",
+      "patterns": [
+        "\\bsubscri(be|ption|bing)\\b"
+      ],
+      "case_sensitive": false,
+      "rationale": "Consumer research shows subscription fatigue is real. 'Plan' and 'membership' tested better. 'One monthly fee' is the preferred framing.",
+      "replacement_guidance": "Use 'plan', 'membership', or 'one monthly fee'"
+    },
+    {
+      "rule_id": "BFP-008",
+      "name": "no_guilt_piling",
+      "severity": "high",
+      "type": "regex_absent",
+      "description": "Do not pile guilt on the audience. They already feel guilty about delayed care (74% report guilt). Offer relief, not more shame.",
+      "patterns": [
+        "\\bworried\\?",
+        "\\bscared\\?",
+        "can't afford\\?",
+        "are you (neglecting|failing|ignoring)",
+        "your pet (deserves|needs) better",
+        "don't you (care|want|think)",
+        "what kind of (owner|parent)",
+        "you (should|must) (feel|be) (bad|guilty|ashamed)"
+      ],
+      "case_sensitive": false,
+      "rationale": "100% of pet parents report guilt. 74% felt guilty after delaying care. The audience needs the barrier removed, not more shame. Relief > guilt."
+    }
+  ]
+}

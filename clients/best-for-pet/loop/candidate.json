@@ -1,0 +1,12 @@
+{
+  "ad_id": "PV-101",
+  "angle": "price-value",
+  "tactic": "cost-of-inaction",
+  "hook_type": "if_then",
+  "funnel": "TOF",
+  "primary_text": "If your pet sees the vet twice a year, you are already paying more than Best for Pet costs.\n\nTwo standard consults: $260 to $300. Add vaccinations ($95), a dental check ($350+), and parasite prevention ($120+). You are looking at $800 to $1,300 a year in routine care.\n\nBest for Pet: $50 a month. Unlimited consults. All vaccinations. $250 off dental. Annual blood and urine tests. Plus 24/7 virtual vet access.\n\nNot insurance. No claims. No excess.\n\nNo joining fee. No waiting period. Cancel anytime.\n\nFind a participating clinic near you.",
+  "headline": "Two vet visits a year? You are paying too much.",
+  "description": "$50/month covers unlimited consults, all vaccinations, $250 off dental. Not insurance.",
+  "cta": "Find a participating clinic near you",
+  "creative_brief": "Calculator visual. Left: itemised vet costs stacking up. Right: single line $50/month with checkmarks."
+}

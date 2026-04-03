@@ -1,0 +1,124 @@
+{
+  "version": "1.0",
+  "description": "Canonical ad JSON schema. All ads — input and output — conform to this format. Client-specific field constraints (e.g., approved CTA list, angle IDs) live in clients/<client>/config.json.",
+  "required_fields": ["ad_id", "angle", "hook_type", "funnel", "primary_text", "headline", "cta"],
+  "optional_fields": ["tactic", "format", "description", "creative_brief", "motivation", "status", "feedback", "scores", "version_of", "round"],
+  "field_definitions": {
+    "ad_id": {
+      "type": "string",
+      "description": "Unique identifier. Convention: angle-prefix + sequence number (e.g., PV-03, EU-07, AI-01).",
+      "example": "PV-03"
+    },
+    "angle": {
+      "type": "string",
+      "description": "Strategic angle from the creative-strategy-framework. Use the human-readable name, not the ID (e.g., 'Price & Value', not 'price-value'). Must match a valid angle in the client config.",
+      "example": "Price & Value"
+    },
+    "hook_type": {
+      "type": "string",
+      "description": "Hook type used in the opening line. Common types: Question, Statistic, Bold claim, Confession, Contrarian, If/then, Story, Pattern interrupt, Quoted objection.",
+      "example": "Confession"
+    },
+    "funnel": {
+      "type": "string",
+      "enum": ["TOF", "MOF", "BOF"],
+      "description": "Funnel stage the ad targets. TOF = top of funnel (cold/awareness), MOF = mid funnel (consideration), BOF = bottom of funnel (conversion)."
+    },
+    "primary_text": {
+      "type": "string",
+      "description": "Main body copy shown above the creative in Meta feed placements. Max 500 characters recommended. This is the primary field all rules and rubric dimensions evaluate.",
+      "max_length": 500
+    },
+    "headline": {
+      "type": "string",
+      "description": "Bold headline shown below the creative image/video. Should be concise and reinforce the angle. Max 40 characters recommended for full visibility.",
+      "max_length": 40
+    },
+    "cta": {
+      "type": "string",
+      "description": "Call-to-action button text. Must match a platform-supported CTA (e.g., 'Learn More', 'Sign Up', 'Shop Now', 'Get Offer').",
+      "example": "Learn More"
+    },
+    "tactic": {
+      "type": "string",
+      "description": "Execution tactic from the creative-strategy-framework (e.g., 'cost-of-inaction', 'before-after', 'social-proof', 'educational'). Maps to one of the 16 canonical tactics.",
+      "example": "cost-of-inaction"
+    },
+    "format": {
+      "type": "string",
+      "description": "Creative format and production style (e.g., 'static (receipt split-screen)', 'carousel (4 cards)', 'video (15s, UGC)').",
+      "example": "static (receipt split-screen)"
+    },
+    "motivation": {
+      "type": "string",
+      "enum": ["Functional", "Emotional", "Social"],
+      "description": "Primary buying motivation the ad targets. Functional = solve a problem. Emotional = change how I feel. Social = what others think of me."
+    },
+    "description": {
+      "type": "string",
+      "description": "Secondary text shown below the headline in some placements. Keep under 30 characters for full visibility. Optional but recommended.",
+      "max_length": 30
+    },
+    "creative_brief": {
+      "type": "string",
+      "description": "Production direction for the creative asset. Describes the visual treatment, layout, imagery, and how copy and creative work together."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "pending", "approved", "revision_needed", "rejected", "production"],
+      "description": "Current lifecycle status. 'draft' = auto-generated, not reviewed. 'pending' = awaiting review. 'approved' = passed review. 'revision_needed' = feedback provided, needs rewrite. 'rejected' = will not be used. 'production' = live or ready to launch.",
+      "default": "draft"
+    },
+    "feedback": {
+      "type": "string",
+      "description": "Human or LLM reviewer feedback. Free text. Empty string if no feedback yet."
+    },
+    "scores": {
+      "type": "object",
+      "description": "Rubric scores from the evaluation engine. Keys are dimension IDs, values are 1-5 integers. Includes 'weighted_total' and 'grade' summary fields.",
+      "example": {
+        "angle_clarity": 4,
+        "motivation_match": 3,
+        "tactic_execution": 4,
+        "specificity": 5,
+        "objection_preemption": 4,
+        "receptionist_test": 5,
+        "scroll_stop_hook": 3,
+        "cta_clarity": 4,
+        "platform_fit": 4,
+        "differentiation": 4,
+        "weighted_total": 53.25,
+        "grade": "production_ready"
+      }
+    },
+    "version_of": {
+      "type": "string",
+      "description": "If this ad is a revision, the ad_id of the original it revises. Null or absent for originals.",
+      "example": "PV-03"
+    },
+    "round": {
+      "type": "integer",
+      "description": "Review round number. 1 = first draft, 2 = first revision, etc. Increments each time the ad goes through the review loop.",
+      "default": 1
+    }
+  },
+  "example": {
+    "ad_id": "AI-01",
+    "angle": "Anti-Insurance",
+    "hook_type": "Confession",
+    "funnel": "MOF",
+    "tactic": "social-proof",
+    "format": "static (UGC-style quote card)",
+    "motivation": "Emotional",
+    "primary_text": "I cancelled my pet insurance after the second premium increase...",
+    "headline": "I cancelled pet insurance. Then I found this.",
+    "description": "$50/month. Unlimited consults, vaccinations, $250 off dental.",
+    "cta": "Learn More",
+    "creative_brief": "UGC-style quote card with pull-quote and side-by-side comparison.",
+    "status": "pending",
+    "feedback": "",
+    "scores": null,
+    "version_of": null,
+    "round": 1
+  }
+}

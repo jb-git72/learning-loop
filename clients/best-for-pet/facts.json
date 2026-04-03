@@ -1,0 +1,552 @@
+{
+  "client_id": "best-for-pet",
+  "last_verified": "2026-04-01",
+  "facts": [
+    {
+      "fact_id": "F-001",
+      "category": "pricing",
+      "claim": "Plan costs $50/month per pet",
+      "claim_patterns": ["$50/month", "$50 per month", "$50/mo", "$50 a month", "$600/year", "$600 per year", "$600/yr"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-002",
+      "category": "pricing",
+      "claim": "10% discount on 2nd+ pet",
+      "claim_patterns": ["10% discount", "10% off", "second pet", "2nd pet", "multi-pet", "additional pet"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-003",
+      "category": "pricing",
+      "claim": "No joining fee",
+      "claim_patterns": ["no joining fee", "no sign-up fee", "no signup fee", "no sign up fee", "free to join", "no upfront cost"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-004",
+      "category": "pricing",
+      "claim": "No waiting period — benefits start immediately",
+      "claim_patterns": ["no waiting period", "no wait period", "starts immediately", "coverage starts immediately", "benefits start immediately", "immediate coverage", "start straight away", "covered straight away", "covered from day one"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-005",
+      "category": "pricing",
+      "claim": "No lock-in contract — cancel anytime",
+      "claim_patterns": ["cancel anytime", "cancel any time", "no lock-in", "no lock in", "no contract", "month-to-month", "month to month", "no commitment"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-006",
+      "category": "pricing",
+      "claim": "Payment is monthly (card or direct debit)",
+      "claim_patterns": ["monthly payment", "card or direct debit", "pay monthly", "monthly debit"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-010",
+      "category": "inclusions",
+      "claim": "Unlimited standard vet consultations (up to 20 min, during standard hours)",
+      "claim_patterns": ["unlimited vet consult", "unlimited consult", "unlimited vet visit", "unlimited standard consult", "as many consults as", "as many vet visits as", "unlimited check-up", "unlimited checkup"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31",
+      "contradicts_if": "(after[- ]hours|emergency) consult.*(included|covered|unlimited)"
+    },
+    {
+      "fact_id": "F-011",
+      "category": "inclusions",
+      "claim": "Unlimited vet nurse consultations",
+      "claim_patterns": ["unlimited nurse consult", "unlimited vet nurse", "nurse consultations included", "nurse visits included"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-012",
+      "category": "inclusions",
+      "claim": "24/7 VetChat — virtual consultations via text or video",
+      "claim_patterns": ["VetChat", "Vet Chat", "24/7", "virtual consult", "text or video", "video consult", "online vet", "talk to a vet anytime"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-013",
+      "category": "inclusions",
+      "claim": "All routine vaccinations and boosters included",
+      "claim_patterns": ["vaccination", "vaccinations included", "boosters included", "all vaccinations", "routine vaccinations", "annual vaccinations"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-014",
+      "category": "inclusions",
+      "claim": "$250 off dental procedures",
+      "claim_patterns": ["$250 off dental", "$250 dental", "250 off dental", "dental discount", "dental procedures"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31",
+      "contradicts_if": "dental (included|covered|free)(?!.*\\$250)"
+    },
+    {
+      "fact_id": "F-015",
+      "category": "inclusions",
+      "claim": "Annual blood test included",
+      "claim_patterns": ["annual blood test", "yearly blood test", "blood test included", "blood screening"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-016",
+      "category": "inclusions",
+      "claim": "Annual urine test included",
+      "claim_patterns": ["annual urine test", "yearly urine test", "urine test included", "urine screening"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-017",
+      "category": "inclusions",
+      "claim": "Microchip included",
+      "claim_patterns": ["microchip included", "microchipping included", "free microchip", "microchip covered"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-018",
+      "category": "inclusions",
+      "claim": "4 nail trims per year",
+      "claim_patterns": ["4 nail trims", "four nail trims", "nail trims included", "nail trims per year", "nail clips"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-019",
+      "category": "inclusions",
+      "claim": "2 nights cat boarding per year",
+      "claim_patterns": ["cat boarding", "2 nights boarding", "two nights boarding", "boarding included"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-020",
+      "category": "inclusions",
+      "claim": "20% off desexing",
+      "claim_patterns": ["20% off desexing", "desexing discount", "20% desexing", "desexing included"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-021",
+      "category": "inclusions",
+      "claim": "10% off parasite and heartworm prevention",
+      "claim_patterns": ["10% off parasite", "parasite prevention discount", "heartworm prevention discount", "10% off heartworm", "parasite discount"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-022",
+      "category": "inclusions",
+      "claim": "10% off food and accessories",
+      "claim_patterns": ["10% off food", "food discount", "accessories discount", "10% off accessories"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-030",
+      "category": "exclusions",
+      "claim": "NOT insurance — does not cover emergencies, accidents, or illness",
+      "claim_patterns": ["not insurance", "isn't insurance", "does not cover emergencies", "doesn't cover emergencies", "not an insurance", "wellness plan not insurance"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31",
+      "contradicts_if": "(covers?|included?).*(emergenc|accident|illness|surgery|specialist)"
+    },
+    {
+      "fact_id": "F-031",
+      "category": "exclusions",
+      "claim": "Does not cover specialist referrals",
+      "claim_patterns": ["specialist referral", "specialist included", "specialist covered"],
+      "source": "bestforpet.com.au/wellness-plan/ (inferred from what IS covered)",
+      "confidence": "MEDIUM",
+      "last_verified": "2026-03-31",
+      "contradicts_if": "specialist.*(included|covered|free)"
+    },
+    {
+      "fact_id": "F-032",
+      "category": "exclusions",
+      "claim": "Does not cover after-hours or emergency consultations",
+      "claim_patterns": ["after-hours consult", "after hours consult", "emergency consult"],
+      "source": "bestforpet.com.au/wellness-plan/ (consultations are standard hours per F-010)",
+      "confidence": "MEDIUM",
+      "last_verified": "2026-03-31",
+      "contradicts_if": "(after[- ]hours|emergency) (consult|visit).*(included|covered|free|unlimited)"
+    },
+    {
+      "fact_id": "F-033",
+      "category": "exclusions",
+      "claim": "Does not cover surcharges (after-hours, emergency, etc.)",
+      "claim_patterns": ["surcharge", "after-hours fee", "emergency fee"],
+      "source": "bestforpet.com.au/wellness-plan/ (inferred from plan terms)",
+      "confidence": "MEDIUM",
+      "last_verified": "2026-03-31",
+      "contradicts_if": "(surcharge|after[- ]hours fee|emergency fee).*(included|covered|waived)"
+    },
+    {
+      "fact_id": "F-034",
+      "category": "exclusions",
+      "claim": "No claims process — not insurance, not health cover",
+      "claim_patterns": ["no claims", "no claims forms", "no claims process", "no excess", "no pre-approval"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-035",
+      "category": "exclusions",
+      "claim": "Complements pet insurance — does not replace it",
+      "claim_patterns": ["complements insurance", "alongside insurance", "on top of insurance", "with insurance", "doesn't replace insurance", "does not replace insurance"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31",
+      "contradicts_if": "(replaces?|instead of|better than|forget) (pet )?insurance"
+    },
+    {
+      "fact_id": "F-040",
+      "category": "savings",
+      "claim": "Members save $800-$1,300 per year on average",
+      "claim_patterns": ["save $800", "save $1,300", "save $1300", "$800-$1,300", "$800 to $1,300", "$800-1,300", "save up to $1,300", "save up to $1300", "save over $800", "$800+", "save hundreds"],
+      "source": "bestforpet.com.au (hero / marketing materials)",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31",
+      "value_range": {"min": 800, "max": 1300, "unit": "AUD/year"},
+      "contradicts_if": "save \\$(1[3-9]\\d{2}|[2-9]\\d{3}|\\d{5,})"
+    },
+    {
+      "fact_id": "F-041",
+      "category": "savings",
+      "claim": "Standard vet consultation costs $130-$150 without the plan",
+      "claim_patterns": ["$130", "$150", "$130-$150", "$130 to $150", "consult costs", "consultation costs", "consult fee", "consultation fee"],
+      "source": "bestforpet.com.au / industry pricing",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31",
+      "value_range": {"min": 130, "max": 150, "unit": "AUD/visit"},
+      "contradicts_if": "consult.*(\\$[2-9]\\d{2}|\\$\\d{4})"
+    },
+    {
+      "fact_id": "F-042",
+      "category": "savings",
+      "claim": "Annual vaccinations cost approximately $95 without the plan",
+      "claim_patterns": ["$95", "vaccinations cost", "vaccination costs", "annual vaccination"],
+      "source": "Ad copy product facts table; bestforpet.com.au pricing comparisons",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-043",
+      "category": "savings",
+      "claim": "Dental procedures cost $350+ without the plan",
+      "claim_patterns": ["$350", "dental cost", "dental procedure cost", "dental costs"],
+      "source": "Ad copy product facts table; bestforpet.com.au pricing comparisons",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-044",
+      "category": "savings",
+      "claim": "Parasite prevention costs approximately $120+/year without the plan",
+      "claim_patterns": ["$120", "parasite prevention cost", "parasite cost", "heartworm cost"],
+      "source": "Ad copy product facts table; bestforpet.com.au pricing comparisons",
+      "confidence": "MEDIUM",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-045",
+      "category": "savings",
+      "claim": "Annual blood test costs approximately $80+ without the plan",
+      "claim_patterns": ["$80", "blood test cost", "blood test costs"],
+      "source": "Ad copy cost breakdown (used in AD1 receipt calculation)",
+      "confidence": "MEDIUM",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-046",
+      "category": "savings",
+      "claim": "Itemised annual cost without plan: approximately $1,035-$1,095+ (3 consults + vaccinations + dental + parasite + blood test)",
+      "claim_patterns": ["$1,035", "$1,095", "$1035", "$1095", "itemised", "receipt"],
+      "source": "Calculated in AD1 ad copy from individual price points (F-041 through F-045)",
+      "confidence": "MEDIUM",
+      "last_verified": "2026-03-31",
+      "value_range": {"min": 1035, "max": 1095, "unit": "AUD/year"},
+      "note": "Composite figure based on individual estimates. Not directly stated on website. Only use in receipt-style ads with full itemised breakdown."
+    },
+    {
+      "fact_id": "F-047",
+      "category": "savings",
+      "claim": "Healthy pets still cost $700+/year at the vet (vaccinations + dental + parasite + occasional consult)",
+      "claim_patterns": ["$700", "healthy pet", "healthy pets cost"],
+      "source": "Calculated in AD4 ad copy from individual price points",
+      "confidence": "MEDIUM",
+      "last_verified": "2026-03-31",
+      "note": "Composite figure, lower bound, conservative estimate. Use in empathy/objection-handling angle only."
+    },
+    {
+      "fact_id": "F-050",
+      "category": "network",
+      "claim": "270+ clinics participate in the Best for Pet wellness plan across Australia",
+      "claim_patterns": ["270+ clinics", "270 clinics", "over 270", "270+"],
+      "source": "Updated marketing materials (supersedes website '190+' figure)",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-01",
+      "note": "Updated figure. Website still shows 190+ but ad copy rules require 270+ per BFP-004."
+    },
+    {
+      "fact_id": "F-051",
+      "category": "network",
+      "claim": "250+ VetPartners clinics across Australia (total network, not all on Best for Pet)",
+      "claim_patterns": ["250+ clinics", "250 clinics", "over 250"],
+      "source": "Google Search RSA copy in creative-strategy.md",
+      "confidence": "MEDIUM",
+      "last_verified": "2026-03-31",
+      "note": "May include clinics not yet on the wellness plan. Prefer F-050 for wellness plan specifically."
+    },
+    {
+      "fact_id": "F-052",
+      "category": "network",
+      "claim": "VetPartners operates 300+ clinics across AU, NZ, and SG (total corporate network)",
+      "claim_patterns": ["300+ clinics", "300 clinics", "over 300"],
+      "source": "creative-strategy.md situation analysis; CLAUDE.md project description",
+      "confidence": "MEDIUM",
+      "last_verified": "2026-03-31",
+      "note": "Includes NZ and SG clinics, not just AU. Only use when referring to total VetPartners network."
+    },
+    {
+      "fact_id": "F-053",
+      "category": "network",
+      "claim": "VetPartners is the parent company of the clinic network",
+      "claim_patterns": ["VetPartners", "Vet Partners", "parent company"],
+      "source": "bestforpet.com.au; public information",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-054",
+      "category": "network",
+      "claim": "VetPartners was acquired by EQT for approximately $1.4 billion",
+      "claim_patterns": ["$1.4 billion", "EQT", "acquired"],
+      "source": "Public reporting (financial press)",
+      "confidence": "MEDIUM",
+      "last_verified": "2026-03-31",
+      "note": "Internal strategy context only. Never use in consumer-facing ads."
+    },
+    {
+      "fact_id": "F-055",
+      "category": "network",
+      "claim": "Markets served: Australia, New Zealand, Singapore",
+      "claim_patterns": ["Australia", "New Zealand", "Singapore", "AU, NZ, SG"],
+      "source": "bestforpet.com.au; CLAUDE.md",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-056",
+      "category": "network",
+      "claim": "267 VetPartners corporate clinics (specific count)",
+      "claim_patterns": ["267 clinics", "267 vet"],
+      "source": "UNVERIFIED",
+      "confidence": "LOW",
+      "last_verified": "2026-03-31",
+      "note": "Referenced in task brief but not found in any source document. Do not use until verified."
+    },
+    {
+      "fact_id": "F-060",
+      "category": "social_proof",
+      "claim": "ProductReview rating: 4.1 out of 5 stars",
+      "claim_patterns": ["4.1 stars", "4.1/5", "4.1 out of 5", "4.1 rating", "ProductReview"],
+      "source": "productreview.com.au (Best for Pet listing)",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31",
+      "note": "Ratings change over time. Re-verify before each campaign launch."
+    },
+    {
+      "fact_id": "F-061",
+      "category": "social_proof",
+      "claim": "61 reviews on ProductReview",
+      "claim_patterns": ["61 reviews", "61 ratings"],
+      "source": "productreview.com.au (Best for Pet listing)",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31",
+      "note": "Count increases over time. Re-verify before each campaign launch."
+    },
+    {
+      "fact_id": "F-062",
+      "category": "social_proof",
+      "claim": "Testimonial: \"The best $50 I spend every month. My dog has allergies and I can book consults without worrying about the $130-$150 fee. Couldn't recommend it more.\"",
+      "claim_patterns": ["best $50 I spend", "dog has allergies", "book consults without worrying"],
+      "source": "productreview.com.au (Best for Pet review)",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31",
+      "note": "Strongest testimonial. Use verbatim. Do not paraphrase or edit."
+    },
+    {
+      "fact_id": "F-063",
+      "category": "social_proof",
+      "claim": "Testimonial: \"Free consults have been a lifesaver for my pet with ongoing health issues. I wouldn't have managed the payments otherwise.\"",
+      "claim_patterns": ["free consults have been a lifesaver", "ongoing health issues", "managed the payments"],
+      "source": "productreview.com.au (Best for Pet review)",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-064",
+      "category": "social_proof",
+      "claim": "Testimonial: \"Signed up on the day of my cat's dental surgery and saved $375.89.\"",
+      "claim_patterns": ["dental surgery", "saved $375.89", "$375.89", "day of my cat"],
+      "source": "productreview.com.au (Best for Pet review)",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-065",
+      "category": "social_proof",
+      "claim": "Testimonial: \"Very beneficial, especially for older pets when more consults are needed.\"",
+      "claim_patterns": ["older pets", "more consults are needed", "very beneficial"],
+      "source": "productreview.com.au (Best for Pet review)",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-066",
+      "category": "social_proof",
+      "claim": "\"Australia's largest vet network\" (or similar)",
+      "claim_patterns": ["largest vet network", "Australia's largest", "biggest vet network"],
+      "source": "VetPartners marketing materials (not directly verified against competitors)",
+      "confidence": "MEDIUM",
+      "last_verified": "2026-03-31",
+      "note": "Use with caution. Prefer 'one of Australia's largest' unless client provides substantiation for the superlative. Superlative requires substantiation under Australian Consumer Law."
+    },
+    {
+      "fact_id": "F-070",
+      "category": "how_it_works",
+      "claim": "Sign up online at bestforpet.com.au",
+      "claim_patterns": ["bestforpet.com.au", "sign up online", "signup online"],
+      "source": "bestforpet.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-071",
+      "category": "how_it_works",
+      "claim": "No waiting period — coverage starts immediately upon signup",
+      "claim_patterns": ["no waiting period", "starts immediately", "covered immediately", "immediate coverage", "sign up today", "covered from day one"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-072",
+      "category": "how_it_works",
+      "claim": "My Pawtal — member portal for managing plan and bookings",
+      "claim_patterns": ["My Pawtal", "Pawtal", "member portal", "manage your plan"],
+      "source": "bestforpet.com.au (member area)",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-073",
+      "category": "how_it_works",
+      "claim": "VetChat provides 24/7 access to veterinary advice via text or video",
+      "claim_patterns": ["VetChat", "24/7 access", "talk to a vet anytime", "text or video", "virtual vet"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-074",
+      "category": "how_it_works",
+      "claim": "Plan works at any participating clinic in the network",
+      "claim_patterns": ["any participating clinic", "any participating vet", "use your plan at any", "not locked to one clinic", "any clinic in the network"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-075",
+      "category": "how_it_works",
+      "claim": "Vet search tool on bestforpet.com.au to find participating clinics",
+      "claim_patterns": ["find your local vet", "vet search", "find a clinic", "find a participating clinic", "clinic near you"],
+      "source": "bestforpet.com.au (homepage)",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-080",
+      "category": "positioning",
+      "claim": "Best for Pet is a wellness plan, NOT insurance",
+      "claim_patterns": ["wellness plan", "not insurance", "isn't insurance", "is not insurance"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-081",
+      "category": "positioning",
+      "claim": "Covers preventative and routine care, not reactive/emergency care",
+      "claim_patterns": ["preventative care", "routine care", "wellness care", "preventive care"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31",
+      "contradicts_if": "(covers?|included?).*(emergenc|accident|illness|reactive|surgery)"
+    },
+    {
+      "fact_id": "F-082",
+      "category": "positioning",
+      "claim": "Complements pet insurance — insurance covers the unexpected; Best for Pet covers the expected",
+      "claim_patterns": ["covers the expected", "insurance covers the unexpected", "complements insurance", "alongside insurance"],
+      "source": "bestforpet.com.au (positioning language)",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-083",
+      "category": "positioning",
+      "claim": "No claims forms, no excess, no pre-approval",
+      "claim_patterns": ["no claims", "no claims forms", "no excess", "no pre-approval", "no paperwork", "just walk in"],
+      "source": "bestforpet.com.au/wellness-plan/ (inferred from plan structure)",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    },
+    {
+      "fact_id": "F-084",
+      "category": "positioning",
+      "claim": "Care is delivered at the member's local vet — familiar vet, familiar clinic",
+      "claim_patterns": ["your local vet", "same vet", "same clinic", "familiar vet", "your vet", "local clinic"],
+      "source": "bestforpet.com.au/wellness-plan/",
+      "confidence": "HIGH",
+      "last_verified": "2026-03-31"
+    }
+  ]
+}

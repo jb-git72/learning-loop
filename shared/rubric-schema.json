@@ -1,0 +1,154 @@
+{
+  "version": "1.0",
+  "description": "Ad copy evaluation rubric. 10 dimensions, weighted. Max weighted score: 66.25. Thresholds: Production-ready >= 53 | Strong draft 46-52 | Needs work 33-45 | Rewrite < 33.",
+  "max_raw_score": 50,
+  "max_weighted_score": 66.25,
+  "thresholds": {
+    "production_ready": 53,
+    "strong_draft": 46,
+    "needs_work": 33,
+    "rewrite": 0
+  },
+  "dimensions": [
+    {
+      "id": "angle_clarity",
+      "name": "Angle Clarity",
+      "default_weight": 1.25,
+      "scoring_method": "llm",
+      "description": "Is the strategic angle unmistakable in one sentence?",
+      "scoring_guide": {
+        "1": "No clear angle. Could be about anything. Reader cannot identify the strategic position.",
+        "2": "Angle is vaguely present but buried or muddled with other themes.",
+        "3": "Angle is present but shares space with competing themes. Reader needs effort to identify the core message.",
+        "4": "Angle is clear and dominant. Minor distractions exist but don't confuse the primary message.",
+        "5": "Angle is unmistakable. Every sentence reinforces a single strategic position. A viewer could state the angle in one sentence."
+      }
+    },
+    {
+      "id": "motivation_match",
+      "name": "Motivation Match",
+      "default_weight": 1.0,
+      "scoring_method": "llm",
+      "description": "Does the ad hit the intended buying motivation — the felt need, not just the stated need?",
+      "scoring_guide": {
+        "1": "Motivation is absent or wrong. The ad speaks to a need the audience does not feel.",
+        "2": "Motivation is present but superficial. It names the category without tapping the emotional driver.",
+        "3": "Motivation is addressed but at a rational level only. The felt need is implied, not activated.",
+        "4": "Motivation is clearly present and emotionally resonant. The reader sees themselves in the copy.",
+        "5": "Motivation is deeply felt. The ad articulates what the audience feels but hasn't put into words. Immediate recognition."
+      }
+    },
+    {
+      "id": "tactic_execution",
+      "name": "Tactic Execution",
+      "default_weight": 1.0,
+      "scoring_method": "llm",
+      "description": "Is the chosen tactic (PAS, BAB, cost-of-inaction, etc.) properly structured? Hook flows to body flows to CTA?",
+      "scoring_guide": {
+        "1": "No recognisable tactic structure. Copy is a list of features with no narrative logic.",
+        "2": "Tactic is attempted but breaks down. Hook doesn't connect to body, or body doesn't lead to CTA.",
+        "3": "Tactic is present and mostly follows the framework, but one transition is weak or forced.",
+        "4": "Tactic is well-executed. Hook, body, and CTA form a coherent arc with smooth transitions.",
+        "5": "Tactic is flawlessly executed. Each section builds on the last. The structure itself is invisible — it just reads naturally."
+      }
+    },
+    {
+      "id": "specificity",
+      "name": "Specificity",
+      "default_weight": 1.5,
+      "scoring_method": "deterministic",
+      "description": "Concrete numbers, names, and details — not vague claims. Every number must trace to verified facts.",
+      "scoring_guide": {
+        "1": "Entirely vague. No numbers, no concrete details. 'Save money on vet care.'",
+        "2": "One concrete detail present but surrounded by vague claims. Numbers may be unverifiable.",
+        "3": "Multiple concrete details present. Some claims remain vague. Most numbers are fact-checked.",
+        "4": "Consistently specific throughout. Numbers are verifiable. Only minor generalizations remain.",
+        "5": "Every claim is concrete and fact-checked. Specific costs, counts, timeframes, and outcomes. Zero vague filler."
+      }
+    },
+    {
+      "id": "objection_preemption",
+      "name": "Objection Pre-emption",
+      "default_weight": 1.5,
+      "scoring_method": "deterministic",
+      "description": "Does the ad anticipate and address the top blocker for this angle before the reader raises it?",
+      "scoring_guide": {
+        "1": "No objection addressed. The most obvious 'but...' is left unanswered.",
+        "2": "Objection is weakly hinted at but not directly addressed. Reader still has the concern.",
+        "3": "Primary objection is addressed but the counter-argument is vague or unsupported.",
+        "4": "Primary objection is clearly pre-empted with specific proof. One secondary objection remains.",
+        "5": "Top objection is pre-empted convincingly with proof, and a secondary objection is also addressed. Reader feels like their concerns were read."
+      }
+    },
+    {
+      "id": "receptionist_test",
+      "name": "Receptionist Test",
+      "default_weight": 2.0,
+      "scoring_method": "deterministic",
+      "description": "Could a clinic receptionist answer 'What is this, what's included, what does it cost, how much do I save, and how do I start?' from the ad alone?",
+      "scoring_guide": {
+        "1": "Fails the test. Missing 3+ of the 5 questions (what, included, cost, savings, how to start).",
+        "2": "Answers 2 of 5 clearly. Major gaps remain — receptionist would need to look things up.",
+        "3": "Answers 3 of 5 clearly. One or two gaps but the core proposition is understandable.",
+        "4": "Answers 4 of 5 clearly. Only one minor gap. Receptionist could confidently explain the offer.",
+        "5": "All 5 questions answered. What it is, what's included, what it costs, how much you save, and how to start are all explicit."
+      }
+    },
+    {
+      "id": "scroll_stop_hook",
+      "name": "Scroll-Stop Hook",
+      "default_weight": 1.25,
+      "scoring_method": "deterministic",
+      "description": "Would line 1 of the primary text stop a thumb-scrolling pet owner in their feed?",
+      "scoring_guide": {
+        "1": "Generic or boring opener. 'Looking for a better way to care for your pet?' No reason to stop.",
+        "2": "Mildly interesting but not arresting. Could be any brand or product.",
+        "3": "Hook is relevant and somewhat engaging. Would slow a scroll but not necessarily stop it.",
+        "4": "Strong hook that creates curiosity, recognition, or surprise. Most target readers would pause.",
+        "5": "Exceptional hook. Immediately personal, specific, and impossible to ignore for the target audience. Thumb stops."
+      }
+    },
+    {
+      "id": "cta_clarity",
+      "name": "CTA Clarity",
+      "default_weight": 1.0,
+      "scoring_method": "deterministic",
+      "description": "Is the next step obvious, low-friction, and matched to the funnel stage?",
+      "scoring_guide": {
+        "1": "No CTA, or CTA is confusing ('Learn more about our wellness solutions').",
+        "2": "CTA exists but is vague or mismatched to funnel stage (BOF ad with TOF CTA).",
+        "3": "CTA is clear but generic. Reader knows what to do but isn't compelled.",
+        "4": "CTA is clear, low-friction, and matches the funnel stage. Minor wording improvements possible.",
+        "5": "CTA is crystal clear, frictionless, and perfectly funnel-matched. Reader knows exactly what happens next and wants to do it."
+      }
+    },
+    {
+      "id": "platform_fit",
+      "name": "Platform Fit",
+      "default_weight": 1.0,
+      "scoring_method": "deterministic",
+      "description": "Is the copy conversational, formatted for feed consumption, and the right length for the placement?",
+      "scoring_guide": {
+        "1": "Reads like a brochure, email, or landing page. Wrong tone and structure for social.",
+        "2": "Partially conversational but too long, too dense, or uses format-specific language.",
+        "3": "Conversational tone, reasonable length, but formatting could be tighter (wall of text, no line breaks).",
+        "4": "Good platform fit. Conversational, well-formatted, scannable. Works across feed placements.",
+        "5": "Native to the platform. Reads like a friend's post, not an ad. Perfect length, natural line breaks, scannable structure."
+      }
+    },
+    {
+      "id": "differentiation",
+      "name": "Differentiation",
+      "default_weight": 1.0,
+      "scoring_method": "deterministic",
+      "description": "Is this ad distinct from the other ads in the same set? Does it offer a unique perspective?",
+      "scoring_guide": {
+        "1": "Duplicate of another ad in the set. Same hook, same structure, same message.",
+        "2": "Surface-level differences only (different opening word, same argument and flow).",
+        "3": "Different hook or structure but the core argument overlaps with another ad in the set.",
+        "4": "Clearly distinct angle or execution. A reader seeing both ads would recognize different messages.",
+        "5": "Completely unique perspective within the set. Different emotional entry point, different proof, different structure. Adds real creative diversity."
+      }
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "client_id": "best-for-pet",
+  "client_name": "Best for Pet",
+  "parent_company": "VetPartners",
+  "industry": "pet-care",
+  "product": "Preventative pet care subscription",
+  "currency": "AUD",
+  "market": "AU",
+  "files": {
+    "rules": "rules.json",
+    "facts": "facts.json",
+    "tone": "tone.md",
+    "learnings": "learnings.md"
+  },
+  "scoring_context": {
+    "product": "Best for Pet — preventative pet care subscription at local vet clinics ($50/month)",
+    "audience": "Pet parents, ~75% female, 25-55, Australia. They love their pets deeply but dread unpredictable vet costs. 76% worry about affording vet bills. 74% have felt guilty about delaying care.",
+    "key_motivations": [
+      "Predictability — knowing what I pay each month matters more than saving money",
+      "Guilt relief — never delaying a vet visit because of cost uncertainty",
+      "Simplicity — one fee covers everything routine, no claims, no excess",
+      "Trust — delivered at their local vet by a vet they already know"
+    ],
+    "brand_values": "Warm, alongside the reader, never above. Like a friend who also has pets. Not corporate, not clinical. Australian English, relaxed.",
+    "success_looks_like": "Reader feels relieved, understood, and clear on what they get for $50/month. They want to check if their local vet participates."
+  },
+  "rubric": {
+    "weights": {
+      "angle_clarity": 1.25,
+      "motivation_match": 1.0,
+      "tactic_execution": 1.0,
+      "specificity": 1.5,
+      "objection_preemption": 1.5,
+      "receptionist_test": 2.0,
+      "scroll_stop_hook": 1.25,
+      "cta_clarity": 1.0,
+      "platform_fit": 1.0,
+      "differentiation": 1.0
+    },
+    "max_score": 66.25,
+    "thresholds": {
+      "production_ready": 53,
+      "strong_draft": 46,
+      "needs_work": 33,
+      "rewrite": 0
+    }
+  },
+  "composite_weights": {
+    "rubric": 0.5,
+    "rule_compliance": 0.3,
+    "fact_accuracy": 0.2
+  },
+  "platform_constraints": {
+    "primary_text_max_chars": 500,
+    "headline_max_chars": 40,
+    "description_max_chars": 125,
+    "platform": "meta"
+  },
+  "angles_in_use": [
+    "price-value",
+    "simplicity-clarity",
+    "safety-risk",
+    "empathy-understanding",
+    "outcome-results",
+    "anti-insurance",
+    "guilt-free",
+    "predictability-control"
+  ],
+  "approved_ctas": [
+    "Find a participating clinic near you",
+    "Check availability at a clinic near you",
+    "See the plan details",
+    "Learn More"
+  ],
+  "critical_rules": [
+    "no_condescension",
+    "no_vet_villain",
+    "no_commands"
+  ],
+  "receptionist_test_questions": [
+    "What is it?",
+    "What's included?",
+    "How much does it cost?",
+    "How much will I save?",
+    "How do I start?"
+  ]
+}

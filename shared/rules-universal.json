@@ -1,0 +1,96 @@
+{
+  "version": "1.0",
+  "description": "Universal ad copy rules. Apply to ALL clients in ALL industries. Client-specific rules live in clients/<client>/rules-client.json.",
+  "rules": [
+    {
+      "rule_id": "no_condescension",
+      "category": "tone",
+      "check_type": "regex_absent",
+      "pattern": "(?i)\\b(we'?ll wait|simple math(s)?|it'?s not that hard|obviously|surely you|you should know|as everyone knows|clearly you|it goes without saying|any idiot|no brainer|duh)\\b",
+      "fields": ["primary_text", "headline", "description"],
+      "severity": "critical",
+      "message": "Condescending language detected. Condescension is the #1 kill signal in ad review. Rewrite to speak alongside the reader, never above them."
+    },
+    {
+      "rule_id": "no_commands",
+      "category": "tone",
+      "check_type": "regex_absent",
+      "pattern": "(?i)^(stop|add it up|do the math(s)?|think about|listen|wake up|imagine if you|consider this|ask yourself|face it|admit it|let that sink in|read that again)\\b",
+      "fields": ["primary_text", "headline", "description"],
+      "severity": "critical",
+      "message": "Imperative command detected at opening. Commands tell the audience what to do — use invitations instead. 'Here's what it looks like' > 'Add it up'."
+    },
+    {
+      "rule_id": "no_em_dashes",
+      "category": "punctuation",
+      "check_type": "regex_absent",
+      "pattern": "[\u2014\u2013]",
+      "fields": ["primary_text", "headline", "description"],
+      "severity": "normal",
+      "message": "Em-dashes or en-dashes found. They read cold and editorial in ad copy. Use full stops, commas, or colons instead."
+    },
+    {
+      "rule_id": "no_self_deprecation",
+      "category": "tone",
+      "check_type": "regex_absent",
+      "pattern": "(?i)(our (website|site|app|page|platform) (doesn'?t|isn'?t|won'?t|can'?t)|we'?re not (great|good|the best) at|we know (it'?s|our|we)|sorry (about|for) (our|the)|bear with us|we'?re (still )?working on)",
+      "fields": ["primary_text", "headline", "description"],
+      "severity": "normal",
+      "message": "Self-deprecating language detected. Never undermine the brand in ad copy — confidence builds trust."
+    },
+    {
+      "rule_id": "no_overclaiming",
+      "category": "accuracy",
+      "check_type": "regex_absent",
+      "pattern": "(?i)(every(thing)? (you('?ll)?|they('?ll)?) (ever )?need|all you('?ll)? ever need|guaranteed to|100% (guaranteed|certain|proven)|never (pay|worry|spend|think) again|eliminates? all|solves? every)",
+      "fields": ["primary_text", "headline", "description"],
+      "severity": "normal",
+      "message": "Overclaiming detected. Be specific about what IS covered/included rather than making absolute promises. Specificity beats superlatives."
+    },
+    {
+      "rule_id": "no_format_specific_language",
+      "category": "platform",
+      "check_type": "regex_absent",
+      "pattern": "(?i)\\b(swipe (up|left|right)|watch (this|the)|tap (here|the|below|above)|click here|scroll down|link in bio|hit the button|press play|double tap|save this post)\\b",
+      "fields": ["primary_text", "headline", "description"],
+      "severity": "normal",
+      "message": "Format-specific language detected. Ad copy must work across all placements (feed, stories, reels, audience network). Remove references to specific interactions."
+    },
+    {
+      "rule_id": "body_length_max",
+      "category": "structure",
+      "check_type": "length_max",
+      "max_value": 500,
+      "fields": ["primary_text"],
+      "severity": "normal",
+      "message": "Primary text exceeds 500 characters. Meta truncates long primary text — keep it tight."
+    },
+    {
+      "rule_id": "no_false_urgency",
+      "category": "tone",
+      "check_type": "regex_absent",
+      "pattern": "(?i)\\b(act now|don'?t miss out|limited time|offer ends|hurry|last chance|only \\d+ left|ends (today|tonight|soon|tomorrow)|before (it'?s|they'?re) gone|running out|while (stocks|supplies) last|expires? (soon|today|tonight))\\b",
+      "fields": ["primary_text", "headline", "description"],
+      "severity": "normal",
+      "message": "False urgency detected. Manufactured scarcity erodes trust. If the offer is genuinely time-limited, state the actual date in the ad set, not the copy."
+    },
+    {
+      "rule_id": "no_aggressive_hooks",
+      "category": "tone",
+      "check_type": "regex_absent",
+      "pattern": "(?i)^(stop\\.|before you scroll|wait\\b|hold on|don'?t scroll|you need to (see|hear|read|know) this|attention|breaking:?|urgent:?)",
+      "fields": ["primary_text"],
+      "severity": "normal",
+      "message": "Aggressive opening hook detected. Aggressive hooks consistently fail in review — they feel like clickbait. Lead with value or a genuine insight instead."
+    },
+    {
+      "rule_id": "lead_with_value_not_price",
+      "category": "structure",
+      "check_type": "custom",
+      "function": "check_lead_with_value_not_price",
+      "fields": ["primary_text"],
+      "severity": "normal",
+      "message": "Primary text opens with a dollar amount. Lead with a benefit or value proposition first — the price should support the value, not lead the conversation."
+    }
+  ]
+}
