@@ -104,37 +104,15 @@ def _build_scoring_guide(content_type: str, config: dict) -> str:
             '"not insurance", "no claims/excess".'
         )
 
-    guide = f"""COPYWRITING PRINCIPLES + SCORING GUIDE:
-
-"Copy cannot create desire. It can only take the hopes, dreams, fears, and desires that already exist in the hearts of people, and focus those desires onto a particular product." — Copywriter's Handbook
-
-NARRATIVE STRUCTURE (this is the #1 scoring dimension — score 5 = "invisible structure, reads naturally"):
-Your copy is a "velvet slide" — a smooth path from interest to action. No bumps, no filler.
-1. HEADLINE/HOOK: Promise a benefit or arouse curiosity. "Five times as many people read the headline as the body." If your headline doesn't sell, you've wasted 80% of the effort. Open with a specific moment, a real question, a named person, or a surprising fact. Generic = score 1.
-2. LEAD: Fulfill the headline's promise immediately. Show the reader's problem or need. "Did you lose...?" "When did we stop...?" Make the reader feel "that's me."
-3. BODY/PROOF: Give specific evidence the promise is real. Named farms, exact numbers, concrete details. "The surest way to hold attention is by being specific, definite, and concrete." Each paragraph must earn the next — if removing it doesn't break the flow, cut it.
-4. BRIDGE: Connect proof to why act NOW. Urgency, scarcity, or emotional payoff.
-5. CTA: The inevitable next step — earned by everything above. The reader should WANT to click.
-
-MOTIVATION (score 5 = "articulates what the audience feels but hasn't put into words"):
-- "People buy on emotion, then rationalize with logic." Provide justification for what they already want to do.
-- Reach prospects on three levels: intellectual (features), emotional (fears/desires), personal (their specific situation). Personal is most powerful.
-- Don't sell features. Sell what features DO for the reader. Not "farm-direct grocery" but "I didn't know what my kids were eating." Not "hub-and-collect" but "food I don't have to second-guess."
-- The felt need: what keeps them up at night? Tap that, not the rational category.
-
-ANGLE (score 5 = "every sentence reinforces a single strategic position"):
-- Each ad makes ONE proposition. "The proposition must be so strong it can move millions."
-- Lock in the angle BEFORE writing. Every hook, proof, and CTA serves that angle. Competing themes = score 2.
-
-SPECIFICITY: Include 5-7 concrete signals: dollar amounts, numbers with context, named farms/people. "Vague claims score 1. Specific, definite, concrete = score 5."
-
+    guide = f"""SCORING GUIDE:
+STRUCTURE (highest-weighted dimension): Hook → Proof → Bridge → CTA. Each section earns the next. "Velvet slide" — if removing a paragraph doesn't break the flow, cut it. Score 5 = "invisible structure." Score 1 = "list of features."
+MOTIVATION: Tap the FELT need, not features. "I didn't know what my kids were eating" not "farm-direct grocery." People buy on emotion, rationalize with logic.
+ANGLE: ONE proposition per piece. Every sentence reinforces it. Competing themes = score 2.
+HOOK: Story moment, named person, quoted objection, or question. Generic opener = score 1.
+SPECIFICITY: 5-7 concrete signals (dollars, numbers, named farms/people). Vague = score 1.
 OBJECTION PREEMPTION: {objection_signals}
-
-HEADLINE 4 U's: Urgent, Unique, Ultra-specific, Useful. If it doesn't have at least 2, rewrite it.
-
-SENTENCES: Average 14-16 words. Vary length for rhythm. One-sentence paragraphs create pace changes. "Omit needless words."
-
-CONVERSATIONAL TONE: "Write like you talk." Use pronouns (I, we, you). Use contractions. Use colloquial expressions. If you must choose between natural and grammatically correct, write naturally."""
+HEADLINES: 4 U's — Urgent, Unique, Ultra-specific, Useful. Sentence case only.
+SENTENCES: 14-16 words avg. Conversational tone. Contractions OK. Omit needless words."""
     return guide
 
 
@@ -328,10 +306,10 @@ CONSTRAINTS:
 {constraints_text}
 
 TONE GUIDELINES:
-{tone[:1500]}
+{tone[:600]}
 
-CREATIVE LEARNINGS (what works and what fails):
-{learnings[:2000]}
+CREATIVE LEARNINGS:
+{learnings[:800]}
 
 VERIFIED FACTS (use only these — every number must trace back):
 {facts_text}
@@ -386,14 +364,15 @@ def _select_relevant_facts(facts_data: dict, angle: str) -> str:
 
 
 def _call_llm(prompt: str) -> str:
-    """Call LLM to generate ad copy. Opus 4.6 via API, CLI fallback."""
+    """Call LLM to generate ad copy. Opus 4 via API."""
+    # API (fast, reliable)
     api_key = os.environ.get("ANTHROPIC_API_KEY", "")
     if api_key:
         try:
             import anthropic
             client = anthropic.Anthropic(api_key=api_key)
             response = client.messages.create(
-                model="claude-opus-4-6-20250610",
+                model="claude-opus-4-0",
                 max_tokens=2000,
                 temperature=0.7,
                 messages=[{"role": "user", "content": prompt}],
@@ -401,32 +380,36 @@ def _call_llm(prompt: str) -> str:
             return response.content[0].text
         except Exception as e:
             import sys
-            print(f"API failed ({type(e).__name__}), falling back to CLI", file=sys.stderr)
+            print(f"API failed: {e}", file=sys.stderr)
 
-    # Fallback: claude CLI with opus (use stdin for long prompts)
-    claude_path = os.environ.get("CLAUDE_PATH", os.path.expanduser("~/.local/bin/claude"))
+    # CLI fallback
+    import tempfile
+    claude_path = os.path.expanduser("~/.local/bin/claude")
+    tf_path = None
     try:
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as tf:
+            tf.write(prompt)
+            tf_path = tf.name
+        with open(tf_path) as pf:
+            prompt_text = pf.read()
         result = subprocess.run(
             [claude_path, "--model", "opus", "--print", "-p", "-"],
-            input=prompt,
+            input=prompt_text,
             capture_output=True,
             text=True,
             timeout=300,
         )
         if result.returncode == 0 and result.stdout.strip():
             return result.stdout.strip()
-        # Try without stdin if that didn't work
-        result = subprocess.run(
-            [claude_path, "--model", "opus", "--print", "-p", prompt],
-            capture_output=True,
-            text=True,
-            timeout=300,
-        )
-        if result.returncode == 0 and result.stdout.strip():
-            return result.stdout.strip()
-    except (FileNotFoundError, subprocess.SubprocessError, subprocess.TimeoutExpired) as e:
+    except Exception as e:
         import sys
         print(f"CLI failed: {e}", file=sys.stderr)
+    finally:
+        if tf_path:
+            try:
+                os.unlink(tf_path)
+            except OSError:
+                pass
 
     return '{"error": "No LLM available"}'
 
