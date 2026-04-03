@@ -1,0 +1,172 @@
+{
+  "version": "1.0",
+  "content_type": "landing-page",
+  "description": "Landing page copy evaluation rubric. 10 dimensions, weighted. Evaluates the text/copy layer, not visual design.",
+  "max_raw_score": 50,
+  "max_weighted_score": 65.0,
+  "thresholds": {
+    "production_ready": 52,
+    "strong_draft": 45,
+    "needs_work": 32,
+    "rewrite": 0
+  },
+  "dimensions": [
+    {
+      "id": "angle_clarity",
+      "name": "Angle Clarity",
+      "default_weight": 1.25,
+      "scoring_method": "llm",
+      "description": "Is the strategic angle unmistakable from the headline and hero copy?",
+      "scoring_guide": {
+        "1": "No clear angle. Headline is generic. Could be any product or company.",
+        "2": "Angle is vaguely present but buried below the fold or muddled with competing themes.",
+        "3": "Angle is present in the hero but diluted by sections below the fold.",
+        "4": "Angle is clear and dominant from headline through final CTA. Minor distractions.",
+        "5": "Angle is unmistakable. Every section reinforces a single strategic position. Visitor could state the angle in one sentence."
+      }
+    },
+    {
+      "id": "motivation_match",
+      "name": "Motivation Match",
+      "default_weight": 1.0,
+      "scoring_method": "llm",
+      "description": "Does the page hit the intended buying motivation — the felt need, not just the stated need?",
+      "scoring_guide": {
+        "1": "Motivation is absent or wrong. The page speaks to a need the visitor does not feel.",
+        "2": "Motivation is present but superficial. Names the category without tapping the emotional driver.",
+        "3": "Motivation is addressed but at a rational level only. The felt need is implied, not activated.",
+        "4": "Motivation is clearly present and emotionally resonant. Visitor sees themselves.",
+        "5": "Motivation is deeply felt. The page articulates what the visitor feels but hasn't put into words."
+      }
+    },
+    {
+      "id": "tactic_execution",
+      "name": "Tactic Execution",
+      "default_weight": 1.0,
+      "scoring_method": "llm",
+      "description": "Does the page structure (hero → proof → CTA) flow logically? Does each section build on the last?",
+      "scoring_guide": {
+        "1": "No recognisable structure. Page is a random collection of sections with no narrative arc.",
+        "2": "Structure attempted but breaks down. Sections feel disconnected or in wrong order.",
+        "3": "Structure present and mostly logical, but one section feels forced or out of place.",
+        "4": "Well-executed. Hero, proof sections, and CTA form a coherent persuasion arc.",
+        "5": "Flawlessly executed. Each section builds on the last. Scroll feels inevitable."
+      }
+    },
+    {
+      "id": "hero_clarity",
+      "name": "Hero Clarity",
+      "default_weight": 1.75,
+      "scoring_method": "deterministic",
+      "description": "Can a visitor understand what this is, who it's for, and what to do within 5 seconds of landing?",
+      "scoring_guide": {
+        "1": "Visitor has no idea what this is after reading the hero. Headline is clever but unclear.",
+        "2": "Vaguely clear but requires reading the subhead and hero copy to understand.",
+        "3": "Clear enough. Headline communicates the category. Subhead adds specificity.",
+        "4": "Very clear. Headline + subhead communicate what, who, and why. CTA is visible.",
+        "5": "Instant clarity. What it is, who it's for, and what to do are all obvious from the headline alone. Zero ambiguity."
+      },
+      "deterministic_rules": {
+        "headline_length": "Under 12 words for maximum comprehension",
+        "subhead_present": "Must have supporting subhead",
+        "cta_above_fold": "Primary CTA must be visible in hero section"
+      }
+    },
+    {
+      "id": "proof_density",
+      "name": "Proof Density",
+      "default_weight": 1.5,
+      "scoring_method": "deterministic",
+      "description": "Does the page stack enough credible proof to overcome skepticism? Stats, testimonials, logos, specifics.",
+      "scoring_guide": {
+        "1": "No proof. All claims are unsupported. Pure assertion.",
+        "2": "One proof element present (a testimonial or stat) but feels thin.",
+        "3": "Multiple proof types present. Some claims remain unsupported.",
+        "4": "Strong proof density. Stats, testimonials, and specifics reinforce each other.",
+        "5": "Overwhelming proof. Every claim is backed. Multiple proof types (social, statistical, narrative) create layered credibility."
+      },
+      "deterministic_rules": {
+        "proof_types": ["statistic", "testimonial", "named_source", "specific_number", "third_party_citation"],
+        "minimum_proof_elements": 3
+      }
+    },
+    {
+      "id": "cta_prominence",
+      "name": "CTA Prominence & Clarity",
+      "default_weight": 1.25,
+      "scoring_method": "deterministic",
+      "description": "Is the primary CTA obvious, repeated at key moments, and compelling?",
+      "scoring_guide": {
+        "1": "No CTA, or CTA is buried at the very bottom. Visitor doesn't know what to do.",
+        "2": "CTA exists but only appears once and is easy to miss.",
+        "3": "CTA is clear and appears 2+ times. But text is generic ('Submit', 'Sign Up').",
+        "4": "CTA is compelling, appears at key scroll points, and is visually prominent.",
+        "5": "CTA is irresistible. Appears at hero, mid-page, and footer. Action-specific text. Reader always knows the next step."
+      },
+      "deterministic_rules": {
+        "cta_count": "Should appear 2-3 times on page",
+        "cta_in_hero": "Must be present above the fold"
+      }
+    },
+    {
+      "id": "specificity",
+      "name": "Specificity",
+      "default_weight": 1.5,
+      "scoring_method": "deterministic",
+      "description": "Concrete numbers, names, and details — not vague marketing speak.",
+      "scoring_guide": {
+        "1": "Entirely vague. No numbers, no concrete details. Pure marketing fluff.",
+        "2": "One concrete detail present but surrounded by vague claims.",
+        "3": "Multiple concrete details present. Some claims remain vague.",
+        "4": "Consistently specific throughout. Numbers are verifiable.",
+        "5": "Every claim is concrete and fact-checked. Specific costs, counts, timeframes, and outcomes."
+      }
+    },
+    {
+      "id": "scroll_depth_pull",
+      "name": "Scroll Depth Pull",
+      "default_weight": 1.25,
+      "scoring_method": "deterministic",
+      "description": "Does each section create enough curiosity or value to pull the reader to the next section?",
+      "scoring_guide": {
+        "1": "Page front-loads everything. No reason to scroll past the hero.",
+        "2": "Some sections add value but the page loses momentum mid-way.",
+        "3": "Reasonable flow. Each section adds something but transitions are weak.",
+        "4": "Strong pull. Section headings create curiosity. New proof/value at each scroll point.",
+        "5": "Exceptional pull. Each section ends with a hook for the next. Progressive disclosure builds to an inevitable CTA."
+      },
+      "deterministic_rules": {
+        "section_count": "4-8 sections for optimal scroll depth",
+        "section_headings": "Each section must have a clear, benefit-oriented heading"
+      }
+    },
+    {
+      "id": "objection_preemption",
+      "name": "Objection Pre-emption",
+      "default_weight": 1.0,
+      "scoring_method": "deterministic",
+      "description": "Does the page anticipate and address the top blockers before the reader raises them?",
+      "scoring_guide": {
+        "1": "No objections addressed. The most obvious 'but...' is left unanswered.",
+        "2": "Objection is weakly hinted at but not directly addressed.",
+        "3": "Primary objection is addressed but the counter-argument is vague.",
+        "4": "Primary objection is clearly pre-empted with specific proof.",
+        "5": "Top objection is pre-empted convincingly, and secondary objections are also addressed."
+      }
+    },
+    {
+      "id": "differentiation",
+      "name": "Differentiation",
+      "default_weight": 1.0,
+      "scoring_method": "deterministic",
+      "description": "Is this variant distinct from other page variants? Does it test a genuinely different hypothesis?",
+      "scoring_guide": {
+        "1": "Duplicate of another variant. Same headline, same structure, same proof.",
+        "2": "Surface-level differences only (different headline, same argument and flow).",
+        "3": "Different hero or structure but core persuasion logic overlaps with another variant.",
+        "4": "Clearly distinct. A visitor seeing both pages would recognize different approaches.",
+        "5": "Completely unique hypothesis. Different emotional entry point, different proof stack, different structure."
+      }
+    }
+  ]
+}

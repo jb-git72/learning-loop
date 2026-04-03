@@ -40,6 +40,7 @@ def generate_variant(
     current_best: dict = None,
     recent_failures: list = None,
     wildcard: bool = False,
+    content_type: str = "meta-ad",
 ) -> dict:
     """Generate a new ad copy variant.
 
@@ -75,13 +76,14 @@ def generate_variant(
         current_best=current_best,
         recent_failures=recent_failures or [],
         wildcard=wildcard,
+        content_type=content_type,
     )
 
     # Generate via LLM
     raw_output = _call_llm(prompt)
 
-    # Parse the output into canonical ad format
-    ad = _parse_output(raw_output, angle, tactic, hook_type, funnel)
+    # Parse the output into canonical format
+    ad = _parse_output(raw_output, angle, tactic, hook_type, funnel, content_type)
 
     return ad
 
@@ -98,12 +100,21 @@ def _build_prompt(
     current_best: dict,
     recent_failures: list,
     wildcard: bool,
+    content_type: str = "meta-ad",
 ) -> str:
     """Build the variant generation prompt."""
     client_name = config.get("client_name", "Unknown")
     product = config.get("product", "Unknown")
+
+    # Get content-type-specific approved CTAs
     approved_ctas = config.get("approved_ctas", [])
+    if isinstance(approved_ctas, dict):
+        approved_ctas = approved_ctas.get(content_type, approved_ctas.get("meta-ad", []))
+
+    # Get content-type-specific platform constraints
     constraints = config.get("platform_constraints", {})
+    if isinstance(constraints, dict) and content_type in constraints:
+        constraints = constraints[content_type]
 
     # Build facts context — relevant facts for this angle
     facts_text = _select_relevant_facts(facts, angle)
@@ -141,7 +152,72 @@ A new hook type, a different emotional register, a surprising opening.
 The goal is exploration, not optimisation.
 """
 
-    return f"""Write ONE ad variant for {client_name} — {product}.
+    # Content-type-specific constraints and output format
+    if content_type == "landing-page":
+        constraints_text = f"""- Headline: max {constraints.get('headline_max_chars', 80)} characters
+- Subhead: max {constraints.get('subhead_max_chars', 200)} characters
+- Hero copy: max {constraints.get('hero_copy_max_chars', 500)} characters
+- Section body: max {constraints.get('section_body_max_chars', 1000)} characters per section
+- Platform: web (landing page)
+- CTA must be one of: {', '.join(approved_ctas)}"""
+        output_format = """{
+  "headline": "H1 hero headline",
+  "subhead": "supporting text below headline",
+  "hero_copy": "above-the-fold body copy",
+  "sections": [
+    {"heading": "section heading", "body": "section body copy"},
+    {"heading": "section heading", "body": "section body copy"}
+  ],
+  "cta": "one of the approved CTAs",
+  "creative_brief": "brief visual direction (1-2 sentences)"
+}"""
+        content_label = "landing page variant"
+        extra_rules = """- Include financial disclaimer if discussing investment
+- Risks and benefits must have equal prominence
+- No return projections or guarantees
+- Every number must trace to a verified fact above"""
+
+    elif content_type == "email":
+        constraints_text = f"""- Subject: max {constraints.get('subject_max_chars', 60)} characters (6-10 words ideal)
+- Preheader: max {constraints.get('preheader_max_chars', 100)} characters
+- Body: max {constraints.get('body_max_chars', 2000)} characters
+- Platform: email
+- CTA must be one of: {', '.join(approved_ctas)}"""
+        output_format = """{
+  "subject": "email subject line",
+  "preheader": "preview text shown after subject in inbox",
+  "body": "email body copy (use \\n\\n for paragraph breaks)",
+  "cta": "one of the approved CTAs",
+  "sender_name": "sender display name",
+  "creative_brief": "brief email design direction (1-2 sentences)"
+}"""
+        content_label = "email variant"
+        extra_rules = """- Single CTA per email
+- Short paragraphs (max 3 sentences each)
+- Founder voice when appropriate
+- Every number must trace to a verified fact above"""
+
+    else:  # meta-ad (default)
+        constraints_text = f"""- Primary text: max {constraints.get('primary_text_max_chars', 500)} characters
+- Headline: max {constraints.get('headline_max_chars', 40)} characters
+- Description: max {constraints.get('description_max_chars', 125)} characters
+- Platform: {constraints.get('platform', 'meta')}
+- CTA must be one of: {', '.join(approved_ctas)}"""
+        output_format = """{
+  "primary_text": "your ad body copy here",
+  "headline": "your headline here",
+  "description": "your description here",
+  "cta": "one of the approved CTAs",
+  "creative_brief": "brief visual direction (1-2 sentences)"
+}"""
+        content_label = "ad variant"
+        extra_rules = """- No em-dashes (use full stops, commas, or colons)
+- No commands ("stop", "add it up", "do the maths")
+- No condescension ("we'll wait", "simple maths")
+- Lead with value/benefit, not price
+- Every number must trace to a verified fact above"""
+
+    return f"""Write ONE {content_label} for {client_name} — {product}.
 
 ANGLE: {angle}
 TACTIC: {tactic}
@@ -149,11 +225,7 @@ HOOK TYPE: {hook_type} — {hook_template}
 FUNNEL: {funnel}
 
 CONSTRAINTS:
-- Primary text: max {constraints.get('primary_text_max_chars', 500)} characters
-- Headline: max {constraints.get('headline_max_chars', 40)} characters
-- Description: max {constraints.get('description_max_chars', 125)} characters
-- Platform: {constraints.get('platform', 'meta')}
-- CTA must be one of: {', '.join(approved_ctas)}
+{constraints_text}
 
 TONE GUIDELINES:
 {tone[:500]}
@@ -165,22 +237,10 @@ VERIFIED FACTS (use only these — every number must trace back):
 {facts_text}
 {beat_text}{failure_text}{wildcard_text}
 IMPORTANT RULES:
-- No em-dashes (use full stops, commas, or colons)
-- No commands ("stop", "add it up", "do the maths")
-- No condescension ("we'll wait", "simple maths")
-- Lead with value/benefit, not price
-- Include "not insurance" or equivalent disclaimer
-- Close with the low-risk trio: "No joining fee. No waiting period. Cancel anytime."
-- Every number must trace to a verified fact above
+{extra_rules}
 
 OUTPUT FORMAT (respond with ONLY this JSON, no other text):
-{{
-  "primary_text": "your ad body copy here",
-  "headline": "your headline here",
-  "description": "your description here",
-  "cta": "one of the approved CTAs",
-  "creative_brief": "brief visual direction (1-2 sentences)"
-}}"""
+{output_format}"""
 
 
 def _select_relevant_facts(facts_data: dict, angle: str) -> str:
@@ -193,12 +253,23 @@ def _select_relevant_facts(facts_data: dict, angle: str) -> str:
 
     # Angle-specific priorities
     angle_categories = {
+        # Best for Pet angles
         "price-value": ["pricing", "savings"],
         "simplicity-clarity": ["inclusions", "how_it_works"],
         "safety-risk": ["inclusions", "exclusions"],
         "empathy-understanding": ["savings", "social_proof"],
         "outcome-results": ["savings", "social_proof"],
         "anti-insurance": ["exclusions", "social_proof"],
+        # FarmThru angles
+        "cause-purpose": ["positioning", "business_model", "farm_partners"],
+        "transformation-storytelling": ["farm_partners", "product_quality", "social_proof"],
+        "social-belonging": ["business_model", "social_proof", "farm_partners"],
+        "quality-craft": ["product_quality", "farm_partners"],
+        "transparency-safety": ["investment", "market", "business_model"],
+        "empathy-founder": ["positioning", "farm_partners", "social_proof"],
+        "urgency-scarcity": ["investment", "business_model"],
+        "investment-thesis": ["investment", "market", "business_model"],
+        "comparison-switching": ["product_quality", "business_model", "positioning"],
     }
     extra = angle_categories.get(angle, [])
 
@@ -248,39 +319,64 @@ def _call_llm(prompt: str) -> str:
     return '{"error": "No LLM available"}'
 
 
-def _parse_output(raw: str, angle: str, tactic: str, hook_type: str, funnel: str) -> dict:
-    """Parse LLM output into canonical ad format."""
+def _parse_output(
+    raw: str, angle: str, tactic: str, hook_type: str, funnel: str,
+    content_type: str = "meta-ad",
+) -> dict:
+    """Parse LLM output into canonical format for any content type."""
     import re
 
-    # Try to extract JSON from the response
-    json_match = re.search(r'\{[^{}]*\}', raw, re.DOTALL)
+    # Try to extract JSON from the response (handle nested objects for landing pages)
+    json_match = re.search(r'\{.*\}', raw, re.DOTALL)
     if json_match:
         try:
             data = json.loads(json_match.group())
-            ad_id = f"{angle[:2].upper()}-{random.randint(100, 999)}"
-            return {
-                "ad_id": ad_id,
+            id_prefix = angle[:2].upper()
+            seq = random.randint(100, 999)
+
+            base = {
                 "angle": angle,
                 "tactic": tactic,
                 "hook_type": hook_type,
                 "funnel": funnel,
-                "primary_text": data.get("primary_text", ""),
-                "headline": data.get("headline", ""),
-                "description": data.get("description", ""),
-                "cta": data.get("cta", "Learn More"),
+                "content_type": content_type,
                 "creative_brief": data.get("creative_brief", ""),
                 "generated_at": datetime.now().isoformat(),
             }
+
+            if content_type == "landing-page":
+                base["page_id"] = f"{id_prefix}-LP-{seq}"
+                base["headline"] = data.get("headline", "")
+                base["subhead"] = data.get("subhead", "")
+                base["hero_copy"] = data.get("hero_copy", "")
+                base["sections"] = data.get("sections", [])
+                base["cta"] = data.get("cta", "Join the Waitlist")
+            elif content_type == "email":
+                base["email_id"] = f"{id_prefix}-EM-{seq}"
+                base["subject"] = data.get("subject", "")
+                base["preheader"] = data.get("preheader", "")
+                base["body"] = data.get("body", "")
+                base["cta"] = data.get("cta", "Join the Waitlist")
+                base["sender_name"] = data.get("sender_name", "")
+            else:  # meta-ad
+                base["ad_id"] = f"{id_prefix}-{seq}"
+                base["primary_text"] = data.get("primary_text", "")
+                base["headline"] = data.get("headline", "")
+                base["description"] = data.get("description", "")
+                base["cta"] = data.get("cta", "Learn More")
+
+            return base
         except json.JSONDecodeError:
             pass
 
-    # Fallback: return error ad
+    # Fallback: return error
     return {
         "ad_id": "ERROR",
         "angle": angle,
         "tactic": tactic,
         "hook_type": hook_type,
         "funnel": funnel,
+        "content_type": content_type,
         "primary_text": raw[:500],
         "headline": "PARSE ERROR",
         "description": "",

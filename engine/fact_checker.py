@@ -113,15 +113,25 @@ def check_facts(ad: dict, facts_data: dict) -> dict:
 
 
 def _get_all_text(ad: dict) -> str:
-    """Concatenate all text fields from the ad."""
-    fields = ["primary_text", "headline", "description"]
+    """Concatenate all text fields from any content type."""
+    fields = [
+        "primary_text", "headline", "description",  # meta-ad
+        "subject", "preheader", "body",  # email
+        "hero_copy", "subhead",  # landing page
+    ]
     parts = []
     for field in fields:
         text = ad.get(field, "")
         if text:
-            # Strip blockquote markers
             text = re.sub(r"^>\s*", "", text, flags=re.MULTILINE)
             parts.append(text)
+    # Handle sections array (landing pages)
+    for section in ad.get("sections", []):
+        if isinstance(section, dict):
+            for key in ("heading", "body"):
+                text = section.get(key, "")
+                if text:
+                    parts.append(text)
     return "\n".join(parts)
 
 
@@ -141,8 +151,11 @@ def _extract_claims(text: str) -> list[dict]:
             seen.add(claim_text)
             claims.append({"text": claim_text, "type": "money"})
 
-    # 2. Numbers with context: 270+ clinics, 4.1/5 stars, etc.
-    number_context_pattern = r'(\d+[\+]?\s*(?:clinics|vet clinics|locations|practices|reviews?|stars?|visits?|services?|nights?|trims?|%|consult))'
+    # 2. Numbers with context: 270+ clinics, 4.1/5 stars, 50+ farms, etc.
+    number_context_pattern = (
+        r'(\d+[\+]?\s*(?:clinics|vet clinics|locations|practices|reviews?|stars?|visits?|services?|nights?|trims?|%|consult'
+        r'|farms?|customers?|families|investors?|spots?|days?|hours?|km|stops?))'
+    )
     for match in re.finditer(number_context_pattern, text, re.IGNORECASE):
         claim_text = match.group().strip()
         if claim_text not in seen:
@@ -166,6 +179,19 @@ def _extract_claims(text: str) -> list[dict]:
         (r'(?:2|two)\s+nights?\s+(?:cat\s+)?boarding', "2 nights boarding"),
         (r'20%\s+off\s+desexing', "20% off desexing"),
         (r'10%\s+off\s+(?:parasite|heartworm|food|accessories)', "10% off parasite/food"),
+        # FarmThru / food delivery / CFE patterns
+        (r'regenerative\s+(?:farm|agriculture|beef|chicken|food)', "regenerative farming"),
+        (r'pasture[- ]raised', "pasture-raised"),
+        (r'grass[- ]fed', "grass-fed"),
+        (r'no\s+(?:hormones?|antibiotics?|feedlot)', "no hormones/antibiotics"),
+        (r'paddock\s+to\s+(?:door|kitchen|plate)', "paddock to door"),
+        (r'farm\s+to\s+(?:door|kitchen|table)', "farm to door"),
+        (r'(?:100%|fully)\s+refundable', "refundable deposit"),
+        (r'not?\s+financial\s+advice', "not financial advice"),
+        (r'disclosure\s+document', "disclosure document"),
+        (r'(?:equity\s+)?crowdfund', "equity crowdfunding"),
+        (r'birchal', "Birchal platform"),
+        (r'zero\s+(?:warehouse|wholesaler|middlem)', "zero middlemen"),
     ]
     for pattern, label in feature_patterns:
         if re.search(pattern, text, re.IGNORECASE) and label not in seen:

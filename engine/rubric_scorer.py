@@ -12,8 +12,20 @@ import re
 from pathlib import Path
 
 
-def load_rubric(shared_dir: Path) -> dict:
-    """Load the rubric schema."""
+def load_rubric(shared_dir: Path, content_type: str = "meta-ad") -> dict:
+    """Load the rubric schema for a content type."""
+    # Try content-type-specific rubric first
+    rubric_path = shared_dir / "rubrics" / f"{content_type}.json"
+    if rubric_path.exists():
+        with open(rubric_path) as f:
+            rubric = json.load(f)
+        # Handle inheritance
+        if "inherits" in rubric:
+            base_path = shared_dir / rubric["inherits"]
+            with open(base_path) as f:
+                return json.load(f)
+        return rubric
+    # Fallback to original rubric-schema.json
     rubric_path = shared_dir / "rubric-schema.json"
     with open(rubric_path) as f:
         return json.load(f)
@@ -25,15 +37,17 @@ def score_rubric(
     client_config: dict,
     existing_ads: list[dict] = None,
     use_llm: bool = True,
+    content_type: str = "meta-ad",
 ) -> dict:
-    """Score an ad against all 10 rubric dimensions.
+    """Score an ad against all rubric dimensions.
 
     Args:
         ad: Ad in canonical JSON format
-        rubric: Loaded rubric-schema.json
+        rubric: Loaded rubric schema for this content type
         client_config: Loaded client config.json
         existing_ads: Other ads in set (for differentiation)
         use_llm: Whether to use LLM for subjective dimensions (False = skip those)
+        content_type: Content type being scored (meta-ad, email, landing-page)
 
     Returns:
         {
@@ -45,8 +59,12 @@ def score_rubric(
     """
     existing_ads = existing_ads or []
     dimensions = rubric.get("dimensions", [])
-    weights = client_config.get("rubric", {}).get("weights", {})
-    max_possible = client_config.get("rubric", {}).get("max_score", 66.25)
+    rubric_config = client_config.get("rubric", {})
+    # Support per-content-type rubric config
+    if isinstance(rubric_config, dict) and content_type in rubric_config:
+        rubric_config = rubric_config[content_type]
+    weights = rubric_config.get("weights", {})
+    max_possible = rubric_config.get("max_score", 66.25)
 
     raw_scores = {}
     dimension_details = {}
@@ -58,7 +76,7 @@ def score_rubric(
         method = dim.get("scoring_method", "deterministic")
 
         if method == "deterministic":
-            score, detail = _score_deterministic(dim_id, ad, client_config, existing_ads)
+            score, detail = _score_deterministic(dim_id, ad, client_config, existing_ads, content_type=content_type)
         elif method == "llm" and use_llm:
             from . import llm_judge
             score, detail = llm_judge.judge_dimension(dim_id, ad, dim, client_config)
@@ -88,29 +106,65 @@ def score_rubric(
 # --- Deterministic scoring functions ---
 
 def _score_deterministic(
-    dim_id: str, ad: dict, config: dict, existing_ads: list[dict]
+    dim_id: str, ad: dict, config: dict, existing_ads: list[dict],
+    content_type: str = "meta-ad",
 ) -> tuple[int, str]:
     """Route to the correct deterministic scorer."""
-    scorers = {
+    # Common scorers (work for all content types)
+    common_scorers = {
         "specificity": _score_specificity,
+        "differentiation": _score_differentiation,
+        "objection_preemption": _score_objection_preemption,
+    }
+
+    # Meta-ad specific
+    meta_scorers = {
         "receptionist_test": _score_receptionist_test,
         "cta_clarity": _score_cta_clarity,
         "platform_fit": _score_platform_fit,
-        "objection_preemption": _score_objection_preemption,
         "scroll_stop_hook": _score_scroll_stop_hook,
-        "differentiation": _score_differentiation,
     }
+
+    # Landing page specific
+    landing_scorers = {
+        "hero_clarity": _score_hero_clarity,
+        "proof_density": _score_proof_density,
+        "cta_prominence": _score_cta_prominence,
+        "scroll_depth_pull": _score_scroll_depth_pull,
+        "cta_clarity": _score_cta_clarity,  # reuse
+        "scroll_stop_hook": _score_scroll_stop_hook,  # reuse for hook scoring
+    }
+
+    # Email specific
+    email_scorers = {
+        "subject_line_power": _score_subject_line_power,
+        "body_flow": _score_body_flow,
+        "cta_clarity": _score_cta_clarity,  # reuse
+        "personalization": _score_personalization,
+        "scroll_stop_hook": _score_scroll_stop_hook,  # reuse for opening hook
+    }
+
+    # Select scorer set based on content type
+    type_scorers = {
+        "meta-ad": meta_scorers,
+        "landing-page": landing_scorers,
+        "email": email_scorers,
+    }
+
+    scorers = {**common_scorers, **type_scorers.get(content_type, meta_scorers)}
+
     scorer = scorers.get(dim_id)
     if scorer:
+        # Handle different scorer signatures
         if dim_id == "differentiation":
             return scorer(ad, existing_ads)
-        elif dim_id == "receptionist_test":
+        elif dim_id in ("receptionist_test", "cta_clarity", "platform_fit", "cta_prominence"):
             return scorer(ad, config)
-        elif dim_id in ("cta_clarity", "platform_fit"):
+        elif dim_id in ("hero_clarity",):
             return scorer(ad, config)
         else:
             return scorer(ad)
-    return 3, "No scorer available"
+    return 3, "No scorer available for dimension"
 
 
 def _score_specificity(ad: dict) -> tuple[int, str]:
@@ -120,9 +174,18 @@ def _score_specificity(ad: dict) -> tuple[int, str]:
     # Count dollar amounts
     money_count = len(re.findall(r'\$[\d,]+', text))
     # Count other numbers with context
-    number_count = len(re.findall(r'\b\d+[\+]?\s*(?:clinics|visits?|year|month|%|stars?|reviews?|min)', text, re.IGNORECASE))
-    # Count specific names (pet names, brand names)
-    name_count = len(re.findall(r'\b(?:Luna|Max|Bella|Charlie|Milo|Best for Pet|VetChat|My Pawtal)\b', text, re.IGNORECASE))
+    number_count = len(re.findall(
+        r'\b\d+[\+]?\s*(?:clinics|vet clinics|visits?|year|month|%|stars?|reviews?|min'
+        r'|farms?|customers?|families|days?|hours?|km|stops?|investors?|spots?)',
+        text, re.IGNORECASE
+    ))
+    # Count specific names (pet names, brand names, client-specific names)
+    name_count = len(re.findall(
+        r'\b(?:Luna|Max|Bella|Charlie|Milo|Best for Pet|VetChat|My Pawtal'
+        r'|FarmThru|Farm Thru|Rachel|Bundarra|Collins|Brookvale|Birchal'
+        r'|Paris Creek|Farmer Brown|Little Yarran)\b',
+        text, re.IGNORECASE
+    ))
 
     total = money_count + number_count + name_count
     detail = f"{money_count} dollar amounts, {number_count} numbers, {name_count} names = {total} specifics"
@@ -139,53 +202,44 @@ def _score_specificity(ad: dict) -> tuple[int, str]:
 
 
 def _score_receptionist_test(ad: dict, config: dict) -> tuple[int, str]:
-    """Check if ad answers the receptionist test questions."""
-    questions = config.get("receptionist_test_questions", [
-        "What is it?", "What's included?", "How much does it cost?",
-        "How much will I save?", "How do I start?"
-    ])
+    """Check if ad answers the receptionist test questions.
+
+    Uses question-to-pattern mapping from config, or falls back to
+    client-specific defaults based on client_id.
+    """
+    questions = config.get("receptionist_test_questions", [])
     text = _get_all_text(ad).lower()
+    client_id = config.get("client_id", "")
     answered = 0
     details = []
 
-    # What is it? — mentions "plan", "membership", "wellness"
-    if re.search(r'\b(wellness plan|pet plan|membership|plan that|plan for)\b', text):
-        answered += 1
-        details.append("what: yes")
-    else:
-        details.append("what: no")
+    # Client-specific question patterns
+    if client_id == "farm-thru":
+        checks = [
+            ("what", r'\b(farm.?thru|regenerative|farm.to.door|food delivery|online grocer)\b'),
+            ("source", r'\b(farm|paddock|regenerative|pasture|grass.fed|rachel|bundarra|kempsey)\b'),
+            ("different", r'(days?\s+(?:old|not)|not\s+weeks|cold storage|middlem|no warehouse|wholesal|direct)'),
+            ("invest/join", r'(waitlist|join|invest|sign up|deposit|birchal|reserve|save.*spot)'),
+            ("minimum", r'(\$50|\$5.*deposit|\$10|minimum.*invest|invest.*from)'),
+        ]
+    else:  # best-for-pet (default)
+        checks = [
+            ("what", r'\b(wellness plan|pet plan|membership|plan that|plan for)\b'),
+            ("included", r'(consult|vaccination|dental|blood test|urine test|vetchat|nail trim|boarding|parasite|desexing|microchip)'),
+            ("cost", r'\$\d'),
+            ("savings", r'(save|saving|saved)\s+\$|(\$\d+.*vs|\d+.*less|pay.*instead)'),
+            ("start", r'(find a|check availability|sign up|get started|learn more|see (the|what)|bestforpet)'),
+        ]
 
-    # What's included? — mentions at least 2 inclusions
-    inclusions = re.findall(r'(consult|vaccination|dental|blood test|urine test|vetchat|nail trim|boarding|parasite|desexing|microchip)', text)
-    if len(set(inclusions)) >= 2:
-        answered += 1
-        details.append(f"included: yes ({len(set(inclusions))} items)")
-    else:
-        details.append("included: no")
+    for label, pattern in checks:
+        if re.search(pattern, text, re.IGNORECASE):
+            answered += 1
+            details.append(f"{label}: yes")
+        else:
+            details.append(f"{label}: no")
 
-    # How much? — mentions a dollar amount
-    if re.search(r'\$\d', text):
-        answered += 1
-        details.append("cost: yes")
-    else:
-        details.append("cost: no")
-
-    # How much will I save? — mentions savings or cost comparison
-    if re.search(r'(save|saving|saved)\s+\$|(\$\d+.*vs|\d+.*less|pay.*instead)', text):
-        answered += 1
-        details.append("savings: yes")
-    else:
-        details.append("savings: no")
-
-    # How do I start? — mentions CTA or sign up method
-    if re.search(r'(find a|check availability|sign up|get started|learn more|see (the|what)|bestforpet)', text):
-        answered += 1
-        details.append("start: yes")
-    else:
-        details.append("start: no")
-
-    detail = f"{answered}/{len(questions)} answered: {', '.join(details)}"
-    score = max(1, answered)  # 0 answered = 1, 5 answered = 5
+    detail = f"{answered}/{len(checks)} answered: {', '.join(details)}"
+    score = max(1, answered)
     return score, detail
 
 
@@ -193,6 +247,11 @@ def _score_cta_clarity(ad: dict, config: dict) -> tuple[int, str]:
     """Check if CTA is on the approved list and clear."""
     cta = ad.get("cta", "").strip()
     approved = config.get("approved_ctas", [])
+
+    # Handle multi-content-type format (dict of lists)
+    if isinstance(approved, dict):
+        content_type = ad.get("content_type", "meta-ad")
+        approved = approved.get(content_type, approved.get("meta-ad", []))
 
     if not cta:
         return 1, "No CTA found"
@@ -215,29 +274,43 @@ def _score_cta_clarity(ad: dict, config: dict) -> tuple[int, str]:
 
 def _score_platform_fit(ad: dict, config: dict) -> tuple[int, str]:
     """Check character limits and conversational tone."""
+    content_type = ad.get("content_type", "meta-ad")
     constraints = config.get("platform_constraints", {})
+    # Support per-content-type constraints
+    if isinstance(constraints, dict) and content_type in constraints:
+        constraints = constraints[content_type]
     violations = []
 
-    primary_text = ad.get("primary_text", "")
-    headline = ad.get("headline", "")
-    description = ad.get("description", "")
+    # Content-type-specific field checks
+    field_limits = {
+        "meta-ad": [
+            ("primary_text", "primary_text_max_chars", 500),
+            ("headline", "headline_max_chars", 40),
+            ("description", "description_max_chars", 125),
+        ],
+        "landing-page": [
+            ("headline", "headline_max_chars", 80),
+            ("subhead", "subhead_max_chars", 200),
+            ("hero_copy", "hero_copy_max_chars", 500),
+        ],
+        "email": [
+            ("subject", "subject_max_chars", 60),
+            ("preheader", "preheader_max_chars", 100),
+            ("body", "body_max_chars", 2000),
+        ],
+    }
 
-    # Character limit checks
-    pt_max = constraints.get("primary_text_max_chars", 500)
-    hl_max = constraints.get("headline_max_chars", 40)
-    desc_max = constraints.get("description_max_chars", 125)
+    for field_name, constraint_key, default_max in field_limits.get(content_type, field_limits["meta-ad"]):
+        text = ad.get(field_name, "")
+        max_len = constraints.get(constraint_key, default_max)
+        if text and len(text) > max_len:
+            violations.append(f"{field_name}: {len(text)}/{max_len} chars")
 
-    if len(primary_text) > pt_max:
-        violations.append(f"primary_text: {len(primary_text)}/{pt_max} chars")
-    if headline and len(headline) > hl_max:
-        violations.append(f"headline: {len(headline)}/{hl_max} chars")
-    if description and len(description) > desc_max:
-        violations.append(f"description: {len(description)}/{desc_max} chars")
-
-    # Corporate jargon check
+    # Corporate jargon check (applies to all content types)
+    all_text = _get_all_text(ad)
     jargon = re.findall(
         r'\b(comprehensive|solution|leverage|synergy|optimize|innovative|cutting-edge|best-in-class|utilize|implement|streamline)\b',
-        primary_text, re.IGNORECASE
+        all_text, re.IGNORECASE
     )
     if jargon:
         violations.append(f"corporate jargon: {', '.join(jargon[:3])}")
@@ -251,25 +324,37 @@ def _score_platform_fit(ad: dict, config: dict) -> tuple[int, str]:
 
 
 def _score_objection_preemption(ad: dict) -> tuple[int, str]:
-    """Check for low-risk trio and key disclaimers."""
+    """Check for objection pre-emption signals relevant to the content."""
     text = _get_all_text(ad).lower()
     signals = 0
     found = []
 
-    checks = [
-        ("no joining fee", r'no\s+(?:joining|sign[- ]?up)\s+fee'),
-        ("no waiting period", r'no\s+wait(?:ing)?\s+period'),
-        ("cancel anytime", r'cancel\s+any\s*time'),
-        ("not insurance", r'not\s+insurance|isn\'t\s+insurance'),
-        ("no claims/excess", r'no\s+(?:claims|excess)'),
-    ]
+    # Detect which client context by content signals
+    is_farmthru = bool(re.search(r'farm.?thru|regenerative|birchal|paddock', text))
+
+    if is_farmthru:
+        checks = [
+            ("refundable", r'refundable'),
+            ("not financial advice", r'not\s+financial\s+advice|disclosure\s+document'),
+            ("risk acknowledged", r'don\'t\s+know|most\s+startups|can\'t\s+promise|no\s+guarantee'),
+            ("no middlemen", r'no\s+(?:warehouse|wholesaler|middlem)'),
+            ("delivery clarity", r'sydney|central\s+coast|wollongong|deliver'),
+        ]
+    else:
+        checks = [
+            ("no joining fee", r'no\s+(?:joining|sign[- ]?up)\s+fee'),
+            ("no waiting period", r'no\s+wait(?:ing)?\s+period'),
+            ("cancel anytime", r'cancel\s+any\s*time'),
+            ("not insurance", r'not\s+insurance|isn\'t\s+insurance'),
+            ("no claims/excess", r'no\s+(?:claims|excess)'),
+        ]
 
     for label, pattern in checks:
         if re.search(pattern, text):
             signals += 1
             found.append(label)
 
-    detail = f"{signals}/5 objection signals: {', '.join(found) if found else 'none'}"
+    detail = f"{signals}/{len(checks)} objection signals: {', '.join(found) if found else 'none'}"
     score = max(1, signals)
     return score, detail
 
@@ -288,9 +373,13 @@ def _score_scroll_stop_hook(ad: dict) -> tuple[int, str]:
     if not first_line:
         return 1, "No opening line found"
 
-    # Story hook: specific day/time/action
-    if re.search(r'(last\s+\w+day|yesterday|this morning|walked in|picked up|called|booked)', first_line, re.IGNORECASE):
+    # Story hook: specific moment, person, action, or named subject doing something
+    if re.search(r'(last\s+\w+day|yesterday|this morning|walked in|picked up|called|booked|was\s+\w+ing|started|lost|changed|grew up|moved|quit|left)', first_line, re.IGNORECASE):
         return 5, f"Story hook with specific moment: '{first_line[:60]}...'"
+
+    # Named person story hook: "[Name] was/did/had..."
+    if re.search(r'^[A-Z][a-z]+\s+(?:was|had|did|didn|couldn|started|lost|quit|left|grew)', first_line):
+        return 5, f"Named story hook: '{first_line[:60]}...'"
 
     # Quoted objection: starts with quote marks or "I"
     if re.match(r'^["\u201c]', first_line) or re.match(r'^"', first_line):
@@ -351,6 +440,284 @@ def _score_differentiation(ad: dict, existing_ads: list[dict]) -> tuple[int, str
     return 1, detail
 
 
+def _score_hero_clarity(ad: dict, config: dict) -> tuple[int, str]:
+    """Score landing page hero clarity — can visitor understand what/who/action in 5 seconds?"""
+    headline = ad.get("headline", "")
+    subhead = ad.get("subhead", "")
+    hero_copy = ad.get("hero_copy", "")
+    cta = ad.get("cta", "")
+
+    score = 1
+    details = []
+
+    # Headline exists and is concise
+    if headline:
+        word_count = len(headline.split())
+        if word_count <= 12:
+            score += 1
+            details.append(f"headline: {word_count} words (good)")
+        else:
+            details.append(f"headline: {word_count} words (too long)")
+    else:
+        details.append("headline: missing")
+
+    # Subhead adds clarity
+    if subhead:
+        score += 1
+        details.append("subhead: present")
+    else:
+        details.append("subhead: missing")
+
+    # CTA visible in hero
+    if cta:
+        score += 1
+        details.append(f"cta: '{cta}'")
+    else:
+        details.append("cta: missing from hero")
+
+    # Hero copy provides context
+    if hero_copy and len(hero_copy) > 20:
+        score += 1
+        details.append("hero_copy: present")
+
+    score = min(5, score)
+    return score, f"{score}/5 hero elements: {', '.join(details)}"
+
+
+def _score_proof_density(ad: dict) -> tuple[int, str]:
+    """Score landing page proof density — stats, testimonials, named sources."""
+    all_text = _get_all_text(ad)
+    proof_count = 0
+    found = []
+
+    # Statistics (numbers with context)
+    stats = re.findall(r'\d+[\+%]?\s*(?:farms?|customers?|families|investors?|years?|days?)', all_text, re.IGNORECASE)
+    if stats:
+        proof_count += 1
+        found.append(f"stats: {len(stats)}")
+
+    # Dollar amounts
+    money = re.findall(r'\$[\d,]+', all_text)
+    if money:
+        proof_count += 1
+        found.append(f"money: {len(money)}")
+
+    # Testimonials (quoted text or attribution patterns)
+    quotes = re.findall(r'["\u201c].{20,}["\u201d]', all_text)
+    if quotes:
+        proof_count += 1
+        found.append(f"quotes: {len(quotes)}")
+
+    # Named sources (Name, Location or Name from X)
+    names = re.findall(r'(?:[A-Z][a-z]+),?\s+(?:[A-Z][a-z]+|NSW|VIC|QLD|SA|WA|TAS|NT|ACT)', all_text)
+    if names:
+        proof_count += 1
+        found.append(f"named: {len(names)}")
+
+    # Third-party citations (Source:, per X, according to)
+    citations = re.findall(r'(?:source|per|according to|IBISWorld|Shopify|Birchal)', all_text, re.IGNORECASE)
+    if citations:
+        proof_count += 1
+        found.append(f"citations: {len(citations)}")
+
+    detail = f"{proof_count}/5 proof types: {', '.join(found) if found else 'none'}"
+    score = max(1, proof_count)
+    return score, detail
+
+
+def _score_cta_prominence(ad: dict, config: dict) -> tuple[int, str]:
+    """Score landing page CTA prominence — visible, repeated, compelling."""
+    cta = ad.get("cta", "")
+    all_text = _get_all_text(ad)
+
+    if not cta:
+        return 1, "No CTA found"
+
+    # Check approved CTAs
+    approved = config.get("approved_ctas", {})
+    if isinstance(approved, dict):
+        # Multi-content-type format
+        approved_list = approved.get("landing-page", approved.get("meta-ad", []))
+    else:
+        approved_list = approved
+
+    score = 2  # Has a CTA = at least 2
+    details = []
+
+    # On approved list
+    if cta in approved_list or cta.lower() in [a.lower() for a in approved_list]:
+        score += 1
+        details.append("approved CTA")
+
+    # CTA text appears multiple times (repeated on page)
+    cta_mentions = len(re.findall(re.escape(cta), all_text, re.IGNORECASE))
+    if cta_mentions >= 2:
+        score += 1
+        details.append(f"repeated {cta_mentions}x")
+
+    # Action-specific (not generic)
+    if re.search(r'(join|save|reserve|secure|get|start)', cta, re.IGNORECASE):
+        score += 1
+        details.append("action-specific")
+
+    score = min(5, score)
+    return score, f"CTA '{cta}': {', '.join(details) if details else 'basic'}"
+
+
+def _score_scroll_depth_pull(ad: dict) -> tuple[int, str]:
+    """Score landing page scroll depth pull — does each section pull to the next?"""
+    sections = ad.get("sections", [])
+    headline = ad.get("headline", "")
+    hero_copy = ad.get("hero_copy", "")
+
+    score = 1
+    details = []
+
+    # Has enough sections
+    section_count = len(sections)
+    if 4 <= section_count <= 8:
+        score += 1
+        details.append(f"{section_count} sections (optimal)")
+    elif section_count > 0:
+        details.append(f"{section_count} sections")
+    else:
+        details.append("no sections")
+        return score, f"1/5: {', '.join(details)}"
+
+    # Sections have headings
+    headings = [s.get("heading", "") for s in sections if isinstance(s, dict)]
+    headed_count = sum(1 for h in headings if h)
+    if headed_count == section_count:
+        score += 1
+        details.append("all sections headed")
+    elif headed_count > 0:
+        details.append(f"{headed_count}/{section_count} headed")
+
+    # Headings are benefit-oriented (not generic like "About Us")
+    benefit_headings = sum(1 for h in headings if h and re.search(
+        r'(how|why|what|your|get|join|save|better|fresh|real|future|farm)', h, re.IGNORECASE
+    ))
+    if benefit_headings >= section_count * 0.5:
+        score += 1
+        details.append("benefit-oriented headings")
+
+    # Progressive new content (sections aren't repetitive)
+    if section_count >= 3:
+        score += 1
+        details.append("sufficient depth")
+
+    score = min(5, score)
+    return score, f"{score}/5 scroll pull: {', '.join(details)}"
+
+
+def _score_subject_line_power(ad: dict) -> tuple[int, str]:
+    """Score email subject line — curiosity, specificity, length."""
+    subject = ad.get("subject", "")
+    if not subject:
+        return 1, "No subject line"
+
+    score = 2  # Has a subject = at least 2
+    details = []
+
+    # Word count sweet spot (6-10)
+    word_count = len(subject.split())
+    if 6 <= word_count <= 10:
+        score += 1
+        details.append(f"{word_count} words (sweet spot)")
+    else:
+        details.append(f"{word_count} words")
+
+    # Contains specificity (number, name, concrete detail)
+    if re.search(r'(\d+|\$|%|[A-Z][a-z]+\'s)', subject):
+        score += 1
+        details.append("specific")
+
+    # No spam triggers
+    spam = re.search(r'(free|act now|limited|!!!|ALL CAPS|\U0001f525|\U0001f4b0)', subject, re.IGNORECASE)
+    if not spam:
+        score += 1
+        details.append("no spam triggers")
+    else:
+        details.append(f"spam trigger: {spam.group()}")
+
+    score = min(5, score)
+    return score, f"Subject '{subject[:40]}': {', '.join(details)}"
+
+
+def _score_body_flow(ad: dict) -> tuple[int, str]:
+    """Score email body flow and readability."""
+    body = ad.get("body", ad.get("primary_text", ""))
+    if not body:
+        return 1, "No body content"
+
+    score = 2  # Has body = at least 2
+    details = []
+
+    # Length check
+    if len(body) <= 2000:
+        score += 1
+        details.append(f"{len(body)} chars (within limit)")
+    else:
+        details.append(f"{len(body)} chars (over 2000)")
+
+    # Paragraph structure (line breaks)
+    paragraphs = [p.strip() for p in body.split("\n\n") if p.strip()]
+    if len(paragraphs) >= 3:
+        score += 1
+        details.append(f"{len(paragraphs)} paragraphs")
+    else:
+        details.append(f"only {len(paragraphs)} paragraphs")
+
+    # No paragraph too long (max 3 sentences)
+    long_paras = sum(1 for p in paragraphs if p.count(". ") > 3)
+    if long_paras == 0:
+        score += 1
+        details.append("good paragraph length")
+    else:
+        details.append(f"{long_paras} long paragraphs")
+
+    score = min(5, score)
+    return score, f"{score}/5 flow: {', '.join(details)}"
+
+
+def _score_personalization(ad: dict) -> tuple[int, str]:
+    """Score email personalization and relevance."""
+    body = ad.get("body", ad.get("primary_text", ""))
+    subject = ad.get("subject", "")
+    all_text = subject + " " + body
+
+    if not all_text.strip():
+        return 1, "No content to evaluate"
+
+    score = 1
+    details = []
+
+    # Personalization tokens
+    if re.search(r'\{(?:first_name|name|city)\}|\[Name\]', all_text):
+        score += 1
+        details.append("has merge tags")
+
+    # References reader's context (waitlist, prior action, interest)
+    if re.search(r'(you (?:joined|signed up|registered|expressed)|your (?:spot|place|deposit)|waitlist)', all_text, re.IGNORECASE):
+        score += 1
+        details.append("references reader context")
+
+    # Conversational/personal tone (I/we/you ratio)
+    you_count = len(re.findall(r'\byou(?:r|\'re|\'ll)?\b', all_text, re.IGNORECASE))
+    we_count = len(re.findall(r'\b(?:I|we|our)\b', all_text, re.IGNORECASE))
+    if you_count >= 3:
+        score += 1
+        details.append(f"reader-focused ({you_count} 'you' refs)")
+
+    # Specific timing or action reference
+    if re.search(r'(this week|today|tomorrow|on \w+day|hours?|minutes?)', all_text, re.IGNORECASE):
+        score += 1
+        details.append("time-specific")
+
+    score = min(5, score)
+    return score, f"{score}/5 personalization: {', '.join(details) if details else 'generic'}"
+
+
 def _score_heuristic_fallback(dim_id: str, ad: dict) -> tuple[int, str]:
     """Heuristic fallback for LLM-judged dimensions when LLM is disabled."""
     # Simple word-count-based heuristic — not reliable, just a fallback
@@ -387,14 +754,27 @@ def _score_heuristic_fallback(dim_id: str, ad: dict) -> tuple[int, str]:
 # --- Utilities ---
 
 def _get_all_text(ad: dict) -> str:
-    """Concatenate all text fields."""
-    fields = ["primary_text", "headline", "description"]
+    """Concatenate all text fields from any content type."""
+    # Check all known text fields across content types
+    fields = [
+        "primary_text", "headline", "description",  # meta-ad
+        "subject", "preheader", "body",  # email
+        "hero_copy", "subhead",  # landing page
+    ]
     parts = []
     for field in fields:
         text = ad.get(field, "")
         if text:
             text = re.sub(r"^>\s*", "", text, flags=re.MULTILINE)
             parts.append(text)
+    # Handle sections array (landing pages)
+    sections = ad.get("sections", [])
+    for section in sections:
+        if isinstance(section, dict):
+            for key in ("heading", "body"):
+                text = section.get(key, "")
+                if text:
+                    parts.append(text)
     return "\n".join(parts)
 
 

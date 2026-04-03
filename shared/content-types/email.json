@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "content_type": "email",
+  "description": "Marketing email. Used for drip sequences, launch announcements, founder updates, and campaign nurture flows.",
+  "required_fields": ["email_id", "angle", "email_type", "funnel", "subject", "body", "cta"],
+  "optional_fields": ["preheader", "sender_name", "sender_email", "hook_type", "tactic", "creative_brief", "motivation", "status", "feedback", "scores", "version_of", "round"],
+  "field_constraints": {
+    "subject": {"max_length": 60, "description": "Email subject line. Aim for 6-10 words. Must be compelling enough to open."},
+    "preheader": {"max_length": 100, "description": "Preview text shown after subject in inbox. Complements but doesn't repeat the subject."},
+    "body": {"max_length": 2000, "description": "Email body copy. Plain text or light HTML. Structured: hook → story/proof → CTA."},
+    "cta": {"description": "Primary call-to-action text and destination. Clear, single action."},
+    "sender_name": {"description": "From name. Personal name for founder-voice, brand name for announcements."},
+    "email_type": {"enum": ["welcome", "founder_story", "social_proof", "countdown", "announcement", "nurture", "reminder", "follow_up"], "description": "Email sequence type."}
+  },
+  "platform": "email",
+  "rubric": "email"
+}
