@@ -1,0 +1,13 @@
+{
+  "email_id": "EM-001",
+  "content_type": "email",
+  "angle": "cause-purpose",
+  "email_type": "welcome",
+  "funnel": "TOF",
+  "subject": "You're on the waitlist. Here's what happens next.",
+  "preheader": "Welcome to FarmThru. Your spot is confirmed and your $5 deposit is fully refundable.",
+  "body": "Welcome to FarmThru.\n\nYou're now on the VIP waitlist for our equity crowdfunding campaign on Birchal, launching July 2026. Your $5 refundable deposit is confirmed.\n\nHere's what that means for you:\n\n1. You get first access when the campaign goes live.\n2. You'll receive priority updates from us before anyone else.\n3. You're invited to an exclusive founder Q&A before launch.\n4. Your deposit is fully refundable at any time, no questions asked.\n\nA bit about us, if you're new. FarmThru delivers regenerative food from 50+ farms across NSW direct to families in Sydney, Central Coast and Wollongong. No warehouses. No wholesalers. Paddock to your door in 2-3 days.\n\n2,000+ families already order from us. Now we're opening investment to our community.\n\nOver the next couple of weeks, we'll share more about how FarmThru works, who our farmers are, and what the investment looks like. No pressure. Just information to help you decide.\n\nThis is not financial advice. We'll share the Birchal disclosure document when the campaign opens.\n\nTalk soon.\n\nThe FarmThru Team\n\nP.S. Questions? Just reply. A real person will answer.",
+  "cta": "See How It Works",
+  "sender_name": "FarmThru Team",
+  "creative_brief": "Welcome email. Must land immediately after signup. Confirm the deposit, set expectations for the VIP experience (4 clear benefits), introduce FarmThru briefly for new visitors, and preview the email sequence coming. Warm, no-pressure tone. Reply-friendly."
+}

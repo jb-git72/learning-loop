@@ -1,0 +1,13 @@
+{
+  "email_id": "EM-004",
+  "content_type": "email",
+  "angle": "quality-craft",
+  "email_type": "nurture",
+  "funnel": "MOF",
+  "subject": "Meet the farms behind your food",
+  "preheader": "Rachel's Farm in Kempsey. Bundarra Berkshires. Collins Wild Caught. Real farms, real names.",
+  "body": "One of the things that sets FarmThru apart is that we can tell you exactly where your food comes from. Not a region. Not a brand name. The actual farm.\n\nHere are some of the people we work with:\n\nRachel's Farm, Kempsey NSW. Rachel Ward runs a regenerative cattle property that she rebuilt after the 2020 bushfires. 100% grass-fed beef, no hormones, no feedlots. Her animals graze open paddocks and the land gets better every year.\n\nBundarra Berkshires, Bundarra NSW. Heritage Berkshire pork, outdoor-raised. These are old breed pigs raised the way they should be, not in sheds.\n\nCollins Wild Caught, South Coast NSW. Wild-caught Alaskan salmon and seasonal Australian seafood. Not farmed. Not frozen for months.\n\nParis Creek Farms, Meadows SA. Bio-dynamic dairy from a family farm that has been producing for decades.\n\nEvery one of our 50+ partner farms meets the same standard. Regenerative practices. Animals on pasture. No shortcuts.\n\nThe supply chain is simple. Farm to our Brookvale hub, then to your door. 2-3 days from paddock to plate, compared to 14-21 days in supermarket cold storage.\n\nThat's the difference you can taste.\n\nThe FarmThru Team",
+  "cta": "See How It Works",
+  "sender_name": "FarmThru Team",
+  "creative_brief": "Product deep-dive, day 9. Spotlight named farm partners with specific details (location, product, farming practice). This is the 'know your farmer' email. Educational tone, building trust through specificity. Supply chain comparison at the end. Still no investment CTA."
+}
