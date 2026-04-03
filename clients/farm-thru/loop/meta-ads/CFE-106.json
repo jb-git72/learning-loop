@@ -1,13 +1,14 @@
 {
-  "ad_id": "CFE-106",
-  "content_type": "meta-ad",
   "angle": "social-belonging",
+  "tactic": "community-ownership",
   "hook_type": "social_proof",
   "funnel": "TOF",
-  "tactic": "community-ownership",
-  "primary_text": "Families across Sydney already collect fresh food from the Brookvale hub every week. They know their farmers by name.\n\nNow they can own a piece of it too.\n\nFarmThru is a farm-direct grocery store. Named regenerative farms across NSW. No middlemen. Food that's days old, not weeks.\n\nMid-2026, FarmThru is opening equity crowdfunding on Birchal. Customers, farmers, and anyone who believes food should work differently can become part-owners.\n\nBe a partner, not just a customer.",
-  "headline": "Customers are becoming co-owners",
-  "description": "FarmThru equity crowdfunding on Birchal, mid-2026. Own a piece of it. Not financial advice.",
-  "cta": "Sign Up",
-  "creative_brief": "Warm community moment at the Brookvale hub -- real people collecting bags. Overlaid text: 'Customers are becoming co-owners'. Not staged."
+  "content_type": "meta-ad",
+  "creative_brief": "Close-up of hands exchanging fresh produce at the Brookvale hub, with families and children visible in the warm background lighting.",
+  "generated_at": "2026-04-03T21:01:37.929736",
+  "ad_id": "CFE-106",
+  "primary_text": "Rachel Ward noticed something when she started FarmThru. The families collecting from Brookvale weren't just customers anymore. They knew which paddock their beef came from. They asked about the soil health on her Kempsey farm. They brought their kids to meet the farmers at weekend events. Now those same families can become co-owners through equity crowdfunding.",
+  "headline": "From customers to co-owners",
+  "description": "The families who collect from our Brookvale hub are joining our equity crowdfunding campaign. Not financial advice.",
+  "cta": "cfe_campaign"
 }

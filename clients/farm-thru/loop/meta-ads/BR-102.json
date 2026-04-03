@@ -1,13 +1,14 @@
 {
-  "ad_id": "BR-102",
-  "content_type": "meta-ad",
   "angle": "quality-craft",
+  "tactic": "supply-chain-contrast",
   "hook_type": "statistic",
   "funnel": "TOF",
-  "tactic": "supply-chain-contrast",
-  "primary_text": "Industry data says the average supermarket beef travels 2,400km before it reaches your kitchen. It sits in cold storage for up to three weeks.\n\nFarmThru beef comes from named regenerative farms across NSW. It goes from the farm to our Brookvale hub within days.\n\nNo hormones. No feedlots. No middlemen adding time and kilometres.\n\n100% grass-fed. Pasture-raised. You can trace every cut back to the paddock it came from.\n\nOrder what you want, when you want. No strings. No commitment.",
-  "headline": "2,400km and three weeks in cold storage",
-  "description": "Industry average for supermarket beef. FarmThru beef: farm to hub in days, not weeks.",
-  "cta": "Find your nearest hub",
-  "creative_brief": "Split screen. Left: long highway with refrigerated truck, blue-grey tint. Right: green NSW paddock with cattle. Clean stat overlay on each side."
+  "content_type": "meta-ad",
+  "creative_brief": "Split image: left shows industrial cold storage facility with calendar pages, right shows fresh beef cuts at bright FarmThru hub with Rachel's Farm branding visible.",
+  "generated_at": "2026-04-03T20:59:24.878966",
+  "ad_id": "BR-102",
+  "primary_text": "14 days. That's how long supermarket beef sits in cold storage before reaching your kitchen. Add the 2,400km journey from feedlot to shelf, and you're eating meat that's weeks old. FarmThru beef comes straight from Rachel's Farm in Kempsey. 100% grass-fed, pasture-raised, no middlemen. Days old, not weeks. Collect from Brookvale hub Monday to Friday. No commitment required.",
+  "headline": "14 days in cold storage before you buy it",
+  "description": "Rachel's Farm beef reaches Brookvale in days, not weeks. 100% grass-fed, pasture-raised. Not financial advice.",
+  "cta": "cfe_campaign"
 }

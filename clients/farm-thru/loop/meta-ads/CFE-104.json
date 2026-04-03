@@ -1,13 +1,14 @@
 {
-  "ad_id": "CFE-104",
-  "content_type": "meta-ad",
   "angle": "urgency-scarcity",
+  "tactic": "waitlist-priority",
   "hook_type": "bold_claim",
   "funnel": "MOF",
-  "tactic": "waitlist-priority",
-  "primary_text": "When FarmThru's Birchal campaign opens mid-2026, the waitlist goes first.\n\nFarmThru is already running. A Brookvale hub open five days a week. Named regenerative farms across NSW. Fresh food reaching families within days of leaving the farm.\n\nThe equity crowdfunding campaign will let everyday people become part-owners of this grocery model. Waitlist members get first access when the campaign goes live.\n\nWant to own a piece of how food should work? Get on the list before it opens.",
-  "headline": "The waitlist gets first access",
-  "description": "FarmThru equity crowdfunding on Birchal, mid-2026. Waitlist opens the door first. Not financial advice.",
-  "cta": "Join the Waitlist",
-  "creative_brief": "Bold, confident headline treatment on warm background. Subtle countdown element showing 'mid-2026'. Urgency through clarity, not pressure."
+  "content_type": "meta-ad",
+  "creative_brief": "Split image: left shows Rachel Ward with cattle on green pasture, right shows the Brookvale hub with fresh meat display.",
+  "generated_at": "2026-04-03T20:54:50.732043",
+  "ad_id": "CFE-104",
+  "primary_text": "Last Tuesday Rachel Ward told me something that shocked me. Her regenerative beef travels just 280km from pasture to your plate. The same cut at supermarkets? 2,400km through multiple warehouses. FarmThru's Brookvale hub opens Monday to Friday. Direct from named NSW farms. No middlemen inflating prices. When our Birchal campaign opens mid-2026, the waitlist gets priority access.",
+  "headline": "Her beef travels 280km, not 2,400km",
+  "description": "Join the waitlist for first access to FarmThru's equity crowdfunding. $5 refundable deposit. Not financial advice.",
+  "cta": "cfe_waitlist"
 }

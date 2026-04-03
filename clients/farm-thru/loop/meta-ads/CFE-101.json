@@ -1,13 +1,14 @@
 {
-  "ad_id": "CFE-101",
-  "content_type": "meta-ad",
   "angle": "investment-thesis",
+  "tactic": "traction-proof",
   "hook_type": "statistic",
   "funnel": "TOF",
-  "tactic": "traction-proof",
-  "primary_text": "A Brookvale hub open five days a week. Named regenerative farms across NSW. Families collecting food that was on the farm days ago.\n\nFarmThru is a farm-direct grocery store. No warehouses, no wholesalers. Food reaches families faster. Farmers keep more.\n\nThe model is working. Mid-2026, FarmThru is launching equity crowdfunding on Birchal.\n\nIf you believe food should work differently, this is your chance to be part of building it.",
-  "headline": "A grocery store you can own a piece of",
-  "description": "FarmThru equity crowdfunding on Birchal, launching mid-2026. Join the waitlist. Not financial advice.",
-  "cta": "Join the Waitlist",
-  "creative_brief": "Warm photo of the Brookvale hub in action -- someone collecting a brown paper bag of produce. Clean, real. Small Birchal badge in corner."
+  "content_type": "meta-ad",
+  "creative_brief": "Split-screen map showing 200km radius around Sydney vs long transport routes to distant farms, with fresh beef cuts in foreground.",
+  "generated_at": "2026-04-03T21:00:46.272312",
+  "ad_id": "CFE-101",
+  "primary_text": "85% of FarmThru's partner farms are within 200km of Sydney. Compare that to supermarket beef averaging 2,400km. Rachel's Farm cattle graze regenerative pastures near Kempsey. Her beef reaches our Brookvale hub in hours, not weeks. No middlemen inflating prices. Order Monday to Friday, collect fresh. We can't promise returns, but early supporters get VIP access from $5 refundable deposit.",
+  "headline": "85% of our farms are under 200km away",
+  "description": "Rachel's Farm beef: 200km to your table, not 2,400km. Equity crowdfunding live on Birchal. Not financial advice.",
+  "cta": "cfe_campaign"
 }
