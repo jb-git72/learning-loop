@@ -1,13 +1,16 @@
 {
-  "email_id": "EM-004",
-  "content_type": "email",
   "angle": "quality-craft",
-  "email_type": "farm-spotlight",
+  "tactic": "general",
+  "hook_type": "story",
   "funnel": "MOF",
-  "subject": "Meet Rachel Ward and the farm behind our beef",
-  "preheader": "Kempsey, NSW. Regenerative pasture. 100% grass-fed cattle. This is where it starts.",
-  "body": "One of the things that makes FarmThru different is that every product traces to a real farm, run by a real person.\n\nToday we want to introduce you to one of our most important partners.\n\nRachel's Farm sits on the northern NSW coast near Kempsey. Rachel Ward, actor and regenerative farming advocate, founded it. Her cattle are 100% grass-fed, raised on pasture without hormones or feedlots. After the 2020 bushfires nearly destroyed her property, she rebuilt using regenerative practices.\n\nHer beef is some of the best in the state. Deep red, beautifully marbled, with a flavour that comes from animals eating what they are supposed to eat: grass, on open land, in clean air.\n\nRachel is not just a supplier. She is a key partner who helped shape how FarmThru works. She understood from the start that farmers needed a shorter path to families. No wholesalers taking a cut. No cold-storage facilities holding meat for weeks.\n\nThat is what the hub-and-collect model does. Rachel's beef goes from her farm to our Brookvale hub. You collect it days later. The difference is in every bite.\n\nWe work with named farms like hers across NSW. Each one is regenerative. Each one earns a fairer price.\n\nRachel & the FarmThru team",
-  "cta": "Shop your local hub",
-  "sender_name": "Rachel & the FarmThru team",
-  "creative_brief": "Farm spotlight email. Hero image: Rachel's Farm landscape with cattle grazing, golden hour light. Below: portrait of Rachel with her property. Product shots of grass-fed beef cuts. Single CTA. Educational but appetising. Make the reader hungry and curious."
+  "content_type": "email",
+  "creative_brief": "Clean, minimal design with a hero image of cattle on pasture. Emphasis on the 18-month timeline with visual contrast against industrial alternatives.",
+  "generated_at": "2026-04-03T20:23:41.302383",
+  "email_id": "EM-004",
+  "subject": "The craft behind your Sunday roast",
+  "preheader": "What 18 months of patience looks like on your plate",
+  "body": "Yesterday, I watched James from Little Yarran Farm load the last of his 18-month grass-fed cattle onto the truck.\n\nEighteen months. That's how long it takes to craft beef the way nature intended — no shortcuts, no feedlots, just patient rotational grazing that builds soil while building flavour.\n\nMost supermarket beef? Finished in feedlots after 12 months, then sits in cold storage for weeks before it reaches your plate.\n\nJames' beef will be at our hub in 3 days. Days old, not weeks old. You'll taste the difference in every bite — the depth that only comes from cattle raised entirely on pasture, the tenderness that patient farming creates.\n\nThis is what farm-direct means. No middlemen marking up prices. No weeks in storage losing flavour. Just the craft of regenerative farming, straight from paddock to pick-up.\n\nWe're building something different here — a grocery store that shows you exactly where your food comes from and rewards the farmers doing it right.\n\nBe part of making it happen.",
+  "cta": "cfe_campaign",
+  "sender_name": "Tom (FarmThru)",
+  "email_type": "farm-spotlight"
 }

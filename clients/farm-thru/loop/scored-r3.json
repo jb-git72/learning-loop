@@ -1,10 +1,10 @@
 {
   "summary": {
     "total": 33,
-    "avg_composite": 0.5762,
+    "avg_composite": 0.5816,
     "verdicts": {
-      "needs_work": 17,
-      "rewrite": 12,
+      "needs_work": 18,
+      "rewrite": 11,
       "strong_draft": 4
     },
     "critical_failures": 0
@@ -428,7 +428,7 @@
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.12, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.13, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -687,7 +687,7 @@
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.10, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.11, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -1128,7 +1128,7 @@
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.16, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.15, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -1279,55 +1279,24 @@
     },
     {
       "ad_id": "BR-110",
-      "composite": 0.4351,
+      "composite": 0.4675,
       "verdict": "rewrite",
       "rule_compliance": {
-        "score": 0.963,
-        "passed": 26,
+        "score": 1.0,
+        "passed": 27,
         "total": 27,
-        "failures": [
-          {
-            "rule_id": "FMTH-014",
-            "field": "primary_text",
-            "detail": "Pattern matched in primary_text: 'lock-in' (rule: FMTH-014)",
-            "severity": "normal"
-          }
-        ],
+        "failures": [],
         "critical_failure": false
       },
       "fact_accuracy": {
         "score": 0.5,
-        "claims_found": 6,
-        "verified": 3,
-        "unverified": 3,
+        "claims_found": 2,
+        "verified": 1,
+        "unverified": 1,
         "contradicted": 0,
         "details": [
           {
-            "claim": "100%",
-            "fact_id": "PQ-001",
-            "status": "verified",
-            "confidence": "HIGH"
-          },
-          {
-            "claim": "no lock-in",
-            "fact_id": "BM-007",
-            "status": "verified",
-            "confidence": "HIGH"
-          },
-          {
             "claim": "regenerative farming",
-            "fact_id": "",
-            "status": "unverified",
-            "confidence": ""
-          },
-          {
-            "claim": "pasture-raised",
-            "fact_id": "",
-            "status": "unverified",
-            "confidence": ""
-          },
-          {
-            "claim": "grass-fed",
             "fact_id": "",
             "status": "unverified",
             "confidence": ""
@@ -1341,27 +1310,27 @@
         ]
       },
       "rubric": {
-        "weighted_total": 36.5,
+        "weighted_total": 37.25,
         "max_possible": 63.75,
         "raw_scores": {
-          "angle_clarity": 3,
+          "angle_clarity": 2,
           "motivation_match": 2,
           "tactic_execution": 4,
           "specificity": 3,
           "objection_preemption": 1,
           "receptionist_test": 3,
           "scroll_stop_hook": 2,
-          "cta_clarity": 3,
+          "cta_clarity": 5,
           "platform_fit": 5,
           "differentiation": 5
         },
         "dimension_details": {
           "angle_clarity": {
-            "score": 3,
+            "score": 2,
             "weight": 1.25,
-            "weighted": 3.75,
+            "weighted": 2.5,
             "method": "heuristic",
-            "detail": "Heuristic: reasonable length for angle clarity"
+            "detail": "Heuristic: length suggests muddled angle"
           },
           "motivation_match": {
             "score": 2,
@@ -1382,14 +1351,14 @@
             "weight": 1.5,
             "weighted": 4.5,
             "method": "deterministic",
-            "detail": "0 dollar amounts, 1 numbers, 2 names = 3 specifics"
+            "detail": "0 dollar amounts, 0 numbers, 3 names = 3 specifics"
           },
           "objection_preemption": {
             "score": 1,
             "weight": 1.25,
             "weighted": 1.25,
             "method": "deterministic",
-            "detail": "1/5 objection signals: no middlemen"
+            "detail": "0/5 objection signals: none"
           },
           "receptionist_test": {
             "score": 3,
@@ -1403,14 +1372,14 @@
             "weight": 1.5,
             "weighted": 3.0,
             "method": "deterministic",
-            "detail": "Generic opening: 'A grocery store where every product comes from a named regen...'"
+            "detail": "Generic opening: 'We're the only grocery store that names the farm on every pr...'"
           },
           "cta_clarity": {
-            "score": 3,
+            "score": 5,
             "weight": 1.0,
-            "weighted": 3.0,
+            "weighted": 5.0,
             "method": "deterministic",
-            "detail": "CTA present but not on approved list: 'Start your first order'"
+            "detail": "CTA matches approved list: 'cfe_campaign'"
           },
           "platform_fit": {
             "score": 5,
@@ -1424,7 +1393,7 @@
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.19, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.14, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -1433,8 +1402,8 @@
         "fact_contradiction": false
       },
       "penalties": {
-        "unverified_claims": 3,
-        "non_critical_rule_failures": 1
+        "unverified_claims": 1,
+        "non_critical_rule_failures": 0
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
@@ -1444,8 +1413,8 @@
       "_file": "clients/farm-thru/loop/meta-ads/BR-110.json",
       "content_type": "meta-ad",
       "angle": "cause-purpose",
-      "headline": "A grocery store with no middlemen",
-      "primary_text": "A grocery store where every product comes from a named regenerative farm.\n\nNot a weekly box. Not a meal kit. A real grocery store where you pick what you want and collect it fresh from the hub.\n\n100% "
+      "headline": "Every product names the farm",
+      "primary_text": "We're the only grocery store that names the farm on every product. Rachel's Farm carrots. Bundarra Farm pork. Collins Wild Caught salmon. Zero warehouses, zero wholesalers, zero middlemen between padd"
     },
     {
       "ad_id": "CFE-101",
@@ -1575,7 +1544,7 @@
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.19, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.18, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -1877,7 +1846,7 @@
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.17, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.16, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -2028,7 +1997,7 @@
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.19, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.18, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -2185,7 +2154,7 @@
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.17, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.16, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -2210,7 +2179,7 @@
     },
     {
       "ad_id": "CFE-106",
-      "composite": 0.5145,
+      "composite": 0.5271,
       "verdict": "rewrite",
       "rule_compliance": {
         "score": 1.0,
@@ -2253,7 +2222,7 @@
         ]
       },
       "rubric": {
-        "weighted_total": 41.0,
+        "weighted_total": 42.0,
         "max_possible": 63.75,
         "raw_scores": {
           "angle_clarity": 3,
@@ -2265,7 +2234,7 @@
           "scroll_stop_hook": 2,
           "cta_clarity": 3,
           "platform_fit": 5,
-          "differentiation": 4
+          "differentiation": 5
         },
         "dimension_details": {
           "angle_clarity": {
@@ -2332,11 +2301,11 @@
             "detail": "All platform constraints met, conversational tone"
           },
           "differentiation": {
-            "score": 4,
+            "score": 5,
             "weight": 1.0,
-            "weighted": 4.0,
+            "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.20, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.19, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -2506,67 +2475,42 @@
     },
     {
       "ad_id": "CFE-108",
-      "composite": 0.5245,
-      "verdict": "rewrite",
+      "composite": 0.6275,
+      "verdict": "needs_work",
       "rule_compliance": {
-        "score": 0.963,
-        "passed": 26,
+        "score": 1.0,
+        "passed": 27,
         "total": 27,
-        "failures": [
-          {
-            "rule_id": "FMTH-014",
-            "field": "primary_text",
-            "detail": "Pattern matched in primary_text: 'subscription' (rule: FMTH-014)",
-            "severity": "normal"
-          }
-        ],
+        "failures": [],
         "critical_failure": false
       },
       "fact_accuracy": {
-        "score": 0.5,
-        "claims_found": 4,
-        "verified": 2,
-        "unverified": 2,
+        "score": 1.0,
+        "claims_found": 1,
+        "verified": 1,
+        "unverified": 0,
         "contradicted": 0,
         "details": [
           {
-            "claim": "regenerative farming",
-            "fact_id": "",
-            "status": "unverified",
-            "confidence": ""
-          },
-          {
-            "claim": "not financial advice",
-            "fact_id": "",
-            "status": "unverified",
-            "confidence": ""
-          },
-          {
-            "claim": "equity crowdfunding",
-            "fact_id": "INV-005",
-            "status": "verified",
-            "confidence": "HIGH"
-          },
-          {
-            "claim": "Birchal platform",
-            "fact_id": "INV-005",
+            "claim": "zero middlemen",
+            "fact_id": "POS-002",
             "status": "verified",
             "confidence": "HIGH"
           }
         ]
       },
       "rubric": {
-        "weighted_total": 44.0,
+        "weighted_total": 40.0,
         "max_possible": 63.75,
         "raw_scores": {
           "angle_clarity": 3,
           "motivation_match": 2,
           "tactic_execution": 4,
-          "specificity": 4,
+          "specificity": 2,
           "objection_preemption": 1,
-          "receptionist_test": 4,
+          "receptionist_test": 2,
           "scroll_stop_hook": 5,
-          "cta_clarity": 3,
+          "cta_clarity": 5,
           "platform_fit": 5,
           "differentiation": 5
         },
@@ -2593,39 +2537,39 @@
             "detail": "Heuristic: hook=True, body=True, cta=True"
           },
           "specificity": {
-            "score": 4,
+            "score": 2,
             "weight": 1.5,
-            "weighted": 6.0,
+            "weighted": 3.0,
             "method": "deterministic",
-            "detail": "0 dollar amounts, 0 numbers, 5 names = 5 specifics"
+            "detail": "0 dollar amounts, 0 numbers, 2 names = 2 specifics"
           },
           "objection_preemption": {
             "score": 1,
             "weight": 1.25,
             "weighted": 1.25,
             "method": "deterministic",
-            "detail": "1/5 objection signals: not financial advice"
+            "detail": "0/5 objection signals: none"
           },
           "receptionist_test": {
-            "score": 4,
+            "score": 2,
             "weight": 1.5,
-            "weighted": 6.0,
+            "weighted": 3.0,
             "method": "deterministic",
-            "detail": "4/5 answered: what: yes, source: yes, different: yes, invest/join: yes, minimum: no"
+            "detail": "2/5 answered: what: no, source: yes, different: yes, invest/join: no, minimum: no"
           },
           "scroll_stop_hook": {
             "score": 5,
             "weight": 1.5,
             "weighted": 7.5,
             "method": "deterministic",
-            "detail": "Story hook with specific moment: 'It started with a simple question: why can't families buy fo...'"
+            "detail": "Story hook with specific moment: 'Last Tuesday, I watched a farmer throw away perfectly good p...'"
           },
           "cta_clarity": {
-            "score": 3,
+            "score": 5,
             "weight": 1.0,
-            "weighted": 3.0,
+            "weighted": 5.0,
             "method": "deterministic",
-            "detail": "CTA present but not on approved list: 'Join the Waitlist'"
+            "detail": "CTA matches approved list: 'cfe_campaign'"
           },
           "platform_fit": {
             "score": 5,
@@ -2639,7 +2583,7 @@
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.19, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.13, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -2648,8 +2592,8 @@
         "fact_contradiction": false
       },
       "penalties": {
-        "unverified_claims": 2,
-        "non_critical_rule_failures": 1
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 0
       },
       "scoring_method": {
         "deterministic_dimensions": 7,
@@ -2659,8 +2603,8 @@
       "_file": "clients/farm-thru/loop/meta-ads/CFE-108.json",
       "content_type": "meta-ad",
       "angle": "empathy-founder",
-      "headline": "We asked a simple question about food",
-      "primary_text": "It started with a simple question: why can't families buy food direct from the farms that grow it?\n\nNot a subscription box. Not a middleman. A real grocery store where every product traces to a named "
+      "headline": "The night I couldn't sleep",
+      "primary_text": "Last Tuesday, I watched a farmer throw away perfectly good produce because supermarkets wouldn't pay a fair price. That night, I couldn't sleep. What if families could buy direct from farms like Rache"
     },
     {
       "ad_id": "LP-A",
@@ -3031,7 +2975,7 @@
             "weight": 1.0,
             "weighted": 4.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.21, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.20, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -3236,7 +3180,7 @@
             "weight": 1.0,
             "weighted": 4.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.23, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.22, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -3261,7 +3205,7 @@
     },
     {
       "ad_id": "LP-E",
-      "composite": 0.7269,
+      "composite": 0.7423,
       "verdict": "strong_draft",
       "rule_compliance": {
         "score": 1.0,
@@ -3346,7 +3290,7 @@
         ]
       },
       "rubric": {
-        "weighted_total": 47.25,
+        "weighted_total": 48.25,
         "max_possible": 65.0,
         "raw_scores": {
           "angle_clarity": 2,
@@ -3358,7 +3302,7 @@
           "specificity": 5,
           "scroll_depth_pull": 5,
           "objection_preemption": 2,
-          "differentiation": 4
+          "differentiation": 5
         },
         "dimension_details": {
           "angle_clarity": {
@@ -3425,9 +3369,9 @@
             "detail": "2/5 objection signals: refundable, not financial advice"
           },
           "differentiation": {
-            "score": 4,
+            "score": 5,
             "weight": 1.0,
-            "weighted": 4.0,
+            "weighted": 5.0,
             "method": "deterministic",
             "detail": "Avg similarity: 0.20, max: 1.00 (vs 33 ads)"
           }
@@ -4026,7 +3970,7 @@
             "weight": 1.0,
             "weighted": 4.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.22, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.21, max: 1.00 (vs 33 ads)"
           }
         }
       },
@@ -4540,7 +4484,7 @@
     },
     {
       "ad_id": "EM-003",
-      "composite": 0.6088,
+      "composite": 0.6245,
       "verdict": "needs_work",
       "rule_compliance": {
         "score": 0.963,
@@ -4558,8 +4502,8 @@
       },
       "fact_accuracy": {
         "score": 0.5,
-        "claims_found": 5,
-        "verified": 3,
+        "claims_found": 6,
+        "verified": 4,
         "unverified": 2,
         "contradicted": 0,
         "details": [
@@ -4572,6 +4516,12 @@
           {
             "claim": "400km",
             "fact_id": "PQ-006",
+            "status": "verified",
+            "confidence": "MEDIUM"
+          },
+          {
+            "claim": "21 days",
+            "fact_id": "PQ-005",
             "status": "verified",
             "confidence": "MEDIUM"
           },
@@ -4596,13 +4546,13 @@
         ]
       },
       "rubric": {
-        "weighted_total": 44.5,
+        "weighted_total": 42.5,
         "max_possible": 62.5,
         "raw_scores": {
           "angle_clarity": 2,
           "motivation_match": 2,
           "tactic_execution": 2,
-          "subject_line_power": 5,
+          "subject_line_power": 4,
           "body_flow": 5,
           "cta_clarity": 5,
           "personalization": 2,
@@ -4633,39 +4583,39 @@
             "detail": "Heuristic: hook=False, body=False, cta=True"
           },
           "subject_line_power": {
-            "score": 5,
+            "score": 4,
             "weight": 2.0,
-            "weighted": 10.0,
+            "weighted": 8.0,
             "method": "deterministic",
-            "detail": "Subject 'The day I bit into real beef (after 20 y': 10 words (sweet spot), specific, no spam triggers"
+            "detail": "Subject 'Tuesday morning at Rachel's Farm': 5 words, specific, no spam triggers"
           },
           "body_flow": {
             "score": 5,
             "weight": 1.25,
             "weighted": 6.25,
             "method": "deterministic",
-            "detail": "5/5 flow: 1130 chars (within limit), 8 paragraphs, good paragraph length"
+            "detail": "5/5 flow: 1110 chars (within limit), 7 paragraphs, good paragraph length"
           },
           "cta_clarity": {
             "score": 5,
             "weight": 1.25,
             "weighted": 6.25,
             "method": "deterministic",
-            "detail": "CTA matches approved list: 'brand'"
+            "detail": "CTA matches approved list: 'cfe_campaign'"
           },
           "personalization": {
             "score": 2,
             "weight": 1.25,
             "weighted": 2.5,
             "method": "deterministic",
-            "detail": "2/5 personalization: reader-focused (10 'you' refs)"
+            "detail": "2/5 personalization: reader-focused (7 'you' refs)"
           },
           "specificity": {
             "score": 5,
             "weight": 1.5,
             "weighted": 7.5,
             "method": "deterministic",
-            "detail": "0 dollar amounts, 3 numbers, 4 names = 7 specifics"
+            "detail": "0 dollar amounts, 3 numbers, 6 names = 9 specifics"
           },
           "scroll_stop_hook": {
             "score": 1,
@@ -4699,8 +4649,8 @@
       "_file": "clients/farm-thru/loop/emails/EM-003.json",
       "content_type": "email",
       "angle": "quality-craft",
-      "headline": "The day I bit into real beef (after 20 years)",
-      "primary_text": "Twenty years ago, I thought I knew what good beef tasted like.\n\nThen I moved to the farm. The first time I tried beef from cattle that had lived their entire lives on pasture \u2014 no feedlots, no hormone"
+      "headline": "Tuesday morning at Rachel's Farm",
+      "primary_text": "Tuesday, 6:47am. I'm standing in a paddock at Rachel's Farm in Kempsey, watching something you'll never see at a supermarket.\n\nRachel Ward \u2014 yes, the actor turned regenerative farming advocate \u2014 is ch"
     },
     {
       "ad_id": "EM-004",
@@ -4830,7 +4780,7 @@
             "weight": 1.0,
             "weighted": 5.0,
             "method": "deterministic",
-            "detail": "Avg similarity: 0.14, max: 1.00 (vs 33 ads)"
+            "detail": "Avg similarity: 0.13, max: 1.00 (vs 33 ads)"
           }
         }
       },

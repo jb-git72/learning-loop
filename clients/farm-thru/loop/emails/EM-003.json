@@ -1,13 +1,16 @@
 {
-  "email_id": "EM-003",
-  "content_type": "email",
   "angle": "quality-craft",
-  "email_type": "product-deep-dive",
+  "tactic": "general",
+  "hook_type": "story",
   "funnel": "MOF",
-  "subject": "This is what days-old beef actually looks like",
-  "preheader": "100% grass-fed. Named farms. No hormones, no feedlots. Collected fresh from Brookvale.",
-  "body": "We talk a lot about where our food comes from. Today we want to talk about the food itself.\n\nStart with the beef. It comes from Rachel's Farm in Kempsey. 100% grass-fed cattle raised on regenerative pasture. No hormones. No feedlot finishing. When you open the pack, the colour is deep red, not grey. That is what fresh looks like.\n\nThe salmon is wild-caught Alaskan, supplied by Collins Wild Caught on the South Coast. It is firm, vibrant, and nothing like the pale farmed fillets you see at the supermarket.\n\nThe pork comes from Bundarra Farm. The dairy is biodynamic, from Paris Creek. The eggs are from Farmer Brown.\n\nEvery one of these products traces to a farm you can look up. That is the difference between a supplier code and a name.\n\nSupermarket beef can travel thousands of kilometres and sit in cold storage for weeks before you see it. Ours goes from the farm to our Brookvale hub within days. You collect it fresh, Monday to Friday.\n\nNo lock-in. No minimum order. Just real food from real farms, honestly priced.\n\nRachel & the FarmThru team",
-  "cta": "See what's fresh this week",
-  "sender_name": "Rachel & the FarmThru team",
-  "creative_brief": "Product-focused email. Hero image: close-up of 100% grass-fed steak, natural light on timber. Below: product grid showing salmon, pork, dairy, eggs alongside farm names. Single CTA to shop. Let the food sell itself."
+  "content_type": "email",
+  "creative_brief": "Clean, farm-focused design with a hero image of cattle on pasture at Rachel's Farm. Earthy color palette with plenty of white space to let the story breathe.",
+  "generated_at": "2026-04-03T20:29:14.653559",
+  "email_id": "EM-003",
+  "subject": "Tuesday morning at Rachel's Farm",
+  "preheader": "What I saw changed how I think about quality beef forever",
+  "body": "Tuesday, 6:47am. I'm standing in a paddock at Rachel's Farm in Kempsey, watching something you'll never see at a supermarket.\n\nRachel Ward — yes, the actor turned regenerative farming advocate — is checking on her cattle. These aren't just any cows. They're 100% grass-fed, roaming freely on pasture, building soil health with every step.\n\nNo hormones. No antibiotics. No feedlot finishing. Just cattle doing what cattle do best — turning grass into the kind of beef that reminds you what quality actually tastes like.\n\nHere's what hit me: while supermarket beef travels 2,400km and sits in cold storage for 14-21 days, Rachel's beef goes straight from her farm to our hub to your kitchen. Days old, not weeks old.\n\nThat's the FarmThru difference. We'll show you where your food comes from — because when you know the farm, you taste the difference.\n\nRachel's regenerative beef is just one reason we're building something completely different. A grocery store that puts craft and quality first, with a hub-and-collect model that keeps costs down for everyday families.\n\nWant to be part of this food revolution?",
+  "cta": "cfe_campaign",
+  "sender_name": "Tom from FarmThru",
+  "email_type": "product-deep-dive"
 }

@@ -1,13 +1,14 @@
 {
-  "ad_id": "BR-107",
-  "content_type": "meta-ad",
   "angle": "comparison-switching",
+  "tactic": "supply-chain-comparison",
   "hook_type": "if_then",
   "funnel": "MOF",
-  "tactic": "supply-chain-comparison",
-  "primary_text": "If your beef travelled 2,400km and sat in cold storage for weeks, is it really fresh?\n\nThat's the industry average. Farms to processors to distribution centres to shelves. The farmer's name disappears along the way.\n\nFarmThru works differently. Named regenerative farms across NSW ship direct to the Brookvale hub. You collect it the same week it left the farm.\n\n100% grass-fed. No hormones. No feedlots. You know where it came from.\n\nSame week, not same month.",
-  "headline": "If it's been in cold storage for weeks",
-  "description": "Supermarket beef: weeks old, 2,400km journey. FarmThru: same week, named farms.",
-  "cta": "Shop your local hub",
-  "creative_brief": "Animated map: long red supply chain route vs short green farm-to-hub line. Clean data-viz style. Warm palette, not aggressive."
+  "content_type": "meta-ad",
+  "creative_brief": "Split-screen visual: left shows long truck convoy/warehouse maze, right shows simple farm-to-hub direct line with fresh product.",
+  "generated_at": "2026-04-03T20:12:47.593798",
+  "ad_id": "BR-107",
+  "primary_text": "If supermarket beef travels 2,400km through multiple warehouses, how much freshness survives? Our regenerative beef goes farm to hub in days, not weeks. Zero wholesalers, zero long-haul transport, zero compromise on quality. Paddock to pick-up from your nearest hub.",
+  "headline": "If your beef travelled 2,400km first",
+  "description": "Farm-direct regenerative groceries. Days old, not weeks. Collect from Brookvale hub or get Sydney delivery.",
+  "cta": "brand"
 }

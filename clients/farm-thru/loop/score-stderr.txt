@@ -2,8 +2,8 @@ Scoring 33 items (LLM=off)...
 
 === SUMMARY ===
 Total: 33
-Avg composite: 0.5549
+Avg composite: 0.5694
 Critical failures: 0
-  needs_work: 16
-  rewrite: 14
+  needs_work: 18
+  rewrite: 12
   strong_draft: 3

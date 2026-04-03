@@ -1,13 +1,14 @@
 {
-  "ad_id": "BR-105",
-  "content_type": "meta-ad",
   "angle": "social-belonging",
+  "tactic": "curiosity-gap",
   "hook_type": "question",
   "funnel": "TOF",
-  "tactic": "curiosity-gap",
-  "primary_text": "Could you name the farm that raised your last steak?\n\nMost of us couldn't. We know the supermarket, the aisle, maybe the brand. But the farm? The farmer? That information never makes it to the shelf.\n\nFarmThru changes that. Every product comes from a named regenerative farm. Rachel's Farm beef from Kempsey. Paris Creek biodynamic dairy. Collins Wild Caught salmon.\n\nReal names. Real places. Food you can trace.\n\nCollect it fresh from the Brookvale hub, Monday to Friday.",
-  "headline": "Could you name the farm?",
-  "description": "Every product traces to a real farm and a real farmer. Brookvale hub, Monday to Friday.",
-  "cta": "See what's fresh this week",
-  "creative_brief": "Farmer portrait, direct to camera, warm smile. Name and farm location overlaid. Feels like an introduction, not marketing."
+  "content_type": "meta-ad",
+  "creative_brief": "Show diverse families at a warm, welcoming hub collection point, with farmers' photos/stories visible on product displays.",
+  "generated_at": "2026-04-03T20:19:09.710854",
+  "ad_id": "BR-105",
+  "primary_text": "Do you ever feel like you're the only one who cares where your food actually comes from? You're not. There's a whole community of families who've moved beyond supermarket guesswork to farm-direct groceries. Real farmers, real stories, real food you can collect from your nearest hub.",
+  "headline": "Do you care where your food comes from?",
+  "description": "Join families choosing farm-direct groceries. Collect from local hubs, skip the supermarket guesswork.",
+  "cta": "cfe_waitlist"
 }

@@ -1,13 +1,14 @@
 {
-  "ad_id": "BR-103",
-  "content_type": "meta-ad",
   "angle": "empathy-founder",
+  "tactic": "before-after",
   "hook_type": "confession",
   "funnel": "TOF",
-  "tactic": "before-after",
-  "primary_text": "I used to grab whatever chicken was on special. Never read the label. Never thought about the farm.\n\nThen I visited a regenerative property in NSW. Chickens on actual pasture. I talked to the farmer who raised them.\n\nThe meat was different. Firmer, more flavour, no water pooling in the tray.\n\nThat's when I understood what I'd been settling for. FarmThru brings that same food to the Brookvale hub. Named farms, no middlemen, days old not weeks.\n\nYou deserve to taste the difference.",
-  "headline": "I never used to read the label",
-  "description": "Pasture-raised chicken from named NSW farms. Collected from the Brookvale hub.",
-  "cta": "Start your first order",
-  "creative_brief": "Warm, candid shot of someone holding a whole pasture-raised chicken, farm backdrop visible. Golden hour. Documentary feel, not staged."
+  "content_type": "meta-ad",
+  "creative_brief": "Split screen: founder with young children in kitchen vs. vibrant farm scene with animals on pasture, suggesting the honest connection FarmThru creates.",
+  "generated_at": "2026-04-03T20:12:11.446616",
+  "ad_id": "BR-103",
+  "primary_text": "I built a grocery business because I was tired of lying to my kids about where their food came from. 'Farm fresh' chicken that never saw grass. 'Free range' eggs from warehouses. I wanted to create what didn't exist: real farm-direct groceries you collect from local hubs. Zero middlemen, zero BS.",
+  "headline": "I was lying to my kids about food",
+  "description": "Built FarmThru so families can finally know where their groceries come from. Real farms, fair prices, local collection.",
+  "cta": "cfe_campaign"
 }
