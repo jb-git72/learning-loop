@@ -109,9 +109,9 @@ def _build_scoring_guide(content_type: str, config: dict) -> str:
 - SPECIFICITY: Include 5-7 concrete signals: dollar amounts ($50), numbers with context (2,400km, Monday-Friday), named farms/people (Rachel's Farm, Bundarra Farm, Brookvale hub). Vague claims score 1.
 - OBJECTION PREEMPTION: {objection_signals}
 - RECEPTIONIST TEST: Your copy must answer: What is this product? Where does the food come from? How is it different from supermarkets? How do I start/join?
-- ANGLE CLARITY: Every line reinforces ONE strategic angle. No competing messages or split focus.
-- MOTIVATION MATCH: Tap the FELT emotional need — what keeps the reader up at night — not just rational benefits. Show you understand their actual anxiety or desire.
-- TACTIC EXECUTION: Structure as hook (curiosity) → proof (the hook is real) → CTA (earned next step). Each section must earn the next. Transitions should feel invisible."""
+- ANGLE CLARITY: Score 5 = "Every sentence reinforces a single strategic position. A viewer could state the angle in one sentence." Lock in ONE angle before writing. Every hook, proof point, and CTA must serve that angle. Competing themes = score 2.
+- MOTIVATION MATCH: Score 5 = "Articulates what the audience feels but hasn't put into words. Immediate recognition." Score 1 = "Speaks to a need the audience does not feel." Don't sell features — tap the FELT need. Not "farm-direct grocery" but "I didn't know what my kids were eating." Not "hub-and-collect model" but "finally, food I don't have to second-guess."
+- TACTIC EXECUTION: Your copy is scored on narrative structure. Score 5 = "Each section builds on the last. The structure is invisible — it just reads naturally." Score 1 = "A list of features with no narrative logic." Your arc MUST be: HOOK (curiosity/recognition) → PROOF (the hook is real — specific facts) → BRIDGE (why it matters NOW) → CTA (earned, inevitable next step). Test: if removing any paragraph doesn't break the arc, that paragraph is filler. Cut it."""
     return guide
 
 
