@@ -2,8 +2,8 @@
   "client_id": "farm-thru",
   "client_name": "FarmThru",
   "parent_company": "FarmThru Pty Ltd",
-  "industry": "food-delivery",
-  "product": "Regenerative farm-to-door food delivery + equity crowdfunding campaign",
+  "industry": "grocery",
+  "product": "Farm-direct regenerative grocery store with hub-and-collect model + equity crowdfunding campaign",
   "currency": "AUD",
   "market": "AU",
   "content_types": ["meta-ad", "landing-page", "email"],
@@ -14,18 +14,21 @@
     "learnings": "learnings.md"
   },
   "scoring_context": {
-    "product": "FarmThru — online regenerative farm-to-door food delivery (50+ farms, Sydney/Central Coast/Wollongong). Currently running pre-launch equity crowdfunding campaign on Birchal (July 2026 launch). VIP waitlist with $5 refundable deposit.",
-    "audience": "Sydney households who care about food quality, provenance, and ethics. Mix of: (1) Food-conscious parents who want better for their families, (2) Values-driven consumers who support regenerative agriculture, (3) Sophisticated retail investors evaluating equity crowdfunding opportunities. Skews female, 30-55, higher income, inner-west/northern beaches/eastern suburbs.",
+    "product": "FarmThru — a new kind of grocery store. Farm-direct, regenerative, priced for everyday families. Hub-and-collect model (Brookvale hub, Monday-Friday). 50+ farms across NSW. Co-founded by Rachel Ward. Currently running pre-launch equity crowdfunding campaign on Birchal (July 2026).",
+    "brand_positioning": "FarmThru is a new kind of grocery store — farm-direct, regenerative, and priced for everyday families — with hubs designed to keep costs low and bring the farm closer to your door.",
+    "tagline": "We'll show you where your food comes from.",
+    "audience": "Sydney households. Four segments: (1) Conscious Family — parents 30-45, Northern Beaches, health-conscious, values-driven, time-poor. Lead with quality and provenance. (2) Foodie/Quality Seeker — 25-55, passionate cooks. Lead with product stories, farm detail. (3) Pragmatic Switcher — 30-50, mainstream shoppers currently at Coles/Woolies. Lead with value, convenience, better product. (4) Rachel Ward Audience — 40+, trust her voice. Lead with Rachel's personal connection.",
     "key_motivations": [
-      "Trust & transparency — knowing exactly where food comes from and who grew it",
-      "Quality over convenience — days old, not weeks old; taste the difference",
-      "Values alignment — supporting regenerative agriculture and fair farmer compensation",
-      "Community — being part of a local food movement, not just another customer",
-      "Investment opportunity — owning a piece of a growing business they already believe in"
+      "Access — great local food, finally within reach for everyday families",
+      "Transparency — know exactly where food comes from, who grew it, how it was raised",
+      "Quality — regenerative, seasonal, real food from named farms",
+      "Value — bulk buying direct means honest prices without farms earning less",
+      "Community — being part of rebuilding the connection between growers and eaters",
+      "Investment — owning a piece of a business they believe in (CFE campaign only)"
     ],
-    "brand_values": "Honest, founder-voice, regenerative, anti-middleman. Never greenwash. Acknowledge what we don't know. Radical transparency about risk. The food is the hero, not the investment returns.",
-    "campaign_context": "Pre-launch equity crowdfunding via Birchal. This is NOT a product purchase funnel — it's an investment campaign. All content must comply with ASIC RG 234 (balanced disclosure, no return projections, risk acknowledgment). The conversion funnel is: awareness → waitlist signup → VIP deposit ($5 refundable) → actual investment ($50-$10K) when campaign goes live.",
-    "success_looks_like": "Reader understands what FarmThru is, feels aligned with the mission, trusts the founders, and joins the waitlist or makes a VIP deposit. For investment content: reader feels informed (not sold to), understands both opportunity and risk, and is motivated to invest when the campaign opens."
+    "brand_values": "Honest, Warm, Confident, Grounded, Never Preachy. Lead with the food, not the model. Communication hierarchy: (1) Great products, (2) Human relationships, (3) Reconnection to food, (4) Learning, (5) Model/tech last.",
+    "campaign_context": "Pre-launch equity crowdfunding via Birchal. Content types: (1) Brand/product ads — pure grocery awareness, no investment messaging, (2) CFE waitlist ads — investment angle, waitlist CTA, (3) CFE campaign ads — investment is live, invest CTA. All investment content must comply with ASIC RG 234. VIP deposit ($5 refundable) messaging belongs on landing pages and emails, NOT ads.",
+    "success_looks_like": "Reader understands FarmThru is a grocery store where you can get great food from real farms at honest prices. They want to find their nearest hub. For CFE content: reader feels informed, trusts the brand, joins the waitlist."
   },
   "rubric": {
     "meta-ad": {
@@ -130,24 +133,21 @@
     "comparison-switching"
   ],
   "approved_ctas": {
-    "meta-ad": [
-      "Join the Waitlist",
-      "Learn More",
-      "Sign Up",
-      "Reserve Your Spot"
-    ],
-    "landing-page": [
-      "Join the Waitlist",
-      "Save My Spot",
-      "Reserve Your Spot",
-      "Secure VIP Access"
-    ],
-    "email": [
-      "Join the Waitlist",
-      "Reserve Your Spot",
-      "Secure VIP Access",
-      "See How It Works"
-    ]
+    "meta-ad": {
+      "brand": ["Shop your local hub", "See what's fresh this week", "Meet the farmer", "Find your nearest hub", "Start your first order"],
+      "cfe_waitlist": ["Join the Waitlist", "Sign Up", "Learn More"],
+      "cfe_campaign": ["Invest Now", "Learn More", "See the Opportunity"]
+    },
+    "landing-page": {
+      "brand": ["Shop your local hub", "Start your first order", "Find your nearest hub"],
+      "cfe_waitlist": ["Join the Waitlist", "Save My Spot", "Reserve Your Spot", "Secure VIP Access"],
+      "cfe_campaign": ["Invest Now", "Secure VIP Access", "See the Disclosure"]
+    },
+    "email": {
+      "brand": ["See what's fresh this week", "Shop your local hub", "Meet the farmer"],
+      "cfe_waitlist": ["Join the Waitlist", "Reserve Your Spot", "Secure VIP Access"],
+      "cfe_campaign": ["Invest Now", "Read the Disclosure", "Secure VIP Access"]
+    }
   },
   "critical_rules": [
     "no_condescension",

@@ -1,19 +1,36 @@
 {
   "page_id": "LP-D",
   "content_type": "landing-page",
-  "angle": "Quality & Craft",
-  "hook_type": "statistic",
+  "angle": "quality-craft",
+  "hook_type": "curiosity",
   "funnel": "TOF",
-  "headline": "Days old, not weeks old. You'll taste the difference.",
-  "subhead": "Regenerative beef, pasture-raised chicken, wild-caught salmon. Delivered to your door.",
-  "hero_copy": "Real food from real farms. Browse the products FarmThru delivers from regenerative farms to your kitchen.",
+  "headline": "The freshest food you can get without visiting the farm yourself.",
+  "subhead": "100% regenerative. From named NSW farms. At your nearest hub in 2-3 days.",
+  "hero_copy": "Supermarket beef sits in cold storage for 14-21 days before it reaches the shelf. It travels an average of 2,400km. By the time you cook it, the farm is a distant memory.\n\nFarmThru food goes from paddock to pick-up in 2-3 days. You collect from your nearest hub. That's the difference a shorter supply chain makes.",
   "sections": [
-    {"heading": "What's in the box", "body": "Rachel's Farm Beef Box: 100% grass-fed. No hormones. No antibiotics. Pasture-Raised Chicken: Free range. Slow grown. The way chicken should taste. Wild-Caught Salmon: Wild-caught Alaskan salmon. Never farmed. Bundarra Berkshire Sausages: Heritage breed. Outdoor raised. Small batch."},
-    {"heading": "Know what you're eating.", "body": "Supermarket beef: 14-21 days in cold storage. Feedlot finished. 2,400km average journey. Bulk processed. FarmThru beef: 2-3 days paddock to door. 100% grass-fed. Regenerative farming. Hand-packed at Brookvale."},
-    {"heading": "Customer testimonial", "body": "\"My kids can taste the difference. And I love knowing the farmers are getting a fair price.\" — James, Northern Beaches"},
-    {"heading": "Farm to kitchen in three steps.", "body": "Browse the 50+ farm partners. We pack fresh from Brookvale. Delivered to your door. Delivering across Sydney, Central Coast, and Wollongong."},
-    {"heading": "Get first access to invest.", "body": "Place a refundable $5 deposit to secure VIP status. Fully refundable at any time. This is not financial advice. A disclosure document will be available on Birchal."}
+    {
+      "heading": "Taste you can actually trace",
+      "body": "Every product on FarmThru comes from a named farm. 100% grass-fed beef from Rachel's Farm in Kempsey. Heritage Berkshire pork from Bundarra Berkshires. Wild-caught salmon from Collins Wild Caught on the South Coast. Eggs from Farmer Brown.\n\nNo hormones. No antibiotics. No feedlot finishing. Pasture-raised animals on regenerative land. This is food the way it's supposed to taste."
+    },
+    {
+      "heading": "How the hub model keeps it fresh",
+      "body": "FarmThru operates a hub-and-collect model. You order online from 50+ farms. Your order goes straight from the farm to the hub. You collect when it's ready.\n\nZero warehouses. Zero wholesalers. Fewer steps means fresher food and a fairer price for the farmer who grew it. It's not a subscription box. It's a grocery store built around quality."
+    },
+    {
+      "heading": "What 2,000+ families already know",
+      "body": "\"My kids can taste the difference. And I love knowing the farmers are getting a fair price.\" - James, Northern Beaches\n\n\"Finally, a grocery delivery that actually cares about where the food comes from. The quality is incredible.\" - Sarah, Sydney\n\nFarmThru is opening an equity crowdfunding campaign on Birchal in July 2026. Join the waitlist for first access.",
+      "proof": [
+        "2,000+ customers",
+        "50+ partner farms",
+        "2-3 days paddock to pick-up",
+        "Supermarket average: 14-21 days cold storage"
+      ]
+    },
+    {
+      "heading": "Compliance",
+      "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
+    }
   ],
-  "cta": "Join the Waitlist",
-  "creative_brief": "Full-bleed salmon close-up hero. Product grid below fold. Side-by-side comparison table."
+  "cta": "Join the waitlist",
+  "creative_brief": "Hero image: close-up of beautifully marbled grass-fed steak on a timber board, natural light, no styling. Below-fold: side-by-side supply chain comparison (supermarket 2,400km vs FarmThru direct). Farm partner portraits with their products. Hub collection photo. Let the food be the hero."
 }

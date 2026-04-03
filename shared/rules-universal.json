@@ -84,6 +84,15 @@
       "message": "Aggressive opening hook detected. Aggressive hooks consistently fail in review — they feel like clickbait. Lead with value or a genuine insight instead."
     },
     {
+      "rule_id": "no_title_case_headlines",
+      "category": "tone",
+      "check_type": "custom",
+      "function": "check_no_title_case",
+      "fields": ["headline"],
+      "severity": "normal",
+      "message": "Headline uses Title Case. Use sentence case — it reads more conversational and less corporate."
+    },
+    {
       "rule_id": "lead_with_value_not_price",
       "category": "structure",
       "check_type": "custom",

@@ -5,17 +5,18 @@
     {
       "fact_id": "BM-001",
       "category": "business_model",
-      "claim": "Farm-to-door regenerative food delivery (online grocery)",
+      "claim": "Farm-direct grocery store with hub-and-collect model",
       "claim_patterns": [
-        "farm.to.door",
-        "farm to door",
-        "regenerative food delivery",
-        "online grocery",
-        "regenerative grocery",
-        "farm.to.table",
-        "farm to table",
-        "paddock to plate",
-        "paddock.to.door"
+        "hub-and-collect",
+        "collection hub",
+        "grocery store",
+        "farm-direct",
+        "hub model",
+        "farm direct",
+        "new kind of grocery",
+        "pick up",
+        "pick-up",
+        "collect from"
       ],
       "source": "farmthru.com.au",
       "confidence": "HIGH",
@@ -24,22 +25,22 @@
     {
       "fact_id": "BM-002",
       "category": "business_model",
-      "claim": "Supply chain: farm to hub to kitchen \u2014 no warehouses, no wholesalers",
+      "claim": "Supply chain: farm to hub to customer pick-up. No unnecessary middlemen.",
       "claim_patterns": [
-        "farm.*hub.*kitchen",
-        "no warehouse",
-        "no wholesaler",
-        "direct from farm",
-        "farm to hub",
-        "hub to kitchen",
-        "cut.?out the middle",
+        "farm.*hub",
         "no middl",
-        "direct supply"
+        "direct supply",
+        "hub to pick-up",
+        "collect from hub",
+        "paddock to pick-up",
+        "fewer middlemen",
+        "no unnecessary middl",
+        "cut.*middl"
       ],
       "source": "farmthru.com.au",
       "confidence": "HIGH",
       "last_verified": "2026-04-03",
-      "contradicts_if": "(warehouse|wholesaler|distribution centre|distribution center|cold storage facility)"
+      "contradicts_if": "(warehouse|wholesaler|distribution centre|delivered to your door|to your kitchen|to your doorstep)"
     },
     {
       "fact_id": "BM-003",
@@ -70,16 +71,16 @@
     {
       "fact_id": "BM-004",
       "category": "business_model",
-      "claim": "Delivery areas: Sydney, Central Coast, Wollongong",
+      "claim": "Hub locations in Sydney area. Brookvale hub operating Monday-Friday. Three hubs in current growth phase.",
       "claim_patterns": [
-        "Sydney",
-        "Central Coast",
-        "Wollongong",
-        "delivery area",
-        "we deliver to",
-        "deliver.*Sydney",
-        "deliver.*Central Coast",
-        "deliver.*Wollongong"
+        "Brookvale hub",
+        "Monday.*Friday",
+        "three hubs",
+        "3 hubs",
+        "Sydney hub",
+        "collection hub",
+        "nearest hub",
+        "local hub"
       ],
       "source": "farmthru.com.au",
       "confidence": "HIGH",
@@ -89,13 +90,14 @@
     {
       "fact_id": "BM-005",
       "category": "business_model",
-      "claim": "Operating hub: Brookvale, NSW (single hub)",
+      "claim": "Operating hub in Brookvale, NSW. Monday-Friday collection.",
       "claim_patterns": [
         "Brookvale",
-        "single hub",
-        "one hub",
-        "our hub",
-        "Brookvale.*NSW"
+        "NSW",
+        "Monday-Friday",
+        "collection hub",
+        "operating hub",
+        "single hub"
       ],
       "source": "farmthru.com.au",
       "confidence": "HIGH",
@@ -285,17 +287,19 @@
     {
       "fact_id": "FP-001",
       "category": "farm_partners",
-      "claim": "Rachel's Farm: Kempsey NSW, regenerative beef, converted after 2020 bushfires, Rachel Ward (actress/documentarian)",
+      "claim": "Rachel Ward \u2014 co-founder of FarmThru, acclaimed actress, filmmaker, regenerative agriculture advocate. Farm in Kempsey, NSW.",
       "claim_patterns": [
-        "bushfire",
-        "Rachel's Farm",
-        "Rachels Farm",
         "2020 bushfire",
-        "Rachel('s)? Farm",
+        "documentarian",
         "actress.*farm",
+        "bushfire",
         "Kempsey",
+        "co-founder",
+        "Rachels Farm",
+        "Rachel('s)? Farm",
         "Rachel Ward",
-        "documentarian"
+        "Rachel's Farm",
+        "co-founded"
       ],
       "source": "farmthru.com.au / Rachel's Farm",
       "confidence": "HIGH",
@@ -622,6 +626,49 @@
         "more.*goes.*(back )?to.*farmer"
       ],
       "source": "farmthru.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03"
+    },
+    {
+      "fact_id": "BM-007",
+      "category": "business_model",
+      "claim": "Non-subscription, on-demand ordering. No lock-in, no membership fees.",
+      "claim_patterns": [
+        "on-demand",
+        "no subscription",
+        "no lock-in",
+        "no membership",
+        "order what you want",
+        "no commitment"
+      ],
+      "source": "FarmThru Brand Guidelines v1.1",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03"
+    },
+    {
+      "fact_id": "BM-008",
+      "category": "business_model",
+      "claim": "Bulk buying model \u2014 customers save through buying in bulk, rewarding commitment and increasing affordability.",
+      "claim_patterns": [
+        "bulk",
+        "buy in bulk",
+        "bulk pricing",
+        "bulk buying",
+        "buying in bulk"
+      ],
+      "source": "FarmThru Brand Guidelines v1.1",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-03"
+    },
+    {
+      "fact_id": "POS-005",
+      "category": "positioning",
+      "claim": "FarmThru tagline: We'll show you where your food comes from.",
+      "claim_patterns": [
+        "show you where",
+        "where your food comes from"
+      ],
+      "source": "FarmThru Brand Guidelines v1.1",
       "confidence": "HIGH",
       "last_verified": "2026-04-03"
     }

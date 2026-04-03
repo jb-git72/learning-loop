@@ -1,18 +1,35 @@
 {
   "page_id": "LP-B",
   "content_type": "landing-page",
-  "angle": "Transformation & Storytelling",
+  "angle": "transformation-storytelling",
   "hook_type": "story",
   "funnel": "TOF",
-  "headline": "Rachel was losing money on every kilo she sold to Woolworths.",
-  "subhead": "So she changed everything. Now you can too.",
-  "hero_copy": "After the 2020 bushfires devastated her Kempsey property, Rachel Ward asked a question: there must be a better way.",
+  "headline": "Rachel was losing money on every kilo she sold to the supermarkets.",
+  "subhead": "So she helped build a new kind of grocery store. One where the farmer sets the price, and families get food worth eating.",
+  "hero_copy": "Rachel Ward's farm in Kempsey, NSW, survived the 2020 bushfires. What nearly finished it wasn't the fire. It was the price the big chains paid for her beef.\n\nPasture-raised, regenerative, 100% grass-fed. The supermarkets treated it the same as feedlot meat. Rachel knew there had to be a better way.",
   "sections": [
-    {"heading": "Rachel's story", "body": "She read Charles Massey. Watched Allan Savory. Converted her entire farm to regenerative agriculture. Then made a documentary about it. FarmThru exists because of farmers like Rachel. We connect them directly to your kitchen. No middlemen. No cold storage. Days old, not weeks."},
-    {"heading": "From the farm", "body": "\"Know Your Farmer is a common quip from us folk trying to reach you, but the farmer had to come to you.\" — Rachel Ward"},
-    {"heading": "Rachel put her farm on the line. We're asking for your email.", "body": "Join the waitlist now. It takes 10 seconds and you'll be first to know when FarmThru opens investment to the public."},
-    {"heading": "Get first access to invest.", "body": "Place a refundable $5 deposit to secure VIP status. VIP investors get priority access, exclusive founder updates, and early notice before the campaign opens to the public. Fully refundable at any time. This is not financial advice. A disclosure document will be available on Birchal."}
+    {
+      "heading": "From paddock to pick-up",
+      "body": "Rachel became a co-founder of FarmThru. The idea was simple: connect regenerative farms directly to families, through local collection hubs. No wholesalers. No warehouses. No unnecessary middlemen.\n\nToday, FarmThru works with 50+ farms across NSW. Families order online and collect from their nearest hub. The food is 2-3 days old, not 14-21 days in cold storage like the supermarket supply chain."
+    },
+    {
+      "heading": "A grocery store built around the farm",
+      "body": "FarmThru isn't a subscription box or a meal kit. It's an online grocery store where every product traces back to a named farm. Rachel's Farm for regenerative beef. Bundarra Berkshires for heritage pork. Collins Wild Caught for wild-caught salmon. Farmer Brown for eggs.\n\nYou know where it came from. You know who grew it. And the farmer earned a fair price for their work."
+    },
+    {
+      "heading": "Now you can be part of it",
+      "body": "FarmThru is opening an equity crowdfunding campaign on Birchal in July 2026. You can own a share of the grocery store you buy from. Minimum investment: $50. Cap: $10,000 per investor.\n\nJoin the waitlist for first access when the campaign opens.",
+      "proof": [
+        "2,000+ families already ordering",
+        "50+ partner farms across NSW",
+        "Rachel Ward, co-founder"
+      ]
+    },
+    {
+      "heading": "Compliance",
+      "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
+    }
   ],
-  "cta": "Join the Waitlist",
-  "creative_brief": "Full-bleed Rachel + cow hero image with dark overlay text. Farm video autoplay muted. Trust stats bar."
+  "cta": "Join the waitlist",
+  "creative_brief": "Hero image: Rachel on her farm in Kempsey, natural light, cattle in background. Below-fold: timeline visual (bushfires to regenerative to FarmThru). Product shots from Rachel's Farm. Hub collection lifestyle image. Warm, documentary-style photography throughout."
 }

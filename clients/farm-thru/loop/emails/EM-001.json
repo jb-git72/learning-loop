@@ -4,10 +4,10 @@
   "angle": "cause-purpose",
   "email_type": "welcome",
   "funnel": "TOF",
-  "subject": "You're on the waitlist. Here's what happens next.",
-  "preheader": "Welcome to FarmThru. Your spot is confirmed and your $5 deposit is fully refundable.",
-  "body": "Welcome to FarmThru.\n\nYou're now on the VIP waitlist for our equity crowdfunding campaign on Birchal, launching July 2026. Your $5 refundable deposit is confirmed.\n\nHere's what that means for you:\n\n1. You get first access when the campaign goes live.\n2. You'll receive priority updates from us before anyone else.\n3. You're invited to an exclusive founder Q&A before launch.\n4. Your deposit is fully refundable at any time, no questions asked.\n\nA bit about us, if you're new. FarmThru delivers regenerative food from 50+ farms across NSW direct to families in Sydney, Central Coast and Wollongong. No warehouses. No wholesalers. Paddock to your door in 2-3 days.\n\n2,000+ families already order from us. Now we're opening investment to our community.\n\nOver the next couple of weeks, we'll share more about how FarmThru works, who our farmers are, and what the investment looks like. No pressure. Just information to help you decide.\n\nThis is not financial advice. We'll share the Birchal disclosure document when the campaign opens.\n\nTalk soon.\n\nThe FarmThru Team\n\nP.S. Questions? Just reply. A real person will answer.",
-  "cta": "See How It Works",
-  "sender_name": "FarmThru Team",
-  "creative_brief": "Welcome email. Must land immediately after signup. Confirm the deposit, set expectations for the VIP experience (4 clear benefits), introduce FarmThru briefly for new visitors, and preview the email sequence coming. Warm, no-pressure tone. Reply-friendly."
+  "subject": "You're on the list. Here's what happens next.",
+  "preheader": "FarmThru is a new kind of grocery store. Farm-direct, regenerative, and opening to investors soon.",
+  "body": "Welcome to FarmThru.\n\nYou've just joined the waitlist for our equity crowdfunding campaign on Birchal, launching July 2026. We'll keep you posted on every milestone between now and then.\n\nBut first, a quick introduction.\n\nFarmThru is a grocery store. Not a subscription box, not a meal kit. A proper grocery store where every product comes from a named regenerative farm in NSW.\n\nYou order online. Your food goes from paddock to pick-up in 2-3 days. You collect from your nearest hub. That's it.\n\nWe work with 50+ farms. 2,000+ families already order through us. And we're just getting started.\n\nOver the next couple of weeks, we'll share more about the farms, the food, the team, and the investment opportunity. No spam, no fluff. Just the information you need to decide if FarmThru is something you want to be part of.\n\nIn the meantime, if you're in Sydney, you can shop right now. The Brookvale hub is open Monday to Friday.\n\nWe'll show you where your food comes from.\n\nThe FarmThru Team\n\nNot financial advice. Disclosure document available on Birchal.",
+  "cta": "See what's fresh this week",
+  "sender_name": "FarmThru",
+  "creative_brief": "Clean welcome email. FarmThru logo header. Single CTA button linking to the shop. Brief, warm, sets expectations for the drip sequence. No images needed beyond the logo and a simple product hero shot."
 }

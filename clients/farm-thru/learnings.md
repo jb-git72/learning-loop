@@ -1,6 +1,34 @@
 # FarmThru — Creative Learnings
 
-## Source: CFE Campaign Research (135+ verified benchmarks) + 16-variant landing page A/B testing
+## Source: CFE Campaign Research (135+ benchmarks) + Brand Guidelines v1.1 + Calibration Round 1 Feedback
+
+---
+
+## Calibration Round 1 — Human Review Feedback (2026-04-03)
+
+### Critical Brand Issues Found
+- **Hub-and-collect model, NOT delivery** — all copy said "to your door/kitchen". Must say "from your nearest hub" or "paddock to pick-up"
+- **Named competitors in copy** — copy used "Woolworths", "Coles" directly. Brand guidelines: NEVER. Use "supermarkets" or "the big chains"
+- **Title Case headlines** — all meta ad headlines used Title Case. Must be sentence case
+- **VIP/$5 deposit in ads** — doesn't belong in meta ads. Reserve for landing pages, email flows, success pages
+- **Copy loses narrative flow** — starts strong with 2-3 good sentences then devolves into disconnected facts with full stops. Maintain story arc throughout
+- **"Risk" in headlines** — don't mention risk unless it's a compliance statement. "Real Risk" as a headline feature is off-brand
+- **"X days old, not weeks old"** — too literal/flat. Lean into fresher, more appetising framing
+- **Investment terms feel bolted on** — "Equity crowdfunding on Birchal. From $50." appears randomly. If investment messaging is included, it needs to flow from the narrative
+- **"FarmThru cuts out the middlemen. Farm to hub to kitchen."** — "hub" in the supply chain description sounds like a middleman. Frame the hub as bringing the farm closer, not as a step in a chain
+- **Description field often confusing** — don't restate the headline or cram disconnected facts. Descriptions should complement, not repeat
+
+### What the Human Approved (Patterns to Keep)
+- "Now her beef goes direct to Sydney families via FarmThru" — clear, specific, flows
+- Comparison data (2,400km supermarket vs direct) — works when it flows from a narrative
+- Rachel's story as emotional anchor — but transition to FarmThru must feel natural, not abrupt
+- Transparency/honesty angle — "We can't promise returns" opening — but don't overdo compliance language in the body
+
+### Content Type Guidance from Review
+- **Meta ads** — should be EITHER brand/product focused (grocery, food quality) OR CFE focused (investment opportunity). Don't try to be both in one ad
+- **Landing pages** — investment details, VIP deposit, compliance language belong HERE
+- **Emails** — VIP deposit upsell, detailed investment terms belong HERE
+- **CTAs must match phase** — waitlist CTA before campaign launch, invest CTA during campaign, product CTA for brand ads
 
 ---
 
@@ -95,11 +123,16 @@
 ### Creative Anti-Patterns
 - **Leading with investment thesis to cold audience** — food-first, invest-second
 - **Greenwashing without specifics** — "save the planet" fails; "regenerative" works
-- **Defaming competitors** — factual comparison OK; "Coles is poisoning you" is not
+- **Naming competitors** — NEVER name Woolworths, Coles, Aldi. Use "supermarkets" or "the big chains"
+- **Saying "delivered to your door"** — FarmThru is hub-and-collect. Say "from your nearest hub"
+- **Title Case headlines** — always sentence case for conversational tone
+- **VIP/$5 deposit in ads** — belongs on landing pages and emails, not meta ads
+- **Risk in headlines** — only in compliance disclaimers, never as a feature
 - **Abstract sustainability jargon** — "holistic food ecosystem" = instant skip
 - **Corporate brochure tone** — this is a founder-led brand, not a corporation
-- **Overpromising delivery areas** — don't claim Australia-wide
-- **Using "subscription box"** — we're an online grocery, not a surprise box
+- **Using banned terms** — "sustainable", "artisan", "eco-friendly", "farm to table", "disrupt", "consumers"
+- **Bolted-on investment messaging** — if including CFE content, it must flow from the narrative, not appear randomly
+- **Disconnected facts with full stops** — maintain story arc, don't list-dump
 - **Too many CTAs** — single CTA emails: +371% clicks, +1,617% sales vs multiple
 - **Long forms** — every additional field: -4.1% conversion
 - **Information overload** — 6 vs 24 options: 10x purchase rate (choice architecture)

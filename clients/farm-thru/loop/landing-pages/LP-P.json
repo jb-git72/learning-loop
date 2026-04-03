@@ -1,18 +1,40 @@
 {
   "page_id": "LP-P",
   "content_type": "landing-page",
-  "angle": "Comparison & Switching",
-  "hook_type": "statistic",
+  "angle": "comparison-switching",
+  "hook_type": "contrast",
   "funnel": "TOF",
-  "headline": "Your supermarket beef travelled 1,500km. Ours travelled 50.",
-  "subhead": "FarmThru connects regenerative farms directly to your kitchen. No warehouses. No middlemen. We're opening investment on Birchal.",
-  "hero_copy": "Most meat sits in cold storage for weeks before it reaches your plate.",
+  "headline": "Your supermarket beef travelled 2,400km. Ours never left NSW.",
+  "subhead": "Same week from the farm. Collected fresh from your nearest hub. That's what a shorter supply chain tastes like.",
+  "hero_copy": "The big chains move beef through cold storage for 14-21 days. It travels an average of 2,400km before it reaches the shelf. By the time you buy it, nobody can tell you which farm it came from.\n\nFarmThru beef is 100% grass-fed, from regenerative farms in NSW. It goes from paddock to pick-up in 2-3 days. You collect it from your nearest hub. And you can trace every cut back to the farm that raised it.",
   "sections": [
-    {"heading": "The supermarket problem", "body": "The average supermarket supply chain moves product through 3-4 warehouses over 2-3 weeks. By the time it's on the shelf, the farmer who raised it has already been paid a fraction of what you're paying. You're covering the logistics. The packaging. The shelf space. Not the farming."},
-    {"heading": "We cut the chain to three steps.", "body": "Farm: 50+ regenerative farms across NSW raise the animals on pasture. Hub: Your order is packed fresh at the Brookvale hub. One stop. No warehouses. Kitchen: On your doorstep in 2-3 days. Sydney, Central Coast, Wollongong."},
-    {"heading": "The difference is in the detail.", "body": "Rachel's Farm Beef: Grass-fed on 500 acres in Kempsey. You can visit the farm. Try that with Coles. Pasture-Raised Chicken: Slow grown on open pasture. Not a shed. Not a factory. A paddock. Wild-Caught Salmon: Never farmed. Caught off the coast and delivered before supermarket stock even ships."},
-    {"heading": "Get first access to invest.", "body": "Place a refundable $5 deposit to secure VIP status. VIP investors get priority access and early notice before the campaign opens to the public. Fully refundable at any time. Not financial advice. Disclosure document on Birchal."}
+    {
+      "heading": "Two supply chains, side by side",
+      "body": "The supermarket way: farm to feedlot to abattoir to wholesaler to distribution centre to shelf. 14-21 days. 2,400km. The farmer earns a fraction of the price.\n\nThe FarmThru way: farm to hub to you. 2-3 days. No feedlots, no warehouses, no unnecessary middlemen. The farmer earns a fairer price. You get food that's genuinely fresh.",
+      "proof": [
+        "Supermarket beef: 2,400km average journey",
+        "Supermarket beef: 14-21 days cold storage",
+        "FarmThru: 2-3 days paddock to pick-up",
+        "FarmThru: 50+ named farms across NSW"
+      ]
+    },
+    {
+      "heading": "What you're actually eating",
+      "body": "100% grass-fed beef from Rachel's Farm in Kempsey. Heritage Berkshire pork from Bundarra Berkshires. Wild-caught salmon from Collins Wild Caught on the South Coast. Pasture-raised chicken. Eggs from Farmer Brown.\n\nNo hormones. No antibiotics. No feedlot finishing. Animals raised on open pasture, on regenerative land. Every product from a farm you can visit."
+    },
+    {
+      "heading": "2,000+ families made the switch",
+      "body": "\"My kids can taste the difference. And I love knowing the farmers are getting a fair price.\" - James, Northern Beaches\n\n\"Finally, a grocery delivery that actually cares about where the food comes from. The quality is incredible.\" - Sarah, Sydney\n\nFarmThru is an online grocery store with a hub-and-collect model. Order what you want, when you want. No subscription. No lock-in.",
+      "proof": [
+        "2,000+ families ordering",
+        "Brookvale hub, Monday-Friday"
+      ]
+    },
+    {
+      "heading": "Compliance",
+      "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
+    }
   ],
-  "cta": "Save My Spot",
-  "creative_brief": "Side-by-side comparison visual. Supply chain diagram. Product photography with provenance labels."
+  "cta": "See what's fresh this week",
+  "creative_brief": "Hero: split-screen visual. Left side: plastic-wrapped supermarket meat under fluorescent lights. Right side: fresh grass-fed steak on timber board, natural light. Below-fold: animated or illustrated supply chain comparison. Farm partner portraits. Hub pick-up lifestyle shot. Let the contrast do the selling."
 }

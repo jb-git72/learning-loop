@@ -1,19 +1,36 @@
 {
   "page_id": "LP-E",
   "content_type": "landing-page",
-  "angle": "Transparency & Safety",
-  "hook_type": "confession",
+  "angle": "transparency-safety",
+  "hook_type": "pattern-interrupt",
   "funnel": "TOF",
   "headline": "We can't promise returns. Here's what we can show you.",
-  "subhead": "$50 minimum. Capped at $10K. Full disclosure before you commit a cent.",
-  "hero_copy": "This page is the introduction. The disclosure document on Birchal is where the real information lives.",
+  "subhead": "FarmThru is opening to investors on Birchal. We believe in full disclosure, not hype.",
+  "hero_copy": "Most investment pages lead with the upside. We're going to lead with honesty.\n\nFarmThru is an early-stage business. Investing in early-stage businesses carries real risk. You could lose some or all of your investment. We won't dress that up.",
   "sections": [
-    {"heading": "Cited facts. No spin.", "body": "$130B Australian grocery market (IBISWorld, 2024). 50+ Partner farms across NSW (FarmThru, verified). 3 Delivery areas and growing (Sydney, Central Coast, Wollongong)."},
-    {"heading": "Here's What We Don't Know", "body": "We don't know if FarmThru will succeed. Most startups don't. That's the honest truth. We don't know what returns look like. Nobody honestly can at this stage. Anyone who tells you otherwise is selling something. We do know this: the disclosure document on Birchal will have full financials, use of funds, and risk factors. You'll see everything before committing a cent."},
-    {"heading": "Here's why people are signing up anyway.", "body": "They're customers who want the product to exist. They want priority access when the raise goes live. They believe in regenerative agriculture. Every purchase supports farms that nourish their soils and raise animals on pasture."},
-    {"heading": "Four steps. No surprises.", "body": "Sign up now: Free. No commitment. Takes 10 seconds. We notify you when the Birchal campaign goes live. Read the disclosure: Full financials. Full risk factors. Everything you need to make an informed decision. Invest from $50 if it makes sense for you. No pressure. No deadline tricks."},
-    {"heading": "Get first access to invest.", "body": "Place a refundable $5 deposit to secure VIP status. Fully refundable at any time. Not financial advice. Consider seeking independent financial advice."}
+    {
+      "heading": "What we can show you",
+      "body": "We can show you 50+ regenerative farms across NSW that partner with us. We can show you 2,000+ families who already order through FarmThru. We can show you a hub-and-collect model that cuts out unnecessary middlemen and gets food from paddock to pick-up in 2-3 days.\n\nWe can show you a $130B Australian grocery market where farm-direct food is growing at 24% year-on-year. And we can show you every number, every farm, and every dollar in our disclosure document on Birchal."
+    },
+    {
+      "heading": "What we won't do",
+      "body": "We won't promise returns. We won't minimise the risks. We won't use words like \"guaranteed\" or \"safe\" because early-stage investing is neither.\n\nWhat we will do is give you every piece of information you need to make your own decision. The disclosure document on Birchal covers our financials, our risks, our team, and our plan. Read it. Consider seeking independent financial advice. Then decide."
+    },
+    {
+      "heading": "The terms",
+      "body": "FarmThru's equity crowdfunding campaign launches on Birchal in July 2026.\n\nMinimum investment: $50. Maximum cap: $10,000 per investor. VIP deposit: $5 (fully refundable) for first access, priority updates, and exclusive Q&A with the founders.\n\nJoin the waitlist now. When the campaign opens, you'll have the full picture before anyone else.",
+      "proof": [
+        "50+ partner farms",
+        "2,000+ customers",
+        "Brookvale hub operating Monday-Friday",
+        "Platform: Birchal (regulated equity crowdfunding)"
+      ]
+    },
+    {
+      "heading": "Compliance",
+      "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
+    }
   ],
-  "cta": "Join the Waitlist",
-  "creative_brief": "Clean, minimal design. Trust chips in hero ($50 minimum, $10K cap, Birchal disclosure). Fact cards with citations."
+  "cta": "Join the waitlist",
+  "creative_brief": "Clean, understated design. No hype. Hero: simple typography on white with a single farm landscape image. Below-fold: traction metrics displayed clearly, team photos, Birchal badge. Tone is calm confidence. Trust-building through restraint, not persuasion."
 }
