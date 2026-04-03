@@ -399,21 +399,34 @@ def _call_llm(prompt: str) -> str:
                 messages=[{"role": "user", "content": prompt}],
             )
             return response.content[0].text
-        except Exception:
-            pass
+        except Exception as e:
+            import sys
+            print(f"API failed ({type(e).__name__}), falling back to CLI", file=sys.stderr)
 
-    # Fallback: claude CLI with opus
+    # Fallback: claude CLI with opus (use stdin for long prompts)
+    claude_path = os.environ.get("CLAUDE_PATH", os.path.expanduser("~/.local/bin/claude"))
     try:
         result = subprocess.run(
-            ["claude", "--model", "opus", "--print", "-p", prompt],
+            [claude_path, "--model", "opus", "--print", "-p", "-"],
+            input=prompt,
             capture_output=True,
             text=True,
-            timeout=120,
+            timeout=300,
         )
-        if result.returncode == 0:
+        if result.returncode == 0 and result.stdout.strip():
             return result.stdout.strip()
-    except (FileNotFoundError, subprocess.SubprocessError):
-        pass
+        # Try without stdin if that didn't work
+        result = subprocess.run(
+            [claude_path, "--model", "opus", "--print", "-p", prompt],
+            capture_output=True,
+            text=True,
+            timeout=300,
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            return result.stdout.strip()
+    except (FileNotFoundError, subprocess.SubprocessError, subprocess.TimeoutExpired) as e:
+        import sys
+        print(f"CLI failed: {e}", file=sys.stderr)
 
     return '{"error": "No LLM available"}'
 
