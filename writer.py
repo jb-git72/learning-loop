@@ -88,6 +88,66 @@ def generate_variant(
     return ad
 
 
+def _build_scoring_guide(content_type: str, config: dict) -> str:
+    """Build a condensed scoring guide so the writer knows what it'll be scored on."""
+    client_id = config.get("client_id", "")
+
+    # Objection preemption patterns vary by client
+    if client_id == "farm-thru":
+        objection_signals = (
+            'Include these phrases: "no middlemen/wholesalers", mention Sydney/Brookvale delivery area, '
+            '"refundable" when mentioning deposit. CFE content: acknowledge risk ("can\'t promise", "no guarantee").'
+        )
+    else:
+        objection_signals = (
+            'Include: "no joining fee", "no waiting period", "cancel anytime", '
+            '"not insurance", "no claims/excess".'
+        )
+
+    guide = f"""SCORING GUIDE (what you'll be scored on — optimise for these):
+- HOOK: Open with a specific moment ("Last Tuesday a farmer in Kempsey..."), a named person doing something ("Rachel was losing money on every kilo..."), a quoted objection ("I didn't think I could..."), or a question ending in ?. Generic statements like "Here's what we offer" score 1-2. Stories and quotes score 5.
+- SPECIFICITY: Include 5-7 concrete signals: dollar amounts ($50), numbers with context (2,400km, Monday-Friday), named farms/people (Rachel's Farm, Bundarra Farm, Brookvale hub). Vague claims score 1.
+- OBJECTION PREEMPTION: {objection_signals}
+- RECEPTIONIST TEST: Your copy must answer: What is this product? Where does the food come from? How is it different from supermarkets? How do I start/join?
+- ANGLE CLARITY: Every line reinforces ONE strategic angle. No competing messages or split focus.
+- MOTIVATION MATCH: Tap the FELT emotional need — what keeps the reader up at night — not just rational benefits. Show you understand their actual anxiety or desire.
+- TACTIC EXECUTION: Structure as hook (curiosity) → proof (the hook is real) → CTA (earned next step). Each section must earn the next. Transitions should feel invisible."""
+    return guide
+
+
+def _build_rules_summary(config: dict, content_type: str) -> str:
+    """Build a condensed rules summary so the writer avoids zero-score violations."""
+    client_id = config.get("client_id", "")
+
+    if client_id == "farm-thru":
+        rules = """RULES (violating ANY zeros your score — read carefully):
+- NEVER name competitors: Woolworths, Coles, Aldi, Harris Farm. Say "supermarkets" or "the big chains"
+- NEVER say "delivered to your door/kitchen/doorstep" — FarmThru is hub-and-collect
+- BANNED WORDS in copy: subscription, subscribe, lock-in, membership, warehouse, depot, consumer, users, shoppers, artisan, eco-friendly, farm to table, paddock to plate, disrupt
+- Sentence case headlines only — NEVER Title Case
+- No market stats in meta ads ($130B market, 24% YoY growth)
+- Rachel Ward is a partner/supplier, NOT co-founder of FarmThru
+- No fabricated stats: "50+ farms" and "2,000+ customers" are FALSE
+- No fabricated testimonials: Sarah/Sydney and James/Northern Beaches don't exist"""
+        if content_type == "meta-ad":
+            rules += """
+- CFE meta ads: add "Not financial advice." to description field
+- No compliance disclaimers in primary_text or headline
+- No investment amounts ($50, $10K) in meta ad body"""
+        elif content_type in ("landing-page", "email"):
+            rules += """
+- Investment content MUST include financial disclaimer
+- When mentioning $5 deposit, must say "refundable" """
+    else:
+        rules = """RULES:
+- No em-dashes (use full stops, commas, or colons)
+- No commands ("stop", "add it up", "do the maths")
+- No condescension ("we'll wait", "simple maths")
+- Lead with value/benefit, not price"""
+
+    return rules
+
+
 def _build_prompt(
     angle: str,
     tactic: str,
@@ -118,6 +178,10 @@ def _build_prompt(
 
     # Build facts context — relevant facts for this angle
     facts_text = _select_relevant_facts(facts, angle)
+
+    # Build scoring guide and rules summary
+    scoring_guide = _build_scoring_guide(content_type, config)
+    rules_summary = _build_rules_summary(config, content_type)
 
     # Hook template
     hook_template = HOOK_TEMPLATES.get(hook_type, "Write a compelling hook.")
@@ -215,7 +279,11 @@ The goal is exploration, not optimisation.
 - No commands ("stop", "add it up", "do the maths")
 - No condescension ("we'll wait", "simple maths")
 - Lead with value/benefit, not price
-- Every number must trace to a verified fact above"""
+- Every number must trace to a verified fact above
+- Structure: customer pain/question → acknowledgment/validation → product proof (specific) → transition ("why act now") → CTA
+- Sentences: 13-18 words max. Killed ads averaged 23-28. Keep it tight.
+- Objections to pre-empt: "No commitment. Order when you want. Collect from Brookvale Monday to Friday."
+- Description field should complement the headline, not repeat it"""
 
     return f"""Write ONE {content_label} for {client_name} — {product}.
 
@@ -224,14 +292,18 @@ TACTIC: {tactic}
 HOOK TYPE: {hook_type} — {hook_template}
 FUNNEL: {funnel}
 
+{scoring_guide}
+
+{rules_summary}
+
 CONSTRAINTS:
 {constraints_text}
 
 TONE GUIDELINES:
-{tone[:500]}
+{tone[:1500]}
 
 CREATIVE LEARNINGS (what works and what fails):
-{learnings[:500]}
+{learnings[:2000]}
 
 VERIFIED FACTS (use only these — every number must trace back):
 {facts_text}
