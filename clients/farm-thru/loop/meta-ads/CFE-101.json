@@ -4,11 +4,11 @@
   "hook_type": "statistic",
   "funnel": "TOF",
   "content_type": "meta-ad",
-  "creative_brief": "Split-screen map showing 200km radius around Sydney vs long transport routes to distant farms, with fresh beef cuts in foreground.",
-  "generated_at": "2026-04-03T21:00:46.272312",
+  "creative_brief": "Split image: Rachel with cattle in green pastures on left, fresh beef cuts at Brookvale hub on right. Clean, honest photography showing the short journey.",
+  "generated_at": "2026-04-03T21:29:55.936335",
   "ad_id": "CFE-101",
-  "primary_text": "85% of FarmThru's partner farms are within 200km of Sydney. Compare that to supermarket beef averaging 2,400km. Rachel's Farm cattle graze regenerative pastures near Kempsey. Her beef reaches our Brookvale hub in hours, not weeks. No middlemen inflating prices. Order Monday to Friday, collect fresh. We can't promise returns, but early supporters get VIP access from $5 refundable deposit.",
-  "headline": "85% of our farms are under 200km away",
-  "description": "Rachel's Farm beef: 200km to your table, not 2,400km. Equity crowdfunding live on Birchal. Not financial advice.",
+  "primary_text": "Last Tuesday Rachel from Kempsey told us her cattle travel just 180km to reach Sydney families. Compare that to supermarket beef averaging 2,400km. No wholesalers. No cold storage for weeks. Rachel's regenerative pastures produce beef that reaches our Brookvale hub within days. Order when you want. Collect Monday to Friday. We're raising capital to expand across Sydney. VIP access starts at a $5 refundable deposit.",
+  "headline": "Rachel's beef travels 180km, not 2,400km",
+  "description": "Farm-direct groceries via Brookvale hub. Equity crowdfunding now open. Not financial advice.",
   "cta": "cfe_campaign"
 }

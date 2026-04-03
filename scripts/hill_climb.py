@@ -28,6 +28,12 @@ def main():
     max_iterations = int(sys.argv[2]) if len(sys.argv) > 2 else 3
     target_composite = 0.70  # strong_draft threshold
 
+    # Optional --type filter (e.g. --type=meta-ad)
+    type_filter = None
+    for arg in sys.argv:
+        if arg.startswith("--type="):
+            type_filter = arg.split("=", 1)[1]
+
     client_dir = root / "clients" / client_id
     shared_dir = root / "shared"
     client = load_client(client_dir, shared_dir)
@@ -45,12 +51,16 @@ def main():
                     ad = json.load(fh)
                 all_items.append({"path": f, "ad": ad, "subdir": subdir})
 
+    # Build full ads list for differentiation scoring BEFORE filtering
+    all_ads = [item["ad"] for item in all_items]
+
+    if type_filter:
+        all_items = [i for i in all_items if i["ad"].get("content_type") == type_filter]
+        print(f"Filtered to {len(all_items)} {type_filter} items")
+
     print(f"Loaded {len(all_items)} items. Target: {target_composite:.2f} (strong_draft)")
     print(f"Max iterations per item: {max_iterations}")
     print()
-
-    # Initial scoring
-    all_ads = [item["ad"] for item in all_items]
     for item in all_items:
         report = score_ad(item["ad"], client, existing_ads=all_ads, use_llm=True)
         item["score"] = report["composite"]
