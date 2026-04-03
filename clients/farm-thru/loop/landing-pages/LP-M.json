@@ -1,32 +1,30 @@
 {
+  "page_id": "LP-M",
+  "content_type": "landing-page",
   "angle": "urgency-scarcity",
-  "tactic": "general",
   "hook_type": "scarcity",
   "funnel": "TOF",
-  "content_type": "landing-page",
-  "creative_brief": "Countdown timer prominently displayed. Urgent red/orange accents against clean design. Show limited spots filling up visually.",
-  "generated_at": "2026-04-03T21:36:49.477934",
-  "page_id": "LP-M",
-  "headline": "Only 48 hours left to secure VIP access to FarmThru's investment round",
-  "subhead": "Limited spots remaining for first access to invest in Australia's farm-direct grocery revolution",
-  "hero_copy": "The VIP waitlist closes this Friday at midnight. After that, you'll have to wait with everyone else when our equity crowdfunding campaign launches on Birchal. VIP members get first access to invest from just $50, plus exclusive updates and a direct line to our founders. Your $5 refundable deposit secures your spot — but only if you act before we hit capacity.",
+  "headline": "VIP spots are limited. First access to invest in FarmThru.",
+  "subhead": "A $5 refundable deposit gets you priority when the equity crowdfunding campaign opens on Birchal in mid-2026.",
+  "hero_copy": "FarmThru is opening to investors for the first time. Before the campaign goes live on Birchal, we are giving a limited number of people early access.\n\nA $5 refundable deposit secures your VIP spot. You get first access to invest, priority updates on our progress, and an exclusive Q&A with the team. Your deposit is fully refundable at any time, no questions asked.",
   "sections": [
     {
-      "heading": "Why investors are rushing to get VIP access",
-      "body": "Rachel Ward's regenerative beef used to travel 2,400km through wholesalers before reaching Sydney supermarkets. Now it goes direct to families via FarmThru's Brookvale hub — fresher, cheaper, with no middlemen taking a cut. We're proving farm-direct grocery works, but scaling requires capital. That's where you come in."
+      "heading": "What VIP access gets you",
+      "body": "First access to invest when the Birchal campaign opens. Priority updates on FarmThru's progress and plans. An exclusive Q&A session with the founding team. And your $5 deposit returned in full if you change your mind.\n\nThis is not a commitment to invest. It is a commitment to being informed before everyone else."
     },
     {
-      "heading": "VIP perks you'll miss if you wait",
-      "body": "First access to invest when our campaign goes live on Birchal. Exclusive Q&As with our team. Priority updates on farm partnerships and hub expansion. All for a $5 refundable deposit. But VIP spots are genuinely limited — we cap the list to keep it meaningful for our community and manageable for our small team."
+      "heading": "What you are getting early access to",
+      "body": "FarmThru is a farm-direct grocery store. Regenerative farms across NSW deliver to our Brookvale hub, and families collect on-demand. No middlemen. No lock-in.\n\n100% grass-fed beef from Rachel's Farm. Wild-caught Alaskan salmon from Collins Wild Caught. Pork from Bundarra Farm. Biodynamic dairy from Paris Creek. Eggs from Farmer Brown. Every product from a named farm, raised without hormones, antibiotics, or feedlot finishing."
     },
     {
-      "heading": "The clock is ticking",
-      "body": "Friday midnight: VIP waitlist closes. Mid-2026: Campaign launches on Birchal (VIP members get 48-hour head start). Investment range: $50 minimum, $10,000 maximum per person. We can't promise returns and there's no guarantee of success. But if you believe farm-direct grocery is the future, this is your chance to be part of building it."
+      "heading": "The terms",
+      "body": "Equity crowdfunding campaign on Birchal, launching mid-2026. Minimum investment: $50. Maximum: $10,000 per investor.\n\nInvesting in early-stage businesses carries real risk. You could lose some or all of your investment. All details, financials, and risks will be disclosed in the offer document on Birchal. We can't promise returns \u2014 early-stage investing carries real risk."
     },
     {
       "heading": "Compliance",
       "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
     }
   ],
-  "cta": "cfe_waitlist"
+  "cta": "Save My Spot",
+  "creative_brief": "Hero: bold typography with a live counter showing remaining VIP spots. Below-fold: named farm partner grid, VIP perks checklist, Brookvale hub photo. Urgency through clarity, not desperation. Clean single-form design: name, email, $5 deposit button. Birchal badge visible in footer."
 }
