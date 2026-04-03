@@ -83,5 +83,27 @@
     "How much does it cost?",
     "How much will I save?",
     "How do I start?"
-  ]
+  ],
+  "receptionist_test_patterns": [
+    ["what", "\\b(wellness plan|pet plan|membership|plan that|plan for)\\b"],
+    ["included", "(consult|vaccination|dental|blood test|urine test|vetchat|nail trim|boarding|parasite|desexing|microchip)"],
+    ["cost", "\\$\\d"],
+    ["savings", "(save|saving|saved)\\s+\\$|(\\$\\d+.*vs|\\d+.*less|pay.*instead)"],
+    ["start", "(find a|check availability|sign up|get started|learn more|see (the|what)|bestforpet)"]
+  ],
+  "objection_preemption_patterns": [
+    ["no joining fee", "no\\s+(?:joining|sign[- ]?up)\\s+fee"],
+    ["no waiting period", "no\\s+wait(?:ing)?\\s+period"],
+    ["cancel anytime", "cancel\\s+any\\s*time"],
+    ["not insurance", "not\\s+insurance|isn't\\s+insurance"],
+    ["no claims/excess", "no\\s+(?:claims|excess)"]
+  ],
+  "brand_names": ["Best for Pet", "VetChat", "My Pawtal", "Luna", "Max", "Bella", "Charlie", "Milo"],
+  "prompt_objection_signals": "Include: \"no joining fee\", \"no waiting period\", \"cancel anytime\", \"not insurance\", \"no claims/excess\".",
+  "prompt_rules": {
+    "meta-ad": "- No em-dashes (use full stops, commas, or colons)\n- No commands (\"stop\", \"add it up\", \"do the maths\")\n- No condescension (\"we'll wait\", \"simple maths\")\n- Lead with value/benefit, not price"
+  },
+  "prompt_extra_rules": {
+    "meta-ad": "- No em-dashes (use full stops, commas, or colons)\n- No commands (\"stop\", \"add it up\", \"do the maths\")\n- No condescension (\"we'll wait\", \"simple maths\")\n- Lead with value/benefit, not price\n- Every number must trace to a verified fact above"
+  }
 }

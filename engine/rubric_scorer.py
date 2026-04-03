@@ -158,7 +158,7 @@ def _score_deterministic(
         # Handle different scorer signatures
         if dim_id == "differentiation":
             return scorer(ad, existing_ads)
-        elif dim_id in ("receptionist_test", "cta_clarity", "platform_fit", "cta_prominence"):
+        elif dim_id in ("receptionist_test", "cta_clarity", "platform_fit", "cta_prominence", "objection_preemption"):
             return scorer(ad, config)
         elif dim_id in ("hero_clarity",):
             return scorer(ad, config)
@@ -213,22 +213,25 @@ def _score_receptionist_test(ad: dict, config: dict) -> tuple[int, str]:
     answered = 0
     details = []
 
-    # Client-specific question patterns
-    if client_id == "farm-thru":
+    # Config-driven patterns (preferred), hardcoded fallback for backwards compat
+    config_patterns = config.get("receptionist_test_patterns", [])
+    if config_patterns:
+        checks = [(p[0], p[1]) for p in config_patterns]
+    elif client_id == "farm-thru":
         checks = [
-            ("what", r'\b(farm.?thru|regenerative|farm.to.door|food delivery|online grocer|grocery)\b'),
-            ("source", r'\b(farm|paddock|regenerative|pasture|grass.fed|rachel|bundarra|kempsey|named farm)\b'),
-            ("different", r'(days?\s+(?:old|not)|not\s+weeks|cold storage|middlem|no warehouse|wholesal|direct|hub.and.collect)'),
-            ("how", r'(waitlist|join|sign up|reserve|save.*spot|nearest hub|brookvale|collect|order)'),
-            ("why_now", r'(be part of|own a piece|limited|first access|opening|launching|movement|vote.*wallet)'),
+            ("what", r'\b(farm.?thru|regenerative|grocery)\b'),
+            ("source", r'\b(farm|paddock|pasture|grass.fed|rachel|bundarra)\b'),
+            ("different", r'(days?\s+(?:old|not)|not\s+weeks|cold storage|middlem|direct|hub.and.collect)'),
+            ("how", r'(waitlist|join|sign up|reserve|nearest hub|brookvale|collect|order)'),
+            ("why_now", r'(be part of|own a piece|limited|first access|movement|vote.*wallet)'),
         ]
-    else:  # best-for-pet (default)
+    else:
         checks = [
             ("what", r'\b(wellness plan|pet plan|membership|plan that|plan for)\b'),
-            ("included", r'(consult|vaccination|dental|blood test|urine test|vetchat|nail trim|boarding|parasite|desexing|microchip)'),
+            ("included", r'(consult|vaccination|dental|blood test|urine test|vetchat)'),
             ("cost", r'\$\d'),
-            ("savings", r'(save|saving|saved)\s+\$|(\$\d+.*vs|\d+.*less|pay.*instead)'),
-            ("start", r'(find a|check availability|sign up|get started|learn more|see (the|what)|bestforpet)'),
+            ("savings", r'(save|saving|saved)\s+\$'),
+            ("start", r'(find a|check availability|sign up|get started|learn more)'),
         ]
 
     for label, pattern in checks:
@@ -323,31 +326,35 @@ def _score_platform_fit(ad: dict, config: dict) -> tuple[int, str]:
         return max(1, 4 - len(violations)), f"{len(violations)} violations: {'; '.join(violations)}"
 
 
-def _score_objection_preemption(ad: dict) -> tuple[int, str]:
+def _score_objection_preemption(ad: dict, config: dict = None) -> tuple[int, str]:
     """Check for objection pre-emption signals relevant to the content."""
+    config = config or {}
     text = _get_all_text(ad).lower()
     signals = 0
     found = []
 
-    # Detect which client context by content signals
-    is_farmthru = bool(re.search(r'farm.?thru|regenerative|brookvale|paddock|hub.and.collect', text))
-
-    if is_farmthru:
-        checks = [
-            ("no commitment", r'no\s+commitment|order when you want|no lock.in'),
-            ("hub clarity", r'brookvale|nearest hub|collect from|hub.and.collect|monday.*friday'),
-            ("risk acknowledged", r'can\'t\s+promise|no\s+guarantee|honest about'),
-            ("no middlemen", r'no\s+(?:warehouse|wholesaler|middlem)|direct|zero middlem'),
-            ("provenance", r'named farm|know.*farmer|trace|where.*food.*comes|paddock'),
-        ]
+    # Config-driven patterns (preferred), hardcoded fallback for backwards compat
+    config_patterns = config.get("objection_preemption_patterns", [])
+    if config_patterns:
+        checks = [(p[0], p[1]) for p in config_patterns]
     else:
-        checks = [
-            ("no joining fee", r'no\s+(?:joining|sign[- ]?up)\s+fee'),
-            ("no waiting period", r'no\s+wait(?:ing)?\s+period'),
-            ("cancel anytime", r'cancel\s+any\s*time'),
-            ("not insurance", r'not\s+insurance|isn\'t\s+insurance'),
-            ("no claims/excess", r'no\s+(?:claims|excess)'),
-        ]
+        client_id = config.get("client_id", "")
+        if client_id == "farm-thru":
+            checks = [
+                ("no commitment", r'no\s+commitment|order when you want|no lock.in'),
+                ("hub clarity", r'brookvale|nearest hub|collect from|hub.and.collect|monday.*friday'),
+                ("risk acknowledged", r'can\'t\s+promise|no\s+guarantee|honest about'),
+                ("no middlemen", r'no\s+(?:warehouse|wholesaler|middlem)|direct|zero middlem'),
+                ("provenance", r'named farm|know.*farmer|trace|where.*food.*comes|paddock'),
+            ]
+        else:
+            checks = [
+                ("no joining fee", r'no\s+(?:joining|sign[- ]?up)\s+fee'),
+                ("no waiting period", r'no\s+wait(?:ing)?\s+period'),
+                ("cancel anytime", r'cancel\s+any\s*time'),
+                ("not insurance", r'not\s+insurance|isn\'t\s+insurance'),
+                ("no claims/excess", r'no\s+(?:claims|excess)'),
+            ]
 
     for label, pattern in checks:
         if re.search(pattern, text):
