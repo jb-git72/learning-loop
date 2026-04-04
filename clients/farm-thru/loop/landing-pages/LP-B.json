@@ -1,31 +1,35 @@
 {
   "angle": "transformation-storytelling",
   "tactic": "general",
-  "hook_type": "story",
+  "hook_type": "quoted_objection",
   "funnel": "TOF",
   "content_type": "landing-page",
-  "creative_brief": "Hero image: Rachel Ward standing in a green, recovering paddock in Kempsey — golden hour, cattle grazing behind her. No studio lighting, no polish. Below the fold, split-screen showing a supermarket cold storage facility versus a FarmThru hub box being handed to a real customer. Earthy palette — greens, warm browns, cream. Typography is clean, warm, and grounded.",
-  "generated_at": "2026-04-04T09:30:08.033028",
+  "creative_brief": "Hero image: close-up of a mum's hand turning over a supermarket meat label, slightly out of focus — then a split to a sunlit paddock with cattle grazing. Earthy greens and warm amber tones. Typography in sentence case, clean sans-serif. Below the fold, portrait photos of real farm partners (Rachel Ward at Kempsey, Bundarra Farm, Collins Wild Caught) with location captions. Waitlist CTA button in FarmThru green with '$5 refundable deposit' micro-copy beneath.",
+  "generated_at": "2026-04-04T22:25:52.742474",
   "page_id": "LP-B",
-  "headline": "Rachel counted 47 dead cattle after the fires took her farm",
-  "subhead": "Then she rebuilt — not for supermarkets, but for families who want to know exactly where their food comes from. This is the grocery store she helped us build.",
-  "hero_copy": "In 2019, bushfires swept through Kempsey, NSW and nearly destroyed everything Rachel Ward had spent years growing. She could have walked away. Instead, she doubled down on regenerative farming — soil-first, pasture-raised, no shortcuts. When she called us, she said one thing: \"I don't want my beef sitting in cold storage for three weeks. I want families eating it days after it leaves my farm.\" That conversation became FarmThru. A farm-direct grocery store where nothing travels 2,400km in a refrigerated truck. Where no middlemen or wholesalers stand between the farmer and your family.",
+  "headline": "\"I just assumed grass-fed meant something. It doesn't.\"",
+  "subhead": "A Northern Beaches mum started reading labels. What she found changed how she feeds her family — and led her to a grocery store built by a farmer who lost everything and started over.",
+  "hero_copy": "She thought she was doing the right thing. Picking the pack that said grass-fed. Paying extra for free-range. Then she learned supermarket beef travels an average of 2,400km and sits in cold storage for up to 21 days before it hits the shelf. The label said one thing. The supply chain said another. She wanted a store that couldn't lie to her — where she could trace every cut back to a real paddock. That store didn't exist yet. So we built it.",
   "sections": [
     {
-      "heading": "What Rachel's farm looks like versus what the big chains sell",
-      "body": "Supermarket beef spends 14 to 21 days in cold storage. It travels an average of 2,400km before it reaches a shelf. By the time you cook it, the farmer who raised it has already been paid a fraction of what it's worth.\n\nRachel's beef is 100% grass-fed, raised on pasture in Kempsey. No hormones. No antibiotics. No feedlot finishing. It arrives at our Brookvale hub days old, not weeks old. You order online, collect from the hub Monday through Friday, and take home food you can trace back to one person, one farm, one postcode.\n\nThis isn't just beef. We carry pasture-raised chicken, wild-caught Alaskan salmon from Collins Wild Caught on the South Coast, pork from Bundarra Farm, eggs from Farmer Brown, and bio-dynamic dairy from Paris Creek Farms in South Australia. Every supplier is a regenerative farm. Every product is 100% sourced from regenerative land."
+      "heading": "A farmer who rebuilt from ash",
+      "body": "Rachel Ward spent years building a regenerative farm in Kempsey, NSW. Then bushfire took it. She could have walked away. Instead, she rebuilt — every paddock, every practice — around regenerative agriculture. Animals raised on pasture. No hormones. No antibiotics. No feedlot finishing. 100% grass-fed beef, days old when it reaches you, not weeks. Rachel became a key partner and supplier to FarmThru because she believed one farm couldn't fix the system alone. But a network of farms, connected to families who actually care? That could change everything."
     },
     {
-      "heading": "The day I stopped trusting the label on the packet",
-      "body": "You've probably had this moment. Standing in a supermarket aisle, reading \"free range\" or \"grass fed\" and wondering what that actually means. Who raised this animal? How far did it travel? How long ago was it alive?\n\nWe built FarmThru because those questions deserve real answers — not marketing language on shrink wrap. Our hub-and-collect model in Brookvale keeps costs low. No massive retail leases. No middlemen taking a cut. Straight from their farm to our hub to your kitchen. That's the promise, and we can show you every step.\n\nWe're not asking you to pay more for better food. We're asking you to stop paying a premium that goes to everyone except the farmer."
+      "heading": "We built the grocery store that labels can't fake",
+      "body": "FarmThru is farm-direct and 100% sourced from regenerative farms. Bundarra Farm supplies our pork. Collins Wild Caught brings wild-caught Alaskan salmon from the South Coast of NSW. Paris Creek Farms in Meadows, SA delivers carbon-neutral bio-dynamic dairy. Farmer Brown supplies our eggs. Every product moves straight from their farm to our hub to your kitchen — days old, not weeks old. You order online. You collect from our Brookvale hub, Monday to Friday. No middlemen inflating the price. No cold chain stretching across the country. Just real food from real farms, priced for everyday families."
     },
     {
-      "heading": "You can be part of what we're building",
-      "body": "FarmThru is preparing an equity crowdfunding campaign. That means you could own a piece of the grocery store that's changing how Sydney families eat.\n\nWe can't promise returns. We can't guarantee success. Building something new carries real financial risk, and we want you to understand that before you put a dollar in. But if you believe the food system is broken — if you've felt that quiet frustration in the supermarket aisle — this is your chance to vote for change with your wallet.\n\nJoin the waitlist now with a fully refundable $5 deposit. You'll be first to know when the campaign goes live. No lock-in. No obligation. Just a seat at the table when it matters."
+      "heading": "This isn't just a store — you can own a piece of it",
+      "body": "FarmThru is opening an equity crowdfunding campaign. That means you don't just shop with us — you can be a partner in building a food system that works differently. Vote for change with your wallet. Be part of a grocery store that shows you exactly where your food comes from. Join the waitlist with a fully refundable $5 deposit and we'll notify you the moment the campaign goes live. No commitment. No obligation. Just first access to own a piece of something worth building. Investing in early-stage businesses carries risk, including the potential loss of your investment. This is not financial advice."
+    },
+    {
+      "heading": "No commitment, just better food when you want it",
+      "body": "There's no subscription. No lock-in. You order when you want and collect from our Brookvale hub Monday to Friday. Regenerative beef, pasture-raised chicken, wild-caught salmon, heritage pork, eggs, dairy — all from farms you can actually name. Start with a single order or join the crowdfunding waitlist. Either way, you'll know exactly what you're feeding your family."
     },
     {
       "heading": "Compliance",
-      "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
+      "body": "FarmThru's equity crowdfunding campaign is conducted under the Australian crowd-sourced funding regime. Investing in early-stage businesses carries significant risk, including the potential loss of your entire investment. Past performance is not a reliable indicator of future results. No returns are projected or guaranteed. You should consider whether this investment is appropriate for your circumstances and read the offer document in full before making any investment decision. This is general information only and not financial advice."
     }
   ],
   "cta": "cfe_waitlist"
