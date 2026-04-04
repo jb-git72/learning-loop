@@ -1,0 +1,171 @@
+Filtered to 18 meta-ad items
+Loaded 18 items. Target: 0.85 (strong_draft)
+Max iterations per item: 3
+Strategy: evolutionary (population=5)
+LLM scoring: enabled
+Pairwise gating: enabled
+
+Initial: 11 at target, 7 below target
+
+--- Iteration 1: 7 items below target (pop=5) ---
+  BR-107 (meta-ad): 0.847 [strong_draft]
+    [improve] 0.745 =
+    [mutate(pattern_interrupt)] 0.585 =
+    [targeted(objection_preemption)] 0.683 =
+    [crossover(CFE-106)] 0.734 =
+    [crossover(CFE-105)] 0.711 =
+    => no improvement, kept original
+  BR-108 (meta-ad): 0.817 [strong_draft]
+    [improve] 0.681 =
+    [mutate(pattern_interrupt)] 0.840 +
+    [targeted(scroll_stop_hook)] 0.600 =
+    [crossover(CFE-106)] 0.747 =
+    [crossover(CFE-108)] 0.708 =
+    => PAIRWISE REJECT: rubric +0.023 but pairwise 2/5 — The new candidate's hook ('Fresh enough to ruin supermarkets for you') is more generic and less visceral than the current's sensory-specific 'colour of the yolk,' and it lacks the concrete specificity of naming the farmer (Farmer Brown) and the exact location (regenerative land in NSW), making it feel less authentic and trustworthy.
+  BR-110 (meta-ad): 0.821 [strong_draft]
+    [improve] 0.730 =
+    [mutate(confession)] 0.657 =
+    [targeted(platform_fit)] 0.644 =
+    [crossover(CFE-106)] 0.457 =
+    [crossover(CFE-105)] 0.673 =
+    => no improvement, kept original
+  CFE-101 (meta-ad): 0.803 [strong_draft]
+    [improve] 0.777 =
+    [mutate(bold_claim)] 0.750 =
+    [targeted(specificity)] 0.713 =
+    [crossover(CFE-106)] 0.803 =
+    [crossover(CFE-105)] 0.760 =
+    => no improvement, kept original
+  CFE-102 (meta-ad): 0.849 [strong_draft]
+    [improve] 0.745 =
+    [mutate(quoted_objection)] 0.827 =
+    [targeted(specificity)] 0.764 =
+    [crossover(CFE-105)] 0.530 =
+    [crossover(CFE-105)] 0.751 =
+    => no improvement, kept original
+  CFE-104 (meta-ad): 0.769 [strong_draft]
+    [improve] 0.617 =
+    [mutate(story)] 0.571 =
+    [targeted(motivation_match)] 0.673 =
+    [crossover(CFE-106)] 0.641 =
+    [crossover(CFE-106)] 0.601 =
+    => no improvement, kept original
+  CFE-107 (meta-ad): 0.800 [strong_draft]
+    [improve] 0.589 =
+    [mutate(quoted_objection)] 0.644 =
+    [targeted(specificity)] 0.701 =
+    [crossover(CFE-106)] 0.725 =
+    [crossover(CFE-108)] 0.672 =
+    => no improvement, kept original
+
+--- Iteration 2: 7 items below target (pop=5) ---
+  BR-107 (meta-ad): 0.847 [strong_draft]
+    [improve] 0.646 =
+    [mutate(confession)] 0.774 =
+    [targeted(objection_preemption)] 0.669 =
+    [crossover(CFE-106)] 0.534 =
+    [crossover(CFE-106)] 0.585 =
+    => no improvement, kept original
+  BR-108 (meta-ad): 0.817 [strong_draft]
+    [improve] 0.817 =
+    [mutate(question)] 0.522 =
+    [targeted(scroll_stop_hook)] 0.712 =
+    [crossover(CFE-105)] 0.702 =
+    [crossover(CFE-106)] 0.611 =
+    => no improvement, kept original
+  BR-110 (meta-ad): 0.821 [strong_draft]
+    [improve] 0.669 =
+    [mutate(pattern_interrupt)] 0.657 =
+    [targeted(platform_fit)] 0.679 =
+    [crossover(CFE-105)] 0.673 =
+    [crossover(CFE-106)] 0.723 =
+    => no improvement, kept original
+  CFE-101 (meta-ad): 0.803 [strong_draft]
+    [improve] 0.783 =
+    [mutate(bold_claim)] 0.740 =
+    [targeted(specificity)] 0.717 =
+    [crossover(CFE-105)] 0.789 =
+    [crossover(CFE-106)] 0.740 =
+    => no improvement, kept original
+  CFE-102 (meta-ad): 0.849 [strong_draft]
+    [improve] 0.705 =
+    [mutate(question)] 0.570 =
+    [targeted(specificity)] 0.764 =
+    [crossover(CFE-108)] 0.881 +
+    [crossover(CFE-105)] 0.481 =
+    => PAIRWISE REJECT: rubric +0.032 but pairwise 2/5 — The new version loses the current ad's punchy rhetorical hook ('Your fridge changed. Your portfolio?') with a weaker statement, and despite adding operational details (Monday-Friday, online ordering), it actually reduces specificity about the core value proposition and farm-direct model that made the original compelling.
+  CFE-104 (meta-ad): 0.769 [strong_draft]
+    [improve] 0.668 =
+    [mutate(question)] 0.616 =
+    [targeted(motivation_match)] 0.581 =
+    [crossover(CFE-106)] 0.635 =
+    [crossover(CFE-108)] 0.626 =
+    => no improvement, kept original
+  CFE-107 (meta-ad): 0.800 [strong_draft]
+    [improve] 0.736 =
+    [mutate(quoted_objection)] 0.619 =
+    [targeted(specificity)] 0.738 =
+    [crossover(CFE-105)] 0.589 =
+    [crossover(CFE-106)] 0.675 =
+    => no improvement, kept original
+
+--- Iteration 3: 7 items below target (pop=5) ---
+  BR-107 (meta-ad): 0.847 [strong_draft]
+    [improve] 0.647 =
+    [mutate(direct_address)] 0.659 =
+    [wildcard] 0.640 =
+    [crossover(CFE-108)] 0.752 =
+    [crossover(CFE-106)] 0.653 =
+    => no improvement, kept original
+  BR-108 (meta-ad): 0.817 [strong_draft]
+    [improve] 0.648 =
+    [mutate(quoted_objection)] 0.812 =
+    [wildcard] 0.625 =
+    [crossover(CFE-106)] 0.595 =
+    [crossover(CFE-106)] 0.595 =
+    => no improvement, kept original
+  BR-110 (meta-ad): 0.821 [strong_draft]
+    [improve] 0.714 =
+    [mutate(direct_address)] 0.707 =
+    [wildcard] 0.574 =
+    [crossover(CFE-108)] 0.680 =
+    [crossover(CFE-108)] 0.679 =
+    => no improvement, kept original
+  CFE-101 (meta-ad): 0.803 [strong_draft]
+    [improve] 0.757 =
+    [mutate(story)] 0.713 =
+    [wildcard] 0.666 =
+    [crossover(CFE-105)] 0.773 =
+    [crossover(CFE-105)] 0.770 =
+    => no improvement, kept original
+  CFE-102 (meta-ad): 0.849 [strong_draft]
+    [improve] 0.654 =
+    [mutate(bold_claim)] 0.790 =
+    [wildcard] 0.681 =
+    [crossover(CFE-106)] 0.733 =
+    [crossover(CFE-105)] 0.481 =
+    => no improvement, kept original
+  CFE-104 (meta-ad): 0.769 [strong_draft]
+    [improve] 0.632 =
+    [mutate(confession)] 0.613 =
+    [wildcard] 0.541 =
+    [crossover(CFE-105)] 0.673 =
+    [crossover(CFE-106)] 0.666 =
+    => no improvement, kept original
+  CFE-107 (meta-ad): 0.800 [strong_draft]
+    [improve] 0.727 =
+    [mutate(quoted_objection)] 0.771 =
+    [wildcard] 0.599 =
+    [crossover(CFE-106)] 0.654 =
+    [crossover(CFE-108)] 0.758 =
+    => no improvement, kept original
+
+=== HILL-CLIMB COMPLETE ===
+Strategy: evolutionary
+Improvements made: 0
+Avg composite: 0.8607
+Still below target: 7
+  production_ready: 11
+  strong_draft: 7
+  needs_work: 0
+  rewrite: 0
