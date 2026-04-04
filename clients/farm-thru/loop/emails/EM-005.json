@@ -1,15 +1,16 @@
 {
-  "email_id": "EM-005",
-  "content_type": "email",
   "angle": "investment-thesis",
-  "email_type": "opportunity",
+  "tactic": "general",
+  "hook_type": "contrarian",
   "funnel": "MOF",
-  "subject": "You have seen the food. Here is the business.",
-  "preheader": "How FarmThru works, why we are opening it to investors, and what that means for you.",
-  "body": "Hi {first_name},\n\nYou have tried the food. You have met the farms. You know this is not a meal kit or a box you cannot customise. It is a farm-direct grocery store where every product traces to a named regenerative farm in NSW.\n\nNow here is the business behind it.\n\nFarmThru works on a simple model. Regenerative farms across NSW send their products to our Brookvale hub. Families order online and collect Monday to Friday. Zero middlemen. The food is days old, not weeks. The farmer earns a fairer price. That short supply chain is the entire business.\n\nWe are opening an equity crowdfunding campaign on Birchal in mid-2026. For the first time, you can own a share of the grocery store you buy from. Minimum investment: $50. Maximum: $10,000 per investor.\n\nWe need to be upfront. Investing in early-stage businesses carries real risk. You could lose some or all of your investment. We will not downplay that. Full details, financials, and risk disclosure will be in the offer document on Birchal.\n\nIf you want first access before the campaign opens to everyone, a $5 refundable deposit secures your VIP spot. That means priority access, founder updates, and an exclusive Q&A.\n\nConsider seeking independent financial advice. The disclosure document will be available on Birchal when the campaign launches.\n\nRachel & the FarmThru team",
-  "cta": "Secure VIP Access",
+  "content_type": "email",
+  "creative_brief": "Clean, minimal layout with a single-column design. Use a simple supply chain diagram (farm → hub → customer vs. farm → broker → warehouse → distributor → store → customer) as the hero visual to reinforce the middleman argument. Muted earth tones, one green CTA button.",
+  "generated_at": "2026-04-05T08:50:38.447256",
+  "email_id": "EM-005",
+  "subject": "The grocery industry doesn't have a margin problem",
+  "preheader": "It has a middleman problem. And that's exactly where the opportunity sits.",
+  "body": "Hi {first_name},\n\nLast week a friend asked me why I'd build a grocery business. \"Margins are terrible,\" he said. \"Everyone knows that.\"\n\nHe's not wrong — if you're picturing the model most people picture. A chain store paying warehouse fees, distributor cuts, broker margins, and slotting fees before a single apple hits the shelf.\n\nBut here's what most investors miss. The margin isn't thin because food is cheap. It's thin because the supply chain is bloated.\n\nStrip out the unnecessary middlemen — the brokers, the warehouses, the 2,400km of cold chain — and something shifts. The farmer gets paid more. The customer pays less. And the business in the middle keeps what used to disappear into logistics.\n\nThat's FarmThru.\n\nWe work with around 15–20 partner farms and suppliers across NSW. Customers order online, then collect from our Brookvale hub Monday to Friday. No warehouse network. No shelf fees. No lock-in subscriptions — just order when you want.\n\nIt's a hub-and-collect model built to do one thing well: remove everything between the farm and your family.\n\nI won't pretend this is simple. Building a new kind of grocery store means earning trust — from farmers, from families, from people like you who look at the numbers and ask hard questions.\n\nBut we believe the thesis is sound: when you cut the waste out of the supply chain, everyone wins. Including the business.\n\nWe're preparing an equity crowdfunding campaign so everyday Australians can own a piece of what we're building. If you want first access, priority updates, and an exclusive Q&A before we go live — you can join the VIP waitlist today for a $5 refundable deposit.\n\nNo commitment beyond that. Just a front-row seat.\n\n→ Join the VIP waitlist\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\n\nRachel & the FarmThru team",
+  "cta": "cfe_waitlist",
   "sender_name": "Rachel & the FarmThru team",
-  "creative_brief": "Investment email. Clean, data-forward design. Key business model illustrated simply (farm to hub to family). VIP deposit CTA button below. Birchal badge in footer. Honest, confident tone. No hype.",
-  "primary_text": "You have tried the food. You have met the farms. Now here is the business behind it.",
-  "headline": "You have seen the food. Here is the business."
+  "email_type": "opportunity"
 }

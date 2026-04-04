@@ -4,15 +4,13 @@
   "hook_type": "story",
   "funnel": "BOF",
   "content_type": "email",
-  "creative_brief": "Clean layout with countdown timer element. Highlight the $5 refundable deposit and 48-hour deadline prominently.",
-  "generated_at": "2026-04-03T20:24:20.893594",
+  "creative_brief": "Earthy, editorial feel. Hero image of dark soil with carrots being pulled — raw, unpolished. Single green CTA button. Minimal layout, generous whitespace, no stock photography.",
+  "generated_at": "2026-04-05T08:41:06.926257",
   "email_id": "EM-007",
-  "subject": "Last 48 hours: VIP spots closing",
-  "preheader": "Only $5 to secure your place before we launch mid-2026. Fully refundable.",
-  "body": "Hi {first_name},\n\nToday is the last chance.\n\nYesterday at 3pm, Sarah from Manly refreshed her phone for the third time.\n\nShe'd been watching our VIP list grow for weeks. The $5 deposit (fully refundable) seemed like nothing \u2014 but she kept hesitating.\n\nThen she saw the update: VIP access closes in 48 hours.\n\nSarah realised something. She's been shopping at supermarkets her whole life, never knowing which farm her carrots came from, never meeting the people who grew her food.\n\nFarmThru changes that. We're building NSW's first farm-direct grocery hub where you'll know exactly where your food comes from \u2014 and collect it fresh from our Brookvale hub.\n\nNo middlemen marking up prices. No mystery supply chains. Just real food from real farms, priced for everyday families.\n\nSarah secured her VIP spot at 3:17pm.\n\nThe question is: will you?\n\nVIP perks include first access when we launch mid-2026, priority updates, and exclusive founder Q&As. Your $5 deposit is fully refundable \u2014 but VIP access isn't available forever.\n\n48 hours left.",
+  "subject": "The morning I almost didn't send this",
+  "preheader": "Our VIP list closes soon. $5 refundable deposit locks in your spot.",
+  "body": "Hi {first_name},\n\nAt 6:14am last Tuesday, I stood in a paddock outside Mudgee watching a farmer named Glen pull carrots from soil so dark it looked like coffee grounds.\n\nHe turned to me and said, \"Rachel, I've got enough crop for maybe 200 families this season. That's it.\"\n\nThat's the thing nobody talks about. Regenerative farms don't scale like factories. Glen's carrots taste like actual carrots because his soil has been rebuilt over seven years. But seven years of care means a finite harvest.\n\nThis is why our VIP window matters.\n\nWhen we open our equity crowdfunding campaign on Birchal mid-2026, VIP members get first access. First to invest. First to own a piece of what we're building — a farm-direct grocery store where families like yours buy from farmers like Glen.\n\nHere's what's real: we work with around 15-20 farms and suppliers across NSW. Each one has limits. Our hub-and-collect model from Brookvale keeps costs low and cuts the 2,400km supermarket supply chain down to almost nothing. But capacity has a ceiling.\n\nThe VIP list has a ceiling too.\n\nFor a $5 refundable deposit, you lock in:\n\n— First access to invest (minimum $50, up to $10,000)\n— Priority updates before anyone else\n— Exclusive Q&A sessions with our team\n— A fully refundable deposit if you change your mind\n\nNo commitment beyond that. No subscription. No lock-in. When we launch, you order what you want, when you want, and collect from Brookvale Monday to Friday.\n\nBut the VIP window won't stay open indefinitely. Once we hit our number, it closes.\n\nGlen's carrots don't wait. Neither does this.\n\nJoin the VIP list →\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\n\nRachel & the FarmThru team",
   "cta": "cfe_waitlist",
-  "sender_name": "Tom, FarmThru Founder",
-  "email_type": "final-call",
-  "primary_text": "Yesterday at 3pm, Sarah from Manly refreshed her phone for the third time.",
-  "headline": "Last 48 hours: VIP spots closing"
+  "sender_name": "Rachel & the FarmThru team",
+  "email_type": "final-call"
 }
