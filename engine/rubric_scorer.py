@@ -417,38 +417,72 @@ def _score_scroll_stop_hook(ad: dict) -> tuple[int, str]:
 
 
 def _score_differentiation(ad: dict, existing_ads: list[dict]) -> tuple[int, str]:
-    """Measure how different this ad is from existing ads using Jaccard similarity."""
+    """Measure how different this ad is from existing ads using bigram Jaccard similarity.
+
+    Filters to same content_type before comparing. Uses bigram overlap instead of
+    single-word Jaccard to catch phrase-level similarity.
+    """
     if not existing_ads:
         return 4, "No existing ads to compare — default to 4"
 
-    ad_words = _tokenize(_get_all_text(ad))
-    if not ad_words:
+    ad_text = _get_all_text(ad)
+    ad_bigrams = _bigrams(_tokenize_list(ad_text))
+    if not ad_bigrams:
         return 1, "Empty ad text"
 
+    # Filter to same content_type (backwards-compatible: if missing, compare all)
+    # Exclude the ad itself from comparison (by identity or matching ID)
+    ad_id = ad.get("ad_id", ad.get("page_id", ad.get("email_id")))
+    content_type = ad.get("content_type")
+    if content_type:
+        comparable = [
+            o for o in existing_ads
+            if o.get("content_type") == content_type and o is not ad
+            and o.get("ad_id", o.get("page_id", o.get("email_id"))) != ad_id
+        ]
+    else:
+        comparable = [
+            o for o in existing_ads if o is not ad
+            and o.get("ad_id", o.get("page_id", o.get("email_id"))) != ad_id
+        ]
+
+    if not comparable:
+        return 4, "No comparable ads of same content_type"
+
     similarities = []
-    for other in existing_ads:
-        other_words = _tokenize(_get_all_text(other))
-        if other_words:
-            jaccard = len(ad_words & other_words) / len(ad_words | other_words)
+    for other in comparable:
+        other_bigrams = _bigrams(_tokenize_list(_get_all_text(other)))
+        if other_bigrams:
+            jaccard = len(ad_bigrams & other_bigrams) / len(ad_bigrams | other_bigrams)
             similarities.append(jaccard)
 
     if not similarities:
-        return 4, "No comparable ads"
+        return 4, "No comparable ads with text"
 
     avg_sim = sum(similarities) / len(similarities)
     max_sim = max(similarities)
 
-    detail = f"Avg similarity: {avg_sim:.2f}, max: {max_sim:.2f} (vs {len(existing_ads)} ads)"
+    detail = f"Avg bigram sim: {avg_sim:.3f}, max: {max_sim:.3f} (vs {len(comparable)} same-type ads)"
 
-    if avg_sim < 0.2:
-        return 5, detail
-    elif avg_sim < 0.3:
-        return 4, detail
-    elif avg_sim < 0.4:
-        return 3, detail
-    elif avg_sim < 0.6:
-        return 2, detail
-    return 1, detail
+    # Determine score from average similarity (tighter thresholds for bigrams)
+    if avg_sim < 0.08:
+        score = 5
+    elif avg_sim < 0.15:
+        score = 4
+    elif avg_sim < 0.25:
+        score = 3
+    elif avg_sim < 0.40:
+        score = 2
+    else:
+        score = 1
+
+    # Max similarity cap: if any single ad is too close, cap at 3
+    if max_sim > 0.5 and score > 3:
+        uncapped = score
+        score = 3
+        detail += f" [capped from {uncapped} — max_sim {max_sim:.3f} > 0.5]"
+
+    return score, detail
 
 
 def _score_hero_clarity(ad: dict, config: dict) -> tuple[int, str]:
@@ -1004,3 +1038,23 @@ def _tokenize(text: str) -> set[str]:
         "not", "no", "if", "all", "each", "every", "any", "than", "then",
     }
     return {w for w in words if w not in stops and len(w) > 2}
+
+
+def _tokenize_list(text: str) -> list[str]:
+    """Word tokenization returning a list (preserves order for bigram generation)."""
+    words = re.findall(r'\b[a-z]+\b', text.lower())
+    stops = {
+        "the", "a", "an", "and", "or", "but", "in", "on", "at", "to", "for",
+        "of", "with", "by", "from", "is", "it", "this", "that", "are", "was",
+        "be", "has", "had", "have", "do", "does", "did", "will", "would",
+        "can", "could", "should", "may", "might", "your", "you", "we", "our",
+        "not", "no", "if", "all", "each", "every", "any", "than", "then",
+    }
+    return [w for w in words if w not in stops and len(w) > 2]
+
+
+def _bigrams(word_list: list[str]) -> set[tuple[str, str]]:
+    """Generate bigrams (consecutive word pairs) from a token list."""
+    if len(word_list) < 2:
+        return set()
+    return {(word_list[i], word_list[i + 1]) for i in range(len(word_list) - 1)}
