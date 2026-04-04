@@ -329,44 +329,21 @@ def score_pairwise(new_ad: dict, current_ad: dict, client_config: dict,
     scoring_ctx = client_config.get("scoring_context", {})
     brand_name = client_config.get("client_name", scoring_ctx.get("product", "this brand"))
 
-    content_type = new_ad.get("content_type", "meta-ad")
+    # Build ad text blocks — each ad uses its OWN content type for field extraction
+    def _format_ad_block(ad):
+        ct = ad.get("content_type", "meta-ad")
+        if ct == "landing-page":
+            return "Headline: %s\nSubhead: %s\nHero copy: %s" % (
+                ad.get("headline", ""), ad.get("subhead", ""), ad.get("hero_copy", ""))
+        elif ct == "email":
+            return "Subject: %s\nPreheader: %s\nBody: %s" % (
+                ad.get("subject", ""), ad.get("preheader", ""), ad.get("body", "")[:500])
+        else:
+            return "Headline: %s\nPrimary text: %s\nDescription: %s" % (
+                ad.get("headline", ""), ad.get("primary_text", ""), ad.get("description", ""))
 
-    # Build ad text blocks based on content type
-    if content_type == "landing-page":
-        current_block = "Headline: %s\nSubhead: %s\nHero copy: %s" % (
-            current_ad.get("headline", ""),
-            current_ad.get("subhead", ""),
-            current_ad.get("hero_copy", ""),
-        )
-        new_block = "Headline: %s\nSubhead: %s\nHero copy: %s" % (
-            new_ad.get("headline", ""),
-            new_ad.get("subhead", ""),
-            new_ad.get("hero_copy", ""),
-        )
-    elif content_type == "email":
-        current_body = current_ad.get("body", "")[:500]
-        new_body = new_ad.get("body", "")[:500]
-        current_block = "Subject: %s\nPreheader: %s\nBody: %s" % (
-            current_ad.get("subject", ""),
-            current_ad.get("preheader", ""),
-            current_body,
-        )
-        new_block = "Subject: %s\nPreheader: %s\nBody: %s" % (
-            new_ad.get("subject", ""),
-            new_ad.get("preheader", ""),
-            new_body,
-        )
-    else:  # meta-ad
-        current_block = "Headline: %s\nPrimary text: %s\nDescription: %s" % (
-            current_ad.get("headline", ""),
-            current_ad.get("primary_text", ""),
-            current_ad.get("description", ""),
-        )
-        new_block = "Headline: %s\nPrimary text: %s\nDescription: %s" % (
-            new_ad.get("headline", ""),
-            new_ad.get("primary_text", ""),
-            new_ad.get("description", ""),
-        )
+    current_block = _format_ad_block(current_ad)
+    new_block = _format_ad_block(new_ad)
 
     # Build focus text for weak dimensions
     focus_text = ""

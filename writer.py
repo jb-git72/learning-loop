@@ -247,15 +247,35 @@ def _build_prompt(
     # Hook template
     hook_template = HOOK_TEMPLATES.get(hook_type, "Write a compelling hook.")
 
-    # Hill-climbing context
+    # Hill-climbing context — show the right fields per content type
     beat_text = ""
     if current_best and not wildcard:
-        beat_text = f"""
+        score_to_beat = current_best.get('score', {}).get('composite', 'unknown')
+        if content_type == "landing-page":
+            beat_text = f"""
+CURRENT BEST FOR THIS SLOT:
+Headline: {current_best.get('headline', '')}
+Subhead: {current_best.get('subhead', '')}
+Hero copy: {current_best.get('hero_copy', '')[:200]}...
+Score to beat: {score_to_beat}
+"""
+        elif content_type == "email":
+            beat_text = f"""
+CURRENT BEST FOR THIS SLOT:
+Subject: {current_best.get('subject', '')}
+Preheader: {current_best.get('preheader', '')}
+Body opening: {current_best.get('body', '')[:200]}...
+Score to beat: {score_to_beat}
+"""
+        else:  # meta-ad
+            beat_text = f"""
 CURRENT BEST FOR THIS SLOT:
 Headline: {current_best.get('headline', '')}
 Primary text: {current_best.get('primary_text', '')[:200]}...
-Score to beat: {current_best.get('score', {}).get('composite', 'unknown')}
-
+Description: {current_best.get('description', '')}
+Score to beat: {score_to_beat}
+"""
+        beat_text += """
 Your goal: write something BETTER than the above. Change the angle of attack,
 tighten the opening, find a more specific proof point, or try a different
 emotional register. Don't repeat what's already working — improve on it.
