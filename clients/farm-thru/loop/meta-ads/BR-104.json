@@ -4,11 +4,11 @@
   "hook_type": "invitation",
   "funnel": "TOF",
   "content_type": "meta-ad",
-  "creative_brief": "Split screen showing a long-haul truck on highway vs Rachel's cattle peacefully grazing in green NSW pastures.",
-  "generated_at": "2026-04-03T20:59:43.529627",
+  "creative_brief": "Split frame: left side shows a generic barcode on plastic-wrapped meat, desaturated. Right side shows a sunlit farm gate with a hand-painted sign reading 'Bundarra Farm.' Warm, natural light. FarmThru logo bottom right.",
+  "generated_at": "2026-04-04T23:48:45.342608",
   "ad_id": "BR-104",
-  "primary_text": "When did you last know the name of the farmer who raised your beef?\n\nMost of us stopped asking. The supermarket made it easy not to. But something gets lost when food travels thousands of kilometres from farms you will never see.\n\nFarmThru is a farm-direct grocery store. Every product traces to a named NSW farm. No middlemen between them and your family.\n\nCollect from the Brookvale hub, Monday to Friday. No commitment. Days old, not weeks.",
-  "headline": "When did we stop knowing our farmers?",
-  "description": "Farm-direct from named NSW farms. Zero middlemen. Collect from Brookvale, no commitment.",
-  "cta": "brand"
+  "primary_text": "Honest moment: we lost something when food became anonymous.\n\nNot through anyone's fault. Just slowly, over decades. The farm gate got further away. The supply chain got longer. And the people growing your food became invisible.\n\nWe wanted to fix that. So we built a grocery store around the opposite idea.\n\nEvery product traces back to a named farm. Bundarra for pork. Collins Wild Caught for South Coast seafood. Paris Creek for carbon-neutral dairy. Real people, real land, real practices.\n\nNo warehouses. No wholesalers. Farm to hub to you.\n\nThis is bigger than groceries. And soon, you can own a piece of it.",
+  "headline": "Food got anonymous. We're changing that.",
+  "description": "Named farms, zero middlemen. Collect from Brookvale Mon-Fri, no commitment needed.",
+  "cta": "cfe_waitlist"
 }
