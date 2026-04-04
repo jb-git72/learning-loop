@@ -1,0 +1,192 @@
+Filtered to 8 landing-page items
+Loaded 8 items. Target: 0.85 (strong_draft)
+Max iterations per item: 3
+Strategy: evolutionary (population=5)
+LLM scoring: enabled
+Pairwise gating: enabled
+
+Initial: 0 at target, 8 below target
+
+--- Iteration 1: 8 items below target (pop=5) ---
+  LP-A (landing-page): 0.712 [strong_draft]
+    [improve] 0.719 +
+    [mutate(quoted_objection)] 0.716 +
+    [targeted(tactic_execution)] 0.648 =
+    [crossover(LP-P)] 0.702 =
+    [crossover(LP-N)] 0.705 =
+    => ACCEPTED [improve] 0.719 (+0.007) pairwise 4/5
+  LP-B (landing-page): 0.737 [strong_draft]
+    [improve] 0.689 =
+    [mutate(direct_address)] 0.683 =
+    [targeted(emotional_register)] 0.734 =
+    [crossover(LP-D)] 0.712 =
+    [crossover(LP-N)] 0.589 =
+    => no improvement, kept original
+  LP-D (landing-page): 0.774 [strong_draft]
+    [improve] 0.679 =
+    [mutate(direct_address)] 0.640 =
+    [targeted(opening_diversity)] 0.643 =
+    [crossover(LP-B)] 0.596 =
+    [crossover(LP-P)] 0.564 =
+    => no improvement, kept original
+  LP-E (landing-page): 0.723 [strong_draft]
+    [improve] 0.705 =
+    [mutate(contrarian)] 0.751 +
+    [targeted(opening_diversity)] 0.637 =
+    [crossover(LP-N)] 0.710 =
+    [crossover(LP-P)] 0.748 +
+    => ACCEPTED [mutate(contrarian)] 0.751 (+0.028) pairwise 5/5
+  LP-F (landing-page): 0.705 [strong_draft]
+    [improve] 0.743 +
+    [mutate(confession)] 0.755 +
+    [targeted(tactic_execution)] 0.615 =
+    [crossover(LP-E)] 0.737 +
+    [crossover(LP-N)] 0.734 +
+    => ACCEPTED [mutate(confession)] 0.755 (+0.050) pairwise 4/5
+  LP-M (landing-page): 0.709 [strong_draft]
+    [improve] 0.691 =
+    [mutate(story)] 0.662 =
+    [targeted(tactic_execution)] 0.694 =
+    [crossover(LP-F)] 0.712 +
+    [crossover(LP-D)] 0.680 =
+    => ACCEPTED [crossover(LP-F)] 0.712 (+0.003) pairwise 4/5
+  LP-N (landing-page): 0.776 [strong_draft]
+    [improve] 0.707 =
+    [mutate(story)] 0.709 =
+    [targeted(emotional_register)] 0.694 =
+    [crossover(LP-E)] 0.695 =
+    [crossover(LP-E)] 0.702 =
+    => no improvement, kept original
+  LP-P (landing-page): 0.744 [strong_draft]
+    [improve] 0.641 =
+    [mutate(bold_claim)] 0.651 =
+    [targeted(tactic_execution)] 0.667 =
+    [crossover(LP-F)] 0.567 =
+    [crossover(LP-D)] 0.727 =
+    => no improvement, kept original
+
+--- Iteration 2: 8 items below target (pop=5) ---
+  LP-A (landing-page): 0.719 [strong_draft]
+    [improve] 0.629 =
+    [mutate(pattern_interrupt)] 0.712 =
+    [targeted(tactic_execution)] 0.680 =
+    [crossover(LP-F)] 0.723 +
+    [crossover(LP-D)] 0.647 =
+    => ACCEPTED [crossover(LP-F)] 0.723 (+0.004) pairwise 4/5
+  LP-B (landing-page): 0.737 [strong_draft]
+    [improve] 0.683 =
+    [mutate(pattern_interrupt)] 0.677 =
+    [targeted(emotional_register)] 0.660 =
+    [crossover(LP-N)] 0.707 =
+    [crossover(LP-N)] 0.700 =
+    => no improvement, kept original
+  LP-D (landing-page): 0.774 [strong_draft]
+    [improve] 0.755 =
+    [mutate(confession)] 0.689 =
+    [targeted(opening_diversity)] 0.590 =
+    [crossover(LP-E)] 0.547 =
+    [crossover(LP-N)] 0.770 =
+    => no improvement, kept original
+  LP-E (landing-page): 0.751 [strong_draft]
+    [improve] 0.698 =
+    [mutate(confession)] 0.684 =
+    [targeted(emotional_register)] 0.684 =
+    [crossover(LP-N)] 0.684 =
+    [crossover(LP-F)] 0.656 =
+    => no improvement, kept original
+  LP-F (landing-page): 0.755 [strong_draft]
+    [improve] 0.751 =
+    [mutate(statistic)] 0.666 =
+    [targeted(angle_clarity)] 0.808 +
+    [crossover(LP-N)] 0.566 =
+    [crossover(LP-E)] 0.647 =
+    => ACCEPTED [targeted(angle_clarity)] 0.808 (+0.053) pairwise 4/5
+  LP-M (landing-page): 0.712 [strong_draft]
+    [improve] 0.751 +
+    [mutate(statistic)] 0.626 =
+    [targeted(opening_diversity)] 0.593 =
+    [crossover(LP-F)] 0.709 =
+    [crossover(LP-D)] 0.716 +
+    => ACCEPTED [improve] 0.751 (+0.039) pairwise 4/5
+  LP-N (landing-page): 0.776 [strong_draft]
+    [improve] 0.714 =
+    [mutate(quoted_objection)] 0.700 =
+    [targeted(emotional_register)] 0.700 =
+    [crossover(LP-D)] 0.771 =
+    [crossover(LP-E)] 0.709 =
+    => no improvement, kept original
+  LP-P (landing-page): 0.744 [strong_draft]
+    [improve] 0.774 +
+    [mutate(bold_claim)] 0.633 =
+    [targeted(tactic_execution)] 0.640 =
+    [crossover(LP-N)] 0.630 =
+    [crossover(LP-N)] 0.785 +
+    => ACCEPTED [crossover(LP-N)] 0.785 (+0.041) pairwise 5/5
+
+--- Iteration 3: 8 items below target (pop=5) ---
+  LP-A (landing-page): 0.723 [strong_draft]
+    [improve] 0.716 =
+    [mutate(bold_claim)] 0.606 =
+    [wildcard] 0.651 =
+    [crossover(LP-N)] 0.609 =
+    [crossover(LP-F)] 0.719 =
+    => no improvement, kept original
+  LP-B (landing-page): 0.737 [strong_draft]
+    [improve] 0.730 =
+    [mutate(direct_address)] 0.692 =
+    [wildcard] 0.636 =
+    [crossover(LP-P)] 0.659 =
+    [crossover(LP-N)] 0.663 =
+    => no improvement, kept original
+  LP-D (landing-page): 0.774 [strong_draft]
+    [improve] 0.601 =
+    [mutate(story)] 0.557 =
+    [wildcard] 0.628 =
+    [crossover(LP-N)] 0.721 =
+    [crossover(LP-P)] 0.536 =
+    => no improvement, kept original
+  LP-E (landing-page): 0.751 [strong_draft]
+    [improve] 0.702 =
+    [mutate(direct_address)] 0.644 =
+    [wildcard] 0.677 =
+    [crossover(LP-F)] 0.673 =
+    [crossover(LP-F)] 0.666 =
+    => no improvement, kept original
+  LP-F (landing-page): 0.808 [strong_draft]
+    [improve] 0.584 =
+    [mutate(bold_claim)] 0.643 =
+    [wildcard] 0.695 =
+    [crossover(LP-P)] 0.702 =
+    [crossover(LP-D)] 0.709 =
+    => no improvement, kept original
+  LP-M (landing-page): 0.751 [strong_draft]
+    [improve] 0.698 =
+    [mutate(contrarian)] 0.652 =
+    [wildcard] 0.540 =
+    [crossover(LP-N)] 0.677 =
+    [crossover(LP-P)] 0.670 =
+    => no improvement, kept original
+  LP-N (landing-page): 0.776 [strong_draft]
+    [improve] 0.627 =
+    [mutate(bold_claim)] 0.683 =
+    [wildcard] 0.787 +
+    [crossover(LP-F)] 0.641 =
+    [crossover(LP-P)] 0.724 =
+    => ACCEPTED [wildcard] 0.787 (+0.011) pairwise 5/5
+  LP-P (landing-page): 0.785 [strong_draft]
+    [improve] 0.742 =
+    [mutate(if_then)] 0.690 =
+    [wildcard] 0.641 =
+    [crossover(LP-F)] 0.830 +
+    [crossover(LP-F)] 0.802 +
+    => ACCEPTED [crossover(LP-F)] 0.830 (+0.045) pairwise 4/5
+
+=== HILL-CLIMB COMPLETE ===
+Strategy: evolutionary
+Improvements made: 10
+Avg composite: 0.7701
+Still below target: 8
+  production_ready: 0
+  strong_draft: 8
+  needs_work: 0
+  rewrite: 0

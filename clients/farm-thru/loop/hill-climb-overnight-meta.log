@@ -1,0 +1,269 @@
+Filtered to 18 meta-ad items
+Loaded 18 items. Target: 0.85 (strong_draft)
+Max iterations per item: 3
+Strategy: evolutionary (population=5)
+LLM scoring: enabled
+Pairwise gating: enabled
+
+Initial: 6 at target, 12 below target
+
+--- Iteration 1: 12 items below target (pop=5) ---
+  BR-101 (meta-ad): 0.848 [strong_draft]
+    [improve] 0.624 =
+    [mutate(question)] 0.705 =
+    [targeted(cta_clarity)] 0.530 =
+    [crossover(CFE-108)] 0.709 =
+    [crossover(BR-109)] 0.744 =
+    => no improvement, kept original
+  BR-102 (meta-ad): 0.834 [strong_draft]
+    [improve] 0.729 =
+    [mutate(confession)] 0.687 =
+    [targeted(objection_preemption)] 0.802 =
+    [crossover(BR-109)] 0.761 =
+    [crossover(CFE-108)] 0.716 =
+    => no improvement, kept original
+  BR-104 (meta-ad): 0.832 [strong_draft]
+    [improve] 0.520 =
+    [mutate(quoted_objection)] 0.817 =
+    [targeted(motivation_match)] 0.748 =
+    [crossover(CFE-105)] 0.701 =
+    [crossover(BR-109)] 0.662 =
+    => no improvement, kept original
+  BR-105 (meta-ad): 0.840 [strong_draft]
+    [improve] 0.663 =
+    [mutate(if_then)] 0.796 =
+    [targeted(platform_fit)] 0.663 =
+    [crossover(CFE-105)] 0.748 =
+    [crossover(CFE-108)] 0.799 =
+    => no improvement, kept original
+  BR-107 (meta-ad): 0.786 [strong_draft]
+    [improve] 0.823 +
+    [mutate(question)] 0.704 =
+    [targeted(motivation_match)] 0.642 =
+    [crossover(CFE-108)] 0.724 =
+    [crossover(CFE-105)] 0.685 =
+    => ACCEPTED [improve] 0.823 (+0.037) pairwise 4/5
+  BR-108 (meta-ad): 0.790 [strong_draft]
+    [improve] 0.800 +
+    [mutate(direct_address)] 0.581 =
+    [targeted(scroll_stop_hook)] 0.511 =
+    [crossover(CFE-105)] 0.606 =
+    [crossover(CFE-105)] 0.663 =
+    => PAIRWISE REJECT: rubric +0.010 but pairwise 2/5 — The new ad loses the current's powerful sensory hook (the vivid orange yolk that 'stops you mid-pour') by spreading focus across multiple products and abstract concepts like seasonality, making it less specific and less likely to stop scrollers with a concrete, craveable detail.
+  BR-110 (meta-ad): 0.793 [strong_draft]
+    [improve] 0.692 =
+    [mutate(question)] 0.767 =
+    [targeted(scroll_stop_hook)] 0.683 =
+    [crossover(CFE-105)] 0.783 =
+    [crossover(CFE-108)] 0.770 =
+    => no improvement, kept original
+  CFE-101 (meta-ad): 0.786 [strong_draft]
+    [improve] 0.585 =
+    [mutate(contrarian)] 0.677 =
+    [targeted(motivation_match)] 0.637 =
+    [crossover(CFE-105)] 0.560 =
+    [crossover(CFE-105)] 0.581 =
+    => no improvement, kept original
+  CFE-103 (meta-ad): 0.835 [strong_draft]
+    [improve] 0.686 =
+    [mutate(quoted_objection)] 0.817 =
+    [targeted(motivation_match)] 0.769 =
+    [crossover(CFE-108)] 0.534 =
+    [crossover(BR-109)] 0.644 =
+    => no improvement, kept original
+  CFE-104 (meta-ad): 0.760 [strong_draft]
+    [improve] 0.650 =
+    [mutate(story)] 0.632 =
+    [targeted(motivation_match)] 0.695 =
+    [crossover(BR-109)] 0.641 =
+    [crossover(CFE-105)] 0.666 =
+    => no improvement, kept original
+  CFE-106 (meta-ad): 0.797 [strong_draft]
+    [improve] 0.789 =
+    [mutate(question)] 0.777 =
+    [targeted(platform_fit)] 0.817 +
+    [crossover(CFE-105)] 0.707 =
+    [crossover(CFE-105)] 0.653 =
+    => PAIRWISE REJECT: rubric +0.020 but pairwise 2/5 — The new candidate loses the current's emotional narrative arc and community-building focus, replacing it with transactional details (Monday-Friday hours, 'no lock-in') that undermine the ownership/belonging positioning and feel misaligned with platform expectations for mission-driven storytelling.
+  CFE-107 (meta-ad): 0.790 [strong_draft]
+    [improve] 0.668 =
+    [mutate(confession)] 0.571 =
+    [targeted(scroll_stop_hook)] 0.702 =
+    [crossover(BR-109)] 0.727 =
+    [crossover(CFE-105)] 0.628 =
+    => no improvement, kept original
+
+--- Iteration 2: 12 items below target (pop=5) ---
+  BR-101 (meta-ad): 0.848 [strong_draft]
+    [improve] 0.553 =
+    [mutate(if_then)] 0.707 =
+    [targeted(cta_clarity)] 0.708 =
+    [crossover(CFE-105)] 0.705 =
+    [crossover(CFE-105)] 0.905 +
+    => PAIRWISE REJECT: rubric +0.057 but pairwise 2/5 — While the new ad has stronger sensory appeal and problem-framing, it regresses on both weak areas: the CTA is vaguer ('own a piece of it' is unclear) and sentence structure is more repetitive (multiple short declaratives), whereas the current ad has clearer collection instructions and better rhythm variation.
+  BR-102 (meta-ad): 0.834 [strong_draft]
+    [improve] 0.748 =
+    [mutate(confession)] 0.730 =
+    [targeted(objection_preemption)] 0.619 =
+    [crossover(BR-109)] 0.873 +
+    [crossover(CFE-108)] 0.844 +
+    => ACCEPTED [crossover(BR-109)] 0.873 (+0.040) pairwise 3/5
+  BR-104 (meta-ad): 0.832 [strong_draft]
+    [improve] 0.737 =
+    [mutate(contrarian)] 0.546 =
+    [targeted(motivation_match)] 0.596 =
+    [crossover(CFE-108)] 0.704 =
+    [crossover(CFE-108)] 0.660 =
+    => no improvement, kept original
+  BR-105 (meta-ad): 0.840 [strong_draft]
+    [improve] 0.673 =
+    [mutate(direct_address)] 0.673 =
+    [targeted(platform_fit)] 0.752 =
+    [crossover(CFE-105)] 0.780 =
+    [crossover(CFE-105)] 0.780 =
+    => no improvement, kept original
+  BR-107 (meta-ad): 0.823 [strong_draft]
+    [improve] 0.652 =
+    [mutate(pattern_interrupt)] 0.742 =
+    [targeted(motivation_match)] 0.652 =
+    [crossover(BR-109)] 0.695 =
+    [crossover(CFE-105)] 0.727 =
+    => no improvement, kept original
+  BR-108 (meta-ad): 0.790 [strong_draft]
+    [improve] 0.484 =
+    [mutate(confession)] 0.586 =
+    [targeted(scroll_stop_hook)] 0.639 =
+    [crossover(CFE-108)] 0.672 =
+    [crossover(BR-109)] 0.608 =
+    => no improvement, kept original
+  BR-110 (meta-ad): 0.793 [strong_draft]
+    [improve] 0.581 =
+    [mutate(story)] 0.777 =
+    [targeted(scroll_stop_hook)] 0.690 =
+    [crossover(CFE-105)] 0.742 =
+    [crossover(BR-109)] 0.793 =
+    => no improvement, kept original
+  CFE-101 (meta-ad): 0.786 [strong_draft]
+    [improve] 0.651 =
+    [mutate(story)] 0.739 =
+    [targeted(motivation_match)] 0.629 =
+    [crossover(CFE-108)] 0.690 =
+    [crossover(BR-109)] 0.650 =
+    => no improvement, kept original
+  CFE-103 (meta-ad): 0.835 [strong_draft]
+    [improve] 0.551 =
+    [mutate(contrarian)] 0.764 =
+    [targeted(motivation_match)] 0.616 =
+    [crossover(BR-109)] 0.713 =
+    [crossover(CFE-108)] 0.556 =
+    => no improvement, kept original
+  CFE-104 (meta-ad): 0.760 [strong_draft]
+    [improve] 0.675 =
+    [mutate(direct_address)] 0.678 =
+    [targeted(motivation_match)] 0.695 =
+    [crossover(CFE-105)] 0.641 =
+    [crossover(CFE-105)] 0.613 =
+    => no improvement, kept original
+  CFE-106 (meta-ad): 0.797 [strong_draft]
+    [improve] 0.831 +
+    [mutate(confession)] 0.688 =
+    [targeted(platform_fit)] 0.853 +
+    [crossover(BR-109)] 0.755 =
+    [crossover(CFE-108)] 0.574 =
+    => PAIRWISE REJECT: rubric +0.056 but pairwise 2/5 — The new version weakens platform fit by burying the co-ownership model and reducing motivation match by emphasizing low-commitment transactional ordering ('no commitment, order when you want') rather than the transformative community ownership that drives emotional engagement.
+  CFE-107 (meta-ad): 0.790 [strong_draft]
+    [improve] 0.654 =
+    [mutate(if_then)] 0.777 =
+    [targeted(scroll_stop_hook)] 0.634 =
+    [crossover(CFE-105)] 0.668 =
+    [crossover(BR-109)] 0.558 =
+    => no improvement, kept original
+
+--- Iteration 3: 11 items below target (pop=5) ---
+  BR-101 (meta-ad): 0.848 [strong_draft]
+    [improve] 0.519 =
+    [mutate(statistic)] 0.780 =
+    [wildcard] 0.780 =
+    [crossover(BR-109)] 0.764 =
+    [crossover(CFE-105)] 0.762 =
+    => no improvement, kept original
+  BR-104 (meta-ad): 0.832 [strong_draft]
+    [improve] 0.733 =
+    [mutate(contrarian)] 0.692 =
+    [wildcard] 0.594 =
+    [crossover(CFE-105)] 0.847 +
+    [crossover(CFE-108)] 0.704 =
+    => ACCEPTED [crossover(CFE-105)] 0.847 (+0.015) pairwise 4/5
+  BR-105 (meta-ad): 0.840 [strong_draft]
+    [improve] 0.752 =
+    [mutate(quoted_objection)] 0.777 =
+    [wildcard] 0.726 =
+    [crossover(CFE-108)] 0.802 =
+    [crossover(BR-109)] 0.717 =
+    => no improvement, kept original
+  BR-107 (meta-ad): 0.823 [strong_draft]
+    [improve] 0.867 +
+    [mutate(quoted_objection)] 0.770 =
+    [wildcard] 0.774 =
+    [crossover(CFE-105)] 0.649 =
+    [crossover(CFE-108)] 0.751 =
+    => ACCEPTED [improve] 0.867 (+0.043) pairwise 4/5
+  BR-108 (meta-ad): 0.790 [strong_draft]
+    [improve] 0.720 =
+    [mutate(direct_address)] 0.711 =
+    [wildcard] 0.780 =
+    [crossover(BR-109)] 0.800 +
+    [crossover(BR-109)] 0.820 +
+    => PAIRWISE REJECT: rubric +0.030 but pairwise 2/5 — The new ad loses the current's immediate sensory hook (the striking orange yolk visual) with a more abstract seasonal claim, and replaces concrete specificity (Farmer Brown, days not weeks, Brookvale collection) with vaguer language (Rachel Ward introduced without context, 'almost sweet' is less vivid than 'almost orange'), making it weaker on both scroll-stop and specificity despite stronger emotional closing.
+  BR-110 (meta-ad): 0.793 [strong_draft]
+    [improve] 0.774 =
+    [mutate(statistic)] 0.622 =
+    [wildcard] 0.732 =
+    [crossover(BR-109)] 0.707 =
+    [crossover(CFE-105)] 0.657 =
+    => no improvement, kept original
+  CFE-101 (meta-ad): 0.786 [strong_draft]
+    [improve] 0.676 =
+    [mutate(quoted_objection)] 0.773 =
+    [wildcard] 0.689 =
+    [crossover(CFE-108)] 0.710 =
+    [crossover(CFE-108)] 0.703 =
+    => no improvement, kept original
+  CFE-103 (meta-ad): 0.835 [strong_draft]
+    [improve] 0.623 =
+    [mutate(pattern_interrupt)] 0.660 =
+    [wildcard] 0.478 =
+    [crossover(CFE-108)] 0.566 =
+    [crossover(BR-109)] 0.589 =
+    => no improvement, kept original
+  CFE-104 (meta-ad): 0.760 [strong_draft]
+    [improve] 0.678 =
+    [mutate(contrarian)] 0.682 =
+    [wildcard] 0.538 =
+    [crossover(BR-109)] 0.665 =
+    [crossover(CFE-108)] 0.698 =
+    => no improvement, kept original
+  CFE-106 (meta-ad): 0.797 [strong_draft]
+    [improve] 0.786 =
+    [mutate(contrarian)] 0.720 =
+    [wildcard] 0.616 =
+    [crossover(BR-109)] 0.737 =
+    [crossover(CFE-105)] 0.578 =
+    => no improvement, kept original
+  CFE-107 (meta-ad): 0.790 [strong_draft]
+    [improve] 0.678 =
+    [mutate(question)] 0.611 =
+    [wildcard] 0.687 =
+    [crossover(BR-109)] 0.589 =
+    [crossover(CFE-105)] 0.578 =
+    => no improvement, kept original
+
+=== HILL-CLIMB COMPLETE ===
+Strategy: evolutionary
+Improvements made: 4
+Avg composite: 0.8422
+Still below target: 10
+  production_ready: 8
+  strong_draft: 10
+  needs_work: 0
+  rewrite: 0

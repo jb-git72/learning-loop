@@ -4,28 +4,28 @@
   "hook_type": "question",
   "funnel": "TOF",
   "content_type": "landing-page",
-  "creative_brief": "Hero image: a parent and child at a kitchen counter, produce in the foreground with small handwritten-style farm-name labels visible on each item. Warm, natural light. Below the fold, use a simple timeline graphic showing the VIP window narrowing toward the campaign launch date. Earthy palette, no stock-photo gloss.",
-  "generated_at": "2026-04-04T22:10:29.561778",
+  "creative_brief": "Hero image: close-up of a hand holding a brown paper bag with farm-stamped labels visible, Brookvale hub shelving softly blurred behind. Muted earth tones, natural light. No stock-photo polish — real texture, real space. Urgency conveyed through a subtle countdown or 'limited window' badge near the CTA button, not flashing graphics.",
+  "generated_at": "2026-04-04T23:54:28.026905",
   "page_id": "LP-M",
-  "headline": "Do you actually know what your kids ate for dinner last night?",
-  "subhead": "Not the meal — the supply chain. Where it grew, who picked it, how far it travelled. FarmThru is a farm-direct grocery store opening to investors for the first time. VIP spots are limited.",
-  "hero_copy": "Most parents can name every ingredient in the recipe. Almost none can name the farm. That gap between what we cook and what we know haunts every grocery run. FarmThru closes it — a hub-and-collect grocery store that connects you directly with regenerative farms across NSW. No unnecessary middlemen. No mystery produce.\n\nRight now, before our equity crowdfunding campaign goes live on Birchal in mid-2026, a limited number of VIP spots are open. A $5 refundable deposit holds yours.",
+  "headline": "Do you actually know what farm your chicken came from last week?",
+  "subhead": "Most people don't. Most people can't. The big chains made traceability almost impossible — and now a farm-direct grocery store is giving you a way back. But the window to own a piece of FarmThru before the equity crowdfunding campaign closes is shrinking.",
+  "hero_copy": "Think about it. Last Tuesday's dinner — the mince, the greens, the eggs. Could you name a single farm? Not the brand. The actual farm, the actual paddock, the people who grew it. FarmThru partners with roughly 15–20 farms and suppliers across NSW to bring food from the source to your hands. No unnecessary middlemen. No mystery. Order online, collect from Brookvale Monday to Friday. And right now, before the campaign window closes, you can be part of what comes next.",
   "sections": [
     {
-      "heading": "The question that started this",
-      "body": "Rachel asked it at a school pickup. Another parent mentioned a recall — leafy greens, contamination, origin unknown. She looked at her fridge that night and realised she couldn't trace a single item back to where it grew. Not one.\n\nThat's not a personal failing. It's a system designed to keep you in the dark. Supermarkets move produce an average of 2,400km before it hits the shelf. By the time it reaches you, the farm is invisible.\n\nFarmThru was built to fix that. We partner with roughly 15–20 farms and suppliers across NSW. You order online, collect from our Brookvale hub Monday to Friday — or get delivery across Sydney, Central Coast, and Wollongong. Every product traces back to a real farm, a real grower. No lock-in. No membership fees. Order when you want."
+      "heading": "The system wasn't built for you to ask questions",
+      "body": "Supermarkets move your food through warehouses, distribution centres, and rebrand it under house labels until the farmer's name disappears entirely. You're not lazy for not knowing — you were never given the chance to know. FarmThru's hub-and-collect model cuts that chain short. Farm to hub to you. That's it. You order what you need, when you need it. No subscription. No lock-in. No membership fees. Just real food from farms you can actually trace. Bulk buying keeps prices honest — the more you commit, the more you save. This isn't a premium boutique experience. It's grocery shopping that finally makes sense."
     },
     {
-      "heading": "Why VIP spots won't last",
-      "body": "We're opening our equity crowdfunding campaign on Birchal in mid-2026. Before that happens, we're giving a limited number of people first access — priority updates, exclusive Q&A with our team, and the chance to invest before the general public.\n\nMinimum investment starts at $50. Maximum is $10,000 per investor. But VIP access costs just a $5 refundable deposit. Fully refundable, no commitment, no obligation to invest.\n\nThis isn't about watching from the sidelines. It's about owning a piece of a food system that actually shows you where your groceries come from. The VIP list closes when it's full. We won't reopen it."
+      "heading": "Why this window matters",
+      "body": "FarmThru is raising through equity crowdfunding on Birchal — and for a limited time, everyday people can own a piece of a farm-direct grocery store. Minimum investment is $50. Maximum is $10,000 per investor. This isn't a donation. It's ownership. But here's what you need to know: the campaign window doesn't stay open forever. When it closes, this specific opportunity closes with it. A $5 refundable deposit gets you VIP access — first in line, priority updates, and an exclusive Q&A before the crowd. No commitment beyond that. You're not locked into anything. You're just making sure you don't miss it. Investing in early-stage businesses carries real risk, including the possibility of losing your entire investment. This is not a guaranteed return — it's a bet on a food system that works differently."
     },
     {
-      "heading": "What you're actually backing",
-      "body": "FarmThru is a farm-direct grocery store. Hub-and-collect model. We buy from regenerative farms, cut the unnecessary middlemen, and pass the transparency (and the savings from bulk buying) to you.\n\nNo subscription. No lock-in. You order what you need, when you need it. Collect from Brookvale Monday to Friday, or choose delivery if you're across Sydney, Central Coast, or Wollongong.\n\nBe part of it — not as a customer waiting for someone else to fix the food system, but as a partner who owns a piece of the solution."
+      "heading": "What you get when you stop guessing",
+      "body": "You get to tell your kids where dinner actually came from. Not a country of origin on a sticker — a farm name, a region, a story. You get to buy bulk and save without a warehouse membership card. You get to collect your order from the Brookvale hub at Unit 23, 10–18 Orchard Rd, Monday to Friday — on your schedule. And if you join the equity crowdfunding campaign, you get to be a partner in building this. Not just a customer. An owner. The people who move first shape what FarmThru becomes. That window is open now. It won't be open indefinitely."
     },
     {
       "heading": "Compliance",
-      "body": "FarmThru's equity crowdfunding campaign will be hosted on Birchal. Investing in equity crowdfunding carries risks, including the potential loss of your entire investment. This is not financial advice. You should consider whether this investment is appropriate for your circumstances and read the offer document in full before making any investment decision. Any investment made through the Birchal platform is subject to the terms and conditions of that platform."
+      "body": "FarmThru's equity crowdfunding campaign is hosted on Birchal. Investing in early-stage companies carries inherent risk, including the potential loss of your entire investment. Returns are not guaranteed. This page is not financial advice. Please read the offer document and consider your own financial situation before investing. The $5 VIP deposit is fully refundable at any time."
     }
   ],
   "cta": "cfe_waitlist"
