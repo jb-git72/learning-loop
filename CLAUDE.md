@@ -30,7 +30,21 @@ claude --dangerously-skip-permissions
 
 ## Adding a new client
 
-Create `clients/{slug}/` with 5 files:
+**Quick start (2 minutes):**
+```bash
+python3 scripts/onboard_client.py \
+  --name "Brand Name" --slug brand-slug \
+  --url https://brand.com \
+  --product "One-line product description" \
+  --industry grocery --market AU
+```
+
+This auto-generates all 5 files, validates them, and runs 3 test ads. Then hill-climb:
+```bash
+python3 scripts/hill_climb.py brand-slug 3
+```
+
+**Manual setup** — create `clients/{slug}/` with 5 files:
 - `config.json` — entry point: weights, thresholds, CTAs, angles, scoring_context
 - `rules.json` — client-specific rules (extends universal)
 - `facts.json` — structured facts register
