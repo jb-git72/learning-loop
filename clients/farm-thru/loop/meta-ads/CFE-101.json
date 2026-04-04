@@ -1,14 +1,14 @@
 {
   "angle": "investment-thesis",
   "tactic": "traction-proof",
-  "hook_type": "statistic",
+  "hook_type": "if_then",
   "funnel": "TOF",
   "content_type": "meta-ad",
-  "creative_brief": "Split-screen aerial: left side shows a short green route from Kempsey farmland to Sydney, right side shows a tangled red logistics route across the country. Clean map style, warm tones on the farm side. End frame: FarmThru logo with 'Own a piece of it.'",
-  "generated_at": "2026-04-04T20:38:29.482694",
+  "creative_brief": "Split-screen map animation: left side shows a tangled 2,400km red route through warehouses; right side shows a clean, short green line from a named NSW farm region to the Brookvale hub. End frame: FarmThru logo with 'Own a piece of it.'",
+  "generated_at": "2026-04-05T02:03:49.863483",
   "ad_id": "CFE-101",
-  "primary_text": "180km. That's how far Rachel's beef travels from Kempsey to families in Sydney.\n\nSupermarket beef? Closer to 2,400km through warehouses and wholesalers.\n\nWe built FarmThru to close that gap. Farm-direct grocery, no unnecessary middlemen. Around 15 to 20 partner farms across NSW, all traceable. Order online, collect from Brookvale Monday to Friday.\n\nNo subscription. No lock-in. Just food you can trace back to the person who grew it.\n\nWe're building something worth owning. You can be part of it.",
-  "headline": "180km, not 2,400. Own a piece of why.",
-  "description": "Farm-direct grocery changing how Sydney families eat. No middlemen, no lock-in.",
+  "primary_text": "If your grocery travels 2,400km before it reaches you, someone's paying for every kilometre.\n\nThat someone is you. And the farmer growing it.\n\nFarmThru connects NSW families directly with partner farms across the state. No warehouses. No wholesalers. Just food that travels a fraction of the distance.\n\nOur Brookvale hub is open Monday to Friday. No subscription. No lock-in. Order when you want.\n\nWe're building something that could reshape how Sydney eats. You can own a piece of it.",
+  "headline": "Shorter supply chain. You can own it.",
+  "description": "Farm-direct grocery, hub-and-collect from Brookvale. Be part of what comes next.",
   "cta": "cfe_campaign"
 }
