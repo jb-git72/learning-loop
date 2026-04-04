@@ -1,0 +1,424 @@
+Loaded 33 items. Target: 0.85 (strong_draft)
+Max iterations per item: 3
+Strategy: evolutionary (population=5)
+LLM scoring: enabled
+Pairwise gating: enabled
+
+Initial: 14 at target, 19 below target
+
+--- Iteration 1: 19 items below target (pop=5) ---
+  BR-108 (meta-ad): 0.817 [strong_draft]
+    [improve] 0.722 =
+    [mutate(statistic)] 0.753 =
+    [targeted(scroll_stop_hook)] 0.556 =
+    [crossover(CFE-106)] 0.509 =
+    [crossover(CFE-105)] 0.702 =
+    => no improvement, kept original
+  BR-110 (meta-ad): 0.793 [strong_draft]
+    [improve] 0.714 =
+    [mutate(if_then)] 0.821 +
+    [targeted(scroll_stop_hook)] 0.580 =
+    [crossover(CFE-105)] 0.780 =
+    [crossover(CFE-105)] 0.701 =
+    => ACCEPTED [mutate(if_then)] 0.821 (+0.028) pairwise 4/5
+  CFE-101 (meta-ad): 0.813 [strong_draft]
+    [improve] 0.777 =
+    [mutate(bold_claim)] 0.698 =
+    [targeted(specificity)] 0.737 =
+    [crossover(CFE-106)] 0.760 =
+    [crossover(CFE-108)] 0.662 =
+    => no improvement, kept original
+  CFE-102 (meta-ad): 0.849 [strong_draft]
+    [improve] 0.587 =
+    [mutate(contrarian)] 0.657 =
+    [targeted(specificity)] 0.764 =
+    [crossover(CFE-108)] 0.827 =
+    [crossover(CFE-105)] 0.703 =
+    => no improvement, kept original
+  CFE-104 (meta-ad): 0.769 [strong_draft]
+    [improve] 0.660 =
+    [mutate(pattern_interrupt)] 0.677 =
+    [targeted(motivation_match)] 0.610 =
+    [crossover(CFE-108)] 0.583 =
+    [crossover(CFE-105)] 0.641 =
+    => no improvement, kept original
+  CFE-107 (meta-ad): 0.800 [strong_draft]
+    [improve] 0.511 =
+    [mutate(quoted_objection)] 0.652 =
+    [targeted(specificity)] 0.772 =
+    [crossover(CFE-106)] 0.654 =
+    [crossover(CFE-108)] 0.691 =
+    => no improvement, kept original
+  LP-A (landing-page): 0.730 [strong_draft]
+    [improve] LINT FAIL (improve): Content discusses investment but missing financial disclaime
+    [mutate(quoted_objection)] 0.730 =
+    [targeted(angle_clarity)] 0.631 =
+    [crossover(LP-N)] 0.709 =
+    [crossover(LP-P)] 0.716 =
+    => no improvement, kept original
+  LP-B (landing-page): 0.755 [strong_draft]
+    [improve] 0.671 =
+    [mutate(confession)] 0.751 =
+    [targeted(tactic_execution)] 0.644 =
+    [crossover(LP-N)] 0.748 =
+    [crossover(LP-D)] 0.713 =
+    => no improvement, kept original
+  LP-E (landing-page): 0.773 [strong_draft]
+    [improve] 0.688 =
+    [mutate(quoted_objection)] 0.755 =
+    [targeted(tactic_execution)] 0.691 =
+    [crossover(LP-D)] 0.677 =
+    [crossover(LP-N)] 0.640 =
+    => no improvement, kept original
+  LP-F (landing-page): 0.791 [strong_draft]
+    [improve] 0.719 =
+    [mutate(if_then)] 0.688 =
+    [targeted(tactic_execution)] 0.636 =
+    [crossover(LP-D)] 0.652 =
+    [crossover(LP-P)] 0.669 =
+    => no improvement, kept original
+  LP-M (landing-page): 0.783 [strong_draft]
+    [improve] 0.636 =
+    [mutate(bold_claim)] 0.734 =
+    [targeted(angle_clarity)] 0.662 =
+    [crossover(LP-D)] 0.659 =
+    [crossover(LP-N)] 0.662 =
+    => no improvement, kept original
+  LP-N (landing-page): 0.815 [strong_draft]
+    [improve] 0.787 =
+    [mutate(story)] 0.695 =
+    [targeted(tactic_execution)] 0.751 =
+    [crossover(LP-F)] 0.766 =
+    [crossover(LP-D)] 0.823 +
+    => ACCEPTED [crossover(LP-D)] 0.823 (+0.007) pairwise 4/5
+  EM-001 (email): 0.617 [needs_work]
+    [improve] 0.634 +
+    [mutate(direct_address)] 0.417 =
+    [targeted(angle_clarity)] 0.461 =
+    [crossover(EM-005)] 0.390 =
+    [crossover(EM-003)] 0.549 =
+    => ACCEPTED [improve] 0.634 (+0.017) pairwise 4/5
+  EM-002 (email): 0.617 [needs_work]
+    [improve] 0.532 =
+    [mutate(direct_address)] 0.622 +
+    [targeted(angle_clarity)] 0.461 =
+    [crossover(EM-003)] 0.570 =
+    [crossover(EM-003)] 0.583 =
+    => PAIRWISE REJECT: rubric +0.005 but pairwise 2/5 — The NEW candidate dilutes the powerful personal narrative with a generic 'grocery aisle doubt' angle that could apply to any food brand, whereas CURRENT's specific daughter question creates a unique, emotionally resonant hook that clearly differentiates FarmThru's purpose.
+  EM-003 (email): 0.682 [needs_work]
+    [improve] 0.520 =
+    [mutate(contrarian)] 0.537 =
+    [targeted(opening_diversity)] 0.425 =
+    [crossover(EM-007)] 0.542 =
+    [crossover(EM-005)] 0.644 =
+    => no improvement, kept original
+  EM-004 (email): 0.709 [strong_draft]
+    [improve] 0.504 =
+    [mutate(statistic)] 0.501 =
+    [targeted(opening_diversity)] 0.483 =
+    [crossover(EM-005)] 0.381 =
+    [crossover(EM-007)] 0.538 =
+    => no improvement, kept original
+  EM-005 (email): 0.729 [strong_draft]
+    [improve] 0.469 =
+    [mutate(pattern_interrupt)] 0.583 =
+    [targeted(opening_diversity)] 0.554 =
+    [crossover(EM-003)] 0.535 =
+    [crossover(EM-004)] 0.522 =
+    => no improvement, kept original
+  EM-006 (email): 0.641 [needs_work]
+    [improve] 0.484 =
+    [mutate(direct_address)] 0.570 =
+    [targeted(angle_clarity)] 0.634 =
+    [crossover(EM-004)] 0.593 =
+    [crossover(EM-005)] 0.546 =
+    => no improvement, kept original
+  EM-007 (email): 0.649 [needs_work]
+    [improve] 0.525 =
+    [mutate(bold_claim)] 0.589 =
+    [targeted(opening_diversity)] 0.527 =
+    [crossover(EM-005)] 0.555 =
+    [crossover(EM-005)] 0.540 =
+    => no improvement, kept original
+
+--- Iteration 2: 19 items below target (pop=5) ---
+  BR-108 (meta-ad): 0.817 [strong_draft]
+API failed: Error code: 529 - {'type': 'error', 'error': {'type': 'overloaded_error', 'message': 'Overloaded'}, 'request_id': 'req_011CZj7ph4VhR22GmNtmEiAT'}
+API failed: Error code: 529 - {'type': 'error', 'error': {'type': 'overloaded_error', 'message': 'Overloaded'}, 'request_id': 'req_011CZj7qiFxTiEXUL3PqSV3h'}
+    [improve] 0.645 =
+    [mutate(story)] 0.803 =
+    [targeted(scroll_stop_hook)] 0.675 =
+    [crossover(CFE-108)] 0.600 =
+    [crossover(CFE-105)] 0.863 +
+    => PAIRWISE REJECT: rubric +0.046 but pairwise 2/5 — The new ad loses the current's distinctive sensory hook (the vivid orange yolk that 'stops you mid-pour') in favor of a generic seasonal angle, and replaces concrete product specificity (Farmer Brown, exact color description) with abstract comparisons (2,400km stat) that feel less immediate and persuasive.
+  BR-110 (meta-ad): 0.821 [strong_draft]
+    [improve] 0.579 =
+    [mutate(quoted_objection)] 0.739 =
+    [targeted(platform_fit)] 0.723 =
+    [crossover(CFE-105)] 0.673 =
+    [crossover(CFE-108)] 0.707 =
+    => no improvement, kept original
+  CFE-101 (meta-ad): 0.813 [strong_draft]
+    [improve] 0.807 =
+    [mutate(direct_address)] 0.703 =
+    [targeted(specificity)] 0.783 =
+    [crossover(CFE-108)] 0.714 =
+    [crossover(CFE-105)] 0.760 =
+    => no improvement, kept original
+  CFE-102 (meta-ad): 0.849 [strong_draft]
+    [improve] 0.567 =
+    [mutate(statistic)] 0.761 =
+    [targeted(specificity)] 0.770 =
+    [crossover(CFE-106)] 0.807 =
+    [crossover(CFE-105)] 0.747 =
+    => no improvement, kept original
+  CFE-104 (meta-ad): 0.769 [strong_draft]
+    [improve] 0.551 =
+    [mutate(story)] 0.679 =
+    [targeted(motivation_match)] 0.703 =
+    [crossover(CFE-105)] 0.688 =
+    [crossover(CFE-106)] 0.475 =
+    => no improvement, kept original
+  CFE-107 (meta-ad): 0.800 [strong_draft]
+    [improve] 0.672 =
+    [mutate(story)] 0.724 =
+    [targeted(specificity)] 0.677 =
+    [crossover(CFE-105)] 0.609 =
+    [crossover(CFE-106)] 0.690 =
+    => no improvement, kept original
+  LP-A (landing-page): 0.730 [strong_draft]
+    [improve] 0.723 =
+    [mutate(pattern_interrupt)] 0.654 =
+    [targeted(angle_clarity)] 0.755 +
+    [crossover(LP-P)] 0.624 =
+    [crossover(LP-P)] 0.699 =
+    => ACCEPTED [targeted(angle_clarity)] 0.755 (+0.025) pairwise 4/5
+  LP-B (landing-page): 0.755 [strong_draft]
+    [improve] 0.730 =
+    [mutate(contrarian)] 0.684 =
+    [targeted(tactic_execution)] 0.762 +
+    [crossover(LP-P)] 0.695 =
+    [crossover(LP-D)] 0.692 =
+    => ACCEPTED [targeted(tactic_execution)] 0.762 (+0.007) pairwise 4/5
+  LP-E (landing-page): 0.773 [strong_draft]
+    [improve] 0.653 =
+    [mutate(pattern_interrupt)] 0.751 =
+    [targeted(tactic_execution)] 0.719 =
+    [crossover(LP-D)] 0.698 =
+    [crossover(LP-D)] 0.677 =
+    => no improvement, kept original
+  LP-F (landing-page): 0.791 [strong_draft]
+    [improve] 0.684 =
+    [mutate(contrarian)] 0.673 =
+    [targeted(tactic_execution)] 0.646 =
+    [crossover(LP-N)] 0.673 =
+    [crossover(LP-N)] 0.748 =
+    => no improvement, kept original
+  LP-M (landing-page): 0.783 [strong_draft]
+    [improve] 0.662 =
+    [mutate(if_then)] 0.584 =
+    [targeted(angle_clarity)] 0.698 =
+    [crossover(LP-N)] 0.627 =
+    [crossover(LP-N)] 0.648 =
+    => no improvement, kept original
+  LP-N (landing-page): 0.823 [strong_draft]
+    [improve] 0.721 =
+    [mutate(contrarian)] 0.717 =
+    [targeted(tactic_execution)] 0.826 +
+    [crossover(LP-P)] 0.714 =
+    [crossover(LP-F)] 0.776 =
+    => ACCEPTED [targeted(tactic_execution)] 0.826 (+0.003) pairwise 4/5
+  EM-001 (email): 0.634 [needs_work]
+    [improve] 0.547 =
+    [mutate(bold_claim)] 0.570 =
+    [targeted(angle_clarity)] 0.567 =
+    [crossover(EM-004)] 0.461 =
+    [crossover(EM-003)] 0.438 =
+    => no improvement, kept original
+  EM-002 (email): 0.617 [needs_work]
+    [improve] 0.464 =
+    [mutate(contrarian)] 0.520 =
+    [targeted(angle_clarity)] 0.576 =
+    [crossover(EM-005)] 0.564 =
+    [crossover(EM-005)] 0.576 =
+    => no improvement, kept original
+  EM-003 (email): 0.682 [needs_work]
+    [improve] 0.513 =
+    [mutate(statistic)] 0.501 =
+    [targeted(opening_diversity)] 0.435 =
+    [crossover(EM-005)] 0.551 =
+    [crossover(EM-004)] 0.523 =
+    => no improvement, kept original
+  EM-004 (email): 0.709 [strong_draft]
+    [improve] 0.490 =
+    [mutate(statistic)] 0.560 =
+    [targeted(opening_diversity)] 0.449 =
+    [crossover(EM-003)] 0.474 =
+    [crossover(EM-005)] 0.516 =
+    => no improvement, kept original
+  EM-005 (email): 0.729 [strong_draft]
+    [improve] 0.504 =
+    [mutate(bold_claim)] 0.552 =
+    [targeted(opening_diversity)] 0.551 =
+    [crossover(EM-003)] 0.522 =
+    [crossover(EM-007)] 0.518 =
+    => no improvement, kept original
+  EM-006 (email): 0.641 [needs_work]
+    [improve] 0.576 =
+    [mutate(story)] 0.573 =
+    [targeted(angle_clarity)] 0.670 +
+    [crossover(EM-003)] 0.596 =
+    [crossover(EM-005)] 0.586 =
+    => PAIRWISE REJECT: rubric +0.029 but pairwise 2/5 — The NEW candidate sacrifices the clear value proposition (farm-direct, no middlemen, transparent supply chain) for urgency theater, making the angle murkier and failing to motivate action beyond FOMO.
+  EM-007 (email): 0.649 [needs_work]
+    [improve] 0.560 =
+    [mutate(direct_address)] 0.583 =
+    [targeted(opening_diversity)] 0.495 =
+    [crossover(EM-005)] 0.540 =
+    [crossover(EM-004)] 0.469 =
+    => no improvement, kept original
+
+--- Iteration 3: 19 items below target (pop=5) ---
+  BR-108 (meta-ad): 0.817 [strong_draft]
+    [improve] 0.726 =
+    [mutate(if_then)] 0.780 =
+    [wildcard] 0.574 =
+    [crossover(CFE-108)] 0.790 =
+    [crossover(CFE-105)] 0.517 =
+    => no improvement, kept original
+  BR-110 (meta-ad): 0.821 [strong_draft]
+    [improve] 0.682 =
+    [mutate(story)] 0.611 =
+    [wildcard] 0.739 =
+    [crossover(CFE-105)] 0.777 =
+    [crossover(CFE-108)] 0.707 =
+    => no improvement, kept original
+  CFE-101 (meta-ad): 0.813 [strong_draft]
+    [improve] 0.767 =
+    [mutate(story)] 0.774 =
+    [wildcard] 0.723 =
+    [crossover(CFE-106)] 0.770 =
+    [crossover(CFE-108)] 0.707 =
+    => no improvement, kept original
+  CFE-102 (meta-ad): 0.849 [strong_draft]
+    [improve] 0.761 =
+    [mutate(pattern_interrupt)] 0.518 =
+    [wildcard] 0.786 =
+    [crossover(CFE-106)] 0.717 =
+    [crossover(CFE-108)] 0.777 =
+    => no improvement, kept original
+  CFE-104 (meta-ad): 0.769 [strong_draft]
+    [improve] 0.659 =
+    [mutate(question)] 0.688 =
+    [wildcard] 0.688 =
+    [crossover(CFE-106)] 0.538 =
+    [crossover(CFE-106)] 0.551 =
+    => no improvement, kept original
+  CFE-107 (meta-ad): 0.800 [strong_draft]
+    [improve] 0.658 =
+    [mutate(confession)] 0.714 =
+    [wildcard] 0.551 =
+    [crossover(CFE-105)] 0.568 =
+    [crossover(CFE-106)] 0.675 =
+    => no improvement, kept original
+  LP-A (landing-page): 0.755 [strong_draft]
+    [improve] 0.664 =
+    [mutate(direct_address)] 0.684 =
+    [wildcard] 0.563 =
+    [crossover(LP-P)] 0.584 =
+    [crossover(LP-N)] 0.639 =
+    => no improvement, kept original
+  LP-B (landing-page): 0.762 [strong_draft]
+    [improve] 0.699 =
+    [mutate(statistic)] 0.618 =
+    [wildcard] 0.716 =
+    [crossover(LP-N)] 0.744 =
+    [crossover(LP-P)] 0.750 =
+    => no improvement, kept original
+  LP-E (landing-page): 0.773 [strong_draft]
+    [improve] 0.659 =
+    [mutate(quoted_objection)] 0.737 =
+    [wildcard] 0.664 =
+    [crossover(LP-N)] 0.680 =
+    [crossover(LP-P)] 0.662 =
+    => no improvement, kept original
+  LP-F (landing-page): 0.791 [strong_draft]
+    [improve] 0.797 +
+    [mutate(pattern_interrupt)] 0.698 =
+    [wildcard] 0.748 =
+    [crossover(LP-D)] 0.561 =
+    [crossover(LP-N)] 0.691 =
+    => ACCEPTED [improve] 0.797 (+0.006) pairwise 4/5
+  LP-M (landing-page): 0.783 [strong_draft]
+    [improve] 0.673 =
+    [mutate(contrarian)] 0.648 =
+    [wildcard] 0.712 =
+    [crossover(LP-N)] 0.714 =
+    [crossover(LP-D)] 0.734 =
+    => no improvement, kept original
+  LP-N (landing-page): 0.826 [strong_draft]
+    [improve] 0.833 +
+    [mutate(story)] 0.650 =
+    [wildcard] 0.680 =
+    [crossover(LP-F)] 0.801 =
+    [crossover(LP-P)] 0.795 =
+    => ACCEPTED [improve] 0.833 (+0.007) pairwise 4/5
+  EM-001 (email): 0.634 [needs_work]
+    [improve] 0.532 =
+    [mutate(pattern_interrupt)] 0.552 =
+    [wildcard] 0.595 =
+    [crossover(EM-005)] 0.601 =
+    [crossover(EM-004)] 0.404 =
+    => no improvement, kept original
+  EM-002 (email): 0.617 [needs_work]
+    [improve] 0.551 =
+    [mutate(contrarian)] 0.622 +
+    [wildcard] 0.564 =
+    [crossover(EM-004)] 0.461 =
+    [crossover(EM-003)] 0.507 =
+    => PAIRWISE REJECT: rubric +0.005 but pairwise 2/5 — The NEW candidate weakens the core emotional hook by leading with a systemic critique rather than a personal moment, and obscures the motivation (why should I care?) behind abstract messaging about invisibility instead of the concrete parental concern that drives action.
+  EM-003 (email): 0.682 [needs_work]
+    [improve] 0.513 =
+    [mutate(statistic)] 0.457 =
+    [wildcard] 0.558 =
+    [crossover(EM-007)] 0.463 =
+    [crossover(EM-005)] 0.485 =
+    => no improvement, kept original
+  EM-004 (email): 0.709 [strong_draft]
+    [improve] 0.513 =
+    [mutate(pattern_interrupt)] 0.488 =
+    [wildcard] 0.486 =
+    [crossover(EM-005)] 0.557 =
+    [crossover(EM-007)] 0.538 =
+    => no improvement, kept original
+  EM-005 (email): 0.729 [strong_draft]
+    [improve] 0.504 =
+    [mutate(direct_address)] 0.605 =
+    [wildcard] 0.564 =
+    [crossover(EM-004)] 0.509 =
+    [crossover(EM-007)] 0.535 =
+    => no improvement, kept original
+  EM-006 (email): 0.641 [needs_work]
+    [improve] 0.504 =
+    [mutate(quoted_objection)] 0.564 =
+    [wildcard] 0.556 =
+    [crossover(EM-003)] 0.561 =
+    [crossover(EM-003)] 0.557 =
+    => no improvement, kept original
+  EM-007 (email): 0.649 [needs_work]
+    [improve] 0.567 =
+    [mutate(quoted_objection)] 0.609 =
+    [wildcard] 0.628 =
+    [crossover(EM-003)] 0.544 =
+    [crossover(EM-004)] 0.560 =
+    => no improvement, kept original
+
+=== HILL-CLIMB COMPLETE ===
+Strategy: evolutionary
+Improvements made: 8
+Avg composite: 0.8062
+Still below target: 19
+  production_ready: 14
+  strong_draft: 14
+  needs_work: 5
+  rewrite: 0

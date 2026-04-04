@@ -1,14 +1,14 @@
 {
   "angle": "cause-purpose",
   "tactic": "positioning-statement",
-  "hook_type": "bold_claim",
+  "hook_type": "if_then",
   "funnel": "TOF",
   "content_type": "meta-ad",
-  "creative_brief": "Split frame: left side shows a generic supermarket barcode on shrink-wrapped meat, right side shows a named Bundarra Farm pork belly with the farmer's portrait and farm location. Warm natural light on the right, cold fluorescent on the left. FarmThru logo bottom right.",
-  "generated_at": "2026-04-04T09:10:48.502254",
+  "creative_brief": "Split frame: left side shows a generic supermarket barcode on shrink-wrapped meat, cold and anonymous. Right side shows a hand-written farm name tag on butcher paper (e.g. 'Bundarra Farm, NSW') with warm, natural light. Clean typography overlays the if/then hook.",
+  "generated_at": "2026-04-05T02:44:53.197251",
   "ad_id": "BR-110",
-  "primary_text": "Every week you buy groceries that quietly erase the farmer who grew them.\n\nNo name. No face. No story. Just a barcode and a 2,400km cold chain.\n\nFarmThru exists because that erasure isn't inevitable. It's a choice.\n\nWe built a grocery store with zero wholesalers, zero middlemen. Pork from Bundarra Farm. Wild-caught fish from Collins on the South Coast. Eggs from Farmer Brown. Every product traceable to the person who raised it.\n\nNo commitment. Order when you want. Collect from Brookvale Monday to Friday.\n\nOwn a piece of the grocery store that pays farmers first.",
-  "headline": "A grocery store that names every farmer",
-  "description": "Farm-direct. No middlemen. Real names behind every product you collect.",
+  "primary_text": "If you can name your barista but not a single farmer who feeds your family, something broke.\n\nThe food system buried them. Thousands of kilometres of cold chain, wholesalers, and barcodes sit between you and the person who grew your dinner.\n\nFarmThru is a grocery store built to reverse that. Every product traces to a named farm. Bundarra pork from NSW. Wild-caught salmon from Collins on the South Coast. Paris Creek bio-dynamic dairy from South Australia.\n\nNo middlemen. No warehouses. No subscriptions. Order when you want, collect from Brookvale Monday to Friday.\n\nThis is becoming something bigger. You can own a piece of it.",
+  "headline": "Name the farmer who fed you last",
+  "description": "Farm-direct groceries from real producers. No lock-in, no middlemen.",
   "cta": "cfe_campaign"
 }
