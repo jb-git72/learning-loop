@@ -1,0 +1,219 @@
+Loaded 33 items. Target: 0.70 (strong_draft)
+Max iterations per item: 3
+Strategy: evolutionary (population=5)
+LLM scoring: enabled
+
+Initial: 28 at target, 5 below target
+
+--- Iteration 1: 5 items below target (pop=5) ---
+  CFE-101 (meta-ad): 0.681 [needs_work]
+    [improve] 0.514 =
+    [mutate(question)] 0.727 +
+    [targeted(motivation_match)] 0.624 =
+    [crossover(BR-109)] 0.535 =
+    [crossover(BR-109)] 0.738 +
+    => ACCEPTED [crossover(BR-109)] 0.738 (+0.057)
+  CFE-104 (meta-ad): 0.696 [needs_work]
+    [improve] 0.614 =
+    [mutate(if_then)] 0.593 =
+    [targeted(motivation_match)] 0.600 =
+    [crossover(CFE-108)] 0.580 =
+    [crossover(BR-109)] 0.582 =
+    => no improvement, kept original
+  EM-001 (email): 0.612 [needs_work]
+    [improve] 0.506 =
+    [mutate(if_then)] 0.532 =
+    [targeted(angle_clarity)] 0.465 =
+    [crossover(EM-004)] 0.496 =
+    [crossover(EM-003)] 0.551 =
+    => no improvement, kept original
+  EM-002 (email): 0.612 [needs_work]
+    [improve] 0.465 =
+    [mutate(if_then)] 0.591 =
+    [targeted(angle_clarity)] 0.465 =
+    [crossover(EM-004)] 0.562 =
+    [crossover(EM-004)] 0.465 =
+    => no improvement, kept original
+  EM-006 (email): 0.619 [needs_work]
+    [improve] 0.619 =
+    [mutate(if_then)] 0.669 +
+    [targeted(angle_clarity)] 0.617 =
+    [crossover(EM-007)] 0.598 =
+    [crossover(EM-003)] 0.569 =
+    => ACCEPTED [mutate(if_then)] 0.669 (+0.049)
+
+--- Iteration 2: 4 items below target (pop=5) ---
+  CFE-104 (meta-ad): 0.696 [needs_work]
+    [improve] 0.594 =
+    [mutate(if_then)] 0.525 =
+    [targeted(motivation_match)] 0.614 =
+    [crossover(CFE-105)] 0.600 =
+    [crossover(CFE-105)] 0.589 =
+    => no improvement, kept original
+  EM-001 (email): 0.612 [needs_work]
+    [improve] 0.544 =
+    [mutate(question)] 0.538 =
+    [targeted(angle_clarity)] 0.570 =
+    [crossover(EM-007)] 0.562 =
+    [crossover(EM-004)] 0.538 =
+    => no improvement, kept original
+  EM-002 (email): 0.612 [needs_work]
+    [improve] 0.465 =
+    [mutate(direct_address)] 0.581 =
+    [targeted(angle_clarity)] 0.581 =
+    [crossover(EM-007)] 0.562 =
+    [crossover(EM-003)] 0.441 =
+    => no improvement, kept original
+  EM-006 (email): 0.669 [needs_work]
+    [improve] 0.669 =
+    [mutate(pattern_interrupt)] 0.600 =
+    [targeted(angle_clarity)] 0.619 =
+    [crossover(EM-004)] 0.562 =
+    [crossover(EM-007)] 0.619 =
+    => no improvement, kept original
+
+--- Iteration 3: 4 items below target (pop=5) ---
+  CFE-104 (meta-ad): 0.696 [needs_work]
+    [improve] 0.637 =
+    [mutate(pattern_interrupt)] 0.575 =
+    [wildcard] 0.611 =
+    [crossover(CFE-108)] 0.528 =
+    [crossover(CFE-105)] 0.593 =
+    => no improvement, kept original
+  EM-001 (email): 0.612 [needs_work]
+    [improve] 0.424 =
+    [mutate(pattern_interrupt)] 0.465 =
+    [wildcard] 0.591 =
+    [crossover(EM-007)] 0.581 =
+    [crossover(EM-007)] 0.600 =
+    => no improvement, kept original
+  EM-002 (email): 0.612 [needs_work]
+    [improve] 0.581 =
+    [mutate(if_then)] 0.489 =
+    [wildcard] 0.581 =
+    [crossover(EM-004)] 0.465 =
+    [crossover(EM-003)] 0.600 =
+    => no improvement, kept original
+  EM-006 (email): 0.669 [needs_work]
+    [improve] 0.619 =
+    [mutate(direct_address)] 0.587 =
+    [wildcard] 0.600 =
+    [crossover(EM-004)] 0.631 =
+    [crossover(EM-007)] 0.669 =
+    => no improvement, kept original
+
+=== HILL-CLIMB COMPLETE ===
+Strategy: evolutionary
+Improvements made: 2
+Avg composite: 0.7397
+Still below target: 4
+  production_ready: 0
+  strong_draft: 29
+  needs_work: 4
+  rewrite: 0
+Loaded 33 items. Target: 0.70 (strong_draft)
+Max iterations per item: 3
+Strategy: evolutionary (population=5)
+LLM scoring: enabled
+
+Initial: 29 at target, 4 below target
+
+--- Iteration 1: 4 items below target (pop=5) ---
+  CFE-104 (meta-ad): 0.696 [needs_work]
+    [improve] 0.582 =
+    [mutate(pattern_interrupt)] 0.575 =
+    [targeted(motivation_match)] 0.575 =
+    [crossover(BR-109)] 0.597 =
+    [crossover(CFE-105)] 0.593 =
+    => no improvement, kept original
+  EM-001 (email): 0.612 [needs_work]
+    [improve] 0.551 =
+    [mutate(question)] 0.441 =
+    [targeted(angle_clarity)] 0.581 =
+    [crossover(EM-004)] 0.581 =
+    [crossover(EM-007)] 0.581 =
+    => no improvement, kept original
+  EM-002 (email): 0.612 [needs_work]
+    [improve] 0.562 =
+    [mutate(if_then)] 0.533 =
+    [targeted(angle_clarity)] 0.581 =
+    [crossover(EM-004)] 0.551 =
+    [crossover(EM-003)] 0.581 =
+    => no improvement, kept original
+  EM-006 (email): 0.669 [needs_work]
+    [improve] 0.650 =
+    [mutate(bold_claim)] 0.600 =
+    [targeted(angle_clarity)] 0.562 =
+    [crossover(EM-004)] 0.650 =
+    [crossover(EM-003)] 0.650 =
+    => no improvement, kept original
+
+--- Iteration 2: 4 items below target (pop=5) ---
+  CFE-104 (meta-ad): 0.696 [needs_work]
+    [improve] 0.546 =
+    [mutate(direct_address)] 0.614 =
+    [targeted(motivation_match)] 0.558 =
+    [crossover(CFE-108)] 0.561 =
+    [crossover(CFE-105)] 0.597 =
+    => no improvement, kept original
+  EM-001 (email): 0.612 [needs_work]
+    [improve] 0.532 =
+    [mutate(question)] 0.562 =
+    [targeted(angle_clarity)] 0.581 =
+    [crossover(EM-003)] 0.600 =
+    [crossover(EM-007)] 0.450 =
+    => no improvement, kept original
+  EM-002 (email): 0.612 [needs_work]
+    [improve] 0.581 =
+    [mutate(pattern_interrupt)] 0.465 =
+    [targeted(angle_clarity)] 0.450 =
+    [crossover(EM-007)] 0.465 =
+    [crossover(EM-004)] 0.562 =
+    => no improvement, kept original
+  EM-006 (email): 0.669 [needs_work]
+    [improve] 0.650 =
+    [mutate(confession)] 0.600 =
+    [targeted(angle_clarity)] 0.555 =
+    [crossover(EM-007)] 0.631 =
+    [crossover(EM-007)] 0.619 =
+    => no improvement, kept original
+
+--- Iteration 3: 4 items below target (pop=5) ---
+  CFE-104 (meta-ad): 0.696 [needs_work]
+    [improve] 0.579 =
+    [mutate(if_then)] 0.677 =
+    [wildcard] 0.594 =
+    [crossover(CFE-108)] 0.628 =
+    [crossover(CFE-108)] 0.551 =
+    => no improvement, kept original
+  EM-001 (email): 0.612 [needs_work]
+    [improve] 0.562 =
+    [mutate(pattern_interrupt)] 0.441 =
+    [wildcard] 0.562 =
+    [crossover(EM-003)] 0.562 =
+    [crossover(EM-007)] 0.544 =
+    => no improvement, kept original
+  EM-002 (email): 0.612 [needs_work]
+    [improve] 0.465 =
+    [mutate(question)] 0.581 =
+    [wildcard] 0.562 =
+    [crossover(EM-004)] 0.581 =
+    [crossover(EM-007)] 0.599 =
+    => no improvement, kept original
+  EM-006 (email): 0.669 [needs_work]
+    [improve] 0.612 =
+    [mutate(pattern_interrupt)] 0.600 =
+    [wildcard] 0.551 =
+    [crossover(EM-003)] 0.650 =
+    [crossover(EM-003)] 0.631 =
+    => no improvement, kept original
+
+=== HILL-CLIMB COMPLETE ===
+Strategy: evolutionary
+Improvements made: 0
+Avg composite: 0.7370
+Still below target: 4
+  production_ready: 0
+  strong_draft: 29
+  needs_work: 4
+  rewrite: 0
