@@ -1,0 +1,178 @@
+Filtered to 18 meta-ad items
+Loaded 18 items. Target: 0.85 (strong_draft)
+Max iterations per item: 3
+Strategy: evolutionary (population=5)
+LLM scoring: enabled
+Pairwise gating: enabled
+
+Initial: 10 at target, 8 below target
+
+--- Iteration 1: 8 items below target (pop=5) ---
+  BR-107 (meta-ad): 0.847 [strong_draft]
+    [improve] 0.748 =
+    [mutate(quoted_objection)] 0.748 =
+    [targeted(objection_preemption)] 0.739 =
+    [crossover(CFE-105)] 0.717 =
+    [crossover(CFE-108)] 0.767 =
+    => no improvement, kept original
+  BR-108 (meta-ad): 0.817 [strong_draft]
+    [improve] 0.783 =
+    [mutate(if_then)] 0.774 =
+    [targeted(scroll_stop_hook)] 0.764 =
+    [crossover(CFE-108)] 0.693 =
+    [crossover(CFE-105)] 0.691 =
+    => no improvement, kept original
+  BR-110 (meta-ad): 0.793 [strong_draft]
+    [improve] 0.752 =
+    [mutate(statistic)] 0.767 =
+    [targeted(scroll_stop_hook)] 0.742 =
+    [crossover(CFE-106)] 0.727 =
+    [crossover(CFE-106)] 0.711 =
+    => no improvement, kept original
+  CFE-101 (meta-ad): 0.777 [strong_draft]
+    [improve] 0.723 =
+    [mutate(confession)] 0.682 =
+    [targeted(motivation_match)] 0.787 +
+    [crossover(CFE-105)] 0.813 +
+    [crossover(CFE-106)] 0.707 =
+    => ACCEPTED [crossover(CFE-105)] 0.813 (+0.037) pairwise 4/5
+  CFE-102 (meta-ad): 0.849 [strong_draft]
+    [improve] 0.733 =
+    [mutate(if_then)] 0.757 =
+    [targeted(specificity)] 0.576 =
+    [crossover(CFE-105)] 0.761 =
+    [crossover(CFE-106)] 0.733 =
+    => no improvement, kept original
+  CFE-103 (meta-ad): 0.846 [strong_draft]
+    [improve] 0.746 =
+    [mutate(quoted_objection)] 0.730 =
+    [targeted(motivation_match)] 0.863 +
+    [crossover(CFE-106)] 0.556 =
+    [crossover(CFE-106)] 0.441 =
+    => ACCEPTED [targeted(motivation_match)] 0.863 (+0.018) pairwise 4/5
+  CFE-104 (meta-ad): 0.769 [strong_draft]
+    [improve] 0.750 =
+    [mutate(contrarian)] 0.654 =
+    [targeted(motivation_match)] 0.669 =
+    [crossover(CFE-105)] 0.657 =
+    [crossover(CFE-105)] 0.692 =
+    => no improvement, kept original
+  CFE-107 (meta-ad): 0.800 [strong_draft]
+    [improve] 0.655 =
+    [mutate(question)] 0.654 =
+    [targeted(specificity)] 0.553 =
+    [crossover(CFE-105)] 0.695 =
+    [crossover(CFE-105)] 0.742 =
+    => no improvement, kept original
+
+--- Iteration 2: 7 items below target (pop=5) ---
+  BR-107 (meta-ad): 0.847 [strong_draft]
+    [improve] 0.761 =
+    [mutate(story)] 0.609 =
+    [targeted(objection_preemption)] 0.767 =
+    [crossover(CFE-108)] 0.745 =
+    [crossover(CFE-105)] 0.665 =
+    => no improvement, kept original
+  BR-108 (meta-ad): 0.817 [strong_draft]
+    [improve] 0.560 =
+    [mutate(confession)] 0.720 =
+    [targeted(scroll_stop_hook)] 0.600 =
+    [crossover(CFE-105)] 0.706 =
+    [crossover(CFE-106)] 0.567 =
+    => no improvement, kept original
+  BR-110 (meta-ad): 0.793 [strong_draft]
+    [improve] 0.707 =
+    [mutate(if_then)] 0.752 =
+    [targeted(scroll_stop_hook)] 0.675 =
+    [crossover(CFE-108)] 0.777 =
+    [crossover(CFE-106)] 0.800 +
+    => PAIRWISE REJECT: rubric +0.007 but pairwise 2/5 — The new version weakens the scroll-stop hook with a more generic comparison (barista/vet) that lacks the emotional punch of 'erasure,' and dilutes motivation by burying the direct action (ordering, collecting) in favor of abstract ownership language that feels less concrete than the current version's clear value proposition.
+  CFE-101 (meta-ad): 0.813 [strong_draft]
+    [improve] 0.773 =
+    [mutate(confession)] 0.654 =
+    [targeted(specificity)] 0.773 =
+    [crossover(CFE-106)] 0.753 =
+    [crossover(CFE-105)] 0.780 =
+    => no improvement, kept original
+  CFE-102 (meta-ad): 0.849 [strong_draft]
+    [improve] 0.733 =
+    [mutate(statistic)] 0.693 =
+    [targeted(specificity)] 0.712 =
+    [crossover(CFE-105)] 0.772 =
+    [crossover(CFE-106)] 0.653 =
+    => no improvement, kept original
+  CFE-104 (meta-ad): 0.769 [strong_draft]
+    [improve] 0.668 =
+    [mutate(question)] 0.619 =
+    [targeted(motivation_match)] 0.697 =
+    [crossover(CFE-106)] 0.657 =
+    [crossover(CFE-108)] 0.644 =
+    => no improvement, kept original
+  CFE-107 (meta-ad): 0.800 [strong_draft]
+    [improve] 0.625 =
+    [mutate(quoted_objection)] 0.630 =
+    [targeted(specificity)] 0.733 =
+    [crossover(CFE-106)] 0.711 =
+    [crossover(CFE-108)] 0.599 =
+    => no improvement, kept original
+
+--- Iteration 3: 7 items below target (pop=5) ---
+  BR-107 (meta-ad): 0.847 [strong_draft]
+    [improve] 0.724 =
+    [mutate(pattern_interrupt)] 0.669 =
+    [wildcard] 0.716 =
+    [crossover(CFE-106)] 0.647 =
+    [crossover(CFE-106)] 0.761 =
+    => no improvement, kept original
+  BR-108 (meta-ad): 0.817 [strong_draft]
+    [improve] 0.684 =
+    [mutate(statistic)] 0.730 =
+    [wildcard] 0.680 =
+    [crossover(CFE-105)] 0.770 =
+    [crossover(CFE-105)] 0.682 =
+    => no improvement, kept original
+  BR-110 (meta-ad): 0.793 [strong_draft]
+    [improve] 0.635 =
+    [mutate(pattern_interrupt)] 0.793 =
+    [wildcard] 0.474 =
+    [crossover(CFE-105)] 0.695 =
+    [crossover(CFE-108)] 0.665 =
+    => no improvement, kept original
+  CFE-101 (meta-ad): 0.813 [strong_draft]
+    [improve] 0.797 =
+    [mutate(direct_address)] 0.635 =
+    [wildcard] 0.717 =
+    [crossover(CFE-106)] 0.760 =
+    [crossover(CFE-105)] 0.714 =
+    => no improvement, kept original
+  CFE-102 (meta-ad): 0.849 [strong_draft]
+    [improve] 0.750 =
+    [mutate(bold_claim)] 0.750 =
+    [wildcard] 0.760 =
+    [crossover(CFE-108)] 0.817 =
+    [crossover(CFE-108)] 0.606 =
+    => no improvement, kept original
+  CFE-104 (meta-ad): 0.769 [strong_draft]
+    [improve] 0.577 =
+    [mutate(if_then)] 0.711 =
+    [wildcard] 0.616 =
+    [crossover(CFE-108)] 0.679 =
+    [crossover(CFE-108)] 0.626 =
+    => no improvement, kept original
+  CFE-107 (meta-ad): 0.800 [strong_draft]
+    [improve] 0.616 =
+    [mutate(statistic)] 0.733 =
+    [wildcard] 0.666 =
+    [crossover(CFE-108)] 0.576 =
+    [crossover(CFE-106)] 0.631 =
+    => no improvement, kept original
+
+=== HILL-CLIMB COMPLETE ===
+Strategy: evolutionary
+Improvements made: 2
+Avg composite: 0.8607
+Still below target: 7
+  production_ready: 11
+  strong_draft: 7
+  needs_work: 0
+  rewrite: 0
