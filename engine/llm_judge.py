@@ -322,6 +322,131 @@ def _parse_response(text):
     return None, None
 
 
+def score_pairwise(new_ad: dict, current_ad: dict, client_config: dict,
+                   weak_dimensions: list = None) -> tuple:
+    """Compare new candidate against current best. Returns (1-5, explanation).
+    1 = new is much worse, 3 = equal, 5 = new is much better."""
+    scoring_ctx = client_config.get("scoring_context", {})
+    brand_name = client_config.get("client_name", scoring_ctx.get("product", "this brand"))
+
+    content_type = new_ad.get("content_type", "meta-ad")
+
+    # Build ad text blocks based on content type
+    if content_type == "landing-page":
+        current_block = "Headline: %s\nSubhead: %s\nHero copy: %s" % (
+            current_ad.get("headline", ""),
+            current_ad.get("subhead", ""),
+            current_ad.get("hero_copy", ""),
+        )
+        new_block = "Headline: %s\nSubhead: %s\nHero copy: %s" % (
+            new_ad.get("headline", ""),
+            new_ad.get("subhead", ""),
+            new_ad.get("hero_copy", ""),
+        )
+    elif content_type == "email":
+        current_body = current_ad.get("body", "")[:500]
+        new_body = new_ad.get("body", "")[:500]
+        current_block = "Subject: %s\nPreheader: %s\nBody: %s" % (
+            current_ad.get("subject", ""),
+            current_ad.get("preheader", ""),
+            current_body,
+        )
+        new_block = "Subject: %s\nPreheader: %s\nBody: %s" % (
+            new_ad.get("subject", ""),
+            new_ad.get("preheader", ""),
+            new_body,
+        )
+    else:  # meta-ad
+        current_block = "Headline: %s\nPrimary text: %s\nDescription: %s" % (
+            current_ad.get("headline", ""),
+            current_ad.get("primary_text", ""),
+            current_ad.get("description", ""),
+        )
+        new_block = "Headline: %s\nPrimary text: %s\nDescription: %s" % (
+            new_ad.get("headline", ""),
+            new_ad.get("primary_text", ""),
+            new_ad.get("description", ""),
+        )
+
+    # Build focus text for weak dimensions
+    focus_text = ""
+    if weak_dimensions:
+        dims_str = ", ".join("%s (%d/%d)" % (d[0], d[1], d[2]) for d in weak_dimensions)
+        focus_text = "\nFocus especially on these weak areas: %s\n" % dims_str
+
+    prompt = """Compare these two ads for %s. Which is stronger overall?
+
+CURRENT (the one being replaced):
+%s
+
+NEW CANDIDATE:
+%s
+%s
+Score the NEW candidate relative to CURRENT:
+1 = Much worse (significant regression)
+2 = Worse (noticeable step back)
+3 = About equal
+4 = Better (meaningful improvement)
+5 = Much better (clear winner)
+
+Respond with ONLY valid JSON: {"score": <1-5>, "reason": "<one sentence>"}""" % (
+        brand_name, current_block, new_block, focus_text,
+    )
+
+    # Try API first
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if api_key:
+        try:
+            import anthropic
+            client = anthropic.Anthropic(api_key=api_key)
+            response = client.messages.create(
+                model="claude-haiku-4-5-20251001",
+                max_tokens=200,
+                temperature=0.0,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            text = response.content[0].text.strip()
+            result = _parse_pairwise_response(text)
+            if result:
+                return result
+        except Exception:
+            pass
+
+    # Fallback: CLI
+    try:
+        result = subprocess.run(
+            ["claude", "--model", "haiku", "--print", "-p", prompt],
+            capture_output=True, text=True, timeout=30,
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            parsed = _parse_pairwise_response(result.stdout.strip())
+            if parsed:
+                return parsed
+    except (FileNotFoundError, subprocess.TimeoutExpired, subprocess.SubprocessError):
+        pass
+
+    # Graceful fallback
+    return (3, "pairwise unavailable")
+
+
+def _parse_pairwise_response(text):
+    """Parse pairwise JSON response. Returns (score, reason) or None."""
+    try:
+        json_match = re.search(r'\{[^}]+\}', text)
+        if json_match:
+            data = json.loads(json_match.group())
+            score = int(data.get("score", 0))
+            if 1 <= score <= 5:
+                return (score, data.get("reason", ""))
+    except (json.JSONDecodeError, ValueError, KeyError):
+        pass
+    # Try bare number
+    num_match = re.search(r'\b([1-5])\b', text)
+    if num_match:
+        return (int(num_match.group(1)), text[:100])
+    return None
+
+
 def _heuristic_fallback(dim_id, ad):
     """Last resort. Clearly marked as heuristic in output."""
     text = " ".join(ad.get(f, "") for f in ["primary_text", "headline", "description"])
