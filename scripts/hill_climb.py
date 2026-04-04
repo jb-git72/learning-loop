@@ -33,6 +33,7 @@ if env_path.exists():
                 os.environ.setdefault(key.strip(), val.strip())
 
 from engine.scorer import load_client, score_ad
+from engine.llm_judge import score_pairwise
 from scripts.lint_content import lint
 from writer import generate_variant, HOOK_TEMPLATES
 
@@ -51,6 +52,7 @@ def parse_args():
                         help="Hill-climbing strategy (default: evolutionary)")
     parser.add_argument("--population", type=int, default=3, help="Candidates per iteration in evolutionary mode (default 3)")
     parser.add_argument("--no-llm", action="store_true", help="Disable LLM scoring (deterministic only)")
+    parser.add_argument("--use-pairwise", action="store_true", help="Enable pairwise comparison gating on accepted candidates")
 
     # Support legacy positional-only invocation: hill_climb.py <client> <iters>
     # Also support the old --type=X inline style
@@ -158,7 +160,8 @@ def _generate_and_lint(ad, item, client_dir, shared_dir, client, all_ads, recent
 # Greedy strategy (original behavior)
 # ---------------------------------------------------------------------------
 
-def run_greedy(all_items, all_ads, client, client_dir, shared_dir, max_iterations, target, use_llm):
+def run_greedy(all_items, all_ads, client, client_dir, shared_dir, max_iterations, target, use_llm,
+               use_pairwise=False):
     """Original 1-candidate-per-iteration greedy hill-climb."""
     recent_failures = []
     improved = 0
@@ -191,9 +194,22 @@ def run_greedy(all_items, all_ads, client, client_dir, shared_dir, max_iteration
                 continue
 
             if new_score > old_score:
-                _accept_candidate(item, new_ad, new_score, new_report, all_ads, ad)
-                improved += 1
-                print(f"{new_score:.3f} [{new_report['verdict']}] IMPROVED (+{new_score - old_score:.3f})")
+                if use_pairwise:
+                    pw_score, pw_reason = score_pairwise(
+                        new_ad, ad, client["config"],
+                    )
+                    if pw_score <= 2:
+                        delta = new_score - old_score
+                        recent_failures.append(f"{ad_id}: pairwise rejected ({pw_score}/5)")
+                        print(f"PAIRWISE REJECT: rubric +{delta:.3f} but pairwise {pw_score}/5 — {pw_reason}")
+                    else:
+                        _accept_candidate(item, new_ad, new_score, new_report, all_ads, ad)
+                        improved += 1
+                        print(f"{new_score:.3f} [{new_report['verdict']}] IMPROVED (+{new_score - old_score:.3f}) pairwise {pw_score}/5")
+                else:
+                    _accept_candidate(item, new_ad, new_score, new_report, all_ads, ad)
+                    improved += 1
+                    print(f"{new_score:.3f} [{new_report['verdict']}] IMPROVED (+{new_score - old_score:.3f})")
             else:
                 recent_failures.append(f"{ad_id}: tried {new_ad.get('hook_type', '?')} hook, scored {new_score:.3f}")
                 print(f"{new_score:.3f} no improvement, kept original")
@@ -208,7 +224,8 @@ def run_greedy(all_items, all_ads, client, client_dir, shared_dir, max_iteration
 # ---------------------------------------------------------------------------
 
 def run_evolutionary(all_items, all_ads, client, client_dir, shared_dir,
-                     max_iterations, target, population_size, use_llm):
+                     max_iterations, target, population_size, use_llm,
+                     use_pairwise=False):
     """Population-based evolutionary hill-climb with mutation, crossover,
     wildcard, and dimension-targeted improvement."""
     recent_failures = []
@@ -348,11 +365,23 @@ def run_evolutionary(all_items, all_ads, client, client_dir, shared_dir,
                     best_report = new_report
                     best_label = cand["label"]
 
-            # Accept the best if it improved
+            # Accept the best if it improved (with optional pairwise gate)
             if best_candidate and best_score > old_score:
-                _accept_candidate(item, best_candidate, best_score, best_report, all_ads, ad)
-                improved += 1
-                print(f"    => ACCEPTED [{best_label}] {best_score:.3f} (+{best_score - old_score:.3f})")
+                if use_pairwise:
+                    pw_score, pw_reason = score_pairwise(
+                        best_candidate, ad, client["config"], weak_dims,
+                    )
+                    if pw_score <= 2:
+                        delta = best_score - old_score
+                        print(f"    => PAIRWISE REJECT: rubric +{delta:.3f} but pairwise {pw_score}/5 — {pw_reason}")
+                    else:
+                        _accept_candidate(item, best_candidate, best_score, best_report, all_ads, ad)
+                        improved += 1
+                        print(f"    => ACCEPTED [{best_label}] {best_score:.3f} (+{best_score - old_score:.3f}) pairwise {pw_score}/5")
+                else:
+                    _accept_candidate(item, best_candidate, best_score, best_report, all_ads, ad)
+                    improved += 1
+                    print(f"    => ACCEPTED [{best_label}] {best_score:.3f} (+{best_score - old_score:.3f})")
             else:
                 print(f"    => no improvement, kept original")
 
@@ -419,6 +448,7 @@ def main():
     print(f"Max iterations per item: {args.iterations}")
     print(f"Strategy: {args.strategy} (population={args.population})")
     print(f"LLM scoring: {'enabled' if use_llm else 'disabled (deterministic only)'}")
+    print(f"Pairwise gating: {'enabled' if args.use_pairwise else 'disabled'}")
     print()
 
     # Initial scoring
@@ -438,11 +468,13 @@ def main():
         improved = run_greedy(
             all_items, all_ads, client, client_dir, shared_dir,
             args.iterations, args.target, use_llm,
+            use_pairwise=args.use_pairwise,
         )
     else:
         improved = run_evolutionary(
             all_items, all_ads, client, client_dir, shared_dir,
             args.iterations, args.target, args.population, use_llm,
+            use_pairwise=args.use_pairwise,
         )
 
     # Final summary
