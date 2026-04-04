@@ -4,11 +4,11 @@
   "hook_type": "narrative",
   "funnel": "TOF",
   "content_type": "meta-ad",
-  "creative_brief": "Split-screen visual: left side shows a supermarket styrofoam tray with generic beef and a long dotted-line map route across Australia. Right side shows a FarmThru brown paper package with a visible farm name label and a short direct arrow from farm to hub. Clean, warm lighting on the right. Muted, fluorescent feel on the left.",
-  "generated_at": "2026-04-04T09:09:35.970397",
+  "creative_brief": "Split frame: left side shows a child at a dinner table looking curiously at her plate, warm kitchen lighting. Right side shows a sunlit pasture with cattle grazing. Text overlay at bottom: 'Days old, not weeks.'",
+  "generated_at": "2026-04-05T00:42:02.263207",
   "ad_id": "CFE-107",
-  "primary_text": "Last week I opened a pack of supermarket beef. The label said Australian. The fine print said it travelled 2,400km and sat in cold storage for up to three weeks.\n\nThen I opened a box from FarmThru. Grass-fed beef from a named NSW farm. Days old, not weeks. No hormones, no antibiotics, no feedlot finishing.\n\nSame country. Completely different food system.\n\nFarmThru is a farm-direct grocery store. Zero wholesalers, zero middlemen. You order online, collect from the Brookvale hub Monday to Friday. No commitment. Order when you want.\n\nWe're building something worth owning. Be part of it.",
-  "headline": "Same beef, two completely different stories",
-  "description": "Farm-direct grocery. Days old, not weeks. Collect from Brookvale or get Sydney delivery.",
+  "primary_text": "\"How long ago was this alive?\" My daughter asked about the chicken on her plate.\n\nI couldn't answer. The pack said fresh. But supermarket beef travels 2,400km and sits in cold storage for up to three weeks. I figured chicken wasn't much better.\n\nThat question sent me looking for something different. FarmThru is a farm-direct grocery store. Pasture-raised, regenerative, days old not weeks. You order online and collect from Brookvale Monday to Friday.\n\nNo subscription. No lock-in. Just food you can actually trace back to the farm it came from.\n\nThey're building something worth being part of.",
+  "headline": "She asked one question I couldn't answer",
+  "description": "Farm-direct regenerative grocery. No middlemen, no mystery. Own a piece of the change.",
   "cta": "cfe_campaign"
 }

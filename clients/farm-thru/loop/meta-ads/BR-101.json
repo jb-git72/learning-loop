@@ -1,13 +1,14 @@
 {
-  "ad_id": "BR-101",
-  "content_type": "meta-ad",
   "angle": "quality-craft",
-  "hook_type": "story",
-  "funnel": "TOF",
   "tactic": "sensory-detail",
-  "primary_text": "Last Tuesday a farmer in Kempsey pulled beef from the cool room. By Thursday it was at the Brookvale hub.\n\nNo middlemen. No distribution centre. No weeks in cold storage.\n\nJust 100% grass-fed beef, raised on open pasture. No hormones, no feedlots. The farm name is on every cut.\n\nThe colour is different. Deeper red, not pale pink. The fat is golden. It smells clean when it hits the pan.\n\nNo middlemen. No commitment. Sydney families collect from the Brookvale hub, Monday to Friday.",
-  "headline": "Paddock on Tuesday, yours by Thursday",
-  "description": "100% grass-fed beef from named NSW farms. Collected fresh from the Brookvale hub.",
-  "cta": "Shop your local hub",
-  "creative_brief": "Close-up of deep red, marbled grass-fed steak on a timber board. Golden fat visible. Natural kitchen light. No props. Let the colour tell the story."
+  "hook_type": "question",
+  "funnel": "TOF",
+  "content_type": "meta-ad",
+  "creative_brief": "Close-up hero shot of richly marbled, deep-red grass-fed beef on butcher paper, slightly unwrapped, with visible moisture and texture. Warm, natural lighting. No packaging, no plastic. Small text overlay: 'Days old, not weeks.'",
+  "generated_at": "2026-04-05T00:29:15.768452",
+  "ad_id": "BR-101",
+  "primary_text": "Have you ever opened a pack of beef and wondered why it smells like the bag, not the meat?\n\nThat's what weeks in cold storage does. Supermarket beef travels 2,400km and sits 14 to 21 days before it reaches you.\n\nOur 100% grass-fed beef comes from Rachel's Farm in Kempsey, NSW. Pasture raised, no hormones, no feedlots. Days old when you collect it from our Brookvale hub.\n\nYou can smell the difference before you even cook it.\n\nNo commitment. Order when you want. Collect Monday to Friday.",
+  "headline": "Beef that smells like beef again",
+  "description": "Days old, not weeks. 100% grass-fed from named NSW farms to the Brookvale hub.",
+  "cta": "brand"
 }
