@@ -43,9 +43,12 @@
         "scroll_stop_hook": 1.75,
         "cta_clarity": 1.0,
         "platform_fit": 0.75,
-        "differentiation": 1.5
+        "differentiation": 1.5,
+        "opening_diversity": 0.75,
+        "sentence_variance": 0.5,
+        "emotional_register": 0.75
       },
-      "max_score": 61.25,
+      "max_score": 71.25,
       "thresholds": {
         "production_ready": 51,
         "strong_draft": 44,
@@ -64,9 +67,12 @@
         "specificity": 1.5,
         "scroll_depth_pull": 0.5,
         "objection_preemption": 1.25,
-        "differentiation": 1.0
+        "differentiation": 1.0,
+        "opening_diversity": 0.75,
+        "sentence_variance": 0.5,
+        "emotional_register": 0.75
       },
-      "max_score": 60.375,
+      "max_score": 70.375,
       "thresholds": {
         "production_ready": 52,
         "strong_draft": 45,
@@ -85,9 +91,12 @@
         "personalization": 1.25,
         "specificity": 1.5,
         "scroll_stop_hook": 1.0,
-        "differentiation": 1.0
+        "differentiation": 1.0,
+        "opening_diversity": 0.75,
+        "sentence_variance": 0.5,
+        "emotional_register": 0.75
       },
-      "max_score": 63.75,
+      "max_score": 73.75,
       "thresholds": {
         "production_ready": 50,
         "strong_draft": 43,

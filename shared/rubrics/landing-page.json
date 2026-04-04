@@ -167,6 +167,48 @@
         "4": "Clearly distinct. A visitor seeing both pages would recognize different approaches.",
         "5": "Completely unique hypothesis. Different emotional entry point, different proof stack, different structure."
       }
+    },
+    {
+      "id": "opening_diversity",
+      "name": "Opening Diversity",
+      "default_weight": 0.5,
+      "scoring_method": "deterministic",
+      "description": "Does this page's hero copy open differently from other landing page variants? Measures first-word and first-three-word uniqueness.",
+      "scoring_guide": {
+        "1": "First 3 words identical to another same-type page. Hero feels like a copy-paste.",
+        "2": "First word shared with 3+ other same-type pages. The set sounds monotone.",
+        "3": "First word shared with 2 other same-type pages. Some variety but room to diversify.",
+        "4": "First word shared with only 1 other same-type page. Good opening variety.",
+        "5": "First 3 words are unique across all same-type pages. Every variant opens distinctly."
+      }
+    },
+    {
+      "id": "sentence_variance",
+      "name": "Sentence Variance",
+      "default_weight": 0.5,
+      "scoring_method": "deterministic",
+      "description": "Does the hero/body copy have rhythmic variety — a mix of short punchy sentences and longer narrative ones?",
+      "scoring_guide": {
+        "1": "Monotone — all sentences are the same length (std dev <= 1). Reads like a list.",
+        "2": "Minimal variety (std dev > 1). Slight length differences but still flat rhythm.",
+        "3": "Moderate variety (std dev > 3). Some short and long sentences but could be more dynamic.",
+        "4": "Good rhythm (std dev > 5). Mix of punchy and expansive sentences creates flow.",
+        "5": "Great rhythm variety (std dev > 8). Copy has a natural, engaging cadence."
+      }
+    },
+    {
+      "id": "emotional_register",
+      "name": "Emotional Register",
+      "default_weight": 0.5,
+      "scoring_method": "deterministic",
+      "description": "Does this page use a different emotional opening style from the rest of the variant set?",
+      "scoring_guide": {
+        "1": "Over 50% of same-type pages share this register. Locked into one opening style.",
+        "2": "30-50% of same-type pages share this register. Limited diversity.",
+        "3": "15-30% of same-type pages share this register. Moderate diversity.",
+        "4": "Less than 15% of same-type pages share this register. Good variety.",
+        "5": "Unique register — no other same-type page opens this way."
+      }
     }
   ]
 }

@@ -1,13 +1,14 @@
 """
 Rubric Scorer — Axis 3 of the scoring engine.
 
-10 dimensions scored 1-5 with weights.
-7 deterministic, 3 LLM-judged (via llm_judge.py).
+13 dimensions scored 1-5 with weights.
+10 deterministic, 3 LLM-judged (via llm_judge.py).
 
 Returns: {weighted_total, max_possible, raw_scores, dimension_details}
 """
 
 import json
+import math
 import re
 from pathlib import Path
 
@@ -115,6 +116,9 @@ def _score_deterministic(
         "specificity": _score_specificity,
         "differentiation": _score_differentiation,
         "objection_preemption": _score_objection_preemption,
+        "opening_diversity": _score_opening_diversity,
+        "sentence_variance": _score_sentence_variance,
+        "emotional_register": _score_emotional_register,
     }
 
     # Meta-ad specific
@@ -156,7 +160,7 @@ def _score_deterministic(
     scorer = scorers.get(dim_id)
     if scorer:
         # Handle different scorer signatures
-        if dim_id == "differentiation":
+        if dim_id in ("differentiation", "opening_diversity", "emotional_register"):
             return scorer(ad, existing_ads)
         elif dim_id in ("receptionist_test", "cta_clarity", "platform_fit", "cta_prominence", "objection_preemption"):
             return scorer(ad, config)
@@ -757,6 +761,209 @@ def _score_personalization(ad: dict) -> tuple[int, str]:
 
     score = min(5, score)
     return score, f"{score}/5 personalization: {', '.join(details) if details else 'generic'}"
+
+
+def _score_opening_diversity(ad: dict, existing_ads: list[dict]) -> tuple[int, str]:
+    """Score how unique this ad's opening is relative to other same-type ads."""
+    content_type = ad.get("content_type", "meta-ad")
+    primary = _get_primary_text(ad).strip()
+
+    if not primary:
+        return 3, "No primary text to evaluate"
+
+    # Get first line (or first sentence)
+    first_line = ""
+    for line in primary.split("\n"):
+        line = line.strip().strip(">").strip()
+        if line:
+            first_line = line
+            break
+    if not first_line:
+        return 3, "No opening line found"
+
+    # Extract words from opening
+    words = re.findall(r'\b[a-zA-Z]+\b', first_line.lower())
+    if not words:
+        return 3, "No words in opening line"
+
+    first_word = words[0]
+    first_three = " ".join(words[:3]) if len(words) >= 3 else " ".join(words)
+
+    # Filter existing_ads to same content type
+    same_type = [a for a in existing_ads if a.get("content_type", "meta-ad") == content_type]
+    if not same_type:
+        return 5, f"No same-type ads to compare — opening: '{first_three}'"
+
+    # Get openings of same-type ads (skip self)
+    ad_id = ad.get("ad_id", ad.get("page_id", ad.get("email_id", "")))
+    first_word_matches = 0
+    three_word_matches = 0
+    for other in same_type:
+        other_id = other.get("ad_id", other.get("page_id", other.get("email_id", "")))
+        if ad_id and other_id and ad_id == other_id:
+            continue
+        other_primary = _get_primary_text(other).strip()
+        if not other_primary:
+            continue
+        if other_primary == primary:
+            continue
+        other_first_line = ""
+        for line in other_primary.split("\n"):
+            line = line.strip().strip(">").strip()
+            if line:
+                other_first_line = line
+                break
+        if not other_first_line:
+            continue
+        other_words = re.findall(r'\b[a-zA-Z]+\b', other_first_line.lower())
+        if not other_words:
+            continue
+        other_first = other_words[0]
+        other_three = " ".join(other_words[:3]) if len(other_words) >= 3 else " ".join(other_words)
+        if other_first == first_word:
+            first_word_matches += 1
+        if other_three == first_three:
+            three_word_matches += 1
+
+    detail = f"Opening '{first_three}': first word shared with {first_word_matches}, first 3 words shared with {three_word_matches} of {len(same_type)} same-type ads"
+
+    if three_word_matches > 0:
+        return 1, detail
+    if first_word_matches >= 3:
+        return 2, detail
+    if first_word_matches == 2:
+        return 3, detail
+    if first_word_matches == 1:
+        return 4, detail
+    return 5, detail
+
+
+def _score_sentence_variance(ad: dict) -> tuple[int, str]:
+    """Score sentence-length variety (rhythm) in ad copy."""
+    primary = _get_primary_text(ad).strip()
+    if not primary:
+        return 3, "No primary text to evaluate"
+
+    # Split into sentences on `. ` or `.\n` or `?\n` or `!` or `? ` or `!\n`
+    sentences = re.split(r'(?<=[.!?])[\s\n]+', primary)
+    # Filter out empty and very short fragments
+    sentences = [s.strip() for s in sentences if s.strip() and len(s.strip().split()) >= 2]
+
+    if len(sentences) <= 1:
+        return 2, f"{len(sentences)} sentence(s) — not enough to measure variance"
+
+    word_counts = [len(s.split()) for s in sentences]
+    avg = sum(word_counts) / len(word_counts)
+    variance = sum((c - avg) ** 2 for c in word_counts) / len(word_counts)
+    std_dev = math.sqrt(variance)
+
+    detail = f"{len(sentences)} sentences, avg {avg:.1f} words, std dev {std_dev:.1f}"
+
+    if std_dev > 8:
+        return 5, detail
+    elif std_dev > 5:
+        return 4, detail
+    elif std_dev > 3:
+        return 3, detail
+    elif std_dev > 1:
+        return 2, detail
+    return 1, detail
+
+
+def _score_emotional_register(ad: dict, existing_ads: list[dict]) -> tuple[int, str]:
+    """Score the uniqueness of this ad's emotional register (opening style)."""
+    content_type = ad.get("content_type", "meta-ad")
+    register = _classify_register(ad)
+
+    # Filter existing_ads to same content type
+    same_type = [a for a in existing_ads if a.get("content_type", "meta-ad") == content_type]
+    if not same_type:
+        return 5, f"Register: {register} — no same-type ads to compare"
+
+    # Count how many same-type ads share this register (skip self)
+    ad_id = ad.get("ad_id", ad.get("page_id", ad.get("email_id", "")))
+    ad_primary = _get_primary_text(ad).strip()
+    same_register = 0
+    total = 0
+    for a in same_type:
+        other_id = a.get("ad_id", a.get("page_id", a.get("email_id", "")))
+        if ad_id and other_id and ad_id == other_id:
+            continue
+        if _get_primary_text(a).strip() == ad_primary:
+            continue
+        total += 1
+        if _classify_register(a) == register:
+            same_register += 1
+    pct = (same_register / total) * 100 if total else 0
+
+    detail = f"Register: {register} — {same_register}/{total} same-type ads share it ({pct:.0f}%)"
+
+    if same_register == 0:
+        return 5, detail
+    elif pct < 15:
+        return 4, detail
+    elif pct <= 30:
+        return 3, detail
+    elif pct <= 50:
+        return 2, detail
+    return 1, detail
+
+
+def _classify_register(ad: dict) -> str:
+    """Classify ad opening into an emotional register category."""
+    primary = _get_primary_text(ad).strip()
+    if not primary:
+        return "other"
+
+    # Get first two sentences
+    sentences = re.split(r'(?<=[.!?])[\s\n]+', primary)
+    sentences = [s.strip() for s in sentences if s.strip()]
+    first_sent = sentences[0] if sentences else ""
+    first_two = " ".join(sentences[:2]) if sentences else ""
+
+    # Question — first sentence ends with ?
+    if first_sent.rstrip().endswith("?"):
+        return "question"
+
+    # Direct — starts with "you" or "your"
+    if re.match(r'^(?:you|your)\b', first_sent, re.IGNORECASE):
+        return "direct"
+
+    # Confession — starts with "I " or "We "
+    if re.match(r'^(?:I |We )', first_sent):
+        return "confession"
+
+    # Statistic — contains $ or a number in first sentence
+    if re.search(r'(?:\$|\b\d+\b)', first_sent):
+        return "statistic"
+
+    # Story — named person, day, or specific action in first 2 sentences
+    if re.search(
+        r'\b(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday'
+        r'|yesterday|last\s+\w+day|this\s+morning|walked|picked\s+up|called|booked'
+        r'|Rachel|Bundarra|Luna|Max|Bella|Charlie|Milo)\b',
+        first_two, re.IGNORECASE
+    ):
+        return "story"
+    # Also catch "[Name] was/did..." pattern
+    if re.search(r'^[A-Z][a-z]+\s+(?:was|had|did|didn|couldn|started|lost|quit|left|grew)', first_sent):
+        return "story"
+
+    # Contrast — contains "vs", "not", "but", "instead" in first 2 sentences
+    if re.search(r'\b(?:vs\.?|not|but|instead)\b', first_two, re.IGNORECASE):
+        return "contrast"
+
+    return "other"
+
+
+def _get_primary_text(ad: dict) -> str:
+    """Get the primary text field based on content type."""
+    content_type = ad.get("content_type", "meta-ad")
+    if content_type == "email":
+        return ad.get("body", ad.get("primary_text", ""))
+    elif content_type == "landing-page":
+        return ad.get("hero_copy", ad.get("primary_text", ""))
+    return ad.get("primary_text", "")
 
 
 def _score_heuristic_fallback(dim_id: str, ad: dict) -> tuple[int, str]:

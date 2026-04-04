@@ -35,9 +35,12 @@
       "scroll_stop_hook": 1.25,
       "cta_clarity": 1.0,
       "platform_fit": 1.0,
-      "differentiation": 1.0
+      "differentiation": 1.0,
+      "opening_diversity": 0.75,
+      "sentence_variance": 0.5,
+      "emotional_register": 0.75
     },
-    "max_score": 65.0,
+    "max_score": 75.0,
     "thresholds": {
       "production_ready": 53,
       "strong_draft": 46,

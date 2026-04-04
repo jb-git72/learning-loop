@@ -149,6 +149,48 @@
         "4": "Clearly distinct angle or execution. A reader seeing both ads would recognize different messages.",
         "5": "Completely unique perspective within the set. Different emotional entry point, different proof, different structure. Adds real creative diversity."
       }
+    },
+    {
+      "id": "opening_diversity",
+      "name": "Opening Diversity",
+      "default_weight": 0.5,
+      "scoring_method": "deterministic",
+      "description": "Does this ad open differently from other ads of the same content type? Measures first-word and first-three-word uniqueness across the ad set.",
+      "scoring_guide": {
+        "1": "First 3 words identical to another same-type ad. Feels like a copy-paste opening.",
+        "2": "First word shared with 3+ other same-type ads. The set sounds monotone at the start.",
+        "3": "First word shared with 2 other same-type ads. Some opening variety but room to diversify.",
+        "4": "First word shared with only 1 other same-type ad. Good opening variety.",
+        "5": "First 3 words are unique across all same-type ads. Every ad opens with a distinct voice."
+      }
+    },
+    {
+      "id": "sentence_variance",
+      "name": "Sentence Variance",
+      "default_weight": 0.5,
+      "scoring_method": "deterministic",
+      "description": "Does the copy have rhythmic variety — a mix of short punchy sentences and longer narrative ones? Measures standard deviation of sentence word counts.",
+      "scoring_guide": {
+        "1": "Monotone — all sentences are the same length (std dev <= 1). Reads like a list.",
+        "2": "Minimal variety (std dev > 1). Slight length differences but still flat rhythm.",
+        "3": "Moderate variety (std dev > 3). Some short and long sentences but could be more dynamic.",
+        "4": "Good rhythm (std dev > 5). Mix of punchy and expansive sentences creates flow.",
+        "5": "Great rhythm variety (std dev > 8). Copy has a natural, engaging cadence with deliberate pacing."
+      }
+    },
+    {
+      "id": "emotional_register",
+      "name": "Emotional Register",
+      "default_weight": 0.5,
+      "scoring_method": "deterministic",
+      "description": "Does this ad use a different emotional opening style (question, story, statistic, contrast, direct, confession) from the rest of the ad set? Measures register diversity.",
+      "scoring_guide": {
+        "1": "Over 50% of same-type ads share this register. The set is locked into one opening style.",
+        "2": "30-50% of same-type ads share this register. Common approach, limited diversity.",
+        "3": "15-30% of same-type ads share this register. Moderate diversity.",
+        "4": "Less than 15% of same-type ads share this register. Good variety in opening styles.",
+        "5": "Unique register — no other same-type ad opens this way. Adds real creative diversity to the set."
+      }
     }
   ]
 }
