@@ -34,18 +34,18 @@
   "rubric": {
     "meta-ad": {
       "weights": {
-        "angle_clarity": 1.25,
-        "motivation_match": 1.25,
-        "tactic_execution": 1.0,
-        "specificity": 1.5,
-        "objection_preemption": 1.25,
-        "receptionist_test": 1.5,
-        "scroll_stop_hook": 1.5,
+        "angle_clarity": 2.0,
+        "motivation_match": 2.0,
+        "tactic_execution": 1.5,
+        "specificity": 1.25,
+        "objection_preemption": 0.75,
+        "receptionist_test": 0.75,
+        "scroll_stop_hook": 1.75,
         "cta_clarity": 1.0,
-        "platform_fit": 1.0,
-        "differentiation": 1.0
+        "platform_fit": 0.75,
+        "differentiation": 1.5
       },
-      "max_score": 63.75,
+      "max_score": 61.25,
       "thresholds": {
         "production_ready": 51,
         "strong_draft": 44,
@@ -55,18 +55,18 @@
     },
     "landing-page": {
       "weights": {
-        "angle_clarity": 1.25,
-        "motivation_match": 1.0,
+        "angle_clarity": 2.0,
+        "motivation_match": 1.5,
         "tactic_execution": 1.0,
-        "hero_clarity": 2.0,
+        "hero_clarity": 1.0,
         "proof_density": 1.75,
-        "cta_prominence": 1.25,
+        "cta_prominence": 0.625,
         "specificity": 1.5,
-        "scroll_depth_pull": 1.0,
+        "scroll_depth_pull": 0.5,
         "objection_preemption": 1.25,
         "differentiation": 1.0
       },
-      "max_score": 65.0,
+      "max_score": 60.375,
       "thresholds": {
         "production_ready": 52,
         "strong_draft": 45,
@@ -76,10 +76,10 @@
     },
     "email": {
       "weights": {
-        "angle_clarity": 1.0,
-        "motivation_match": 1.0,
+        "angle_clarity": 2.0,
+        "motivation_match": 1.5,
         "tactic_execution": 1.0,
-        "subject_line_power": 2.0,
+        "subject_line_power": 1.0,
         "body_flow": 1.25,
         "cta_clarity": 1.25,
         "personalization": 1.25,
@@ -87,7 +87,7 @@
         "scroll_stop_hook": 1.0,
         "differentiation": 1.0
       },
-      "max_score": 62.5,
+      "max_score": 63.75,
       "thresholds": {
         "production_ready": 50,
         "strong_draft": 43,
