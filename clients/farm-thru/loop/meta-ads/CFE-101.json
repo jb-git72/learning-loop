@@ -4,11 +4,11 @@
   "hook_type": "if_then",
   "funnel": "TOF",
   "content_type": "meta-ad",
-  "creative_brief": "Split-screen map animation: left side shows a tangled 2,400km red route through warehouses; right side shows a clean, short green line from a named NSW farm region to the Brookvale hub. End frame: FarmThru logo with 'Own a piece of it.'",
-  "generated_at": "2026-04-05T02:03:49.863483",
+  "creative_brief": "Split-screen visual: left side shows a long, winding conveyor belt with six generic toll-booth style checkpoints between a farm and a kitchen table. Right side shows a single clean line from farm to a FarmThru hub. Muted, documentary tone. No text overlay beyond the FarmThru logo.",
+  "generated_at": "2026-04-05T02:54:19.232032",
   "ad_id": "CFE-101",
-  "primary_text": "If your grocery travels 2,400km before it reaches you, someone's paying for every kilometre.\n\nThat someone is you. And the farmer growing it.\n\nFarmThru connects NSW families directly with partner farms across the state. No warehouses. No wholesalers. Just food that travels a fraction of the distance.\n\nOur Brookvale hub is open Monday to Friday. No subscription. No lock-in. Order when you want.\n\nWe're building something that could reshape how Sydney eats. You can own a piece of it.",
-  "headline": "Shorter supply chain. You can own it.",
-  "description": "Farm-direct grocery, hub-and-collect from Brookvale. Be part of what comes next.",
+  "primary_text": "If a farmer grows your food and you eat it, why do six middlemen get paid between those two moments?\n\nHonest answer: because that's how the system was built. Not broken, just old.\n\nFarmThru is building something different. A farm-direct grocery store where NSW families order online and collect from Brookvale. Partner farms across the state. No subscriptions, no lock-in.\n\nA shorter supply chain that pays farmers more and charges families less.\n\nNow you can own a piece of it.",
+  "headline": "Six middlemen. Zero of them grow food.",
+  "description": "Farm-direct grocery with a shorter chain. Be part of what replaces the old one.",
   "cta": "cfe_campaign"
 }
