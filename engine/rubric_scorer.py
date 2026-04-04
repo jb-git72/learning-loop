@@ -372,7 +372,7 @@ def _score_objection_preemption(ad: dict, config: dict = None) -> tuple[int, str
 
 def _score_scroll_stop_hook(ad: dict) -> tuple[int, str]:
     """Classify the first line and score its scroll-stop potential."""
-    primary = ad.get("primary_text", "").strip()
+    primary = _get_primary_text(ad).strip()
     # Get first non-empty, non-blockquote line
     first_line = ""
     for line in primary.split("\n"):
@@ -990,8 +990,8 @@ def _score_heuristic_fallback(dim_id: str, ad: dict) -> tuple[int, str]:
 
     if dim_id == "tactic_execution":
         # Check for basic structure: hook + body + CTA
-        has_hook = bool(ad.get("headline"))
-        has_body = len(ad.get("primary_text", "")) > 50
+        has_hook = bool(ad.get("headline") or ad.get("subject"))
+        has_body = len(_get_primary_text(ad)) > 50
         has_cta = bool(ad.get("cta"))
         score = 1 + has_hook + has_body + has_cta
         return min(score, 4), f"Heuristic: hook={has_hook}, body={has_body}, cta={has_cta}"
