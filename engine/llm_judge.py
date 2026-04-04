@@ -18,6 +18,20 @@ import re
 import subprocess
 
 
+def _format_content_block(ad):
+    """Format ad content fields based on content_type. Used by all scoring prompts."""
+    ct = ad.get("content_type", "meta-ad")
+    if ct == "email":
+        return "SUBJECT: %s\nPREHEADER: %s\nBODY: %s" % (
+            ad.get("subject", ""), ad.get("preheader", ""), ad.get("body", "")[:500])
+    elif ct == "landing-page":
+        return "HEADLINE: %s\nSUBHEAD: %s\nHERO COPY: %s" % (
+            ad.get("headline", ""), ad.get("subhead", ""), ad.get("hero_copy", ""))
+    else:
+        return "HEADLINE: %s\nPRIMARY TEXT: %s\nDESCRIPTION: %s" % (
+            ad.get("headline", ""), ad.get("primary_text", ""), ad.get("description", ""))
+
+
 def judge_dimension(dim_id, ad, dimension_schema, client_config):
     """Score one dimension via a separate LLM call.
 
@@ -103,6 +117,8 @@ def _batch_score(ad, dimensions, client_config):
         if scoring_ctx.get("success_looks_like"):
             brand_block += "Success: %s\n" % scoring_ctx["success_looks_like"]
 
+    content_block = _format_content_block(ad)
+
     prompt = """Score this ad on %d dimensions. Be strict. Use the FULL 1-5 range.
 %s
 %s
@@ -110,9 +126,7 @@ def _batch_score(ad, dimensions, client_config):
 AD:
 Angle: %s | Tactic: %s | Hook: %s
 
-HEADLINE: %s
-PRIMARY TEXT: %s
-DESCRIPTION: %s
+%s
 
 Respond with ONLY valid JSON (no other text):
 {%s}""" % (
@@ -120,9 +134,7 @@ Respond with ONLY valid JSON (no other text):
         "\n\n".join(dim_sections),
         brand_block,
         ad.get("angle", "?"), ad.get("tactic", "?"), ad.get("hook_type", "?"),
-        ad.get("headline", ""),
-        ad.get("primary_text", ""),
-        ad.get("description", ""),
+        content_block,
         ", ".join('"%s": {"score": <1-5>, "explanation": "<one sentence>"}' % d["id"] for d in dimensions),
     )
 
@@ -225,6 +237,8 @@ def _build_scoring_prompt(dim_id, ad, dimension_schema, client_config):
         if parts:
             brand_block = "\nBRAND CONTEXT:\n" + "\n".join(parts) + "\n"
 
+    content_block = _format_content_block(ad)
+
     return """Score this ad on ONE dimension. Be strict and discriminating.
 
 DIMENSION: %s
@@ -240,9 +254,7 @@ Angle: %s
 Tactic: %s
 Hook type: %s
 
-HEADLINE: %s
-PRIMARY TEXT: %s
-DESCRIPTION: %s
+%s
 
 Respond with ONLY valid JSON, no other text:
 {"score": <integer 1-5>, "explanation": "<one sentence justifying the score>"}""" % (
@@ -253,9 +265,7 @@ Respond with ONLY valid JSON, no other text:
         ad.get("angle", "unknown"),
         ad.get("tactic", "unknown"),
         ad.get("hook_type", "unknown"),
-        ad.get("headline", ""),
-        ad.get("primary_text", ""),
-        ad.get("description", ""),
+        content_block,
     )
 
 
@@ -329,21 +339,8 @@ def score_pairwise(new_ad: dict, current_ad: dict, client_config: dict,
     scoring_ctx = client_config.get("scoring_context", {})
     brand_name = client_config.get("client_name", scoring_ctx.get("product", "this brand"))
 
-    # Build ad text blocks — each ad uses its OWN content type for field extraction
-    def _format_ad_block(ad):
-        ct = ad.get("content_type", "meta-ad")
-        if ct == "landing-page":
-            return "Headline: %s\nSubhead: %s\nHero copy: %s" % (
-                ad.get("headline", ""), ad.get("subhead", ""), ad.get("hero_copy", ""))
-        elif ct == "email":
-            return "Subject: %s\nPreheader: %s\nBody: %s" % (
-                ad.get("subject", ""), ad.get("preheader", ""), ad.get("body", "")[:500])
-        else:
-            return "Headline: %s\nPrimary text: %s\nDescription: %s" % (
-                ad.get("headline", ""), ad.get("primary_text", ""), ad.get("description", ""))
-
-    current_block = _format_ad_block(current_ad)
-    new_block = _format_ad_block(new_ad)
+    current_block = _format_content_block(current_ad)
+    new_block = _format_content_block(new_ad)
 
     # Build focus text for weak dimensions
     focus_text = ""
@@ -426,7 +423,13 @@ def _parse_pairwise_response(text):
 
 def _heuristic_fallback(dim_id, ad):
     """Last resort. Clearly marked as heuristic in output."""
-    text = " ".join(ad.get(f, "") for f in ["primary_text", "headline", "description"])
+    ct = ad.get("content_type", "meta-ad")
+    if ct == "email":
+        text = " ".join(ad.get(f, "") for f in ["subject", "preheader", "body"])
+    elif ct == "landing-page":
+        text = " ".join(ad.get(f, "") for f in ["headline", "subhead", "hero_copy"])
+    else:
+        text = " ".join(ad.get(f, "") for f in ["primary_text", "headline", "description"])
 
     if dim_id == "angle_clarity":
         word_count = len(text.split())
@@ -443,11 +446,12 @@ def _heuristic_fallback(dim_id, ad):
         return score, "HEURISTIC(degraded): %d emotional words, no LLM available" % emotional
 
     if dim_id == "tactic_execution":
-        has_parts = sum([
-            bool(ad.get("headline")),
-            len(ad.get("primary_text", "")) > 50,
-            bool(ad.get("cta")),
-        ])
+        if ct == "email":
+            has_parts = sum([bool(ad.get("subject")), len(ad.get("body", "")) > 50, bool(ad.get("cta"))])
+        elif ct == "landing-page":
+            has_parts = sum([bool(ad.get("headline")), len(ad.get("hero_copy", "")) > 50, bool(ad.get("cta"))])
+        else:
+            has_parts = sum([bool(ad.get("headline")), len(ad.get("primary_text", "")) > 50, bool(ad.get("cta"))])
         return min(1 + has_parts, 3), "HEURISTIC(degraded): %d/3 structural parts, no LLM available" % has_parts
 
     return 2, "HEURISTIC(degraded): default, no LLM available"
