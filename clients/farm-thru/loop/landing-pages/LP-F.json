@@ -4,28 +4,32 @@
   "hook_type": "story",
   "funnel": "TOF",
   "content_type": "landing-page",
-  "creative_brief": "Hero image: founder standing in a regenerative farm field at golden hour, looking directly at camera — warm, honest, unpolished. Below-the-fold sections use close-up photography of named supplier produce (Bundarra pork, Collins seafood) with farm-name captions. Earthy palette, no stock imagery. The page should feel like a letter, not a pitch deck.",
-  "generated_at": "2026-04-04T09:24:12.055750",
+  "creative_brief": "Hero image: warm, slightly overexposed afternoon light in a real farmhouse kitchen — hands holding soil-dusted produce, not styled. Below the fold, documentary-style portraits of named farms (Bundarra, Collins, Paris Creek) with location captions. Earthy palette, no stock photography. Feels like a letter, not a pitch.",
+  "generated_at": "2026-04-04T22:09:34.749834",
   "page_id": "LP-F",
-  "headline": "I spent 22 years pretending the food system worked",
-  "subhead": "Then I started tracing what my family actually ate — where it grew, how far it travelled, who got paid. The answers changed everything I thought I knew about groceries.",
-  "hero_copy": "For two decades I bought what the big chains told me was fresh. I trusted the labels. I fed my kids without asking questions. Then one afternoon I stood in Rachel Ward's farmhouse kitchen in Kempsey, watching her pull vegetables from soil she'd spent years regenerating — and I realised I'd never once met the person who grew my family's food. That's the moment FarmThru started. Not with a business plan. With a feeling I couldn't shake: we deserve to know.",
+  "headline": "One afternoon in Kempsey changed how I feed my family",
+  "subhead": "I stood in a farmhouse kitchen watching Rachel Ward pull vegetables from soil I could touch. Then I thought about the plastic-wrapped tray in my fridge at home — and couldn't remember a single thing about where it came from.",
+  "hero_copy": "I'd spent years trusting labels. \"Farm fresh.\" \"Locally sourced.\" \"Natural.\" I never asked fresh since when, sourced from where, natural according to whom. That afternoon I realised I'd been feeding my kids a supply chain, not food. The farmer couldn't tell you my name. The supermarket couldn't tell me theirs. Nobody in the middle cared, because nobody in the middle had to. I started FarmThru to close that gap — not with a slogan, but with a grocery store where every product traces back to a real farm, a real person, and a practice that gives back to the land.",
   "sections": [
     {
-      "heading": "The thing I couldn't unsee",
-      "body": "Rachel showed me what regenerative farming actually looks like. Soil that holds water. Land that gets healthier each season. Animals raised the way your grandparents would recognise. Then she told me what the big chains paid her neighbours for the same quality produce — pennies after the middlemen took their cut. I drove home through 400 kilometres of farmland and couldn't stop thinking: there are farmers doing extraordinary work, and families who'd pay fairly for it, and the only thing between them is a broken supply chain. Zero warehouses. Zero wholesalers. Zero middlemen. That became our rule. FarmThru connects you directly to farms like Bundarra (pork from NSW), Collins Wild Caught (South Coast seafood), Paris Creek Farms (carbon-neutral dairy from South Australia), and Farmer Brown (eggs, NSW). You order online. You collect from our Brookvale hub, Monday to Friday. The food is fresher because it hasn't spent weeks in cold storage. The farmers earn more because nobody skimmed the middle."
+      "heading": "The gap between what we're told and what we're sold",
+      "body": "Supermarket supply chains are built for efficiency, not transparency. Your beef might travel thousands of kilometres before it hits the shelf. Your dairy passes through wholesalers, warehouses, and weeks of cold storage. By the time you buy it, the farmer who raised it has already been paid a fraction of what you spent. FarmThru works differently. Zero warehouses. Zero wholesalers. Zero middlemen. We connect you directly to farms like Paris Creek in South Australia — carbon-neutral, biodynamic dairy — and Collins Wild Caught on the South Coast of NSW, bringing seasonal Australian seafood and wild-caught Alaskan salmon straight from the source. You order online. You collect from our Brookvale hub, Monday to Friday. That's it. No subscription. No lock-in. Just groceries from farms we'll actually name."
     },
     {
-      "heading": "This isn't a subscription box — it's a grocery store with a conscience",
-      "body": "I built FarmThru as the shop I wished existed. A real online grocery store stocked with regenerative produce, priced for Tuesday-night dinners, not just special occasions. Every product traces back to a named farm. We'll show you where your food comes from — that's not a slogan, it's a promise printed on every order. Our hub-and-collect model keeps overhead low so we can pay farmers fairly and keep your weekly shop honest. No lock-in. No gimmicks. Just food we'd feed our own kids. Because that's exactly what we do."
+      "heading": "I only stock what I'd feed my own kids",
+      "body": "That's not a tagline — it's the filter. Every supplier on FarmThru meets it. Bundarra Farm's pork belly and fennel salami. Farmer Brown's eggs from NSW. Little Yarran Farm. Rachel Ward's regenerative operation in Kempsey. I've visited these farms. I've met the families running them. I know how they raise their animals and what they put in their soil. When you shop with FarmThru, you'll know too. We'll show you where your food comes from — because that question shouldn't feel radical."
     },
     {
-      "heading": "We're building this together — and you can be part of it",
-      "body": "FarmThru is preparing an equity crowdfunding campaign. That means everyday people — not just venture capitalists — can own a piece of what we're growing. I can't promise returns. I can't guarantee success. Building a new kind of grocery store is genuinely hard, and investing in any early-stage company carries real risk. But if you believe families deserve to know where their food comes from, and farmers deserve a fair price for growing it, I'd love you to join the waitlist. A refundable $5 deposit secures your spot and tells us you want in when the campaign goes live. No obligation. No pressure. Just a signal that you think food can work differently."
+      "heading": "This isn't just a store — and it doesn't have to be just mine",
+      "body": "FarmThru is building something the big chains will never offer: a grocery model where farmers are paid fairly, food is fresher, and regenerative practice is the standard — not the premium. We're opening our equity crowdfunding campaign so you can own a piece of it. Not as a customer. As a partner. This is early. There's real risk — like any business at this stage, there are no guaranteed returns, and you could lose what you invest. But if you believe the food system needs more than another label, you can be part of building the alternative. Join the waitlist. When the campaign opens, you'll be first to see the details and decide for yourself."
+    },
+    {
+      "heading": "No commitment, no pressure — just a seat at the table",
+      "body": "Place a $5 refundable deposit to join the VIP waitlist. You'll get early access to the crowdfunding campaign before it goes public. No obligation to invest. No obligation to buy. And when the store launches, order when you want — collect from Brookvale, Monday to Friday. That's the whole model. Simple enough that a farmer could explain it. Transparent enough that you'd want them to."
     },
     {
       "heading": "Compliance",
-      "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
+      "body": "FarmThru's equity crowdfunding campaign is conducted under the Australian crowd-sourced funding regime. Any investment involves risk, including the risk of losing your entire investment. Past performance is not a reliable indicator of future results. No returns are guaranteed. This page is not financial advice. You should read the offer document and consider whether this investment is appropriate for your circumstances before making any decision."
     }
   ],
   "cta": "cfe_waitlist"

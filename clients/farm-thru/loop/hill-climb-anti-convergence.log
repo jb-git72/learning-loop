@@ -1,0 +1,198 @@
+Loaded 33 items. Target: 0.70 (strong_draft)
+Max iterations per item: 3
+Strategy: evolutionary (population=5)
+LLM scoring: enabled
+Pairwise gating: enabled
+
+Initial: 22 at target, 11 below target
+
+--- Iteration 1: 11 items below target (pop=5) ---
+  LP-A (landing-page): 0.664 [needs_work]
+    [improve] 0.691 +
+    [mutate(if_then)] 0.511 =
+    [targeted(tactic_execution)] 0.630 =
+    [crossover(LP-D)] 0.662 =
+    [crossover(LP-D)] 0.601 =
+    => ACCEPTED [improve] 0.691 (+0.026) pairwise 5/5
+  LP-B (landing-page): 0.662 [needs_work]
+    [improve] 0.666 +
+    [mutate(quoted_objection)] 0.676 +
+    [targeted(angle_clarity)] 0.645 =
+    [crossover(LP-P)] 0.669 +
+    [crossover(LP-P)] 0.673 +
+    => ACCEPTED [mutate(quoted_objection)] 0.676 (+0.015) pairwise 5/5
+  LP-E (landing-page): 0.638 [needs_work]
+    [improve] 0.723 +
+    [mutate(bold_claim)] 0.655 +
+    [targeted(tactic_execution)] 0.656 +
+    [crossover(LP-N)] 0.716 +
+    [crossover(LP-P)] 0.734 +
+    => ACCEPTED [crossover(LP-P)] 0.734 (+0.096) pairwise 5/5
+  LP-F (landing-page): 0.682 [needs_work]
+    [improve] 0.709 +
+    [mutate(direct_address)] 0.695 +
+    [targeted(angle_clarity)] 0.698 +
+    [crossover(LP-P)] 0.606 =
+    [crossover(LP-P)] 0.716 +
+    => ACCEPTED [crossover(LP-P)] 0.716 (+0.034) pairwise 4/5
+  LP-M (landing-page): 0.623 [needs_work]
+    [improve] 0.606 =
+    [mutate(question)] 0.719 +
+    [targeted(tactic_execution)] 0.638 +
+    [crossover(LP-P)] 0.652 +
+    [crossover(LP-E)] 0.702 +
+    => ACCEPTED [mutate(question)] 0.719 (+0.096) pairwise 5/5
+  EM-001 (email): 0.617 [needs_work]
+    [improve] 0.510 =
+    [mutate(question)] 0.464 =
+    [targeted(angle_clarity)] 0.430 =
+    [crossover(EM-004)] 0.391 =
+    [crossover(EM-005)] 0.538 =
+    => no improvement, kept original
+  EM-002 (email): 0.617 [needs_work]
+    [improve] 0.579 =
+    [mutate(quoted_objection)] 0.484 =
+    [targeted(angle_clarity)] 0.602 =
+    [crossover(EM-003)] 0.435 =
+    [crossover(EM-003)] 0.570 =
+    => no improvement, kept original
+  EM-003 (email): 0.682 [needs_work]
+    [improve] 0.441 =
+    [mutate(question)] 0.540 =
+    [targeted(opening_diversity)] 0.490 =
+    [crossover(EM-007)] 0.504 =
+    [crossover(EM-005)] 0.476 =
+    => no improvement, kept original
+  EM-005 (email): 0.688 [needs_work]
+    [improve] 0.573 =
+    [mutate(bold_claim)] 0.564 =
+    [targeted(opening_diversity)] 0.532 =
+    [crossover(EM-003)] 0.495 =
+    [crossover(EM-004)] 0.532 =
+    => no improvement, kept original
+  EM-006 (email): 0.609 [needs_work]
+    [improve] 0.457 =
+    [mutate(quoted_objection)] 0.539 =
+    [targeted(angle_clarity)] 0.544 =
+    [crossover(EM-005)] 0.580 =
+    [crossover(EM-004)] 0.543 =
+    => no improvement, kept original
+  EM-007 (email): 0.649 [needs_work]
+    [improve] 0.527 =
+    [mutate(direct_address)] 0.607 =
+    [targeted(opening_diversity)] 0.605 =
+    [crossover(EM-004)] 0.519 =
+    [crossover(EM-003)] 0.525 =
+    => no improvement, kept original
+
+--- Iteration 2: 8 items below target (pop=5) ---
+  LP-A (landing-page): 0.691 [needs_work]
+    [improve] 0.615 =
+    [mutate(question)] 0.726 +
+    [targeted(tactic_execution)] 0.704 +
+    [crossover(LP-D)] 0.565 =
+    [crossover(LP-E)] 0.629 =
+    => ACCEPTED [mutate(question)] 0.726 (+0.036) pairwise 4/5
+  LP-B (landing-page): 0.676 [needs_work]
+    [improve] 0.737 +
+    [mutate(statistic)] 0.726 +
+    [targeted(tactic_execution)] 0.705 +
+    [crossover(LP-E)] 0.630 =
+    [crossover(LP-D)] 0.726 +
+    => ACCEPTED [improve] 0.737 (+0.060) pairwise 4/5
+  EM-001 (email): 0.617 [needs_work]
+    [improve] 0.408 =
+    [mutate(statistic)] 0.613 =
+    [targeted(angle_clarity)] 0.542 =
+    [crossover(EM-003)] 0.374 =
+    [crossover(EM-004)] 0.443 =
+    => no improvement, kept original
+  EM-002 (email): 0.617 [needs_work]
+    [improve] 0.374 =
+    [mutate(bold_claim)] 0.549 =
+    [targeted(angle_clarity)] 0.534 =
+    [crossover(EM-004)] 0.557 =
+    [crossover(EM-005)] 0.443 =
+    => no improvement, kept original
+  EM-003 (email): 0.682 [needs_work]
+    [improve] 0.460 =
+    [mutate(pattern_interrupt)] 0.519 =
+    [targeted(opening_diversity)] 0.455 =
+    [crossover(EM-007)] 0.449 =
+    [crossover(EM-005)] 0.455 =
+    => no improvement, kept original
+  EM-005 (email): 0.688 [needs_work]
+    [improve] 0.480 =
+    [mutate(if_then)] 0.602 =
+    [targeted(opening_diversity)] 0.551 =
+    [crossover(EM-007)] 0.567 =
+    [crossover(EM-003)] 0.551 =
+    => no improvement, kept original
+  EM-006 (email): 0.609 [needs_work]
+    [improve] 0.573 =
+    [mutate(statistic)] 0.528 =
+    [targeted(angle_clarity)] 0.641 +
+    [crossover(EM-003)] 0.529 =
+    [crossover(EM-005)] 0.580 =
+    => ACCEPTED [targeted(angle_clarity)] 0.641 (+0.032) pairwise 5/5
+  EM-007 (email): 0.649 [needs_work]
+    [improve] 0.578 =
+    [mutate(contrarian)] 0.580 =
+    [targeted(opening_diversity)] 0.567 =
+    [crossover(EM-003)] 0.543 =
+    [crossover(EM-005)] 0.540 =
+    => no improvement, kept original
+
+--- Iteration 3: 6 items below target (pop=5) ---
+  EM-001 (email): 0.617 [needs_work]
+    [improve] 0.513 =
+    [mutate(bold_claim)] 0.554 =
+    [wildcard] 0.589 =
+    [crossover(EM-005)] 0.490 =
+    [crossover(EM-004)] 0.369 =
+    => no improvement, kept original
+  EM-002 (email): 0.617 [needs_work]
+    [improve] 0.546 =
+    [mutate(if_then)] 0.583 =
+    [wildcard] 0.596 =
+    [crossover(EM-005)] 0.557 =
+    [crossover(EM-004)] 0.567 =
+    => no improvement, kept original
+  EM-003 (email): 0.682 [needs_work]
+    [improve] 0.471 =
+    [mutate(quoted_objection)] 0.551 =
+    [wildcard] 0.546 =
+    [crossover(EM-005)] 0.485 =
+    [crossover(EM-005)] 0.398 =
+    => no improvement, kept original
+  EM-005 (email): 0.688 [needs_work]
+    [improve] 0.535 =
+    [mutate(if_then)] 0.552 =
+    [wildcard] 0.547 =
+    [crossover(EM-004)] 0.537 =
+    [crossover(EM-007)] 0.516 =
+    => no improvement, kept original
+  EM-006 (email): 0.641 [needs_work]
+    [improve] 0.503 =
+    [mutate(pattern_interrupt)] 0.564 =
+    [wildcard] 0.644 +
+    [crossover(EM-003)] 0.533 =
+    [crossover(EM-004)] 0.628 =
+    => PAIRWISE REJECT: rubric +0.003 but pairwise 2/5 — The NEW candidate assumes too much prior knowledge and engagement, losing the emotional hook and clear value proposition that makes the CURRENT ad's angle and motivation compelling for fence-sitters.
+  EM-007 (email): 0.649 [needs_work]
+    [improve] 0.570 =
+    [mutate(confession)] 0.586 =
+    [wildcard] 0.602 =
+    [crossover(EM-004)] 0.456 =
+    [crossover(EM-004)] 0.504 =
+    => no improvement, kept original
+
+=== HILL-CLIMB COMPLETE ===
+Strategy: evolutionary
+Improvements made: 8
+Avg composite: 0.7722
+Still below target: 6
+  production_ready: 5
+  strong_draft: 22
+  needs_work: 6
+  rewrite: 0
