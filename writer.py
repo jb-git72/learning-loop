@@ -48,6 +48,9 @@ def generate_variant(
     recent_failures: list = None,
     wildcard: bool = False,
     content_type: str = "meta-ad",
+    mode: str = "improve",
+    donor_ad: dict = None,
+    weak_dimensions: list = None,
 ) -> dict:
     """Generate a new ad copy variant.
 
@@ -60,10 +63,20 @@ def generate_variant(
         current_best: Current best ad for this slot (to beat)
         recent_failures: Last few discards for this slot
         wildcard: If True, try something novel instead of hill-climbing
+        content_type: Content type (meta-ad, email, landing-page)
+        mode: Generation mode — "improve" (default), "mutate", "wildcard",
+              "crossover", or "targeted"
+        donor_ad: High-scoring ad to blend with in crossover mode
+        weak_dimensions: List of (dim_name, score, max_score) tuples for
+                         targeted mode
 
     Returns:
         Ad in canonical JSON format
     """
+    # Backwards compat: if wildcard=True, override mode
+    if wildcard:
+        mode = "wildcard"
+
     # Load client context
     config = _load_json(client_dir / "config.json")
     tone = _load_text(client_dir / "tone.md")
@@ -82,12 +95,25 @@ def generate_variant(
         facts=facts,
         current_best=current_best,
         recent_failures=recent_failures or [],
-        wildcard=wildcard,
+        wildcard=(mode == "wildcard"),
         content_type=content_type,
+        mode=mode,
+        donor_ad=donor_ad,
+        weak_dimensions=weak_dimensions,
     )
 
+    # Temperature varies by mode
+    temp_map = {
+        "improve": 0.7,
+        "mutate": 0.8,
+        "wildcard": 0.9,
+        "crossover": 0.6,
+        "targeted": 0.5,
+    }
+    temperature = temp_map.get(mode, 0.7)
+
     # Generate via LLM
-    raw_output = _call_llm(prompt)
+    raw_output = _call_llm(prompt, temperature=temperature)
 
     # Parse the output into canonical format
     ad = _parse_output(raw_output, angle, tactic, hook_type, funnel, content_type)
@@ -193,6 +219,9 @@ def _build_prompt(
     recent_failures: list,
     wildcard: bool,
     content_type: str = "meta-ad",
+    mode: str = "improve",
+    donor_ad: dict = None,
+    weak_dimensions: list = None,
 ) -> str:
     """Build the variant generation prompt."""
     client_name = config.get("client_name", "Unknown")
@@ -247,6 +276,37 @@ WILDCARD MODE: Ignore the current best. Try something completely different.
 A new hook type, a different emotional register, a surprising opening.
 The goal is exploration, not optimisation.
 """
+
+    # Crossover instruction
+    crossover_text = ""
+    if mode == "crossover" and donor_ad:
+        donor_headline = donor_ad.get("headline", donor_ad.get("subject", ""))
+        donor_opening = ""
+        for field in ("primary_text", "body", "hero_copy"):
+            text = donor_ad.get(field, "")
+            if text:
+                donor_opening = text[:200]
+                break
+        crossover_text = f"""
+CROSSOVER MODE: Blend the current ad's angle with the style of a high-scoring donor.
+DONOR AD (use as style inspiration, not content to copy):
+  Headline: {donor_headline}
+  Opening: {donor_opening}...
+Take the donor's rhythm, structure, and emotional register.
+Apply them to YOUR angle ({angle}) and YOUR facts. Do not copy the donor's claims.
+"""
+
+    # Targeted improvement instruction
+    targeted_text = ""
+    if mode == "targeted" and weak_dimensions:
+        dim_lines = []
+        for dim_name, dim_score, dim_max in weak_dimensions:
+            guidance = _dimension_improvement_guidance(dim_name)
+            dim_lines.append(f"- {dim_name}: {dim_score}/{dim_max}. {guidance}")
+        targeted_text = """
+TARGETED IMPROVEMENT: Your weakest scoring dimensions are listed below.
+Focus specifically on improving these while maintaining everything else:
+""" + "\n".join(dim_lines) + "\n"
 
     # Content-type-specific constraints and output format
     if content_type == "landing-page":
@@ -354,12 +414,36 @@ CREATIVE LEARNINGS:
 
 VERIFIED FACTS (use only these — every number must trace back):
 {facts_text}
-{beat_text}{failure_text}{wildcard_text}
+{beat_text}{failure_text}{wildcard_text}{crossover_text}{targeted_text}
 IMPORTANT RULES:
 {extra_rules}
 
 OUTPUT FORMAT (respond with ONLY this JSON, no other text):
 {output_format}"""
+
+
+def _dimension_improvement_guidance(dim_name: str) -> str:
+    """Return specific improvement guidance for a weak rubric dimension."""
+    guidance = {
+        "angle_clarity": "Sharpen to ONE proposition. Every sentence must reinforce it. Remove competing themes.",
+        "motivation_match": "Tap the FELT need. 'I didn't know what my kids were eating' not 'farm-direct grocery.' Emotion first, logic second.",
+        "tactic_execution": "Hook -> Proof -> Bridge -> CTA. Each section earns the next. If removing a paragraph doesn't break the flow, cut it.",
+        "specificity": "Add 5-7 concrete signals: dollar amounts, numbers, named farms/people. Replace vague claims with proof.",
+        "objection_preemption": "Include: 'no commitment', 'order when you want', mention the hub, acknowledge risk, reference provenance.",
+        "receptionist_test": "Answer: What is it? Where does food come from? How is it different? How do I start? Why now?",
+        "scroll_stop_hook": "Open with a story moment, named person, quoted objection, or specific number. Never a generic statement.",
+        "cta_clarity": "Use an approved CTA exactly as listed. Make it specific and action-oriented.",
+        "platform_fit": "Stay within character limits. Use conversational tone. No corporate jargon.",
+        "differentiation": "Use unique language. Avoid phrases from other ads in the set. Find a fresh angle of attack.",
+        "hero_clarity": "Headline + subhead + CTA must answer 'what/who/action' in 5 seconds.",
+        "proof_density": "Add stats, dollar amounts, testimonial quotes, named sources, third-party citations.",
+        "cta_prominence": "Repeat the CTA, use action-specific language, ensure it's on the approved list.",
+        "scroll_depth_pull": "4-8 sections with benefit-oriented headings. Each section pulls to the next.",
+        "subject_line_power": "6-10 words, include a specific detail (number/name), avoid spam triggers.",
+        "body_flow": "Short paragraphs (max 3 sentences). Clear paragraph breaks. Under 2000 chars.",
+        "personalization": "Reference the reader's context (waitlist, prior action). Use 'you' frequently. Add time-specific details.",
+    }
+    return guidance.get(dim_name, "Improve this dimension specifically.")
 
 
 def _select_relevant_facts(facts_data: dict, angle: str, content_type: str = "meta-ad") -> str:
@@ -409,7 +493,7 @@ def _select_relevant_facts(facts_data: dict, angle: str, content_type: str = "me
     return "\n".join(lines[:25])  # Cap at 25 facts to fit in context
 
 
-def _call_llm(prompt: str) -> str:
+def _call_llm(prompt: str, temperature: float = 0.7) -> str:
     """Call LLM to generate ad copy. Opus 4 via API."""
     # API (fast, reliable)
     api_key = os.environ.get("ANTHROPIC_API_KEY", "")
@@ -420,7 +504,7 @@ def _call_llm(prompt: str) -> str:
             response = client.messages.create(
                 model="claude-opus-4-6",
                 max_tokens=2000,
-                temperature=0.7,
+                temperature=temperature,
                 messages=[{"role": "user", "content": prompt}],
             )
             return response.content[0].text
