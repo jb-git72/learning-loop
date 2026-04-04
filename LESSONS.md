@@ -151,3 +151,47 @@ Template: `scripts/build_review_html.py`
 - `brand_names` — for specificity scoring
 
 **How to verify for new brands:** Search writer.py and engine/ for any hardcoded references to the brand name. There should be zero. Everything should load from config with a generic fallback.
+
+---
+
+## 11. Greedy hill-climbing converges fast then stalls — use evolutionary strategies
+
+**Mistake:** Pure greedy hill-climbing (1 candidate, same angle/hook, "write something BETTER") converged within 2-3 iterations then stalled. Items stuck at needs_work never improved because the same prompt kept producing similar variants.
+
+**Rule:** Use evolutionary hill-climbing (`--strategy evolutionary`) which generates N candidates per iteration using diverse strategies:
+
+| Strategy | When it helps | Temperature |
+|----------|--------------|-------------|
+| **improve** | Exploitation — refine what works | 0.7 |
+| **mutate** | Rotate hook_type for fresh angles | 0.8 |
+| **crossover** | Blend current ad with top-scoring donor — **produced the biggest jumps** | 0.6 |
+| **targeted** | Fix the weakest scoring dimension specifically | 0.5 |
+| **wildcard** | Ignore current best, try something novel (every 3rd iteration) | 0.9 |
+
+**Key finding from FarmThru:** Crossover was the only strategy that produced meaningful improvements on stuck items (+0.057 by blending CFE-101 with top-scoring BR-109). Pure improve/targeted modes scored ~0.56 avg — barely better than random.
+
+**When items are truly stuck (0 improvements across 50+ candidates):** The bottleneck is structural, not generation quality. Check:
+1. Are deterministic scoring patterns (receptionist_test, objection_preemption) rewarding the right content?
+2. Are content-type-specific scoring dimensions properly tuned (e.g., emails vs meta-ads)?
+3. Does the content need human calibration feedback to break through?
+
+**Usage:** `python3 scripts/hill_climb.py {client} --iterations 5 --population 5 --strategy evolutionary`
+
+---
+
+## 12. Onboard new clients with the script, not manually
+
+**Mistake:** FarmThru onboarding took 2 days of back-and-forth. Facts were fabricated, learnings were mis-structured, scorer patterns were hardcoded, cross-brand contamination went undetected.
+
+**Rule:** Always use the onboarding script for new clients:
+```bash
+python3 scripts/onboard_client.py --name "Brand" --slug brand-slug \
+  --url https://brand.com --product "description" --industry X --market AU
+```
+
+This generates all 5 files, validates them (18 checks), and runs 3 test ads in ~2 minutes. Then hill-climb immediately:
+```bash
+python3 scripts/hill_climb.py brand-slug --iterations 5 --population 5
+```
+
+**After first human review:** Update learnings.md with "What Works" and "What Fails" from the review, keeping critical sections within the 1600-char truncation window. Then run hill-climbing again.

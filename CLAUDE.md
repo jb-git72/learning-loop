@@ -77,14 +77,21 @@ Auto-loaded by `run.py`.
 - `scripts/build_review_html.py` — Build interactive HTML review (proven layout with editable textareas, toggle buttons, two-column, char counts, collapsible cards)
 - `scripts/lint_content.py` — Pre-flight content linter (3 layers: rules, learnings, structural). Run before scoring to catch violations early
 - `scripts/clean_meta_ads.py` — Clean investment language from meta-ad descriptions
+- `scripts/onboard_client.py` — Onboard new client in ~2 min (generates all 5 files + validates)
+- `scripts/verify_evolution.py` — Verify evolutionary vs greedy hill-climbing performance
 
 ## Workflow: calibration rounds
 
 1. **Verify facts first** — WebFetch client website, update facts.json BEFORE generating
 2. **Generate content** — Use writer.py or agents with full rules/facts/tone context
-3. **Hill-climb to strong_draft+** — `python3 scripts/hill_climb.py {client}` — NEVER show raw drafts to user
-4. **Build HTML review** — `python3 scripts/build_review_html.py scored.json output.html` — uses proven layout
+3. **Hill-climb to strong_draft+** — use evolutionary strategy for best results:
+   ```bash
+   python3 scripts/hill_climb.py {client} --iterations 5 --population 5 --strategy evolutionary
+   ```
+   This uses mutation, crossover, wildcard, and dimension-targeted modes. Crossover with top-scoring ads produces the biggest jumps.
+4. **Build HTML review** — `python3 scripts/build_review_html.py scored.json output.html` — collapsible cards, toggle filters
 5. **Present for human review** — Only after ALL items score >= 0.70 composite
+6. **Integrate feedback** — Update learnings.md (What Works first!), re-run hill-climb
 
 ## Git workflow
 
