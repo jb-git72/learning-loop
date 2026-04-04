@@ -1,31 +1,35 @@
 {
   "angle": "urgency-scarcity",
   "tactic": "general",
-  "hook_type": "question",
+  "hook_type": "confession",
   "funnel": "TOF",
   "content_type": "landing-page",
-  "creative_brief": "Hero image: close-up of a hand holding a brown paper bag with farm-stamped labels visible, Brookvale hub shelving softly blurred behind. Muted earth tones, natural light. No stock-photo polish — real texture, real space. Urgency conveyed through a subtle countdown or 'limited window' badge near the CTA button, not flashing graphics.",
-  "generated_at": "2026-04-04T23:54:28.026905",
+  "creative_brief": "Hero image: Rachel in a working farm setting, candid and unpolished — not a studio portrait. Muted earth tones, natural light. Below the fold, a simple visual showing the short supply chain: farm icon → hub icon → family icon. No stock photography. The page should feel like a letter, not a billboard.",
+  "generated_at": "2026-04-05T01:42:36.370155",
   "page_id": "LP-M",
-  "headline": "Do you actually know what farm your chicken came from last week?",
-  "subhead": "Most people don't. Most people can't. The big chains made traceability almost impossible — and now a farm-direct grocery store is giving you a way back. But the window to own a piece of FarmThru before the equity crowdfunding campaign closes is shrinking.",
-  "hero_copy": "Think about it. Last Tuesday's dinner — the mince, the greens, the eggs. Could you name a single farm? Not the brand. The actual farm, the actual paddock, the people who grew it. FarmThru partners with roughly 15–20 farms and suppliers across NSW to bring food from the source to your hands. No unnecessary middlemen. No mystery. Order online, collect from Brookvale Monday to Friday. And right now, before the campaign window closes, you can be part of what comes next.",
+  "headline": "I spent 15 years in food supply chains. I wouldn't feed my own kids what I saw.",
+  "subhead": "That confession led to FarmThru — a farm-direct grocery store cutting out the middlemen so you can trace every egg, every cut, every leaf back to the actual farm. The equity crowdfunding campaign has a cap. Once it fills, this window closes.",
+  "hero_copy": "I watched perfectly good produce get trucked 2,400km across the country just so a middleman could slap a label on it. I watched farms get squeezed on price while families paid more at checkout. And I watched my own kids eat food I couldn't trace to a single paddock.\n\nSo we built something different. FarmThru partners with NSW farms — real names, real places — and gets their food to you through a hub-and-collect model. No unnecessary middlemen. No mystery supply chains. You order online, collect from Brookvale, and know exactly where it all came from.",
   "sections": [
     {
-      "heading": "The system wasn't built for you to ask questions",
-      "body": "Supermarkets move your food through warehouses, distribution centres, and rebrand it under house labels until the farmer's name disappears entirely. You're not lazy for not knowing — you were never given the chance to know. FarmThru's hub-and-collect model cuts that chain short. Farm to hub to you. That's it. You order what you need, when you need it. No subscription. No lock-in. No membership fees. Just real food from farms you can actually trace. Bulk buying keeps prices honest — the more you commit, the more you save. This isn't a premium boutique experience. It's grocery shopping that finally makes sense."
+      "heading": "The part that kept me up at night",
+      "body": "Here's what the big chains don't advertise: by the time food reaches their shelves, it's passed through warehouses, distributors, repackagers, and cold storage facilities you'll never see. The farm name disappears. The story disappears. What's left is a barcode and a best-before date.\n\nFarmThru works with around 15 to 20 partner farms and suppliers across NSW. We list them. You can look them up. That's not a marketing trick — it's the entire point. Farm to hub to you. The supply chain is short enough that you could drive it yourself on a Saturday."
     },
     {
-      "heading": "Why this window matters",
-      "body": "FarmThru is raising through equity crowdfunding on Birchal — and for a limited time, everyday people can own a piece of a farm-direct grocery store. Minimum investment is $50. Maximum is $10,000 per investor. This isn't a donation. It's ownership. But here's what you need to know: the campaign window doesn't stay open forever. When it closes, this specific opportunity closes with it. A $5 refundable deposit gets you VIP access — first in line, priority updates, and an exclusive Q&A before the crowd. No commitment beyond that. You're not locked into anything. You're just making sure you don't miss it. Investing in early-stage businesses carries real risk, including the possibility of losing your entire investment. This is not a guaranteed return — it's a bet on a food system that works differently."
+      "heading": "No subscription. No lock-in. Just food you can trust.",
+      "body": "Order when you want. Skip when you want. There's no membership fee, no weekly box you didn't ask for. FarmThru runs on-demand — you browse, you buy in bulk to save, you collect from our Brookvale hub Monday to Friday.\n\nUnit 23, 10-18 Orchard Rd, Brookvale NSW 2100. That's not a warehouse pretending to be a store. It's a hub designed to keep costs low and bring the farm closer to your family.\n\nNo commitment required. No tricks. You shop on your terms."
     },
     {
-      "heading": "What you get when you stop guessing",
-      "body": "You get to tell your kids where dinner actually came from. Not a country of origin on a sticker — a farm name, a region, a story. You get to buy bulk and save without a warehouse membership card. You get to collect your order from the Brookvale hub at Unit 23, 10–18 Orchard Rd, Monday to Friday — on your schedule. And if you join the equity crowdfunding campaign, you get to be a partner in building this. Not just a customer. An owner. The people who move first shape what FarmThru becomes. That window is open now. It won't be open indefinitely."
+      "heading": "The window to own a piece of this is closing",
+      "body": "FarmThru is raising through equity crowdfunding on Birchal — and every campaign has a cap. Once it's filled, it's done. No extensions, no exceptions.\n\nMinimum investment is $50. Maximum is $10,000 per investor. This isn't a donation. You'd own a piece of a farm-direct grocery model built to challenge how Australians buy food.\n\nBut investing in early-stage businesses carries real risk. You could lose some or all of your investment. There are no guaranteed returns. Read the offer document carefully before deciding.\n\nIf you want first access before the campaign opens, a $5 refundable deposit gets you VIP priority — first access to invest, priority updates, and an exclusive Q&A. Fully refundable if you change your mind."
+    },
+    {
+      "heading": "Be part of it before the cap fills",
+      "body": "This isn't about watching from the sidelines while someone else fixes the food system. It's about voting with your wallet — literally owning a piece of the change you want to see.\n\nJoin the VIP waitlist now. $5, fully refundable. You get priority access, exclusive updates, and a seat at the table before the crowd arrives.\n\nOnce the campaign cap is reached, this page becomes a thank-you note."
     },
     {
       "heading": "Compliance",
-      "body": "FarmThru's equity crowdfunding campaign is hosted on Birchal. Investing in early-stage companies carries inherent risk, including the potential loss of your entire investment. Returns are not guaranteed. This page is not financial advice. Please read the offer document and consider your own financial situation before investing. The $5 VIP deposit is fully refundable at any time."
+      "body": "FarmThru's equity crowdfunding campaign is hosted on Birchal. Investing in early-stage businesses carries risk, including the potential loss of your entire investment. Returns are not guaranteed. This page is not financial advice. Please read the offer document and consider your own financial situation before making any investment decision. The $5 VIP deposit is fully refundable."
     }
   ],
   "cta": "cfe_waitlist"
