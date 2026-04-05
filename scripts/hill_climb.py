@@ -57,6 +57,7 @@ def parse_args():
     parser.add_argument("--no-llm", action="store_true", help="Disable LLM scoring (deterministic only)")
     parser.add_argument("--use-pairwise", action="store_true", help="Enable pairwise comparison gating on accepted candidates")
     parser.add_argument("--workers", type=int, default=4, help="Concurrent ads per iteration in evolutionary mode (default 4)")
+    parser.add_argument("--tournament", action="store_true", help="Tournament mode: cull bottom 50%% after each iteration")
 
     # Support legacy positional-only invocation: hill_climb.py <client> <iters>
     # Also support the old --type=X inline style
@@ -208,7 +209,14 @@ def _generate_and_lint(ad, item, client_dir, shared_dir, client, all_ads, recent
             details = "; ".join(v["detail"][:60] for v in lint_result.violations[:3])
             return None, 0, None, f"LINT FAIL ({mode}): {details}"
 
-        # Score
+        # Deterministic pre-screen: skip LLM judge for obvious losers
+        if use_llm:
+            old_score = item.get("score", 0)
+            pre_report = score_ad(new_ad, client, existing_ads=all_ads, use_llm=False)
+            if pre_report["composite"] < old_score - 0.15:
+                return new_ad, pre_report["composite"], pre_report, None
+
+        # Full score (with LLM judge if enabled)
         new_report = score_ad(new_ad, client, existing_ads=all_ads, use_llm=use_llm)
         new_score = new_report["composite"]
         return new_ad, new_score, new_report, None
@@ -525,7 +533,7 @@ def _process_single_ad(item, all_items, all_ads, client, client_dir, shared_dir,
 
 def run_evolutionary(all_items, all_ads, client, client_dir, shared_dir,
                      max_iterations, target, population_size, use_llm,
-                     use_pairwise=False, max_workers=4):
+                     use_pairwise=False, max_workers=4, tournament=False):
     """Population-based evolutionary hill-climb with mutation, crossover,
     wildcard, and dimension-targeted improvement.
 
@@ -588,6 +596,14 @@ def run_evolutionary(all_items, all_ads, client, client_dir, shared_dir,
                 strategy_tracker.extend(tracker_entries)
 
                 improved += improved_flag
+
+        # Tournament mode: cull bottom 50% after each iteration
+        if tournament and iteration < max_iterations - 1:
+            all_items.sort(key=lambda x: x["score"], reverse=True)
+            keep = max(3, len(all_items) // 2)  # floor of 3 to avoid degenerate runs
+            culled = len(all_items) - keep
+            all_items[:] = all_items[:keep]
+            print(f"  TOURNAMENT: kept top {keep}, culled {culled} (lowest was {all_items[-1]['score']:.3f})")
 
         print()
 
@@ -746,6 +762,7 @@ def main():
             args.iterations, args.target, args.population, use_llm,
             use_pairwise=args.use_pairwise,
             max_workers=args.workers,
+            tournament=args.tournament,
         )
 
     # Final summary

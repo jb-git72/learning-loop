@@ -83,6 +83,18 @@ Ads within an iteration are mostly independent. The exception is crossover, whic
 
 From overnight run to under a minute. Tier 1 alone gets 80% of the win.
 
+### 8 workers hits rate limits (Apr 5)
+- `--workers=8` doubled elapsed time vs `--workers=4` (6:40 for 15 ads vs 2:50 for 19 ads)
+- 80 concurrent API calls triggers Anthropic rate limiting — responses slow to a crawl
+- **Sweet spot is 4 workers** (40 concurrent calls) for current API tier
+- Would need a rate limit tier upgrade to benefit from more workers
+
+### No target ceiling (Apr 5)
+- `--target=1.0` forces all ads through all iterations regardless of score
+- EU-101 jumped to 0.957 via crossover — highest score ever, wouldn't have been attempted with target=0.90
+- Tradeoff: 3x more ad-rounds (60 vs ~20), so ~3x longer runtime
+- Worth it for experimental runs; use target=0.90 for fast overnight runs
+
 ## Not yet tested — quality improvements
 
 ### Remove target ceiling
