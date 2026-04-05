@@ -39,6 +39,7 @@ COLUMN_ALIASES = {
     "revenue": ["Purchase ROAS (denominator)", "Conversion value",
                 "conversion_value", "revenue", "Revenue",
                 "Website purchase conversion value",
+                "Website purchases conversion value",
                 "Purchases conversion value"],
     "date": ["Day", "Date", "Reporting starts", "date", "Reporting start"],
 }
