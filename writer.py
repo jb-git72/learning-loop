@@ -117,8 +117,8 @@ def generate_variant(
     learnings = _load_learnings(client_dir, content_type)
     facts = _load_json(client_dir / "facts.json")
 
-    # Build the generation prompt
-    prompt = _build_prompt(
+    # Build the generation prompt (split for caching)
+    base_context, variant_instruction = _build_prompt(
         angle=angle,
         tactic=tactic,
         hook_type=hook_type,
@@ -146,8 +146,9 @@ def generate_variant(
     }
     temperature = temp_map.get(mode, 0.7)
 
-    # Generate via LLM
-    raw_output = _call_llm(prompt, temperature=temperature)
+    # Generate via LLM (base_context cached as system prompt)
+    raw_output = _call_llm(variant_instruction, temperature=temperature,
+                           system_context=base_context)
 
     # Parse the output into canonical format
     ad = _parse_output(raw_output, angle, tactic, hook_type, funnel, content_type)
@@ -168,13 +169,13 @@ def generate_variant(
         violation_text = "\n".join(violation_lines)
 
         retry_prompt = (
-            prompt
+            variant_instruction
             + f"\n\nPREVIOUS ATTEMPT FAILED LINT CHECK (attempt {lint_attempt + 1}):\n"
             + violation_text
             + "\n\nFix ALL of the above violations in your next attempt. "
             + "Do NOT include any of the flagged terms or patterns."
         )
-        raw_output = _call_llm(retry_prompt)
+        raw_output = _call_llm(retry_prompt, system_context=base_context)
         ad = _parse_output(raw_output, angle, tactic, hook_type, funnel, content_type)
     else:
         # All retries exhausted — attach lint failures for the caller
@@ -473,12 +474,8 @@ Focus specifically on improving these while maintaining everything else:
     if industry_context:
         industry_section = f"\nINDUSTRY CONTEXT ({industry}):\n{industry_context}\n"
 
-    return f"""Write ONE {content_label} for {client_name} — {product}.
-
-ANGLE: {angle}
-TACTIC: {tactic}{tactic_structure}
-HOOK TYPE: {hook_type} — {hook_template}
-FUNNEL: {funnel}
+    # Split into base context (cacheable) and variant instruction (unique)
+    base_context = f"""You are a direct-response copywriter for {client_name} — {product}.
 
 {scoring_guide}
 
@@ -495,12 +492,23 @@ CREATIVE LEARNINGS:
 
 VERIFIED FACTS (use only these — every number must trace back):
 {facts_text}
-{beat_text}{failure_text}{wildcard_text}{crossover_text}{targeted_text}
+
 IMPORTANT RULES:
 {extra_rules}
 
 OUTPUT FORMAT (respond with ONLY this JSON, no other text):
 {output_format}"""
+
+    variant_instruction = f"""Write ONE {content_label}.
+
+ANGLE: {angle}
+TACTIC: {tactic}{tactic_structure}
+HOOK TYPE: {hook_type} — {hook_template}
+FUNNEL: {funnel}
+{beat_text}{failure_text}{wildcard_text}{crossover_text}{targeted_text}
+Respond with ONLY the JSON output."""
+
+    return base_context, variant_instruction
 
 
 def _dimension_improvement_guidance(dim_name: str) -> str:
@@ -575,20 +583,33 @@ def _select_relevant_facts(facts_data: dict, angle: str, content_type: str = "me
     return "\n".join(lines[:25])  # Cap at 25 facts to fit in context
 
 
-def _call_llm(prompt: str, temperature: float = 0.7) -> str:
-    """Call LLM to generate ad copy. Opus 4 via API."""
+def _call_llm(prompt: str, temperature: float = 0.7,
+              system_context: str = None) -> str:
+    """Call LLM to generate ad copy. Sonnet 4.6 via API with prompt caching.
+
+    If system_context is provided, it's sent as a cached system prompt
+    (identical for all candidates of the same ad). The prompt becomes
+    just the variant-specific instruction.
+    """
     # API (fast, reliable)
     api_key = os.environ.get("ANTHROPIC_API_KEY", "")
     if api_key:
         try:
             import anthropic
             client = anthropic.Anthropic(api_key=api_key)
-            response = client.messages.create(
-                model="claude-opus-4-6",
-                max_tokens=2000,
-                temperature=temperature,
-                messages=[{"role": "user", "content": prompt}],
-            )
+            kwargs = {
+                "model": "claude-sonnet-4-6",
+                "max_tokens": 2000,
+                "temperature": temperature,
+                "messages": [{"role": "user", "content": prompt}],
+            }
+            if system_context:
+                kwargs["system"] = [{
+                    "type": "text",
+                    "text": system_context,
+                    "cache_control": {"type": "ephemeral"},
+                }]
+            response = client.messages.create(**kwargs)
             return response.content[0].text
         except Exception as e:
             import sys
