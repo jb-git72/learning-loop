@@ -4,28 +4,32 @@
   "hook_type": "direct_address",
   "funnel": "TOF",
   "content_type": "landing-page",
-  "creative_brief": "Clean, editorial layout with a split-hero: left side shows a close-up of hands holding fresh produce at a farm gate, right side shows the Brookvale hub interior — real, unpolished. Below the fold, use simple iconography for the 4-point investment case. Muted greens and warm neutrals. No stock photography. Typography-forward with plenty of white space to let the copy breathe.",
-  "generated_at": "2026-04-05T04:22:30.863058",
+  "creative_brief": "Hero image: close-up of a farmer's weathered hands passing a crate of produce directly to a young parent's hands — no counter, no checkout, no middleman. Warm natural light. Below the fold, use clean white space with a single accent colour (FarmThru green) to let the investment thesis breathe. Photography over illustration. Real faces over stock.",
+  "generated_at": "2026-04-05T11:52:21.916930",
   "page_id": "LP-N",
-  "headline": "Named farms. Real families. A grocery model that cuts out the middlemen.",
-  "subhead": "FarmThru is raising through equity crowdfunding on Birchal. Here is how the business works and why it matters.",
-  "hero_copy": "FarmThru is a farm-direct grocery store with a hub-and-collect model. We connect regenerative farms across NSW directly to families through our Brookvale hub, cutting out unnecessary middlemen.\n\nThe food is fresher. The farmers earn more. And for the first time, everyday investors can own a piece of it through equity crowdfunding on Birchal.",
+  "headline": "You believe food can be fairer. Now you can own the proof.",
+  "subhead": "FarmThru is building a farm-direct grocery store that pays farmers first and feeds families real food. Our equity crowdfunding campaign lets you become a co-owner — not just a customer.",
+  "hero_copy": "You've watched supermarkets squeeze farmers for decades. You've read the labels, doubted the claims, switched brands hoping something would change. Nothing did. Because the system wasn't built for you or the people growing your food. FarmThru is a different system — farm-direct, hub-and-collect, no unnecessary middlemen. We're raising capital through equity crowdfunding on Birchal so everyday people can own a piece of the grocery store that pays farmers first. A $5 refundable deposit secures your VIP spot.",
   "sections": [
     {
-      "heading": "The model",
-      "body": "Farmers send their products straight to our Brookvale hub. Families order online and collect Monday to Friday. Zero wholesalers. Zero cold-storage warehousing. The supply chain is short enough that food arrives days after it leaves the farm, not weeks.\n\nThis is not a meal kit or a box you cannot change. It is on-demand grocery ordering with no lock-in. Families choose what they want from named farms: Rachel's Farm, Bundarra Farm, Collins Wild Caught, Paris Creek, Farmer Brown, and more. No middlemen. No wholesalers. Sydney families collect from the Brookvale hub."
+      "heading": "The investment thesis in one sentence",
+      "body": "Australia's grocery market is worth $130B, and direct-to-consumer food is growing 24% year-on-year. Yet almost no one has built a scalable, farm-direct grocery brand that everyday families can actually afford. That's the gap FarmThru sits in.\n\nOur model is simple: we partner with ~15-20 regenerative farms and suppliers across NSW. Customers order online, collect from our Brookvale hub Monday to Friday (or get delivery across Sydney, Central Coast, and Wollongong). No subscriptions. No lock-in. No membership fees. Bulk buying keeps prices honest.\n\nThe middlemen are gone. The margin they took now splits between fairer farmer payments and lower family prices. Values and money finally pointing the same direction."
     },
     {
-      "heading": "The market",
-      "body": "The Australian grocery market is worth an estimated $130 billion. Direct-to-consumer food is one of its fastest growing segments, with industry reports citing roughly 24% year-on-year growth.\n\nFamilies increasingly want to know where their food comes from, how it was raised, and who grew it. FarmThru sits at the intersection of these trends: regenerative agriculture, direct supply chains, and full transparency on provenance."
+      "heading": "Why this matters to you personally",
+      "body": "Most investments ask you to bet on a spreadsheet. This one asks a different question: do you want to co-own the alternative you've been waiting for?\n\nEvery dollar in a supermarket reinforces a supply chain that moves food 2,400km before it reaches you. FarmThru cuts that to a fraction — straight from farm to hub. Same cut of meat, completely different impact on the farmer who raised it.\n\nAs a VIP investor, you get first access to the campaign, priority updates, and exclusive Q&A with the founding team. You're not watching from the sidelines. You're a partner in a grocery store that shows you exactly where your food comes from.\n\nMinimum investment is $50. Maximum is $10,000 per investor. The $5 refundable VIP deposit holds your place with zero obligation."
     },
     {
-      "heading": "The terms",
-      "body": "Equity crowdfunding on Birchal, launching mid-2026. Minimum investment: $50. Maximum: $10,000 per investor. VIP deposit: $5, fully refundable, for first access and priority updates.\n\nInvesting in early-stage businesses carries real risk. You could lose some or all of your investment. All details, financials, and risks will be in the disclosure document on Birchal. Consider seeking independent financial advice before making any investment decision. We can't promise returns — early-stage investing carries real risk."
+      "heading": "What you're actually backing",
+      "body": "A working hub in Brookvale, already collecting orders. Named farms across NSW, already supplying. A non-subscription model that lets families order when they want, save through bulk buying, and never get locked in.\n\nThis isn't a concept deck. It's a grocery store being built by people who got tired of the old system — for customers who feel the same way.\n\nVote for change with your wallet. Be part of it. Own a piece of it."
+    },
+    {
+      "heading": "Honest risks, honestly stated",
+      "body": "Equity crowdfunding is not a savings account. Your capital is at risk. Early-stage businesses can fail, and there's no guarantee of returns or liquidity. You may lose some or all of your investment.\n\nFarmThru is pre-scale. Growth depends on customer adoption, supply chain execution, and market conditions we can't fully control. Read the offer document on Birchal carefully before committing any money.\n\nWe believe in this model deeply — but belief isn't a financial plan. Invest only what you can afford to lose."
     },
     {
       "heading": "Compliance",
-      "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
+      "body": "This page may contain general information about a potential equity crowdfunding offer. It is not financial advice. Any investment involves risk, including the risk of losing your entire investment. Past performance is not indicative of future results. No returns are guaranteed. FarmThru's equity crowdfunding campaign will be hosted on Birchal. Please read the offer document and any risk disclosures in full before making an investment decision. The $5 VIP deposit is fully refundable. This content has been prepared by FarmThru Pty Ltd and has not been approved by any financial regulator."
     }
   ],
   "cta": "cfe_waitlist"

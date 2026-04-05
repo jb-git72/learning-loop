@@ -4,28 +4,32 @@
   "hook_type": "confession",
   "funnel": "TOF",
   "content_type": "landing-page",
-  "creative_brief": "Hero image: Rachel in a working farm setting, candid and unpolished — not a studio portrait. Muted earth tones, natural light. Below the fold, a simple visual showing the short supply chain: farm icon → hub icon → family icon. No stock photography. The page should feel like a letter, not a billboard.",
-  "generated_at": "2026-04-05T01:42:36.370155",
+  "creative_brief": "Hero image: a parent and child at a kitchen counter unpacking a brown paper bag of vegetables, with a small farm-name sticker visible on a bunch of carrots. Warm natural light, real kitchen — not styled. Below-fold imagery: close-up of a hub collection point with labelled bags ready for pickup. Earthy palette, no stock photography.",
+  "generated_at": "2026-04-05T12:12:28.273154",
   "page_id": "LP-M",
-  "headline": "Do you actually know what your kids ate for dinner last night?",
-  "subhead": "Not the meal — the supply chain. Where it grew, who picked it, how far it travelled. FarmThru is a farm-direct grocery store opening to investors for the first time. VIP spots are limited.",
-  "hero_copy": "Most parents can name every ingredient in the recipe. Almost none can name the farm. That gap between what we cook and what we know haunts every grocery run. FarmThru closes it — a hub-and-collect grocery store that connects you directly with regenerative farms across NSW. No unnecessary middlemen. No mystery produce.\n\nRight now, before our equity crowdfunding campaign goes live on Birchal in mid-2026, a limited number of VIP spots are open. A $5 refundable deposit holds yours.",
+  "headline": "I kept telling my kids our food was fresh. It wasn't.",
+  "subhead": "The lettuce had travelled further than our last family holiday. The beef had no farm name on the label. I stopped pretending — and helped build a grocery store that doesn't need you to. The investor waitlist closes before we launch.",
+  "hero_copy": "I stood in the produce aisle and watched my daughter put spinach in the bag. She asked if it was from a farm. I said yes — because technically it was. But I had no idea which farm. No idea how many warehouses it passed through. No idea how many weeks it sat in cold storage. I just knew the label said 'fresh' and I wanted to believe it. FarmThru exists because families like mine deserve a grocery store where 'fresh' means straight from farm to hub — not a marketing word on plastic wrap. And right now, you can own a piece of it before we open.",
   "sections": [
     {
-      "heading": "The question that started this",
-      "body": "Rachel asked it at a school pickup. Another parent mentioned a recall — leafy greens, contamination, origin unknown. She looked at her fridge that night and realised she couldn't trace a single item back to where it grew. Not one.\n\nThat's not a personal failing. It's a system designed to keep you in the dark. Supermarkets move produce an average of 2,400km before it hits the shelf. By the time it reaches you, the farm is invisible.\n\nFarmThru was built to fix that. We partner with roughly 15–20 farms and suppliers across NSW. You order online, collect from our Brookvale hub Monday to Friday — or get delivery across Sydney, Central Coast, and Wollongong. Every product traces back to a real farm, a real grower. No lock-in. No membership fees. Order when you want."
+      "heading": "The system I kept funding every Tuesday night",
+      "body": "Industry data suggests supermarket produce can travel around 2,400 kilometres before it reaches the shelf. That is ten times the distance of a farm-direct supply chain. Your beef has no farm name on the label. Your tomatoes were picked hard and gassed to look ripe. Farmers — the people actually growing your food — get squeezed at every step by middlemen who add cost but not quality. I knew all of this. I still swiped my card every week. Because there was no real alternative. No store that cut the unnecessary middlemen, partnered directly with farms, and let me collect groceries I could actually trace. So we built one."
     },
     {
-      "heading": "Why VIP spots won't last",
-      "body": "We're opening our equity crowdfunding campaign on Birchal in mid-2026. Before that happens, we're giving a limited number of people first access — priority updates, exclusive Q&A with our team, and the chance to invest before the general public.\n\nMinimum investment starts at $50. Maximum is $10,000 per investor. But VIP access costs just a $5 refundable deposit. Fully refundable, no commitment, no obligation to invest.\n\nThis isn't about watching from the sidelines. It's about owning a piece of a food system that actually shows you where your groceries come from. The VIP list closes when it's full. We won't reopen it."
+      "heading": "What FarmThru actually changes",
+      "body": "FarmThru is a farm-direct grocery store. We partner with roughly 15 to 20 farms and suppliers across NSW. You order online. You collect from our Brookvale hub, Monday to Friday. No membership fees. No subscription. No lock-in — order when you want. The supply chain runs from farm to hub to you. That is it. No warehouses stacking weeks onto your meat. No anonymous supply chains hiding where your vegetables grew. Same cut of meat, completely different impact on the farmers who raised it. Bulk buying keeps prices honest — you save by buying in the quantities that suit your family, and farmers get paid what the food is actually worth. Your values and your money finally pointing the same direction."
     },
     {
-      "heading": "What you're actually backing",
-      "body": "FarmThru is a farm-direct grocery store. Hub-and-collect model. We buy from regenerative farms, cut the unnecessary middlemen, and pass the transparency (and the savings from bulk buying) to you.\n\nNo subscription. No lock-in. You order what you need, when you need it. Collect from Brookvale Monday to Friday, or choose delivery if you're across Sydney, Central Coast, or Wollongong.\n\nBe part of it — not as a customer waiting for someone else to fix the food system, but as a partner who owns a piece of the solution."
+      "heading": "The window to own a piece is narrowing",
+      "body": "FarmThru is raising capital through equity crowdfunding on Birchal. Minimum investment is $50. Maximum is $10,000 per investor. This is not a donation — you become a part-owner of a grocery store that pays farmers first. You can be a customer and an investor. Both. But the campaign has a cap, and once it fills, it closes. Right now, a $5 refundable deposit gets you VIP access: first look at the offer, priority updates, and an exclusive Q&A before the campaign goes public. No commitment beyond that. You are not locked in. But the people who move first get access first. That is how scarcity works — not as a trick, but as a fact. There are only so many seats at this table."
+    },
+    {
+      "heading": "What you are actually deciding",
+      "body": "You can keep walking into the same supermarket, buying the same anonymous produce, and hoping it is better than it looks. Or you can be part of building something that does not exist yet — a grocery store where every dollar traces back to a real farm with a real name. One where your family collects food that travelled a fraction of the distance. One where you vote for change with your wallet. The VIP waitlist is open now. It will not be open forever."
     },
     {
       "heading": "Compliance",
-      "body": "FarmThru's equity crowdfunding campaign will be hosted on Birchal. Investing in equity crowdfunding carries risks, including the potential loss of your entire investment. This is not financial advice. You should consider whether this investment is appropriate for your circumstances and read the offer document in full before making any investment decision. Any investment made through the Birchal platform is subject to the terms and conditions of that platform."
+      "body": "FarmThru's equity crowdfunding campaign is hosted on Birchal. Investing in startups and early-stage businesses involves risks, including illiquidity, lack of dividends, loss of investment, and dilution. It should only be considered as part of a diversified portfolio. This page is not financial advice. The $5 VIP deposit is fully refundable and does not constitute an investment or obligation to invest."
     }
   ],
   "cta": "cfe_waitlist"

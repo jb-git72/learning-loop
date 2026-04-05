@@ -1,35 +1,31 @@
 {
   "angle": "transparency-safety",
   "tactic": "general",
-  "hook_type": "if_then",
+  "hook_type": "question",
   "funnel": "TOF",
   "content_type": "landing-page",
-  "creative_brief": "Hero image: close-up of a hand holding unwashed carrots with visible soil, beside a small chalkboard showing a handwritten farm name and NSW postcode. Muted earth tones, natural light, no supermarket styling. Below the fold, a simple illustrated supply chain diagram: three steps (farm → hub → you) contrasted against a tangled six-step supermarket chain. Clean, editorial layout with generous whitespace.",
-  "generated_at": "2026-04-05T05:19:59.899652",
+  "creative_brief": "Split-screen hero: left side shows a supermarket meat tray with a generic green label reading only 'Product of Australia'; right side shows the same cut with a clear handwritten-style tag listing farm name, location, practice, and distance. Muted, honest tones — no glossy food styling. The contrast should feel immediate and uncomfortable.",
+  "generated_at": "2026-04-05T12:27:21.534049",
   "page_id": "LP-E",
-  "headline": "You don't know what's in your mince. That's by design.",
-  "subhead": "Supermarkets strip the story from your food — where it grew, how it was raised, how far it travelled. FarmThru is building a grocery store that puts every answer back on the label.",
-  "hero_copy": "Pick up a pack of beef mince from the big chains. Try to find the farm name. The paddock practice. The distance it travelled. You won't. That information disappeared somewhere along a supply chain designed to move volume, not build trust.\n\nFarmThru is a farm-direct grocery store. We partner with NSW farms and suppliers — roughly 15 to 20 right now — and move their food through one short chain: farm to hub to you. No unnecessary middlemen. No mystery.\n\nWe're opening our equity crowdfunding campaign on Birchal. You can own a piece of what we're building. But first, we want to show you exactly what that means — and what it doesn't.",
+  "headline": "Do you actually know what farm your chicken came from?",
+  "subhead": "Not the brand. Not the logo. The actual farm — the soil it was raised on, the practice used, the kilometres it travelled. If you can't answer that, the system is working exactly as designed.",
+  "hero_copy": "Supermarkets spend millions on packaging that feels trustworthy. Green labels. Rolling-hills imagery. Words like \"free range\" and \"natural.\" But ask one simple question — which farm? — and the trail goes cold. That silence isn't an accident. It's a feature. FarmThru is a farm-direct grocery store that names every farm, every practice, every kilometre. Because transparency isn't a marketing word to us. It's the entire point.",
   "sections": [
     {
-      "heading": "The transparency problem isn't accidental",
-      "body": "Supermarkets aggregate from hundreds of suppliers. Products get relabelled, repackaged, and shuffled through warehouses and distribution centres. By the time food reaches the shelf, the origin story is gone.\n\nThat's not a bug. Opacity lets margins hide. It lets quality slide without anyone noticing. It lets a pack of chicken sit under a house brand with no farmer's name in sight.\n\nWe think you deserve to know where your food comes from. Not as a marketing slogan — as a verifiable fact on every product you collect from our hub."
+      "heading": "The silence is the strategy",
+      "body": "A conventional supply chain passes your food through four or five middlemen before it reaches a shelf. Each handoff strips away a piece of information. By the time you're reading the label, all that's left is \"Product of Australia\" — a fact so broad it tells you almost nothing.\n\nYou can't verify the farming practice. You can't trace the distance. You don't know if the farmer was paid fairly or squeezed to breaking point. You're trusting a system that profits from you not asking questions.\n\nFarmThru works differently. We partner with roughly 15–20 farms and suppliers across NSW. You order online, collect from our Brookvale hub Monday to Friday. Every product traces to a named farm, a named method, a real distance — straight from farm to hub. No unnecessary middlemen standing between you and the truth about your food."
     },
     {
-      "heading": "How our model keeps the chain short and visible",
-      "body": "FarmThru runs a hub-and-collect model. You order online. You collect from our Brookvale hub — Unit 23, 10-18 Orchard Rd — Monday to Friday. We also offer delivery across Sydney, Central Coast, and Wollongong.\n\nNo subscriptions. No lock-in. No membership fees. You order when you want, and you buy in bulk to save — rewarding your commitment with real affordability.\n\nOur partner farms and suppliers are across NSW. Around 15 to 20 identified on our site right now. Each one traceable. Each one accountable. That short chain — farm to hub to your hands — is what makes transparency possible. Not promises. Infrastructure."
+      "heading": "What transparency actually looks like",
+      "body": "It's not a QR code that leads to a corporate \"sustainability\" page. It's this: you pick up your order from Brookvale and you can see which farm raised that lamb, how far it travelled, and what practice the farmer used. No guessing. No clever label design doing the work of actual information.\n\nThere's no subscription. No lock-in. No membership fee. You order when you want, collect when it suits you. Buy in bulk and you save more — rewarding commitment, not trapping you in one.\n\nThis is a grocery store built around one radical idea: you deserve to know what you're feeding your family. Every single time."
     },
     {
-      "heading": "Own a piece of it — with your eyes open",
-      "body": "We're raising through equity crowdfunding on Birchal. Minimum investment is $50. Maximum is $10,000 per investor.\n\nWe want partners who believe food transparency matters enough to build a business around it. But we won't dress this up. FarmThru is early-stage. Investing in early-stage businesses carries real risk — you could lose some or all of your investment. There are no guaranteed returns.\n\nWe believe the risk and the mission deserve equal honesty. If that resonates, join the VIP waitlist with a $5 refundable deposit. You'll get first access to the campaign, priority updates, and an exclusive Q&A before we open to the public."
-    },
-    {
-      "heading": "No commitment. Just clarity.",
-      "body": "The $5 VIP deposit is fully refundable. It holds your spot and gets you priority access — nothing more, nothing less. You can walk away at any point.\n\nIf you just want groceries, no investment required. Order when you want. Collect from Brookvale Monday to Friday. Our tagline is simple: we'll show you where your food comes from.\n\nBut if you want to be part of building a grocery store where every product carries a provenance you can verify — where safety comes from transparency, not trust — then we'd like you on the inside early."
+      "heading": "Own a piece of the store that has nothing to hide",
+      "body": "We're opening FarmThru to equity crowdfunding through Birchal — so the people who care about food transparency can actually own a piece of the solution.\n\nA $5 refundable deposit gets you VIP access: first look at the campaign, priority updates, and exclusive Q&A with the team. No commitment. Just a front-row seat.\n\nInvestment starts at $50. The maximum is $10,000 per investor. This is a chance to be part of a grocery store that pays farmers first and shows customers everything — not just what looks good on a label.\n\nInvesting in early-stage businesses carries real risk, including the potential loss of your entire investment. This isn't a guaranteed return. It's a bet on a better food system — eyes wide open."
     },
     {
       "heading": "Compliance",
-      "body": "FarmThru's equity crowdfunding campaign will be hosted on Birchal. Investing in early-stage businesses carries risk, including the risk of losing your entire investment. Past performance is not a reliable indicator of future results. This is not financial advice. You should read the offer document and consider whether the investment is right for you before making any decision. Any investment decision is made at your own risk."
+      "body": "FarmThru's equity crowdfunding campaign is hosted on Birchal. Investing in early-stage companies is speculative and carries high risk, including the risk of loss of your entire investment, illiquidity, and dilution. Returns are not guaranteed. This content is not financial advice. You should consider whether this investment is appropriate for your circumstances and read the offer document in full before investing."
     }
   ],
   "cta": "cfe_waitlist"
