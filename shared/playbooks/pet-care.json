@@ -1,0 +1,36 @@
+{
+  "industry": "pet-care",
+  "source": "Motion Creative Benchmarks 2026 + Best for Pet calibration data",
+  "hook_weights": {
+    "story": 1.5,
+    "price_anchor": 1.4,
+    "confession": 1.3,
+    "if_then": 1.3,
+    "quoted_objection": 1.2,
+    "offer_first": 1.2,
+    "fomo": 1.1,
+    "question": 1.0,
+    "statistic": 1.0,
+    "newness": 1.0,
+    "curiosity": 1.0,
+    "bold_claim": 0.9,
+    "urgency": 0.8,
+    "exclusivity": 0.8,
+    "contrarian": 0.8,
+    "direct_address": 0.7,
+    "pattern_interrupt": 0.7
+  },
+  "recommended_angles": [
+    "price-value",
+    "empathy-understanding",
+    "outcome-results",
+    "safety-risk",
+    "simplicity-clarity",
+    "anti-insurance",
+    "guilt-free",
+    "predictability-control"
+  ],
+  "recommended_tactics": ["cost-of-inaction", "before-after", "risk-reversal", "social-proof-stack", "comparison"],
+  "top_visual_formats": ["Testimonial", "Offer-First Banner", "Before & After", "Demo", "UGC"],
+  "creative_context": "Pet owners respond to guilt reduction, cost clarity, and peer stories. Story hooks with named pets/owners outperform. Price anchoring ($800/yr vet bills vs $50/mo) is the strongest conversion pattern. Text-forward assets outperform high-production in this vertical."
+}

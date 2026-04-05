@@ -1,0 +1,122 @@
+{
+  "version": "1.0",
+  "tactics": [
+    {
+      "id": "cost-of-inaction",
+      "name": "Cost of Inaction",
+      "structure": "Status quo pain → What it costs to do nothing → The alternative → CTA",
+      "best_hooks": ["statistic", "price_anchor", "if_then", "story"],
+      "best_content_types": ["meta-ad", "email"],
+      "best_funnels": ["MOF", "BOF"],
+      "guidance": "Show the price of staying put. Use real numbers — '$800/year in emergency vet bills' not 'it costs more than you think'. The maths must be specific and verifiable."
+    },
+    {
+      "id": "pas",
+      "name": "Problem-Agitate-Solve",
+      "structure": "Name the pain → Twist the knife (make it visceral) → Present relief → CTA",
+      "best_hooks": ["question", "story", "confession", "curiosity"],
+      "best_content_types": ["meta-ad", "email"],
+      "best_funnels": ["TOF", "MOF"],
+      "guidance": "The agitation step is where most ads fail — they name the problem but don't make it hurt. Use sensory detail, specific moments, or surprising consequences."
+    },
+    {
+      "id": "bab",
+      "name": "Before-After-Bridge",
+      "structure": "Paint the 'before' state → Show the 'after' state → Bridge = your product → CTA",
+      "best_hooks": ["story", "confession", "direct_address", "fomo"],
+      "best_content_types": ["meta-ad", "email", "landing-page"],
+      "best_funnels": ["TOF", "MOF"],
+      "guidance": "The 'before' must be recognisable — the reader sees themselves in it. The 'after' must be specific and desirable. The bridge is short: one sentence connecting the two."
+    },
+    {
+      "id": "storybrand",
+      "name": "StoryBrand",
+      "structure": "Customer is the hero → Brand is the guide → Name the villain (problem) → Show the plan → Call to action → Show success → Warn of failure",
+      "best_hooks": ["story", "confession", "direct_address", "newness"],
+      "best_content_types": ["landing-page", "email"],
+      "best_funnels": ["TOF", "MOF"],
+      "guidance": "The customer is ALWAYS the hero, never the brand. The brand is the guide with a plan. Works best in longer formats (email, LP) where you have room for the full arc."
+    },
+    {
+      "id": "aida",
+      "name": "AIDA",
+      "structure": "Attention (hook) → Interest (expand on the hook) → Desire (show the benefit) → Action (CTA)",
+      "best_hooks": ["bold_claim", "curiosity", "newness", "statistic"],
+      "best_content_types": ["meta-ad", "landing-page"],
+      "best_funnels": ["TOF"],
+      "guidance": "Classic funnel structure. Each step earns the next. Don't rush to the CTA — interest and desire are where the work happens."
+    },
+    {
+      "id": "social-proof-stack",
+      "name": "Social Proof Stack",
+      "structure": "Lead with proof (testimonial/stat/milestone) → Stack more proof → Connect to reader's situation → CTA",
+      "best_hooks": ["fomo", "story", "statistic", "newness"],
+      "best_content_types": ["meta-ad", "email", "landing-page"],
+      "best_funnels": ["MOF", "BOF"],
+      "guidance": "Stack at least 3 proof points. Mix types: a quote, a number, a named person. The reader should feel like they're the last one who hasn't acted."
+    },
+    {
+      "id": "comparison",
+      "name": "Comparison / Us vs Them",
+      "structure": "Name the alternative (category, not competitor) → Show the gap → Prove your advantage → CTA",
+      "best_hooks": ["price_anchor", "if_then", "curiosity", "contrarian"],
+      "best_content_types": ["meta-ad", "landing-page"],
+      "best_funnels": ["MOF", "BOF"],
+      "guidance": "Compare against the CATEGORY default, never a named competitor. 'Traditional pet insurance charges $180/month and rejects 40% of claims' — not 'Brand X charges...'."
+    },
+    {
+      "id": "founder-story",
+      "name": "Founder Story",
+      "structure": "Founder's personal moment → The problem they saw → Why they built this → What it means for the reader → CTA",
+      "best_hooks": ["story", "confession", "newness", "fomo"],
+      "best_content_types": ["email", "landing-page", "meta-ad"],
+      "best_funnels": ["TOF", "MOF"],
+      "guidance": "The founder's story is only valuable if it connects to the reader's problem. Start with the moment that triggered everything. Be specific — date, place, feeling."
+    },
+    {
+      "id": "direct-offer",
+      "name": "Direct Offer",
+      "structure": "State the offer → List what's included → Remove risk → CTA",
+      "best_hooks": ["offer_first", "price_anchor", "statistic", "exclusivity"],
+      "best_content_types": ["meta-ad", "landing-page"],
+      "best_funnels": ["BOF"],
+      "guidance": "No story, no emotion — just the deal. This works for warm audiences who already know the brand. Specificity is everything: exact price, exact inclusions, exact risk removal."
+    },
+    {
+      "id": "curiosity-gap",
+      "name": "Curiosity Gap",
+      "structure": "Reveal a surprising fact → Create an incomplete picture → Promise the resolution → CTA",
+      "best_hooks": ["curiosity", "statistic", "contrarian", "bold_claim"],
+      "best_content_types": ["meta-ad", "email"],
+      "best_funnels": ["TOF"],
+      "guidance": "The gap must be genuinely interesting, not clickbait. 'We tested 14 brands...' works because the reader wants to know which 2 passed. The resolution must be real."
+    },
+    {
+      "id": "risk-reversal",
+      "name": "Risk Reversal",
+      "structure": "Name the fear → Acknowledge it → Remove the risk (guarantee, trial, refund) → Prove it works → CTA",
+      "best_hooks": ["quoted_objection", "confession", "if_then", "price_anchor"],
+      "best_content_types": ["meta-ad", "email", "landing-page"],
+      "best_funnels": ["MOF", "BOF"],
+      "guidance": "The risk reversal must be specific and concrete — 'cancel anytime, no questions' not 'satisfaction guaranteed'. Address the actual objection the audience has."
+    },
+    {
+      "id": "before-after",
+      "name": "Before / After",
+      "structure": "Show the 'before' (with specifics) → Show the 'after' (with specifics) → Explain the difference → CTA",
+      "best_hooks": ["story", "statistic", "price_anchor", "fomo"],
+      "best_content_types": ["meta-ad", "landing-page"],
+      "best_funnels": ["MOF", "BOF"],
+      "guidance": "Both before and after need concrete details — dollars, time, feelings. '$1,300/year in emergency bills' → '$50/month, everything covered'. The contrast does the selling."
+    },
+    {
+      "id": "educational",
+      "name": "Educational / How It Works",
+      "structure": "Teach something the reader didn't know → Connect it to their situation → Show how you solve it → CTA",
+      "best_hooks": ["curiosity", "statistic", "contrarian", "question"],
+      "best_content_types": ["email", "landing-page", "meta-ad"],
+      "best_funnels": ["TOF", "MOF"],
+      "guidance": "The teaching moment must be genuinely useful — not a disguised sales pitch. The reader should learn something real even if they never buy. Connect the lesson to your product naturally."
+    }
+  ]
+}

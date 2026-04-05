@@ -1,0 +1,33 @@
+{
+  "industry": "fintech",
+  "source": "Motion Creative Benchmarks 2026 (Finance vertical) + CFE campaign data",
+  "hook_weights": {
+    "price_anchor": 1.5,
+    "statistic": 1.4,
+    "exclusivity": 1.4,
+    "urgency": 1.3,
+    "if_then": 1.3,
+    "story": 1.2,
+    "curiosity": 1.2,
+    "newness": 1.1,
+    "offer_first": 1.1,
+    "fomo": 1.0,
+    "bold_claim": 1.0,
+    "quoted_objection": 1.0,
+    "confession": 0.9,
+    "question": 0.9,
+    "contrarian": 0.8,
+    "direct_address": 0.7,
+    "pattern_interrupt": 0.7
+  },
+  "recommended_angles": [
+    "investment-thesis",
+    "transparency-safety",
+    "urgency-scarcity",
+    "comparison-switching",
+    "predictability-control"
+  ],
+  "recommended_tactics": ["risk-reversal", "cost-of-inaction", "comparison", "direct-offer", "curiosity-gap"],
+  "top_visual_formats": ["Offer-First Banner", "Demo", "Testimonial", "Screen Recording", "Statistic"],
+  "creative_context": "Finance audiences need trust signals and specific numbers. Price anchoring and statistics drive highest spend use ratios. Exclusivity ('early access', 'founder round') resonates for investment products. Compliance is critical — all claims must be verifiable, disclaimers required. Risk reversal ('refundable deposit', 'cancel anytime') addresses the primary objection."
+}

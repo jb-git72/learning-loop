@@ -23,19 +23,53 @@ if str(_root) not in sys.path:
 from scripts.lint_content import lint as lint_content
 
 
-# --- Hook type templates ---
-HOOK_TEMPLATES = {
-    "question": "Open with a genuine question the audience has asked themselves. Not rhetorical — real.",
-    "statistic": "Open with a specific, surprising number that creates an anchor.",
-    "bold_claim": "Open with a value proposition so strong it triggers disbelief.",
-    "confession": "Open with an honest admission that earns trust through vulnerability.",
-    "contrarian": "Open by challenging a common assumption the audience holds.",
-    "if_then": "Open with an if/then structure that lets the maths sell.",
-    "quoted_objection": "Open with a real objection in quotes, then address it.",
-    "story": "Open with a specific moment — a day, an action, a cost. Make it real.",
-    "direct_address": "Open by speaking directly to the reader's situation.",
-    "pattern_interrupt": "Open with something unexpected that doesn't look like an ad.",
-}
+# --- Load canonical hook and tactic registries from shared/ ---
+def _load_hooks_registry() -> tuple[dict, dict]:
+    """Load hooks.json and build HOOK_TEMPLATES + HOOK_METADATA dicts."""
+    hooks_path = _root / "shared" / "hooks.json"
+    if hooks_path.exists():
+        with open(hooks_path) as f:
+            data = json.load(f)
+        templates = {}
+        metadata = {}
+        for h in data.get("hooks", []):
+            templates[h["id"]] = h["template"]
+            metadata[h["id"]] = {
+                "benchmark_hit_rate": h.get("benchmark_hit_rate", 0.05),
+                "benchmark_spend_use_ratio": h.get("benchmark_spend_use_ratio", 1.0),
+                "best_verticals": h.get("best_verticals", ["all"]),
+                "best_content_types": h.get("best_content_types", ["meta-ad"]),
+                "scorer_compatible_pattern": h.get("scorer_compatible_pattern", ""),
+                "content_type_adaptations": h.get("content_type_adaptations", {}),
+            }
+        return templates, metadata
+    # Fallback to hardcoded if hooks.json missing
+    return {
+        "question": "Open with a genuine question the audience has asked themselves. Not rhetorical — real.",
+        "statistic": "Open with a specific, surprising number that creates an anchor.",
+        "bold_claim": "Open with a value proposition so strong it triggers disbelief.",
+        "confession": "Open with an honest admission that earns trust through vulnerability.",
+        "contrarian": "Open by challenging a common assumption the audience holds.",
+        "if_then": "Open with an if/then structure that lets the maths sell.",
+        "quoted_objection": "Open with a real objection in quotes, then address it.",
+        "story": "Open with a specific moment — a day, an action, a cost. Make it real.",
+        "direct_address": "Open by speaking directly to the reader's situation.",
+        "pattern_interrupt": "Open with something unexpected that doesn't look like an ad.",
+    }, {}
+
+
+def _load_tactics_registry() -> dict:
+    """Load tactics.json and return a dict keyed by tactic ID."""
+    tactics_path = _root / "shared" / "tactics.json"
+    if tactics_path.exists():
+        with open(tactics_path) as f:
+            data = json.load(f)
+        return {t["id"]: t for t in data.get("tactics", [])}
+    return {}
+
+
+HOOK_TEMPLATES, HOOK_METADATA = _load_hooks_registry()
+TACTICS_REGISTRY = _load_tactics_registry()
 
 
 def generate_variant(
@@ -170,7 +204,7 @@ def _build_scoring_guide(content_type: str, config: dict) -> str:
 STRUCTURE (highest-weighted dimension): Hook → Proof → Bridge → CTA. Each section earns the next. "Velvet slide" — if removing a paragraph doesn't break the flow, cut it. Score 5 = "invisible structure." Score 1 = "list of features."
 MOTIVATION: Tap the FELT need, not features. "I didn't know what my kids were eating" not "farm-direct grocery." People buy on emotion, rationalize with logic.
 ANGLE: ONE proposition per piece. Every sentence reinforces it. Competing themes = score 2.
-HOOK: Story moment, named person, quoted objection, or question. Generic opener = score 1.
+HOOK: The first line determines your hook score. Highest-scoring patterns: named person + action verb ("Sarah walked in..."), quoted objection (open with "), story moment (yesterday, last week, walked in). Also strong: questions (?), numbers/dollars ($, digits first), if/then ("If you..."). Generic openers score lowest.
 SPECIFICITY: 5-7 concrete signals (dollars, numbers, named farms/people). Vague = score 1.
 OBJECTION PREEMPTION: {objection_signals}
 HEADLINES: 4 U's — Urgent, Unique, Ultra-specific, Useful. Sentence case only.
@@ -237,6 +271,15 @@ def _build_prompt(
     if isinstance(constraints, dict) and content_type in constraints:
         constraints = constraints[content_type]
 
+    # Load industry playbook context if available
+    industry = config.get("industry", "general")
+    playbook_md_path = _root / "shared" / "playbooks" / f"{industry}.md"
+    if not playbook_md_path.exists():
+        playbook_md_path = _root / "shared" / "playbooks" / "general.md"
+    industry_context = ""
+    if playbook_md_path.exists():
+        industry_context = _load_text(playbook_md_path)[:400]
+
     # Build facts context — relevant facts for this angle
     facts_text = _select_relevant_facts(facts, angle, content_type)
 
@@ -244,8 +287,21 @@ def _build_prompt(
     scoring_guide = _build_scoring_guide(content_type, config)
     rules_summary = _build_rules_summary(config, content_type)
 
-    # Hook template
+    # Hook template + content-type adaptation
     hook_template = HOOK_TEMPLATES.get(hook_type, "Write a compelling hook.")
+    hook_meta = HOOK_METADATA.get(hook_type, {})
+    hook_adaptation = hook_meta.get("content_type_adaptations", {}).get(content_type, "")
+    if hook_adaptation:
+        hook_template += f" [{content_type} tip: {hook_adaptation}]"
+
+    # Tactic structure guidance
+    tactic_info = TACTICS_REGISTRY.get(tactic, {})
+    tactic_structure = ""
+    if tactic_info:
+        tactic_structure = f"\nTACTIC STRUCTURE: {tactic_info.get('structure', '')}"
+        tactic_guidance = tactic_info.get("guidance", "")
+        if tactic_guidance:
+            tactic_structure += f"\nTACTIC GUIDANCE: {tactic_guidance}"
 
     # Hill-climbing context — show the right fields per content type
     beat_text = ""
@@ -412,10 +468,15 @@ Focus specifically on improving these while maintaining everything else:
 - Every number must trace to a verified fact above
 - Description field should complement the headline, not repeat it"""
 
+    # Build industry context section
+    industry_section = ""
+    if industry_context:
+        industry_section = f"\nINDUSTRY CONTEXT ({industry}):\n{industry_context}\n"
+
     return f"""Write ONE {content_label} for {client_name} — {product}.
 
 ANGLE: {angle}
-TACTIC: {tactic}
+TACTIC: {tactic}{tactic_structure}
 HOOK TYPE: {hook_type} — {hook_template}
 FUNNEL: {funnel}
 
@@ -428,7 +489,7 @@ CONSTRAINTS:
 
 TONE GUIDELINES:
 {tone[:600]}
-
+{industry_section}
 CREATIVE LEARNINGS:
 {learnings[:1600]}
 
@@ -451,7 +512,7 @@ def _dimension_improvement_guidance(dim_name: str) -> str:
         "specificity": "Add 5-7 concrete signals: dollar amounts, numbers, named farms/people. Replace vague claims with proof.",
         "objection_preemption": "Include: 'no commitment', 'order when you want', mention the hub, acknowledge risk, reference provenance.",
         "receptionist_test": "Answer: What is it? Where does food come from? How is it different? How do I start? Why now?",
-        "scroll_stop_hook": "Open with a story moment, named person, quoted objection, or specific number. Never a generic statement.",
+        "scroll_stop_hook": "Best: named person + action ('Sarah walked in last Tuesday'), story moment ('Yesterday I opened...'), quoted objection (start with \"). Strong: question (end with ?), number/dollar first ('$50 covers...', '14 farms...'), if/then ('If you...'). NEVER generic statements.",
         "cta_clarity": "Use an approved CTA exactly as listed. Make it specific and action-oriented.",
         "platform_fit": "Stay within character limits. Use conversational tone. No corporate jargon.",
         "differentiation": "Use unique language. Avoid phrases from other ads in the set. Find a fresh angle of attack.",

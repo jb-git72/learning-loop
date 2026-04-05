@@ -35,7 +35,7 @@ if env_path.exists():
 from engine.scorer import load_client, score_ad
 from engine.llm_judge import score_pairwise
 from scripts.lint_content import lint
-from writer import generate_variant, HOOK_TEMPLATES
+from writer import generate_variant, HOOK_TEMPLATES, HOOK_METADATA
 
 
 # ---------------------------------------------------------------------------
@@ -88,10 +88,67 @@ def _get_weak_dimensions(report: dict, threshold: int = 3, max_dims: int = 2) ->
     return weak[:max_dims]
 
 
-def _pick_mutated_hook(current_hook: str) -> str:
-    """Pick a random hook_type different from the current one."""
+def _load_industry_playbook(client_dir: Path) -> dict:
+    """Load the industry playbook for this client (JSON). Falls back to general."""
+    config_path = client_dir / "config.json"
+    industry = "general"
+    if config_path.exists():
+        with open(config_path) as f:
+            industry = json.load(f).get("industry", "general")
+    playbook_path = root / "shared" / "playbooks" / f"{industry}.json"
+    if not playbook_path.exists():
+        playbook_path = root / "shared" / "playbooks" / "general.json"
+    if playbook_path.exists():
+        with open(playbook_path) as f:
+            return json.load(f)
+    return {}
+
+
+def _pick_mutated_hook(current_hook: str, playbook: dict = None,
+                       recent_hooks: list = None) -> str:
+    """Pick a hook weighted by benchmark hit rate and industry playbook.
+
+    Uses: benchmark_hit_rate × industry_hook_weight × recency_factor.
+    20% of the time picks purely random to preserve exploration.
+    """
     available = [h for h in HOOK_TEMPLATES if h != current_hook]
-    return random.choice(available) if available else current_hook
+    if not available:
+        return current_hook
+
+    # 20% pure random for exploration
+    if random.random() < 0.2:
+        return random.choice(available)
+
+    # Weighted selection
+    hook_weights_from_playbook = playbook.get("hook_weights", {}) if playbook else {}
+    recent = set(recent_hooks or [])
+
+    weights = []
+    for h in available:
+        meta = HOOK_METADATA.get(h, {})
+        hit_rate = meta.get("benchmark_hit_rate", 0.05)
+        industry_weight = hook_weights_from_playbook.get(h, 1.0)
+        recency_factor = 0.5 if h in recent else 1.0
+        weights.append(hit_rate * industry_weight * recency_factor)
+
+    return random.choices(available, weights=weights, k=1)[0]
+
+
+def _pick_wildcard_hook(playbook: dict = None, tested_hooks: set = None) -> str:
+    """Pick a hook for wildcard mode — prefer untested high-potential hooks."""
+    all_hooks = list(HOOK_TEMPLATES.keys())
+    tested = tested_hooks or set()
+    untested = [h for h in all_hooks if h not in tested]
+
+    if untested and playbook:
+        # Weight untested hooks by industry playbook weights
+        hook_weights = playbook.get("hook_weights", {})
+        weights = [hook_weights.get(h, 1.0) for h in untested]
+        return random.choices(untested, weights=weights, k=1)[0]
+    elif untested:
+        return random.choice(untested)
+    else:
+        return random.choice(all_hooks)
 
 
 def _pick_donor_ad(all_items: list, current_ad: dict, content_type: str):
@@ -227,15 +284,21 @@ def run_evolutionary(all_items, all_ads, client, client_dir, shared_dir,
                      max_iterations, target, population_size, use_llm,
                      use_pairwise=False):
     """Population-based evolutionary hill-climb with mutation, crossover,
-    wildcard, and dimension-targeted improvement."""
+    wildcard, and dimension-targeted improvement.
+
+    Uses benchmark hit rates and industry playbooks to weight hook mutation.
+    """
     recent_failures = []
     improved = 0
+    recent_hooks_per_item = {}  # track recent hooks tried per ad_id
+    tested_hooks_per_item = {}  # track all hooks ever tried per ad_id
 
-    # Load angles for mutation
+    # Load config and industry playbook
     config_path = client_dir / "config.json"
     with open(config_path) as f:
         config = json.load(f)
     angles = config.get("angles_in_use", [])
+    playbook = _load_industry_playbook(client_dir)
 
     for iteration in range(max_iterations):
         below = [i for i in all_items if i["score"] < target]
@@ -255,6 +318,10 @@ def run_evolutionary(all_items, all_ads, client, client_dir, shared_dir,
             # Get weak dimensions for targeted mode
             weak_dims = _get_weak_dimensions(item.get("report", {}))
 
+            # Track hooks for this item
+            recent_hooks = recent_hooks_per_item.get(ad_id, [])
+            tested_hooks = tested_hooks_per_item.setdefault(ad_id, {current_hook})
+
             print(f"  {ad_id} ({content_type}): {old_score:.3f} [{item['verdict']}]", flush=True)
 
             # Build candidate strategies for this iteration
@@ -269,8 +336,8 @@ def run_evolutionary(all_items, all_ads, client, client_dir, shared_dir,
                 "label": "improve",
             })
 
-            # Slot 2: exploration via mutation — different hook type
-            mutated_hook = _pick_mutated_hook(current_hook)
+            # Slot 2: exploration via benchmark-informed mutation
+            mutated_hook = _pick_mutated_hook(current_hook, playbook, recent_hooks)
             candidates.append({
                 "mode": "mutate",
                 "hook_type": mutated_hook,
@@ -281,12 +348,13 @@ def run_evolutionary(all_items, all_ads, client, client_dir, shared_dir,
 
             # Slot 3: wildcard every 3rd iteration, otherwise targeted
             if (iteration + 1) % 3 == 0:
+                wc_hook = _pick_wildcard_hook(playbook, tested_hooks)
                 candidates.append({
                     "mode": "wildcard",
-                    "hook_type": random.choice(list(HOOK_TEMPLATES.keys())),
+                    "hook_type": wc_hook,
                     "donor_ad": None,
                     "weak_dimensions": None,
-                    "label": "wildcard",
+                    "label": f"wildcard({wc_hook})",
                 })
             elif weak_dims:
                 candidates.append({
@@ -298,7 +366,7 @@ def run_evolutionary(all_items, all_ads, client, client_dir, shared_dir,
                 })
             else:
                 # Fallback: another mutation with a different hook
-                alt_hook = _pick_mutated_hook(mutated_hook)
+                alt_hook = _pick_mutated_hook(mutated_hook, playbook, recent_hooks)
                 candidates.append({
                     "mode": "mutate",
                     "hook_type": alt_hook,
@@ -331,7 +399,7 @@ def run_evolutionary(all_items, all_ads, client, client_dir, shared_dir,
                     else:
                         candidates.append({
                             "mode": "mutate",
-                            "hook_type": _pick_mutated_hook(current_hook),
+                            "hook_type": _pick_mutated_hook(current_hook, playbook, recent_hooks),
                             "donor_ad": None,
                             "weak_dimensions": None,
                             "label": "mutate(fallback)",
@@ -364,6 +432,11 @@ def run_evolutionary(all_items, all_ads, client, client_dir, shared_dir,
                     best_score = new_score
                     best_report = new_report
                     best_label = cand["label"]
+
+            # Track all hooks tried this iteration for recency weighting
+            tried_this_round = [c["hook_type"] for c in candidates]
+            recent_hooks_per_item[ad_id] = (recent_hooks + tried_this_round)[-6:]
+            tested_hooks.update(tried_this_round)
 
             # Accept the best if it improved (with optional pairwise gate)
             if best_candidate and best_score > old_score:

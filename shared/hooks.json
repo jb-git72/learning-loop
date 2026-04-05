@@ -1,0 +1,244 @@
+{
+  "version": "1.0",
+  "source": "Motion Creative Benchmarks 2026 + learning-loop internal data",
+  "hooks": [
+    {
+      "id": "question",
+      "template": "Open with a genuine question the audience has asked themselves. Not rhetorical — real.",
+      "benchmark_hit_rate": 0.06,
+      "benchmark_spend_use_ratio": 1.0,
+      "best_verticals": ["all"],
+      "best_content_types": ["meta-ad", "email", "landing-page"],
+      "scorer_compatible_pattern": "question",
+      "content_type_adaptations": {
+        "meta-ad": "One question, one line. Make it personal — 'you' not 'people'.",
+        "email": "Question in subject line or first line of body. Creates open loop.",
+        "landing-page": "Question as headline or subhead. Hero copy answers it."
+      }
+    },
+    {
+      "id": "statistic",
+      "template": "Open with a specific, surprising number that creates an anchor.",
+      "benchmark_hit_rate": 0.07,
+      "benchmark_spend_use_ratio": 1.1,
+      "best_verticals": ["all"],
+      "best_content_types": ["meta-ad", "email", "landing-page"],
+      "scorer_compatible_pattern": "statistic",
+      "content_type_adaptations": {
+        "meta-ad": "Lead with the number. '$800' or '270+ clinics' — digits first.",
+        "email": "Number in subject line for open rate. Expand in body.",
+        "landing-page": "Headline stat, hero copy gives context."
+      }
+    },
+    {
+      "id": "bold_claim",
+      "template": "Open with a value proposition so strong it triggers disbelief.",
+      "benchmark_hit_rate": 0.07,
+      "benchmark_spend_use_ratio": 0.95,
+      "best_verticals": ["health-wellness", "fintech", "pet-care"],
+      "best_content_types": ["meta-ad", "landing-page"],
+      "scorer_compatible_pattern": "bold_claim",
+      "content_type_adaptations": {
+        "meta-ad": "Claim + 'That's not a typo.' or 'You read that right.' in first two lines.",
+        "email": "Claim as subject line. Body proves it.",
+        "landing-page": "Claim as headline. Proof density in sections below."
+      }
+    },
+    {
+      "id": "confession",
+      "template": "Open with an honest admission that earns trust through vulnerability.",
+      "benchmark_hit_rate": 0.09,
+      "benchmark_spend_use_ratio": 1.4,
+      "best_verticals": ["health-wellness", "food-nutrition", "pet-care"],
+      "best_content_types": ["meta-ad", "email"],
+      "scorer_compatible_pattern": "story",
+      "content_type_adaptations": {
+        "meta-ad": "Start with 'I' or a named person confessing. Story pattern scores highest.",
+        "email": "Confession unfolds over 2-3 paragraphs. Founder voice works best.",
+        "landing-page": "Confession in hero_copy. Headline captures the lesson learned."
+      }
+    },
+    {
+      "id": "contrarian",
+      "template": "Open by challenging a common assumption the audience holds.",
+      "benchmark_hit_rate": 0.07,
+      "benchmark_spend_use_ratio": 1.1,
+      "best_verticals": ["fintech", "health-wellness", "automotive"],
+      "best_content_types": ["meta-ad", "email"],
+      "scorer_compatible_pattern": "story",
+      "content_type_adaptations": {
+        "meta-ad": "Name the assumption, then break it. Use a story moment or quote to land it.",
+        "email": "Challenge in subject line, prove the alternative in body.",
+        "landing-page": "Challenge as headline. Sections build the counter-argument."
+      }
+    },
+    {
+      "id": "if_then",
+      "template": "Open with an if/then structure that lets the maths sell.",
+      "benchmark_hit_rate": 0.07,
+      "benchmark_spend_use_ratio": 1.1,
+      "best_verticals": ["pet-care", "fintech", "health-wellness"],
+      "best_content_types": ["meta-ad", "email"],
+      "scorer_compatible_pattern": "if_then",
+      "content_type_adaptations": {
+        "meta-ad": "Start with 'If' — the scorer recognises this pattern. Make the maths specific.",
+        "email": "'If you [situation]...' in subject or opening. Body completes the equation.",
+        "landing-page": "If/then as subhead. Hero copy shows the maths."
+      }
+    },
+    {
+      "id": "quoted_objection",
+      "template": "Open with a real objection in quotes, then address it.",
+      "benchmark_hit_rate": 0.06,
+      "benchmark_spend_use_ratio": 1.0,
+      "best_verticals": ["pet-care", "fintech", "health-wellness"],
+      "best_content_types": ["meta-ad", "email"],
+      "scorer_compatible_pattern": "quoted_objection",
+      "content_type_adaptations": {
+        "meta-ad": "Open with quote marks — \"I thought...\" or \"But what about...\" Scorer gives this a 5.",
+        "email": "Objection as subject line in quotes. Body dismantles it.",
+        "landing-page": "Objection in hero. Sections are the counter-evidence."
+      }
+    },
+    {
+      "id": "story",
+      "template": "Open with a specific moment — a day, an action, a cost. Make it real.",
+      "benchmark_hit_rate": 0.08,
+      "benchmark_spend_use_ratio": 1.2,
+      "best_verticals": ["all"],
+      "best_content_types": ["meta-ad", "email", "landing-page"],
+      "scorer_compatible_pattern": "story",
+      "content_type_adaptations": {
+        "meta-ad": "Name + verb + specific moment. 'Sarah walked in last Tuesday.' Scores 5.",
+        "email": "Story unfolds over 2-3 short paragraphs. First line is the moment.",
+        "landing-page": "Story in hero_copy. Headline distils the lesson."
+      }
+    },
+    {
+      "id": "direct_address",
+      "template": "Open by speaking directly to the reader's situation.",
+      "benchmark_hit_rate": 0.06,
+      "benchmark_spend_use_ratio": 0.9,
+      "best_verticals": ["all"],
+      "best_content_types": ["meta-ad", "email"],
+      "scorer_compatible_pattern": "question",
+      "content_type_adaptations": {
+        "meta-ad": "Frame as a question to score 4 — 'Spending $200/month on vet visits?' Otherwise generic.",
+        "email": "Direct 'you' statement. Works best as subject line opener.",
+        "landing-page": "Direct address as subhead under a more specific headline."
+      }
+    },
+    {
+      "id": "pattern_interrupt",
+      "template": "Open with something unexpected that doesn't look like an ad.",
+      "benchmark_hit_rate": 0.06,
+      "benchmark_spend_use_ratio": 1.0,
+      "best_verticals": ["fashion-apparel", "food-nutrition"],
+      "best_content_types": ["meta-ad"],
+      "scorer_compatible_pattern": "story",
+      "content_type_adaptations": {
+        "meta-ad": "Use a named person or specific moment to make it feel like a real post, not an ad.",
+        "email": "Unexpected subject line. Break the pattern of promotional emails.",
+        "landing-page": "Unconventional headline that stops the scan."
+      }
+    },
+    {
+      "id": "newness",
+      "template": "Open with a specific announcement moment — a name, a date, a product. 'Rachel just packed the first box of Paris Creek butter.' Make the news feel like a story, not a press release.",
+      "benchmark_hit_rate": 0.12,
+      "benchmark_spend_use_ratio": 1.8,
+      "best_verticals": ["health-wellness", "food-nutrition", "fashion-apparel", "automotive", "pet-care"],
+      "best_content_types": ["meta-ad", "email"],
+      "scorer_compatible_pattern": "story",
+      "content_type_adaptations": {
+        "meta-ad": "Named person + action verb = story pattern (scores 5). 'Rachel just packed...' not 'Introducing our new...'",
+        "email": "Announcement as story in first paragraph. Subject line hints at the news.",
+        "landing-page": "News as headline. Hero copy tells the story behind it."
+      }
+    },
+    {
+      "id": "price_anchor",
+      "template": "Open with the exact dollar amount that reframes value. '$50 covers your dog's vet visits, vaccines, and dental. Every month.' Let the number do the selling — start with the dollar sign.",
+      "benchmark_hit_rate": 0.10,
+      "benchmark_spend_use_ratio": 2.0,
+      "best_verticals": ["all"],
+      "best_content_types": ["meta-ad", "email", "landing-page"],
+      "scorer_compatible_pattern": "statistic",
+      "content_type_adaptations": {
+        "meta-ad": "Start with '$' — scorer gives statistic hooks a 4. Two prices side by side for maximum anchor effect.",
+        "email": "Price in subject line drives opens. Body explains the value.",
+        "landing-page": "Price comparison as headline or hero. Sections prove the value."
+      }
+    },
+    {
+      "id": "urgency",
+      "template": "Open with a specific, real deadline or countdown with a number. '72 hours until the waitlist closes.' or '14 spots left in the March intake.' Only use real dates and real limits — never manufactured scarcity.",
+      "benchmark_hit_rate": 0.09,
+      "benchmark_spend_use_ratio": 1.3,
+      "best_verticals": ["fintech", "fashion-apparel", "food-nutrition"],
+      "best_content_types": ["meta-ad", "email"],
+      "scorer_compatible_pattern": "statistic",
+      "content_type_adaptations": {
+        "meta-ad": "Start with the number — '14 spots' or '72 hours'. Scores 4 as statistic hook. Must be real, not manufactured.",
+        "email": "Deadline in subject line. Body explains what happens after the deadline.",
+        "landing-page": "Countdown as hero element. Sections explain why the deadline matters."
+      }
+    },
+    {
+      "id": "curiosity",
+      "template": "Open with a specific, surprising fact that creates a knowledge gap the reader must close. 'We tested 14 brands of beef. Only 2 were raised on pasture.' Use a number to anchor the opening.",
+      "benchmark_hit_rate": 0.08,
+      "benchmark_spend_use_ratio": 1.3,
+      "best_verticals": ["food-nutrition", "health-wellness", "pet-care", "automotive"],
+      "best_content_types": ["meta-ad", "email"],
+      "scorer_compatible_pattern": "statistic",
+      "content_type_adaptations": {
+        "meta-ad": "Lead with the number for a statistic score (4). The incomplete thought pulls them in.",
+        "email": "Curiosity gap in subject line. First paragraph opens the gap wider, body closes it.",
+        "landing-page": "Curiosity stat as headline. Hero copy begins the reveal. Sections complete it."
+      }
+    },
+    {
+      "id": "offer_first",
+      "template": "Open with the complete offer in one sentence, price first. '$50/month. Every routine vet visit covered. No excess.' No story, no context — lead with the value proposition immediately.",
+      "benchmark_hit_rate": 0.08,
+      "benchmark_spend_use_ratio": 1.5,
+      "best_verticals": ["all"],
+      "best_content_types": ["meta-ad", "landing-page"],
+      "scorer_compatible_pattern": "statistic",
+      "content_type_adaptations": {
+        "meta-ad": "Start with '$' — scorer gives this a 4. Pack the full offer into 1-2 sentences.",
+        "email": "Offer as subject line. Body adds proof and social context.",
+        "landing-page": "Offer as headline. Hero copy lists what's included. Sections prove value."
+      }
+    },
+    {
+      "id": "fomo",
+      "template": "Open with a story about someone else's experience — what they got, what they're doing, what they chose. 'Sarah in Brookvale picked up her first box last Tuesday. She said the pork belly alone was worth it.' Social proof as a story hook.",
+      "benchmark_hit_rate": 0.08,
+      "benchmark_spend_use_ratio": 1.2,
+      "best_verticals": ["food-nutrition", "fashion-apparel", "health-wellness"],
+      "best_content_types": ["meta-ad", "email"],
+      "scorer_compatible_pattern": "story",
+      "content_type_adaptations": {
+        "meta-ad": "Named person + action = story pattern (scores 5). Make inaction feel like missing out.",
+        "email": "Story of someone else's experience. Reader sees themselves in it.",
+        "landing-page": "Testimonial as hero. Sections show more people doing it."
+      }
+    },
+    {
+      "id": "exclusivity",
+      "template": "Open with the specific number of spots or the access gate. '200 early-access spots. Here's what you get first.' Scarcity through specificity, not hype.",
+      "benchmark_hit_rate": 0.07,
+      "benchmark_spend_use_ratio": 1.1,
+      "best_verticals": ["fintech", "fashion-apparel", "food-nutrition"],
+      "best_content_types": ["meta-ad", "email", "landing-page"],
+      "scorer_compatible_pattern": "statistic",
+      "content_type_adaptations": {
+        "meta-ad": "Start with the number — '200 spots' scores 4 as statistic hook. Then explain what access means.",
+        "email": "Exclusivity in subject. Body explains what makes this group special.",
+        "landing-page": "Exclusivity as headline. Sections detail the early-access benefits."
+      }
+    }
+  ]
+}
