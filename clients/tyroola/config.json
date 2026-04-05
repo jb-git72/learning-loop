@@ -1,0 +1,201 @@
+{
+  "client_id": "tyroola",
+  "client_name": "Tyroola",
+  "industry": "automotive",
+  "product": "Online tyre retailer \u2014 buy tyres online, mobile fitters come to you",
+  "currency": "AUD",
+  "market": "AU",
+  "content_types": [
+    "meta-ad"
+  ],
+  "files": {
+    "rules": "rules.json",
+    "facts": "facts.json",
+    "tone": "tone.md",
+    "learnings": "learnings.md"
+  },
+  "rubric": {
+    "meta-ad": {
+      "weights": {
+        "angle_clarity": 1.25,
+        "motivation_match": 1.0,
+        "tactic_execution": 1.0,
+        "specificity": 1.5,
+        "objection_preemption": 1.25,
+        "receptionist_test": 1.5,
+        "scroll_stop_hook": 1.5,
+        "cta_clarity": 1.0,
+        "platform_fit": 1.0,
+        "differentiation": 1.0
+      },
+      "max_score": 63.75,
+      "thresholds": {
+        "production_ready": 51,
+        "strong_draft": 44,
+        "needs_work": 32,
+        "rewrite": 0
+      }
+    }
+  },
+  "composite_weights": {
+    "rubric": 0.5,
+    "rule_compliance": 0.3,
+    "fact_accuracy": 0.2
+  },
+  "platform_constraints": {
+    "meta-ad": {
+      "primary_text_max_chars": 500,
+      "headline_max_chars": 40,
+      "description_max_chars": 125,
+      "platform": "meta"
+    }
+  },
+  "critical_rules": [
+    "no_condescension",
+    "no_commands"
+  ],
+  "scoring_context": {
+    "product": "Tyroola is an Australian online tyre retailer offering a wide range of tyres for passenger cars, 4x4s, SUVs, motorcycles, light trucks, and more. Customers search by tyre size or vehicle registration, compare brands and prices, purchase online, and have tyres delivered to one of 800+ fitting locations or their home, where a mobile fitter installs them. The service includes buy-now-pay-later options (Afterpay, Zip, PayPal Pay in 4), a price match guarantee (beat lower prices by 3%), and access to major tyre brands including Michelin, Pirelli, Yokohama, BFGoodrich, and others.",
+    "brand_positioning": "Tyroola positions itself as Australia's easiest and most affordable way to buy tyres online, removing the hassle of visiting a tyre shop by bringing the entire experience \u2014 selection, purchase, and fitting \u2014 to the customer. They compete on price, convenience, nationwide reach, and trusted social proof.",
+    "tagline": "Buy tyres online. Fit locally. Done.",
+    "audience": {
+      "primary": "Australian car owners aged 25-55 who are price-conscious and time-poor, comfortable shopping online, and looking for a convenient alternative to traditional tyre shops",
+      "secondary": "4x4, SUV, and ute drivers seeking specialised tyres (all terrain, mud terrain) who want expert selection and competitive pricing",
+      "tertiary": "Tradies, fleet operators, and light truck owners needing durable, load-rated tyres with minimal downtime",
+      "additional": "EV, hybrid, and petrol vehicle owners seeking performance or comfort tyres with modern payment flexibility"
+    },
+    "key_motivations": [
+      "Save money \u2014 beat dealership and tyre shop prices by shopping online",
+      "Save time \u2014 no need to visit a store, fitting comes to you or a nearby location",
+      "Confidence and trust \u2014 4.7/5 from 4530+ Google reviews, voted Australia's best tyre shop",
+      "Convenience \u2014 easy search by rego or tyre size, fast delivery, 800+ fitting locations nationwide",
+      "Financial flexibility \u2014 interest-free payment options via Afterpay, Zip, and PayPal Pay in 4"
+    ],
+    "brand_values": "Friendly, straightforward, and empowering \u2014 Tyroola speaks like a knowledgeable mate who cuts through the confusion of tyre buying. Tone is confident but approachable, never condescending. Emphasises simplicity, savings, and trust without being pushy.",
+    "success_looks_like": "Ad copy that clearly communicates the online-first convenience, highlights price savings or a specific offer, references social proof or trust signals, and drives the user to search for their tyres immediately with a low-friction CTA. Good copy removes fear of buying tyres online and replaces it with confidence."
+  },
+  "angles_in_use": [
+    "price-value",
+    "social-proof",
+    "convenience-ease",
+    "urgency-scarcity",
+    "transparency-trust",
+    "comparison-switching",
+    "transformation-story",
+    "empathy-founder",
+    "quality-craft",
+    "outcome-results",
+    "transformation-storytelling",
+    "simplicity-clarity"
+  ],
+  "approved_ctas": [
+    "Find My Tyres Now",
+    "Shop Tyres Online",
+    "Get a Price Match Today",
+    "Search by Rego \u2014 It's Free",
+    "Compare & Save on Tyres",
+    "Book Fitting Near You"
+  ],
+  "receptionist_test_questions": [
+    "What is Tyroola and what do they sell?",
+    "What is included \u2014 do I get fitting or just the tyres?",
+    "How much does it cost and are there deals available?",
+    "How is Tyroola different from going to a tyre shop?",
+    "How do I get started buying tyres on Tyroola?"
+  ],
+  "receptionist_test_patterns": [
+    [
+      "identifies-product",
+      "tyre[s]?\\s*online|buy\\s*tyre|online\\s*tyre\\s*retail|tyre\\s*shop"
+    ],
+    [
+      "includes-fitting",
+      "fit|fitting|mobile\\s*fit|800.?location|delivered.{0,30}fit|fit.{0,30}deliver"
+    ],
+    [
+      "mentions-price-or-deal",
+      "save|cheap|price\\s*match|gift\\s*card|cashback|off\\s*rrp|deal|discount|afterpay|interest.?free|pay\\s*later"
+    ],
+    [
+      "differentiates-brand",
+      "online|no\\s*shop|skip.{0,20}store|come\\s*to\\s*you|nationwide|800.?location|without\\s*leaving"
+    ],
+    [
+      "clear-start-action",
+      "enter\\s*your|search\\s*by|find\\s*my\\s*tyre|shop\\s*now|get\\s*started|compare|rego"
+    ]
+  ],
+  "objection_preemption_patterns": [
+    [
+      "worried-about-fit",
+      "fit|fitting|mobile\\s*fit|we.{0,10}fit|fitter\\s*come|800.?location|fitting\\s*partner"
+    ],
+    [
+      "worried-about-wrong-size",
+      "rego|tyre\\s*size|sidewall|enter\\s*your\\s*size|find\\s*my\\s*tyre|vehicle\\s*search"
+    ],
+    [
+      "worried-about-price",
+      "price\\s*match|beat.{0,20}price|save\\s*up\\s*to|cheap|lowest|3.{0,5}%|off\\s*rrp"
+    ],
+    [
+      "worried-about-trust",
+      "4\\.7|4530|google\\s*review|australia.{0,10}best|voted|review"
+    ],
+    [
+      "worried-about-payment",
+      "afterpay|zippay|zip|paypal|interest.?free|buy\\s*now\\s*pay\\s*later|pay\\s*in\\s*4|installment"
+    ]
+  ],
+  "brand_names": [
+    "Tyroola",
+    "Michelin",
+    "Pirelli",
+    "Yokohama",
+    "BFGoodrich",
+    "Afterpay",
+    "Zippay",
+    "PayPal",
+    "Apple Pay",
+    "Google Pay",
+    "Michelin Primacy 5",
+    "BFGoodrich Trail Terrain T/A",
+    "BFGoodrich All Terrain T/A KO3",
+    "Yokohama Bluearth",
+    "Yokohama Geolandar",
+    "John Cadogan"
+  ],
+  "prompt_objection_signals": "Include language that preempts common hesitations about buying tyres online: concern about getting the right size (address with rego/size search), concern about installation (address with 800+ fitting locations or mobile fitters), concern about price (address with price match guarantee or savings vs RRP), concern about trust (address with 4.7/5 Google reviews or 4530+ reviews), and concern about payment (address with Afterpay, Zip, or interest-free options).",
+  "prompt_rules": {
+    "meta-ad": "Write ad copy for Tyroola, an Australian online tyre retailer. Always communicate the core value proposition: buy tyres online, get them fitted locally at 800+ locations across Australia. Lead with the strongest benefit relevant to the audience \u2014 price savings, convenience, or a current promotion. Reference social proof where possible (4.7/5, 4530+ reviews). Use plain, confident Australian English \u2014 no jargon, no hype. Always include a clear CTA that drives the user to search for their tyres. Do not make up specific prices or discount percentages not supported by the brand. Mention fitting explicitly so users understand this is a full-service solution, not just tyre delivery. Copy must answer: what it is, how it works, why it's better, and what to do next."
+  },
+  "prompt_extra_rules": {
+    "meta-ad": "Do not use the word 'cheap' in a way that implies low quality \u2014 instead use 'save', 'best price', or 'price match'. Do not invent promotions \u2014 only reference BFGoodrich ($200 gift card), Pirelli ($150 cashback), or Yokohama (buy 4 pay 3) if the copy is specifically for those campaigns. Always localise to Australia \u2014 use 'Australia', 'nationwide', or 'across Australia'. Avoid generic automotive clich\u00e9s like 'hit the road' or 'drive with confidence' unless paired with a specific proof point. Headlines must be under 40 characters for Meta primary text constraints. Do not use exclamation marks more than once per ad unit. Ensure at least one objection preemption signal is present in every ad."
+  },
+  "hook_preferences": {
+    "newness": 1.5,
+    "price_anchor": 1.4,
+    "curiosity": 1.3,
+    "offer_first": 1.3,
+    "statistic": 1.2,
+    "story": 1.2,
+    "bold_claim": 1.1,
+    "fomo": 1.0,
+    "urgency": 1.0,
+    "if_then": 1.0,
+    "exclusivity": 1.0,
+    "question": 0.9,
+    "quoted_objection": 0.9,
+    "confession": 0.8,
+    "contrarian": 0.8,
+    "direct_address": 0.7,
+    "pattern_interrupt": 0.7
+  },
+  "recommended_tactics": [
+    "comparison",
+    "direct-offer",
+    "before-after",
+    "cost-of-inaction",
+    "curiosity-gap"
+  ]
+}

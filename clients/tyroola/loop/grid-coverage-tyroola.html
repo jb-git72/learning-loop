@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MAP-Elites Grid Coverage — Tyroola</title>
+<style>
+  body { background: #0d1117; color: #c9d1d9; font-family: 'SF Mono', monospace; padding: 32px; }
+  h1 { color: #e6edf3; font-size: 22px; margin-bottom: 4px; }
+  .subtitle { color: #8b949e; font-size: 13px; margin-bottom: 24px; }
+  .stats { display: flex; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; }
+  .stat { background: #161b22; border: 1px solid #21262d; border-radius: 8px; padding: 16px 20px; }
+  .stat .value { font-size: 28px; font-weight: 700; color: #e6edf3; }
+  .stat .label { font-size: 12px; color: #8b949e; margin-top: 4px; }
+  table { border-collapse: collapse; margin-top: 16px; }
+  th { padding: 8px 6px; font-size: 11px; color: #8b949e; text-align: center; transform: rotate(-45deg); white-space: nowrap; height: 80px; }
+  th.row-header { transform: none; text-align: right; padding-right: 12px; font-size: 12px; color: #c9d1d9; }
+  td { width: 52px; height: 40px; text-align: center; font-size: 11px; font-weight: 600; border: 1px solid #21262d; cursor: default; }
+  td.empty { background: #161b22; color: #484f58; }
+  td.low { background: #3d1e1e; color: #f85149; }
+  td.mid { background: #2d2a0e; color: #d29922; }
+  td.good { background: #0e2d1e; color: #3fb950; }
+  td.great { background: #1a4d2e; color: #56d364; }
+  .legend { display: flex; gap: 16px; margin-top: 20px; font-size: 12px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-swatch { width: 16px; height: 16px; border-radius: 3px; }
+  .tooltip { position: absolute; background: #1c2128; border: 1px solid #30363d; border-radius: 6px; padding: 8px 12px; font-size: 12px; pointer-events: none; display: none; z-index: 10; white-space: pre-line; }
+  .toggle { margin: 16px 0; }
+  .toggle button { background: #21262d; color: #c9d1d9; border: 1px solid #30363d; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 12px; margin-right: 8px; }
+  .toggle button.active { background: #1f6feb; border-color: #388bfd; }
+</style>
+</head>
+<body>
+<h1>MAP-Elites Grid Coverage</h1>
+<div class="subtitle">Tyroola — angle x hook heatmap (quality scores from classified Meta ads)</div>
+<div class="stats" id="stats"></div>
+<div class="toggle" id="toggles">
+  <button class="active" onclick="setMode('score')">Quality Score</button>
+  <button onclick="setMode('roas')">ROAS</button>
+</div>
+<table id="grid"></table>
+<div class="legend" id="legend"></div>
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+const DATA = {"angles": ["comparison-switching", "convenience-ease", "price-value", "simplicity-clarity", "social-proof", "transparency-trust", "urgency-scarcity"], "hooks": ["bold_claim", "direct_address", "fomo", "offer_first", "pattern_interrupt", "price_anchor", "question", "social_proof", "statistic", "story", "urgency"], "cells": {"price-value|question": {"score": 0.4694, "ad_id": "tyroola-242", "roas": 0.0, "spend": 29.08}, "social-proof|story": {"score": 0.5946, "ad_id": "SO-959"}, "convenience-ease|statistic": {"score": 0.5789, "ad_id": "CO-371"}, "comparison-switching|bold_claim": {"score": 0.5059, "ad_id": "tyroola-310", "roas": 0.0, "spend": 0.99}, "convenience-ease|bold_claim": {"score": 0.5625, "ad_id": "tyroola-287", "roas": 0.0, "spend": 5.26}, "convenience-ease|direct_address": {"score": 0.7376, "ad_id": "tyroola-022", "roas": 10.91, "spend": 1894.78}, "convenience-ease|offer_first": {"score": 0.57, "ad_id": "tyroola-285", "roas": 0.0, "spend": 5.44}, "convenience-ease|pattern_interrupt": {"score": 0.6371, "ad_id": "tyroola-191", "roas": 0.0, "spend": 75.27}, "convenience-ease|price_anchor": {"score": 0.0, "ad_id": "tyroola-243", "roas": 0.0, "spend": 28.85}, "convenience-ease|question": {"score": 0.6296, "ad_id": "tyroola-139", "roas": 7.75, "spend": 165.34}, "convenience-ease|social_proof": {"score": 0.0, "ad_id": "tyroola-074", "roas": 62.45, "spend": 529.68}, "price-value|bold_claim": {"score": 0.6371, "ad_id": "tyroola-231", "roas": 0.0, "spend": 34.23}, "price-value|direct_address": {"score": 0.5843, "ad_id": "tyroola-180", "roas": 0.0, "spend": 88.25}, "price-value|fomo": {"score": 0.431, "ad_id": "tyroola-247", "roas": 0.0, "spend": 24.18}, "price-value|offer_first": {"score": 0.442, "ad_id": "tyroola-029", "roas": 8.32, "spend": 1460.06}, "price-value|pattern_interrupt": {"score": 0.5059, "ad_id": "tyroola-132", "roas": 0.0, "spend": 181.11}, "price-value|price_anchor": {"score": 0.4255, "ad_id": "tyroola-013", "roas": 16.53, "spend": 3021.24}, "price-value|social_proof": {"score": 0.0, "ad_id": "tyroola-286", "roas": 0.0, "spend": 5.38}, "price-value|statistic": {"score": 0.398, "ad_id": "tyroola-036", "roas": 22.21, "spend": 1121.64}, "price-value|urgency": {"score": 0.5804, "ad_id": "tyroola-046", "roas": 15.99, "spend": 853.81}, "simplicity-clarity|offer_first": {"score": 0.6706, "ad_id": "tyroola-127", "roas": 1.87, "spend": 205.54}, "social-proof|fomo": {"score": 0.5886, "ad_id": "tyroola-088", "roas": 16.46, "spend": 386.99}, "social-proof|statistic": {"score": 0.0, "ad_id": "tyroola-212", "roas": 0.0, "spend": 48.76}, "transparency-trust|bold_claim": {"score": 0.5843, "ad_id": "tyroola-125", "roas": 2.69, "spend": 207.2}, "urgency-scarcity|fomo": {"score": 0.5849, "ad_id": "tyroola-063", "roas": 12.5, "spend": 619.75}, "urgency-scarcity|urgency": {"score": 0.6, "ad_id": "tyroola-071", "roas": 36.66, "spend": 548.02}}};
+const angles = DATA.angles;
+const hooks = DATA.hooks;
+const cells = DATA.cells;
+let mode = 'score';
+
+const total = angles.length * hooks.length;
+const filled = Object.keys(cells).length;
+const scores = Object.values(cells).map(c => c.score);
+const avg = scores.length ? scores.reduce((a,b) => a+b, 0) / scores.length : 0;
+const hasRoas = Object.values(cells).some(c => c.roas !== undefined);
+const roasValues = Object.values(cells).filter(c => c.roas).map(c => c.roas);
+const avgRoas = roasValues.length ? roasValues.reduce((a,b) => a+b, 0) / roasValues.length : 0;
+
+document.getElementById('stats').innerHTML = `
+  <div class="stat"><div class="value">${filled}/${total}</div><div class="label">Cells filled (${Math.round(filled/total*100)}%)</div></div>
+  <div class="stat"><div class="value">${avg.toFixed(3)}</div><div class="label">Avg quality score</div></div>
+  ${hasRoas ? `<div class="stat"><div class="value">${avgRoas.toFixed(1)}x</div><div class="label">Avg ROAS</div></div>` : ''}
+  <div class="stat"><div class="value">${total - filled}</div><div class="label">Empty cells</div></div>
+`;
+
+if (!hasRoas) document.getElementById('toggles').style.display = 'none';
+
+function setMode(m) {
+  mode = m;
+  document.querySelectorAll('.toggle button').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.toggle button[onclick="setMode('${m}')"]`).classList.add('active');
+  renderGrid();
+  renderLegend();
+}
+
+function renderLegend() {
+  const leg = document.getElementById('legend');
+  if (mode === 'score') {
+    leg.innerHTML = `
+      <div class="legend-item"><div class="legend-swatch" style="background:#161b22"></div> Empty</div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#3d1e1e"></div> &lt;0.50</div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#2d2a0e"></div> 0.50-0.69</div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#0e2d1e"></div> 0.70-0.84</div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#1a4d2e"></div> 0.85+</div>`;
+  } else {
+    leg.innerHTML = `
+      <div class="legend-item"><div class="legend-swatch" style="background:#161b22"></div> No data</div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#3d1e1e"></div> &lt;5x</div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#2d2a0e"></div> 5-20x</div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#0e2d1e"></div> 20-50x</div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#1a4d2e"></div> 50x+</div>`;
+  }
+}
+
+function renderGrid() {
+  const table = document.getElementById('grid');
+  let headerRow = '<tr><th class="row-header"></th>';
+  hooks.forEach(h => { headerRow += `<th>${h}</th>`; });
+  headerRow += '</tr>';
+  table.innerHTML = headerRow;
+
+  angles.forEach(angle => {
+    let row = `<tr><th class="row-header">${angle}</th>`;
+    hooks.forEach(hook => {
+      const key = `${angle}|${hook}`;
+      const cell = cells[key];
+      if (cell) {
+        let val, cls;
+        if (mode === 'roas' && cell.roas !== undefined) {
+          val = cell.roas.toFixed(1);
+          cls = cell.roas >= 50 ? 'great' : cell.roas >= 20 ? 'good' : cell.roas >= 5 ? 'mid' : 'low';
+        } else if (mode === 'roas') {
+          val = '-';
+          cls = 'empty';
+        } else {
+          val = cell.score.toFixed(2);
+          cls = cell.score >= 0.85 ? 'great' : cell.score >= 0.70 ? 'good' : cell.score >= 0.50 ? 'mid' : 'low';
+        }
+        const info = `${angle} + ${hook}\nQuality: ${cell.score.toFixed(3)}${cell.roas !== undefined ? '\nROAS: ' + cell.roas.toFixed(1) + 'x' : ''}${cell.spend ? '\nSpend: $' + cell.spend.toFixed(0) : ''}\nAd: ${cell.ad_id}`;
+        row += `<td class="${cls}" data-info="${info}">${val}</td>`;
+      } else {
+        row += '<td class="empty">-</td>';
+      }
+    });
+    row += '</tr>';
+    table.innerHTML += row;
+  });
+}
+
+renderGrid();
+renderLegend();
+
+// Tooltip
+const table = document.getElementById('grid');
+const tooltip = document.getElementById('tooltip');
+table.addEventListener('mouseover', e => {
+  if (e.target.dataset.info) { tooltip.textContent = e.target.dataset.info; tooltip.style.display = 'block'; }
+});
+table.addEventListener('mousemove', e => {
+  tooltip.style.left = (e.pageX + 12) + 'px'; tooltip.style.top = (e.pageY + 12) + 'px';
+});
+table.addEventListener('mouseout', () => { tooltip.style.display = 'none'; });
+</script>
+</body>
+</html>
