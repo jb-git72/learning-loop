@@ -1,0 +1,206 @@
+{
+  "client_id": "tyroola",
+  "last_verified": "2026-04-05",
+  "facts": [
+    {
+      "fact_id": "BM-001",
+      "category": "business_model",
+      "claim": "Buy tyres online and have mobile fitters come to you across Australia",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "BM-002",
+      "category": "business_model",
+      "claim": "Tyroola offers nationwide fitting and delivery across 800+ locations",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "BM-003",
+      "category": "business_model",
+      "claim": "Tyres can be delivered to one of Tyroola's fitting partners or to your home",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "BM-004",
+      "category": "business_model",
+      "claim": "Tyroola stocks all brands and services all of Australia",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "BM-005",
+      "category": "business_model",
+      "claim": "Tyroola also sells rims, mags, and wheels online",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "BM-006",
+      "category": "business_model",
+      "claim": "Tyroola offers car services including logbook servicing, auto repairs, and vehicle inspections",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "PR-001",
+      "category": "pricing",
+      "claim": "Tyroola offers a Price Match Guarantee and will beat lower prices by 3%",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "PR-002",
+      "category": "pricing",
+      "claim": "Tyroola offers 0% interest financing with Afterpay",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "PR-003",
+      "category": "pricing",
+      "claim": "Afterpay allows payment over 4 simple instalments with nothing extra when paid on time, with instant approval online and no new card required",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "PR-004",
+      "category": "pricing",
+      "claim": "PayPal Pay in 4 splits tyre payments into 4 interest-free instalments, one every two weeks",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "PR-005",
+      "category": "pricing",
+      "claim": "Zip Pay allows flexible repayments weekly, fortnightly, or monthly with buy now pay later",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "SV-001",
+      "category": "savings",
+      "claim": "Customers can save up to 50% off RRP when comparing tyres on Tyroola",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "SV-002",
+      "category": "savings",
+      "claim": "Buy 4 selected BFGoodrich Trail Terrain T/A or All Terrain T/A KO3 tyres and get up to $200 gift card plus free fitting",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "SV-003",
+      "category": "savings",
+      "claim": "Buy 4 Pirelli tyres 17 inches and above and get up to $150 cashback, applied automatically at checkout",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "SV-004",
+      "category": "savings",
+      "claim": "Buy 4 selected Yokohama Bluearth and Geolandar tyres and pay for only 3",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "SP-001",
+      "category": "social_proof",
+      "claim": "Tyroola is rated 4.7 out of 5 on Google Reviews from over 4,530 reviews",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "SP-002",
+      "category": "social_proof",
+      "claim": "Tyroola has been voted Australia's best tyre shop",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "MEDIUM",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "SP-003",
+      "category": "social_proof",
+      "claim": "Tyroola has been featured on TV",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "MEDIUM",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "SP-004",
+      "category": "social_proof",
+      "claim": "Auto expert John Cadogan has reviewed Tyroola and how to save money and time buying tyres through the platform",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "HW-001",
+      "category": "how_it_works",
+      "claim": "Buying tyres on Tyroola works in 3 steps: enter your tyre size, compare and choose from many brands, then get fast delivery and fitting",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "HW-002",
+      "category": "how_it_works",
+      "claim": "Customers can search for tyres by tyre size or by vehicle registration",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "PQ-001",
+      "category": "product_quality",
+      "claim": "Tyroola stocks tyres for passenger cars, run flat, 4x4, all terrain, mud terrain, highway terrain, light truck, truck, and motorcycle",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "PQ-002",
+      "category": "product_quality",
+      "claim": "The Michelin Primacy 5 is available on Tyroola and offers comfort, safety, and efficiency for sedans, SUVs, and electric, petrol, and hybrid vehicles",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "IN-001",
+      "category": "inclusions",
+      "claim": "Tyroola accepts all major credit cards, Afterpay, Zip Pay, PayPal Pay in 4, Apple Pay, and Google Pay",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    },
+    {
+      "fact_id": "IN-002",
+      "category": "inclusions",
+      "claim": "Tyroola offers a Tyre Protect Plan as part of its safety offering",
+      "source": "https://www.tyroola.com.au",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-05"
+    }
+  ]
+}

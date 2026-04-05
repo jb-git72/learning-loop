@@ -59,6 +59,8 @@ def main():
         report["_file"] = file_path
         report["content_type"] = ad.get("content_type", "meta-ad")
         report["angle"] = ad.get("angle", "")
+        report["hook_type"] = ad.get("hook_type", "")
+        report["original_ad_name"] = ad.get("original_ad_name", "")
         report["headline"] = ad.get("headline", ad.get("subject", ""))
         report["primary_text"] = ad.get("primary_text", ad.get("body", ad.get("hero_copy", "")))[:200]
         all_results.append(report)
