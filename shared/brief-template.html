@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Brief — {{AD_ID}}</title>
+<style>
+  @media print {
+    body { padding: 12mm; font-size: 11pt; }
+    .page-break { page-break-before: always; }
+    .no-print { display: none; }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f7f7f8;
+    color: #1a1a1a;
+    padding: 32px;
+    line-height: 1.55;
+  }
+  .brief {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+
+  /* ── Header ── */
+  .header {
+    padding: 28px 32px 20px;
+    border-bottom: 1px solid #e8e8e8;
+    background: {{ACCENT_BG}};
+  }
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .client-name {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: {{ACCENT_COLOR}};
+  }
+  .ad-id {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  .content-type-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: white;
+    background: {{TYPE_COLOR}};
+  }
+  .verdict-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: white;
+    background: {{VERDICT_COLOR}};
+  }
+  .score-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+    background: {{SCORE_COLOR}};
+  }
+  .header-meta {
+    font-size: 12px;
+    color: #888;
+  }
+  .header-meta span { margin-right: 16px; }
+
+  /* ── Main layout ── */
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 0;
+  }
+  @media (max-width: 860px) {
+    .main { grid-template-columns: 1fr; }
+  }
+
+  /* ── Copy column ── */
+  .copy-col {
+    padding: 28px 32px;
+    border-right: 1px solid #e8e8e8;
+  }
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: {{ACCENT_COLOR}};
+    margin: 24px 0 10px;
+  }
+  .section-title:first-child { margin-top: 0; }
+  .field-block {
+    margin-bottom: 16px;
+  }
+  .field-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #888;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .char-badge {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 600;
+    background: #f0f0f0;
+    color: #888;
+  }
+  .char-badge.over { background: #fee2e2; color: #b91c1c; }
+  .field-value {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #1a1a1a;
+    white-space: pre-wrap;
+    padding: 10px 14px;
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 6px;
+  }
+  .lp-section {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 6px;
+  }
+  .lp-section-heading {
+    font-size: 13px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 4px;
+  }
+  .lp-section-body {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #1a1a1a;
+    white-space: pre-wrap;
+  }
+
+  /* ── Reference column ── */
+  .ref-col {
+    padding: 28px 24px;
+    background: #fafafa;
+  }
+  .ref-card {
+    margin-bottom: 20px;
+    background: white;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .ref-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .ref-card-body {
+    padding: 12px 14px;
+  }
+  .ref-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: {{ACCENT_COLOR}};
+    margin-bottom: 4px;
+  }
+  .ref-card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+  }
+  .ref-card-caption {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.5;
+  }
+
+  /* ── Format guidance ── */
+  .guidance-block {
+    margin-bottom: 16px;
+    padding: 12px 14px;
+    background: white;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+  }
+  .guidance-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #888;
+    margin-bottom: 4px;
+  }
+  .guidance-text {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.55;
+  }
+
+  /* ── Footer sections ── */
+  .footer-sections {
+    border-top: 1px solid #e8e8e8;
+    padding: 24px 32px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 700px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+  .footer-block {
+    padding: 14px;
+    background: #fafafa;
+    border-radius: 8px;
+    border: 1px solid #eee;
+  }
+  .footer-block-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: {{ACCENT_COLOR}};
+    margin-bottom: 8px;
+  }
+  .footer-block-text {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.55;
+    white-space: pre-wrap;
+  }
+  .tag-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    background: #f0f0f0;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+<div class="brief">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-top">
+      <span class="client-name">{{CLIENT_NAME}}</span>
+      <span class="ad-id">{{AD_ID}}</span>
+      <span class="content-type-badge">{{TYPE_LABEL}}</span>
+      <span class="verdict-badge">{{VERDICT_LABEL}}</span>
+      <span class="score-badge">{{COMPOSITE}}</span>
+    </div>
+    <div class="header-meta">
+      <span>{{DATE}}</span>
+      <span>Angle: {{ANGLE}}</span>
+      <span>Hook: {{HOOK_TYPE}}</span>
+      <span>Tactic: {{TACTIC}}</span>
+      <span>Funnel: {{FUNNEL}}</span>
+    </div>
+  </div>
+
+  <!-- Main two-column layout -->
+  <div class="main">
+
+    <!-- Copy column -->
+    <div class="copy-col">
+      <div class="section-title">Ad Copy</div>
+      {{COPY_FIELDS}}
+    </div>
+
+    <!-- Reference column -->
+    <div class="ref-col">
+      <div class="section-title">Visual Format References</div>
+      {{REFERENCE_CARDS}}
+
+      <div class="section-title" style="margin-top:28px">Format Guidance</div>
+      {{FORMAT_GUIDANCE}}
+    </div>
+
+  </div>
+
+  <!-- Footer: brand context + production notes -->
+  <div class="footer-sections">
+    <div class="footer-grid">
+
+      <div class="footer-block">
+        <div class="footer-block-title">Brand Context</div>
+        <div class="footer-block-text">{{BRAND_CONTEXT}}</div>
+      </div>
+
+      <div class="footer-block">
+        <div class="footer-block-title">Production Notes</div>
+        <div class="footer-block-text">{{PRODUCTION_NOTES}}</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
