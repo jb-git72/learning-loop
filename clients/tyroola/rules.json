@@ -13,7 +13,7 @@
         "description"
       ],
       "patterns": [
-        "jax",
+        "\\bjax\\b",
         "bob jane",
         "bob-jane",
         "national tyres",
@@ -38,13 +38,12 @@
         "ozzytyres",
         "tempe tyres",
         "tempetyres",
-        "just tyres",
         "justtyres",
-        "discount tyres",
+        "just-tyres",
         "discount tyre direct"
       ],
       "case_sensitive": false,
-      "rationale": "Naming competitors in paid ads can trigger legal challenges, inflate competitor brand awareness at Tyroola's expense, and violate platform advertising policies. Generic terms like 'other retailers' are preferred."
+      "rationale": "Naming competitors in paid ads can trigger legal challenges, inflate competitor brand awareness at Tyroola's expense, and violate platform advertising policies. Generic terms like 'other retailers' are preferred. Note: 'just tyres' as a phrase (e.g. 'No salesman, just tyres') is Tyroola's own copy — only the brand name 'JustTyres' (one word) is blocked."
     },
     {
       "rule_id": "TYRO-002",
@@ -124,62 +123,37 @@
       "name": "headline_title_case_ban",
       "severity": "medium",
       "type": "regex_absent",
-      "description": "Prevents Title Case formatting in headlines \u2014 all headlines must use sentence case only",
+      "description": "Prevents Title Case formatting in headlines — all headlines must use sentence case only",
       "fields": [
         "headline"
       ],
       "patterns": [
-        "^(?:[A-Z][a-z]+\\s){3,}[A-Z][a-z]+",
-        "Buy Tyres Online Today",
-        "Get Your Tyres Fitted Today",
-        "Order Tyres Online Now",
-        "Shop Tyres Online Today",
-        "Find The Best Tyres",
-        "Save On Tyres Today",
-        "Book Your Mobile Fitting",
-        "Fast Tyre Delivery Australia",
-        "Cheap Tyres Online Australia",
-        "Top Tyre Brands Online",
-        "Free Mobile Tyre Fitting",
-        "Same Day Tyre Fitting"
+        "^(?:[A-Z][a-z]+\\s){3,}[A-Z][a-z]+"
       ],
       "case_sensitive": true,
       "rationale": "Tyroola brand guidelines mandate sentence case in all ad headlines for consistency, readability, and a conversational tone. Title Case reads as generic and outdated in digital advertising contexts."
     },
     {
       "rule_id": "TYRO-005",
-      "name": "incorrect_pricing_and_stats_protection",
-      "severity": "critical",
+      "name": "fabricated_stats_protection",
+      "severity": "high",
       "type": "regex_absent",
-      "description": "Prevents use of specific price claims, discount percentages, or statistics that are not dynamically verified",
+      "description": "Prevents use of fabricated statistics or customer counts that are not in facts.json. Verified claims like 'save up to 50%' and '4.7 stars' are allowed.",
       "fields": [
         "primary_text",
         "headline",
         "description"
       ],
       "patterns": [
-        "from \\$[0-9]",
-        "as low as \\$[0-9]",
-        "only \\$[0-9]",
-        "just \\$[0-9]",
-        "save \\$[0-9]",
-        "save up to [0-9]+%",
-        "up to [0-9]+% off",
         "[0-9]+% cheaper",
         "[0-9]+% discount",
         "[0-9]+% savings",
-        "over [0-9]+ brands",
-        "over [0-9]+ tyres",
-        "[0-9]+ tyre brands",
-        "[0-9]+,000 tyres",
         "[0-9]+ million customers",
         "[0-9]+ years experience",
-        "rated [0-9]+",
-        "[0-9]+ star rating",
         "[0-9]+% of customers"
       ],
       "case_sensitive": false,
-      "rationale": "Hardcoded prices and statistics in static ad copy become inaccurate as inventory, pricing, and business metrics change. Inaccurate claims breach Australian Consumer Law and damage brand trust."
+      "rationale": "Only block fabricated statistics — not verified claims. Tyroola's verified fact 'save up to 50% off RRP' (SV-001) and brand-specific promotions are legitimate. Patterns for price anchors (from $X, save $X) and verified stats (rated 4.7, 800+ locations) have been removed."
     },
     {
       "rule_id": "TYRO-006",
@@ -193,8 +167,6 @@
         "description"
       ],
       "patterns": [
-        "nationwide fitting",
-        "fitting australia.?wide",
         "every suburb",
         "all suburbs",
         "all cities",
@@ -209,11 +181,10 @@
         "global delivery",
         "worldwide delivery",
         "overseas delivery",
-        "available everywhere",
-        "anywhere in australia"
+        "available everywhere"
       ],
       "case_sensitive": false,
-      "rationale": "Mobile tyre fitting is only available in serviced metro and select regional areas. Overstating coverage creates customer disappointment, negative reviews, and potential misleading conduct claims under the Australian Consumer Law."
+      "rationale": "Mobile tyre fitting is available across 800+ locations but not everywhere. Overstating coverage creates customer disappointment and potential misleading conduct claims under Australian Consumer Law."
     },
     {
       "rule_id": "TYRO-007",
@@ -253,30 +224,16 @@
     },
     {
       "rule_id": "TYRO-008",
-      "name": "approved_brand_names_only",
+      "name": "unapproved_payment_providers",
       "severity": "high",
       "type": "regex_absent",
-      "description": "Prevents use of tyre or payment brand names not on the approved Tyroola brand list",
+      "description": "Prevents naming payment providers not confirmed as current Tyroola partners. Tyre brand names are allowed — Tyroola stocks and promotes them.",
       "fields": [
         "primary_text",
         "headline",
         "description"
       ],
       "patterns": [
-        "continental tyre",
-        "dunlop tyre",
-        "bridgestone tyre",
-        "goodyear tyre",
-        "hankook tyre",
-        "kumho tyre",
-        "toyo tyre",
-        "falken tyre",
-        "nitto tyre",
-        "nexen tyre",
-        "maxxis tyre",
-        "cooper tyre",
-        "general tyre",
-        "firestone tyre",
         "klarna",
         "humm",
         "openpay",
@@ -285,14 +242,12 @@
         "latitude pay",
         "wizpay",
         "payright",
-        "zip pay",
-        "zip money",
         "sezzle",
         "paidy",
         "clearpay"
       ],
       "case_sensitive": false,
-      "rationale": "Only approved brand partners and payment providers should be named in Tyroola ads. Naming unapproved brands without current partnership agreements creates legal exposure and brand inconsistency."
+      "rationale": "Only verified payment partners (Afterpay, Zip Pay, PayPal Pay in 4) should be named. Tyre brand names (Bridgestone, Kumho, Hankook etc) are legitimate — Tyroola stocks these brands and runs co-branded promotions."
     },
     {
       "rule_id": "TYRO-009",
@@ -358,10 +313,10 @@
     },
     {
       "rule_id": "TYRO-011",
-      "name": "urgency_scarcity_manipulation_ban",
+      "name": "fabricated_scarcity_ban",
       "severity": "medium",
       "type": "regex_absent",
-      "description": "Prevents use of false urgency or artificial scarcity tactics that may constitute manipulative advertising practices",
+      "description": "Prevents fabricated stock scarcity claims. Legitimate time-bound promotions (e.g. 'limited time only' for real sales) are allowed.",
       "fields": [
         "primary_text",
         "headline",
@@ -374,22 +329,14 @@
         "almost gone",
         "nearly sold out",
         "stock running out",
-        "limited time only",
-        "offer ends tonight",
-        "offer expires today",
-        "today only deal",
-        "24 hour sale",
         "flash sale ends",
-        "hurry before",
-        "don't miss out",
-        "act now or miss",
         "prices going up",
         "price rise coming",
         "buy before price",
         "final stock"
       ],
       "case_sensitive": false,
-      "rationale": "Fabricated scarcity and urgency claims are considered manipulative dark patterns. Australian Consumer Law and emerging digital platform regulations increasingly scrutinise these tactics as misleading conduct."
+      "rationale": "Fabricated stock scarcity is a manipulative dark pattern. However, legitimate promotional urgency ('limited time only' for real seasonal sales) is standard retail practice and drives Tyroola's highest-revenue ads."
     },
     {
       "rule_id": "TYRO-012",
@@ -423,6 +370,60 @@
       ],
       "case_sensitive": false,
       "rationale": "Unverified environmental claims are increasingly regulated by the ACCC under its greenwashing enforcement priorities. Tyroola must not make sustainability claims without verified data and certification to support them."
+    },
+    {
+      "rule_id": "TYRO-P01",
+      "name": "convenience_signal_present",
+      "severity": "high",
+      "type": "custom_check",
+      "description": "Ad copy should mention at least one core convenience signal: mobile fitting, home delivery, or online ordering. This is Tyroola's primary value prop and top revenue driver.",
+      "required_phrases": [
+        "mobile",
+        "come to you",
+        "your door",
+        "delivered",
+        "delivery",
+        "online",
+        "fitted at",
+        "we come",
+        "fitting partner"
+      ],
+      "match_mode": "any_required",
+      "fields": [
+        "primary_text",
+        "headline",
+        "description"
+      ],
+      "case_sensitive": false,
+      "rationale": "Tyroola's convenience-ease ads generate the highest revenue. Every ad should reinforce at least one differentiator: mobile fitting, home delivery, or the ease of online ordering."
+    },
+    {
+      "rule_id": "TYRO-P02",
+      "name": "value_anchor_present",
+      "severity": "medium",
+      "type": "custom_check",
+      "description": "Ad copy should include a value anchor: price match, savings claim, or buy-now-pay-later mention.",
+      "required_phrases": [
+        "save",
+        "price match",
+        "beat",
+        "% off",
+        "afterpay",
+        "zip pay",
+        "pay in 4",
+        "interest free",
+        "interest-free",
+        "free fitting",
+        "cashback"
+      ],
+      "match_mode": "any_required",
+      "fields": [
+        "primary_text",
+        "headline",
+        "description"
+      ],
+      "case_sensitive": false,
+      "rationale": "Price-value is Tyroola's second-highest revenue angle. Anchoring on savings, price match guarantee, or BNPL options reduces purchase friction."
     }
   ]
 }

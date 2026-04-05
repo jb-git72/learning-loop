@@ -20,6 +20,7 @@ COLUMN_ALIASES = {
               "Spend", "spend", "Cost"],
     "revenue": ["Website purchases conversion value", "Conversion value",
                 "revenue", "Revenue"],
+    "purchases": ["Website purchases", "Purchases", "purchases", "Results"],
     "roas": ["Website purchase ROAS (return on advertising spend)",
              "Purchase ROAS", "ROAS"],
 }
@@ -64,9 +65,10 @@ def load_roas_from_csv(csv_path):
             roas = _parse_number(row[col_map["roas"]]) if "roas" in col_map else 0
             spend = _parse_number(row[col_map["spend"]]) if "spend" in col_map else 0
             revenue = _parse_number(row[col_map["revenue"]]) if "revenue" in col_map else 0
+            purchases = _parse_number(row[col_map["purchases"]]) if "purchases" in col_map else 0
             if roas == 0 and spend > 0:
                 roas = revenue / spend
-            ads[name] = {"roas": roas, "spend": spend, "revenue": revenue}
+            ads[name] = {"roas": roas, "spend": spend, "revenue": revenue, "purchases": purchases}
     return ads
 
 
@@ -79,6 +81,8 @@ def build_grid_data(scored_path, roas_data=None):
     angles = set()
     hooks = set()
     cells = {}
+    # Track aggregates per cell (sum across all ads)
+    cell_agg = {}
 
     for ad in results:
         angle = ad.get("angle", "?")
@@ -94,6 +98,17 @@ def build_grid_data(scored_path, roas_data=None):
         hooks.add(hook)
         key = f"{angle}|{hook}"
 
+        # Aggregate revenue/spend/purchases across all ads in cell
+        if key not in cell_agg:
+            cell_agg[key] = {"total_revenue": 0, "total_spend": 0,
+                             "total_purchases": 0, "ad_count": 0}
+        if roas_data and original_name in roas_data:
+            r = roas_data[original_name]
+            cell_agg[key]["total_revenue"] += r.get("revenue", 0)
+            cell_agg[key]["total_spend"] += r.get("spend", 0)
+            cell_agg[key]["total_purchases"] += r.get("purchases", 0)
+        cell_agg[key]["ad_count"] += 1
+
         # Keep best score per cell
         if key not in cells or composite > cells[key]["score"]:
             cell = {"score": round(composite, 4), "ad_id": ad_id}
@@ -105,6 +120,14 @@ def build_grid_data(scored_path, roas_data=None):
                 cell["spend"] = round(r["spend"], 2)
 
             cells[key] = cell
+
+    # Merge aggregates into cells
+    for key, agg in cell_agg.items():
+        if key in cells:
+            cells[key]["total_revenue"] = round(agg["total_revenue"], 2)
+            cells[key]["total_spend"] = round(agg["total_spend"], 2)
+            cells[key]["total_purchases"] = int(agg["total_purchases"])
+            cells[key]["ad_count"] = agg["ad_count"]
 
     return {
         "angles": sorted(angles),
@@ -155,6 +178,7 @@ def build_html(grid_data, client_name="Client"):
 <div class="toggle" id="toggles">
   <button class="active" onclick="setMode('score')">Quality Score</button>
   <button onclick="setMode('roas')">ROAS</button>
+  <button onclick="setMode('revenue')">Revenue</button>
 </div>
 <table id="grid"></table>
 <div class="legend" id="legend"></div>
@@ -174,15 +198,20 @@ const avg = scores.length ? scores.reduce((a,b) => a+b, 0) / scores.length : 0;
 const hasRoas = Object.values(cells).some(c => c.roas !== undefined);
 const roasValues = Object.values(cells).filter(c => c.roas).map(c => c.roas);
 const avgRoas = roasValues.length ? roasValues.reduce((a,b) => a+b, 0) / roasValues.length : 0;
+const hasRevenue = Object.values(cells).some(c => c.total_revenue > 0);
+const totalRevenue = Object.values(cells).reduce((s, c) => s + (c.total_revenue || 0), 0);
+const totalSpend = Object.values(cells).reduce((s, c) => s + (c.total_spend || 0), 0);
 
 document.getElementById('stats').innerHTML = `
   <div class="stat"><div class="value">${{filled}}/${{total}}</div><div class="label">Cells filled (${{Math.round(filled/total*100)}}%)</div></div>
   <div class="stat"><div class="value">${{avg.toFixed(3)}}</div><div class="label">Avg quality score</div></div>
   ${{hasRoas ? `<div class="stat"><div class="value">${{avgRoas.toFixed(1)}}x</div><div class="label">Avg ROAS</div></div>` : ''}}
+  ${{hasRevenue ? `<div class="stat"><div class="value">$${{totalRevenue.toLocaleString(undefined, {{maximumFractionDigits:0}})}}</div><div class="label">Total revenue</div></div>` : ''}}
+  ${{hasRevenue ? `<div class="stat"><div class="value">$${{totalSpend.toLocaleString(undefined, {{maximumFractionDigits:0}})}}</div><div class="label">Total spend</div></div>` : ''}}
   <div class="stat"><div class="value">${{total - filled}}</div><div class="label">Empty cells</div></div>
 `;
 
-if (!hasRoas) document.getElementById('toggles').style.display = 'none';
+if (!hasRoas && !hasRevenue) document.getElementById('toggles').style.display = 'none';
 
 function setMode(m) {{
   mode = m;
@@ -201,13 +230,20 @@ function renderLegend() {{
       <div class="legend-item"><div class="legend-swatch" style="background:#2d2a0e"></div> 0.50-0.69</div>
       <div class="legend-item"><div class="legend-swatch" style="background:#0e2d1e"></div> 0.70-0.84</div>
       <div class="legend-item"><div class="legend-swatch" style="background:#1a4d2e"></div> 0.85+</div>`;
-  }} else {{
+  }} else if (mode === 'roas') {{
     leg.innerHTML = `
       <div class="legend-item"><div class="legend-swatch" style="background:#161b22"></div> No data</div>
       <div class="legend-item"><div class="legend-swatch" style="background:#3d1e1e"></div> &lt;5x</div>
       <div class="legend-item"><div class="legend-swatch" style="background:#2d2a0e"></div> 5-20x</div>
       <div class="legend-item"><div class="legend-swatch" style="background:#0e2d1e"></div> 20-50x</div>
       <div class="legend-item"><div class="legend-swatch" style="background:#1a4d2e"></div> 50x+</div>`;
+  }} else {{
+    leg.innerHTML = `
+      <div class="legend-item"><div class="legend-swatch" style="background:#161b22"></div> No data</div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#3d1e1e"></div> &lt;$500</div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#2d2a0e"></div> $500-$2k</div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#0e2d1e"></div> $2k-$10k</div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#1a4d2e"></div> $10k+</div>`;
   }}
 }}
 
@@ -225,7 +261,14 @@ function renderGrid() {{
       const cell = cells[key];
       if (cell) {{
         let val, cls;
-        if (mode === 'roas' && cell.roas !== undefined) {{
+        if (mode === 'revenue' && cell.total_revenue > 0) {{
+          const rev = cell.total_revenue;
+          val = rev >= 1000 ? '$' + (rev/1000).toFixed(1) + 'k' : '$' + rev.toFixed(0);
+          cls = rev >= 10000 ? 'great' : rev >= 2000 ? 'good' : rev >= 500 ? 'mid' : 'low';
+        }} else if (mode === 'revenue') {{
+          val = '-';
+          cls = 'empty';
+        }} else if (mode === 'roas' && cell.roas !== undefined) {{
           val = cell.roas.toFixed(1);
           cls = cell.roas >= 50 ? 'great' : cell.roas >= 20 ? 'good' : cell.roas >= 5 ? 'mid' : 'low';
         }} else if (mode === 'roas') {{
@@ -235,7 +278,9 @@ function renderGrid() {{
           val = cell.score.toFixed(2);
           cls = cell.score >= 0.85 ? 'great' : cell.score >= 0.70 ? 'good' : cell.score >= 0.50 ? 'mid' : 'low';
         }}
-        const info = `${{angle}} + ${{hook}}\\nQuality: ${{cell.score.toFixed(3)}}${{cell.roas !== undefined ? '\\nROAS: ' + cell.roas.toFixed(1) + 'x' : ''}}${{cell.spend ? '\\nSpend: $' + cell.spend.toFixed(0) : ''}}\\nAd: ${{cell.ad_id}}`;
+        const rev = cell.total_revenue || 0;
+        const spend = cell.total_spend || 0;
+        const info = `${{angle}} + ${{hook}}\\nQuality: ${{cell.score.toFixed(3)}}${{cell.roas !== undefined ? '\\nROAS: ' + cell.roas.toFixed(1) + 'x' : ''}}${{rev > 0 ? '\\nRevenue: $' + rev.toLocaleString(undefined, {{maximumFractionDigits:0}}) : ''}}${{spend > 0 ? '\\nSpend: $' + spend.toLocaleString(undefined, {{maximumFractionDigits:0}}) : ''}}${{cell.ad_count ? '\\nAds: ' + cell.ad_count : ''}}`;
         row += `<td class="${{cls}}" data-info="${{info}}">${{val}}</td>`;
       }} else {{
         row += '<td class="empty">-</td>';

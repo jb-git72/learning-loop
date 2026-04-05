@@ -1,35 +1,74 @@
 {
-  "n_matched": 77,
+  "n_matched": 161,
   "metric": "roas",
-  "min_spend": 500.0,
-  "overall_pearson_r": 0.08861305799567949,
+  "min_spend": 100.0,
+  "overall_pearson_r": 0.04094423369182038,
   "angle_summary": {
+    "comparison-switching": {
+      "n": 1,
+      "avg_roas": 197.67,
+      "avg_quality": 0.5059
+    },
     "convenience-ease": {
-      "n": 30,
-      "avg_roas": 34.50300000000001,
-      "avg_quality": 0.17975666666666665
+      "n": 60,
+      "avg_roas": 22.248357030713382,
+      "avg_quality": 0.43195833333333333
     },
     "price-value": {
-      "n": 33,
-      "avg_roas": 19.72636363636364,
-      "avg_quality": 0.2155
+      "n": 73,
+      "avg_roas": 14.726301369863014,
+      "avg_quality": 0.43530821917808227
+    },
+    "simplicity-clarity": {
+      "n": 1,
+      "avg_roas": 1.87,
+      "avg_quality": 0.6706
     },
     "social-proof": {
+      "n": 2,
+      "avg_roas": 13.135000000000002,
+      "avg_quality": 0.5386
+    },
+    "transparency-trust": {
       "n": 1,
-      "avg_roas": 9.81,
-      "avg_quality": 0.0
+      "avg_roas": 2.69,
+      "avg_quality": 0.5843
     },
     "urgency-scarcity": {
-      "n": 13,
-      "avg_roas": 13.951538461538462,
-      "avg_quality": 0.2608615384615384
+      "n": 23,
+      "avg_roas": 13.22086956521739,
+      "avg_quality": 0.5162391304347824
     }
   },
   "ads": [
     {
+      "ad_id": "tyroola-093",
+      "ad_name": "Us vs them-1.png \u2013 Copy",
+      "composite": 0.5059,
+      "roas": 197.67,
+      "spend": 450.74,
+      "revenue": 19603.3,
+      "conversions": 25.0,
+      "angle": "comparison-switching",
+      "hook_type": "bold_claim",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-107",
+      "ad_name": "BF GOODRICH-V2-buy-4-get-$150-cashback-BF GOODRICH-4x4-A-003.png",
+      "composite": 0.3879,
+      "roas": 23.93,
+      "spend": 444.27000000000004,
+      "revenue": 8728.05,
+      "conversions": 11.0,
+      "angle": "convenience-ease",
+      "hook_type": "bold_claim",
+      "verdict": "rewrite"
+    },
+    {
       "ad_id": "tyroola-086",
       "ad_name": "Imperial-AllTyres-Buy4Get15%Off-A-001.png",
-      "composite": 0.0,
+      "composite": 0.3755,
       "roas": 9.46,
       "spend": 518.0799999999999,
       "revenue": 1354.65,
@@ -39,13 +78,37 @@
       "verdict": "rewrite"
     },
     {
+      "ad_id": "tyroola-157",
+      "ad_name": "new link | Winrun-R330-Buy4Get15%Off-B-002.png \u2013 Copy",
+      "composite": 0.4042,
+      "roas": 9.74,
+      "spend": 133.56,
+      "revenue": 827.4,
+      "conversions": 1.0,
+      "angle": "convenience-ease",
+      "hook_type": "bold_claim",
+      "verdict": "rewrite"
+    },
+    {
       "ad_id": "tyroola-039",
       "ad_name": "Pattern Page - GRENLANDER-buy-4-get-15-off-A-002.png",
-      "composite": 0.0,
+      "composite": 0.5412,
       "roas": 19.25,
       "spend": 1020.21,
       "revenue": 4330.0,
       "conversions": 5.0,
+      "angle": "convenience-ease",
+      "hook_type": "bold_claim",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-159",
+      "ad_name": "Pirelli-buy-4-get-$150-cashback-A-001",
+      "composite": 0.4035,
+      "roas": 0.0,
+      "spend": 127.01,
+      "revenue": 0.0,
+      "conversions": 0.0,
       "angle": "convenience-ease",
       "hook_type": "bold_claim",
       "verdict": "rewrite"
@@ -63,13 +126,73 @@
       "verdict": "rewrite"
     },
     {
+      "ad_id": "tyroola-175",
+      "ad_name": "PIRELLI-buy-4-get-up-to-$250-cashback-A-003.png",
+      "composite": 0.4035,
+      "roas": 7.611421842802471,
+      "spend": 101.91000000000001,
+      "revenue": 775.68,
+      "conversions": 2.0,
+      "angle": "convenience-ease",
+      "hook_type": "bold_claim",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-124",
+      "ad_name": "Roadx-15%Off-A-001",
+      "composite": 0.339,
+      "roas": 7.48,
+      "spend": 227.68,
+      "revenue": 1253.98,
+      "conversions": 2.0,
+      "angle": "convenience-ease",
+      "hook_type": "bold_claim",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-170",
+      "ad_name": "Roadx-15%Off--A-003",
+      "composite": 0.339,
+      "roas": 8.93,
+      "spend": 164.74,
+      "revenue": 906.3399999999999,
+      "conversions": 2.0,
+      "angle": "convenience-ease",
+      "hook_type": "bold_claim",
+      "verdict": "rewrite"
+    },
+    {
       "ad_id": "tyroola-073",
       "ad_name": "Roadx-15%Off--B-001",
-      "composite": 0.0,
+      "composite": 0.339,
       "roas": 32.9,
       "spend": 555.2900000000001,
       "revenue": 8487.25,
       "conversions": 7.0,
+      "angle": "convenience-ease",
+      "hook_type": "bold_claim",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-155",
+      "ad_name": "Rotalla-15-off-A-001.png",
+      "composite": 0.3468,
+      "roas": 17.22,
+      "spend": 265.35,
+      "revenue": 2373.3,
+      "conversions": 4.0,
+      "angle": "convenience-ease",
+      "hook_type": "bold_claim",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-099",
+      "ad_name": "Rotalla-15%Off-A-001",
+      "composite": 0.3468,
+      "roas": 0.0,
+      "spend": 323.32,
+      "revenue": 0.0,
+      "conversions": 0.0,
       "angle": "convenience-ease",
       "hook_type": "bold_claim",
       "verdict": "rewrite"
@@ -89,7 +212,7 @@
     {
       "ad_id": "tyroola-066",
       "ad_name": "Winrun-Buy4Get15%Off-C-001.png",
-      "composite": 0.0,
+      "composite": 0.3632,
       "roas": 2.41,
       "spend": 1294.9,
       "revenue": 18738.4,
@@ -101,7 +224,7 @@
     {
       "ad_id": "tyroola-018",
       "ad_name": "Winrun-Buy4Get15%Off-C-003.png",
-      "composite": 0.0,
+      "composite": 0.3829,
       "roas": 2.79,
       "spend": 2784.56,
       "revenue": 13623.6,
@@ -118,6 +241,18 @@
       "spend": 603.24,
       "revenue": 1909.2,
       "conversions": 3.0,
+      "angle": "convenience-ease",
+      "hook_type": "direct_address",
+      "verdict": "needs_work"
+    },
+    {
+      "ad_id": "tyroola-150",
+      "ad_name": "A-004-Explainer-4.png_Orange_Video",
+      "composite": 0.5725,
+      "roas": 17.88,
+      "spend": 141.41,
+      "revenue": 224.0,
+      "conversions": 1.0,
       "angle": "convenience-ease",
       "hook_type": "direct_address",
       "verdict": "needs_work"
@@ -159,6 +294,18 @@
       "verdict": "rewrite"
     },
     {
+      "ad_id": "tyroola-149",
+      "ad_name": "Changeyourtyres-C003_Google+ApplePay \u2013 Copy",
+      "composite": 0.4902,
+      "roas": 0.0,
+      "spend": 141.74,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "convenience-ease",
+      "hook_type": "direct_address",
+      "verdict": "rewrite"
+    },
+    {
       "ad_id": "tyroola-065",
       "ad_name": "COMFORSER-15-off-COMFORSER-PCR-A-001.png",
       "composite": 0.3573,
@@ -173,11 +320,71 @@
     {
       "ad_id": "tyroola-075",
       "ad_name": "GRENLANDER-buy-4-get-15-off-4x4-A-003.png",
-      "composite": 0.0,
+      "composite": 0.5961,
       "roas": 38.62,
       "spend": 762.3299999999999,
       "revenue": 3907.4,
       "conversions": 6.0,
+      "angle": "convenience-ease",
+      "hook_type": "direct_address",
+      "verdict": "needs_work"
+    },
+    {
+      "ad_id": "tyroola-131",
+      "ad_name": "Homepage |  Family Angle V1",
+      "composite": 0.462,
+      "roas": 8.12,
+      "spend": 250.81,
+      "revenue": 1515.8,
+      "conversions": 2.0,
+      "angle": "convenience-ease",
+      "hook_type": "direct_address",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-143",
+      "ad_name": "Homepage | Family Angle V3",
+      "composite": 0.4146,
+      "roas": 0.0,
+      "spend": 176.12,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "convenience-ease",
+      "hook_type": "direct_address",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-154",
+      "ad_name": "Imperial-AllTyres-Buy4Get15%Off-A-003.png",
+      "composite": 0.3625,
+      "roas": 20.47,
+      "spend": 201.62,
+      "revenue": 888.55,
+      "conversions": 2.0,
+      "angle": "convenience-ease",
+      "hook_type": "direct_address",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-162",
+      "ad_name": "Kinforest-15%Off-A-001",
+      "composite": 0.3573,
+      "roas": 0.0,
+      "spend": 120.69,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "convenience-ease",
+      "hook_type": "direct_address",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-122",
+      "ad_name": "KUMHO-buy-4-get-15-off-A-001.png",
+      "composite": 0.3486,
+      "roas": 67.33,
+      "spend": 332.23999999999995,
+      "revenue": 6079.0,
+      "conversions": 9.0,
       "angle": "convenience-ease",
       "hook_type": "direct_address",
       "verdict": "rewrite"
@@ -185,7 +392,7 @@
     {
       "ad_id": "tyroola-083",
       "ad_name": "KUMHO-buy-4-get-15-off-A-003.png \u2013 Copy",
-      "composite": 0.0,
+      "composite": 0.3486,
       "roas": 6.39,
       "spend": 594.1,
       "revenue": 17714.3,
@@ -207,6 +414,18 @@
       "verdict": "needs_work"
     },
     {
+      "ad_id": "tyroola-160",
+      "ad_name": "new link | Winrun-R330-Buy4Get15%Off-B-002.png \u2013 Copy 2",
+      "composite": 0.3978,
+      "roas": 30.38,
+      "spend": 121.77,
+      "revenue": 1848.0,
+      "conversions": 2.0,
+      "angle": "convenience-ease",
+      "hook_type": "direct_address",
+      "verdict": "rewrite"
+    },
+    {
       "ad_id": "tyroola-084",
       "ad_name": "non-promo-A-001_Shortcopy \u2013 Copy",
       "composite": 0.5059,
@@ -221,7 +440,7 @@
     {
       "ad_id": "tyroola-056",
       "ad_name": "nsw-link-without-leaving-home-tyroola-v04.png",
-      "composite": 0.0,
+      "composite": 0.399,
       "roas": 27.78,
       "spend": 724.11,
       "revenue": 3092.1,
@@ -233,7 +452,7 @@
     {
       "ad_id": "tyroola-058",
       "ad_name": "RAPID-15-off-RAPID-PCR-A-003.png",
-      "composite": 0.0,
+      "composite": 0.3558,
       "roas": 6.13,
       "spend": 946.8100000000001,
       "revenue": 23516.899999999998,
@@ -243,9 +462,21 @@
       "verdict": "rewrite"
     },
     {
+      "ad_id": "tyroola-103",
+      "ad_name": "RAPID-Driver Review-001",
+      "composite": 0.3681,
+      "roas": 3.07,
+      "spend": 271.86,
+      "revenue": 742.4,
+      "conversions": 2.0,
+      "angle": "convenience-ease",
+      "hook_type": "direct_address",
+      "verdict": "rewrite"
+    },
+    {
       "ad_id": "tyroola-037",
       "ad_name": "Bridgestone-Buy4Get15%Off-A-002.png",
-      "composite": 0.0,
+      "composite": 0.3541,
       "roas": 22.25,
       "spend": 2592.810000000001,
       "revenue": 38961.729999999996,
@@ -257,7 +488,7 @@
     {
       "ad_id": "tyroola-030",
       "ad_name": "COMFORSER-15-off-COMFORSER-PCR-A-003.png",
-      "composite": 0.0,
+      "composite": 0.3468,
       "roas": 23.23,
       "spend": 1650.58,
       "revenue": 13071.6,
@@ -269,7 +500,7 @@
     {
       "ad_id": "tyroola-021",
       "ad_name": "KUMHO-buy-4-get-15-off-A-002.png \u2013 Copy",
-      "composite": 0.0,
+      "composite": 0.3486,
       "roas": 23.23,
       "spend": 3263.19,
       "revenue": 23647.5,
@@ -281,7 +512,7 @@
     {
       "ad_id": "tyroola-044",
       "ad_name": "KUMHO-buy-4-get-15-off-A-002.png",
-      "composite": 0.0,
+      "composite": 0.3651,
       "roas": 115.21,
       "spend": 1554.6000000000001,
       "revenue": 38042.25,
@@ -291,9 +522,57 @@
       "verdict": "rewrite"
     },
     {
+      "ad_id": "tyroola-106",
+      "ad_name": "Michelin-Buy-4-get-$200-cashback-A-003.png",
+      "composite": 0.3521,
+      "roas": 16.53,
+      "spend": 384.74999999999994,
+      "revenue": 3211.7,
+      "conversions": 6.0,
+      "angle": "convenience-ease",
+      "hook_type": "offer_first",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-117",
+      "ad_name": "Nov 2024 Promo-Bridgestone-A-002",
+      "composite": 0.3541,
+      "roas": 4.46,
+      "spend": 229.78,
+      "revenue": 565.37,
+      "conversions": 1.0,
+      "angle": "convenience-ease",
+      "hook_type": "offer_first",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-128",
+      "ad_name": "October 2024 Promo-Hankook-A-001.png",
+      "composite": 0.3335,
+      "roas": 8.74,
+      "spend": 198.56,
+      "revenue": 915.0,
+      "conversions": 2.0,
+      "angle": "convenience-ease",
+      "hook_type": "offer_first",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-109",
+      "ad_name": "October 2024 Promo-Hankook-A-002.png",
+      "composite": 0.3335,
+      "roas": 0.0,
+      "spend": 247.58,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "convenience-ease",
+      "hook_type": "offer_first",
+      "verdict": "rewrite"
+    },
+    {
       "ad_id": "tyroola-031",
       "ad_name": "October 2024 Promo-Hankook-A-003.png",
-      "composite": 0.0,
+      "composite": 0.3335,
       "roas": 11.99,
       "spend": 1280.29,
       "revenue": 5686.6,
@@ -305,7 +584,7 @@
     {
       "ad_id": "tyroola-004",
       "ad_name": "RAPID-15-off-RAPID-PCR-A-001.png",
-      "composite": 0.0,
+      "composite": 0.3632,
       "roas": 71.26,
       "spend": 9498.25,
       "revenue": 137734.45,
@@ -317,7 +596,7 @@
     {
       "ad_id": "tyroola-026",
       "ad_name": "RAPID-15-off-RAPID-PCR-B-001.png",
-      "composite": 0.0,
+      "composite": 0.3335,
       "roas": 33.3,
       "spend": 2392.72,
       "revenue": 73326.95,
@@ -327,13 +606,61 @@
       "verdict": "rewrite"
     },
     {
+      "ad_id": "tyroola-111",
+      "ad_name": "Rapid-Buy4Get15%Off-A-001.png",
+      "composite": 0.3632,
+      "roas": 2.6,
+      "spend": 244.16,
+      "revenue": 432.5,
+      "conversions": 1.0,
+      "angle": "convenience-ease",
+      "hook_type": "offer_first",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-169",
+      "ad_name": "BFG-non-promo-A-001-1.png",
+      "composite": 0.5686,
+      "roas": 0.0,
+      "spend": 106.01,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "convenience-ease",
+      "hook_type": "pattern_interrupt",
+      "verdict": "needs_work"
+    },
+    {
+      "ad_id": "tyroola-147",
+      "ad_name": "GRENLANDER-buy-4-get-15-off-4x4-A-001.png",
+      "composite": 0.5765,
+      "roas": 29.17,
+      "spend": 358.15999999999997,
+      "revenue": 3341.4,
+      "conversions": 6.0,
+      "angle": "convenience-ease",
+      "hook_type": "pattern_interrupt",
+      "verdict": "needs_work"
+    },
+    {
       "ad_id": "tyroola-047",
       "ad_name": "Kinforest-15%Off-A-003",
-      "composite": 0.0,
+      "composite": 0.3468,
       "roas": 7.95,
       "spend": 843.44,
       "revenue": 2567.2,
       "conversions": 4.0,
+      "angle": "convenience-ease",
+      "hook_type": "pattern_interrupt",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-116",
+      "ad_name": "Michelin-Buy-4-get-$200-card-A-003.png",
+      "composite": 0.3651,
+      "roas": 7.96,
+      "spend": 236.45,
+      "revenue": 1882.8,
+      "conversions": 3.0,
       "angle": "convenience-ease",
       "hook_type": "pattern_interrupt",
       "verdict": "rewrite"
@@ -351,21 +678,81 @@
       "verdict": "rewrite"
     },
     {
+      "ad_id": "tyroola-118",
+      "ad_name": "Michelin-non-promo-A-001PRR.png",
+      "composite": 0.6078,
+      "roas": 0.44,
+      "spend": 241.28,
+      "revenue": 98.25,
+      "conversions": 1.0,
+      "angle": "convenience-ease",
+      "hook_type": "pattern_interrupt",
+      "verdict": "needs_work"
+    },
+    {
       "ad_id": "tyroola-017",
       "ad_name": "Pattern Page - GRENLANDER-buy-4-get-15-off-A-001.png",
-      "composite": 0.0,
+      "composite": 0.5765,
       "roas": 20.21,
       "spend": 2967.19,
       "revenue": 17504.1,
       "conversions": 28.0,
       "angle": "convenience-ease",
       "hook_type": "pattern_interrupt",
+      "verdict": "needs_work"
+    },
+    {
+      "ad_id": "tyroola-163",
+      "ad_name": "A-004-Explainer-4.png_Orange_Carousel",
+      "composite": 0.4035,
+      "roas": 0.0,
+      "spend": 118.9,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "convenience-ease",
+      "hook_type": "question",
       "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-140",
+      "ad_name": "B-003-StressFree.png",
+      "composite": 0.4776,
+      "roas": 0.0,
+      "spend": 163.46,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "convenience-ease",
+      "hook_type": "question",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-153",
+      "ad_name": "Holiday+2024-A-001",
+      "composite": 0.3733,
+      "roas": 0.0,
+      "spend": 138.6,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "convenience-ease",
+      "hook_type": "question",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-139",
+      "ad_name": "Main Configurator | No surprises | QLD",
+      "composite": 0.6296,
+      "roas": 7.75,
+      "spend": 166.05,
+      "revenue": 1239.4,
+      "conversions": 2.0,
+      "angle": "convenience-ease",
+      "hook_type": "question",
+      "verdict": "needs_work"
     },
     {
       "ad_id": "tyroola-028",
       "ad_name": "non-promo-A-00111.png \u2013 Copy",
-      "composite": 0.0,
+      "composite": 0.4433,
       "roas": 105.11,
       "spend": 3155.34,
       "revenue": 58259.8,
@@ -377,7 +764,7 @@
     {
       "ad_id": "tyroola-074",
       "ad_name": "Bridgestone-Buy4Get15%Off-A-001.png",
-      "composite": 0.0,
+      "composite": 0.5294,
       "roas": 28.02,
       "spend": 895.06,
       "revenue": 18626.43,
@@ -387,13 +774,37 @@
       "verdict": "rewrite"
     },
     {
+      "ad_id": "tyroola-168",
+      "ad_name": "Catalogue | Honest prices_yellow v1",
+      "composite": 0.6157,
+      "roas": 0.0,
+      "spend": 109.83,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "price-value",
+      "hook_type": "bold_claim",
+      "verdict": "needs_work"
+    },
+    {
       "ad_id": "tyroola-015",
       "ad_name": "Creative-Iteration-V2-B-006.png",
-      "composite": 0.0,
+      "composite": 0.5737,
       "roas": 17.34,
       "spend": 3237.64,
       "revenue": 20183.8,
       "conversions": 28.0,
+      "angle": "price-value",
+      "hook_type": "bold_claim",
+      "verdict": "needs_work"
+    },
+    {
+      "ad_id": "tyroola-090",
+      "ad_name": "DriverReview-No-suprises-just-clear-prices",
+      "composite": 0.5373,
+      "roas": 0.0,
+      "spend": 370.83,
+      "revenue": 0.0,
+      "conversions": 0.0,
       "angle": "price-value",
       "hook_type": "bold_claim",
       "verdict": "rewrite"
@@ -447,9 +858,93 @@
       "verdict": "needs_work"
     },
     {
+      "ad_id": "tyroola-136",
+      "ad_name": "Zmax-15%Off-A-002",
+      "composite": 0.3781,
+      "roas": 9.51,
+      "spend": 173.9,
+      "revenue": 481.8,
+      "conversions": 1.0,
+      "angle": "price-value",
+      "hook_type": "fomo",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-137",
+      "ad_name": "Zmax-15%Off-A-003",
+      "composite": 0.3781,
+      "roas": 0.0,
+      "spend": 168.82,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "price-value",
+      "hook_type": "fomo",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-121",
+      "ad_name": "Zmax-get-15-off-A-001.png",
+      "composite": 0.3781,
+      "roas": 0.96,
+      "spend": 252.60999999999999,
+      "revenue": 174.0,
+      "conversions": 1.0,
+      "angle": "price-value",
+      "hook_type": "fomo",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-092",
+      "ad_name": "Zmax-get-15-off-A-002.png",
+      "composite": 0.3781,
+      "roas": 9.77,
+      "spend": 384.93,
+      "revenue": 1157.0,
+      "conversions": 2.0,
+      "angle": "price-value",
+      "hook_type": "fomo",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-115",
+      "ad_name": "Zmax-get-15-off-A-003.png",
+      "composite": 0.3781,
+      "roas": 29.74,
+      "spend": 265.85,
+      "revenue": 758.0,
+      "conversions": 1.0,
+      "angle": "price-value",
+      "hook_type": "fomo",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-144",
+      "ad_name": "Catalogue | BFG-All-TerrainTAKO2-Buy4Get150CashBack-D-001.png",
+      "composite": 0.3468,
+      "roas": 0.0,
+      "spend": 154.48,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "price-value",
+      "hook_type": "offer_first",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-087",
+      "ad_name": "Catalogue | Grenlander-D-002_10%",
+      "composite": 0.3829,
+      "roas": 3.59,
+      "spend": 387.0,
+      "revenue": 1388.0,
+      "conversions": 2.0,
+      "angle": "price-value",
+      "hook_type": "offer_first",
+      "verdict": "rewrite"
+    },
+    {
       "ad_id": "tyroola-016",
       "ad_name": "Catalogue | Grenlander-D-002",
-      "composite": 0.3617,
+      "composite": 0.3829,
       "roas": 18.94,
       "spend": 3043.41,
       "revenue": 18755.7,
@@ -461,7 +956,7 @@
     {
       "ad_id": "tyroola-067",
       "ad_name": "Catalogue | Kumho-EcstaPS71-Buy4Get15%Off-B-001.png",
-      "composite": 0.0,
+      "composite": 0.3816,
       "roas": 11.92,
       "spend": 599.59,
       "revenue": 3290.6,
@@ -473,7 +968,7 @@
     {
       "ad_id": "tyroola-003",
       "ad_name": "Catalogue | Kumho | V1",
-      "composite": 0.3492,
+      "composite": 0.3928,
       "roas": 27.26,
       "spend": 5876.66,
       "revenue": 34685.15,
@@ -485,11 +980,35 @@
     {
       "ad_id": "tyroola-054",
       "ad_name": "Catalogue | Michelin-B-002",
-      "composite": 0.3617,
+      "composite": 0.3829,
       "roas": 23.22,
       "spend": 769.73,
       "revenue": 6136.2,
       "conversions": 7.0,
+      "angle": "price-value",
+      "hook_type": "offer_first",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-098",
+      "ad_name": "Catalogue | Pirelli-A-002",
+      "composite": 0.3928,
+      "roas": 8.3,
+      "spend": 329.17,
+      "revenue": 1308.0,
+      "conversions": 2.0,
+      "angle": "price-value",
+      "hook_type": "offer_first",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-126",
+      "ad_name": "Imperial-AllTyres-Buy4Get15%Off-A-002.png",
+      "composite": 0.3599,
+      "roas": 11.59,
+      "spend": 221.10000000000002,
+      "revenue": 330.2,
+      "conversions": 1.0,
       "angle": "price-value",
       "hook_type": "offer_first",
       "verdict": "rewrite"
@@ -509,13 +1028,97 @@
     {
       "ad_id": "tyroola-035",
       "ad_name": "Mid-year tyre sale - July 15 to 19-2.png",
-      "composite": 0.0,
+      "composite": 0.5294,
       "roas": 19.45,
       "spend": 2121.73,
       "revenue": 57878.71,
       "conversions": 68.0,
       "angle": "price-value",
       "hook_type": "offer_first",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-152",
+      "ad_name": "October 2024 Promo-Bridgestone-A-001.png",
+      "composite": 0.3484,
+      "roas": 5.65,
+      "spend": 139.28,
+      "revenue": 416.0,
+      "conversions": 1.0,
+      "angle": "price-value",
+      "hook_type": "offer_first",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-158",
+      "ad_name": "October 2024 Promo-Bridgestone-A-002.png",
+      "composite": 0.3484,
+      "roas": 0.0,
+      "spend": 130.91,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "price-value",
+      "hook_type": "offer_first",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-129",
+      "ad_name": "October 2024 Promo-Bridgestone-A-003.png",
+      "composite": 0.3484,
+      "roas": 0.0,
+      "spend": 198.38,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "price-value",
+      "hook_type": "offer_first",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-096",
+      "ad_name": "Product Page | Pirelli-Scorpion Verde AS-Buy4Get15%Off-C-002.png",
+      "composite": 0.6235,
+      "roas": 4.69,
+      "spend": 334.12,
+      "revenue": 513.2,
+      "conversions": 1.0,
+      "angle": "price-value",
+      "hook_type": "offer_first",
+      "verdict": "needs_work"
+    },
+    {
+      "ad_id": "tyroola-156",
+      "ad_name": "Promo-BFG-A-001.png",
+      "composite": 0.3484,
+      "roas": 0.0,
+      "spend": 137.56,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "price-value",
+      "hook_type": "offer_first",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-132",
+      "ad_name": "Best Brands Best Prices-A-001.png",
+      "composite": 0.5059,
+      "roas": 0.0,
+      "spend": 181.11,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "price-value",
+      "hook_type": "pattern_interrupt",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-105",
+      "ad_name": "BF GOODRICH-buy-4-get-$150-cashback-BF GOODRICH-4x4-A-001.png",
+      "composite": 0.3607,
+      "roas": 28.86,
+      "spend": 364.47999999999996,
+      "revenue": 5075.2,
+      "conversions": 5.0,
+      "angle": "price-value",
+      "hook_type": "price_anchor",
       "verdict": "rewrite"
     },
     {
@@ -531,9 +1134,69 @@
       "verdict": "rewrite"
     },
     {
+      "ad_id": "tyroola-134",
+      "ad_name": "Catalogue | Grenlander-D-003_10%",
+      "composite": 0.3656,
+      "roas": 9.06,
+      "spend": 179.24,
+      "revenue": 1624.6,
+      "conversions": 2.0,
+      "angle": "price-value",
+      "hook_type": "price_anchor",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-165",
+      "ad_name": "Catalogue | Grenlander-D-003",
+      "composite": 0.3656,
+      "roas": 12.02,
+      "spend": 117.58,
+      "revenue": 642.1,
+      "conversions": 2.0,
+      "angle": "price-value",
+      "hook_type": "price_anchor",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-141",
+      "ad_name": "Catalogue | Hankook-001",
+      "composite": 0.3755,
+      "roas": 5.33,
+      "spend": 162.39,
+      "revenue": 866.0,
+      "conversions": 1.0,
+      "angle": "price-value",
+      "hook_type": "price_anchor",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-119",
+      "ad_name": "Catalogue | Hankook-002",
+      "composite": 0.3656,
+      "roas": 2.38,
+      "spend": 223.84,
+      "revenue": 532.0,
+      "conversions": 1.0,
+      "angle": "price-value",
+      "hook_type": "price_anchor",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-080",
+      "ad_name": "Catalogue | Kumho | V2",
+      "composite": 0.3706,
+      "roas": 16.17,
+      "spend": 475.28,
+      "revenue": 3483.4,
+      "conversions": 3.0,
+      "angle": "price-value",
+      "hook_type": "price_anchor",
+      "verdict": "rewrite"
+    },
+    {
       "ad_id": "tyroola-025",
       "ad_name": "Catalogue | Kumho | V4",
-      "composite": 0.35,
+      "composite": 0.3706,
       "roas": 40.5,
       "spend": 1734.7,
       "revenue": 19154.8,
@@ -543,9 +1206,33 @@
       "verdict": "rewrite"
     },
     {
+      "ad_id": "tyroola-113",
+      "ad_name": "Catalogue | Michelin-B-001",
+      "composite": 0.3755,
+      "roas": 9.42,
+      "spend": 242.07,
+      "revenue": 1919.0,
+      "conversions": 2.0,
+      "angle": "price-value",
+      "hook_type": "price_anchor",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-120",
+      "ad_name": "Catalogue | Pirelli-A-001",
+      "composite": 0.3755,
+      "roas": 0.0,
+      "spend": 223.61,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "price-value",
+      "hook_type": "price_anchor",
+      "verdict": "rewrite"
+    },
+    {
       "ad_id": "tyroola-070",
       "ad_name": "Catalogue | Pirelli-Scorpion Verde AS-Buy4Get15%Off-C-001.png",
-      "composite": 0.0,
+      "composite": 0.3651,
       "roas": 17.28,
       "spend": 600.5999999999999,
       "revenue": 3099.5,
@@ -555,9 +1242,21 @@
       "verdict": "rewrite"
     },
     {
+      "ad_id": "tyroola-108",
+      "ad_name": "Catalogue | Winrun-E-001",
+      "composite": 0.386,
+      "roas": 2.7,
+      "spend": 247.7,
+      "revenue": 634.8,
+      "conversions": 1.0,
+      "angle": "price-value",
+      "hook_type": "price_anchor",
+      "verdict": "rewrite"
+    },
+    {
       "ad_id": "tyroola-060",
       "ad_name": "Catalogue | Winrun-E-002",
-      "composite": 0.3617,
+      "composite": 0.3829,
       "roas": 3.02,
       "spend": 993.0899999999999,
       "revenue": 2783.0,
@@ -567,9 +1266,21 @@
       "verdict": "rewrite"
     },
     {
+      "ad_id": "tyroola-079",
+      "ad_name": "Catalogue | Winrun-Maxclaw AT-Get15%Off-A-002.png",
+      "composite": 0.3871,
+      "roas": 16.45,
+      "spend": 488.63,
+      "revenue": 3737.8,
+      "conversions": 4.0,
+      "angle": "price-value",
+      "hook_type": "price_anchor",
+      "verdict": "rewrite"
+    },
+    {
       "ad_id": "tyroola-001",
       "ad_name": "COMFORSER-15-off-COMFORSER-PCR-B-001.png",
-      "composite": 0.0,
+      "composite": 0.4146,
       "roas": 27.13,
       "spend": 11941.44,
       "revenue": 89170.94,
@@ -579,9 +1290,21 @@
       "verdict": "rewrite"
     },
     {
+      "ad_id": "tyroola-102",
+      "ad_name": "Kinforest-15%Off-A-002",
+      "composite": 0.4146,
+      "roas": 7.33,
+      "spend": 282.13,
+      "revenue": 734.0,
+      "conversions": 2.0,
+      "angle": "price-value",
+      "hook_type": "price_anchor",
+      "verdict": "rewrite"
+    },
+    {
       "ad_id": "tyroola-052",
       "ad_name": "Kinforest-15%Off-DriverReviews-001",
-      "composite": 0.336,
+      "composite": 0.3558,
       "roas": 21.16,
       "spend": 794.53,
       "revenue": 5649.0,
@@ -605,7 +1328,7 @@
     {
       "ad_id": "tyroola-009",
       "ad_name": "new title | without-leaving-home-tyroola-v04.png",
-      "composite": 0.0,
+      "composite": 0.4145,
       "roas": 46.88,
       "spend": 3796.95,
       "revenue": 30135.0,
@@ -615,9 +1338,45 @@
       "verdict": "rewrite"
     },
     {
+      "ad_id": "tyroola-133",
+      "ad_name": "Pirelli-buy-4-get-$150-cashback-A-002",
+      "composite": 0.3953,
+      "roas": 7.04,
+      "spend": 180.21,
+      "revenue": 1268.63,
+      "conversions": 2.0,
+      "angle": "price-value",
+      "hook_type": "price_anchor",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-148",
+      "ad_name": "Pirelli-buy-4-get-$150-cashback-A-003",
+      "composite": 0.4042,
+      "roas": 0.0,
+      "spend": 146.76,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "price-value",
+      "hook_type": "price_anchor",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-167",
+      "ad_name": "PIRELLI-buy-4-get-up-to-$250-cashback-A-001.png",
+      "composite": 0.3953,
+      "roas": 188.64,
+      "spend": 117.7,
+      "revenue": 833.8,
+      "conversions": 1.0,
+      "angle": "price-value",
+      "hook_type": "price_anchor",
+      "verdict": "rewrite"
+    },
+    {
       "ad_id": "tyroola-012",
       "ad_name": "without-leaving-home-tyroola-v04.png \u2013 Copy",
-      "composite": 0.0,
+      "composite": 0.4584,
       "roas": 1.64,
       "spend": 8985.47,
       "revenue": 230287.4,
@@ -629,7 +1388,7 @@
     {
       "ad_id": "tyroola-069",
       "ad_name": "Catalogue | Kumho-EcstaPS71-Buy4Get15%Off-B-003.png",
-      "composite": 0.0,
+      "composite": 0.3912,
       "roas": 17.12,
       "spend": 578.79,
       "revenue": 3416.65,
@@ -639,21 +1398,45 @@
       "verdict": "rewrite"
     },
     {
+      "ad_id": "tyroola-091",
+      "ad_name": "Catalogue | Pirelli-Scorpion Verde AS-Buy4Get15%Off-C-003.png",
+      "composite": 0.4225,
+      "roas": 2.69,
+      "spend": 426.31,
+      "revenue": 538.0,
+      "conversions": 1.0,
+      "angle": "price-value",
+      "hook_type": "question",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-089",
+      "ad_name": "Catalogue | Winrun-Maxclaw AT-Get15%Off-A-001.png",
+      "composite": 0.3834,
+      "roas": 14.46,
+      "spend": 386.26,
+      "revenue": 2468.9,
+      "conversions": 3.0,
+      "angle": "price-value",
+      "hook_type": "question",
+      "verdict": "rewrite"
+    },
+    {
       "ad_id": "tyroola-024",
       "ad_name": "creative-iteration-A-002.png",
-      "composite": 0.0,
+      "composite": 0.6431,
       "roas": 24.58,
       "spend": 1787.06,
       "revenue": 9269.2,
       "conversions": 12.0,
       "angle": "price-value",
       "hook_type": "question",
-      "verdict": "rewrite"
+      "verdict": "needs_work"
     },
     {
       "ad_id": "tyroola-077",
       "ad_name": "Main Configurator | Tyres under 40 | NSW",
-      "composite": 0.0,
+      "composite": 0.4094,
       "roas": 6.75,
       "spend": 504.84000000000003,
       "revenue": 3393.6,
@@ -663,15 +1446,87 @@
       "verdict": "rewrite"
     },
     {
+      "ad_id": "tyroola-095",
+      "ad_name": "Main Configurator | Tyres under 40 | QLD",
+      "composite": 0.431,
+      "roas": 0.0,
+      "spend": 349.64,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "price-value",
+      "hook_type": "question",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-123",
+      "ad_name": "Main Configurator | Tyres under 40 | VIC",
+      "composite": 0.4094,
+      "roas": 0.0,
+      "spend": 209.81,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "price-value",
+      "hook_type": "question",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-100",
+      "ad_name": "Save on Money",
+      "composite": 0.6431,
+      "roas": 0.0,
+      "spend": 298.93,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "price-value",
+      "hook_type": "question",
+      "verdict": "needs_work"
+    },
+    {
       "ad_id": "tyroola-057",
       "ad_name": "Us vs them.png \u2013 Copy",
-      "composite": 0.0,
+      "composite": 0.4324,
       "roas": 69.17,
       "spend": 1006.6899999999999,
       "revenue": 19585.93,
       "conversions": 24.0,
       "angle": "price-value",
       "hook_type": "question",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-145",
+      "ad_name": "Us vs. them_Why pay more copy",
+      "composite": 0.4392,
+      "roas": 0.0,
+      "spend": 151.74,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "price-value",
+      "hook_type": "question",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-112",
+      "ad_name": "Nov 2024 Promo-Bridgestone-A-001",
+      "composite": 0.5451,
+      "roas": 0.0,
+      "spend": 242.51,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "price-value",
+      "hook_type": "social_proof",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-142",
+      "ad_name": "Holiday+2024-A-003_new copy",
+      "composite": 0.431,
+      "roas": 0.0,
+      "spend": 160.53,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "price-value",
+      "hook_type": "statistic",
       "verdict": "rewrite"
     },
     {
@@ -689,7 +1544,7 @@
     {
       "ad_id": "tyroola-051",
       "ad_name": "Product Page | Winrun-Maxclaw AT-Get15%Off-A-003.png",
-      "composite": 0.0,
+      "composite": 0.4485,
       "roas": 6.43,
       "spend": 795.25,
       "revenue": 2224.4,
@@ -701,7 +1556,7 @@
     {
       "ad_id": "tyroola-042",
       "ad_name": "Catalogue | Australia Day Promo-A-002",
-      "composite": 0.0,
+      "composite": 0.4035,
       "roas": 10.49,
       "spend": 919.8,
       "revenue": 9652.6,
@@ -713,7 +1568,7 @@
     {
       "ad_id": "tyroola-061",
       "ad_name": "Catalogue | Australia Day Promo-A-003",
-      "composite": 0.0,
+      "composite": 0.4255,
       "roas": 7.36,
       "spend": 643.17,
       "revenue": 4736.8,
@@ -725,14 +1580,14 @@
     {
       "ad_id": "tyroola-048",
       "ad_name": "Catalogue | Black Friday November 2024-A-002",
-      "composite": 0.0,
+      "composite": 0.5843,
       "roas": 8.09,
       "spend": 822.57,
       "revenue": 6656.2,
       "conversions": 10.0,
       "angle": "price-value",
       "hook_type": "urgency",
-      "verdict": "rewrite"
+      "verdict": "needs_work"
     },
     {
       "ad_id": "tyroola-020",
@@ -761,19 +1616,19 @@
     {
       "ad_id": "tyroola-019",
       "ad_name": "Homepage | Black Friday November 2024-A-003_with catalogue",
-      "composite": 0.0,
+      "composite": 0.5843,
       "roas": 4.73,
       "spend": 2195.38,
       "revenue": 12006.8,
       "conversions": 20.0,
       "angle": "price-value",
       "hook_type": "urgency",
-      "verdict": "rewrite"
+      "verdict": "needs_work"
     },
     {
       "ad_id": "tyroola-002",
       "ad_name": "Main Configurator | Australia Day Promo-A-003",
-      "composite": 0.0,
+      "composite": 0.4035,
       "roas": 11.1,
       "spend": 6291.67,
       "revenue": 69821.2,
@@ -783,9 +1638,45 @@
       "verdict": "rewrite"
     },
     {
+      "ad_id": "tyroola-164",
+      "ad_name": "Regular days | Spring Sale-OCT 14-18 & 21-A-003",
+      "composite": 0.5647,
+      "roas": 17.7,
+      "spend": 118.37,
+      "revenue": 2095.0,
+      "conversions": 3.0,
+      "angle": "price-value",
+      "hook_type": "urgency",
+      "verdict": "needs_work"
+    },
+    {
+      "ad_id": "tyroola-127",
+      "ad_name": "Main configurator | Single image",
+      "composite": 0.6706,
+      "roas": 1.87,
+      "spend": 205.54,
+      "revenue": 385.0,
+      "conversions": 1.0,
+      "angle": "simplicity-clarity",
+      "hook_type": "offer_first",
+      "verdict": "needs_work"
+    },
+    {
+      "ad_id": "tyroola-088",
+      "ad_name": "Reel_Review01_Long_Copy",
+      "composite": 0.5886,
+      "roas": 16.46,
+      "spend": 386.99,
+      "revenue": 3139.19,
+      "conversions": 6.0,
+      "angle": "social-proof",
+      "hook_type": "fomo",
+      "verdict": "needs_work"
+    },
+    {
       "ad_id": "tyroola-068",
       "ad_name": "Product Page | Kumho-EcstaPS71-Buy4Get15%Off-B-002.png",
-      "composite": 0.0,
+      "composite": 0.4886,
       "roas": 9.81,
       "spend": 598.35,
       "revenue": 2344.4,
@@ -793,6 +1684,18 @@
       "angle": "social-proof",
       "hook_type": "statistic",
       "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-125",
+      "ad_name": "creative-iteration-B-002.png",
+      "composite": 0.5843,
+      "roas": 2.69,
+      "spend": 207.2,
+      "revenue": 363.6,
+      "conversions": 1.0,
+      "angle": "transparency-trust",
+      "hook_type": "bold_claim",
+      "verdict": "needs_work"
     },
     {
       "ad_id": "tyroola-063",
@@ -807,6 +1710,18 @@
       "verdict": "needs_work"
     },
     {
+      "ad_id": "tyroola-097",
+      "ad_name": "Las Vegas Promo | V2 | Pattern page | Copy with inclusions",
+      "composite": 0.3755,
+      "roas": 3.71,
+      "spend": 355.46,
+      "revenue": 1219.1,
+      "conversions": 3.0,
+      "angle": "urgency-scarcity",
+      "hook_type": "fomo",
+      "verdict": "rewrite"
+    },
+    {
       "ad_id": "tyroola-071",
       "ad_name": "Afterpay Day-Aug 15-18-A-001.png",
       "composite": 0.6,
@@ -817,6 +1732,54 @@
       "angle": "urgency-scarcity",
       "hook_type": "urgency",
       "verdict": "needs_work"
+    },
+    {
+      "ad_id": "tyroola-082",
+      "ad_name": "BFG Nov-Dec 2024-A-002",
+      "composite": 0.4299,
+      "roas": 4.8,
+      "spend": 487.88,
+      "revenue": 1537.2,
+      "conversions": 3.0,
+      "angle": "urgency-scarcity",
+      "hook_type": "urgency",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-101",
+      "ad_name": "BFG Nov-Dec 2024-A-003",
+      "composite": 0.399,
+      "roas": 0.0,
+      "spend": 334.53999999999996,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "urgency-scarcity",
+      "hook_type": "urgency",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-104",
+      "ad_name": "BoxingDay December 2024-homepage",
+      "composite": 0.5178,
+      "roas": 16.94,
+      "spend": 329.9,
+      "revenue": 4399.45,
+      "conversions": 4.0,
+      "angle": "urgency-scarcity",
+      "hook_type": "urgency",
+      "verdict": "rewrite"
+    },
+    {
+      "ad_id": "tyroola-114",
+      "ad_name": "Continental-AllTyres-Buy4Get15%Off-A-002",
+      "composite": 0.3558,
+      "roas": 0.0,
+      "spend": 241.87,
+      "revenue": 0.0,
+      "conversions": 0.0,
+      "angle": "urgency-scarcity",
+      "hook_type": "urgency",
+      "verdict": "rewrite"
     },
     {
       "ad_id": "tyroola-041",
@@ -843,6 +1806,42 @@
       "verdict": "needs_work"
     },
     {
+      "ad_id": "tyroola-110",
+      "ad_name": "Extension | Spring Sale-OCT 14-18 & 21-A-002",
+      "composite": 0.5686,
+      "roas": 32.45,
+      "spend": 245.21,
+      "revenue": 7957.15,
+      "conversions": 14.0,
+      "angle": "urgency-scarcity",
+      "hook_type": "urgency",
+      "verdict": "needs_work"
+    },
+    {
+      "ad_id": "tyroola-138",
+      "ad_name": "Extension | Spring Sale-OCT 14-18 & 21-A-003",
+      "composite": 0.5686,
+      "roas": 23.73,
+      "spend": 168.28,
+      "revenue": 3992.6,
+      "conversions": 3.0,
+      "angle": "urgency-scarcity",
+      "hook_type": "urgency",
+      "verdict": "needs_work"
+    },
+    {
+      "ad_id": "tyroola-135",
+      "ad_name": "Extension | Spring Sale-OCT 14-18 & 21-A-004 \u2013 Copy 2",
+      "composite": 0.5686,
+      "roas": 28.24,
+      "spend": 177.59,
+      "revenue": 5015.2,
+      "conversions": 5.0,
+      "angle": "urgency-scarcity",
+      "hook_type": "urgency",
+      "verdict": "needs_work"
+    },
+    {
       "ad_id": "tyroola-076",
       "ad_name": "Father's Day-Sep 2-6-B-004.png",
       "composite": 0.4337,
@@ -857,7 +1856,7 @@
     {
       "ad_id": "tyroola-027",
       "ad_name": "Homepage | Australia Day Promo-A-001",
-      "composite": 0.0,
+      "composite": 0.5178,
       "roas": 12.88,
       "spend": 1613.65,
       "revenue": 20777.6,
@@ -869,19 +1868,19 @@
     {
       "ad_id": "tyroola-010",
       "ad_name": "Homepage | Black Friday November 2024-A-004",
-      "composite": 0.0,
+      "composite": 0.5843,
       "roas": 10.02,
       "spend": 3715.8,
       "revenue": 38774.25,
       "conversions": 51.0,
       "angle": "urgency-scarcity",
       "hook_type": "urgency",
-      "verdict": "rewrite"
+      "verdict": "needs_work"
     },
     {
       "ad_id": "tyroola-045",
       "ad_name": "Homepage | BoxingDay December 2024-homepage",
-      "composite": 0.0,
+      "composite": 0.5178,
       "roas": 11.7,
       "spend": 1003.27,
       "revenue": 15416.7,
@@ -893,7 +1892,7 @@
     {
       "ad_id": "tyroola-011",
       "ad_name": "Homepage | BoxingDay December 2024",
-      "composite": 0.0,
+      "composite": 0.5178,
       "roas": 12.89,
       "spend": 3486.81,
       "revenue": 48527.0,
@@ -905,7 +1904,7 @@
     {
       "ad_id": "tyroola-038",
       "ad_name": "Main configurator | BoxingDay December 2024",
-      "composite": 0.0,
+      "composite": 0.5178,
       "roas": 10.35,
       "spend": 1140.3,
       "revenue": 10605.3,
@@ -927,25 +1926,49 @@
       "verdict": "needs_work"
     },
     {
+      "ad_id": "tyroola-130",
+      "ad_name": "Monday_Cyber Monday December 2024-B-001_with sitelinks",
+      "composite": 0.5529,
+      "roas": 2.33,
+      "spend": 259.84000000000003,
+      "revenue": 451.0,
+      "conversions": 1.0,
+      "angle": "urgency-scarcity",
+      "hook_type": "urgency",
+      "verdict": "needs_work"
+    },
+    {
       "ad_id": "tyroola-049",
       "ad_name": "Monday_Cyber Monday December 2024-B-003_with catalogue",
-      "composite": 0.0,
+      "composite": 0.5765,
       "roas": 13.22,
       "spend": 883.97,
       "revenue": 10800.95,
       "conversions": 16.0,
       "angle": "urgency-scarcity",
       "hook_type": "urgency",
-      "verdict": "rewrite"
+      "verdict": "needs_work"
     },
     {
       "ad_id": "tyroola-064",
       "ad_name": "Monday_Cyber Monday December 2024-B-004.png \u2013 Copy",
-      "composite": 0.0,
+      "composite": 0.5529,
       "roas": 14.27,
       "spend": 612.81,
       "revenue": 8746.7,
       "conversions": 10.0,
+      "angle": "urgency-scarcity",
+      "hook_type": "urgency",
+      "verdict": "needs_work"
+    },
+    {
+      "ad_id": "tyroola-094",
+      "ad_name": "Pattern page | BFG Nov-Dec 2024-A-001",
+      "composite": 0.3607,
+      "roas": 10.51,
+      "spend": 359.43,
+      "revenue": 3074.4,
+      "conversions": 3.0,
       "angle": "urgency-scarcity",
       "hook_type": "urgency",
       "verdict": "rewrite"
