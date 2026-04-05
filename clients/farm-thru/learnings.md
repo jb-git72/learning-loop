@@ -1,5 +1,18 @@
 # FarmThru — Creative Learnings
 
+## CRITICAL RULES (read first — these override everything below)
+
+- NEVER use em dashes (—) or en dashes (–) in ANY content. Use full stops, commas, or colons.
+- LP subheads: max 120 characters. Scannable in 2 seconds. Not a paragraph.
+- LP headlines: general-purpose. Not "your kids" (excludes non-parents).
+- Sentences: 13-18 words. Short paragraphs with line breaks for scannability.
+- No specific $ amounts ($50, $10K) in LPs unless confirmed.
+- NEVER use doubt language: "we can't promise..." invokes doubt. Reframe positively.
+- NEVER lead with "regenerative" — too niche. Supporting detail only.
+- NEVER say "days old" — say "straight from farm to hub" or "fresh from the paddock."
+- Distance: use multipliers ("10x less"), not raw km. "280km" sounds far.
+- No fabricated stats. No named competitors. No Title Case. No "delivered to your door."
+
 ## What Works (do more of this)
 
 - **BR-110 standout**: "Own a piece of the grocery store that pays farmers first." Strongest single line. More "putting farmers first" messaging. Supermarkets are the villains.

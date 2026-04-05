@@ -459,6 +459,7 @@ def _dimension_improvement_guidance(dim_name: str) -> str:
         "proof_density": "Add stats, dollar amounts, testimonial quotes, named sources, third-party citations.",
         "cta_prominence": "Repeat the CTA, use action-specific language, ensure it's on the approved list.",
         "scroll_depth_pull": "4-8 sections with benefit-oriented headings. Each section pulls to the next.",
+        "lp_readability": "ZERO em dashes. Subhead under 120 chars. Short paragraphs (max 3 sentences). Sentences 13-18 words. Lots of line breaks for scannability.",
         "subject_line_power": "6-10 words, include a specific detail (number/name), avoid spam triggers.",
         "body_flow": "Short paragraphs (max 3 sentences). Clear paragraph breaks. Under 2000 chars.",
         "personalization": "Reference the reader's context (waitlist, prior action). Use 'you' frequently. Add time-specific details.",
