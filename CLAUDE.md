@@ -82,6 +82,8 @@ Auto-loaded by `run.py`.
 - `scripts/clean_meta_ads.py` — Clean investment language from meta-ad descriptions
 - `scripts/onboard_client.py` — Onboard new client in ~2 min (generates all 5 files + validates)
 - `scripts/verify_evolution.py` — Verify evolutionary vs greedy hill-climbing performance
+- `scripts/figma_pipeline.py` — Figma API integration: inspect files, export PNGs, set up brand variables, prepare plugin input
+- `figma-plugin/` — Figma plugin for injecting ad copy into template frames
 
 ## Workflow: calibration rounds
 
