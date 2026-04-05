@@ -1,0 +1,88 @@
+  Baseline: LP-A = 0.582 [needs_work]
+  Baseline: LP-B = 0.644 [needs_work]
+  Baseline: LP-D = 0.733 [strong_draft]
+  Baseline: LP-E = 0.684 [needs_work]
+  Baseline: LP-F = 0.658 [needs_work]
+  Baseline: LP-M = 0.599 [needs_work]
+  Baseline: LP-N = 0.661 [needs_work]
+  Baseline: LP-P = 0.647 [needs_work]
+
+============================================================
+=== CHAINED EVOLUTION A/B TEST ===
+============================================================
+
+LP-A (current: 0.582, hook: confession, donor: LP-D, mutated_hook: newness)
+    A-1: crossover (plain)... 0.658
+    B-1: crossover + mutated hook (newness)... 0.535
+    C-1: chain step 1 (crossover)... 0.668 -> step 2 (mutate to newness)... 0.653
+    A-2: crossover (plain)... 0.600
+    B-2: crossover + mutated hook (newness)... 0.648
+    C-2: chain step 1 (crossover)... 0.771 -> step 2 (mutate to newness)... 0.669
+
+LP-F (current: 0.658, hook: bold_claim, donor: LP-D, mutated_hook: fomo)
+    A-1: crossover (plain)... 0.741
+    B-1: crossover + mutated hook (fomo)... 0.720
+    C-1: chain step 1 (crossover)... 0.715 -> step 2 (mutate to fomo)... 0.717
+    A-2: crossover (plain)... 0.688
+    B-2: crossover + mutated hook (fomo)... 0.731
+    C-2: chain step 1 (crossover)... 0.635 -> step 2 (mutate to fomo)... 0.720
+
+LP-D (current: 0.733, hook: curiosity, donor: LP-E, mutated_hook: exclusivity)
+    A-1: crossover (plain)... 0.621
+    B-1: crossover + mutated hook (exclusivity)... 0.512
+    C-1: chain step 1 (crossover)... 0.651 -> step 2 (mutate to exclusivity)... 0.690
+    A-2: crossover (plain)... 0.744
+    B-2: crossover + mutated hook (exclusivity)... 0.524
+    C-2: chain step 1 (crossover)... 0.556 -> step 2 (mutate to exclusivity)... 0.596
+
+LP-P (current: 0.647, hook: contrast, donor: LP-D, mutated_hook: question)
+    A-1: crossover (plain)... 0.700
+    B-1: crossover + mutated hook (question)... 0.594
+    C-1: chain step 1 (crossover)... 0.000 -> step 2 (mutate to question)... 0.644
+    A-2: crossover (plain)... 0.730
+    B-2: crossover + mutated hook (question)... 0.602
+    C-2: chain step 1 (crossover)... 0.597 -> step 2 (mutate to question)... 0.696
+
+
+============================================================
+=== RESULTS ===
+============================================================
+
+LP-A (current: 0.582, hook: confession, mutated: newness, donor: LP-D)
+  Approach A (plain crossover     ): 0.658, 0.600  avg=0.629
+  Approach B (single-call combo   ): 0.535, 0.648  avg=0.591
+  Approach C (two-call chain      ): 0.653, 0.669  avg=0.661
+
+LP-F (current: 0.658, hook: bold_claim, mutated: fomo, donor: LP-D)
+  Approach A (plain crossover     ): 0.741, 0.688  avg=0.715
+  Approach B (single-call combo   ): 0.720, 0.731  avg=0.726
+  Approach C (two-call chain      ): 0.717, 0.720  avg=0.718
+
+LP-D (current: 0.733, hook: curiosity, mutated: exclusivity, donor: LP-E)
+  Approach A (plain crossover     ): 0.621, 0.744  avg=0.683
+  Approach B (single-call combo   ): 0.512, 0.524  avg=0.518
+  Approach C (two-call chain      ): 0.690, 0.596  avg=0.643
+
+LP-P (current: 0.647, hook: contrast, mutated: question, donor: LP-D)
+  Approach A (plain crossover     ): 0.700, 0.730  avg=0.715
+  Approach B (single-call combo   ): 0.594, 0.602  avg=0.598
+  Approach C (two-call chain      ): 0.644, 0.696  avg=0.670
+
+============================================================
+=== SUMMARY ===
+============================================================
+
+                      Avg Score  Best Score    Win Rate     N
+-------------------------------------------------------------
+Approach A (Plain crossover  ):    0.685       0.744         75%     8
+Approach B (Single-call combo):    0.608       0.731          0%     8
+Approach C (Two-call chain   ):    0.673       0.720         25%     8
+
+Recommendation: Approach A (Plain crossover) is the baseline winner — chaining does not help.
+
+Current LP average: 0.655
+  Approach A avg vs current: +0.030
+  Approach B avg vs current: -0.047
+  Approach C avg vs current: +0.018
+
+Total runtime: 1514s (25.2m)
