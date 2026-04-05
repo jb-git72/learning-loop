@@ -195,3 +195,81 @@ python3 scripts/hill_climb.py brand-slug --iterations 5 --population 5
 ```
 
 **After first human review:** Update learnings.md with "What Works" and "What Fails" from the review, keeping critical sections within the 1600-char truncation window. Then run hill-climbing again.
+
+---
+
+## 13. Learnings files have a 2000-char budget — split by content type
+
+**Mistake:** learnings.md grew to 18K chars. writer.py truncated it to 1600. 91% of learnings were invisible to the LLM. Em dash rules, subhead limits, and LP formatting guidance were all silently discarded. Hit this bug 3 separate times in Round 3.
+
+**Rule:** Learnings are split into 4 files, each with a 2000-char hard budget:
+- `learnings.md` — common rules loaded for ALL content types
+- `learnings-meta-ad.md` — meta-ad patterns and structure
+- `learnings-landing-page.md` — LP formatting, scroll structure, CFE patterns
+- `learnings-email.md` — frameworks, subject lines, drip sequence
+
+**How:** `python3 scripts/check_learnings.py {slug}` checks budgets. `--trim` auto-compresses with Haiku while preserving all rules. When adding a learning, compress or remove an existing one first — never just append.
+
+---
+
+## 14. Generation prompt quality beats iteration count
+
+**Mistake:** Ran 120 hill-climbing generations on LPs. Average jump: +0.041 per LP. Generator kept producing em dashes and long subheads because the prompt never mentioned these constraints.
+
+**After fixing 5 prompt gaps:** 40 generations, average jump: +0.108 per LP. 2.6x better results with 3x fewer API calls.
+
+**Rule:** Fix the generation prompt BEFORE running hill-climbing. One prompt fix is worth 100 extra generations. Checklist before hill-climbing:
+1. Do learnings mention the constraints the scorer enforces?
+2. Do config `prompt_extra_rules` include formatting rules?
+3. Does the tone file comply with the rules (no examples that violate them)?
+4. Does the config `platform_constraints` match the scoring thresholds?
+5. Does `_dimension_improvement_guidance()` in writer.py cover all scored dimensions?
+
+---
+
+## 15. Tone files and examples teach by demonstration
+
+**Mistake:** tone.md had em dashes in example copy ("stone fruit is unreal — juicy"). The LLM learned em dashes were acceptable and used them in every generation.
+
+**Rule:** Every example in tone.md, config.json, and learnings must comply with the active rules. If you ban em dashes, remove them from all examples. If you ban Title Case, don't have Title Case in example headlines.
+
+---
+
+## 16. LP sections must be structured arrays, not markdown strings
+
+**Mistake:** Landing page `sections` field was a markdown string. The rule checker, rubric scorer (`_score_scroll_depth_pull`), and LLM judge (`_format_content_block`) all expect `[{"heading": "...", "body": "..."}]`. With a string, section count returned character count, headings were empty, and compliance text was invisible.
+
+**Rule:** Always convert LP sections to structured arrays. Run `scripts/fix_lp_sections.py` after applying human edits. The `apply_review_edits.py` script writes sections as strings (from the HTML export) — conversion must follow.
+
+---
+
+## 17. Content-check rules produce false positives in LP sections
+
+**Mistake:** FMTH-002 (no_guaranteed_returns) matched "no guaranteed returns" in compliance disclaimers. FMTH-014 matched "no subscription" (saying they DON'T have subscriptions). Both are false positives from negation context.
+
+**Rule:** Content-check rules (banned terms, health claims, delivery claims) should NOT check the `sections` field. Compliance disclaimers live in sections and contain the exact phrases they're disclaiming. Only formatting rules (em dashes) and the custom disclaimer checker (FMTH-001) should check sections.
+
+---
+
+## 18. Chained evolution (crossover then mutate) doesn't improve results
+
+**Tested:** A/B across 24 candidates, 3 approaches:
+- Plain crossover: avg 0.685 (winner)
+- Single-call combo (crossover + mutation in one prompt): avg 0.608 (worst — confuses the LLM)
+- Two-call chain (crossover first, then mutate result): avg 0.673 (mutation degrades good crossovers)
+
+**Finding:** The mutation step acts as regression to the mean — improves bad results but degrades good ones. Tightest range (0.076) but lowest peaks. Keep crossover and mutation as independent population slots.
+
+---
+
+## 19. config.json prompt_extra_rules are always fully loaded
+
+**Key insight:** Unlike learnings (which have a 2000-char budget per file), `config.json -> prompt_extra_rules` is sent in full to the LLM every time. Put hard formatting rules here (em dashes, char limits, structural requirements). Put creative patterns in learnings files.
+
+---
+
+## 20. Pairwise gating catches soulless optimisation
+
+The pairwise LLM comparison (new vs current) catches cases where a variant scores higher on rubrics but reads worse. Example: LP-F got +0.008 on rubric but pairwise scored 2/5 — "loses the powerful personal narrative, replaces intimate storytelling with transactional clarity."
+
+**Rule:** Keep `--use-pairwise` on for evolutionary hill-climbing. One extra Haiku call per accepted candidate prevents accepting technically-correct-but-lifeless rewrites.
