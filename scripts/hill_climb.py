@@ -58,6 +58,8 @@ def parse_args():
     parser.add_argument("--use-pairwise", action="store_true", help="Enable pairwise comparison gating on accepted candidates")
     parser.add_argument("--workers", type=int, default=4, help="Concurrent ads per iteration in evolutionary mode (default 4)")
     parser.add_argument("--tournament", action="store_true", help="Tournament mode: cull bottom 50%% after each iteration")
+    parser.add_argument("--seed-lhs", action="store_true",
+                        help="Latin Hypercube seed: try one cell per hook before bandit kicks in (map-elites only)")
 
     # Support legacy positional-only invocation: hill_climb.py <client> <iters>
     # Also support the old --type=X inline style
@@ -615,11 +617,12 @@ def run_evolutionary(all_items, all_ads, client, client_dir, shared_dir,
 # ---------------------------------------------------------------------------
 
 def run_map_elites(all_items, all_ads, client, client_dir, shared_dir,
-                   max_iterations, target, use_llm, max_workers=4):
+                   max_iterations, target, use_llm, max_workers=4,
+                   seed_lhs=False):
     """MAP-Elites: fill an angle×hook grid with the best ad per cell.
 
     Competition is LOCAL — each cell only competes against itself.
-    Empty cells are prioritized. Produces a diverse, high-quality set.
+    Uses Thompson Sampling (Beta priors from benchmarks) to select cells.
     """
     strategy_tracker = []
 
@@ -635,9 +638,28 @@ def run_map_elites(all_items, all_ads, client, client_dir, shared_dir,
     hook_names = [h["id"] for h in hooks_data["hooks"]]
 
     playbook = _load_industry_playbook(client_dir)
+    hook_weights = playbook.get("hook_weights", {})
     loop_dir = client_dir / "loop"
     meta_dir = loop_dir / "meta-ads"
     meta_dir.mkdir(exist_ok=True)
+
+    # Angle strength from review data (approval rates)
+    angle_strength = {
+        "outcome-results": 1.5, "empathy-understanding": 1.2,
+        "price-value": 1.1, "simplicity-clarity": 1.1,
+        "safety-risk": 1.0, "guilt-free": 1.0,
+        "anti-insurance": 0.9, "predictability-control": 0.9,
+    }
+
+    # Initialize Thompson Sampling priors: Beta(alpha, beta) per cell
+    priors = {}
+    for a in angles:
+        a_str = angle_strength.get(a, 1.0)
+        for h in hook_names:
+            hit_rate = HOOK_METADATA.get(h, {}).get("benchmark_hit_rate", 0.05)
+            h_weight = hook_weights.get(h, 1.0)
+            effective = min(hit_rate * h_weight * a_str, 0.95)  # cap at 0.95
+            priors[(a, h)] = (effective * 20, (1 - effective) * 20)
 
     # Initialize archive from existing ads
     archive = {}  # (angle, hook) -> {"ad": dict, "score": float, "path": Path}
@@ -651,38 +673,69 @@ def run_map_elites(all_items, all_ads, client, client_dir, shared_dir,
     print(f"MAP-Elites grid: {len(angles)} angles x {len(hook_names)} hooks = {total_cells} cells")
     print(f"Initial coverage: {len(archive)}/{total_cells} ({len(archive)/total_cells*100:.0f}%)")
     print(f"Budget: {max_iterations} iterations, workers={max_workers}")
+    print(f"Selection: Thompson Sampling (Beta priors from benchmarks)")
     print()
 
     improved = 0
     all_items_lock = threading.Lock()
+    lhs_done = False
 
     for iteration in range(max_iterations):
-        # Prioritize: 60% empty cells, 40% occupied below target
-        empty_cells = [(a, h) for a in angles for h in hook_names if (a, h) not in archive]
-        below_target = [(k, v) for k, v in archive.items() if v["score"] < target]
+        empty_cells = set((a, h) for a in angles for h in hook_names if (a, h) not in archive)
+        below_target = {k for k, v in archive.items() if v["score"] < target}
+        actionable = empty_cells | below_target
 
-        if not empty_cells and not below_target:
+        if not actionable:
             print(f"All {total_cells} cells filled and at target after iteration {iteration}!")
             break
 
-        # Build batch of cells to work on this iteration
-        batch = []
-        batch_size = min(max_workers * 2, len(empty_cells) + len(below_target))
+        batch_size = min(max_workers * 2, len(actionable))
+        coverage = len(archive) / total_cells
 
-        # Fill from empty first
-        random.shuffle(empty_cells)
-        for cell in empty_cells[:int(batch_size * 0.6)]:
-            batch.append(("fill", cell))
+        # Latin Hypercube seed: one cell per hook on first iteration
+        is_lhs = seed_lhs and not lhs_done
+        if is_lhs:
+            lhs_done = True
+            batch = []
+            for h in hook_names:
+                # Pick the angle with highest prior for this hook
+                best_a = max(angles, key=lambda a: priors[(a, h)][0] / sum(priors[(a, h)]))
+                cell = (best_a, h)
+                task = "improve" if cell in archive else "fill"
+                batch.append((task, cell))
+            batch = batch[:batch_size]
+        else:
+            # Thompson Sampling: sample theta from Beta posterior for each actionable cell
+            candidates = []
+            for cell in actionable:
+                alpha, beta = priors[cell]
+                theta = random.betavariate(max(alpha, 0.01), max(beta, 0.01))
+                candidates.append((theta, cell))
+            candidates.sort(reverse=True, key=lambda x: x[0])
 
-        # Then improve occupied
-        below_target.sort(key=lambda x: x[1]["score"])
-        for cell, _ in below_target[:batch_size - len(batch)]:
-            batch.append(("improve", cell))
+            # Coverage gate: if <30%, force 80% empty; if >60%, pure bandit
+            if coverage < 0.3:
+                empty_quota = int(batch_size * 0.8)
+                empty_picks = [(t, c) for t, c in candidates if c in empty_cells][:empty_quota]
+                other_picks = [(t, c) for t, c in candidates if c not in empty_cells][:batch_size - len(empty_picks)]
+                selected = empty_picks + other_picks
+            else:
+                selected = candidates[:batch_size]
+
+            batch = []
+            for _, cell in selected:
+                task = "improve" if cell in archive else "fill"
+                batch.append((task, cell))
 
         if not batch:
             break
 
-        print(f"--- Iteration {iteration + 1}: {len(empty_cells)} empty, {len(below_target)} below target, batch={len(batch)} ---")
+        n_empty = len(empty_cells)
+        n_below = len(below_target)
+        if is_lhs:
+            print(f"--- Iteration {iteration + 1} [LHS seed]: {len(batch)} cells (one per hook) ---")
+        else:
+            print(f"--- Iteration {iteration + 1}: {n_empty} empty, {n_below} below target, batch={len(batch)} ---")
 
         def process_cell(task_type, cell):
             angle, hook = cell
@@ -757,6 +810,9 @@ def run_map_elites(all_items, all_ads, client, client_dir, shared_dir,
                 strategy_tracker.extend(entries)
 
                 if result is None:
+                    # Failed attempt — update posterior as loss
+                    a, b = priors[cell]
+                    priors[cell] = (a, b + 1)
                     continue
 
                 new_ad, new_score, new_report = result
@@ -764,7 +820,16 @@ def run_map_elites(all_items, all_ads, client, client_dir, shared_dir,
                 old_score = archive.get(cell, {}).get("score", 0)
 
                 # Local competition: only replace if better for THIS cell
-                if cell not in archive or new_score > archive[cell]["score"]:
+                won = cell not in archive or new_score > archive[cell]["score"]
+
+                # Update Thompson Sampling posteriors
+                a, b = priors[cell]
+                if won:
+                    priors[cell] = (a + 1, b)
+                else:
+                    priors[cell] = (a, b + 1)
+
+                if won:
                     # Generate ad_id and save
                     prefix = angle[:2].upper() + hook[:2].upper()
                     ad_id = f"{prefix}-{random.randint(100,999)}"
@@ -978,6 +1043,7 @@ def main():
             all_items, all_ads, client, client_dir, shared_dir,
             args.iterations, args.target, use_llm,
             max_workers=args.workers,
+            seed_lhs=args.seed_lhs,
         )
     else:
         improved, strategy_tracker = run_evolutionary(
