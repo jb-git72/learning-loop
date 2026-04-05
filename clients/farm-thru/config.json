@@ -120,7 +120,7 @@
     },
     "landing-page": {
       "headline_max_chars": 80,
-      "subhead_max_chars": 200,
+      "subhead_max_chars": 120,
       "hero_copy_max_chars": 500,
       "section_body_max_chars": 1000,
       "platform": "web"
@@ -199,7 +199,7 @@
   },
   "prompt_extra_rules": {
     "meta-ad": "- No em-dashes (use full stops, commas, or colons)\n- No commands (\"stop\", \"add it up\", \"do the maths\")\n- No condescension (\"we'll wait\", \"simple maths\")\n- Lead with value/benefit, not price\n- Every number must trace to a verified fact above\n- Structure: customer pain/question → acknowledgment/validation → product proof (specific) → transition (\"why act now\") → CTA\n- Sentences: 13-18 words max. Killed ads averaged 23-28. Keep it tight.\n- Description field should complement the headline, not repeat it",
-    "landing-page": "- Include financial disclaimer if discussing investment\n- Risks and benefits must have equal prominence\n- No return projections or guarantees\n- Every number must trace to a verified fact above\n- Last section MUST be titled \"Compliance\" with the exact disclaimer text shown in the output format above\n- Do NOT omit the Compliance section even if the page doesn't discuss investment — include it for all CFE/waitlist pages",
+    "landing-page": "- NEVER use em dashes or en dashes. Use full stops, commas, or colons instead.\n- Subhead MUST be under 120 characters. Short, scannable, not a paragraph.\n- Short paragraphs throughout. Max 3 sentences per paragraph. Lots of line breaks.\n- Sentences: 13-18 words max. If a sentence is over 20 words, split it.\n- Headlines must be general-purpose (not 'your kids' which excludes non-parents).\n- No specific dollar amounts ($50, $10K) unless confirmed.\n- Include financial disclaimer if discussing investment\n- Risks and benefits must have equal prominence\n- No return projections or guarantees\n- Every number must trace to a verified fact above\n- Last section MUST be titled \"Compliance\" with the exact disclaimer text shown in the output format above\n- Do NOT omit the Compliance section even if the page doesn't discuss investment — include it for all CFE/waitlist pages",
     "email": "- Single CTA per email\n- Short paragraphs (max 3 sentences each)\n- Founder voice when appropriate\n- Every number must trace to a verified fact above\n- If the email mentions investment, Birchal, equity, crowdfunding, $50, $5 deposit, or waitlist — add as the FINAL paragraph before the sign-off: \"This is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\""
   }
 }

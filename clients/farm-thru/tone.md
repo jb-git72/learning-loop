@@ -2,7 +2,7 @@
 
 ## Brand Positioning
 
-FarmThru is a new kind of grocery store — farm-direct, regenerative, and priced for everyday families — with hubs designed to keep costs low and bring the farm closer to your door.
+FarmThru is a new kind of grocery store: farm-direct, regenerative, and priced for everyday families, with hubs designed to keep costs low and bring the farm closer to you.
 
 **Tagline:** "We'll show you where your food comes from."
 
@@ -26,7 +26,7 @@ Any copy implying delivery-to-door is a factual error and must be rejected.
 
 ### 2. WARM — talking to families, not consumers
 
-- DO: "This week's stone fruit is unreal — juicy, fragrant, straight from the orchard. Grab some before it's gone."
+- DO: "This week's stone fruit is unreal. Juicy, fragrant, straight from the orchard. Grab some before it's gone."
 - DON'T: "Explore our curated seasonal stone fruit offering, now available for a limited time."
 
 ### 3. CONFIDENT — substance, not ego
@@ -41,7 +41,7 @@ Any copy implying delivery-to-door is a factual error and must be rejected.
 
 ### 5. NEVER PREACHY — invite, don't guilt
 
-- DO: "Want to know what regenerative farming actually means? We'll show you — no jargon, no lecture."
+- DO: "Want to know what regenerative farming actually means? We'll show you. No jargon, no lecture."
 - DON'T: "Every purchase you make from a supermarket is contributing to soil degradation and environmental harm."
 
 ---
