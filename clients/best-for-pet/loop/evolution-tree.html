@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evolution Tree — Hill-Climb Visualization</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0d1117;
+    color: #c9d1d9;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    overflow-x: hidden;
+  }
+
+  /* ── Header ── */
+  #header {
+    padding: 24px 32px 16px;
+    border-bottom: 1px solid #21262d;
+    background: linear-gradient(180deg, #161b22 0%, #0d1117 100%);
+  }
+  #header h1 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #e6edf3;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+  }
+  #header .subtitle {
+    font-size: 13px;
+    color: #8b949e;
+  }
+
+  /* ── Controls ── */
+  #controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 32px;
+    border-bottom: 1px solid #21262d;
+    background: #161b22;
+    flex-wrap: wrap;
+  }
+  #controls label {
+    font-size: 13px;
+    color: #8b949e;
+    cursor: pointer;
+  }
+  #controls input[type="file"] { display: none; }
+  .btn {
+    background: #238636;
+    color: #fff;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn:hover { background: #2ea043; }
+  .btn-secondary {
+    background: #21262d;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+  }
+  .btn-secondary:hover { background: #30363d; }
+  #filter-controls {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+  }
+  .filter-chip {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid;
+    opacity: 1;
+    transition: opacity 0.2s;
+  }
+  .filter-chip.dimmed { opacity: 0.3; }
+
+  /* ── Stats bar ── */
+  #stats-bar {
+    display: flex;
+    gap: 0;
+    padding: 0 32px;
+    border-bottom: 1px solid #21262d;
+    background: #0d1117;
+    overflow-x: auto;
+  }
+  .stat-card {
+    padding: 16px 24px;
+    border-right: 1px solid #21262d;
+    min-width: 130px;
+  }
+  .stat-card:last-child { border-right: none; }
+  .stat-card .label {
+    font-size: 11px;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .stat-card .value {
+    font-size: 20px;
+    font-weight: 600;
+    color: #e6edf3;
+  }
+  .stat-card .detail {
+    font-size: 11px;
+    color: #8b949e;
+    margin-top: 2px;
+  }
+  .win-rate-bar {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-top: 6px;
+  }
+  .win-rate-bar .bar-segment {
+    height: 6px;
+    border-radius: 3px;
+    min-width: 2px;
+  }
+
+  /* ── Legend ── */
+  #legend {
+    display: flex;
+    gap: 20px;
+    padding: 12px 32px;
+    border-bottom: 1px solid #21262d;
+    background: #0d1117;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  #legend .legend-title {
+    font-size: 11px;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 4px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #8b949e;
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  /* ── Canvas ── */
+  #canvas-container {
+    position: relative;
+    overflow: auto;
+    height: calc(100vh - 260px);
+    min-height: 500px;
+  }
+  svg {
+    display: block;
+  }
+
+  /* ── Tooltip ── */
+  #tooltip {
+    position: fixed;
+    pointer-events: none;
+    background: #1c2128;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 12px;
+    line-height: 1.6;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.12s;
+    max-width: 300px;
+  }
+  #tooltip.visible { opacity: 1; }
+  #tooltip .tt-title {
+    font-weight: 600;
+    color: #e6edf3;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+  #tooltip .tt-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  #tooltip .tt-label { color: #8b949e; }
+  #tooltip .tt-value { color: #e6edf3; font-weight: 500; }
+  .tt-delta-pos { color: #3fb950; }
+  .tt-delta-neg { color: #f85149; }
+  .tt-delta-zero { color: #8b949e; }
+  .tt-won { color: #3fb950; font-weight: 600; }
+  .tt-lost { color: #8b949e; }
+
+  /* ── Empty state ── */
+  #empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 260px);
+    min-height: 400px;
+    color: #8b949e;
+    gap: 16px;
+  }
+  #empty-state .icon {
+    font-size: 48px;
+    opacity: 0.3;
+  }
+  #empty-state p { font-size: 14px; }
+
+  /* ── Glow effects ── */
+  .winning-path {
+    filter: drop-shadow(0 0 4px rgba(63, 185, 80, 0.5));
+  }
+
+  /* ── Ad label on left ── */
+  .ad-label {
+    font-size: 13px;
+    font-weight: 600;
+    fill: #e6edf3;
+    dominant-baseline: middle;
+    cursor: default;
+  }
+  .ad-score-label {
+    font-size: 11px;
+    fill: #8b949e;
+    dominant-baseline: middle;
+  }
+
+  /* ── Iteration headers ── */
+  .iter-header {
+    font-size: 11px;
+    fill: #484f58;
+    text-anchor: middle;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: #0d1117; }
+  ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #484f58; }
+</style>
+</head>
+<body>
+
+<div id="header">
+  <h1>Evolution Tree</h1>
+  <div class="subtitle">Phylogenetic view of hill-climbing strategy performance</div>
+</div>
+
+<div id="controls">
+  <label class="btn" for="file-input">Load JSON</label>
+  <input type="file" id="file-input" accept=".json">
+  <button class="btn btn-secondary" id="btn-sample">Use Sample Data</button>
+  <button class="btn btn-secondary" id="btn-reset-zoom">Reset Zoom</button>
+  <span id="file-name" style="font-size:12px;color:#484f58;"></span>
+  <div id="filter-controls"></div>
+</div>
+
+<div id="stats-bar"></div>
+
+<div id="legend">
+  <span class="legend-title">Strategy</span>
+</div>
+
+<div id="canvas-container">
+  <div id="empty-state">
+    <div class="icon">&#x1F333;</div>
+    <p>Load a <code>strategy-tracker-*.json</code> file to visualize the evolution tree</p>
+    <p style="font-size:12px;color:#484f58;">or click "Use Sample Data" to explore with demo data</p>
+  </div>
+  <svg id="tree-svg" style="display:none;"></svg>
+</div>
+
+<div id="tooltip"></div>
+
+<script>
+// ══════════════════════════════════════════════════════════
+//  CONFIG
+// ══════════════════════════════════════════════════════════
+const MODE_COLORS = {
+  improve:  { fill: '#58a6ff', stroke: '#388bfd', glow: 'rgba(88,166,255,0.4)', label: 'Improve' },
+  mutate:   { fill: '#3fb950', stroke: '#2ea043', glow: 'rgba(63,185,80,0.4)',  label: 'Mutate' },
+  targeted: { fill: '#d29922', stroke: '#bb8009', glow: 'rgba(210,153,34,0.4)', label: 'Targeted' },
+  crossover:{ fill: '#bc8cff', stroke: '#a371f7', glow: 'rgba(188,140,255,0.4)',label: 'Crossover' },
+  wildcard: { fill: '#f85149', stroke: '#da3633', glow: 'rgba(248,81,73,0.4)',  label: 'Wildcard' },
+};
+
+const LAYOUT = {
+  marginLeft: 140,
+  marginTop: 70,
+  marginRight: 60,
+  marginBottom: 40,
+  iterSpacing: 220,       // horizontal space between iterations
+  adSpacing: 160,         // vertical space between ad rows
+  candidateSpread: 28,    // vertical spread of candidates within an iteration
+  nodeMinR: 5,
+  nodeMaxR: 16,
+  winLineWidth: 3,
+  loseLineWidth: 1.2,
+};
+
+// ══════════════════════════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════════════════════════
+let rawData = [];
+let activeFilters = new Set(Object.keys(MODE_COLORS));
+let zoomTransform = d3.zoomIdentity;
+
+// ══════════════════════════════════════════════════════════
+//  SAMPLE DATA
+// ══════════════════════════════════════════════════════════
+const SAMPLE_DATA = {"raw":[
+  {"ad_id":"AI-101","iteration":1,"mode":"improve","hook_type":"confession","label":"improve","old_score":0.769,"new_score":0.782,"delta":0.013,"won":true,"error":null},
+  {"ad_id":"AI-101","iteration":1,"mode":"mutate","hook_type":"confession","label":"mutate","old_score":0.769,"new_score":0.755,"delta":-0.014,"won":false,"error":null},
+  {"ad_id":"AI-101","iteration":1,"mode":"wildcard","hook_type":"confession","label":"wildcard","old_score":0.769,"new_score":0.731,"delta":-0.038,"won":false,"error":null},
+  {"ad_id":"AI-101","iteration":2,"mode":"improve","hook_type":"confession","label":"improve","old_score":0.782,"new_score":0.790,"delta":0.008,"won":true,"error":null},
+  {"ad_id":"AI-101","iteration":2,"mode":"targeted","hook_type":"confession","label":"targeted","old_score":0.782,"new_score":0.775,"delta":-0.007,"won":false,"error":null},
+  {"ad_id":"AI-101","iteration":2,"mode":"crossover","hook_type":"confession","label":"crossover","old_score":0.782,"new_score":0.801,"delta":0.019,"won":false,"error":null},
+  {"ad_id":"AI-101","iteration":3,"mode":"improve","hook_type":"confession","label":"improve","old_score":0.790,"new_score":0.795,"delta":0.005,"won":false,"error":null},
+  {"ad_id":"AI-101","iteration":3,"mode":"crossover","hook_type":"confession","label":"crossover","old_score":0.790,"new_score":0.812,"delta":0.022,"won":true,"error":null},
+  {"ad_id":"AI-101","iteration":3,"mode":"mutate","hook_type":"confession","label":"mutate","old_score":0.790,"new_score":0.768,"delta":-0.022,"won":false,"error":null},
+  {"ad_id":"AI-101","iteration":4,"mode":"improve","hook_type":"confession","label":"improve","old_score":0.812,"new_score":0.818,"delta":0.006,"won":true,"error":null},
+  {"ad_id":"AI-101","iteration":4,"mode":"wildcard","hook_type":"confession","label":"wildcard","old_score":0.812,"new_score":0.780,"delta":-0.032,"won":false,"error":null},
+  {"ad_id":"EU-201","iteration":1,"mode":"improve","hook_type":"authority","label":"improve","old_score":0.650,"new_score":0.688,"delta":0.038,"won":true,"error":null},
+  {"ad_id":"EU-201","iteration":1,"mode":"mutate","hook_type":"authority","label":"mutate","old_score":0.650,"new_score":0.672,"delta":0.022,"won":false,"error":null},
+  {"ad_id":"EU-201","iteration":1,"mode":"targeted","hook_type":"authority","label":"targeted","old_score":0.650,"new_score":0.645,"delta":-0.005,"won":false,"error":null},
+  {"ad_id":"EU-201","iteration":2,"mode":"improve","hook_type":"authority","label":"improve","old_score":0.688,"new_score":0.701,"delta":0.013,"won":false,"error":null},
+  {"ad_id":"EU-201","iteration":2,"mode":"crossover","hook_type":"authority","label":"crossover","old_score":0.688,"new_score":0.724,"delta":0.036,"won":true,"error":null},
+  {"ad_id":"EU-201","iteration":2,"mode":"wildcard","hook_type":"authority","label":"wildcard","old_score":0.688,"new_score":0.660,"delta":-0.028,"won":false,"error":null},
+  {"ad_id":"EU-201","iteration":3,"mode":"improve","hook_type":"authority","label":"improve","old_score":0.724,"new_score":0.738,"delta":0.014,"won":true,"error":null},
+  {"ad_id":"EU-201","iteration":3,"mode":"mutate","hook_type":"authority","label":"mutate","old_score":0.724,"new_score":0.710,"delta":-0.014,"won":false,"error":null},
+  {"ad_id":"EU-201","iteration":3,"mode":"targeted","hook_type":"authority","label":"targeted","old_score":0.724,"new_score":0.729,"delta":0.005,"won":false,"error":null},
+  {"ad_id":"GF-301","iteration":1,"mode":"improve","hook_type":"social_proof","label":"improve","old_score":0.710,"new_score":0.735,"delta":0.025,"won":true,"error":null},
+  {"ad_id":"GF-301","iteration":1,"mode":"crossover","hook_type":"social_proof","label":"crossover","old_score":0.710,"new_score":0.742,"delta":0.032,"won":false,"error":null},
+  {"ad_id":"GF-301","iteration":1,"mode":"wildcard","hook_type":"social_proof","label":"wildcard","old_score":0.710,"new_score":0.695,"delta":-0.015,"won":false,"error":null},
+  {"ad_id":"GF-301","iteration":2,"mode":"improve","hook_type":"social_proof","label":"improve","old_score":0.735,"new_score":0.748,"delta":0.013,"won":false,"error":null},
+  {"ad_id":"GF-301","iteration":2,"mode":"mutate","hook_type":"social_proof","label":"mutate","old_score":0.735,"new_score":0.760,"delta":0.025,"won":true,"error":null},
+  {"ad_id":"GF-301","iteration":2,"mode":"targeted","hook_type":"social_proof","label":"targeted","old_score":0.735,"new_score":0.730,"delta":-0.005,"won":false,"error":null},
+  {"ad_id":"GF-301","iteration":3,"mode":"crossover","hook_type":"social_proof","label":"crossover","old_score":0.760,"new_score":0.785,"delta":0.025,"won":true,"error":null},
+  {"ad_id":"GF-301","iteration":3,"mode":"improve","hook_type":"social_proof","label":"improve","old_score":0.760,"new_score":0.770,"delta":0.010,"won":false,"error":null},
+  {"ad_id":"GF-301","iteration":3,"mode":"wildcard","hook_type":"social_proof","label":"wildcard","old_score":0.760,"new_score":0.720,"delta":-0.040,"won":false,"error":null},
+  {"ad_id":"OR-401","iteration":1,"mode":"targeted","hook_type":"question","label":"targeted","old_score":0.680,"new_score":0.715,"delta":0.035,"won":true,"error":null},
+  {"ad_id":"OR-401","iteration":1,"mode":"improve","hook_type":"question","label":"improve","old_score":0.680,"new_score":0.698,"delta":0.018,"won":false,"error":null},
+  {"ad_id":"OR-401","iteration":1,"mode":"mutate","hook_type":"question","label":"mutate","old_score":0.680,"new_score":0.670,"delta":-0.010,"won":false,"error":null},
+  {"ad_id":"OR-401","iteration":2,"mode":"improve","hook_type":"question","label":"improve","old_score":0.715,"new_score":0.740,"delta":0.025,"won":true,"error":null},
+  {"ad_id":"OR-401","iteration":2,"mode":"crossover","hook_type":"question","label":"crossover","old_score":0.715,"new_score":0.732,"delta":0.017,"won":false,"error":null},
+  {"ad_id":"OR-401","iteration":2,"mode":"wildcard","hook_type":"question","label":"wildcard","old_score":0.715,"new_score":0.690,"delta":-0.025,"won":false,"error":null},
+  {"ad_id":"OR-401","iteration":3,"mode":"mutate","hook_type":"question","label":"mutate","old_score":0.740,"new_score":0.758,"delta":0.018,"won":true,"error":null},
+  {"ad_id":"OR-401","iteration":3,"mode":"improve","hook_type":"question","label":"improve","old_score":0.740,"new_score":0.752,"delta":0.012,"won":false,"error":null},
+  {"ad_id":"OR-401","iteration":3,"mode":"targeted","hook_type":"question","label":"targeted","old_score":0.740,"new_score":0.745,"delta":0.005,"won":false,"error":null},
+  {"ad_id":"OR-401","iteration":4,"mode":"crossover","hook_type":"question","label":"crossover","old_score":0.758,"new_score":0.790,"delta":0.032,"won":true,"error":null},
+  {"ad_id":"OR-401","iteration":4,"mode":"improve","hook_type":"question","label":"improve","old_score":0.758,"new_score":0.765,"delta":0.007,"won":false,"error":null},
+]};
+
+// ══════════════════════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════════════════════
+document.getElementById('file-input').addEventListener('change', handleFileLoad);
+document.getElementById('btn-sample').addEventListener('click', () => loadData(SAMPLE_DATA));
+document.getElementById('btn-reset-zoom').addEventListener('click', resetZoom);
+
+buildLegend();
+buildFilterChips();
+
+// ══════════════════════════════════════════════════════════
+//  FILE LOADING
+// ══════════════════════════════════════════════════════════
+function handleFileLoad(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  document.getElementById('file-name').textContent = file.name;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    try {
+      const json = JSON.parse(ev.target.result);
+      loadData(json);
+    } catch (err) {
+      alert('Failed to parse JSON: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+}
+
+function loadData(json) {
+  rawData = json.raw || json;
+  if (!Array.isArray(rawData)) {
+    alert('Expected "raw" array in JSON');
+    return;
+  }
+  document.getElementById('empty-state').style.display = 'none';
+  document.getElementById('tree-svg').style.display = 'block';
+  renderStats();
+  renderTree();
+}
+
+// ══════════════════════════════════════════════════════════
+//  LEGEND & FILTERS
+// ══════════════════════════════════════════════════════════
+function buildLegend() {
+  const legend = document.getElementById('legend');
+  for (const [mode, cfg] of Object.entries(MODE_COLORS)) {
+    const item = document.createElement('div');
+    item.className = 'legend-item';
+    item.innerHTML = `<span class="legend-dot" style="background:${cfg.fill};"></span>${cfg.label}`;
+    legend.appendChild(item);
+  }
+  // add winning path indicator
+  const winItem = document.createElement('div');
+  winItem.className = 'legend-item';
+  winItem.innerHTML = `<span style="display:inline-block;width:24px;height:3px;background:#3fb950;border-radius:2px;box-shadow:0 0 6px rgba(63,185,80,0.6);"></span>Winning path`;
+  legend.appendChild(winItem);
+  const deadItem = document.createElement('div');
+  deadItem.className = 'legend-item';
+  deadItem.innerHTML = `<span style="display:inline-block;width:24px;height:1.5px;background:#30363d;border-radius:1px;"></span>Dead-end`;
+  legend.appendChild(deadItem);
+}
+
+function buildFilterChips() {
+  const container = document.getElementById('filter-controls');
+  for (const [mode, cfg] of Object.entries(MODE_COLORS)) {
+    const chip = document.createElement('span');
+    chip.className = 'filter-chip';
+    chip.textContent = cfg.label;
+    chip.style.borderColor = cfg.fill;
+    chip.style.color = cfg.fill;
+    chip.style.background = cfg.fill + '18';
+    chip.dataset.mode = mode;
+    chip.addEventListener('click', () => {
+      if (activeFilters.has(mode)) {
+        activeFilters.delete(mode);
+        chip.classList.add('dimmed');
+      } else {
+        activeFilters.add(mode);
+        chip.classList.remove('dimmed');
+      }
+      renderTree();
+    });
+    container.appendChild(chip);
+  }
+}
+
+// ══════════════════════════════════════════════════════════
+//  STATS
+// ══════════════════════════════════════════════════════════
+function renderStats() {
+  const bar = document.getElementById('stats-bar');
+  bar.innerHTML = '';
+
+  const totalCandidates = rawData.length;
+  const totalWins = rawData.filter(d => d.won).length;
+  const adIds = [...new Set(rawData.map(d => d.ad_id))];
+  const maxIter = d3.max(rawData, d => d.iteration);
+
+  // Compute per-mode stats
+  const modeStats = {};
+  for (const mode of Object.keys(MODE_COLORS)) {
+    const items = rawData.filter(d => d.mode === mode);
+    const wins = items.filter(d => d.won);
+    modeStats[mode] = {
+      total: items.length,
+      wins: wins.length,
+      winRate: items.length ? wins.length / items.length : 0,
+      avgDelta: items.length ? d3.mean(items, d => d.delta) : 0,
+      avgWinDelta: wins.length ? d3.mean(wins, d => d.delta) : 0,
+    };
+  }
+
+  // Best mode
+  const bestMode = Object.entries(modeStats)
+    .filter(([,s]) => s.total > 0)
+    .sort((a,b) => b[1].winRate - a[1].winRate)[0];
+
+  // Overall score improvement
+  const adScores = {};
+  for (const ad of adIds) {
+    const adRows = rawData.filter(d => d.ad_id === ad);
+    const startScore = adRows[0].old_score;
+    const lastWin = adRows.filter(d => d.won).sort((a,b) => b.iteration - a.iteration)[0];
+    const endScore = lastWin ? lastWin.new_score : startScore;
+    adScores[ad] = { start: startScore, end: endScore, lift: endScore - startScore };
+  }
+  const avgLift = d3.mean(Object.values(adScores), d => d.lift);
+
+  // Cards
+  addStatCard(bar, 'Ads', adIds.length, `${maxIter} iterations`);
+  addStatCard(bar, 'Candidates', totalCandidates, `${totalWins} winners`);
+  addStatCard(bar, 'Avg lift', (avgLift >= 0 ? '+' : '') + (avgLift * 100).toFixed(1) + ' pts', 'per ad');
+
+  if (bestMode) {
+    addStatCard(bar, 'Best strategy', MODE_COLORS[bestMode[0]].label,
+      (bestMode[1].winRate * 100).toFixed(0) + '% win rate');
+  }
+
+  // Win rate by mode bar
+  const rateCard = document.createElement('div');
+  rateCard.className = 'stat-card';
+  rateCard.style.flex = '1';
+  rateCard.innerHTML = `<div class="label">Win Rate by Mode</div>`;
+  const barDiv = document.createElement('div');
+  barDiv.className = 'win-rate-bar';
+  barDiv.style.flexWrap = 'wrap';
+  barDiv.style.gap = '10px';
+  for (const [mode, cfg] of Object.entries(MODE_COLORS)) {
+    const s = modeStats[mode];
+    if (!s || s.total === 0) continue;
+    const item = document.createElement('div');
+    item.style.display = 'flex';
+    item.style.alignItems = 'center';
+    item.style.gap = '6px';
+    item.style.fontSize = '12px';
+
+    const dot = document.createElement('span');
+    dot.style.width = '8px';
+    dot.style.height = '8px';
+    dot.style.borderRadius = '50%';
+    dot.style.background = cfg.fill;
+    dot.style.display = 'inline-block';
+
+    const pct = document.createElement('span');
+    pct.style.color = '#e6edf3';
+    pct.style.fontWeight = '600';
+    pct.textContent = (s.winRate * 100).toFixed(0) + '%';
+
+    const lbl = document.createElement('span');
+    lbl.style.color = '#8b949e';
+    lbl.textContent = `${cfg.label} (${s.wins}/${s.total})`;
+
+    const avgD = document.createElement('span');
+    avgD.style.color = s.avgDelta >= 0 ? '#3fb950' : '#f85149';
+    avgD.style.fontSize = '11px';
+    avgD.textContent = `avg ${s.avgDelta >= 0 ? '+' : ''}${(s.avgDelta * 100).toFixed(1)}pts`;
+
+    item.appendChild(dot);
+    item.appendChild(pct);
+    item.appendChild(lbl);
+    item.appendChild(avgD);
+    barDiv.appendChild(item);
+  }
+  rateCard.appendChild(barDiv);
+  bar.appendChild(rateCard);
+}
+
+function addStatCard(parent, label, value, detail) {
+  const card = document.createElement('div');
+  card.className = 'stat-card';
+  card.innerHTML = `
+    <div class="label">${label}</div>
+    <div class="value">${value}</div>
+    ${detail ? `<div class="detail">${detail}</div>` : ''}
+  `;
+  parent.appendChild(card);
+}
+
+// ══════════════════════════════════════════════════════════
+//  TREE RENDERING
+// ══════════════════════════════════════════════════════════
+function renderTree() {
+  const svg = d3.select('#tree-svg');
+  svg.selectAll('*').remove();
+
+  const data = rawData.filter(d => activeFilters.has(d.mode));
+  if (data.length === 0) return;
+
+  // Group by ad
+  const adIds = [...new Set(rawData.map(d => d.ad_id))];
+  const maxIter = d3.max(data, d => d.iteration);
+  const allScores = data.map(d => d.new_score).concat(data.map(d => d.old_score));
+  const scoreExtent = d3.extent(allScores);
+
+  // Score -> radius
+  const rScale = d3.scaleLinear()
+    .domain(scoreExtent)
+    .range([LAYOUT.nodeMinR, LAYOUT.nodeMaxR]);
+
+  // Compute total dimensions
+  const width = LAYOUT.marginLeft + (maxIter + 1) * LAYOUT.iterSpacing + LAYOUT.marginRight;
+  const height = LAYOUT.marginTop + adIds.length * LAYOUT.adSpacing + LAYOUT.marginBottom;
+
+  svg.attr('width', width).attr('height', height);
+
+  // Zoom
+  const container = svg.append('g').attr('class', 'zoom-container');
+  const zoom = d3.zoom()
+    .scaleExtent([0.3, 3])
+    .on('zoom', (e) => {
+      zoomTransform = e.transform;
+      container.attr('transform', e.transform);
+    });
+  svg.call(zoom);
+  if (zoomTransform !== d3.zoomIdentity) {
+    svg.call(zoom.transform, zoomTransform);
+  }
+  window._zoom = zoom;
+  window._svg = svg;
+
+  // Defs for glow filter
+  const defs = container.append('defs');
+  const glowFilter = defs.append('filter').attr('id', 'glow');
+  glowFilter.append('feGaussianBlur').attr('stdDeviation', '3').attr('result', 'coloredBlur');
+  const feMerge = glowFilter.append('feMerge');
+  feMerge.append('feMergeNode').attr('in', 'coloredBlur');
+  feMerge.append('feMergeNode').attr('in', 'SourceGraphic');
+
+  // gradient for winning lines
+  const winGrad = defs.append('linearGradient')
+    .attr('id', 'win-gradient')
+    .attr('x1', '0%').attr('y1', '0%')
+    .attr('x2', '100%').attr('y2', '0%');
+  winGrad.append('stop').attr('offset', '0%').attr('stop-color', '#238636');
+  winGrad.append('stop').attr('offset', '100%').attr('stop-color', '#3fb950');
+
+  // Iteration headers
+  for (let i = 0; i <= maxIter; i++) {
+    const x = LAYOUT.marginLeft + i * LAYOUT.iterSpacing;
+    container.append('text')
+      .attr('class', 'iter-header')
+      .attr('x', x)
+      .attr('y', LAYOUT.marginTop - 30)
+      .text(i === 0 ? 'Baseline' : `Iter ${i}`);
+
+    // vertical guide line
+    container.append('line')
+      .attr('x1', x).attr('y1', LAYOUT.marginTop - 15)
+      .attr('x2', x).attr('y2', height - LAYOUT.marginBottom)
+      .attr('stroke', '#21262d')
+      .attr('stroke-width', 1)
+      .attr('stroke-dasharray', '4,4');
+  }
+
+  // Links group (draw first so nodes are on top)
+  const linksG = container.append('g').attr('class', 'links');
+  const nodesG = container.append('g').attr('class', 'nodes');
+
+  // Per-ad rendering
+  adIds.forEach((adId, adIndex) => {
+    const adY = LAYOUT.marginTop + adIndex * LAYOUT.adSpacing + LAYOUT.adSpacing / 2;
+    const adData = data.filter(d => d.ad_id === adId).sort((a,b) => a.iteration - b.iteration);
+    const allAdData = rawData.filter(d => d.ad_id === adId).sort((a,b) => a.iteration - b.iteration);
+
+    if (adData.length === 0) return;
+
+    // Starting score (from first entry's old_score)
+    const startScore = allAdData[0].old_score;
+    const startX = LAYOUT.marginLeft;
+
+    // Ad label
+    container.append('text')
+      .attr('class', 'ad-label')
+      .attr('x', 16)
+      .attr('y', adY - 8)
+      .text(adId);
+    container.append('text')
+      .attr('class', 'ad-score-label')
+      .attr('x', 16)
+      .attr('y', adY + 8)
+      .text(startScore.toFixed(3));
+
+    // Baseline node
+    nodesG.append('circle')
+      .attr('cx', startX)
+      .attr('cy', adY)
+      .attr('r', rScale(startScore))
+      .attr('fill', '#30363d')
+      .attr('stroke', '#484f58')
+      .attr('stroke-width', 1.5);
+
+    // Faint horizontal trunk line
+    const adMaxIter = d3.max(adData, d => d.iteration);
+    const trunkEndX = LAYOUT.marginLeft + adMaxIter * LAYOUT.iterSpacing;
+    linksG.append('line')
+      .attr('x1', startX).attr('y1', adY)
+      .attr('x2', trunkEndX).attr('y2', adY)
+      .attr('stroke', '#21262d')
+      .attr('stroke-width', 1);
+
+    // Group by iteration
+    const iterGroups = d3.group(adData, d => d.iteration);
+    const winningScores = {}; // iteration -> winning score (or carried forward)
+    winningScores[0] = startScore;
+
+    // Find winning path scores
+    for (let iter = 1; iter <= adMaxIter; iter++) {
+      const items = iterGroups.get(iter);
+      if (!items) {
+        winningScores[iter] = winningScores[iter - 1];
+        continue;
+      }
+      const winner = items.find(d => d.won);
+      winningScores[iter] = winner ? winner.new_score : winningScores[iter - 1];
+    }
+
+    // Render each iteration
+    for (let iter = 1; iter <= adMaxIter; iter++) {
+      const items = iterGroups.get(iter);
+      if (!items) continue;
+
+      const iterX = LAYOUT.marginLeft + iter * LAYOUT.iterSpacing;
+      const prevX = LAYOUT.marginLeft + (iter - 1) * LAYOUT.iterSpacing;
+      const parentY = adY;
+
+      // Sort: winner in center, others above/below
+      const sorted = [...items].sort((a, b) => {
+        if (a.won && !b.won) return 0;
+        if (!a.won && b.won) return 1;
+        return b.new_score - a.new_score;
+      });
+
+      // Position candidates: fan out vertically
+      const n = sorted.length;
+      sorted.forEach((d, i) => {
+        let candidateY;
+        if (d.won) {
+          candidateY = adY; // winner stays on trunk
+        } else {
+          // Distribute non-winners above and below
+          const nonWinners = sorted.filter(s => !s.won);
+          const nwIdx = nonWinners.indexOf(d);
+          const nwCount = nonWinners.length;
+          const spread = LAYOUT.candidateSpread;
+          if (nwCount === 1) {
+            candidateY = adY - spread;
+          } else {
+            candidateY = adY - spread * (nwCount - 1) / 2 + nwIdx * spread;
+            if (candidateY === adY) candidateY = adY - spread; // avoid overlapping trunk
+          }
+        }
+
+        const modeColor = MODE_COLORS[d.mode] || MODE_COLORS.improve;
+        const nodeR = rScale(d.new_score);
+
+        // Link from parent to candidate
+        const pathData = generateBranchPath(prevX, parentY, iterX, candidateY);
+
+        if (d.won) {
+          // Winning path: bold glowing green
+          linksG.append('path')
+            .attr('d', pathData)
+            .attr('fill', 'none')
+            .attr('stroke', 'url(#win-gradient)')
+            .attr('stroke-width', LAYOUT.winLineWidth)
+            .attr('filter', 'url(#glow)')
+            .attr('class', 'winning-path');
+        } else {
+          // Dead-end: faded
+          linksG.append('path')
+            .attr('d', pathData)
+            .attr('fill', 'none')
+            .attr('stroke', '#21262d')
+            .attr('stroke-width', LAYOUT.loseLineWidth);
+
+          // Small dead-end stub
+          linksG.append('circle')
+            .attr('cx', iterX + 8)
+            .attr('cy', candidateY)
+            .attr('r', 1.5)
+            .attr('fill', '#30363d');
+        }
+
+        // Node
+        const node = nodesG.append('g')
+          .attr('transform', `translate(${iterX},${candidateY})`)
+          .style('cursor', 'pointer');
+
+        // Outer glow for winners
+        if (d.won) {
+          node.append('circle')
+            .attr('r', nodeR + 4)
+            .attr('fill', 'none')
+            .attr('stroke', modeColor.fill)
+            .attr('stroke-width', 1)
+            .attr('opacity', 0.3);
+        }
+
+        node.append('circle')
+          .attr('r', nodeR)
+          .attr('fill', d.won ? modeColor.fill : modeColor.fill)
+          .attr('stroke', d.won ? '#e6edf3' : modeColor.stroke)
+          .attr('stroke-width', d.won ? 2 : 1)
+          .attr('opacity', d.won ? 1 : 0.5);
+
+        // Score label inside large nodes
+        if (nodeR > 10) {
+          node.append('text')
+            .attr('text-anchor', 'middle')
+            .attr('dy', '0.35em')
+            .attr('font-size', '8px')
+            .attr('fill', d.won ? '#0d1117' : '#e6edf3')
+            .attr('font-weight', '600')
+            .attr('pointer-events', 'none')
+            .text(d.new_score.toFixed(2));
+        }
+
+        // Delta badge
+        const deltaColor = d.delta > 0 ? '#3fb950' : d.delta < 0 ? '#f85149' : '#8b949e';
+        node.append('text')
+          .attr('text-anchor', 'middle')
+          .attr('y', -nodeR - 6)
+          .attr('font-size', '9px')
+          .attr('fill', deltaColor)
+          .attr('font-weight', '500')
+          .attr('pointer-events', 'none')
+          .text((d.delta >= 0 ? '+' : '') + (d.delta * 100).toFixed(1));
+
+        // Tooltip interactions
+        node.on('mouseenter', (event) => showTooltip(event, d))
+            .on('mousemove', (event) => moveTooltip(event))
+            .on('mouseleave', hideTooltip);
+      });
+    }
+
+    // Final score label at end
+    const finalScore = winningScores[adMaxIter];
+    const lift = finalScore - startScore;
+    const endX = LAYOUT.marginLeft + adMaxIter * LAYOUT.iterSpacing + 30;
+    container.append('text')
+      .attr('x', endX)
+      .attr('y', adY - 6)
+      .attr('font-size', '12px')
+      .attr('fill', '#e6edf3')
+      .attr('font-weight', '600')
+      .text(finalScore.toFixed(3));
+    container.append('text')
+      .attr('x', endX)
+      .attr('y', adY + 10)
+      .attr('font-size', '10px')
+      .attr('fill', lift >= 0 ? '#3fb950' : '#f85149')
+      .text((lift >= 0 ? '+' : '') + (lift * 100).toFixed(1) + ' pts');
+  });
+}
+
+function generateBranchPath(x1, y1, x2, y2) {
+  // Smooth cubic bezier for branch curves
+  const midX = x1 + (x2 - x1) * 0.4;
+  return `M ${x1},${y1} C ${midX},${y1} ${midX},${y2} ${x2},${y2}`;
+}
+
+// ══════════════════════════════════════════════════════════
+//  TOOLTIP
+// ══════════════════════════════════════════════════════════
+function showTooltip(event, d) {
+  const tt = document.getElementById('tooltip');
+  const deltaClass = d.delta > 0 ? 'tt-delta-pos' : d.delta < 0 ? 'tt-delta-neg' : 'tt-delta-zero';
+  const wonClass = d.won ? 'tt-won' : 'tt-lost';
+  const modeColor = MODE_COLORS[d.mode] || MODE_COLORS.improve;
+
+  tt.innerHTML = `
+    <div class="tt-title" style="color:${modeColor.fill};">${d.ad_id} &mdash; ${modeColor.label}</div>
+    <div class="tt-row"><span class="tt-label">Iteration</span><span class="tt-value">${d.iteration}</span></div>
+    <div class="tt-row"><span class="tt-label">Hook</span><span class="tt-value">${d.hook_type || '-'}</span></div>
+    <div class="tt-row"><span class="tt-label">Previous</span><span class="tt-value">${d.old_score.toFixed(3)}</span></div>
+    <div class="tt-row"><span class="tt-label">New score</span><span class="tt-value">${d.new_score.toFixed(3)}</span></div>
+    <div class="tt-row"><span class="tt-label">Delta</span><span class="tt-value ${deltaClass}">${(d.delta >= 0 ? '+' : '')}${(d.delta * 100).toFixed(1)} pts</span></div>
+    <div class="tt-row"><span class="tt-label">Outcome</span><span class="tt-value ${wonClass}">${d.won ? 'ACCEPTED' : 'Rejected'}</span></div>
+    ${d.error ? `<div class="tt-row"><span class="tt-label">Error</span><span class="tt-value" style="color:#f85149;">${d.error}</span></div>` : ''}
+  `;
+  tt.classList.add('visible');
+  moveTooltip(event);
+}
+
+function moveTooltip(event) {
+  const tt = document.getElementById('tooltip');
+  const pad = 16;
+  let x = event.clientX + pad;
+  let y = event.clientY + pad;
+  // Keep on screen
+  const rect = tt.getBoundingClientRect();
+  if (x + rect.width > window.innerWidth) x = event.clientX - rect.width - pad;
+  if (y + rect.height > window.innerHeight) y = event.clientY - rect.height - pad;
+  tt.style.left = x + 'px';
+  tt.style.top = y + 'px';
+}
+
+function hideTooltip() {
+  document.getElementById('tooltip').classList.remove('visible');
+}
+
+function resetZoom() {
+  if (window._zoom && window._svg) {
+    window._svg.transition().duration(400).call(window._zoom.transform, d3.zoomIdentity);
+    zoomTransform = d3.zoomIdentity;
+  }
+}
+</script>
+</body>
+</html>
