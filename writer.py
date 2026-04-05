@@ -271,6 +271,15 @@ def _build_prompt(
     if isinstance(constraints, dict) and content_type in constraints:
         constraints = constraints[content_type]
 
+    # Load industry playbook context if available
+    industry = config.get("industry", "general")
+    playbook_md_path = _root / "shared" / "playbooks" / f"{industry}.md"
+    if not playbook_md_path.exists():
+        playbook_md_path = _root / "shared" / "playbooks" / "general.md"
+    industry_context = ""
+    if playbook_md_path.exists():
+        industry_context = _load_text(playbook_md_path)[:400]
+
     # Build facts context — relevant facts for this angle
     facts_text = _select_relevant_facts(facts, angle, content_type)
 
@@ -459,6 +468,11 @@ Focus specifically on improving these while maintaining everything else:
 - Every number must trace to a verified fact above
 - Description field should complement the headline, not repeat it"""
 
+    # Build industry context section
+    industry_section = ""
+    if industry_context:
+        industry_section = f"\nINDUSTRY CONTEXT ({industry}):\n{industry_context}\n"
+
     return f"""Write ONE {content_label} for {client_name} — {product}.
 
 ANGLE: {angle}
@@ -475,7 +489,7 @@ CONSTRAINTS:
 
 TONE GUIDELINES:
 {tone[:600]}
-
+{industry_section}
 CREATIVE LEARNINGS:
 {learnings[:1600]}
 
