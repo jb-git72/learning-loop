@@ -191,6 +191,20 @@
         "4": "Less than 15% of same-type ads share this register. Good variety in opening styles.",
         "5": "Unique register — no other same-type ad opens this way. Adds real creative diversity to the set."
       }
+    },
+    {
+      "id": "lp_readability",
+      "name": "LP Readability",
+      "default_weight": 1.0,
+      "scoring_method": "deterministic",
+      "description": "Landing page readability — scannability, paragraph density, sentence length, formatting quality.",
+      "scoring_guide": {
+        "1": "Wall of text with no visual breaks. Long sentences, em dashes, bloated subhead. Unreadable.",
+        "2": "Minimal breaks, dense paragraphs, average sentence length over 25 words. Hard to scan.",
+        "3": "Some paragraph structure but still dense. Sentence length moderate. Minor formatting issues.",
+        "4": "Good scannability with clear paragraphs, concise sentences (10-20 words avg), concise subhead. Minor issues.",
+        "5": "Excellent readability. 6+ short paragraphs, 10-20 word avg sentences, no em dashes, subhead under 120 chars."
+      }
     }
   ]
 }

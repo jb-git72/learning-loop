@@ -25,8 +25,16 @@ def _format_content_block(ad):
         return "SUBJECT: %s\nPREHEADER: %s\nBODY: %s" % (
             ad.get("subject", ""), ad.get("preheader", ""), ad.get("body", "")[:500])
     elif ct == "landing-page":
-        return "HEADLINE: %s\nSUBHEAD: %s\nHERO COPY: %s" % (
-            ad.get("headline", ""), ad.get("subhead", ""), ad.get("hero_copy", ""))
+        parts = ["HEADLINE: %s" % ad.get("headline", ""),
+                 "SUBHEAD: %s" % ad.get("subhead", ""),
+                 "HERO COPY: %s" % ad.get("hero_copy", "")]
+        for section in ad.get("sections", []):
+            if isinstance(section, dict):
+                heading = section.get("heading", "")
+                body = section.get("body", "")[:300]
+                if heading:
+                    parts.append("SECTION: %s\n%s" % (heading, body))
+        return "\n\n".join(parts)
     else:
         return "HEADLINE: %s\nPRIMARY TEXT: %s\nDESCRIPTION: %s" % (
             ad.get("headline", ""), ad.get("primary_text", ""), ad.get("description", ""))
