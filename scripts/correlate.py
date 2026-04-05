@@ -208,6 +208,9 @@ def compute_metric(matched: list, metric: str) -> list:
             clicks = m.get("clicks", 0)
             if imp > 0:
                 pairs.append((m["composite"], clicks / imp))
+        elif metric == "purchases":
+            if m["conversions"] > 0:
+                pairs.append((m["composite"], m["conversions"]))
     return pairs
 
 
@@ -386,7 +389,7 @@ def parse_args():
                         help="Path to scored JSON (from score_batch.py)")
     parser.add_argument("--csv", required=True,
                         help="Path to Meta Ads Manager CSV with performance data")
-    parser.add_argument("--metric", choices=["roas", "cpa", "ctr"],
+    parser.add_argument("--metric", choices=["roas", "cpa", "ctr", "purchases"],
                         default="roas", help="Performance metric (default: roas)")
     parser.add_argument("--min-spend", type=float, default=100.0,
                         help="Min spend to include ad in analysis (default: $100)")
