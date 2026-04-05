@@ -1,0 +1,8 @@
+{
+  "name": "Learning Loop Ad Injector",
+  "id": "learning-loop-ad-injector",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "editorType": ["figma"]
+}
