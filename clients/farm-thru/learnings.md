@@ -2,12 +2,16 @@
 
 ## What Works (do more of this)
 
+- **BR-110 standout**: "Own a piece of the grocery store that pays farmers first." Strongest single line. More "putting farmers first" messaging. Supermarkets are the villains.
+- **"Values and money finally pointing the same direction"** is a big concept for CFE. Explore multiple forms. Lean in hard. (CFE-102 review)
 - **BR-107 structure is BEST**: comparison hook (if-then), supply chain contrast, narrative arc
-- **Phrases that convert**: "own a piece of it", "be a partner", "be part of it", "vote for change with your wallet"
-- **Comparison data works**: 2,400km supermarket vs direct — when it flows from a narrative
-- **"How well do you know the farmer?"** — strong emotional question (BR-105, approved)
+- **Dual CTA: invest + customer**: Waitlist is for people who can invest AND become customers. Always mention both purposes. Every BR ad was missing this.
+- **Phrases that convert**: "own a piece of it", "be a partner", "be part of it", "vote for change with your wallet", "pays farmers first"
+- **"Straight from farm to hub"** beats "days old". Reframe freshness as directness, not age.
+- **Same cut, different impact**: "Same cut of meat, completely different impact on farmers" reframes comparison around impact, not sameness.
+- **Comparison data works**: 2,400km supermarket vs direct. Use multipliers ("10x less distance"), not raw km.
 - **Rachel's voice, first person** — authentic but transition to FarmThru must feel natural
-- **BFP winning structure**: Customer pain → Objection acknowledged → Systematic proof → Geographic CTA
+- **BFP winning structure**: Customer pain -> Objection acknowledged -> Systematic proof -> Geographic CTA
 - Sentences: 13-18 words. Killed ads averaged 23-28. Keep it tight.
 - Customer-benefit stats only, never market stats or company traction
 
@@ -18,10 +22,20 @@
 - NEVER name competitors (Woolworths, Coles). Say "supermarkets" or "the big chains"
 - NEVER say "delivered to your door" — FarmThru is hub-and-collect
 - NEVER use Title Case headlines — sentence case only
+- **NEVER use doubt language**: "We can't promise where this goes", "we can't promise returns" invokes doubt. Reframe positively.
+- **NEVER lead with "regenerative"**: Too niche. Most people don't know what it means. Supporting detail only.
+- **NEVER use raw distance numbers**: "280km" or "180km" sounds FAR. Use multipliers: "10x less distance". Relate to cost: "dollars go to the farmer, not fuel."
+- **NEVER say "days old"**: Still sounds old. Say "straight from farm to hub" or "fresh from the paddock."
+- **NEVER say "same beef"/"same quality"**: The whole point is it's DIFFERENT. Say "same cut, completely different impact."
+- **NEVER use em dashes** in any content. Use full stops, commas, or colons instead.
+- **LP subheads must be under 120 chars**: Scannable in under 2 seconds. Not a paragraph.
+- **LP headlines must be general-purpose**: Not "your kids" (excludes non-parents). Broad audience.
+- **No specific $ amounts ($50, $10K) unless confirmed**: Investment amounts are not finalised.
 - No VIP/$5 deposit in meta ads — landing pages/emails only
 - No market stats in consumer ads ($130B, 24% YoY)
 - Don't say "startup" — too cold for a food brand
 - Don't bolt on investment terms — if CFE, tease with "be part of it", never detail terms
+- Always use proper paragraph breaks — never one big block of text
 
 ## Content Type Rules
 
@@ -31,6 +45,28 @@
 - **Sender**: always "Rachel & the FarmThru team"
 
 ---
+
+## Round 3 Review — Human Feedback (2026-04-05)
+
+**Results: 11 approved, 7 revise (CFE), 6 revise (LP), 1 approved (LP-N), 0 killed**
+
+### Meta-ad feedback
+- **Waitlist = invest + customer**: Every BR ad approved but ALL missing dual purpose. Signup is for investing AND becoming a customer/partner.
+- **"Values and money pointing the same direction"** is a big concept for CFE. Explore many forms.
+- **Confidence, not doubt**: "We can't promise..." flagged on CFE-106, CFE-108. Never plant doubt.
+- **Distance framing**: Raw km numbers mislead. Use "10x less" or relate to fuel cost.
+- **"Regenerative" is niche**: Don't assume audience knows it. Don't lead with it.
+- **BR-110 standout**: "Own a piece of the grocery store that pays farmers first."
+
+### Landing page feedback (systemic issues)
+- **Em dashes everywhere**: Every LP flagged. No em dashes in any content.
+- **Subheads way too long**: Should be under 120 chars, scannable in 2 seconds.
+- **Dense text blocks**: Poor readability, not easy to scan. Need more paragraph breaks.
+- **$50/$10K amounts**: Not confirmed. Don't use specific investment amounts.
+- **Not applying CFE research**: StoryBrand structure, proof density, countdown patterns missing.
+- **LP-M headline broken**: "Do you know what your kids ate" — of course they do. Not general-purpose.
+- **LP-D**: "We can't promise returns" — again, plants doubt.
+- **LP-P**: "Ours stays in NSW" -> "Ours travels 10x less"
 
 ## Round 1 Review — Brand Issues Found (2026-04-03)
 

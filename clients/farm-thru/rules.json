@@ -8,9 +8,35 @@
       "type": "custom",
       "function": "_check_investment_disclaimer",
       "description": "When content discusses investment, it must include a financial disclaimer referencing independent advice or the Birchal disclosure document. Content that does not mention investment is exempt.",
-      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy", "subhead", "sections"],
-      "investment_triggers": ["\\binvest(?:ing|ment|ors?)?\\b", "birchal", "crowdfund", "\\bequity\\b", "\\braising capital\\b|\\braise via\\b|\\braises (?:capital|funds|money)\\b", "campaign opens", "\\$50", "\\$10", "from \\$", "minimum.*invest", "cap(?:ped)?.*\\$"],
-      "disclaimer_patterns": ["not financial advice", "disclosure document", "consider seeking independent", "seek independent financial advice"],
+      "fields": [
+        "primary_text",
+        "headline",
+        "description",
+        "subject",
+        "body",
+        "hero_copy",
+        "subhead",
+        "sections"
+      ],
+      "investment_triggers": [
+        "\\binvest(?:ing|ment|ors?)?\\b",
+        "birchal",
+        "crowdfund",
+        "\\bequity\\b",
+        "\\braising capital\\b|\\braise via\\b|\\braises (?:capital|funds|money)\\b",
+        "campaign opens",
+        "\\$50",
+        "\\$10",
+        "from \\$",
+        "minimum.*invest",
+        "cap(?:ped)?.*\\$"
+      ],
+      "disclaimer_patterns": [
+        "not financial advice",
+        "disclosure document",
+        "consider seeking independent",
+        "seek independent financial advice"
+      ],
       "case_sensitive": false,
       "rationale": "ASIC RG 234 requires balanced disclosure for equity crowdfunding campaigns. Content that mentions investment must include disclaimers, but pure product/brand content is exempt."
     },
@@ -20,7 +46,15 @@
       "severity": "critical",
       "type": "regex_absent",
       "description": "Block any language promising or implying investment returns. No return projections permitted in CSF campaigns.",
-      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy", "subhead", "sections"],
+      "fields": [
+        "primary_text",
+        "headline",
+        "description",
+        "subject",
+        "body",
+        "hero_copy",
+        "subhead"
+      ],
       "patterns": [
         "guaranteed return",
         "guaranteed profit",
@@ -41,7 +75,15 @@
       "severity": "critical",
       "type": "regex_absent",
       "description": "Block language that downplays or minimises startup or investment risk.",
-      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy", "subhead", "sections"],
+      "fields": [
+        "primary_text",
+        "headline",
+        "description",
+        "subject",
+        "body",
+        "hero_copy",
+        "subhead"
+      ],
       "patterns": [
         "risk.free",
         "no risk",
@@ -61,7 +103,15 @@
       "severity": "high",
       "type": "regex_absent",
       "description": "Block therapeutic or health benefit claims about food that are not backed by evidence.",
-      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy", "subhead", "sections"],
+      "fields": [
+        "primary_text",
+        "headline",
+        "description",
+        "subject",
+        "body",
+        "hero_copy",
+        "subhead"
+      ],
       "patterns": [
         "\\bcures?\\b",
         "\\bheals?\\b",
@@ -82,7 +132,15 @@
       "severity": "high",
       "type": "regex_absent",
       "description": "Block food safety claims that go beyond what is verifiable.",
-      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy", "subhead", "sections"],
+      "fields": [
+        "primary_text",
+        "headline",
+        "description",
+        "subject",
+        "body",
+        "hero_copy",
+        "subhead"
+      ],
       "patterns": [
         "100% safe",
         "zero contaminants",
@@ -99,7 +157,15 @@
       "severity": "high",
       "type": "regex_absent",
       "description": "Block delivery area claims beyond current service coverage (Sydney, Central Coast, Wollongong).",
-      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy", "subhead", "sections"],
+      "fields": [
+        "primary_text",
+        "headline",
+        "description",
+        "subject",
+        "body",
+        "hero_copy",
+        "subhead"
+      ],
       "patterns": [
         "deliver.*Melbourne",
         "deliver.*Brisbane",
@@ -118,7 +184,15 @@
       "severity": "high",
       "type": "regex_absent",
       "description": "Block vague environmental claims that cannot be substantiated. 'Regenerative' is permitted as it is specific and verifiable. 'Carbon neutral' is blocked unless backed by certification.",
-      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy", "subhead", "sections"],
+      "fields": [
+        "primary_text",
+        "headline",
+        "description",
+        "subject",
+        "body",
+        "hero_copy",
+        "subhead"
+      ],
       "patterns": [
         "save the planet",
         "100% sustainable",
@@ -137,7 +211,15 @@
       "severity": "high",
       "type": "regex_absent",
       "description": "Block incorrect deposit or investment amounts. VIP deposit is $5, minimum investment is $50, maximum investment is $10,000.",
-      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy", "subhead", "sections"],
+      "fields": [
+        "primary_text",
+        "headline",
+        "description",
+        "subject",
+        "body",
+        "hero_copy",
+        "subhead"
+      ],
       "patterns": [
         "\\$(?!5\\b)\\d+[^.\\n]*deposit",
         "\\$(?!50\\b)\\d+[^.\\n]*minimum[^.\\n]*invest",
@@ -152,7 +234,15 @@
       "severity": "medium",
       "type": "regex_absent",
       "description": "Frame FarmThru as a positive alternative, never as a negative reaction to competitors.",
-      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy", "subhead", "sections"],
+      "fields": [
+        "primary_text",
+        "headline",
+        "description",
+        "subject",
+        "body",
+        "hero_copy",
+        "subhead"
+      ],
       "patterns": [
         "better than.*supermarket",
         "worse than.*farmthru",
@@ -171,7 +261,15 @@
       "type": "custom",
       "custom_function": "_check_deposit_refundable",
       "description": "When mentioning the $5 deposit, must also mention it is refundable.",
-      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy", "subhead", "sections"],
+      "fields": [
+        "primary_text",
+        "headline",
+        "description",
+        "subject",
+        "body",
+        "hero_copy",
+        "subhead"
+      ],
       "rationale": "Consumer protection — deposits must be clearly described as refundable to avoid misleading consumers."
     },
     {
@@ -180,7 +278,15 @@
       "severity": "high",
       "type": "regex_absent",
       "description": "Never name competitors in advertising copy. Use 'supermarkets' or 'the big chains' instead.",
-      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy", "subhead", "sections"],
+      "fields": [
+        "primary_text",
+        "headline",
+        "description",
+        "subject",
+        "body",
+        "hero_copy",
+        "subhead"
+      ],
       "patterns": [
         "\\bwoolworths\\b",
         "\\bwoolies\\b",
@@ -198,7 +304,15 @@
       "severity": "high",
       "type": "regex_absent",
       "description": "FarmThru is a hub-and-collect model. Never claim delivery to door.",
-      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy", "subhead", "sections"],
+      "fields": [
+        "primary_text",
+        "headline",
+        "description",
+        "subject",
+        "body",
+        "hero_copy",
+        "subhead"
+      ],
       "patterns": [
         "deliver.*to your door",
         "to your kitchen",
@@ -219,7 +333,15 @@
       "severity": "medium",
       "type": "regex_absent",
       "description": "Block terms banned by brand guidelines.",
-      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy", "subhead", "sections"],
+      "fields": [
+        "primary_text",
+        "headline",
+        "description",
+        "subject",
+        "body",
+        "hero_copy",
+        "subhead"
+      ],
       "patterns": [
         "\\bartisan",
         "\\bartisanal",
@@ -243,7 +365,15 @@
       "severity": "medium",
       "type": "regex_absent",
       "description": "FarmThru is non-subscription, on-demand ordering. No lock-in messaging.",
-      "fields": ["primary_text", "headline", "description", "subject", "body", "hero_copy", "subhead", "sections"],
+      "fields": [
+        "primary_text",
+        "headline",
+        "description",
+        "subject",
+        "body",
+        "hero_copy",
+        "subhead"
+      ],
       "patterns": [
         "\\bsubscription\\b",
         "\\bsubscribe\\b",
@@ -260,7 +390,11 @@
       "severity": "medium",
       "type": "regex_absent",
       "description": "Block market statistics in consumer-facing meta ads. Market stats ($130B, 24% YoY) belong in investor content only.",
-      "fields": ["primary_text", "headline", "description"],
+      "fields": [
+        "primary_text",
+        "headline",
+        "description"
+      ],
       "patterns": [
         "\\$\\d+\\s?[Bb](illion)?\\s*(market|industry)",
         "\\d+%.*([Yy]o[Yy]|year.on.year|growth)",
@@ -279,7 +413,11 @@
       "severity": "medium",
       "type": "regex_absent",
       "description": "Block compliance disclaimer language in meta ad primary text and headline. Disclaimers belong in landing pages, not ads.",
-      "fields": ["primary_text", "headline", "description"],
+      "fields": [
+        "primary_text",
+        "headline",
+        "description"
+      ],
       "patterns": [
         "[Nn]ot financial advice",
         "[Nn]ot investment advice",
@@ -296,8 +434,12 @@
       "severity": "high",
       "type": "regex_absent",
       "description": "Block investment terminology in meta-ad description field. Investment details belong on landing pages, not in ad copy.",
-      "fields": ["description"],
-      "content_types": ["meta-ad"],
+      "fields": [
+        "description"
+      ],
+      "content_types": [
+        "meta-ad"
+      ],
       "patterns": [
         "\\$50",
         "\\$10",
@@ -318,7 +460,9 @@
       "severity": "normal",
       "type": "length_max",
       "description": "Landing page subheads must be scannable. Max 120 characters.",
-      "fields": ["subhead"],
+      "fields": [
+        "subhead"
+      ],
       "max_value": 120,
       "rationale": "User feedback: subheads are way too long and dense. Should be short enough to scan in under 2 seconds."
     },
@@ -328,8 +472,15 @@
       "severity": "normal",
       "type": "regex_absent",
       "description": "No em-dashes or en-dashes in landing page content including sections.",
-      "fields": ["hero_copy", "subhead", "sections"],
-      "patterns": ["\u2014", "\u2013"],
+      "fields": [
+        "hero_copy",
+        "subhead",
+        "sections"
+      ],
+      "patterns": [
+        "—",
+        "–"
+      ],
       "case_sensitive": false,
       "rationale": "Em dashes read cold and editorial. Use full stops, commas, or colons instead. User flagged this on every LP."
     }
