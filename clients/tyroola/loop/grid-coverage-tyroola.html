@@ -36,13 +36,14 @@
 <div class="toggle" id="toggles">
   <button class="active" onclick="setMode('score')">Quality Score</button>
   <button onclick="setMode('roas')">ROAS</button>
+  <button onclick="setMode('revenue')">Revenue</button>
 </div>
 <table id="grid"></table>
 <div class="legend" id="legend"></div>
 <div class="tooltip" id="tooltip"></div>
 
 <script>
-const DATA = {"angles": ["comparison-switching", "convenience-ease", "price-value", "simplicity-clarity", "social-proof", "transparency-trust", "urgency-scarcity"], "hooks": ["bold_claim", "direct_address", "fomo", "offer_first", "pattern_interrupt", "price_anchor", "question", "social_proof", "statistic", "story", "urgency"], "cells": {"price-value|question": {"score": 0.4694, "ad_id": "tyroola-242", "roas": 0.0, "spend": 29.08}, "social-proof|story": {"score": 0.5946, "ad_id": "SO-959"}, "convenience-ease|statistic": {"score": 0.5789, "ad_id": "CO-371"}, "comparison-switching|bold_claim": {"score": 0.5059, "ad_id": "tyroola-310", "roas": 0.0, "spend": 0.99}, "convenience-ease|bold_claim": {"score": 0.5625, "ad_id": "tyroola-287", "roas": 0.0, "spend": 5.26}, "convenience-ease|direct_address": {"score": 0.7376, "ad_id": "tyroola-022", "roas": 10.91, "spend": 1894.78}, "convenience-ease|offer_first": {"score": 0.57, "ad_id": "tyroola-285", "roas": 0.0, "spend": 5.44}, "convenience-ease|pattern_interrupt": {"score": 0.6371, "ad_id": "tyroola-191", "roas": 0.0, "spend": 75.27}, "convenience-ease|price_anchor": {"score": 0.0, "ad_id": "tyroola-243", "roas": 0.0, "spend": 28.85}, "convenience-ease|question": {"score": 0.6296, "ad_id": "tyroola-139", "roas": 7.75, "spend": 165.34}, "convenience-ease|social_proof": {"score": 0.0, "ad_id": "tyroola-074", "roas": 62.45, "spend": 529.68}, "price-value|bold_claim": {"score": 0.6371, "ad_id": "tyroola-231", "roas": 0.0, "spend": 34.23}, "price-value|direct_address": {"score": 0.5843, "ad_id": "tyroola-180", "roas": 0.0, "spend": 88.25}, "price-value|fomo": {"score": 0.431, "ad_id": "tyroola-247", "roas": 0.0, "spend": 24.18}, "price-value|offer_first": {"score": 0.442, "ad_id": "tyroola-029", "roas": 8.32, "spend": 1460.06}, "price-value|pattern_interrupt": {"score": 0.5059, "ad_id": "tyroola-132", "roas": 0.0, "spend": 181.11}, "price-value|price_anchor": {"score": 0.4255, "ad_id": "tyroola-013", "roas": 16.53, "spend": 3021.24}, "price-value|social_proof": {"score": 0.0, "ad_id": "tyroola-286", "roas": 0.0, "spend": 5.38}, "price-value|statistic": {"score": 0.398, "ad_id": "tyroola-036", "roas": 22.21, "spend": 1121.64}, "price-value|urgency": {"score": 0.5804, "ad_id": "tyroola-046", "roas": 15.99, "spend": 853.81}, "simplicity-clarity|offer_first": {"score": 0.6706, "ad_id": "tyroola-127", "roas": 1.87, "spend": 205.54}, "social-proof|fomo": {"score": 0.5886, "ad_id": "tyroola-088", "roas": 16.46, "spend": 386.99}, "social-proof|statistic": {"score": 0.0, "ad_id": "tyroola-212", "roas": 0.0, "spend": 48.76}, "transparency-trust|bold_claim": {"score": 0.5843, "ad_id": "tyroola-125", "roas": 2.69, "spend": 207.2}, "urgency-scarcity|fomo": {"score": 0.5849, "ad_id": "tyroola-063", "roas": 12.5, "spend": 619.75}, "urgency-scarcity|urgency": {"score": 0.6, "ad_id": "tyroola-071", "roas": 36.66, "spend": 548.02}}};
+const DATA = {"angles": ["comparison-switching", "convenience-ease", "price-value", "simplicity-clarity", "social-proof", "transparency-trust", "urgency-scarcity"], "hooks": ["bold_claim", "direct_address", "fomo", "offer_first", "pattern_interrupt", "price_anchor", "question", "social_proof", "statistic", "urgency"], "cells": {"comparison-switching|bold_claim": {"score": 0.5059, "ad_id": "tyroola-310", "roas": 0.0, "spend": 0.99, "total_revenue": 19603.3, "total_spend": 481.98, "total_purchases": 25, "ad_count": 4}, "convenience-ease|bold_claim": {"score": 0.5625, "ad_id": "tyroola-287", "roas": 0.0, "spend": 5.26, "total_revenue": 80433.2, "total_spend": 8051.46, "total_purchases": 123, "ad_count": 25}, "convenience-ease|direct_address": {"score": 0.7376, "ad_id": "tyroola-022", "roas": 10.91, "spend": 1894.78, "total_revenue": 135584.15, "total_spend": 10414.28, "total_purchases": 210, "ad_count": 44}, "convenience-ease|offer_first": {"score": 0.57, "ad_id": "tyroola-285", "roas": 0.0, "spend": 5.44, "total_revenue": 184582.77, "total_spend": 15313.97, "total_purchases": 265, "ad_count": 24}, "convenience-ease|pattern_interrupt": {"score": 0.6371, "ad_id": "tyroola-191", "roas": 0.0, "spend": 75.27, "total_revenue": 30721.9, "total_spend": 5180.19, "total_purchases": 51, "ad_count": 14}, "convenience-ease|price_anchor": {"score": 0.5451, "ad_id": "tyroola-243", "roas": 0.0, "spend": 28.85, "total_revenue": 0.0, "total_spend": 28.85, "total_purchases": 0, "ad_count": 1}, "convenience-ease|question": {"score": 0.6296, "ad_id": "tyroola-139", "roas": 7.75, "spend": 165.34, "total_revenue": 16939.54, "total_spend": 2193.4, "total_purchases": 18, "ad_count": 7}, "convenience-ease|social_proof": {"score": 0.5294, "ad_id": "tyroola-074", "roas": 62.45, "spend": 529.68, "total_revenue": 14859.9, "total_spend": 529.68, "total_purchases": 20, "ad_count": 1}, "price-value|bold_claim": {"score": 0.6371, "ad_id": "tyroola-231", "roas": 0.0, "spend": 34.23, "total_revenue": 37556.8, "total_spend": 7762.31, "total_purchases": 55, "ad_count": 13}, "price-value|direct_address": {"score": 0.5843, "ad_id": "tyroola-180", "roas": 0.0, "spend": 88.25, "total_revenue": 175828.25, "total_spend": 11013.47, "total_purchases": 302, "ad_count": 9}, "price-value|fomo": {"score": 0.431, "ad_id": "tyroola-247", "roas": 0.0, "spend": 24.18, "total_revenue": 1812.8, "total_spend": 1231.09, "total_purchases": 4, "ad_count": 8}, "price-value|offer_first": {"score": 0.6235, "ad_id": "tyroola-096", "roas": 4.69, "spend": 332.23, "total_revenue": 117759.66, "total_spend": 15265.65, "total_purchases": 163, "ad_count": 23}, "price-value|pattern_interrupt": {"score": 0.5059, "ad_id": "tyroola-132", "roas": 0.0, "spend": 181.11, "total_revenue": 0.0, "total_spend": 228.3, "total_purchases": 0, "ad_count": 2}, "price-value|price_anchor": {"score": 0.4584, "ad_id": "tyroola-254", "roas": 80.79, "spend": 21.47, "total_revenue": 172839.18, "total_spend": 26674.08, "total_purchases": 209, "ad_count": 44}, "price-value|question": {"score": 0.7041, "ad_id": "tyroola-177", "roas": 0.0, "spend": 92.07, "total_revenue": 30210.08, "total_spend": 5861.33, "total_purchases": 40, "ad_count": 25}, "price-value|social_proof": {"score": 0.5451, "ad_id": "tyroola-112", "roas": 0.0, "spend": 242.51, "total_revenue": 0.0, "total_spend": 312.74, "total_purchases": 0, "ad_count": 3}, "price-value|statistic": {"score": 0.4996, "ad_id": "tyroola-187", "roas": 0.0, "spend": 79.1, "total_revenue": 8162.8, "total_spend": 2230.27, "total_purchases": 12, "ad_count": 6}, "price-value|urgency": {"score": 0.5843, "ad_id": "tyroola-182", "roas": 16.78, "spend": 84.39, "total_revenue": 188177.89, "total_spend": 14063.52, "total_purchases": 256, "ad_count": 14}, "simplicity-clarity|offer_first": {"score": 0.6706, "ad_id": "tyroola-127", "roas": 1.87, "spend": 205.54, "total_revenue": 385.0, "total_spend": 205.54, "total_purchases": 1, "ad_count": 1}, "social-proof|fomo": {"score": 0.5886, "ad_id": "tyroola-088", "roas": 16.46, "spend": 386.99, "total_revenue": 3139.19, "total_spend": 386.99, "total_purchases": 6, "ad_count": 1}, "social-proof|statistic": {"score": 0.4886, "ad_id": "tyroola-068", "roas": 9.81, "spend": 598.35, "total_revenue": 2344.4, "total_spend": 711.34, "total_purchases": 3, "ad_count": 3}, "transparency-trust|bold_claim": {"score": 0.5843, "ad_id": "tyroola-125", "roas": 2.69, "spend": 207.2, "total_revenue": 363.6, "total_spend": 207.2, "total_purchases": 1, "ad_count": 1}, "urgency-scarcity|fomo": {"score": 0.5849, "ad_id": "tyroola-063", "roas": 12.5, "spend": 619.75, "total_revenue": 8911.1, "total_spend": 963.61, "total_purchases": 8, "ad_count": 4}, "urgency-scarcity|urgency": {"score": 0.6, "ad_id": "tyroola-071", "roas": 36.66, "spend": 548.02, "total_revenue": 304027.48, "total_spend": 19203.8, "total_purchases": 398, "ad_count": 29}}};
 const angles = DATA.angles;
 const hooks = DATA.hooks;
 const cells = DATA.cells;
@@ -55,15 +56,20 @@ const avg = scores.length ? scores.reduce((a,b) => a+b, 0) / scores.length : 0;
 const hasRoas = Object.values(cells).some(c => c.roas !== undefined);
 const roasValues = Object.values(cells).filter(c => c.roas).map(c => c.roas);
 const avgRoas = roasValues.length ? roasValues.reduce((a,b) => a+b, 0) / roasValues.length : 0;
+const hasRevenue = Object.values(cells).some(c => c.total_revenue > 0);
+const totalRevenue = Object.values(cells).reduce((s, c) => s + (c.total_revenue || 0), 0);
+const totalSpend = Object.values(cells).reduce((s, c) => s + (c.total_spend || 0), 0);
 
 document.getElementById('stats').innerHTML = `
   <div class="stat"><div class="value">${filled}/${total}</div><div class="label">Cells filled (${Math.round(filled/total*100)}%)</div></div>
   <div class="stat"><div class="value">${avg.toFixed(3)}</div><div class="label">Avg quality score</div></div>
   ${hasRoas ? `<div class="stat"><div class="value">${avgRoas.toFixed(1)}x</div><div class="label">Avg ROAS</div></div>` : ''}
+  ${hasRevenue ? `<div class="stat"><div class="value">$${totalRevenue.toLocaleString(undefined, {maximumFractionDigits:0})}</div><div class="label">Total revenue</div></div>` : ''}
+  ${hasRevenue ? `<div class="stat"><div class="value">$${totalSpend.toLocaleString(undefined, {maximumFractionDigits:0})}</div><div class="label">Total spend</div></div>` : ''}
   <div class="stat"><div class="value">${total - filled}</div><div class="label">Empty cells</div></div>
 `;
 
-if (!hasRoas) document.getElementById('toggles').style.display = 'none';
+if (!hasRoas && !hasRevenue) document.getElementById('toggles').style.display = 'none';
 
 function setMode(m) {
   mode = m;
@@ -82,13 +88,20 @@ function renderLegend() {
       <div class="legend-item"><div class="legend-swatch" style="background:#2d2a0e"></div> 0.50-0.69</div>
       <div class="legend-item"><div class="legend-swatch" style="background:#0e2d1e"></div> 0.70-0.84</div>
       <div class="legend-item"><div class="legend-swatch" style="background:#1a4d2e"></div> 0.85+</div>`;
-  } else {
+  } else if (mode === 'roas') {
     leg.innerHTML = `
       <div class="legend-item"><div class="legend-swatch" style="background:#161b22"></div> No data</div>
       <div class="legend-item"><div class="legend-swatch" style="background:#3d1e1e"></div> &lt;5x</div>
       <div class="legend-item"><div class="legend-swatch" style="background:#2d2a0e"></div> 5-20x</div>
       <div class="legend-item"><div class="legend-swatch" style="background:#0e2d1e"></div> 20-50x</div>
       <div class="legend-item"><div class="legend-swatch" style="background:#1a4d2e"></div> 50x+</div>`;
+  } else {
+    leg.innerHTML = `
+      <div class="legend-item"><div class="legend-swatch" style="background:#161b22"></div> No data</div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#3d1e1e"></div> &lt;$500</div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#2d2a0e"></div> $500-$2k</div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#0e2d1e"></div> $2k-$10k</div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#1a4d2e"></div> $10k+</div>`;
   }
 }
 
@@ -106,7 +119,14 @@ function renderGrid() {
       const cell = cells[key];
       if (cell) {
         let val, cls;
-        if (mode === 'roas' && cell.roas !== undefined) {
+        if (mode === 'revenue' && cell.total_revenue > 0) {
+          const rev = cell.total_revenue;
+          val = rev >= 1000 ? '$' + (rev/1000).toFixed(1) + 'k' : '$' + rev.toFixed(0);
+          cls = rev >= 10000 ? 'great' : rev >= 2000 ? 'good' : rev >= 500 ? 'mid' : 'low';
+        } else if (mode === 'revenue') {
+          val = '-';
+          cls = 'empty';
+        } else if (mode === 'roas' && cell.roas !== undefined) {
           val = cell.roas.toFixed(1);
           cls = cell.roas >= 50 ? 'great' : cell.roas >= 20 ? 'good' : cell.roas >= 5 ? 'mid' : 'low';
         } else if (mode === 'roas') {
@@ -116,7 +136,9 @@ function renderGrid() {
           val = cell.score.toFixed(2);
           cls = cell.score >= 0.85 ? 'great' : cell.score >= 0.70 ? 'good' : cell.score >= 0.50 ? 'mid' : 'low';
         }
-        const info = `${angle} + ${hook}\nQuality: ${cell.score.toFixed(3)}${cell.roas !== undefined ? '\nROAS: ' + cell.roas.toFixed(1) + 'x' : ''}${cell.spend ? '\nSpend: $' + cell.spend.toFixed(0) : ''}\nAd: ${cell.ad_id}`;
+        const rev = cell.total_revenue || 0;
+        const spend = cell.total_spend || 0;
+        const info = `${angle} + ${hook}\nQuality: ${cell.score.toFixed(3)}${cell.roas !== undefined ? '\nROAS: ' + cell.roas.toFixed(1) + 'x' : ''}${rev > 0 ? '\nRevenue: $' + rev.toLocaleString(undefined, {maximumFractionDigits:0}) : ''}${spend > 0 ? '\nSpend: $' + spend.toLocaleString(undefined, {maximumFractionDigits:0}) : ''}${cell.ad_count ? '\nAds: ' + cell.ad_count : ''}`;
         row += `<td class="${cls}" data-info="${info}">${val}</td>`;
       } else {
         row += '<td class="empty">-</td>';
