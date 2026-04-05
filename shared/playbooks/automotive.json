@@ -1,0 +1,34 @@
+{
+  "industry": "automotive",
+  "source": "Motion Creative Benchmarks 2026 (Automotive vertical)",
+  "hook_weights": {
+    "newness": 1.5,
+    "price_anchor": 1.4,
+    "curiosity": 1.3,
+    "offer_first": 1.3,
+    "statistic": 1.2,
+    "story": 1.2,
+    "bold_claim": 1.1,
+    "fomo": 1.0,
+    "urgency": 1.0,
+    "if_then": 1.0,
+    "exclusivity": 1.0,
+    "question": 0.9,
+    "quoted_objection": 0.9,
+    "confession": 0.8,
+    "contrarian": 0.8,
+    "direct_address": 0.7,
+    "pattern_interrupt": 0.7
+  },
+  "recommended_angles": [
+    "price-value",
+    "quality-craft",
+    "outcome-results",
+    "comparison-switching",
+    "transformation-storytelling",
+    "simplicity-clarity"
+  ],
+  "recommended_tactics": ["comparison", "direct-offer", "before-after", "cost-of-inaction", "curiosity-gap"],
+  "top_visual_formats": ["Demo", "Offer-First Banner", "Before & After", "Testimonial", "Cinematic B-roll", "Feature Benefit"],
+  "creative_context": "Automotive buyers are research-heavy and comparison-driven. Newness hooks ('just launched', 'first drive') have the highest hit rate. Price anchoring drives decisions — monthly payment comparisons, total cost of ownership, trade-in values. Feature demos and comparison formats outperform lifestyle imagery. Urgency works when tied to real events (model year changes, stock limits, incentive deadlines)."
+}

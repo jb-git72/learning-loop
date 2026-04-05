@@ -1,0 +1,34 @@
+{
+  "industry": "general",
+  "source": "Motion Creative Benchmarks 2026 (cross-vertical aggregates)",
+  "hook_weights": {
+    "newness": 1.3,
+    "story": 1.3,
+    "price_anchor": 1.2,
+    "confession": 1.2,
+    "curiosity": 1.1,
+    "urgency": 1.1,
+    "offer_first": 1.1,
+    "fomo": 1.0,
+    "statistic": 1.0,
+    "question": 1.0,
+    "bold_claim": 1.0,
+    "exclusivity": 1.0,
+    "if_then": 1.0,
+    "quoted_objection": 1.0,
+    "contrarian": 0.9,
+    "direct_address": 0.8,
+    "pattern_interrupt": 0.8
+  },
+  "recommended_angles": [
+    "price-value",
+    "outcome-results",
+    "empathy-understanding",
+    "quality-craft",
+    "transparency-safety",
+    "transformation-storytelling"
+  ],
+  "recommended_tactics": ["pas", "social-proof-stack", "before-after", "cost-of-inaction", "founder-story"],
+  "top_visual_formats": ["Offer-First Banner", "Demo", "Testimonial", "Unboxing", "Before & After"],
+  "creative_context": "Cross-vertical benchmarks: newness and story hooks lead on hit rate. Price anchor leads on spend use ratio. Text-forward assets (text only, product image with text) have highest hit rate (~12%) and spend use ratio (~1.9) of any asset type. Only ~5% of ads become winners — volume and iteration matter more than any single creative choice."
+}
