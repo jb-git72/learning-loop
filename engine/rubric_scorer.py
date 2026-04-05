@@ -137,6 +137,7 @@ def _score_deterministic(
         "scroll_depth_pull": _score_scroll_depth_pull,
         "cta_clarity": _score_cta_clarity,  # reuse
         "scroll_stop_hook": _score_scroll_stop_hook,  # reuse for hook scoring
+        "lp_readability": _score_lp_readability,
     }
 
     # Email specific
@@ -506,10 +507,14 @@ def _score_hero_clarity(ad: dict, config: dict) -> tuple[int, str]:
     else:
         details.append("headline: missing")
 
-    # Subhead adds clarity
+    # Subhead adds clarity (and must be concise)
     if subhead:
-        score += 1
-        details.append("subhead: present")
+        sub_len = len(subhead)
+        if sub_len <= 120:
+            score += 1
+            details.append(f"subhead: {sub_len} chars (good)")
+        else:
+            details.append(f"subhead: {sub_len} chars (too long, max 120)")
     else:
         details.append("subhead: missing")
 
@@ -653,6 +658,66 @@ def _score_scroll_depth_pull(ad: dict) -> tuple[int, str]:
 
     score = min(5, score)
     return score, f"{score}/5 scroll pull: {', '.join(details)}"
+
+
+def _score_lp_readability(ad: dict) -> tuple[int, str]:
+    """Score landing page readability — scannability, paragraph density, formatting."""
+    hero_copy = ad.get("hero_copy", "")
+    subhead = ad.get("subhead", "")
+    sections = ad.get("sections", [])
+
+    score = 1
+    details = []
+
+    # Collect all body text
+    all_text = hero_copy
+    for s in sections:
+        if isinstance(s, dict):
+            all_text += " " + s.get("body", "")
+
+    if not all_text.strip():
+        return 1, "1/5: no body text"
+
+    # 1. Paragraph density — more line breaks = more scannable
+    paragraphs = [p.strip() for p in all_text.split("\n\n") if p.strip()]
+    if len(paragraphs) >= 6:
+        score += 1
+        details.append(f"{len(paragraphs)} paragraphs (good density)")
+    elif len(paragraphs) >= 3:
+        details.append(f"{len(paragraphs)} paragraphs (ok)")
+    else:
+        details.append(f"{len(paragraphs)} paragraphs (too dense)")
+
+    # 2. Average sentence length — 13-18 words is ideal
+    sentences = re.split(r'[.!?]+', all_text)
+    sentences = [s.strip() for s in sentences if len(s.strip().split()) >= 3]
+    if sentences:
+        avg_words = sum(len(s.split()) for s in sentences) / len(sentences)
+        if 10 <= avg_words <= 20:
+            score += 1
+            details.append(f"avg {avg_words:.0f} words/sentence (good)")
+        elif avg_words > 25:
+            details.append(f"avg {avg_words:.0f} words/sentence (too long)")
+        else:
+            details.append(f"avg {avg_words:.0f} words/sentence")
+
+    # 3. No em dashes — they read cold/editorial
+    em_dash_count = len(re.findall(r'[\u2014\u2013]', all_text))
+    if em_dash_count == 0:
+        score += 1
+        details.append("no em dashes")
+    else:
+        details.append(f"{em_dash_count} em dashes (remove)")
+
+    # 4. Subhead is concise
+    if subhead and len(subhead) <= 120:
+        score += 1
+        details.append(f"subhead: {len(subhead)} chars")
+    elif subhead:
+        details.append(f"subhead: {len(subhead)} chars (over 120)")
+
+    score = min(5, max(1, score))
+    return score, f"{score}/5 readability: {', '.join(details)}"
 
 
 def _score_subject_line_power(ad: dict) -> tuple[int, str]:

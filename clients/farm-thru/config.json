@@ -70,9 +70,10 @@
         "differentiation": 1.0,
         "opening_diversity": 0.75,
         "sentence_variance": 0.5,
-        "emotional_register": 0.75
+        "emotional_register": 0.75,
+        "lp_readability": 1.0
       },
-      "max_score": 70.375,
+      "max_score": 75.375,
       "thresholds": {
         "production_ready": 52,
         "strong_draft": 45,
