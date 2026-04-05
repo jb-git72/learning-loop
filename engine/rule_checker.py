@@ -183,7 +183,13 @@ def _run_regex_check(rule: dict, ad: dict) -> dict:
 
     for field in fields:
         text = ad.get(field, "")
-        if not text:
+        # Handle sections array (landing pages) — flatten to single string
+        if field == "sections" and isinstance(text, list):
+            text = " ".join(
+                f"{s.get('heading', '')} {s.get('body', '')}"
+                for s in text if isinstance(s, dict)
+            )
+        if not text or not isinstance(text, str):
             continue
         for pattern in patterns:
             flags = 0 if case_sensitive else re.IGNORECASE
