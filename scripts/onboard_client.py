@@ -86,6 +86,24 @@ CONFIG_TEMPLATE = {
     "critical_rules": ["no_condescension", "no_commands"],
 }
 
+
+def load_industry_playbook(industry: str) -> tuple[dict, str]:
+    """Load the industry playbook JSON and MD. Falls back to general."""
+    playbook_json = {}
+    playbook_md = ""
+    json_path = root / "shared" / "playbooks" / f"{industry}.json"
+    md_path = root / "shared" / "playbooks" / f"{industry}.md"
+    if not json_path.exists():
+        json_path = root / "shared" / "playbooks" / "general.json"
+        md_path = root / "shared" / "playbooks" / "general.md"
+    if json_path.exists():
+        with open(json_path) as f:
+            playbook_json = json.load(f)
+    if md_path.exists():
+        with open(md_path) as f:
+            playbook_md = f.read()
+    return playbook_json, playbook_md
+
 RULES_TEMPLATE = {"extends": "universal", "rules": []}
 
 LEARNINGS_TEMPLATE = """# {brand} — Creative Learnings
@@ -242,6 +260,26 @@ Respond with ONLY the JSON object — no markdown code fences, no explanation.""
     ]:
         if key in generated:
             config[key] = generated[key]
+
+    # Enrich with industry playbook if available
+    playbook_json, _ = load_industry_playbook(args.industry)
+    if playbook_json:
+        # Add hook preferences from playbook
+        if "hook_weights" in playbook_json:
+            config["hook_preferences"] = playbook_json["hook_weights"]
+            print(f"  Applied {args.industry} playbook hook preferences ({len(playbook_json['hook_weights'])} hooks)")
+
+        # Supplement angles with playbook recommendations (don't overwrite LLM-generated ones)
+        if "recommended_angles" in playbook_json:
+            existing = set(config.get("angles_in_use", []))
+            for angle in playbook_json["recommended_angles"]:
+                if angle not in existing:
+                    config.setdefault("angles_in_use", []).append(angle)
+            print(f"  Supplemented angles with {args.industry} playbook recommendations")
+
+        # Add recommended tactics
+        if "recommended_tactics" in playbook_json:
+            config["recommended_tactics"] = playbook_json["recommended_tactics"]
 
     # Write
     config_path = client_dir / "config.json"
@@ -414,6 +452,30 @@ def step_7_generate_learnings(args, config: dict, client_dir: Path):
     learnings = LEARNINGS_TEMPLATE.format(
         brand=args.name, never_rules="\n".join(never_rules)
     )
+
+    # Prepend industry playbook patterns (within 1600-char critical window)
+    _, playbook_md = load_industry_playbook(args.industry)
+    if playbook_md:
+        # Extract the "What Works" and "What Fails" sections from the playbook
+        industry_patterns = ""
+        for section in ["## What Works", "## What Fails"]:
+            if section in playbook_md:
+                start = playbook_md.index(section)
+                # Find next heading or end
+                rest = playbook_md[start + len(section):]
+                next_heading = rest.find("\n## ")
+                if next_heading == -1:
+                    chunk = rest.strip()
+                else:
+                    chunk = rest[:next_heading].strip()
+                industry_patterns += f"\n{section} ({args.industry} benchmarks)\n{chunk}\n"
+
+        if industry_patterns:
+            learnings = learnings.replace(
+                "## What Works (do more of this)",
+                industry_patterns.strip() + "\n\n## What Works (do more of this)",
+            )
+            print(f"  Injected {args.industry} playbook patterns into learnings.md")
 
     with open(client_dir / "learnings.md", "w") as f:
         f.write(learnings)
