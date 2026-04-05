@@ -79,18 +79,16 @@
       border-radius: 6px;
       font-size: 11px;
       line-height: 1.4;
+      max-height: 200px;
+      overflow-y: auto;
       display: none;
+      white-space: pre-wrap;
+      font-family: "SF Mono", monospace;
     }
     .status.visible {
       display: block;
-    }
-    .status.ok {
-      background: #e6f7ed;
-      color: #1a7f37;
-    }
-    .status.err {
-      background: #fef0f0;
-      color: #c33;
+      background: #f5f5f5;
+      color: #333;
     }
     .count {
       margin-top: 8px;
@@ -193,8 +191,10 @@
     };
 
     function showStatus(text, isError) {
-      statusEl.textContent = text;
-      statusEl.className = "status visible " + (isError ? "err" : "ok");
+      statusEl.className = "status visible";
+      var prefix = isError ? "ERR: " : "";
+      statusEl.textContent += prefix + text + "\n";
+      statusEl.scrollTop = statusEl.scrollHeight;
     }
   </script>
 

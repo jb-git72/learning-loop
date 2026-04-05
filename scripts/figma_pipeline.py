@@ -335,24 +335,39 @@ def cmd_prepare(args):
             config = json.loads(config_path.read_text())
             brand_colours = config.get("brand_style", {})
 
-    # Hook type -> template frame pattern mapping
-    hook_map = {
-        "question":    "B",   # question-style templates
-        "statistic":   "A",   # bold stat templates
-        "story":       "C",   # narrative templates
-        "provocation": "B",
-        "contrast":    "A",
-        "social_proof": "A",
+    # Hook type -> template name mapping
+    # These map to frame names in the Figma file. The plugin does partial matching,
+    # so "OfferFirst" matches a frame named "OfferFirst-001" or "BestPrices-OfferFirst".
+    # Update these to match your actual Figma template frame names.
+    hook_to_template = {
+        "offer_first":      "OfferFirst",
+        "price_anchor":     "OfferFirst",
+        "statistic":        "OfferFirst",
+        "story":            "Testimonial",
+        "fomo":             "Testimonial",
+        "confession":       "Letter",
+        "newness":          "Announcement",
+        "question":         "Question",
+        "direct_address":   "Question",
+        "bold_claim":       "BoldClaim",
+        "curiosity":        "Curiosity",
+        "contrarian":       "BoldClaim",
+        "if_then":          "OfferFirst",
+        "quoted_objection": "Testimonial",
+        "urgency":          "Urgency",
+        "exclusivity":      "Urgency",
+        "pattern_interrupt": "UGC",
     }
 
     plugin_input = []
     for ad in ads:
         ad_id = ad.get("ad_id", ad.get("page_id", ad.get("email_id", "unknown")))
         hook = ad.get("hook_type", "").lower()
-        template_pattern = hook_map.get(hook, "A")
+        template = hook_to_template.get(hook, "")
 
         entry = {
             "ad_id": ad_id,
+            "template": template,
             "hook_type": ad.get("hook_type", ""),
             "tactic": ad.get("tactic", ""),
             "angle": ad.get("angle", ""),
@@ -360,7 +375,6 @@ def cmd_prepare(args):
             "primary_text": ad.get("primary_text", ""),
             "description": ad.get("description", ""),
             "cta": ad.get("cta", ad.get("cta_text", "")),
-            "suggested_template_pattern": template_pattern,
             "brand_colours": brand_colours,
         }
 

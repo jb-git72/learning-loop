@@ -1,215 +1,237 @@
 // Learning Loop Ad Injector — Figma Plugin
-// Injects ad copy from JSON into template frames.
-//
-// Workflow:
-// 1. Select a template frame in Figma
-// 2. Paste ad JSON into the plugin UI
-// 3. Plugin clones the frame, replaces TEXT nodes by font size hierarchy:
-//    - Largest  -> headline
-//    - Second   -> subhead / primary_text
-//    - Third+   -> fine print / description
-// 4. Optionally updates SOLID fill colours to brand colours
+// Multi-template: each ad specifies a "template" name, plugin finds and clones it.
+figma.showUI(__html__, { width: 420, height: 600 });
 
-figma.showUI(__html__, { width: 420, height: 560 });
+function log(message) {
+  figma.ui.postMessage({ type: "status", message: "LOG: " + message, error: false });
+}
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
+function logError(message) {
+  figma.ui.postMessage({ type: "status", message: "ERR: " + message, error: true });
+}
 
-/**
- * Recursively find all TEXT nodes under a given node.
- */
 function findTextNodes(node) {
-  const texts = [];
+  var texts = [];
   if (node.type === "TEXT") {
     texts.push(node);
   }
   if ("children" in node) {
-    for (const child of node.children) {
-      texts.push(...findTextNodes(child));
+    var children = node.children;
+    for (var i = 0; i < children.length; i++) {
+      var childTexts = findTextNodes(children[i]);
+      for (var j = 0; j < childTexts.length; j++) {
+        texts.push(childTexts[j]);
+      }
     }
   }
   return texts;
 }
 
-/**
- * Get the primary font size of a text node.
- * Uses the fontSize property (most TEXT nodes have a single size).
- */
 function getFontSize(textNode) {
-  const fs = textNode.fontSize;
-  if (typeof fs === "number") return fs;
-  // Mixed sizes — use the first range
-  const len = textNode.characters.length;
-  if (len > 0) {
-    const first = textNode.getRangeFontSize(0, 1);
-    if (typeof first === "number") return first;
-  }
-  return 0;
+  try {
+    var fs = textNode.fontSize;
+    if (typeof fs === "number") return fs;
+  } catch (e) {}
+  return 12;
 }
 
-/**
- * Load fonts used by a text node before modifying its characters.
- */
-async function loadFontsForNode(textNode) {
-  const len = textNode.characters.length;
-  if (len === 0) {
-    // Empty node — load the node's default font
-    const fontName = textNode.fontName;
-    if (fontName && fontName !== figma.mixed) {
+async function setTextSafe(node, newText) {
+  var fontName = null;
+  try { fontName = node.fontName; } catch (e) {}
+
+  if (fontName && fontName !== figma.mixed) {
+    try {
       await figma.loadFontAsync(fontName);
-    }
-    return;
-  }
-  // Collect all unique fonts in the node
-  const fonts = new Set();
-  for (let i = 0; i < len; i++) {
-    const fn = textNode.getRangeFontName(i, i + 1);
-    if (fn && fn !== figma.mixed) {
-      fonts.add(JSON.stringify(fn));
-    }
-  }
-  for (const f of fonts) {
-    await figma.loadFontAsync(JSON.parse(f));
-  }
-}
-
-/**
- * Parse hex colour string to Figma RGB (0-1 floats).
- */
-function hexToRgb(hex) {
-  hex = hex.replace("#", "");
-  if (hex.length !== 6) return null;
-  return {
-    r: parseInt(hex.slice(0, 2), 16) / 255,
-    g: parseInt(hex.slice(2, 4), 16) / 255,
-    b: parseInt(hex.slice(4, 6), 16) / 255,
-  };
-}
-
-/**
- * Find nodes with SOLID fills and update their colour.
- */
-function updateFillColours(node, brandColours) {
-  if (!brandColours || !brandColours.primary) return;
-  const rgb = hexToRgb(brandColours.primary);
-  if (!rgb) return;
-
-  if ("fills" in node && Array.isArray(node.fills)) {
-    const newFills = node.fills.map((fill) => {
-      if (fill.type === "SOLID") {
-        return { ...fill, color: rgb };
+      node.characters = newText;
+      return true;
+    } catch (e) {}
+  } else if (fontName === figma.mixed) {
+    try {
+      var len = node.characters.length;
+      var loaded = {};
+      for (var i = 0; i < len; i++) {
+        var fn = node.getRangeFontName(i, i + 1);
+        if (fn && fn !== figma.mixed) {
+          var key = fn.family + "|" + fn.style;
+          if (!loaded[key]) {
+            await figma.loadFontAsync(fn);
+            loaded[key] = true;
+          }
+        }
       }
-      return fill;
-    });
-    node.fills = newFills;
+      node.characters = newText;
+      return true;
+    } catch (e) {}
   }
-  if ("children" in node) {
-    for (const child of node.children) {
-      updateFillColours(child, brandColours);
-    }
+
+  var fallbacks = [
+    { family: "Inter", style: "Regular" },
+    { family: "Roboto", style: "Regular" },
+    { family: "Arial", style: "Regular" }
+  ];
+  for (var f = 0; f < fallbacks.length; f++) {
+    try {
+      await figma.loadFontAsync(fallbacks[f]);
+      node.fontName = fallbacks[f];
+      node.characters = newText;
+      return true;
+    } catch (e) {}
   }
+  logError("Could not set text: no font worked");
+  return false;
 }
 
-// ---------------------------------------------------------------------------
-// Main injection logic
-// ---------------------------------------------------------------------------
-
-async function injectAd(adData, sourceFrame) {
-  // 1. Clone the frame
-  const clone = sourceFrame.clone();
-  clone.x = sourceFrame.x + sourceFrame.width + 40;
-
-  // 2. Rename to ad_id
-  clone.name = adData.ad_id || "injected-ad";
-
-  // 3. Find TEXT nodes and sort by font size descending
-  const textNodes = findTextNodes(clone);
-  textNodes.sort((a, b) => getFontSize(b) - getFontSize(a));
-
-  // 4. Build text assignment list
-  //    Priority: headline > primary_text/subhead > description > cta
-  const textValues = [];
-  if (adData.headline) textValues.push(adData.headline);
-  if (adData.hero_copy) textValues.push(adData.hero_copy);
-  if (adData.primary_text) textValues.push(adData.primary_text);
-  if (adData.subhead) textValues.push(adData.subhead);
-  if (adData.description) textValues.push(adData.description);
-  if (adData.cta) textValues.push(adData.cta);
-
-  // 5. Assign text values to nodes by size hierarchy
-  for (let i = 0; i < Math.min(textNodes.length, textValues.length); i++) {
-    await loadFontsForNode(textNodes[i]);
-    textNodes[i].characters = textValues[i];
-  }
-
-  // 6. Optionally update fill colours
-  if (adData.brand_colours) {
-    updateFillColours(clone, adData.brand_colours);
-  }
-
-  // 7. Zoom to the new frame
-  figma.viewport.scrollAndZoomIntoView([clone]);
-
-  return clone.name;
-}
-
-// ---------------------------------------------------------------------------
-// Message handler
-// ---------------------------------------------------------------------------
-
-figma.ui.onmessage = async (msg) => {
-  if (msg.type === "inject") {
-    const ads = msg.ads; // array of ad objects
-
-    // Get selected frame
-    const selection = figma.currentPage.selection;
-    if (selection.length === 0) {
-      figma.ui.postMessage({
-        type: "status",
-        message: "Error: select a template frame first.",
-        error: true,
-      });
-      return;
+// Build a map of all top-level frames on the current page by name
+function buildTemplateMap() {
+  var map = {};
+  var children = figma.currentPage.children;
+  for (var i = 0; i < children.length; i++) {
+    var node = children[i];
+    if (node.type === "FRAME" || node.type === "COMPONENT") {
+      map[node.name] = node;
     }
-
-    const sourceFrame = selection[0];
-    if (sourceFrame.type !== "FRAME" && sourceFrame.type !== "COMPONENT") {
-      figma.ui.postMessage({
-        type: "status",
-        message: "Error: selected node must be a FRAME or COMPONENT.",
-        error: true,
-      });
-      return;
-    }
-
-    let count = 0;
-    for (const ad of ads) {
-      try {
-        const name = await injectAd(ad, sourceFrame);
-        count++;
-        figma.ui.postMessage({
-          type: "status",
-          message: `Injected: ${name} (${count}/${ads.length})`,
-          error: false,
-        });
-      } catch (err) {
-        figma.ui.postMessage({
-          type: "status",
-          message: `Error injecting ${ad.ad_id || "?"}: ${err.message}`,
-          error: true,
-        });
+    // Also index frames inside sections
+    if (node.type === "SECTION" && "children" in node) {
+      var sectionChildren = node.children;
+      for (var j = 0; j < sectionChildren.length; j++) {
+        var child = sectionChildren[j];
+        if (child.type === "FRAME" || child.type === "COMPONENT") {
+          map[child.name] = child;
+        }
       }
     }
+  }
+  return map;
+}
 
-    figma.ui.postMessage({
-      type: "status",
-      message: `Done. ${count} ad(s) injected.`,
-      error: false,
-    });
+// Find the best matching template for an ad
+function findTemplate(ad, templateMap, fallbackFrame) {
+  // 1. Exact match on ad.template field
+  if (ad.template && templateMap[ad.template]) {
+    return templateMap[ad.template];
   }
 
+  // 2. Partial match (template name contains the value)
+  if (ad.template) {
+    var target = ad.template.toLowerCase();
+    var keys = Object.keys(templateMap);
+    for (var i = 0; i < keys.length; i++) {
+      if (keys[i].toLowerCase().indexOf(target) >= 0) {
+        return templateMap[keys[i]];
+      }
+    }
+  }
+
+  // 3. Fall back to selected frame
+  return fallbackFrame;
+}
+
+figma.ui.onmessage = async function(msg) {
   if (msg.type === "cancel") {
     figma.closePlugin();
+    return;
   }
+  if (msg.type !== "inject") return;
+
+  var ads = msg.ads;
+  log("Received " + ads.length + " ad(s)");
+
+  // Build template map from all frames on page
+  var templateMap = buildTemplateMap();
+  var templateNames = Object.keys(templateMap);
+  log("Templates available (" + templateNames.length + "):");
+  for (var t = 0; t < Math.min(templateNames.length, 20); t++) {
+    log("  - " + templateNames[t]);
+  }
+
+  // Get selected frame as fallback
+  var fallbackFrame = null;
+  var selection = figma.currentPage.selection;
+  if (selection.length > 0) {
+    fallbackFrame = selection[0];
+    log("Fallback template (selected): " + fallbackFrame.name);
+  }
+
+  if (!fallbackFrame && templateNames.length === 0) {
+    logError("No frames found on page and nothing selected.");
+    return;
+  }
+
+  var count = 0;
+  var xOffset = 0;
+
+  for (var i = 0; i < ads.length; i++) {
+    var ad = ads[i];
+    var adId = ad.ad_id || ("ad-" + i);
+
+    // Find the right template
+    var template = findTemplate(ad, templateMap, fallbackFrame);
+    if (!template) {
+      logError(adId + ": no template found for '" + (ad.template || "none") + "'");
+      continue;
+    }
+
+    log(adId + " -> template: " + template.name);
+
+    try {
+      // Clone
+      var clone = template.clone();
+      // Place clones in a row below all existing content
+      if (i === 0) {
+        // Find the lowest point on the page
+        var maxY = 0;
+        for (var c = 0; c < figma.currentPage.children.length; c++) {
+          var child = figma.currentPage.children[c];
+          var bottom = child.y + child.height;
+          if (bottom > maxY) maxY = bottom;
+        }
+        xOffset = 0;
+        clone.y = maxY + 100;
+        clone.x = 0;
+      } else {
+        clone.y = figma.currentPage.children[figma.currentPage.children.length - 2].y;
+        clone.x = xOffset;
+      }
+      xOffset += clone.width + 40;
+      clone.name = adId;
+
+      // Find and sort text nodes
+      var textNodes = findTextNodes(clone);
+      textNodes.sort(function(a, b) { return getFontSize(b) - getFontSize(a); });
+
+      // Build text values
+      var textValues = [];
+      if (ad.headline) textValues.push(ad.headline);
+      if (ad.hero_copy) textValues.push(ad.hero_copy);
+      if (ad.primary_text) textValues.push(ad.primary_text);
+      if (ad.subhead) textValues.push(ad.subhead);
+      if (ad.description) textValues.push(ad.description);
+      if (ad.cta) textValues.push(ad.cta);
+
+      var limit = Math.min(textNodes.length, textValues.length);
+      for (var j = 0; j < limit; j++) {
+        await setTextSafe(textNodes[j], textValues[j]);
+      }
+
+      count++;
+      log("OK: " + adId + " (" + count + "/" + ads.length + ")");
+
+    } catch (err) {
+      logError("FAIL " + adId + ": " + err.message);
+    }
+  }
+
+  // Zoom to show all new frames
+  if (count > 0) {
+    var newFrames = [];
+    var allChildren = figma.currentPage.children;
+    for (var n = allChildren.length - count; n < allChildren.length; n++) {
+      if (n >= 0) newFrames.push(allChildren[n]);
+    }
+    if (newFrames.length > 0) {
+      figma.viewport.scrollAndZoomIntoView(newFrames);
+    }
+  }
+
+  log("=== Done. " + count + "/" + ads.length + " ad(s) injected. ===");
 };
