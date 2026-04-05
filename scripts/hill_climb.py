@@ -51,7 +51,7 @@ def parse_args():
     parser.add_argument("iterations", nargs="?", type=int, default=3, help="Max iterations per item")
     parser.add_argument("--type", dest="type_filter", default=None, help="Filter by content_type (e.g. meta-ad)")
     parser.add_argument("--target", type=float, default=0.70, help="Target composite score (default 0.70)")
-    parser.add_argument("--strategy", choices=["greedy", "evolutionary"], default="evolutionary",
+    parser.add_argument("--strategy", choices=["greedy", "evolutionary", "map-elites"], default="evolutionary",
                         help="Hill-climbing strategy (default: evolutionary)")
     parser.add_argument("--population", type=int, default=3, help="Candidates per iteration in evolutionary mode (default 3)")
     parser.add_argument("--no-llm", action="store_true", help="Disable LLM scoring (deterministic only)")
@@ -611,6 +611,223 @@ def run_evolutionary(all_items, all_ads, client, client_dir, shared_dir,
 
 
 # ---------------------------------------------------------------------------
+# MAP-Elites strategy
+# ---------------------------------------------------------------------------
+
+def run_map_elites(all_items, all_ads, client, client_dir, shared_dir,
+                   max_iterations, target, use_llm, max_workers=4):
+    """MAP-Elites: fill an angle×hook grid with the best ad per cell.
+
+    Competition is LOCAL — each cell only competes against itself.
+    Empty cells are prioritized. Produces a diverse, high-quality set.
+    """
+    strategy_tracker = []
+
+    # Load hooks and angles
+    config_path = client_dir / "config.json"
+    with open(config_path) as f:
+        config = json.load(f)
+    angles = config.get("angles_in_use", [])
+
+    hooks_path = root / "shared" / "hooks.json"
+    with open(hooks_path) as f:
+        hooks_data = json.load(f)
+    hook_names = [h["id"] for h in hooks_data["hooks"]]
+
+    playbook = _load_industry_playbook(client_dir)
+    loop_dir = client_dir / "loop"
+    meta_dir = loop_dir / "meta-ads"
+    meta_dir.mkdir(exist_ok=True)
+
+    # Initialize archive from existing ads
+    archive = {}  # (angle, hook) -> {"ad": dict, "score": float, "path": Path}
+    for item in all_items:
+        ad = item["ad"]
+        cell = (ad.get("angle", "?"), ad.get("hook_type", "?"))
+        if cell not in archive or item["score"] > archive[cell]["score"]:
+            archive[cell] = {"ad": ad, "score": item["score"], "path": item["path"]}
+
+    total_cells = len(angles) * len(hook_names)
+    print(f"MAP-Elites grid: {len(angles)} angles x {len(hook_names)} hooks = {total_cells} cells")
+    print(f"Initial coverage: {len(archive)}/{total_cells} ({len(archive)/total_cells*100:.0f}%)")
+    print(f"Budget: {max_iterations} iterations, workers={max_workers}")
+    print()
+
+    improved = 0
+    all_items_lock = threading.Lock()
+
+    for iteration in range(max_iterations):
+        # Prioritize: 60% empty cells, 40% occupied below target
+        empty_cells = [(a, h) for a in angles for h in hook_names if (a, h) not in archive]
+        below_target = [(k, v) for k, v in archive.items() if v["score"] < target]
+
+        if not empty_cells and not below_target:
+            print(f"All {total_cells} cells filled and at target after iteration {iteration}!")
+            break
+
+        # Build batch of cells to work on this iteration
+        batch = []
+        batch_size = min(max_workers * 2, len(empty_cells) + len(below_target))
+
+        # Fill from empty first
+        random.shuffle(empty_cells)
+        for cell in empty_cells[:int(batch_size * 0.6)]:
+            batch.append(("fill", cell))
+
+        # Then improve occupied
+        below_target.sort(key=lambda x: x[1]["score"])
+        for cell, _ in below_target[:batch_size - len(batch)]:
+            batch.append(("improve", cell))
+
+        if not batch:
+            break
+
+        print(f"--- Iteration {iteration + 1}: {len(empty_cells)} empty, {len(below_target)} below target, batch={len(batch)} ---")
+
+        def process_cell(task_type, cell):
+            angle, hook = cell
+            entries = []
+
+            # Pick parent: from archive if improving, random donor if filling
+            parent_ad = None
+            if task_type == "improve" and cell in archive:
+                parent_ad = archive[cell]["ad"]
+            elif archive:
+                # Use a random high-scoring ad as seed
+                donors = sorted(archive.values(), key=lambda x: x["score"], reverse=True)[:5]
+                parent_ad = random.choice(donors)["ad"]
+
+            # Generate variant for this specific cell
+            try:
+                new_ad = generate_variant(
+                    angle=angle,
+                    tactic=parent_ad.get("tactic", "general") if parent_ad else "general",
+                    hook_type=hook,
+                    funnel="TOF",
+                    client_dir=client_dir,
+                    current_best=parent_ad,
+                    recent_failures=[],
+                    content_type="meta-ad",
+                    mode="improve" if parent_ad and task_type == "improve" else "mutate",
+                )
+                new_ad["content_type"] = "meta-ad"
+
+                # Lint
+                lint_result = lint(new_ad, client_dir, shared_dir)
+                if not lint_result.passed:
+                    entries.append({
+                        "ad_id": f"{angle[:3]}+{hook[:6]}", "iteration": iteration + 1,
+                        "mode": task_type, "hook_type": hook, "label": f"{task_type}({angle},{hook})",
+                        "old_score": archive.get(cell, {}).get("score", 0),
+                        "new_score": None, "delta": None, "won": False, "error": "lint_fail",
+                    })
+                    return None, cell, entries
+
+                # Score
+                new_report = score_ad(new_ad, client, existing_ads=all_ads, use_llm=use_llm)
+                new_score = new_report["composite"]
+                old_score = archive.get(cell, {}).get("score", 0)
+
+                entries.append({
+                    "ad_id": f"{angle[:3]}+{hook[:6]}", "iteration": iteration + 1,
+                    "mode": task_type, "hook_type": hook, "label": f"{task_type}({angle},{hook})",
+                    "old_score": round(old_score, 4), "new_score": round(new_score, 4),
+                    "delta": round(new_score - old_score, 4), "won": False, "error": None,
+                })
+
+                return (new_ad, new_score, new_report), cell, entries
+
+            except Exception as e:
+                entries.append({
+                    "ad_id": f"{angle[:3]}+{hook[:6]}", "iteration": iteration + 1,
+                    "mode": task_type, "hook_type": hook, "label": f"{task_type}({angle},{hook})",
+                    "old_score": 0, "new_score": None, "delta": None, "won": False, "error": str(e),
+                })
+                return None, cell, entries
+
+        # Run batch in parallel
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            futures = {
+                executor.submit(process_cell, task_type, cell): (task_type, cell)
+                for task_type, cell in batch
+            }
+
+            for future in as_completed(futures):
+                result, cell, entries = future.result()
+                strategy_tracker.extend(entries)
+
+                if result is None:
+                    continue
+
+                new_ad, new_score, new_report = result
+                angle, hook = cell
+                old_score = archive.get(cell, {}).get("score", 0)
+
+                # Local competition: only replace if better for THIS cell
+                if cell not in archive or new_score > archive[cell]["score"]:
+                    # Generate ad_id and save
+                    prefix = angle[:2].upper() + hook[:2].upper()
+                    ad_id = f"{prefix}-{random.randint(100,999)}"
+                    new_ad["ad_id"] = ad_id
+                    new_ad["angle"] = angle
+                    new_ad["hook_type"] = hook
+
+                    file_path = meta_dir / f"{angle}--{hook}.json"
+                    with open(file_path, "w") as f:
+                        json.dump(new_ad, f, indent=2, ensure_ascii=False)
+                        f.write("\n")
+
+                    with all_items_lock:
+                        archive[cell] = {"ad": new_ad, "score": new_score, "path": file_path}
+                        all_ads.append(new_ad)
+
+                    status = "NEW" if old_score == 0 else f"+{new_score - old_score:.3f}"
+                    print(f"  [{angle}+{hook}] {new_score:.3f} ({status})")
+                    improved += 1
+
+                    # Mark winner in tracker
+                    for entry in reversed(entries):
+                        if entry["error"] is None:
+                            entry["won"] = True
+                            break
+
+        coverage = len(archive) / total_cells
+        avg = sum(v["score"] for v in archive.values()) / len(archive) if archive else 0
+        print(f"  Coverage: {len(archive)}/{total_cells} ({coverage:.0%}), avg: {avg:.3f}")
+        print()
+
+    # Print final grid
+    _print_grid(archive, angles, hook_names)
+
+    return improved, strategy_tracker
+
+
+def _print_grid(archive, angles, hook_names):
+    """Print the MAP-Elites grid as a heatmap table."""
+    print("=== MAP-ELITES GRID ===")
+    # Header
+    header = f"{'':>20} " + " ".join(f"{h[:7]:>7}" for h in hook_names)
+    print(header)
+    print("-" * len(header))
+    for angle in angles:
+        row = f"{angle:>20} "
+        for hook in hook_names:
+            cell = (angle, hook)
+            if cell in archive:
+                score = archive[cell]["score"]
+                if score >= 0.85:
+                    row += f" {score:.2f} "
+                elif score >= 0.70:
+                    row += f" {score:.2f}."
+                else:
+                    row += f" {score:.2f}?"
+            else:
+                row += "    -   "
+        print(row)
+    print()
+
+
+# ---------------------------------------------------------------------------
 # Strategy analysis
 # ---------------------------------------------------------------------------
 
@@ -755,6 +972,12 @@ def main():
             all_items, all_ads, client, client_dir, shared_dir,
             args.iterations, args.target, use_llm,
             use_pairwise=args.use_pairwise,
+        )
+    elif args.strategy == "map-elites":
+        improved, strategy_tracker = run_map_elites(
+            all_items, all_ads, client, client_dir, shared_dir,
+            args.iterations, args.target, use_llm,
+            max_workers=args.workers,
         )
     else:
         improved, strategy_tracker = run_evolutionary(
