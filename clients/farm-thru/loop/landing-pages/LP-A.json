@@ -1,31 +1,39 @@
 {
   "angle": "cause-purpose",
   "tactic": "general",
-  "hook_type": "confession",
+  "hook_type": "price_anchor",
   "funnel": "TOF",
   "content_type": "landing-page",
-  "creative_brief": "Hero image: overhead shot of a real farmer's weathered hands holding produce, with a FarmThru collection hub softly visible in the background. Earthy, honest palette — no glossy supermarket lighting. Typography feels handwritten-meets-editorial. Mood: confession, not pitch.",
-  "generated_at": "2026-04-05T12:20:26.522710",
+  "creative_brief": "Hero image: split-screen showing a farmer's weathered hands holding freshly harvested produce on one side, and a family collecting a full grocery bag at the Brookvale hub on the other. Warm, natural light. Earthy tones with FarmThru green accents. Price comparison graphic in the hero section: two simple bar charts showing farmer share per kilo. Clean, editorial feel throughout. No stock photography.",
+  "generated_at": "2026-04-05T13:03:34.709431",
   "page_id": "LP-A",
-  "headline": "I sold groceries I couldn't fully trace. That stops now.",
-  "subhead": "Most grocery stores — even the good ones — can't name the farm behind every product. We built FarmThru so you'd never have to wonder. Now you can own a piece of a grocery store that pays farmers first.",
-  "hero_copy": "Here's what I didn't want to admit: when we started, even we couldn't guarantee every supply chain was as short as we claimed. So we stripped it back. Zero warehouses. Zero wholesalers. Farm to hub to you. Today, every product on FarmThru traces to a named farm — Bundarra for pork, Paris Creek for carbon-neutral dairy, Collins Wild Caught for South Coast seafood. Around 15–20 partner farms across NSW and beyond. That transparency cost us margin. It earned us something better: trust.",
+  "headline": "$3.80 per kilo goes to the farmer. $0.90 does at the supermarket.",
+  "subhead": "A grocery store where most of your money actually reaches the people who grow your food.",
+  "hero_copy": "You spend hundreds on groceries every month. You assume the farmer gets a fair cut. They don't.\n\nSupermarket supply chains pass your dollar through warehouses, wholesalers, and distribution centres. By the time it reaches the farm, there's almost nothing left.\n\nFarmThru cuts all of that out. Farm to hub to you. Zero warehouses. Zero wholesalers. Your money goes where it should: to the people feeding you.\n\nNow you can own a piece of the grocery store that pays farmers first.",
   "sections": [
     {
-      "heading": "The system wasn't built for honesty",
-      "body": "Supermarket supply chains average 2,400km before food hits the shelf. That distance isn't just fuel — it's where accountability disappears. A label says 'Australian grown' but won't name the farmer, the practice, or whether the land was left better after harvest. Regenerative farming rebuilds soil, sequesters carbon, and treats animals like living things — not units. But the current system punishes farmers who farm this way. They get the same wholesale rate as industrial operations. FarmThru's hub-and-collect model cuts the chain short: farm to our Brookvale hub to your hands. Farmers set fair prices. You see exactly who grew what. No middlemen skimming margin that should stay on the land."
+      "heading": "You're already paying. The question is who gets it.",
+      "body": "Every week, Australian families hand over grocery money trusting that someone, somewhere, is being paid fairly.\n\nBut the standard supply chain travels roughly 2,400km before food hits a shelf. Each stop takes a cut. The farmer absorbs the loss.\n\nThis isn't a broken system. It's working exactly as designed. It's just not designed for farmers. Or for you.\n\nFarmThru exists because we believe your grocery dollar should do two things: feed your family well and pay the people who grew that food properly."
     },
     {
-      "heading": "Named farms, not marketing claims",
-      "body": "Rachel Ward — yes, the actor — left that world behind to build Rachel's Farm in Kempsey, NSW. Regenerative cattle, real soil recovery. She's a key partner and supplier to FarmThru. Farmer Brown supplies our eggs. Little Yarran Farm is in our network. Collins Wild Caught brings wild-caught Alaskan salmon and seasonal Australian seafood from the South Coast. These aren't brands we white-label. They're farming families whose names sit next to every product. You order online, collect from Brookvale Monday to Friday, or get delivery across Sydney, Central Coast, and Wollongong. No subscription. No lock-in. No membership fees. Order when you want. Buy in bulk and save more."
+      "heading": "How it works: three steps, no middlemen",
+      "body": "1. Browse and order online from 15 to 20 partner farms and suppliers across NSW and beyond.\n\n2. We coordinate directly with farms like Bundarra Farm, Collins Wild Caught on the South Coast, Paris Creek Farms in South Australia, and Farmer Brown for eggs.\n\n3. Collect from our Brookvale hub, Monday to Friday. Or choose delivery across Sydney, Central Coast, and Wollongong.\n\nNo subscription. No lock-in. No membership fees. Order when you want. Buy in bulk and save more.\n\nEvery product traces back to a named farm. We'll show you where your food comes from."
     },
     {
-      "heading": "Own a piece of the grocery store that pays farmers first",
-      "body": "We're opening equity crowdfunding so everyday people can become co-owners of FarmThru. Not customers only — partners. Your values and your money finally pointing the same direction. This isn't charity. It's a bet that a fairer food system can also be a viable business. Join the waitlist to be first notified when the campaign goes live. You'll also be first to shop when new hubs open. Investing in early-stage businesses carries real risk, including the possibility of losing your entire investment. But if you believe supermarkets shouldn't be the only option — and that farmers deserve more than wholesale scraps — this is your chance to be part of building the alternative."
+      "heading": "Real farms. Real names. That's the whole point.",
+      "body": "Pork belly from Bundarra Farm. Wild-caught Alaskan salmon from Collins Wild Caught on the NSW South Coast. Carbon-neutral biodynamic dairy from Paris Creek Farms in Meadows, SA. Eggs from Farmer Brown.\n\nRachel Ward, actor turned regenerative farming advocate, runs Rachel's Farm in Kempsey, NSW. She's a key partner and supplier to FarmThru.\n\nWhen Rachel talks about regenerative farming, she's standing in the paddock where it happens. That's the standard we hold every supplier to.\n\nWe only stock food we'd feed our own families. If we can't name the farm, it doesn't go on the shelf."
+    },
+    {
+      "heading": "Your groceries can fund a different kind of food system",
+      "body": "Most people want to support farmers. But the checkout aisle doesn't give you that option.\n\nFarmThru does. And now, through our equity crowdfunding campaign, you can go further. You can own a piece of a grocery store that pays farmers first.\n\nThis isn't charity. It's a chance to put your values and your money pointing in the same direction.\n\nJoin the waitlist to be first in when the campaign opens. Whether you want to shop, invest, or both, you'll get early access.\n\nYour $5 refundable deposit secures your spot on the VIP list."
+    },
+    {
+      "heading": "What people ask us",
+      "body": "\"Do I have to commit to a subscription?\"\nNo. FarmThru is not a subscription box. It's an online grocery store. Order when you want. No lock-in.\n\n\"Where do I collect?\"\nOur Brookvale hub: Unit 23, 10-18 Orchard Rd, Brookvale NSW 2100. Monday to Friday. Delivery also available to Sydney, Central Coast, and Wollongong.\n\n\"Is equity crowdfunding risky?\"\nYes. All investment carries risk, including the potential loss of your entire investment. We believe in transparency, which means acknowledging that honestly. Read the offer document carefully before deciding.\n\n\"What does the $5 VIP deposit do?\"\nIt's fully refundable. It puts you at the front of the line when the campaign launches. No obligation to invest."
     },
     {
       "heading": "Compliance",
-      "body": "FarmThru equity crowdfunding is conducted under Australian crowd-sourced funding (CSF) regulations. Investing in early-stage businesses is speculative and carries significant risk, including the risk of losing your entire investment. Past performance is not a reliable indicator of future results. No returns are guaranteed. This page is not financial advice. Please read the offer document carefully before making any investment decision."
+      "body": "FarmThru's equity crowdfunding campaign is conducted under the Australian Securities and Investments Commission (ASIC) crowd-sourced funding framework. Investing in early-stage companies carries significant risk, including the potential loss of your entire investment. Past performance is not a reliable indicator of future results. No returns are projected or guaranteed. You should read the offer document in full and consider seeking independent financial advice before making any investment decision. The $5 VIP deposit is fully refundable and does not constitute an investment or obligation to invest."
     }
   ],
   "cta": "cfe_waitlist"
