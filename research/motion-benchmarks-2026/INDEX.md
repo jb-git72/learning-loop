@@ -12,6 +12,9 @@ Dataset: 578K ads, 6K advertisers, $1.3B Meta spend, Sep 2025 – Jan 2026
 | [LLM_DATA_APPENDIX.md](LLM_DATA_APPENDIX.md) | All data tables: hit rates, spend use ratios, visual formats, hooks, asset types by vertical |
 | [SOURCE_MAP.md](SOURCE_MAP.md) | Provenance for every chart/table, suppression rules, open questions |
 | [CHART_SPECS.json](CHART_SPECS.json) | Machine-readable chart definitions with privacy/suppression metadata |
+| [IMAGE_INDEX.md](IMAGE_INDEX.md) | Tagged index of 25 creative format example images, mapped to engine hooks/tactics |
+| [image-manifest.json](image-manifest.json) | Structured metadata for all downloaded images |
+| [images/](images/) | 25 full-size creative example PNGs (TVS, THH, TAT categories) |
 
 ## Quick reference
 

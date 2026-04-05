@@ -1,0 +1,273 @@
+{
+  "source": "Motion Creative Benchmarks 2026",
+  "source_url": "https://motionapp.com/benchmarks-2026",
+  "cdn_base": "https://runt-media.motionapp.com/strapi/",
+  "downloaded": "2026-04-05",
+  "total_images": 25,
+  "categories": {
+    "tvs": {
+      "name": "Top Visual Styles",
+      "count": 7
+    },
+    "thh": {
+      "name": "Top Hooks & Headlines",
+      "count": 8
+    },
+    "tat": {
+      "name": "Top Asset Types",
+      "count": 10
+    }
+  },
+  "images": [
+    {
+      "id": "tvs_002",
+      "filename": "tvs_raw_002_sign_afcb56ebdf.png",
+      "category": "tvs",
+      "format_name": "Sign",
+      "maps_to_type": "visual_style",
+      "maps_to_id": null,
+      "maps_to_label": "sign/placard overlay",
+      "notes": "Hand-written or printed sign held up to camera. Lo-fi, authentic feel."
+    },
+    {
+      "id": "tvs_003",
+      "filename": "tvs_raw_003_feature_benefit_pointout_a5c16e39f6.png",
+      "category": "tvs",
+      "format_name": "Feature-Benefit Pointout",
+      "maps_to_type": "visual_style",
+      "maps_to_id": null,
+      "maps_to_label": "feature callout",
+      "notes": "Product with annotated callouts pointing to specific features/benefits."
+    },
+    {
+      "id": "tvs_004",
+      "filename": "tvs_raw_004_ugc_overlay_780f649f60.png",
+      "category": "tvs",
+      "format_name": "UGC Overlay",
+      "maps_to_type": "visual_style",
+      "maps_to_id": null,
+      "maps_to_label": "UGC with text overlay",
+      "notes": "User-generated content with branded text overlaid on video/image."
+    },
+    {
+      "id": "tvs_006a",
+      "filename": "tvs_raw_006_us_vs_them_7a29286c9f.png",
+      "category": "tvs",
+      "format_name": "Us vs Them",
+      "maps_to_type": "tactic",
+      "maps_to_id": "comparison",
+      "maps_to_label": "Comparison / Us vs Them",
+      "notes": "Side-by-side comparison layout. Maps to our comparison tactic."
+    },
+    {
+      "id": "tvs_006b",
+      "filename": "tvs_006_how_to_c2d32d3334.png",
+      "category": "tvs",
+      "format_name": "How To",
+      "maps_to_type": "tactic",
+      "maps_to_id": "educational",
+      "maps_to_label": "Educational / How It Works",
+      "notes": "Step-by-step instructional format."
+    },
+    {
+      "id": "tvs_008",
+      "filename": "tvs_raw_008_letter_c7d3e93add.png",
+      "category": "tvs",
+      "format_name": "Letter",
+      "maps_to_type": "hook",
+      "maps_to_id": "confession",
+      "maps_to_label": "Confession / Founder Story",
+      "notes": "Personal letter format. Also maps to founder-story tactic."
+    },
+    {
+      "id": "tvs_009",
+      "filename": "tvs_raw_009_unconventional_text_placement_9e6f2f9ec8.png",
+      "category": "tvs",
+      "format_name": "Unconventional Text Placement",
+      "maps_to_type": "hook",
+      "maps_to_id": "pattern_interrupt",
+      "maps_to_label": "Pattern Interrupt",
+      "notes": "Text placed in unexpected positions to break feed-scroll patterns."
+    },
+    {
+      "id": "thh_001",
+      "filename": "thh_001_offer_only_f2c56357d6.png",
+      "category": "thh",
+      "format_name": "Offer Only",
+      "maps_to_type": "hook",
+      "maps_to_id": "offer_first",
+      "maps_to_label": "Offer First",
+      "notes": "Pure offer presentation. No story or context — lead with the deal."
+    },
+    {
+      "id": "thh_002",
+      "filename": "thh_002_storytelling_80034ad25b.png",
+      "category": "thh",
+      "format_name": "Storytelling",
+      "maps_to_type": "hook",
+      "maps_to_id": "story",
+      "maps_to_label": "Story",
+      "notes": "Narrative-driven hook. Named person + specific moment."
+    },
+    {
+      "id": "thh_003",
+      "filename": "thh_003_question_a5db71c1de.png",
+      "category": "thh",
+      "format_name": "Question",
+      "maps_to_type": "hook",
+      "maps_to_id": "question",
+      "maps_to_label": "Question",
+      "notes": "Opens with a genuine question the audience has asked themselves."
+    },
+    {
+      "id": "thh_005",
+      "filename": "thh_005_listicle_cfeb53e356.png",
+      "category": "thh",
+      "format_name": "Listicle",
+      "maps_to_type": "tactic",
+      "maps_to_id": "educational",
+      "maps_to_label": "Educational (no direct hook)",
+      "notes": "Numbered list format. Educational tactic — no direct hook mapping."
+    },
+    {
+      "id": "thh_007",
+      "filename": "thh_007_explainer_a822a823cf.png",
+      "category": "thh",
+      "format_name": "Explainer",
+      "maps_to_type": "tactic",
+      "maps_to_id": "educational",
+      "maps_to_label": "Educational (no direct hook)",
+      "notes": "How-it-works explainer format. Educational tactic — no direct hook mapping."
+    },
+    {
+      "id": "thh_008",
+      "filename": "thh_008_curiosity_5c4fd0d5d4.png",
+      "category": "thh",
+      "format_name": "Curiosity",
+      "maps_to_type": "hook",
+      "maps_to_id": "curiosity",
+      "maps_to_label": "Curiosity",
+      "notes": "Opens with a surprising fact that creates a knowledge gap."
+    },
+    {
+      "id": "thh_009",
+      "filename": "thh_009_confession_06739c5b8c.png",
+      "category": "thh",
+      "format_name": "Confession",
+      "maps_to_type": "hook",
+      "maps_to_id": "confession",
+      "maps_to_label": "Confession",
+      "notes": "Opens with an honest admission. Earns trust through vulnerability."
+    },
+    {
+      "id": "thh_010",
+      "filename": "thh_010_bold_claim_9f81b833f4.png",
+      "category": "thh",
+      "format_name": "Bold Claim",
+      "maps_to_type": "hook",
+      "maps_to_id": "bold_claim",
+      "maps_to_label": "Bold Claim",
+      "notes": "Value proposition so strong it triggers disbelief."
+    },
+    {
+      "id": "tat_001",
+      "filename": "tat_raw_001_ugc_36c50a1436.png",
+      "category": "tat",
+      "format_name": "UGC",
+      "maps_to_type": "asset_type",
+      "maps_to_id": null,
+      "maps_to_label": "user-generated content",
+      "notes": "Raw user-generated content. Authentic, unpolished."
+    },
+    {
+      "id": "tat_002",
+      "filename": "tat_raw_002_high_production_1c387e8dce.png",
+      "category": "tat",
+      "format_name": "High Production",
+      "maps_to_type": "asset_type",
+      "maps_to_id": null,
+      "maps_to_label": "studio/high-production",
+      "notes": "Professional studio shoot. High polish, brand-controlled."
+    },
+    {
+      "id": "tat_003",
+      "filename": "tat_raw_003_product_image_with_text_f89a73d14d.png",
+      "category": "tat",
+      "format_name": "Product Image with Text",
+      "maps_to_type": "asset_type",
+      "maps_to_id": null,
+      "maps_to_label": "product-image-text",
+      "notes": "Product photo with text overlay. Common e-commerce format."
+    },
+    {
+      "id": "tat_004",
+      "filename": "tat_raw_004_lifestyle_image_with_text_3f440751ff.png",
+      "category": "tat",
+      "format_name": "Lifestyle Image with Text",
+      "maps_to_type": "asset_type",
+      "maps_to_id": null,
+      "maps_to_label": "lifestyle-image-text",
+      "notes": "Lifestyle/contextual photo with text overlay."
+    },
+    {
+      "id": "tat_005",
+      "filename": "tat_raw_005_lifestyle_product_image_with_text_905ca11174.png",
+      "category": "tat",
+      "format_name": "Lifestyle Product Image with Text",
+      "maps_to_type": "asset_type",
+      "maps_to_id": null,
+      "maps_to_label": "lifestyle-product-image-text",
+      "notes": "Product shown in lifestyle context with text. Combines product + lifestyle."
+    },
+    {
+      "id": "tat_006",
+      "filename": "tat_raw_006_text_only_e23b7f3997.png",
+      "category": "tat",
+      "format_name": "Text Only",
+      "maps_to_type": "asset_type",
+      "maps_to_id": null,
+      "maps_to_label": "text-only",
+      "notes": "Pure text creative. No imagery — copy does all the work."
+    },
+    {
+      "id": "tat_007",
+      "filename": "tat_raw_007_gif_487fe3c0f2.png",
+      "category": "tat",
+      "format_name": "GIF",
+      "maps_to_type": "asset_type",
+      "maps_to_id": null,
+      "maps_to_label": "animated-gif",
+      "notes": "Short animated GIF. Loops, grabs attention in feed."
+    },
+    {
+      "id": "tat_008",
+      "filename": "tat_raw_008_ugc_mashup_9774cb27d2.png",
+      "category": "tat",
+      "format_name": "UGC Mashup",
+      "maps_to_type": "asset_type",
+      "maps_to_id": null,
+      "maps_to_label": "ugc-mashup",
+      "notes": "Multiple UGC clips edited together. Social proof at scale."
+    },
+    {
+      "id": "tat_009",
+      "filename": "tat_raw_009_animation_55f952a7f9.png",
+      "category": "tat",
+      "format_name": "Animation",
+      "maps_to_type": "asset_type",
+      "maps_to_id": null,
+      "maps_to_label": "animation",
+      "notes": "Motion graphics / animated creative. Brand-controlled visuals."
+    },
+    {
+      "id": "tat_010",
+      "filename": "tat_raw_010_hybrid_f25a3d0ccd.png",
+      "category": "tat",
+      "format_name": "Hybrid",
+      "maps_to_type": "asset_type",
+      "maps_to_id": null,
+      "maps_to_label": "hybrid",
+      "notes": "Mix of UGC + branded elements. Best of both worlds."
+    }
+  ]
+}
