@@ -4,28 +4,32 @@
   "hook_type": "curiosity",
   "funnel": "TOF",
   "content_type": "landing-page",
-  "creative_brief": "Hero image: extreme close-up of a marbled grass-fed steak on butcher paper, a handwritten farm-name tag visible (e.g. 'Rachel's Farm, Kempsey NSW'). Muted earth tones, natural light, no supermarket styling. Below the fold, a simple map graphic showing a short paddock-to-hub line versus a long 2,400km supermarket route. Clean, editorial layout — let the food and the farms do the talking.",
-  "generated_at": "2026-04-05T02:16:28.576565",
+  "creative_brief": "Hero image: close-up of a hand holding a vacuum-sealed steak with a clear farm-name label (e.g. 'Rachel's Farm, Kempsey NSW') beside a generic supermarket pack with no origin info. Split-screen contrast. Warm, natural lighting on the FarmThru side. Cool, fluorescent tone on the supermarket side. Earthy brand palette throughout.",
+  "generated_at": "2026-04-05T13:12:55.591783",
   "page_id": "LP-D",
-  "headline": "You will taste the difference when beef is days old, not weeks",
-  "subhead": "100% grass-fed. From named regenerative farms in NSW. Collected fresh from your local hub.",
-  "hero_copy": "Pick up a steak at the supermarket and try to find the farm name on the label. You will not. Industry data suggests it may have travelled around 2,400 kilometres and sat in cold storage for up to two or three weeks.\n\nNow picture beef that went from a regenerative paddock in Kempsey to a collection hub in Brookvale within days. That is FarmThru. And you can taste every one of those missing kilometres.",
+  "headline": "We traced 9 cuts of supermarket beef. Zero named the farm.",
+  "subhead": "FarmThru puts the farmer's name on every pack. 100% grass-fed. Collected fresh from your local hub.",
+  "hero_copy": "We wanted to know where grocery store beef actually comes from. So we checked. Nine different cuts from three major chains. Not one label named a farm. Not one told you how far it travelled. Industry data suggests that journey averages 2,400 kilometres. FarmThru is a different kind of grocery store. Every product traces to a named regenerative farm. You will know exactly what you are eating.",
   "sections": [
     {
-      "heading": "Named farms, not supplier codes",
-      "body": "Every product on FarmThru comes from a farm you can look up. Rachel's Farm for 100% grass-fed beef raised on pasture without hormones or feedlots. Bundarra Farm for pork. Collins Wild Caught for wild-caught Alaskan salmon from the South Coast. Farmer Brown for eggs. Paris Creek for carbon-neutral biodynamic dairy.\n\nThese are not anonymous suppliers. They are farmers who stake their name on what they produce. No antibiotics. No feedlot finishing. Animals raised on open pasture, on regenerative land."
+      "heading": "What 2,400 kilometres does to your food",
+      "body": "Supermarket beef can spend 14 to 21 days in cold storage before it reaches the shelf. That is not fresh. That is logistics.\n\nFarmThru sources straight from farm to hub to your kitchen. 100% grass-fed. Pasture-raised. No hormones, no antibiotics, no feedlot finishing.\n\nYou collect from your nearest hub. Brookvale is open Monday to Friday. The difference is not subtle. You will taste it in the first bite."
     },
     {
-      "heading": "How the hub keeps it fresh",
-      "body": "FarmThru runs a hub-and-collect model from Brookvale, Monday to Friday. You order online. Your food goes from the farm straight to the hub. You collect when it is ready.\n\nZero wholesalers in the chain. Fewer steps between paddock and kitchen means the food is fresher and the farmer keeps more of what you pay. It is not a meal kit. It is a proper grocery store built around quality, with on-demand ordering and no lock-in. No middlemen. No wholesalers. Sydney families collect from the Brookvale hub."
+      "heading": "You will know every farmer by name",
+      "body": "Rachel Ward runs a regenerative farm in Kempsey, NSW. She is a key partner and supplier to FarmThru.\n\nBundarra Farm provides pork belly and pork and fennel salami. Collins Wild Caught brings wild-caught Alaskan salmon from the South Coast of NSW. Farmer Brown supplies eggs. Paris Creek Farms in Meadows, SA delivers carbon-neutral biodynamic dairy.\n\nSix farms. Real names. Real places. That is what 100% sourced from regenerative farms actually looks like."
     },
     {
-      "heading": "Be part of what comes next",
-      "body": "FarmThru is launching an equity crowdfunding campaign on Birchal in mid-2026. You can invest from $50 up to $10,000 per person. A $5 refundable VIP deposit gives you first access, priority updates, and an exclusive Q&A.\n\nEarly-stage investing carries real risk. You could lose some or all of your investment. Full details will be in the disclosure document on Birchal. We can't promise returns — early-stage investing carries real risk."
+      "heading": "How it works: 3 steps to better food",
+      "body": "1. Browse the shop online. Regenerative beef, pasture-raised chicken, wild-caught salmon, heritage pork, eggs, and dairy.\n\n2. Place your order. No subscription. No commitment. Order when you want.\n\n3. Collect from your nearest hub. Brookvale hub is open Monday to Friday. Straight from farm to hub, ready for your kitchen."
+    },
+    {
+      "heading": "Own a piece of the grocery store that pays farmers first",
+      "body": "FarmThru is raising funds through equity crowdfunding. This is your chance to be part of building a farm-direct grocery store from the ground up.\n\nJoin the waitlist with a $5 refundable deposit. That small step puts you at the front of the line when the campaign opens. Over 2,500 people have already signed up.\n\nYou can be a customer, a partner, or both. Values and money finally pointing the same direction.\n\nInvesting in equity crowdfunding carries risk. You may lose some or all of your investment. FarmThru is an early-stage business. Returns are not guaranteed."
     },
     {
       "heading": "Compliance",
-      "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
+      "body": "FarmThru's equity crowdfunding campaign is conducted under the Australian equity crowdfunding framework. Investing in early-stage companies carries inherent risks, including the potential loss of your entire investment. Past performance is not indicative of future results. No returns are projected or guaranteed. You should consider whether this investment is appropriate for your financial situation and seek independent financial advice if needed. The $5 VIP deposit is fully refundable and does not constitute an investment or obligation to invest."
     }
   ],
   "cta": "cfe_waitlist"

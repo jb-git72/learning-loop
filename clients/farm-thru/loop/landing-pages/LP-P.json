@@ -4,28 +4,36 @@
   "hook_type": "contrast",
   "funnel": "TOF",
   "content_type": "landing-page",
-  "creative_brief": "Split-screen hero: left side shows a grey, fluorescent-lit supermarket meat aisle with shrink-wrapped trays and distant use-by dates; right side shows a sunlit farm gate with cattle on green pasture and a FarmThru-branded crate being loaded. Earthy palette — deep greens, warm browns, clean white typography in sentence case. Below the fold, a simple illustrated supply chain diagram contrasting the six-step supermarket chain versus FarmThru's three-step path.",
-  "generated_at": "2026-04-05T00:24:19.183835",
+  "creative_brief": "Split-screen visual: left side shows a blurred, industrial cold-storage warehouse with fluorescent lighting and shrink-wrapped pallets. Right side shows a sunlit NSW pasture with cattle and a named farm sign. The contrast should feel immediate and visceral. Below the fold, clean photography of real FarmThru partner farms and the Brookvale hub interior. Warm, natural tones throughout.",
+  "generated_at": "2026-04-05T13:31:08.648153",
   "page_id": "LP-P",
-  "headline": "Your supermarket beef might have travelled 2,400 kilometres. Ours stays in NSW.",
-  "subhead": "Same week from the farm. Collected fresh from Brookvale hub. That is what a shorter supply chain tastes like.",
-  "hero_copy": "Industry data suggests supermarket beef travels an average of 2,400 kilometres before reaching the shelf. It can sit in cold storage for up to two or three weeks. By the time you buy it, nobody can tell you which farm it came from.\n\nFarmThru beef is 100% grass-fed, from regenerative farms in NSW. It goes from paddock to our Brookvale hub within days. You collect it fresh. And every cut traces back to the farm that raised it.",
+  "headline": "You compare labels. But nobody lets you compare supply chains.",
+  "subhead": "See exactly where your food comes from. Then decide if your supermarket deserves your money.",
+  "hero_copy": "You read the back of every packet. You check for free-range. You google additives at 11pm.\n\nBut the one thing you can't compare is the journey. How far did this travel? How long ago was it alive? Who actually raised it?\n\nSupermarkets don't show you because the answer is 2,400km of cold trucks and up to three weeks in storage.\n\nFarmThru shows you the farm, the farmer, and the route. Every single order.\n\n327 families already on the waitlist.",
   "sections": [
     {
-      "heading": "Two supply chains, side by side",
-      "body": "The supermarket way: farm to feedlot to abattoir to wholesaler to distribution centre to shelf. Potentially 2,400 kilometres. Up to two or three weeks in cold storage. The farmer earns a fraction of the price.\n\nThe FarmThru way: farm to hub to you. Days, not weeks. No feedlots, no wholesalers, no unnecessary steps in between. The farmer earns a fairer price. You get food that is genuinely fresh."
+      "heading": "You already know something is off",
+      "body": "You buy \"grass-fed\" beef and it tastes like nothing. You pay extra for \"free-range\" chicken and the label feels vague.\n\nYou've switched brands three times this year. You've tried the organic aisle. You've even looked at those subscription boxes that lock you into weekly deliveries you don't need.\n\nThe problem isn't the product on the shelf. It's that you can't see what happened before it reached the shelf.\n\nNo supermarket will ever fix that. Their entire model depends on distance, middlemen, and time you can't trace."
     },
     {
-      "heading": "What you are actually eating",
-      "body": "100% grass-fed beef from Rachel's Farm in Kempsey. Pork from Bundarra Farm. Wild-caught Alaskan salmon from Collins Wild Caught. Biodynamic dairy from Paris Creek. Eggs from Farmer Brown.\n\nNo hormones. No antibiotics. No feedlot finishing. Animals raised on open pasture, on regenerative land. Every product from a farm you can visit."
+      "heading": "Here is what a traceable grocery run actually looks like",
+      "body": "Step one: you browse regenerative beef, pasture-raised chicken, wild-caught salmon, heritage pork, and eggs from around 15 NSW farms. Every product lists the farm by name.\n\nStep two: you order online whenever you want. No subscription. No lock-in. No membership fees.\n\nStep three: you collect from the Brookvale hub, Monday to Friday. Your food went from farm to hub. Zero warehouses. Zero wholesalers. Zero middlemen.\n\n100% grass-fed. Pasture-raised. No hormones, no antibiotics, no feedlot finishing. Not because of a label. Because you can see the farm it came from."
     },
     {
-      "heading": "Order what you want, when you want",
-      "body": "FarmThru is an online grocery store with a hub-and-collect model. You order from named farms, pick up from the Brookvale hub Monday to Friday. No lock-in. No minimum commitment. Also delivers to Sydney, Central Coast, and Wollongong.\n\nWe are launching an equity crowdfunding campaign on Birchal in mid-2026. Invest from $50 to $10,000. A $5 refundable deposit secures VIP access. Full details in the disclosure document on Birchal. We can't promise returns — early-stage investing carries real risk."
+      "heading": "The comparison nobody wants you to make",
+      "body": "Supermarket beef: up to 2,400km of transport. Up to 14 to 21 days in cold storage. Multiple warehouses and wholesalers between the animal and your plate. Origin? A state name on a sticker, if you're lucky.\n\nFarmThru beef: straight from farm to hub. NSW farms you can look up by name. One step between the paddock and your kitchen.\n\nThat is not a small difference. That is a completely different food system.\n\nOnce you see both supply chains side by side, the switch feels obvious. The only question is why it took this long."
+    },
+    {
+      "heading": "We are building this grocery store in the open. You can own a piece of it.",
+      "body": "FarmThru is launching an equity crowdfunding campaign. That means everyday people, not just venture capitalists, can become part owners of a grocery store that pays farmers first.\n\nThis is early. That is the point. You get to shape what this becomes.\n\nJoin the waitlist to get priority access when the campaign opens. A $5 refundable deposit secures your VIP spot and puts you 30x more likely to participate on launch day.\n\nWhether you want to shop, invest, or both, the waitlist is your starting point.\n\nInvesting in early-stage businesses carries risk, including the potential loss of your investment. This is not financial advice."
+    },
+    {
+      "heading": "No commitment. No catch.",
+      "body": "No subscription. Order when you want, skip when you want.\n\nCollect from the Brookvale hub Monday to Friday. Delivery also available across Sydney, Central Coast, and Wollongong.\n\nThe $5 VIP deposit is fully refundable if you change your mind.\n\nYou are not locked into anything. You are just getting a closer look at where your food actually comes from."
     },
     {
       "heading": "Compliance",
-      "body": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. This is not financial advice. Consider seeking independent financial advice before making any investment decision."
+      "body": "FarmThru equity crowdfunding is conducted under the Australian equity crowdfunding framework. Investing in early-stage companies is speculative and carries significant risk, including the potential loss of your entire investment. Past performance is not a reliable indicator of future results. No returns are guaranteed. This page does not constitute financial advice. You should consider whether this investment is appropriate for your circumstances and read the offer document in full before making any investment decision."
     }
   ],
   "cta": "cfe_waitlist"
