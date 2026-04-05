@@ -124,3 +124,69 @@ From overnight run to under a minute. Tier 1 alone gets 80% of the win.
 ### Population decay
 - Start with pop=10 in iteration 1, drop to pop=5 in iteration 2, pop=3 in iteration 3
 - Front-loads exploration when it matters most, saves compute on refinement rounds
+
+---
+
+## Benchmark-informed generation (shipped Apr 5 2026)
+
+### What was built
+- **17 hooks** (7 new from Motion Benchmarks 2026): newness, price_anchor, urgency, curiosity, offer_first, fomo, exclusivity. Each template engineered so the LLM produces openings that score 4-5 on the immutable scroll_stop_hook scorer
+- **13 canonical tactics** with structure and guidance (PAS, BAB, StoryBrand, AIDA, etc.)
+- **7 industry playbooks** (pet-care, grocery, health-wellness, fashion-apparel, fintech, automotive, general) with hook weights from benchmark data
+- **Benchmark-informed mutation**: `_pick_mutated_hook` now uses `hit_rate x industry_weight x recency_factor` instead of random. 20% pure-random preserved for exploration
+- **Feedback auto-extraction**: `scripts/extract_learnings.py` analyses scored batches to surface best/worst hook x tactic x angle combos
+
+### What to experiment with next
+
+#### Benchmark-weighted population allocation
+- Instead of fixed slot allocation (1 improve + 3 mutate + ...), use benchmark hit rates to decide how many slots each hook gets
+- E.g., if newness has 12% hit rate and direct_address has 6%, give newness 2x the mutation slots
+- Combine with the adaptive slot allocation idea above — let benchmark priors + observed results jointly drive allocation
+
+#### Tactic-hook compatibility scoring
+- `shared/tactics.json` has `best_hooks` per tactic. Currently informational only
+- **Experiment**: When generating, if the assigned hook isn't in the tactic's `best_hooks` list, either swap to a compatible hook or add a compatibility penalty to mutation weighting
+- The tactic structure and hook opening need to align — a `curiosity` hook with a `direct-offer` tactic is a mismatch
+
+#### Industry playbook A/B testing
+- Run the same client with playbook-weighted vs random mutation. Compare average composite after 5 iterations
+- Hypothesis: playbook weighting should produce higher scores in fewer iterations for verticals with strong benchmark signal (health-wellness, fashion) but marginal difference for verticals with weak signal (general)
+
+#### Creative brief → visual format feedback loop
+- `scripts/build_brief.py` now generates HTML briefs with matched benchmark images (hook, tactic, asset type references)
+- After human review of briefs: track which visual format + hook combo gets approved vs rejected
+- Feed this back into the playbook hook_weights — client-specific override on top of industry defaults
+- Over time each client develops its own "what works" hook distribution, informed by both benchmark priors and human review
+
+#### Figma template library expansion
+- Currently using Pet Circle's templates as proof of concept
+- Build a generic template library: OfferFirst, Testimonial, Letter, Question, Comparison, UGC, BoldClaim, Curiosity, Urgency
+- Each template has named text slots (headline, body, fine print) at consistent sizes
+- `figma_pipeline.py prepare` already maps hook_type → template name. With a full library, every generated ad auto-routes to the right visual format
+
+#### Figma Variables API (Enterprise plan)
+- If upgraded to Figma Enterprise ($75/editor/month), the Variables REST API unlocks
+- Can bind text variables to template layers once, then update all text remotely via API — no plugin needed
+- Full automation: score → filter → update variables → export PNG. Zero manual steps
+- Worth it when running 50+ ads/month per client
+
+#### End-to-end autonomous loop
+- Currently: score → hill-climb → build brief → export to Figma → human review
+- Target: score → hill-climb → auto-build Figma designs → auto-export PNGs → human review of finished creatives (not just copy)
+- The Figma plugin handles the design step. The export API handles PNG rendering. The brief provides context
+- Missing piece: auto-generating hero images/photography. Options:
+  - Stock photo API (Unsplash/Pexels) matched to angle/product
+  - AI image generation (Flux, Ideogram) with brand style reference
+  - Client-provided asset library with tag matching
+
+#### Scroll-stop hook scorer expansion (requires engine change)
+- The immutable `scroll_stop_hook` scorer recognises: story (5), quoted_objection (5), question (4), statistic (4), bold_claim (4), if_then (4), generic (2)
+- New hooks like newness, urgency, fomo are engineered to produce story/statistic patterns — but this is a workaround
+- If the engine ever becomes mutable: add explicit patterns for newness ("just launched", "introducing"), urgency (deadline phrases), fomo (named person + social proof), exclusivity ("first access", "limited")
+- This would let new hooks score on their own merits rather than mimicking existing patterns
+
+#### Multi-content-type brief generation
+- Current briefs are meta-ad focused (headline, primary_text, description)
+- Extend to email (subject, preheader, body) and landing page (headline, subhead, hero_copy, sections)
+- Email briefs should include inbox preview mockup
+- LP briefs should include wireframe-style section layout with scroll depth annotations
