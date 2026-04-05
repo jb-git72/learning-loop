@@ -16,6 +16,7 @@ import json
 import os
 import re
 import subprocess
+import threading
 
 
 def _format_content_block(ad):
@@ -49,18 +50,20 @@ def judge_dimension(dim_id, ad, dimension_schema, client_config):
     # Check batch cache first
     ad_id = ad.get("ad_id", "")
     cache_key = "%s:%s" % (ad_id, id(ad))
-    if cache_key in _batch_cache:
-        cached = _batch_cache[cache_key]
-        if dim_id in cached:
-            s, e = cached[dim_id]
-            return s, "LLM(batch): %s" % e
+    with _cache_lock:
+        if cache_key in _batch_cache:
+            cached = _batch_cache[cache_key]
+            if dim_id in cached:
+                s, e = cached[dim_id]
+                return s, "LLM(batch): %s" % e
 
     # Not cached — do a batch call for all 3 LLM dimensions at once
     all_dims = _get_llm_dimensions()
     if dim_id in [d["id"] for d in all_dims]:
         results = _batch_score(ad, all_dims, client_config)
         if results:
-            _batch_cache[cache_key] = results
+            with _cache_lock:
+                _batch_cache[cache_key] = results
             if dim_id in results:
                 s, e = results[dim_id]
                 return s, "LLM(batch): %s" % e
@@ -80,15 +83,17 @@ def judge_dimension(dim_id, ad, dimension_schema, client_config):
 # Batch cache: avoids 3 separate LLM calls per ad
 _batch_cache = {}
 _rubric_schema_cache = None
+_cache_lock = threading.Lock()
 
 
 def _get_llm_dimensions():
     """Get the LLM-scored dimension schemas from the rubric."""
     global _rubric_schema_cache
-    if _rubric_schema_cache is None:
+    with _cache_lock:
+        if _rubric_schema_cache is not None:
+            return [d for d in _rubric_schema_cache.get("dimensions", []) if d.get("scoring_method") == "llm"]
         import glob
         from pathlib import Path
-        # Find rubric schema
         for p in [Path("learning-loop/shared/rubric-schema.json"), Path("shared/rubric-schema.json")]:
             if p.exists():
                 with open(p) as f:
@@ -96,7 +101,7 @@ def _get_llm_dimensions():
                 break
         if _rubric_schema_cache is None:
             return []
-    return [d for d in _rubric_schema_cache.get("dimensions", []) if d.get("scoring_method") == "llm"]
+        return [d for d in _rubric_schema_cache.get("dimensions", []) if d.get("scoring_method") == "llm"]
 
 
 def _batch_score(ad, dimensions, client_config):
