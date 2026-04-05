@@ -114,7 +114,7 @@ def generate_variant(
     # Load client context
     config = _load_json(client_dir / "config.json")
     tone = _load_text(client_dir / "tone.md")
-    learnings = _load_text(client_dir / "learnings.md")
+    learnings = _load_learnings(client_dir, content_type)
     facts = _load_json(client_dir / "facts.json")
 
     # Build the generation prompt
@@ -491,7 +491,7 @@ TONE GUIDELINES:
 {tone[:600]}
 {industry_section}
 CREATIVE LEARNINGS:
-{learnings[:1600]}
+{learnings}
 
 VERIFIED FACTS (use only these — every number must trace back):
 {facts_text}
@@ -697,6 +697,27 @@ def _parse_output(
 def _load_json(path: Path) -> dict:
     with open(path) as f:
         return json.load(f)
+
+
+def _load_learnings(client_dir: Path, content_type: str) -> str:
+    """Load learnings: common rules + content-type-specific patterns.
+
+    Reads learnings.md (index/common rules) and learnings-{content_type}.md
+    if it exists. This replaces the old 1600-char truncation approach — each
+    file is compact and focused, so no truncation needed.
+    """
+    common_path = client_dir / "learnings.md"
+    type_path = client_dir / f"learnings-{content_type}.md"
+
+    parts = []
+    if common_path.exists():
+        parts.append(_load_text(common_path))
+    if type_path.exists():
+        parts.append(_load_text(type_path))
+
+    combined = "\n\n".join(parts)
+    # Safety cap at 4000 chars to avoid blowing up the prompt
+    return combined[:4000]
 
 
 def _load_text(path: Path) -> str:
