@@ -31,15 +31,9 @@
 ## StoryBrand Principle
 Customer is the hero, FarmThru is the guide. Lead with customer desire, then introduce FarmThru as the guide.
 
-## Proof That Works
-- Social proof above fold: +40% conversion
-- Countdown timers: +30% (real deadlines only)
-- Founder featured: +15-28% conversion
-- Certification badges: +42% trust
-- Pages under 125 words (lead capture): +15% email capture
-
-## CTA Placement
-Minimum 3 positions: hero (above fold), mid-page (after problem/solution), footer (after proof).
+## Proof + CTA
+- Social proof above fold: +40% conversion. Founder featured: +15-28%.
+- CTA: minimum 3 positions (hero, mid-page, footer). Repeat increases conversion.
 
 ## CFE Campaign Patterns
 - VIP deposit ($5 refundable): 20-40% conversion to investor vs 1-5% email-only

@@ -44,19 +44,22 @@ This auto-generates all 5 files, validates them, and runs 3 test ads. Then hill-
 python3 scripts/hill_climb.py brand-slug 3
 ```
 
-**Manual setup** — create `clients/{slug}/` with 5 files:
+**Manual setup** — create `clients/{slug}/` with these files:
 - `config.json` — entry point: weights, thresholds, CTAs, angles, scoring_context
 - `rules.json` — client-specific rules (extends universal)
 - `facts.json` — structured facts register
 - `tone.md` — voice guidelines (prose, for LLM context)
-- `learnings.md` — accumulated creative learnings
+- `learnings.md` — common rules (loaded for ALL content types, max 2000 chars)
+- `learnings-meta-ad.md` — meta-ad specific patterns (max 2000 chars)
+- `learnings-landing-page.md` — LP specific patterns (max 2000 chars)
+- `learnings-email.md` — email specific patterns (max 2000 chars)
 
 Zero code changes to the engine or writer.py. Everything is config-driven.
 
 ### New client checklist (follow in order — see LESSONS.md #8-9 for why)
 
 1. **Verify facts before generating** — WebFetch the client website, verify every claim in facts.json. Mark confidence levels. NEVER fabricate stats.
-2. **Structure learnings.md correctly** — "What Works" first (within 800 chars), "What Fails" second (within 1600 chars). Verify with `head -c 1600 clients/{slug}/learnings.md`.
+2. **Learnings budget is sacred** — Each learnings file has a 2000-char hard limit. Every word competes for LLM attention. When adding a learning: (a) check if an existing one can be compressed or removed, (b) put it in the right file (common vs content-type), (c) run `python3 scripts/check_learnings.py {slug}` to verify. NEVER let learnings bloat — the LLM ignores rules in long files.
 3. **Rules check ALL fields** — every rule must list ALL fields where a violation could appear. Don't omit `description` because you checked `primary_text`. Test: generate 3 sample ads, grep each field for the pattern.
 4. **writer.py rules must not contradict learnings** — after editing `_build_rules_summary()`, grep for contradictions: `grep -i "add\|include\|must have" writer.py` vs `grep -i "never\|don't\|no " clients/{slug}/learnings.md`.
 5. **Filter facts by content type** — if the client has content types with different rules (e.g., meta-ads vs landing pages), ensure `_select_relevant_facts()` excludes inappropriate fact categories per content type.
@@ -92,6 +95,19 @@ Auto-loaded by `run.py`.
 4. **Build HTML review** — `python3 scripts/build_review_html.py scored.json output.html` — collapsible cards, toggle filters
 5. **Present for human review** — Only after ALL items score >= 0.70 composite
 6. **Integrate feedback** — Update learnings.md (What Works first!), re-run hill-climb
+
+## Learnings architecture (IMPORTANT — read before modifying learnings)
+
+Writer.py loads `learnings.md` (common) + `learnings-{content_type}.md` (type-specific) and passes BOTH to the LLM. There is NO truncation — every character in these files reaches the LLM. This means:
+
+1. **Every word counts** — verbose learnings dilute the LLM's attention. Compress ruthlessly.
+2. **2000 chars per file** — hard budget. Run `python3 scripts/check_learnings.py {slug}` after changes.
+3. **Common vs type-specific** — put universal rules in `learnings.md`, content-type patterns in split files.
+4. **Rules in config too** — `prompt_extra_rules` in config.json is ALWAYS loaded. Put formatting rules there (em dashes, char limits) and creative patterns in learnings.
+5. **Scoring must match generation** — if the scorer enforces a rule, the learnings must mention it. If learnings say "never X", a scoring rule should penalize X. These must stay in sync.
+6. **When integrating review feedback**: compress the feedback into 1-2 bullet points per pattern. Don't paste raw notes. Trim existing learnings that the new pattern supersedes.
+
+If `check_learnings.py` fails, you MUST trim before committing. The LLM prompt is ~2300 tokens — learnings are ~30% of it. Bloated learnings = ignored rules.
 
 ## Git workflow
 
