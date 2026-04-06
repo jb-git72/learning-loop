@@ -192,6 +192,29 @@ def pearson_r(xs: list, ys: list) -> float:
     return cov / denom if denom > 0 else 0.0
 
 
+def spearman_r(xs: list, ys: list) -> float:
+    """Spearman rank correlation. Returns None if n < 3."""
+    n = len(xs)
+    if n < 3:
+        return None
+
+    def _rank(vals):
+        indexed = sorted(range(n), key=lambda i: vals[i])
+        ranks = [0.0] * n
+        i = 0
+        while i < n:
+            j = i
+            while j < n - 1 and vals[indexed[j]] == vals[indexed[j + 1]]:
+                j += 1
+            avg_rank = (i + j) / 2.0 + 1
+            for k in range(i, j + 1):
+                ranks[indexed[k]] = avg_rank
+            i = j + 1
+        return ranks
+
+    return pearson_r(_rank(xs), _rank(ys))
+
+
 def compute_metric(matched: list, metric: str) -> list:
     """Extract (composite, metric_value) pairs. Filters out invalid entries."""
     pairs = []
@@ -238,13 +261,15 @@ def print_results(matched: list, metric: str, min_spend: float):
         composites = [p[0] for p in pairs]
         metrics = [p[1] for p in pairs]
         r = pearson_r(composites, metrics)
-        print(f"Overall Pearson r (quality vs {metric}): {r:.3f} (n={len(pairs)})")
+        rho = spearman_r(composites, metrics)
+        print(f"Overall Pearson  r (quality vs {metric}): {r:.3f} (n={len(pairs)})")
+        print(f"Overall Spearman ρ (quality vs {metric}): {rho:.3f} (n={len(pairs)})")
         print()
 
-        # Interpret
-        if abs(r) >= 0.6:
+        best_r = max(abs(r), abs(rho))
+        if best_r >= 0.6:
             print("  Strong correlation — scoring engine predicts performance well")
-        elif abs(r) >= 0.3:
+        elif best_r >= 0.3:
             print("  Moderate correlation — some signal, check dimension breakdown")
         else:
             print("  Weak correlation — scorer needs recalibration")
@@ -334,15 +359,16 @@ def print_results(matched: list, metric: str, min_spend: float):
                 ds = [p[0] for p in dim_pairs]
                 ms = [p[1] for p in dim_pairs]
                 r = pearson_r(ds, ms)
-                dim_corrs.append((dim, r, len(dim_pairs)))
+                rho = spearman_r(ds, ms)
+                dim_corrs.append((dim, r, rho, len(dim_pairs)))
 
-        dim_corrs.sort(key=lambda x: abs(x[1]), reverse=True)
-        print(f"  {'Dimension':<30} {'r':>8} {'n':>5}  Signal")
-        print(f"  {'-'*30} {'-'*8} {'-'*5}  {'-'*20}")
-        for dim, r, n in dim_corrs:
-            strength = "STRONG" if abs(r) >= 0.4 else "moderate" if abs(r) >= 0.2 else "weak"
-            direction = "+" if r >= 0 else "-"
-            print(f"  {dim:<30} {r:>7.3f} {n:>5}  {direction} {strength}")
+        dim_corrs.sort(key=lambda x: abs(x[2]), reverse=True)  # sort by Spearman
+        print(f"  {'Dimension':<30} {'Pearson':>8} {'Spearman':>9} {'n':>5}  Signal")
+        print(f"  {'-'*30} {'-'*8} {'-'*9} {'-'*5}  {'-'*20}")
+        for dim, r, rho, n in dim_corrs:
+            strength = "STRONG" if abs(rho) >= 0.4 else "moderate" if abs(rho) >= 0.2 else "weak"
+            direction = "+" if rho >= 0 else "-"
+            print(f"  {dim:<30} {r:>7.3f} {rho:>8.3f} {n:>5}  {direction} {strength}")
         print()
 
 

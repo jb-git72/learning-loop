@@ -153,7 +153,7 @@ def build_html(scored_json_path: str, output_path: str):
             tags_html += f'<div class="creative-brief"><em>{_esc(creative)}</em></div>'
 
         card = f"""
-        <div class="card" data-verdict="{verdict}" data-type="{content_type}" data-angle="{angle}" data-id="{ad_id}">
+        <div class="card" data-verdict="{verdict}" data-type="{content_type}" data-angle="{angle}" data-id="{ad_id}" data-score="{composite:.4f}">
             <div class="card-top" onclick="toggleCard(this)">
                 <span class="collapse-indicator">&#9654;</span>
                 <span class="card-id">{ad_id}</span>
@@ -271,6 +271,9 @@ body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
         <button class="tbtn" onclick="setFilter('status','approved',this)">Approved</button>
         <button class="tbtn" onclick="setFilter('status','revise',this)">Edited</button>
         <button class="tbtn" onclick="setFilter('status','kill',this)">Killed</button>
+        <div class="sep"></div>
+        <button class="tbtn active" onclick="setSort('score',this)">Score &#9660;</button>
+        <button class="tbtn" onclick="setSort('name',this)">Name</button>
         <div class="toolbar-right">
             <button class="tbtn" onclick="toggleAll()">Expand All</button>
             <button class="tbtn" onclick="saveJSON()">Save JSON</button>
@@ -333,6 +336,23 @@ function filterCards() {{
         c.style.display = matchType && matchStatus ? '' : 'none';
     }});
     updateCounter();
+}}
+
+function setSort(mode, btn) {{
+    const container = document.getElementById('cards');
+    const cards = Array.from(container.querySelectorAll('.card'));
+    // Update active state on sort buttons
+    btn.parentElement.querySelectorAll('.tbtn').forEach(b => {{
+        if (b.textContent.includes('Score') || b.textContent.includes('Name'))
+            b.classList.remove('active');
+    }});
+    btn.classList.add('active');
+    if (mode === 'score') {{
+        cards.sort((a, b) => parseFloat(b.dataset.score) - parseFloat(a.dataset.score));
+    }} else {{
+        cards.sort((a, b) => a.dataset.id.localeCompare(b.dataset.id));
+    }}
+    cards.forEach(c => container.appendChild(c));
 }}
 
 function updatePills() {{
