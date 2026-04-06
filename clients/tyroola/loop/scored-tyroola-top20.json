@@ -1,0 +1,3423 @@
+{
+  "summary": {
+    "total": 20,
+    "avg_composite": 0.6811,
+    "verdicts": {
+      "strong_draft": 7,
+      "needs_work": 13
+    },
+    "critical_failures": 0
+  },
+  "results": [
+    {
+      "ad_id": "tyroola-072",
+      "composite": 0.7024,
+      "verdict": "strong_draft",
+      "rule_compliance": {
+        "score": 0.92,
+        "passed": 23,
+        "total": 25,
+        "failures": [
+          {
+            "rule_id": "no_em_dashes",
+            "field": "primary_text",
+            "detail": "Pattern matched in primary_text: '\u2014' (rule: no_em_dashes)",
+            "severity": "normal"
+          },
+          {
+            "rule_id": "TYRO-004",
+            "field": "headline",
+            "detail": "Pattern matched in headline: 'Tyres sorted without the wait' (rule: TYRO-004)",
+            "severity": "normal"
+          }
+        ],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 0,
+        "verified": 0,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": []
+      },
+      "rubric": {
+        "weighted_total": 49.75,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 1,
+          "objection_preemption": 4,
+          "receptionist_test": 4,
+          "scroll_stop_hook": 4,
+          "cta_clarity": 5,
+          "platform_fit": 5,
+          "differentiation": 5,
+          "opening_diversity": 1,
+          "sentence_variance": 4,
+          "emotional_register": 2,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 1,
+            "weight": 1.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 0 numbers, 0 names = 0 specifics"
+          },
+          "objection_preemption": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "4/5 objection signals: worried-about-fit, worried-about-wrong-size, worried-about-trust, worried-about-payment"
+          },
+          "receptionist_test": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "4/5 answered: identifies-product: yes, includes-fitting: yes, mentions-price-or-deal: yes, differentiates-brand: no, clear-start-action: yes"
+          },
+          "scroll_stop_hook": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "Question hook: 'Still planning to spend your Saturday at a tyre shop?...'"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'Search by Rego \u2014 It's Free'"
+          },
+          "platform_fit": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "All platform constraints met, conversational tone"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.045, max: 0.221 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 1,
+            "weight": 0.5,
+            "weighted": 0.5,
+            "method": "deterministic",
+            "detail": "Opening 'still planning to': first word shared with 1, first 3 words shared with 1 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 4,
+            "weight": 0.5,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "8 sentences, avg 9.5 words, std dev 6.9"
+          },
+          "emotional_register": {
+            "score": 2,
+            "weight": 0.5,
+            "weighted": 1.0,
+            "method": "deterministic",
+            "detail": "Register: question \u2014 7/19 same-type ads share it (37%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 2
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/convenience-ease--direct_address--a-002-stressfree-png.json",
+      "content_type": "meta-ad",
+      "angle": "convenience-ease",
+      "hook_type": "direct_address",
+      "original_ad_name": "",
+      "headline": "Tyres sorted without the wait",
+      "primary_text": "Still planning to spend your Saturday at a tyre shop?\n\nJess searched by rego on her lunch break, picked her tyres in minutes, and had a mobile fitter come to her driveway that afternoon.\n\nNo waiting r"
+    },
+    {
+      "ad_id": "tyroola-218",
+      "composite": 0.6445,
+      "verdict": "needs_work",
+      "rule_compliance": {
+        "score": 0.96,
+        "passed": 24,
+        "total": 25,
+        "failures": [
+          {
+            "rule_id": "no_em_dashes",
+            "field": "primary_text",
+            "detail": "Pattern matched in primary_text: '\u2014' (rule: no_em_dashes)",
+            "severity": "normal"
+          }
+        ],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 0,
+        "verified": 0,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": []
+      },
+      "rubric": {
+        "weighted_total": 43.25,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 3,
+          "tactic_execution": 4,
+          "specificity": 1,
+          "objection_preemption": 2,
+          "receptionist_test": 4,
+          "scroll_stop_hook": 2,
+          "cta_clarity": 2,
+          "platform_fit": 3,
+          "differentiation": 5,
+          "opening_diversity": 5,
+          "sentence_variance": 5,
+          "emotional_register": 3,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "heuristic",
+            "detail": "Heuristic: 2 emotional words found"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 1,
+            "weight": 1.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 0 numbers, 0 names = 0 specifics"
+          },
+          "objection_preemption": {
+            "score": 2,
+            "weight": 1.25,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "2/5 objection signals: worried-about-fit, worried-about-wrong-size"
+          },
+          "receptionist_test": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "4/5 answered: identifies-product: yes, includes-fitting: yes, mentions-price-or-deal: no, differentiates-brand: yes, clear-start-action: yes"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.5,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "Generic opening: 'No Stress, No Fuss: Buy Tyres Online Hassle-Free!...'"
+          },
+          "cta_clarity": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "Weak or unclear CTA: 'SHOP_NOW'"
+          },
+          "platform_fit": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "1 violation: headline: 43/40 chars"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.039, max: 0.129 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Opening 'no stress no': first word shared with 0, first 3 words shared with 0 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "4 sentences, avg 14.8 words, std dev 12.9"
+          },
+          "emotional_register": {
+            "score": 3,
+            "weight": 0.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "Register: other \u2014 4/19 same-type ads share it (21%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 1
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/convenience-ease--direct_address--a-004-stressfree-1-png.json",
+      "content_type": "meta-ad",
+      "angle": "convenience-ease",
+      "hook_type": "direct_address",
+      "original_ad_name": "A-004-StressFree-1.png",
+      "headline": "\ud83d\ude90 Mobile tyre fitters straight to your door",
+      "primary_text": "No Stress, No Fuss: Buy Tyres Online Hassle-Free!\n\nDon't let stress hold you back. Shop for tyres online effortlessly and enjoy a hassle-free journey  \ud83d\udede\n\n\u2705 Enter your tyre size \n\u2705 Buy your tyres onlin"
+    },
+    {
+      "ad_id": "tyroola-022",
+      "composite": 0.7376,
+      "verdict": "strong_draft",
+      "rule_compliance": {
+        "score": 0.96,
+        "passed": 24,
+        "total": 25,
+        "failures": [
+          {
+            "rule_id": "TYRO-003",
+            "field": "primary_text",
+            "detail": "Pattern matched in primary_text: 'Unbeatable price' (rule: TYRO-003)",
+            "severity": "normal"
+          }
+        ],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 0,
+        "verified": 0,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": []
+      },
+      "rubric": {
+        "weighted_total": 49.5,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 2,
+          "objection_preemption": 3,
+          "receptionist_test": 5,
+          "scroll_stop_hook": 2,
+          "cta_clarity": 3,
+          "platform_fit": 5,
+          "differentiation": 5,
+          "opening_diversity": 5,
+          "sentence_variance": 5,
+          "emotional_register": 3,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 2,
+            "weight": 1.5,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 0 numbers, 1 names = 1 specifics"
+          },
+          "objection_preemption": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "deterministic",
+            "detail": "3/5 objection signals: worried-about-fit, worried-about-wrong-size, worried-about-price"
+          },
+          "receptionist_test": {
+            "score": 5,
+            "weight": 1.5,
+            "weighted": 7.5,
+            "method": "deterministic",
+            "detail": "5/5 answered: identifies-product: yes, includes-fitting: yes, mentions-price-or-deal: yes, differentiates-brand: yes, clear-start-action: yes"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.5,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "Generic opening: '\ud83d\ude9b Free shipping on select BFGoorich tyres...'"
+          },
+          "cta_clarity": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "CTA present but not on approved list: 'LEARN_MORE'"
+          },
+          "platform_fit": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "All platform constraints met, conversational tone"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.045, max: 0.233 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Opening 'free shipping on': first word shared with 0, first 3 words shared with 0 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "3 sentences, avg 25.3 words, std dev 20.3"
+          },
+          "emotional_register": {
+            "score": 3,
+            "weight": 0.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "Register: other \u2014 4/19 same-type ads share it (21%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 1
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/convenience-ease--direct_address--bf-goodrich-free-shipping-a-002-png.json",
+      "content_type": "meta-ad",
+      "angle": "convenience-ease",
+      "hook_type": "direct_address",
+      "original_ad_name": "BF-Goodrich-free-shipping-A-002.png",
+      "headline": "\ud83d\udede Buy tyres online",
+      "primary_text": "\ud83d\ude9b Free shipping on select BFGoorich tyres\n\nFast, efficient, and reliable. Tyroola takes the hassle out of tyre shopping and fitting \ud83d\udede\n\n\u2705 Enter your tyre size \n\u2705 Find Michelin tyres with the free shipp"
+    },
+    {
+      "ad_id": "tyroola-053",
+      "composite": 0.7255,
+      "verdict": "strong_draft",
+      "rule_compliance": {
+        "score": 1.0,
+        "passed": 25,
+        "total": 25,
+        "failures": [],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 0,
+        "verified": 0,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": []
+      },
+      "rubric": {
+        "weighted_total": 46.25,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 2,
+          "objection_preemption": 2,
+          "receptionist_test": 4,
+          "scroll_stop_hook": 2,
+          "cta_clarity": 3,
+          "platform_fit": 5,
+          "differentiation": 5,
+          "opening_diversity": 5,
+          "sentence_variance": 5,
+          "emotional_register": 2,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 2,
+            "weight": 1.5,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 1 numbers, 0 names = 1 specifics"
+          },
+          "objection_preemption": {
+            "score": 2,
+            "weight": 1.25,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "2/5 objection signals: worried-about-fit, worried-about-price"
+          },
+          "receptionist_test": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "4/5 answered: identifies-product: yes, includes-fitting: yes, mentions-price-or-deal: yes, differentiates-brand: yes, clear-start-action: no"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.5,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "Generic opening: 'Need a hand buying new tyres? We've got you covered!...'"
+          },
+          "cta_clarity": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "CTA present but not on approved list: 'LEARN_MORE'"
+          },
+          "platform_fit": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "All platform constraints met, conversational tone"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.026, max: 0.062 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Opening 'need a hand': first word shared with 0, first 3 words shared with 0 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "4 sentences, avg 12.2 words, std dev 12.6"
+          },
+          "emotional_register": {
+            "score": 2,
+            "weight": 0.5,
+            "weighted": 1.0,
+            "method": "deterministic",
+            "detail": "Register: question \u2014 7/19 same-type ads share it (37%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 0
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/convenience-ease--direct_address--bf-goodrich-free-shipping-a-003-png.json",
+      "content_type": "meta-ad",
+      "angle": "convenience-ease",
+      "hook_type": "direct_address",
+      "original_ad_name": "BF-Goodrich-free-shipping-A-003.png",
+      "headline": "\ud83d\udede Buy tyres online",
+      "primary_text": "Need a hand buying new tyres? We've got you covered! \n\nEnjoy free shipping on select BFGoodrich tyres with Tyroola\n\n\u2705 Price Match Guarantee\n\u2705 No salesmen, no hassle\n\u2705 Buy a tyre in just 5 minutes\n\n\u2b50\ufe0f\u2b50"
+    },
+    {
+      "ad_id": "tyroola-261",
+      "composite": 0.6627,
+      "verdict": "needs_work",
+      "rule_compliance": {
+        "score": 1.0,
+        "passed": 25,
+        "total": 25,
+        "failures": [],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 0,
+        "verified": 0,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": []
+      },
+      "rubric": {
+        "weighted_total": 42.25,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 3,
+          "tactic_execution": 4,
+          "specificity": 1,
+          "objection_preemption": 2,
+          "receptionist_test": 3,
+          "scroll_stop_hook": 2,
+          "cta_clarity": 3,
+          "platform_fit": 3,
+          "differentiation": 5,
+          "opening_diversity": 5,
+          "sentence_variance": 5,
+          "emotional_register": 2,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "heuristic",
+            "detail": "Heuristic: 2 emotional words found"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 1,
+            "weight": 1.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 0 numbers, 0 names = 0 specifics"
+          },
+          "objection_preemption": {
+            "score": 2,
+            "weight": 1.25,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "2/5 objection signals: worried-about-fit, worried-about-price"
+          },
+          "receptionist_test": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "deterministic",
+            "detail": "3/5 answered: identifies-product: no, includes-fitting: yes, mentions-price-or-deal: yes, differentiates-brand: yes, clear-start-action: no"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.5,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "Generic opening: 'Tyre trouble? We come to you \ud83d\ude99...'"
+          },
+          "cta_clarity": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "CTA present but not on approved list: 'LEARN_MORE'"
+          },
+          "platform_fit": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "1 violation: headline: 43/40 chars"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.042, max: 0.273 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Opening 'tyre trouble we': first word shared with 0, first 3 words shared with 0 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "3 sentences, avg 21.0 words, std dev 14.8"
+          },
+          "emotional_register": {
+            "score": 2,
+            "weight": 0.5,
+            "weighted": 1.0,
+            "method": "deterministic",
+            "detail": "Register: question \u2014 7/19 same-type ads share it (37%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 0
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/convenience-ease--direct_address--bfg-lifestyle-a-001-png.json",
+      "content_type": "meta-ad",
+      "angle": "convenience-ease",
+      "hook_type": "direct_address",
+      "original_ad_name": "BFG-lifestyle-A-001.png",
+      "headline": "\ud83d\ude90 Mobile tyre fitters straight to your door",
+      "primary_text": "Tyre trouble? We come to you \ud83d\ude99\n\n\u2705 Price Match Guarantee\n\u2705 Fast delivery & fitting\n\u2705 Mobile tyre fitters straight to your door\n\n\u2b50\ufe0f\u2b50\ufe0f\u2b50\ufe0f\u2b50\ufe0f\u2b50\ufe0f \u201cI have never thought of buying online before but I'm really h"
+    },
+    {
+      "ad_id": "tyroola-274",
+      "composite": 0.6882,
+      "verdict": "needs_work",
+      "rule_compliance": {
+        "score": 0.92,
+        "passed": 23,
+        "total": 25,
+        "failures": [
+          {
+            "rule_id": "no_em_dashes",
+            "field": "primary_text",
+            "detail": "Pattern matched in primary_text: '\u2014' (rule: no_em_dashes)",
+            "severity": "normal"
+          },
+          {
+            "rule_id": "TYRO-004",
+            "field": "headline",
+            "detail": "Pattern matched in headline: 'Tyres sorted without the wait' (rule: TYRO-004)",
+            "severity": "normal"
+          }
+        ],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 0,
+        "verified": 0,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": []
+      },
+      "rubric": {
+        "weighted_total": 48.75,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 1,
+          "objection_preemption": 4,
+          "receptionist_test": 4,
+          "scroll_stop_hook": 4,
+          "cta_clarity": 5,
+          "platform_fit": 5,
+          "differentiation": 5,
+          "opening_diversity": 1,
+          "sentence_variance": 2,
+          "emotional_register": 2,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 1,
+            "weight": 1.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 0 numbers, 0 names = 0 specifics"
+          },
+          "objection_preemption": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "4/5 objection signals: worried-about-fit, worried-about-wrong-size, worried-about-trust, worried-about-payment"
+          },
+          "receptionist_test": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "4/5 answered: identifies-product: no, includes-fitting: yes, mentions-price-or-deal: yes, differentiates-brand: yes, clear-start-action: yes"
+          },
+          "scroll_stop_hook": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "Question hook: 'Still planning to 'sort your tyres this weekend'?...'"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'Search by Rego \u2014 It's Free'"
+          },
+          "platform_fit": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "All platform constraints met, conversational tone"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.047, max: 0.221 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 1,
+            "weight": 0.5,
+            "weighted": 0.5,
+            "method": "deterministic",
+            "detail": "Opening 'still planning to': first word shared with 1, first 3 words shared with 1 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 2,
+            "weight": 0.5,
+            "weighted": 1.0,
+            "method": "deterministic",
+            "detail": "8 sentences, avg 7.2 words, std dev 3.0"
+          },
+          "emotional_register": {
+            "score": 2,
+            "weight": 0.5,
+            "weighted": 1.0,
+            "method": "deterministic",
+            "detail": "Register: question \u2014 7/19 same-type ads share it (37%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 2
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/convenience-ease--direct_address--freedelivery-carousel1-copy.json",
+      "content_type": "meta-ad",
+      "angle": "convenience-ease",
+      "hook_type": "direct_address",
+      "original_ad_name": "",
+      "headline": "Tyres sorted without the wait",
+      "primary_text": "Still planning to 'sort your tyres this weekend'?\n\nSearch your rego, pick your tyres, pay your way \u2014 Afterpay accepted. A mobile fitter comes to you at home or work.\n\nNo waiting room. No wasted Saturd"
+    },
+    {
+      "ad_id": "tyroola-055",
+      "composite": 0.7098,
+      "verdict": "strong_draft",
+      "rule_compliance": {
+        "score": 1.0,
+        "passed": 25,
+        "total": 25,
+        "failures": [],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 0,
+        "verified": 0,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": []
+      },
+      "rubric": {
+        "weighted_total": 45.25,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 3,
+          "tactic_execution": 4,
+          "specificity": 1,
+          "objection_preemption": 2,
+          "receptionist_test": 3,
+          "scroll_stop_hook": 2,
+          "cta_clarity": 3,
+          "platform_fit": 5,
+          "differentiation": 5,
+          "opening_diversity": 5,
+          "sentence_variance": 4,
+          "emotional_register": 5,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "heuristic",
+            "detail": "Heuristic: 2 emotional words found"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 1,
+            "weight": 1.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 0 numbers, 0 names = 0 specifics"
+          },
+          "objection_preemption": {
+            "score": 2,
+            "weight": 1.25,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "2/5 objection signals: worried-about-fit, worried-about-wrong-size"
+          },
+          "receptionist_test": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "deterministic",
+            "detail": "3/5 answered: identifies-product: no, includes-fitting: yes, mentions-price-or-deal: no, differentiates-brand: yes, clear-start-action: yes"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.5,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "Generic opening: 'We come to you with your new tyres....'"
+          },
+          "cta_clarity": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "CTA present but not on approved list: 'LEARN_MORE'"
+          },
+          "platform_fit": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "All platform constraints met, conversational tone"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.024, max: 0.273 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Opening 'we come to': first word shared with 0, first 3 words shared with 0 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 4,
+            "weight": 0.5,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "5 sentences, avg 12.6 words, std dev 6.9"
+          },
+          "emotional_register": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Register: confession \u2014 0/19 same-type ads share it (0%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 0
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/convenience-ease--direct_address--mobile-fitting-we-come-to-you-v02-png-co.json",
+      "content_type": "meta-ad",
+      "angle": "convenience-ease",
+      "hook_type": "direct_address",
+      "original_ad_name": "mobile-fitting-we-come-to-you-v02.png \u2013 Copy",
+      "headline": "Buy online. We come to you.",
+      "primary_text": "We come to you with your new tyres.\n\n1. Enter your tyre size  \n2. Choose from brands like Pirelli, Goodyear & more\n3. Select a fitting station and choose \u201cWe come to you\u201d\n\n\u2b50\ufe0f\u2b50\ufe0f\u2b50\ufe0f\u2b50\ufe0f\u2b50\ufe0f \u201cHave never thoug"
+    },
+    {
+      "ad_id": "tyroola-260",
+      "composite": 0.6863,
+      "verdict": "needs_work",
+      "rule_compliance": {
+        "score": 1.0,
+        "passed": 25,
+        "total": 25,
+        "failures": [],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 0,
+        "verified": 0,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": []
+      },
+      "rubric": {
+        "weighted_total": 43.75,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 1,
+          "objection_preemption": 2,
+          "receptionist_test": 4,
+          "scroll_stop_hook": 2,
+          "cta_clarity": 2,
+          "platform_fit": 5,
+          "differentiation": 5,
+          "opening_diversity": 5,
+          "sentence_variance": 4,
+          "emotional_register": 3,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 1,
+            "weight": 1.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 0 numbers, 0 names = 0 specifics"
+          },
+          "objection_preemption": {
+            "score": 2,
+            "weight": 1.25,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "2/5 objection signals: worried-about-fit, worried-about-wrong-size"
+          },
+          "receptionist_test": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "4/5 answered: identifies-product: yes, includes-fitting: yes, mentions-price-or-deal: no, differentiates-brand: yes, clear-start-action: yes"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.5,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "Generic opening: 'Victoria, It\u2019s Time to Hit the Road! \ud83d\ude97\ud83c\udf04...'"
+          },
+          "cta_clarity": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "Weak or unclear CTA: 'SHOP_NOW'"
+          },
+          "platform_fit": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "All platform constraints met, conversational tone"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.027, max: 0.129 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Opening 'victoria it s': first word shared with 0, first 3 words shared with 0 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 4,
+            "weight": 0.5,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "4 sentences, avg 13.0 words, std dev 5.2"
+          },
+          "emotional_register": {
+            "score": 3,
+            "weight": 0.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "Register: other \u2014 4/19 same-type ads share it (21%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 0
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/convenience-ease--direct_address--no-surprises-vic.json",
+      "content_type": "meta-ad",
+      "angle": "convenience-ease",
+      "hook_type": "direct_address",
+      "original_ad_name": "No surprises | VIC",
+      "headline": "\ud83d\ude90 Best Tyres in VIC",
+      "primary_text": "Victoria, It\u2019s Time to Hit the Road! \ud83d\ude97\ud83c\udf04\n\nFrom Melbourne\u2019s city streets to the open highways of regional Victoria, we\u2019ve got the perfect tyres for every drive. Explore our range and hit the road with c"
+    },
+    {
+      "ad_id": "tyroola-191",
+      "composite": 0.6155,
+      "verdict": "needs_work",
+      "rule_compliance": {
+        "score": 0.96,
+        "passed": 24,
+        "total": 25,
+        "failures": [
+          {
+            "rule_id": "no_em_dashes",
+            "field": "primary_text",
+            "detail": "Pattern matched in primary_text: '\u2014' (rule: no_em_dashes)",
+            "severity": "normal"
+          }
+        ],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 0.0,
+        "claims_found": 2,
+        "verified": 0,
+        "unverified": 2,
+        "contradicted": 0,
+        "details": [
+          {
+            "claim": "50%",
+            "fact_id": "",
+            "status": "unverified",
+            "confidence": ""
+          },
+          {
+            "claim": "5 stars",
+            "fact_id": "",
+            "status": "unverified",
+            "confidence": ""
+          }
+        ]
+      },
+      "rubric": {
+        "weighted_total": 59.0,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 3,
+          "objection_preemption": 5,
+          "receptionist_test": 5,
+          "scroll_stop_hook": 4,
+          "cta_clarity": 5,
+          "platform_fit": 5,
+          "differentiation": 5,
+          "opening_diversity": 5,
+          "sentence_variance": 5,
+          "emotional_register": 4,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 3 numbers, 0 names = 3 specifics"
+          },
+          "objection_preemption": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "5/5 objection signals: worried-about-fit, worried-about-wrong-size, worried-about-price, worried-about-trust, worried-about-payment"
+          },
+          "receptionist_test": {
+            "score": 5,
+            "weight": 1.5,
+            "weighted": 7.5,
+            "method": "deterministic",
+            "detail": "5/5 answered: identifies-product: yes, includes-fitting: yes, mentions-price-or-deal: yes, differentiates-brand: yes, clear-start-action: yes"
+          },
+          "scroll_stop_hook": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "Statistic/number hook: '800+ fitting locations across Australia. That's the number m...'"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'Search by Rego \u2014 It's Free'"
+          },
+          "platform_fit": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "All platform constraints met, conversational tone"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.036, max: 0.095 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Opening 'fitting locations across': first word shared with 0, first 3 words shared with 0 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "8 sentences, avg 10.9 words, std dev 9.3"
+          },
+          "emotional_register": {
+            "score": 4,
+            "weight": 0.5,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "Register: statistic \u2014 2/19 same-type ads share it (11%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 2,
+        "non_critical_rule_failures": 1
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/convenience-ease--pattern_interrupt--d-003-stressfree-png.json",
+      "content_type": "meta-ad",
+      "angle": "convenience-ease",
+      "hook_type": "exclusivity",
+      "original_ad_name": "",
+      "headline": "800+ fitters. Zero waiting rooms.",
+      "primary_text": "800+ fitting locations across Australia. That's the number most tyre shops don't want you to know about.\n\nBecause once you realise you can buy tyres online \u2014 at up to 50% off RRP \u2014 and have a fitter c"
+    },
+    {
+      "ad_id": "tyroola-139",
+      "composite": 0.7659,
+      "verdict": "strong_draft",
+      "rule_compliance": {
+        "score": 0.92,
+        "passed": 23,
+        "total": 25,
+        "failures": [
+          {
+            "rule_id": "no_em_dashes",
+            "field": "primary_text",
+            "detail": "Pattern matched in primary_text: '\u2014' (rule: no_em_dashes)",
+            "severity": "normal"
+          },
+          {
+            "rule_id": "TYRO-004",
+            "field": "headline",
+            "detail": "Pattern matched in headline: 'Tyres delivered and fitted for you' (rule: TYRO-004)",
+            "severity": "normal"
+          }
+        ],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 0,
+        "verified": 0,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": []
+      },
+      "rubric": {
+        "weighted_total": 54.25,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 1,
+          "objection_preemption": 4,
+          "receptionist_test": 4,
+          "scroll_stop_hook": 5,
+          "cta_clarity": 5,
+          "platform_fit": 5,
+          "differentiation": 5,
+          "opening_diversity": 5,
+          "sentence_variance": 3,
+          "emotional_register": 5,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 1,
+            "weight": 1.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 0 numbers, 0 names = 0 specifics"
+          },
+          "objection_preemption": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "4/5 objection signals: worried-about-fit, worried-about-wrong-size, worried-about-trust, worried-about-payment"
+          },
+          "receptionist_test": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "4/5 answered: identifies-product: no, includes-fitting: yes, mentions-price-or-deal: yes, differentiates-brand: yes, clear-start-action: yes"
+          },
+          "scroll_stop_hook": {
+            "score": 5,
+            "weight": 1.5,
+            "weighted": 7.5,
+            "method": "deterministic",
+            "detail": "Quoted objection hook: '\"But who actually fits them?\"...'"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'Search by Rego \u2014 It's Free'"
+          },
+          "platform_fit": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "All platform constraints met, conversational tone"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.032, max: 0.095 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Opening 'but who actually': first word shared with 0, first 3 words shared with 0 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 3,
+            "weight": 0.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "9 sentences, avg 7.1 words, std dev 3.2"
+          },
+          "emotional_register": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Register: contrast \u2014 0/19 same-type ads share it (0%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 2
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/convenience-ease--question--main-configurator-no-surprises-qld.json",
+      "content_type": "meta-ad",
+      "angle": "convenience-ease",
+      "hook_type": "quoted_objection",
+      "original_ad_name": "",
+      "headline": "Tyres delivered and fitted for you",
+      "primary_text": "\"But who actually fits them?\"\n\nFair question. You order online, they arrive \u2014 then what?\n\nWith Tyroola, a mobile fitter comes to you. Home, work, wherever. 800+ fitting locations across Australia mean"
+    },
+    {
+      "ad_id": "OUNE-519",
+      "composite": 0.7729,
+      "verdict": "strong_draft",
+      "rule_compliance": {
+        "score": 0.92,
+        "passed": 23,
+        "total": 25,
+        "failures": [
+          {
+            "rule_id": "no_em_dashes",
+            "field": "primary_text",
+            "detail": "Pattern matched in primary_text: '\u2014' (rule: no_em_dashes)",
+            "severity": "normal"
+          },
+          {
+            "rule_id": "TYRO-004",
+            "field": "headline",
+            "detail": "Pattern matched in headline: 'Tyres sorted without leaving work' (rule: TYRO-004)",
+            "severity": "normal"
+          }
+        ],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 0,
+        "verified": 0,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": []
+      },
+      "rubric": {
+        "weighted_total": 54.75,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 1,
+          "objection_preemption": 4,
+          "receptionist_test": 4,
+          "scroll_stop_hook": 5,
+          "cta_clarity": 5,
+          "platform_fit": 5,
+          "differentiation": 5,
+          "opening_diversity": 5,
+          "sentence_variance": 5,
+          "emotional_register": 4,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 1,
+            "weight": 1.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 0 numbers, 0 names = 0 specifics"
+          },
+          "objection_preemption": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "4/5 objection signals: worried-about-fit, worried-about-price, worried-about-trust, worried-about-payment"
+          },
+          "receptionist_test": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "4/5 answered: identifies-product: no, includes-fitting: yes, mentions-price-or-deal: yes, differentiates-brand: yes, clear-start-action: yes"
+          },
+          "scroll_stop_hook": {
+            "score": 5,
+            "weight": 1.5,
+            "weighted": 7.5,
+            "method": "deterministic",
+            "detail": "Story hook with specific moment: 'Mark just booked new tyres on his lunch break \u2014 fitter came ...'"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'Find My Tyres Now'"
+          },
+          "platform_fit": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "All platform constraints met, conversational tone"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.039, max: 0.148 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Opening 'mark just booked': first word shared with 0, first 3 words shared with 0 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "7 sentences, avg 10.6 words, std dev 8.4"
+          },
+          "emotional_register": {
+            "score": 4,
+            "weight": 0.5,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "Register: story \u2014 1/19 same-type ads share it (5%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 2
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/outcome-results--newness.json",
+      "content_type": "meta-ad",
+      "angle": "outcome-results",
+      "hook_type": "newness",
+      "original_ad_name": "",
+      "headline": "Tyres sorted without leaving work",
+      "primary_text": "Mark just booked new tyres on his lunch break \u2014 fitter came to his office by 3pm.\n\nNo waiting room. No wasted Saturday. Just tyres sorted, on his terms.\n\nTyroola lets you compare hundreds of brands on"
+    },
+    {
+      "ad_id": "tyroola-231",
+      "composite": 0.6594,
+      "verdict": "needs_work",
+      "rule_compliance": {
+        "score": 0.96,
+        "passed": 24,
+        "total": 25,
+        "failures": [
+          {
+            "rule_id": "TYRO-003",
+            "field": "headline",
+            "detail": "Pattern matched in headline: 'Unbeatable Price' (rule: TYRO-003)",
+            "severity": "normal"
+          }
+        ],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 0,
+        "verified": 0,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": []
+      },
+      "rubric": {
+        "weighted_total": 44.25,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 2,
+          "objection_preemption": 2,
+          "receptionist_test": 3,
+          "scroll_stop_hook": 2,
+          "cta_clarity": 2,
+          "platform_fit": 5,
+          "differentiation": 5,
+          "opening_diversity": 5,
+          "sentence_variance": 5,
+          "emotional_register": 3,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 2,
+            "weight": 1.5,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 0 numbers, 1 names = 1 specifics"
+          },
+          "objection_preemption": {
+            "score": 2,
+            "weight": 1.25,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "2/5 objection signals: worried-about-price, worried-about-trust"
+          },
+          "receptionist_test": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "deterministic",
+            "detail": "3/5 answered: identifies-product: yes, includes-fitting: no, mentions-price-or-deal: yes, differentiates-brand: no, clear-start-action: yes"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.5,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "Generic opening: 'Save on money. Save on time....'"
+          },
+          "cta_clarity": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "Weak or unclear CTA: 'SHOP_NOW'"
+          },
+          "platform_fit": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "All platform constraints met, conversational tone"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.035, max: 0.258 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Opening 'save on money': first word shared with 0, first 3 words shared with 0 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "6 sentences, avg 10.8 words, std dev 11.7"
+          },
+          "emotional_register": {
+            "score": 3,
+            "weight": 0.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "Register: other \u2014 4/19 same-type ads share it (21%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 1
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/price-value--bold_claim--creative-iteration-b-001-png.json",
+      "content_type": "meta-ad",
+      "angle": "price-value",
+      "hook_type": "bold_claim",
+      "original_ad_name": "creative-iteration-B-001.png",
+      "headline": "Unbeatable Prices",
+      "primary_text": "Save on money. Save on time.\n\nShop from Australia\u2019s Best Tyre Shop and join 120,000+ happy customers\n\nBest tyre prices and service - I've been buying from Tyroola for many years, their prices are exce"
+    },
+    {
+      "ad_id": "tyroola-096",
+      "composite": 0.5946,
+      "verdict": "needs_work",
+      "rule_compliance": {
+        "score": 0.96,
+        "passed": 24,
+        "total": 25,
+        "failures": [
+          {
+            "rule_id": "no_em_dashes",
+            "field": "primary_text",
+            "detail": "Pattern matched in primary_text: '\u2014' (rule: no_em_dashes)",
+            "severity": "normal"
+          }
+        ],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 0.0,
+        "claims_found": 4,
+        "verified": 0,
+        "unverified": 4,
+        "contradicted": 0,
+        "details": [
+          {
+            "claim": "50%",
+            "fact_id": "",
+            "status": "unverified",
+            "confidence": ""
+          },
+          {
+            "claim": "5 stars",
+            "fact_id": "",
+            "status": "unverified",
+            "confidence": ""
+          },
+          {
+            "claim": "530+ reviews",
+            "fact_id": "",
+            "status": "unverified",
+            "confidence": ""
+          },
+          {
+            "claim": "3%",
+            "fact_id": "",
+            "status": "unverified",
+            "confidence": ""
+          }
+        ]
+      },
+      "rubric": {
+        "weighted_total": 57.0,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 4,
+          "objection_preemption": 5,
+          "receptionist_test": 5,
+          "scroll_stop_hook": 2,
+          "cta_clarity": 5,
+          "platform_fit": 5,
+          "differentiation": 5,
+          "opening_diversity": 5,
+          "sentence_variance": 4,
+          "emotional_register": 4,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 6 numbers, 0 names = 6 specifics"
+          },
+          "objection_preemption": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "5/5 objection signals: worried-about-fit, worried-about-wrong-size, worried-about-price, worried-about-trust, worried-about-payment"
+          },
+          "receptionist_test": {
+            "score": 5,
+            "weight": 1.5,
+            "weighted": 7.5,
+            "method": "deterministic",
+            "detail": "5/5 answered: identifies-product: yes, includes-fitting: yes, mentions-price-or-deal: yes, differentiates-brand: yes, clear-start-action: yes"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.5,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "Generic opening: 'Up to 50% off RRP. Search by rego, compare hundreds of tyres...'"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'Search by Rego \u2014 It's Free'"
+          },
+          "platform_fit": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "All platform constraints met, conversational tone"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.047, max: 0.130 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Opening 'up to off': first word shared with 0, first 3 words shared with 0 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 4,
+            "weight": 0.5,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "7 sentences, avg 7.4 words, std dev 5.7"
+          },
+          "emotional_register": {
+            "score": 4,
+            "weight": 0.5,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "Register: statistic \u2014 2/19 same-type ads share it (11%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 4,
+        "non_critical_rule_failures": 1
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/price-value--offer_first--product-page-pirelli-scorpion-verde-as-b.json",
+      "content_type": "meta-ad",
+      "angle": "price-value",
+      "hook_type": "offer_first",
+      "original_ad_name": "",
+      "headline": "Save up to 50% on tyres online",
+      "primary_text": "Up to 50% off RRP. Search by rego, compare hundreds of tyres, pay in 4 with Afterpay \u2014 and a mobile fitter comes to you.\n\nNo tyre shop. No waiting room. No guessing your tyre size.\n\n4.7/5 stars across"
+    },
+    {
+      "ad_id": "tyroola-312",
+      "composite": 0.6024,
+      "verdict": "needs_work",
+      "rule_compliance": {
+        "score": 0.96,
+        "passed": 24,
+        "total": 25,
+        "failures": [
+          {
+            "rule_id": "no_em_dashes",
+            "field": "primary_text",
+            "detail": "Pattern matched in primary_text: '\u2014' (rule: no_em_dashes)",
+            "severity": "normal"
+          }
+        ],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 0.0,
+        "claims_found": 4,
+        "verified": 0,
+        "unverified": 4,
+        "contradicted": 0,
+        "details": [
+          {
+            "claim": "50%",
+            "fact_id": "",
+            "status": "unverified",
+            "confidence": ""
+          },
+          {
+            "claim": "3%",
+            "fact_id": "",
+            "status": "unverified",
+            "confidence": ""
+          },
+          {
+            "claim": "530+ reviews",
+            "fact_id": "",
+            "status": "unverified",
+            "confidence": ""
+          },
+          {
+            "claim": "5 stars",
+            "fact_id": "",
+            "status": "unverified",
+            "confidence": ""
+          }
+        ]
+      },
+      "rubric": {
+        "weighted_total": 57.75,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 4,
+          "objection_preemption": 4,
+          "receptionist_test": 4,
+          "scroll_stop_hook": 5,
+          "cta_clarity": 5,
+          "platform_fit": 5,
+          "differentiation": 5,
+          "opening_diversity": 5,
+          "sentence_variance": 4,
+          "emotional_register": 2,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 6 numbers, 0 names = 6 specifics"
+          },
+          "objection_preemption": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "4/5 objection signals: worried-about-fit, worried-about-wrong-size, worried-about-price, worried-about-trust"
+          },
+          "receptionist_test": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "4/5 answered: identifies-product: yes, includes-fitting: yes, mentions-price-or-deal: yes, differentiates-brand: no, clear-start-action: yes"
+          },
+          "scroll_stop_hook": {
+            "score": 5,
+            "weight": 1.5,
+            "weighted": 7.5,
+            "method": "deterministic",
+            "detail": "Named story hook: 'When did buying tyres get so complicated?...'"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'Search by Rego \u2014 It's Free'"
+          },
+          "platform_fit": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "All platform constraints met, conversational tone"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.026, max: 0.118 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Opening 'when did buying': first word shared with 0, first 3 words shared with 0 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 4,
+            "weight": 0.5,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "9 sentences, avg 8.6 words, std dev 5.5"
+          },
+          "emotional_register": {
+            "score": 2,
+            "weight": 0.5,
+            "weighted": 1.0,
+            "method": "deterministic",
+            "detail": "Register: question \u2014 7/19 same-type ads share it (37%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 4,
+        "non_critical_rule_failures": 1
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/price-value--question--creative-iteration-a-002-png-with-siteli.json",
+      "content_type": "meta-ad",
+      "angle": "price-value",
+      "hook_type": "question",
+      "original_ad_name": "",
+      "headline": "Pay up to 50% less on tyres",
+      "primary_text": "When did buying tyres get so complicated?\n\nMost Australians overpay by hundreds \u2014 because comparing prices across tyre shops takes a Saturday you don't have.\n\nTyproola shows you every tyre that fits y"
+    },
+    {
+      "ad_id": "tyroola-024",
+      "composite": 0.6363,
+      "verdict": "needs_work",
+      "rule_compliance": {
+        "score": 0.96,
+        "passed": 24,
+        "total": 25,
+        "failures": [
+          {
+            "rule_id": "no_em_dashes",
+            "field": "primary_text",
+            "detail": "Pattern matched in primary_text: '\u2014' (rule: no_em_dashes)",
+            "severity": "normal"
+          }
+        ],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 0.0,
+        "claims_found": 3,
+        "verified": 0,
+        "unverified": 3,
+        "contradicted": 0,
+        "details": [
+          {
+            "claim": "3 hours",
+            "fact_id": "",
+            "status": "unverified",
+            "confidence": ""
+          },
+          {
+            "claim": "50%",
+            "fact_id": "",
+            "status": "unverified",
+            "confidence": ""
+          },
+          {
+            "claim": "3%",
+            "fact_id": "",
+            "status": "unverified",
+            "confidence": ""
+          }
+        ]
+      },
+      "rubric": {
+        "weighted_total": 61.0,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 4,
+          "objection_preemption": 5,
+          "receptionist_test": 5,
+          "scroll_stop_hook": 5,
+          "cta_clarity": 5,
+          "platform_fit": 5,
+          "differentiation": 5,
+          "opening_diversity": 5,
+          "sentence_variance": 3,
+          "emotional_register": 4,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 6 numbers, 0 names = 6 specifics"
+          },
+          "objection_preemption": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "5/5 objection signals: worried-about-fit, worried-about-wrong-size, worried-about-price, worried-about-trust, worried-about-payment"
+          },
+          "receptionist_test": {
+            "score": 5,
+            "weight": 1.5,
+            "weighted": 7.5,
+            "method": "deterministic",
+            "detail": "5/5 answered: identifies-product: yes, includes-fitting: yes, mentions-price-or-deal: yes, differentiates-brand: yes, clear-start-action: yes"
+          },
+          "scroll_stop_hook": {
+            "score": 5,
+            "weight": 1.5,
+            "weighted": 7.5,
+            "method": "deterministic",
+            "detail": "Story hook with specific moment: 'Mia searched 6 tyre shops last Saturday. Spent 3 hours. Stil...'"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'Search by Rego \u2014 It's Free'"
+          },
+          "platform_fit": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "All platform constraints met, conversational tone"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.040, max: 0.130 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Opening 'mia searched tyre': first word shared with 0, first 3 words shared with 0 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 3,
+            "weight": 0.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "9 sentences, avg 9.1 words, std dev 4.2"
+          },
+          "emotional_register": {
+            "score": 4,
+            "weight": 0.5,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "Register: statistic \u2014 2/19 same-type ads share it (11%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 3,
+        "non_critical_rule_failures": 1
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/price-value--question--creative-iteration-a-002-png.json",
+      "content_type": "meta-ad",
+      "angle": "price-value",
+      "hook_type": "newness",
+      "original_ad_name": "",
+      "headline": "Save up to 50% on tyres online",
+      "primary_text": "Mia searched 6 tyre shops last Saturday. Spent 3 hours. Still wasn't sure she got the best deal.\n\nShe found Tyroola on Sunday morning. Searched her rego, compared brands side-by-side, and saved up to "
+    },
+    {
+      "ad_id": "tyroola-313",
+      "composite": 0.6549,
+      "verdict": "needs_work",
+      "rule_compliance": {
+        "score": 1.0,
+        "passed": 25,
+        "total": 25,
+        "failures": [],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 0,
+        "verified": 0,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": []
+      },
+      "rubric": {
+        "weighted_total": 41.75,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 2,
+          "objection_preemption": 2,
+          "receptionist_test": 3,
+          "scroll_stop_hook": 2,
+          "cta_clarity": 2,
+          "platform_fit": 3,
+          "differentiation": 5,
+          "opening_diversity": 5,
+          "sentence_variance": 5,
+          "emotional_register": 2,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 2,
+            "weight": 1.5,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 1 numbers, 0 names = 1 specifics"
+          },
+          "objection_preemption": {
+            "score": 2,
+            "weight": 1.25,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "2/5 objection signals: worried-about-fit, worried-about-price"
+          },
+          "receptionist_test": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "deterministic",
+            "detail": "3/5 answered: identifies-product: no, includes-fitting: yes, mentions-price-or-deal: yes, differentiates-brand: yes, clear-start-action: no"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.5,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "Generic opening: 'Why pay more? We price match so you can order online and be ...'"
+          },
+          "cta_clarity": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "Weak or unclear CTA: 'SHOP_NOW'"
+          },
+          "platform_fit": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "1 violation: headline: 43/40 chars"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.033, max: 0.138 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Opening 'why pay more': first word shared with 0, first 3 words shared with 0 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "4 sentences, avg 16.0 words, std dev 15.9"
+          },
+          "emotional_register": {
+            "score": 2,
+            "weight": 0.5,
+            "weighted": 1.0,
+            "method": "deterministic",
+            "detail": "Register: question \u2014 7/19 same-type ads share it (37%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 0
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/price-value--question--creative-iteration-a-003-png-copy.json",
+      "content_type": "meta-ad",
+      "angle": "price-value",
+      "hook_type": "question",
+      "original_ad_name": "creative-iteration-A-003.png \u2013 Copy",
+      "headline": "\ud83d\ude90 Mobile tyre fitters straight to your door",
+      "primary_text": "Why pay more? We price match so you can order online and be confident you\u2019ve got the best deal. \n\n\u2705 Mobile tyre fitters straight to your door\n\u2705 No salesman, just tyres\n\u2705 Competitive pricing\n\nSatisfied"
+    },
+    {
+      "ad_id": "tyroola-177",
+      "composite": 0.6892,
+      "verdict": "needs_work",
+      "rule_compliance": {
+        "score": 0.96,
+        "passed": 24,
+        "total": 25,
+        "failures": [
+          {
+            "rule_id": "no_title_case_headlines",
+            "field": "headline",
+            "detail": "Title Case detected in headline: 'Price Match Guaranteed' (2 capitalised words)",
+            "severity": "normal"
+          }
+        ],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 0,
+        "verified": 0,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": []
+      },
+      "rubric": {
+        "weighted_total": 46.25,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 2,
+          "objection_preemption": 2,
+          "receptionist_test": 2,
+          "scroll_stop_hook": 4,
+          "cta_clarity": 3,
+          "platform_fit": 5,
+          "differentiation": 5,
+          "opening_diversity": 5,
+          "sentence_variance": 5,
+          "emotional_register": 2,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 2,
+            "weight": 1.5,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 1 numbers, 1 names = 2 specifics"
+          },
+          "objection_preemption": {
+            "score": 2,
+            "weight": 1.25,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "2/5 objection signals: worried-about-fit, worried-about-price"
+          },
+          "receptionist_test": {
+            "score": 2,
+            "weight": 1.5,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "2/5 answered: identifies-product: no, includes-fitting: yes, mentions-price-or-deal: yes, differentiates-brand: no, clear-start-action: no"
+          },
+          "scroll_stop_hook": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "Question hook: 'Got 5 minutes?...'"
+          },
+          "cta_clarity": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "CTA present but not on approved list: 'LEARN_MORE'"
+          },
+          "platform_fit": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "All platform constraints met, conversational tone"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.056, max: 0.258 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Opening 'got minutes': first word shared with 0, first 3 words shared with 0 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "4 sentences, avg 15.0 words, std dev 20.2"
+          },
+          "emotional_register": {
+            "score": 2,
+            "weight": 0.5,
+            "weighted": 1.0,
+            "method": "deterministic",
+            "detail": "Register: question \u2014 7/19 same-type ads share it (37%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 1
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/price-value--question--creative-iteration-v2-a-006-png.json",
+      "content_type": "meta-ad",
+      "angle": "price-value",
+      "hook_type": "question",
+      "original_ad_name": "Creative-Iteration-V2-A-006.png",
+      "headline": "Price Match Guaranteed",
+      "primary_text": "Got 5 minutes?\n\nShop with Tyroola for the best brands at the best prices\n\n\u2705 Transparent prices\n\u2705 Mobile tyre fitters straight to your door\n\u2705 No salesman, just tyres\n\nBest tyre prices and service - I'v"
+    },
+    {
+      "ad_id": "tyroola-100",
+      "composite": 0.6902,
+      "verdict": "needs_work",
+      "rule_compliance": {
+        "score": 1.0,
+        "passed": 25,
+        "total": 25,
+        "failures": [],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 0,
+        "verified": 0,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": []
+      },
+      "rubric": {
+        "weighted_total": 44.0,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 2,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 1,
+          "objection_preemption": 2,
+          "receptionist_test": 3,
+          "scroll_stop_hook": 4,
+          "cta_clarity": 2,
+          "platform_fit": 5,
+          "differentiation": 5,
+          "opening_diversity": 5,
+          "sentence_variance": 5,
+          "emotional_register": 2,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 2,
+            "weight": 1.25,
+            "weighted": 2.5,
+            "method": "heuristic",
+            "detail": "Heuristic: length suggests muddled angle"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 1,
+            "weight": 1.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 0 numbers, 0 names = 0 specifics"
+          },
+          "objection_preemption": {
+            "score": 2,
+            "weight": 1.25,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "2/5 objection signals: worried-about-fit, worried-about-price"
+          },
+          "receptionist_test": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "deterministic",
+            "detail": "3/5 answered: identifies-product: no, includes-fitting: yes, mentions-price-or-deal: yes, differentiates-brand: no, clear-start-action: yes"
+          },
+          "scroll_stop_hook": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "Question hook: 'Wouldn\u2019t it be nice if you didn\u2019t have to compare tyre price...'"
+          },
+          "cta_clarity": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "Weak or unclear CTA: 'SHOP_NOW'"
+          },
+          "platform_fit": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "All platform constraints met, conversational tone"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.045, max: 0.155 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Opening 'wouldn t it': first word shared with 0, first 3 words shared with 0 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "3 sentences, avg 14.0 words, std dev 8.2"
+          },
+          "emotional_register": {
+            "score": 2,
+            "weight": 0.5,
+            "weighted": 1.0,
+            "method": "deterministic",
+            "detail": "Register: question \u2014 7/19 same-type ads share it (37%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 0
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/price-value--question--save-on-money.json",
+      "content_type": "meta-ad",
+      "angle": "price-value",
+      "hook_type": "question",
+      "original_ad_name": "Save on Money",
+      "headline": "Find a lower price? We'll match it",
+      "primary_text": "Wouldn\u2019t it be nice if you didn\u2019t have to compare tyre prices for hours?\n\n\u2705 Price Match Guarantee\n\u2705 Mobile tyre fitters straight to your door\n\u2705 No salesman, just tyres\n\nSaving on tyres has never been "
+    },
+    {
+      "ad_id": "tyroola-127",
+      "composite": 0.6706,
+      "verdict": "needs_work",
+      "rule_compliance": {
+        "score": 0.96,
+        "passed": 24,
+        "total": 25,
+        "failures": [
+          {
+            "rule_id": "no_title_case_headlines",
+            "field": "headline",
+            "detail": "Title Case detected in headline: 'Buy Tyres Online | Cheap Tyres Online | Tyroola' (6 capitalised words)",
+            "severity": "normal"
+          }
+        ],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 0,
+        "verified": 0,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": []
+      },
+      "rubric": {
+        "weighted_total": 45.0,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 1,
+          "objection_preemption": 3,
+          "receptionist_test": 5,
+          "scroll_stop_hook": 2,
+          "cta_clarity": 2,
+          "platform_fit": 3,
+          "differentiation": 5,
+          "opening_diversity": 5,
+          "sentence_variance": 5,
+          "emotional_register": 3,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 1,
+            "weight": 1.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 0 numbers, 0 names = 0 specifics"
+          },
+          "objection_preemption": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "deterministic",
+            "detail": "3/5 objection signals: worried-about-fit, worried-about-wrong-size, worried-about-price"
+          },
+          "receptionist_test": {
+            "score": 5,
+            "weight": 1.5,
+            "weighted": 7.5,
+            "method": "deterministic",
+            "detail": "5/5 answered: identifies-product: yes, includes-fitting: yes, mentions-price-or-deal: yes, differentiates-brand: yes, clear-start-action: yes"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.5,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "Generic opening: 'Find your size, pick your tyres, choose delivery or mobile f...'"
+          },
+          "cta_clarity": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "Weak or unclear CTA: 'SHOP_NOW'"
+          },
+          "platform_fit": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "1 violation: headline: 47/40 chars"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.017, max: 0.085 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Opening 'find your size': first word shared with 0, first 3 words shared with 0 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "9 sentences, avg 9.9 words, std dev 9.9"
+          },
+          "emotional_register": {
+            "score": 3,
+            "weight": 0.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "Register: other \u2014 4/19 same-type ads share it (21%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 1
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/simplicity-clarity--offer_first--main-configurator-single-image.json",
+      "content_type": "meta-ad",
+      "angle": "simplicity-clarity",
+      "hook_type": "offer_first",
+      "original_ad_name": "Main configurator | Single image",
+      "headline": "Buy Tyres Online | Cheap Tyres Online | Tyroola",
+      "primary_text": "Find your size, pick your tyres, choose delivery or mobile fitting. Clear prices, no hidden fees, done. That's Tyroola. \ud83d\udede\n\nJust follow these simple steps:\n1. Click the \"Shop Now\" button\n2. Chuck in yo"
+    },
+    {
+      "ad_id": "TRNE-606",
+      "composite": 0.7129,
+      "verdict": "strong_draft",
+      "rule_compliance": {
+        "score": 0.92,
+        "passed": 23,
+        "total": 25,
+        "failures": [
+          {
+            "rule_id": "no_em_dashes",
+            "field": "primary_text",
+            "detail": "Pattern matched in primary_text: '\u2014' (rule: no_em_dashes)",
+            "severity": "normal"
+          },
+          {
+            "rule_id": "TYRO-004",
+            "field": "headline",
+            "detail": "Pattern matched in headline: 'Mel had new tyres by' (rule: TYRO-004)",
+            "severity": "normal"
+          }
+        ],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 0,
+        "verified": 0,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": []
+      },
+      "rubric": {
+        "weighted_total": 50.5,
+        "max_possible": 63.75,
+        "raw_scores": {
+          "angle_clarity": 3,
+          "motivation_match": 2,
+          "tactic_execution": 4,
+          "specificity": 1,
+          "objection_preemption": 5,
+          "receptionist_test": 4,
+          "scroll_stop_hook": 2,
+          "cta_clarity": 5,
+          "platform_fit": 5,
+          "differentiation": 5,
+          "opening_diversity": 5,
+          "sentence_variance": 3,
+          "emotional_register": 4,
+          "lp_readability": 3
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "heuristic",
+            "detail": "Heuristic: reasonable length for angle clarity"
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "heuristic",
+            "detail": "Heuristic: low emotional resonance"
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "heuristic",
+            "detail": "Heuristic: hook=True, body=True, cta=True"
+          },
+          "specificity": {
+            "score": 1,
+            "weight": 1.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 0 numbers, 0 names = 0 specifics"
+          },
+          "objection_preemption": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "5/5 objection signals: worried-about-fit, worried-about-wrong-size, worried-about-price, worried-about-trust, worried-about-payment"
+          },
+          "receptionist_test": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "4/5 answered: identifies-product: no, includes-fitting: yes, mentions-price-or-deal: yes, differentiates-brand: yes, clear-start-action: yes"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.5,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "Generic opening: 'Mel typed her rego in on Tuesday night. By Thursday morning,...'"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'Search by Rego \u2014 It's Free'"
+          },
+          "platform_fit": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "All platform constraints met, conversational tone"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.033, max: 0.069 (vs 19 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "Opening 'mel typed her': first word shared with 0, first 3 words shared with 0 of 20 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 3,
+            "weight": 0.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "9 sentences, avg 7.4 words, std dev 4.7"
+          },
+          "emotional_register": {
+            "score": 4,
+            "weight": 0.5,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "Register: story \u2014 1/19 same-type ads share it (5%)"
+          },
+          "lp_readability": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "No scorer available for dimension"
+          }
+        }
+      },
+      "overrides": {
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 2
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 11,
+        "llm_judged_dimensions": 0,
+        "heuristic_dimensions": 3
+      },
+      "_file": "clients/tyroola/loop/meta-ads/transformation-story--newness.json",
+      "content_type": "meta-ad",
+      "angle": "transformation-story",
+      "hook_type": "newness",
+      "original_ad_name": "",
+      "headline": "Mel had new tyres by 9am Thursday",
+      "primary_text": "Mel typed her rego in on Tuesday night. By Thursday morning, a fitter was in her driveway \u2014 done before her first coffee.\n\nNo waiting room. No half-day wasted. No haggling over price.\n\nShe paid in 4 i"
+    }
+  ]
+}

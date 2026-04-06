@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmThru Round 3 Review</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #1a1a1a; padding: 16px 20px; }
+.header { max-width: 1400px; margin: 0 auto 12px; }
+.header-info { font-size: 13px; color: #666; margin-bottom: 10px; }
+.status-bar { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+.status-pill { padding: 4px 12px; border-radius: 4px; font-size: 13px; font-weight: 500; background: #f0f0f0; }
+.status-pill.green { border: 1.5px solid #22c55e; color: #166534; }
+.status-pill.blue { border: 1.5px solid #3b82f6; color: #1d4ed8; }
+.status-pill.red { border: 1.5px solid #ef4444; color: #991b1b; }
+.toolbar { display: flex; gap: 0; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+.toolbar .sep { width: 16px; }
+.tbtn { padding: 6px 14px; border: 1px solid #ddd; background: white; cursor: pointer; font-size: 13px; font-weight: 500; color: #555; }
+.tbtn:first-child { border-radius: 6px 0 0 6px; }
+.tbtn:last-child { border-radius: 0 6px 6px 0; }
+.tbtn:not(:first-child) { border-left: none; }
+.tbtn.active { background: #1a1a1a; color: white; border-color: #1a1a1a; }
+.toolbar-right { margin-left: auto; display: flex; gap: 6px; }
+.toolbar-right .tbtn { border-radius: 6px; border: 1px solid #ddd; }
+.toolbar-right .tbtn:not(:first-child) { border-left: 1px solid #ddd; }
+.cards { max-width: 1400px; margin: 0 auto; }
+.card { background: white; border-radius: 8px; margin-bottom: 12px; padding: 16px 20px; border-left: 4px solid transparent; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.card.status-approved { border-left-color: #22c55e; }
+.card.status-revise { border-left-color: #3b82f6; }
+.card.status-kill { border-left-color: #ef4444; }
+.card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
+.card-id { font-weight: 700; font-size: 16px; }
+.type-badge { color: white; padding: 2px 10px; border-radius: 3px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; }
+.angle-label { color: #666; font-size: 13px; }
+.hl-preview { color: #444; font-size: 13px; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.card-right { display: flex; align-items: center; gap: 8px; margin-left: auto; flex-shrink: 0; }
+.score-circle { color: white; font-weight: 700; font-size: 13px; padding: 4px 10px; border-radius: 20px; min-width: 50px; text-align: center; }
+.verdict-label { font-size: 12px; font-weight: 600; color: #666; text-transform: uppercase; min-width: 80px; text-align: center; }
+.btn { padding: 5px 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px; cursor: pointer; background: white; font-weight: 500; }
+.btn-approve.active { background: #22c55e; color: white; border-color: #22c55e; }
+.btn-revise.active { background: #3b82f6; color: white; border-color: #3b82f6; }
+.btn-kill.active { background: #ef4444; color: white; border-color: #ef4444; }
+.btn:hover { opacity: 0.85; }
+.score-summary { font-size: 12px; color: #888; margin-bottom: 12px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 12px; }
+.field-label { font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.field-edit { width: 100%; padding: 10px; border: 1px solid #e0e0e0; border-radius: 6px; font-family: inherit; font-size: 14px; line-height: 1.6; resize: vertical; color: #1a1a1a; }
+.field-edit:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 2px rgba(59,130,246,0.15); }
+.field-static { font-size: 14px; color: #444; padding: 4px 0; }
+.char-count { font-size: 11px; color: #aaa; text-align: right; margin-top: 2px; }
+.tags-row { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.tag { background: #f0f0f0; padding: 3px 10px; border-radius: 4px; font-size: 12px; color: #555; }
+.creative-brief { font-size: 13px; color: #777; margin-bottom: 10px; }
+.notes-row { margin-top: 8px; }
+.notes { width: 100%; height: 50px; padding: 8px; border: 1px solid #e0e0e0; border-radius: 6px; font-family: inherit; font-size: 13px; resize: vertical; }
+.counter { max-width: 1400px; margin: 0 auto 12px; font-size: 13px; color: #888; }
+.card-top { cursor: pointer; user-select: none; }
+.card-top:hover { opacity: 0.85; }
+.card-body { display: none; }
+.card.expanded .card-body { display: block; }
+.collapse-indicator { font-size: 12px; color: #aaa; margin-right: 4px; transition: transform 0.15s; }
+.card.expanded .collapse-indicator { transform: rotate(90deg); }
+</style>
+</head>
+<body>
+<div class="header">
+    <div class="header-info">20 items | Brand guidelines v1.1 | Hub-and-collect | No named competitors | 0 critical failures</div>
+    <div class="status-bar" id="statusBar">
+        <span class="status-pill">20 items</span>
+        <span class="status-pill" id="pillPending">Pending: 20</span>
+        <span class="status-pill green" id="pillApproved">Approved: 0</span>
+        <span class="status-pill blue" id="pillEdited">Edited: 0</span>
+        <span class="status-pill red" id="pillKilled">Killed: 0</span>
+    </div>
+    <div class="toolbar">
+        <button class="tbtn active" onclick="setFilter('type','all',this)">All</button>
+        <button class="tbtn" onclick="setFilter('type','meta-ad',this)">Ads</button>
+        <button class="tbtn" onclick="setFilter('type','landing-page',this)">Pages</button>
+        <button class="tbtn" onclick="setFilter('type','email',this)">Emails</button>
+        <div class="sep"></div>
+        <button class="tbtn" onclick="setFilter('status','unreviewed',this)">Pending</button>
+        <button class="tbtn" onclick="setFilter('status','approved',this)">Approved</button>
+        <button class="tbtn" onclick="setFilter('status','revise',this)">Edited</button>
+        <button class="tbtn" onclick="setFilter('status','kill',this)">Killed</button>
+        <div class="sep"></div>
+        <button class="tbtn active" onclick="setSort('score',this)">Score &#9660;</button>
+        <button class="tbtn" onclick="setSort('name',this)">Name</button>
+        <div class="toolbar-right">
+            <button class="tbtn" onclick="toggleAll()">Expand All</button>
+            <button class="tbtn" onclick="saveJSON()">Save JSON</button>
+            <button class="tbtn" onclick="exportCSV()">CSV</button>
+        </div>
+    </div>
+</div>
+<div class="counter" id="counter"></div>
+<div class="cards" id="cards">
+    
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="convenience-ease" data-id="tyroola-072" data-score="0.7024">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">tyroola-072</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">convenience-ease</span>
+                <span class="hl-preview">Tyres sorted without the wait</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.70</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('tyroola-072','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('tyroola-072','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('tyroola-072','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7024 &nbsp; Rubric: 49.8/63.8 &nbsp; Rules: 23/25 &nbsp; Facts: 1.00 &nbsp; Hook: direct_address</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="tyroola-072" data-field="primary_text" rows="8">Still planning to spend your Saturday at a tyre shop?
+
+Jess searched by rego on her lunch break, picked her tyres in minutes, and had a mobile fitter come to her driveway that afternoon.
+
+No waiting room. No wasted weekend. Just tyres sorted.
+
+Tyroola has 800+ fitting locations across Australia — or a mobile fitter comes to you. Over 4,530 Australians have rated us 4.7/5. Search by rego free, pay your way with Afterpay or Zip.</textarea>
+                    <div class="char-count">430/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="tyroola-072" data-field="headline" rows="2">Tyres sorted without the wait</textarea>
+                    <div class="char-count">29/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="tyroola-072" data-field="description" rows="3">Search by rego in seconds. 800+ fitting locations. 4.7/5 from 4,530+ Australians.</textarea>
+                    <div class="char-count">81/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: Search by Rego — It's Free</span>
+            <span class="tag">Tactic: general</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Show a woman on her phone in a work or home setting — relaxed, not in a tyre shop. Overlay text: 'Sorted on her lunch break.' Clean, everyday Australian environment.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="tyroola-072" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="convenience-ease" data-id="tyroola-218" data-score="0.6445">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">tyroola-218</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">convenience-ease</span>
+                <span class="hl-preview">🚐 Mobile tyre fitters straight to your door</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#f59e0b">0.64</span>
+                    <span class="verdict-label">NEEDS WORK</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('tyroola-218','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('tyroola-218','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('tyroola-218','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.6445 &nbsp; Rubric: 43.2/63.8 &nbsp; Rules: 24/25 &nbsp; Facts: 1.00 &nbsp; Hook: direct_address</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="tyroola-218" data-field="primary_text" rows="8">No Stress, No Fuss: Buy Tyres Online Hassle-Free!
+
+Don't let stress hold you back. Shop for tyres online effortlessly and enjoy a hassle-free journey  🛞
+
+✅ Enter your tyre size 
+✅ Buy your tyres online
+✅ Mobile fitter comes to you
+
+⭐⭐⭐⭐⭐ &quot;Easy process, communication good, tyres delivered with no fuss.  Will use again in future.&quot; — David M</textarea>
+                    <div class="char-count">340/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="tyroola-218" data-field="headline" rows="2">🚐 Mobile tyre fitters straight to your door</textarea>
+                    <div class="char-count">43/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="tyroola-218" data-field="description" rows="3"></textarea>
+                    <div class="char-count">0/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: SHOP_NOW</span>
+            <span class="tag">Tactic: </span>
+            <span class="tag">Funnel: TOF</span>
+        </div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="tyroola-218" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="convenience-ease" data-id="tyroola-022" data-score="0.7376">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">tyroola-022</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">convenience-ease</span>
+                <span class="hl-preview">🛞 Buy tyres online</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.74</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('tyroola-022','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('tyroola-022','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('tyroola-022','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7376 &nbsp; Rubric: 49.5/63.8 &nbsp; Rules: 24/25 &nbsp; Facts: 1.00 &nbsp; Hook: direct_address</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="tyroola-022" data-field="primary_text" rows="8">🚛 Free shipping on select BFGoorich tyres
+
+Fast, efficient, and reliable. Tyroola takes the hassle out of tyre shopping and fitting 🛞
+
+✅ Enter your tyre size 
+✅ Find Michelin tyres with the free shipping option
+✅ Visit your local fitter 
+
+⭐️⭐️⭐️⭐️⭐️ &quot;Best tyre prices and service - I've been buying from Tyroola for many years, their prices are excellent and they will price match. Highly recommended!&quot; - Max
+
+Unbeatable prices on your favourite tyre brands.</textarea>
+                    <div class="char-count">458/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="tyroola-022" data-field="headline" rows="2">🛞 Buy tyres online</textarea>
+                    <div class="char-count">18/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="tyroola-022" data-field="description" rows="3"></textarea>
+                    <div class="char-count">0/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: LEARN_MORE</span>
+            <span class="tag">Tactic: </span>
+            <span class="tag">Funnel: TOF</span>
+        </div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="tyroola-022" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="convenience-ease" data-id="tyroola-053" data-score="0.7255">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">tyroola-053</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">convenience-ease</span>
+                <span class="hl-preview">🛞 Buy tyres online</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.73</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('tyroola-053','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('tyroola-053','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('tyroola-053','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7255 &nbsp; Rubric: 46.2/63.8 &nbsp; Rules: 25/25 &nbsp; Facts: 1.00 &nbsp; Hook: direct_address</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="tyroola-053" data-field="primary_text" rows="8">Need a hand buying new tyres? We've got you covered! 
+
+Enjoy free shipping on select BFGoodrich tyres with Tyroola
+
+✅ Price Match Guarantee
+✅ No salesmen, no hassle
+✅ Buy a tyre in just 5 minutes
+
+⭐️⭐️⭐️⭐️⭐️ “Good price and hassle-free delivery and fitting. Would use again” - James.</textarea>
+                    <div class="char-count">283/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="tyroola-053" data-field="headline" rows="2">🛞 Buy tyres online</textarea>
+                    <div class="char-count">18/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="tyroola-053" data-field="description" rows="3"></textarea>
+                    <div class="char-count">0/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: LEARN_MORE</span>
+            <span class="tag">Tactic: </span>
+            <span class="tag">Funnel: TOF</span>
+        </div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="tyroola-053" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="convenience-ease" data-id="tyroola-261" data-score="0.6627">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">tyroola-261</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">convenience-ease</span>
+                <span class="hl-preview">🚐 Mobile tyre fitters straight to your door</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#f59e0b">0.66</span>
+                    <span class="verdict-label">NEEDS WORK</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('tyroola-261','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('tyroola-261','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('tyroola-261','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.6627 &nbsp; Rubric: 42.2/63.8 &nbsp; Rules: 25/25 &nbsp; Facts: 1.00 &nbsp; Hook: direct_address</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="tyroola-261" data-field="primary_text" rows="8">Tyre trouble? We come to you 🚙
+
+✅ Price Match Guarantee
+✅ Fast delivery &amp; fitting
+✅ Mobile tyre fitters straight to your door
+
+⭐️⭐️⭐️⭐️⭐️ “I have never thought of buying online before but I'm really happy that I did.. love the price and also the fast delivery will be buying more in the future highly recommend”
+ 
+Click Learn More for all details</textarea>
+                    <div class="char-count">346/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="tyroola-261" data-field="headline" rows="2">🚐 Mobile tyre fitters straight to your door</textarea>
+                    <div class="char-count">43/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="tyroola-261" data-field="description" rows="3"></textarea>
+                    <div class="char-count">0/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: LEARN_MORE</span>
+            <span class="tag">Tactic: </span>
+            <span class="tag">Funnel: TOF</span>
+        </div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="tyroola-261" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="convenience-ease" data-id="tyroola-274" data-score="0.6882">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">tyroola-274</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">convenience-ease</span>
+                <span class="hl-preview">Tyres sorted without the wait</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#f59e0b">0.69</span>
+                    <span class="verdict-label">NEEDS WORK</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('tyroola-274','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('tyroola-274','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('tyroola-274','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.6882 &nbsp; Rubric: 48.8/63.8 &nbsp; Rules: 23/25 &nbsp; Facts: 1.00 &nbsp; Hook: direct_address</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="tyroola-274" data-field="primary_text" rows="8">Still planning to 'sort your tyres this weekend'?
+
+Search your rego, pick your tyres, pay your way — Afterpay accepted. A mobile fitter comes to you at home or work.
+
+No waiting room. No wasted Saturday. Just tyres sorted, on your schedule.
+
+Over 4,530 Australians have rated us 4.7/5. Searching by rego is free and takes 30 seconds.</textarea>
+                    <div class="char-count">333/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="tyroola-274" data-field="headline" rows="2">Tyres sorted without the wait</textarea>
+                    <div class="char-count">29/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="tyroola-274" data-field="description" rows="3">800+ fitting locations nationwide. Search by rego in 30 seconds — free.</textarea>
+                    <div class="char-count">71/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: Search by Rego — It's Free</span>
+            <span class="tag">Tactic: general</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Show a person on their phone in a relaxed home or office setting — coffee in hand, tyres being fitted visible through a window in the background. Calm, unhurried energy. No garage, no waiting room.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="tyroola-274" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="convenience-ease" data-id="tyroola-055" data-score="0.7098">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">tyroola-055</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">convenience-ease</span>
+                <span class="hl-preview">Buy online. We come to you.</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.71</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('tyroola-055','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('tyroola-055','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('tyroola-055','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7098 &nbsp; Rubric: 45.2/63.8 &nbsp; Rules: 25/25 &nbsp; Facts: 1.00 &nbsp; Hook: direct_address</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="tyroola-055" data-field="primary_text" rows="8">We come to you with your new tyres.
+
+1. Enter your tyre size  
+2. Choose from brands like Pirelli, Goodyear &amp; more
+3. Select a fitting station and choose “We come to you”
+
+⭐️⭐️⭐️⭐️⭐️ “Have never thought buying online before but im really happy that i did.. love the price and also the fast delivery will be buying more in the future highly recomended”</textarea>
+                    <div class="char-count">351/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="tyroola-055" data-field="headline" rows="2">Buy online. We come to you.</textarea>
+                    <div class="char-count">27/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="tyroola-055" data-field="description" rows="3"></textarea>
+                    <div class="char-count">0/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: LEARN_MORE</span>
+            <span class="tag">Tactic: </span>
+            <span class="tag">Funnel: TOF</span>
+        </div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="tyroola-055" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="convenience-ease" data-id="tyroola-260" data-score="0.6863">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">tyroola-260</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">convenience-ease</span>
+                <span class="hl-preview">🚐 Best Tyres in VIC</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#f59e0b">0.69</span>
+                    <span class="verdict-label">NEEDS WORK</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('tyroola-260','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('tyroola-260','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('tyroola-260','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.6863 &nbsp; Rubric: 43.8/63.8 &nbsp; Rules: 25/25 &nbsp; Facts: 1.00 &nbsp; Hook: direct_address</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="tyroola-260" data-field="primary_text" rows="8">Victoria, It’s Time to Hit the Road! 🚗🌄
+
+From Melbourne’s city streets to the open highways of regional Victoria, we’ve got the perfect tyres for every drive. Explore our range and hit the road with confidence.
+
+✅ Enter your tyre size 
+✅ Buy your tyres online
+✅ Mobile fitter comes to you</textarea>
+                    <div class="char-count">288/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="tyroola-260" data-field="headline" rows="2">🚐 Best Tyres in VIC</textarea>
+                    <div class="char-count">19/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="tyroola-260" data-field="description" rows="3"></textarea>
+                    <div class="char-count">0/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: SHOP_NOW</span>
+            <span class="tag">Tactic: </span>
+            <span class="tag">Funnel: TOF</span>
+        </div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="tyroola-260" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="convenience-ease" data-id="tyroola-191" data-score="0.6155">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">tyroola-191</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">convenience-ease</span>
+                <span class="hl-preview">800+ fitters. Zero waiting rooms.</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#f59e0b">0.62</span>
+                    <span class="verdict-label">NEEDS WORK</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('tyroola-191','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('tyroola-191','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('tyroola-191','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.6155 &nbsp; Rubric: 59.0/63.8 &nbsp; Rules: 24/25 &nbsp; Facts: 0.00 &nbsp; Hook: exclusivity</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="tyroola-191" data-field="primary_text" rows="8">800+ fitting locations across Australia. That's the number most tyre shops don't want you to know about.
+
+Because once you realise you can buy tyres online — at up to 50% off RRP — and have a fitter come to your home or work, the old way stops making sense.
+
+No waiting rooms. No upsells. Just search by rego, pick your tyres, and a local fitter handles the rest.
+
+4.7/5 stars from 4,530+ Australians who've already made the switch. Afterpay available if you'd rather spread the cost.</textarea>
+                    <div class="char-count">484/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="tyroola-191" data-field="headline" rows="2">800+ fitters. Zero waiting rooms.</textarea>
+                    <div class="char-count">33/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="tyroola-191" data-field="description" rows="3">Search by rego, buy online, get fitted locally. Up to 50% off RRP with a price match guarantee.</textarea>
+                    <div class="char-count">95/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: Search by Rego — It's Free</span>
+            <span class="tag">Tactic: general</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Split-screen visual: left side shows a dull, fluorescent-lit tyre shop waiting room; right side shows someone relaxed at home on a laptop, fitter visible through the window working on their car. Clean, documentary-style photography — no staging.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="tyroola-191" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="convenience-ease" data-id="tyroola-139" data-score="0.7659">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">tyroola-139</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">convenience-ease</span>
+                <span class="hl-preview">Tyres delivered and fitted for you</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.77</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('tyroola-139','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('tyroola-139','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('tyroola-139','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7659 &nbsp; Rubric: 54.2/63.8 &nbsp; Rules: 23/25 &nbsp; Facts: 1.00 &nbsp; Hook: quoted_objection</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="tyroola-139" data-field="primary_text" rows="8">&quot;But who actually fits them?&quot;
+
+Fair question. You order online, they arrive — then what?
+
+With Tyroola, a mobile fitter comes to you. Home, work, wherever. 800+ fitting locations across Australia mean someone's always nearby.
+
+Search by rego in seconds. Compare prices. Pay with Afterpay if you'd rather spread the cost. Rated 4.7/5 from 4,530+ Australians who asked the same question you just did.</textarea>
+                    <div class="char-count">398/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="tyroola-139" data-field="headline" rows="2">Tyres delivered and fitted for you</textarea>
+                    <div class="char-count">34/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="tyroola-139" data-field="description" rows="3">Search by rego, compare prices, get fitted locally. 4.7/5 from 4,530+ Australians.</textarea>
+                    <div class="char-count">82/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: Search by Rego — It's Free</span>
+            <span class="tag">Tactic: general</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Show a mobile fitter arriving at a suburban driveway — car in background, kit in hand, relaxed homeowner watching. No tyre shop. No waiting room. Natural daylight, candid feel.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="tyroola-139" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="outcome-results" data-id="OUNE-519" data-score="0.7729">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">OUNE-519</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">outcome-results</span>
+                <span class="hl-preview">Tyres sorted without leaving work</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.77</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('OUNE-519','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('OUNE-519','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('OUNE-519','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7729 &nbsp; Rubric: 54.8/63.8 &nbsp; Rules: 23/25 &nbsp; Facts: 1.00 &nbsp; Hook: newness</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="OUNE-519" data-field="primary_text" rows="8">Mark just booked new tyres on his lunch break — fitter came to his office by 3pm.
+
+No waiting room. No wasted Saturday. Just tyres sorted, on his terms.
+
+Tyroola lets you compare hundreds of brands online, pay your way (Afterpay, Zip, or card), and get a mobile fitter to come to you — wherever you are.
+
+4.7/5 from 4,530+ Australians who've already made the switch. Price match guarantee if you find it cheaper.</textarea>
+                    <div class="char-count">412/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="OUNE-519" data-field="headline" rows="2">Tyres sorted without leaving work</textarea>
+                    <div class="char-count">33/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="OUNE-519" data-field="description" rows="3">Compare, buy, and get fitted at home or work. 800+ fitting locations nationwide.</textarea>
+                    <div class="char-count">80/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: Find My Tyres Now</span>
+            <span class="tag">Tactic: general</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Show a man in business casual glancing at his phone in a car park or office building exterior, a mobile tyre fitter van visible in the background mid-service. Bright, documentary-style — real moment, not staged stock.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="OUNE-519" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="price-value" data-id="tyroola-231" data-score="0.6594">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">tyroola-231</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">price-value</span>
+                <span class="hl-preview">Unbeatable Prices</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#f59e0b">0.66</span>
+                    <span class="verdict-label">NEEDS WORK</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('tyroola-231','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('tyroola-231','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('tyroola-231','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.6594 &nbsp; Rubric: 44.2/63.8 &nbsp; Rules: 24/25 &nbsp; Facts: 1.00 &nbsp; Hook: bold_claim</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="tyroola-231" data-field="primary_text" rows="8">Save on money. Save on time.
+
+Shop from Australia’s Best Tyre Shop and join 120,000+ happy customers
+
+Best tyre prices and service - I've been buying from Tyroola for many years, their prices are excellent and they will price match. On the one occasion I had an issue they resolved it promptly and at no cost to me. Highly recommended! - ⭐️⭐️⭐️⭐️⭐️ Max
+
+Shop now.</textarea>
+                    <div class="char-count">363/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="tyroola-231" data-field="headline" rows="2">Unbeatable Prices</textarea>
+                    <div class="char-count">17/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="tyroola-231" data-field="description" rows="3"></textarea>
+                    <div class="char-count">0/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: SHOP_NOW</span>
+            <span class="tag">Tactic: </span>
+            <span class="tag">Funnel: TOF</span>
+        </div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="tyroola-231" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="price-value" data-id="tyroola-096" data-score="0.5946">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">tyroola-096</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">price-value</span>
+                <span class="hl-preview">Save up to 50% on tyres online</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#f59e0b">0.59</span>
+                    <span class="verdict-label">NEEDS WORK</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('tyroola-096','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('tyroola-096','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('tyroola-096','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.5946 &nbsp; Rubric: 57.0/63.8 &nbsp; Rules: 24/25 &nbsp; Facts: 0.00 &nbsp; Hook: offer_first</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="tyroola-096" data-field="primary_text" rows="8">Up to 50% off RRP. Search by rego, compare hundreds of tyres, pay in 4 with Afterpay — and a mobile fitter comes to you.
+
+No tyre shop. No waiting room. No guessing your tyre size.
+
+4.7/5 stars across 4,530+ reviews. Price match guaranteed — we'll beat any lower price by 3%.</textarea>
+                    <div class="char-count">275/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="tyroola-096" data-field="headline" rows="2">Save up to 50% on tyres online</textarea>
+                    <div class="char-count">30/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="tyroola-096" data-field="description" rows="3">800+ fitting locations. Price matched or we beat it by 3%. Search free by rego.</textarea>
+                    <div class="char-count">79/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: Search by Rego — It's Free</span>
+            <span class="tag">Tactic: general</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Split-screen visual: left side shows a frustrated driver in a tyre shop waiting room; right side shows someone relaxed at home on their phone with a mobile fitter working on their car in the driveway. Clean, everyday Australian suburban setting.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="tyroola-096" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="price-value" data-id="tyroola-312" data-score="0.6024">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">tyroola-312</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">price-value</span>
+                <span class="hl-preview">Pay up to 50% less on tyres</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#f59e0b">0.60</span>
+                    <span class="verdict-label">NEEDS WORK</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('tyroola-312','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('tyroola-312','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('tyroola-312','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.6024 &nbsp; Rubric: 57.8/63.8 &nbsp; Rules: 24/25 &nbsp; Facts: 0.00 &nbsp; Hook: question</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="tyroola-312" data-field="primary_text" rows="8">When did buying tyres get so complicated?
+
+Most Australians overpay by hundreds — because comparing prices across tyre shops takes a Saturday you don't have.
+
+Typroola shows you every tyre that fits your car, side by side, with prices up to 50% off RRP. Find a lower price anywhere? We'll beat it by 3%.
+
+Over 4,530 Australians rated us 4.7/5. They paid less. A fitter came to them. Done.
+
+Search by rego in 10 seconds — it's free.</textarea>
+                    <div class="char-count">431/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="tyroola-312" data-field="headline" rows="2">Pay up to 50% less on tyres</textarea>
+                    <div class="char-count">27/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="tyroola-312" data-field="description" rows="3">4,530+ reviews. 4.7/5 stars. Price match beats any lower price by 3%. Search by rego — free.</textarea>
+                    <div class="char-count">92/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: Search by Rego — It's Free</span>
+            <span class="tag">Tactic: general</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Split-screen static: left side shows a frustrated driver in a tyre shop waiting room, clock on the wall; right side shows someone on a phone, smiling, tyre being fitted in their driveway. Clean, real-life Australian suburban setting.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="tyroola-312" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="price-value" data-id="tyroola-024" data-score="0.6363">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">tyroola-024</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">price-value</span>
+                <span class="hl-preview">Save up to 50% on tyres online</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#f59e0b">0.64</span>
+                    <span class="verdict-label">NEEDS WORK</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('tyroola-024','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('tyroola-024','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('tyroola-024','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.6363 &nbsp; Rubric: 61.0/63.8 &nbsp; Rules: 24/25 &nbsp; Facts: 0.00 &nbsp; Hook: newness</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="tyroola-024" data-field="primary_text" rows="8">Mia searched 6 tyre shops last Saturday. Spent 3 hours. Still wasn't sure she got the best deal.
+
+She found Tyroola on Sunday morning. Searched her rego, compared brands side-by-side, and saved up to 50% off RRP — in under 10 minutes.
+
+A mobile fitter came to her driveway Tuesday. Done.
+
+Over 4,530 Australians have rated us 4.7/5. And if you find a lower price anywhere, we'll beat it by 3%.
+
+Split it across 4 interest-free instalments with Afterpay if you need to.</textarea>
+                    <div class="char-count">468/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="tyroola-024" data-field="headline" rows="2">Save up to 50% on tyres online</textarea>
+                    <div class="char-count">30/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="tyroola-024" data-field="description" rows="3">Search by rego in seconds. 800+ fitting locations. Price match guaranteed — we'll beat any lower price by 3%.</textarea>
+                    <div class="char-count">109/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: Search by Rego — It's Free</span>
+            <span class="tag">Tactic: general</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Split-screen visual: left side shows a frustrated woman in a tyre shop waiting room, clock on wall. Right side shows the same woman relaxed at home on her phone, tyres being fitted in her driveway behind her. Clean, relatable, no stock-photo energy.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="tyroola-024" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="price-value" data-id="tyroola-313" data-score="0.6549">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">tyroola-313</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">price-value</span>
+                <span class="hl-preview">🚐 Mobile tyre fitters straight to your door</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#f59e0b">0.65</span>
+                    <span class="verdict-label">NEEDS WORK</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('tyroola-313','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('tyroola-313','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('tyroola-313','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.6549 &nbsp; Rubric: 41.8/63.8 &nbsp; Rules: 25/25 &nbsp; Facts: 1.00 &nbsp; Hook: question</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="tyroola-313" data-field="primary_text" rows="8">Why pay more? We price match so you can order online and be confident you’ve got the best deal. 
+
+✅ Mobile tyre fitters straight to your door
+✅ No salesman, just tyres
+✅ Competitive pricing
+
+Satisfied with product - Great price excellent service and a very fast delivery AA++ - ⭐️⭐️⭐️⭐️⭐️ Richard
+
+Order a tyre in under 5 minutes with Tyroola. Get it now!</textarea>
+                    <div class="char-count">355/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="tyroola-313" data-field="headline" rows="2">🚐 Mobile tyre fitters straight to your door</textarea>
+                    <div class="char-count">43/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="tyroola-313" data-field="description" rows="3"></textarea>
+                    <div class="char-count">0/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: SHOP_NOW</span>
+            <span class="tag">Tactic: </span>
+            <span class="tag">Funnel: TOF</span>
+        </div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="tyroola-313" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="price-value" data-id="tyroola-177" data-score="0.6892">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">tyroola-177</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">price-value</span>
+                <span class="hl-preview">Price Match Guaranteed</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#f59e0b">0.69</span>
+                    <span class="verdict-label">NEEDS WORK</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('tyroola-177','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('tyroola-177','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('tyroola-177','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.6892 &nbsp; Rubric: 46.2/63.8 &nbsp; Rules: 24/25 &nbsp; Facts: 1.00 &nbsp; Hook: question</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="tyroola-177" data-field="primary_text" rows="8">Got 5 minutes?
+
+Shop with Tyroola for the best brands at the best prices
+
+✅ Transparent prices
+✅ Mobile tyre fitters straight to your door
+✅ No salesman, just tyres
+
+Best tyre prices and service - I've been buying from Tyroola for many years, their prices are excellent and they will price match. Highly recommended! - ⭐️⭐️⭐️⭐️⭐️ Max
+
+Learn more.</textarea>
+                    <div class="char-count">346/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="tyroola-177" data-field="headline" rows="2">Price Match Guaranteed</textarea>
+                    <div class="char-count">22/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="tyroola-177" data-field="description" rows="3"></textarea>
+                    <div class="char-count">0/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: LEARN_MORE</span>
+            <span class="tag">Tactic: </span>
+            <span class="tag">Funnel: TOF</span>
+        </div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="tyroola-177" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="price-value" data-id="tyroola-100" data-score="0.6902">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">tyroola-100</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">price-value</span>
+                <span class="hl-preview">Find a lower price? We'll match it</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#f59e0b">0.69</span>
+                    <span class="verdict-label">NEEDS WORK</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('tyroola-100','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('tyroola-100','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('tyroola-100','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.6902 &nbsp; Rubric: 44.0/63.8 &nbsp; Rules: 25/25 &nbsp; Facts: 1.00 &nbsp; Hook: question</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="tyroola-100" data-field="primary_text" rows="8">Wouldn’t it be nice if you didn’t have to compare tyre prices for hours?
+
+✅ Price Match Guarantee
+✅ Mobile tyre fitters straight to your door
+✅ No salesman, just tyres
+
+Saving on tyres has never been easier. Get it done today!</textarea>
+                    <div class="char-count">226/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="tyroola-100" data-field="headline" rows="2">Find a lower price? We'll match it</textarea>
+                    <div class="char-count">34/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="tyroola-100" data-field="description" rows="3"></textarea>
+                    <div class="char-count">0/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: SHOP_NOW</span>
+            <span class="tag">Tactic: </span>
+            <span class="tag">Funnel: TOF</span>
+        </div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="tyroola-100" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="simplicity-clarity" data-id="tyroola-127" data-score="0.6706">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">tyroola-127</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">simplicity-clarity</span>
+                <span class="hl-preview">Buy Tyres Online | Cheap Tyres Online | Tyroola</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#f59e0b">0.67</span>
+                    <span class="verdict-label">NEEDS WORK</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('tyroola-127','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('tyroola-127','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('tyroola-127','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.6706 &nbsp; Rubric: 45.0/63.8 &nbsp; Rules: 24/25 &nbsp; Facts: 1.00 &nbsp; Hook: offer_first</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="tyroola-127" data-field="primary_text" rows="8">Find your size, pick your tyres, choose delivery or mobile fitting. Clear prices, no hidden fees, done. That's Tyroola. 🛞
+
+Just follow these simple steps:
+1. Click the &quot;Shop Now&quot; button
+2. Chuck in your car's tyre size
+3. Choose your perfect set from our ripper deals
+4. Fitting options (important step): • Click 'mobile fitting' if you want us to come to you • Choose a local fitter if you want tyres delivered to your local shop
+
+Saving on tyres has never been easier. Get it done today!</textarea>
+                    <div class="char-count">489/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="tyroola-127" data-field="headline" rows="2">Buy Tyres Online | Cheap Tyres Online | Tyroola</textarea>
+                    <div class="char-count">47/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="tyroola-127" data-field="description" rows="3"></textarea>
+                    <div class="char-count">0/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: SHOP_NOW</span>
+            <span class="tag">Tactic: </span>
+            <span class="tag">Funnel: TOF</span>
+        </div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="tyroola-127" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="transformation-story" data-id="TRNE-606" data-score="0.7129">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">TRNE-606</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">transformation-story</span>
+                <span class="hl-preview">Mel had new tyres by 9am Thursday</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.71</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('TRNE-606','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('TRNE-606','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('TRNE-606','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7129 &nbsp; Rubric: 50.5/63.8 &nbsp; Rules: 23/25 &nbsp; Facts: 1.00 &nbsp; Hook: newness</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="TRNE-606" data-field="primary_text" rows="8">Mel typed her rego in on Tuesday night. By Thursday morning, a fitter was in her driveway — done before her first coffee.
+
+No waiting room. No half-day wasted. No haggling over price.
+
+She paid in 4 instalments with Afterpay, and Tyroola's price match guarantee meant she didn't overpay. Over 4,530 Australians gave it 4.7 out of 5.
+
+Search your rego free. See your options in seconds.</textarea>
+                    <div class="char-count">385/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="TRNE-606" data-field="headline" rows="2">Mel had new tyres by 9am Thursday</textarea>
+                    <div class="char-count">33/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="TRNE-606" data-field="description" rows="3">Search by rego, buy online, mobile fitter comes to you. 4.7/5 from 4,530+ Australians.</textarea>
+                    <div class="char-count">86/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: Search by Rego — It's Free</span>
+            <span class="tag">Tactic: general</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Show a woman standing in a driveway, coffee in hand, watching a mobile fitter work on her car. Morning light, suburban setting. Feels effortless — not transactional.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="TRNE-606" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+</div>
+<script>
+const statuses = {};
+const notes = {};
+const filters = { type: 'all', status: 'all' };
+
+function toggleCard(topEl) {
+    const card = topEl.closest('.card');
+    card.classList.toggle('expanded');
+}
+
+function toggleAll() {
+    const cards = document.querySelectorAll('.card');
+    const anyExpanded = document.querySelector('.card.expanded');
+    cards.forEach(c => {
+        if (anyExpanded) c.classList.remove('expanded');
+        else c.classList.add('expanded');
+    });
+}
+
+function setStatus(id, status, btn) {
+    statuses[id] = status;
+    const card = document.querySelector(`[data-id="${id}"]`);
+    card.className = card.className.replace(/status-\w+/g, '') + ` status-${status}`;
+    card.querySelectorAll('.card-right .btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    updatePills();
+    updateCounter();
+}
+
+function setFilter(group, value, btn) {
+    filters[group] = value;
+    // Update active state in toolbar
+    if (group === 'type') {
+        document.querySelectorAll('.toolbar .tbtn').forEach((b, i) => {
+            if (i < 4) b.classList.remove('active');
+        });
+    }
+    btn.classList.add('active');
+    filterCards();
+}
+
+function filterCards() {
+    document.querySelectorAll('.card').forEach(c => {
+        const matchType = filters.type === 'all' || c.dataset.type === filters.type;
+        const id = c.dataset.id;
+        const matchStatus = filters.status === 'all' ||
+            (filters.status === 'unreviewed' && !statuses[id]) ||
+            statuses[id] === filters.status;
+        c.style.display = matchType && matchStatus ? '' : 'none';
+    });
+    updateCounter();
+}
+
+function setSort(mode, btn) {
+    const container = document.getElementById('cards');
+    const cards = Array.from(container.querySelectorAll('.card'));
+    // Update active state on sort buttons
+    btn.parentElement.querySelectorAll('.tbtn').forEach(b => {
+        if (b.textContent.includes('Score') || b.textContent.includes('Name'))
+            b.classList.remove('active');
+    });
+    btn.classList.add('active');
+    if (mode === 'score') {
+        cards.sort((a, b) => parseFloat(b.dataset.score) - parseFloat(a.dataset.score));
+    } else {
+        cards.sort((a, b) => a.dataset.id.localeCompare(b.dataset.id));
+    }
+    cards.forEach(c => container.appendChild(c));
+}
+
+function updatePills() {
+    const counts = { approved: 0, revise: 0, kill: 0 };
+    Object.values(statuses).forEach(s => { if (counts[s] !== undefined) counts[s]++; });
+    const total = 20;
+    const reviewed = Object.keys(statuses).length;
+    document.getElementById('pillPending').textContent = `Pending: ${total - reviewed}`;
+    document.getElementById('pillApproved').textContent = `Approved: ${counts.approved}`;
+    document.getElementById('pillEdited').textContent = `Edited: ${counts.revise}`;
+    document.getElementById('pillKilled').textContent = `Killed: ${counts.kill}`;
+}
+
+function updateCounter() {
+    const visible = document.querySelectorAll('.card:not([style*="display: none"])').length;
+    document.getElementById('counter').textContent = `Showing ${visible}/20`;
+}
+
+function saveJSON() {
+    document.querySelectorAll('.notes').forEach(n => {
+        if (n.value.trim()) notes[n.dataset.id] = n.value.trim();
+    });
+    // Also collect edited field values
+    const edits = {};
+    document.querySelectorAll('.field-edit').forEach(el => {
+        const id = el.dataset.id;
+        const field = el.dataset.field;
+        if (!edits[id]) edits[id] = {};
+        edits[id][field] = el.value;
+    });
+    const data = { statuses, notes, edits, exported: new Date().toISOString() };
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'review-r3-decisions.json';
+    a.click();
+}
+
+function exportCSV() {
+    document.querySelectorAll('.notes').forEach(n => {
+        if (n.value.trim()) notes[n.dataset.id] = n.value.trim();
+    });
+    let csv = 'id,type,angle,verdict,composite,status,notes\n';
+    document.querySelectorAll('.card').forEach(c => {
+        const id = c.dataset.id;
+        csv += `${id},${c.dataset.type},${c.dataset.angle},${c.dataset.verdict},` +
+               `${c.querySelector('.score-circle').textContent},${statuses[id]||'pending'},` +
+               `"${(notes[id]||'').replace(/"/g,'""')}"\n`;
+    });
+    const blob = new Blob([csv], {type: 'text/csv'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'review-r3.csv';
+    a.click();
+}
+
+updateCounter();
+</script>
+</body>
+</html>
