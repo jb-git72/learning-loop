@@ -1,14 +1,14 @@
 {
-  "ad_id": "tyroola-312",
-  "original_ad_name": "creative-iteration-A-002.png with sitelinks",
   "angle": "price-value",
-  "hook_type": "question",
+  "tactic": "general",
+  "hook_type": "pattern_interrupt",
   "funnel": "TOF",
-  "primary_text": "Wouldn’t it be nice if you didn’t have to compare tyre prices for hours?\n\n✅ Price Match Guarantee\n✅ Mobile tyre fitters straight to your door\n✅ No salesman, just tyres\n\nSaving on tyres has never been easier. Get it done today!",
-  "headline": "Find a lower price? We'll match it",
-  "description": "",
-  "cta": "SHOP_NOW",
   "content_type": "meta-ad",
-  "source": "classified_from_meta_export",
-  "classification_confidence": 0.92
+  "creative_brief": "Split-screen or side-by-side visual: one person sitting in a dingy tyre shop waiting room (bored, clock on wall), the other relaxed at home on a laptop or phone. Clean, relatable, no stock-photo polish — should feel like a real moment.",
+  "generated_at": "2026-04-06T11:38:29.020119",
+  "ad_id": "tyroola-312",
+  "primary_text": "\"I paid $340 less than my mate did at the tyre shop last week.\"\n\nHe booked in, waited two hours, paid whatever they quoted. I searched by rego on Tyroola, compared 40+ brands, and had a mobile fitter come to me.\n\nSame size tyres. Very different bill.\n\nTyroola shows every tyre that fits your car — with real prices, not the ones they make up at the counter. If you find it cheaper elsewhere, we'll beat it by 3%.\n\n4,530+ Australians. 4.7/5 stars. 800+ fitting locations nationwide.",
+  "headline": "Your mate overpaid. You don't have to.",
+  "description": "Search by rego in seconds. Up to 50% off RRP. Mobile fitters come to you. Price matched or beaten by 3%.",
+  "cta": "Search by Rego — It's Free"
 }
