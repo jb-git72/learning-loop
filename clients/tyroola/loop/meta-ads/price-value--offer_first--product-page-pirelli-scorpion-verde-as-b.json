@@ -1,14 +1,14 @@
 {
-  "ad_id": "tyroola-096",
-  "original_ad_name": "Product Page | Pirelli-Scorpion Verde AS-Buy4Get15%Off-C-002.png",
   "angle": "price-value",
-  "hook_type": "offer_first",
+  "tactic": "general",
+  "hook_type": "newness",
   "funnel": "TOF",
-  "primary_text": "⭐️⭐️⭐️⭐️⭐️ “Awesome tyres. Drive great. Look great. Really good price. Will definitely do online tyres again.\"\n\n✅ Instant Cashback\n✅ Competitive pricing\n✅ No salesmen, just tyres\n\n🛞 Saving on tyres has never been easier",
-  "headline": "Instant Cashback",
-  "description": "",
-  "cta": "LEARN_MORE",
   "content_type": "meta-ad",
-  "source": "classified_from_meta_export",
-  "classification_confidence": 0.85
+  "creative_brief": "Show a fitter in a branded uniform crouching beside a car in a suburban driveway on a Saturday morning — natural light, no studio feel. Overlay Dan's quote in a simple speech bubble graphic.",
+  "generated_at": "2026-04-06T11:39:49.406679",
+  "ad_id": "tyroola-096",
+  "primary_text": "\"I typed in my rego, found my tyres for $190 less than the servo quoted, and a fitter came to my driveway Saturday morning.\"\n\nThat's Dan, from Melbourne. He didn't drive anywhere. Didn't wait in a queue. Just searched free by rego, compared 200+ brands, and paid over 4 instalments with Afterpay.\n\nTypoola has 4.7/5 stars from 4,530+ Australians. And if you find a lower price, we'll beat it by 3%.",
+  "headline": "Dan saved $190 — fitter came to him",
+  "description": "Search free by rego. 800+ fitting locations nationwide. Price matched or we beat it by 3%.",
+  "cta": "Search by Rego — It's Free"
 }
