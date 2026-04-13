@@ -5,60 +5,56 @@
   <a href="#signupForm" class="campaign-header__cta">Join Waitlist</a>
 </header>
 
-<section class="hero">
-  <span class="hero__badge">Pre-Launch</span>
-  <h1 class="hero__title">I lied about where our groceries came from</h1>
-  <p class="hero__subtitle">Then I found the farms willing to sell direct. The waitlist closes before launch.</p>
-
-  <img src="https://farmthru.com.au/cdn/shop/files/69003bffe27c151e286d3416_Rachel_Cow_1.jpg?v=1763463097" alt="FarmThru partner farm" class="hero__image">
-
-  <div class="countdown" id="countdown">
-    <div class="countdown__block">
-      <span class="countdown__number" data-days>00</span>
-      <span class="countdown__label">Days</span>
+<section class="hero--light">
+  <div class="hero__content">
+    <div class="hero__text">
+      <h1>I lied about where our groceries came from</h1>
+      <p>Then I found the farms willing to sell direct. The waitlist closes before launch.</p>
+      <div class="countdown" id="countdown" style="justify-content: flex-start; margin-top: 20px; margin-bottom: 0;">
+        <div class="countdown__block">
+          <span class="countdown__number" data-days>00</span>
+          <span class="countdown__label">Days</span>
+        </div>
+        <div class="countdown__block">
+          <span class="countdown__number" data-hours>00</span>
+          <span class="countdown__label">Hours</span>
+        </div>
+        <div class="countdown__block">
+          <span class="countdown__number" data-mins>00</span>
+          <span class="countdown__label">Mins</span>
+        </div>
+        <div class="countdown__block">
+          <span class="countdown__number" data-secs>00</span>
+          <span class="countdown__label">Secs</span>
+        </div>
+      </div>
     </div>
-    <div class="countdown__block">
-      <span class="countdown__number" data-hours>00</span>
-      <span class="countdown__label">Hours</span>
-    </div>
-    <div class="countdown__block">
-      <span class="countdown__number" data-mins>00</span>
-      <span class="countdown__label">Mins</span>
-    </div>
-    <div class="countdown__block">
-      <span class="countdown__number" data-secs>00</span>
-      <span class="countdown__label">Secs</span>
+    <div class="signup-card" id="formContainer">
+      <h3>Save your spot</h3>
+      <div class="social-proof" style="margin-bottom: 16px; margin-top: 0;">
+        <div class="social-proof__avatars">
+          <span class="social-proof__avatar">JB</span>
+          <span class="social-proof__avatar">KL</span>
+          <span class="social-proof__avatar">AM</span>
+        </div>
+        <span>Join <span class="social-proof__count" id="signupCounter" data-count="0">0</span> people on the waitlist</span>
+      </div>
+      <form class="signup__form" id="signupForm">
+        <div class="signup__field"><input type="text" name="name" class="signup__input" placeholder="First name" autocomplete="given-name"></div>
+        <div class="signup__field"><input type="email" name="email" class="signup__input" placeholder="Email address" required autocomplete="email"></div>
+        <div class="signup__field"><input type="tel" name="phone" class="signup__input" placeholder="Mobile (optional)" autocomplete="tel"></div>
+        <input type="hidden" name="utm_source" id="utmSource">
+        <input type="hidden" name="utm_medium" id="utmMedium">
+        <input type="hidden" name="utm_campaign" id="utmCampaign">
+        <input type="hidden" name="utm_content" id="utmContent">
+        <button type="submit" class="signup__button">Join the Waitlist</button>
+        <p class="signup__disclaimer">Free to join. No obligation. We'll notify you when the campaign goes live.</p>
+      </form>
     </div>
   </div>
-
-  <div class="social-proof">
-    <div class="social-proof__avatars">
-      <span class="social-proof__avatar">JB</span>
-      <span class="social-proof__avatar">KL</span>
-      <span class="social-proof__avatar">AM</span>
-    </div>
-    <span>Join <span class="social-proof__count" id="signupCounter" data-count="0">0</span> people on the waitlist</span>
+  <div class="hero__photo">
+    <img src="https://farmthru.com.au/cdn/shop/files/69003bffe27c151e286d3416_Rachel_Cow_1.jpg?v=1763463097" alt="FarmThru partner farm">
   </div>
-</section>
-
-<section class="signup" id="formContainer">
-  <form class="signup__form" id="signupForm">
-    <div class="signup__field">
-      <input type="text" name="name" class="signup__input" placeholder="First name" autocomplete="given-name">
-    </div>
-    <div class="signup__field">
-      <input type="email" name="email" class="signup__input" placeholder="Email address" required autocomplete="email">
-    </div>
-    <div class="signup__field">
-      <input type="tel" name="phone" class="signup__input" placeholder="Mobile (optional, for SMS updates)" autocomplete="tel">
-    </div>
-    <input type="hidden" name="utm_source" id="utmSource">
-    <input type="hidden" name="utm_medium" id="utmMedium">
-    <input type="hidden" name="utm_campaign" id="utmCampaign">
-    <input type="hidden" name="utm_content" id="utmContent">
-    <button type="submit" class="signup__button">Join the Waitlist</button>
-    <p class="signup__disclaimer">Free to join. No obligation. We'll notify you when the campaign goes live.</p>
-  </form>
 </section>
 
 <section class="thank-you" id="thankYou">
@@ -77,14 +73,11 @@
 </section>
 
 <section class="campaign-section">
+  <h2 class="campaign-section__title">The problem nobody talks about at the checkout</h2>
   <p class="campaign-section__text">For years I told myself supermarket food was fine. Fresh enough. Good enough. Then I flipped over a pack of beef mince and saw no farm name. No region. Just a barcode and a use-by date.</p>
   <p class="campaign-section__text">I started asking questions. The answers were worse than I expected. Produce travelling over 2,400km before reaching the shelf. Farmers earning cents while retail prices climbed.</p>
   <p class="campaign-section__text">So we built something different. A grocery store where every product traces back to a named farm. Order online, collect from Brookvale. No middlemen inflating the price.</p>
   <p class="campaign-section__text">327 people have already joined the VIP waitlist. Spots close before we launch.</p>
-</section>
-
-<section class="campaign-section">
-  <h2 class="campaign-section__title">The problem nobody talks about at the checkout</h2>
   <p class="campaign-section__text">Your supermarket trolley looks full. But the supply chain behind it is broken.</p>
   <p class="campaign-section__text">Produce travels up to 10x further than it needs to. Farmers sell at a loss so retailers can run specials. And you pay premium prices for food with no name, no story, no traceability.</p>
   <p class="campaign-section__text">This isn't a niche concern. It's the weekly shop for every household in Australia. The system rewards distance and anonymity. It punishes the people who actually grow your food.</p>
@@ -102,20 +95,14 @@
   <p class="campaign-section__text">Brookvale is our first hub: Unit 23, 10-18 Orchard Rd. We also offer delivery across Sydney, Central Coast, and Wollongong.</p>
   <p class="campaign-section__text">Every product lists the farm it came from. Not a region. Not a state. The actual farm.</p>
   <p class="campaign-section__text">This is what "we'll show you where your food comes from" looks like. Not a marketing slogan. A traceable supply chain you can verify yourself.</p>
-</section>
-
-<section class="campaign-section">
-  <h2 class="campaign-section__title">Own a piece of the grocery store that pays farmers first</h2>
-  <p class="campaign-section__text">We're opening equity crowdfunding through Birchal. This is your chance to be a partner, not just a customer.</p>
+  <p class="campaign-section__text">Own a piece of the grocery store that pays farmers first
+We're opening equity crowdfunding through Birchal. This is your chance to be a partner, not just a customer.</p>
   <p class="campaign-section__text">The VIP waitlist gives you first access to invest, priority updates, and an exclusive Q&A with our founding team. It costs $5, fully refundable, no commitment.</p>
   <p class="campaign-section__text">Why a waitlist? Because the first 48 hours of a crowdfunding campaign determine its momentum. We need committed people ready on day one.</p>
   <p class="campaign-section__text">The waitlist closes before launch. Once it's full, it's full. Join now or wait for whatever's left.</p>
   <p class="campaign-section__text">No commitment beyond the deposit. You decide later if you want to invest. Your $5 is refundable at any time.</p>
-</section>
-
-<section class="campaign-section">
-  <h2 class="campaign-section__title">This is bigger than one grocery run</h2>
-  <p class="campaign-section__text">Every dollar spent at FarmThru goes further for farmers. Every order proves that direct supply chains work at scale.</p>
+  <p class="campaign-section__text">This is bigger than one grocery run
+Every dollar spent at FarmThru goes further for farmers. Every order proves that direct supply chains work at scale.</p>
   <p class="campaign-section__text">You're not just buying better food. You're voting for a system where values and money finally point the same direction.</p>
   <p class="campaign-section__text">Be part of it before the waitlist closes.</p>
 </section>
@@ -152,12 +139,6 @@
     <button class="vip__button" id="vipDepositBtn">Secure VIP Access</button>
     <p class="vip__refund">100% refundable. No obligation to invest.</p>
   </div>
-</section>
-
-<section class="campaign-section" style="text-align: center;">
-  <h2 class="campaign-section__title">Don't miss out.</h2>
-  <p class="campaign-section__text" style="max-width: 440px; margin: 0 auto 24px;">Join the waitlist now. It takes 10 seconds and you'll be first to know when FarmThru opens investment to the public.</p>
-  <a href="#signupForm" class="signup__button" style="display: inline-block; max-width: 320px; text-decoration: none;">Join the Waitlist</a>
 </section>
 
 <footer class="campaign-footer">
