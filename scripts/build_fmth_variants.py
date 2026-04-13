@@ -43,24 +43,53 @@ def text_to_paragraphs(text: str) -> str:
     )
 
 
-def build_sections_html(sections: list[dict]) -> str:
+MAX_VISIBLE_SECTIONS = 3  # Max content sections (validator check #16 allows 6 total; hero+thank-you+VIP+final CTA use 4)
+
+
+def build_sections_html(sections: list[dict], hero_copy: str = "") -> str:
     """Build campaign-section HTML blocks from LP JSON sections.
 
-    The last section titled 'Compliance' gets special treatment — it goes
-    in the footer disclaimer, not as a visible section.
+    Merges hero_copy into the first section and caps visible content sections
+    at MAX_VISIBLE_SECTIONS to stay within the 6-section validator limit.
+    Extra sections are folded into the last visible section.
+    Compliance section goes in footer (handled separately).
     """
-    blocks = []
+    # Collect non-compliance sections
+    content_sections = []
     for section in sections:
         heading = section.get("heading", "")
-        body = section.get("body", "")
-
-        # Skip compliance section (handled separately in footer)
         if heading.lower().strip() == "compliance":
             continue
+        content_sections.append(section)
 
+    # Prepend hero_copy as intro text to the first section
+    if hero_copy and content_sections:
+        first = content_sections[0]
+        merged_body = hero_copy.strip() + "\n\n" + first.get("body", "")
+        content_sections[0] = {**first, "body": merged_body}
+    elif hero_copy:
+        content_sections.insert(0, {"heading": "", "body": hero_copy})
+
+    # If too many sections, fold extras into the last visible one
+    if len(content_sections) > MAX_VISIBLE_SECTIONS:
+        visible = content_sections[:MAX_VISIBLE_SECTIONS]
+        overflow = content_sections[MAX_VISIBLE_SECTIONS:]
+        # Append overflow content to the last visible section
+        last = visible[-1]
+        extra_body = "\n\n".join(
+            (s.get("heading", "") + "\n" + s.get("body", "")).strip()
+            for s in overflow
+        )
+        visible[-1] = {**last, "body": last.get("body", "") + "\n\n" + extra_body}
+        content_sections = visible
+
+    blocks = []
+    for section in content_sections:
+        heading = section.get("heading", "")
+        body = section.get("body", "")
         body_html = text_to_paragraphs(body)
-        blocks.append(f"""<section class="campaign-section">
-  <h2 class="campaign-section__title">{heading}</h2>
+        heading_html = f'\n  <h2 class="campaign-section__title">{heading}</h2>' if heading else ""
+        blocks.append(f"""<section class="campaign-section">{heading_html}
   {body_html}
 </section>""")
 
@@ -68,30 +97,41 @@ def build_sections_html(sections: list[dict]) -> str:
 
 
 def get_compliance_text(sections: list[dict]) -> str:
-    """Extract compliance section body for footer disclaimer."""
+    """Extract compliance section body for footer disclaimer.
+
+    Ensures the text contains "not financial advice" (ASIC validator requirement).
+    """
     for section in sections:
         if section.get("heading", "").lower().strip() == "compliance":
-            return section.get("body", "")
-    # Fallback
+            text = section.get("body", "")
+            if "not financial advice" not in text.lower():
+                text += " This page is not financial advice."
+            return text
+    # Fallback — must include "not financial advice" for ASIC validator
     return (
         "This is a pre-registration page for an upcoming equity crowdfunding "
         "campaign. No money is being raised at this stage. Any future offer "
         "will be made via a disclosure document on Birchal. This page is not "
         "financial advice. Consider seeking independent financial advice "
-        "before making any investment decision."
+        "before making any investment decision. The $5 VIP deposit is fully "
+        "refundable."
     )
 
 
 def build_variant_html(lp: dict) -> str:
-    """Build a complete campaign variant HTML file from LP JSON."""
+    """Build a complete campaign variant HTML file from LP JSON.
+
+    Uses the hero--light + signup-card structure that passes all 24
+    validator checks (matching index-o.html which scores 24/24).
+    """
     headline = lp.get("headline", "")
     subhead = lp.get("subhead", "")
     hero_copy = lp.get("hero_copy", "")
     sections = lp.get("sections", [])
     compliance = get_compliance_text(sections)
 
-    hero_paragraphs = text_to_paragraphs(hero_copy)
-    sections_html = build_sections_html(sections)
+    # Build content sections (hero_copy merged into first section, capped at MAX_VISIBLE_SECTIONS)
+    sections_html = build_sections_html(sections, hero_copy=hero_copy)
 
     return f"""<header class="campaign-header">
   <div class="campaign-header__logos">
@@ -100,60 +140,56 @@ def build_variant_html(lp: dict) -> str:
   <a href="#signupForm" class="campaign-header__cta">Join Waitlist</a>
 </header>
 
-<section class="hero">
-  <span class="hero__badge">Pre-Launch</span>
-  <h1 class="hero__title">{headline}</h1>
-  <p class="hero__subtitle">{subhead}</p>
-
-  <img src="{HERO_IMAGE}" alt="FarmThru partner farm" class="hero__image">
-
-  <div class="countdown" id="countdown">
-    <div class="countdown__block">
-      <span class="countdown__number" data-days>00</span>
-      <span class="countdown__label">Days</span>
+<section class="hero--light">
+  <div class="hero__content">
+    <div class="hero__text">
+      <h1>{headline}</h1>
+      <p>{subhead}</p>
+      <div class="countdown" id="countdown" style="justify-content: flex-start; margin-top: 20px; margin-bottom: 0;">
+        <div class="countdown__block">
+          <span class="countdown__number" data-days>00</span>
+          <span class="countdown__label">Days</span>
+        </div>
+        <div class="countdown__block">
+          <span class="countdown__number" data-hours>00</span>
+          <span class="countdown__label">Hours</span>
+        </div>
+        <div class="countdown__block">
+          <span class="countdown__number" data-mins>00</span>
+          <span class="countdown__label">Mins</span>
+        </div>
+        <div class="countdown__block">
+          <span class="countdown__number" data-secs>00</span>
+          <span class="countdown__label">Secs</span>
+        </div>
+      </div>
     </div>
-    <div class="countdown__block">
-      <span class="countdown__number" data-hours>00</span>
-      <span class="countdown__label">Hours</span>
-    </div>
-    <div class="countdown__block">
-      <span class="countdown__number" data-mins>00</span>
-      <span class="countdown__label">Mins</span>
-    </div>
-    <div class="countdown__block">
-      <span class="countdown__number" data-secs>00</span>
-      <span class="countdown__label">Secs</span>
+    <div class="signup-card" id="formContainer">
+      <h3>Save your spot</h3>
+      <div class="social-proof" style="margin-bottom: 16px; margin-top: 0;">
+        <div class="social-proof__avatars">
+          <span class="social-proof__avatar">JB</span>
+          <span class="social-proof__avatar">KL</span>
+          <span class="social-proof__avatar">AM</span>
+        </div>
+        <span>Join <span class="social-proof__count" id="signupCounter" data-count="0">0</span> people on the waitlist</span>
+      </div>
+      <form class="signup__form" id="signupForm">
+        <div class="signup__field"><input type="text" name="name" class="signup__input" placeholder="First name" autocomplete="given-name"></div>
+        <div class="signup__field"><input type="email" name="email" class="signup__input" placeholder="Email address" required autocomplete="email"></div>
+        <div class="signup__field"><input type="tel" name="phone" class="signup__input" placeholder="Mobile (optional)" autocomplete="tel"></div>
+        <input type="hidden" name="utm_source" id="utmSource">
+        <input type="hidden" name="utm_medium" id="utmMedium">
+        <input type="hidden" name="utm_campaign" id="utmCampaign">
+        <input type="hidden" name="utm_content" id="utmContent">
+        <button type="submit" class="signup__button">Join the Waitlist</button>
+        <p class="signup__disclaimer">Free to join. No obligation. We'll notify you when the campaign goes live.</p>
+      </form>
     </div>
   </div>
-
-  <div class="social-proof">
-    <div class="social-proof__avatars">
-      <span class="social-proof__avatar">JB</span>
-      <span class="social-proof__avatar">KL</span>
-      <span class="social-proof__avatar">AM</span>
-    </div>
-    <span>Join <span class="social-proof__count" id="signupCounter" data-count="0">0</span> people on the waitlist</span>
+  <div class="hero__photo">
+    <img src="{HERO_IMAGE}" alt="FarmThru partner farm">
   </div>
-</section>
-
-<section class="signup" id="formContainer">
-  <form class="signup__form" id="signupForm">
-    <div class="signup__field">
-      <input type="text" name="name" class="signup__input" placeholder="First name" autocomplete="given-name">
-    </div>
-    <div class="signup__field">
-      <input type="email" name="email" class="signup__input" placeholder="Email address" required autocomplete="email">
-    </div>
-    <div class="signup__field">
-      <input type="tel" name="phone" class="signup__input" placeholder="Mobile (optional, for SMS updates)" autocomplete="tel">
-    </div>
-    <input type="hidden" name="utm_source" id="utmSource">
-    <input type="hidden" name="utm_medium" id="utmMedium">
-    <input type="hidden" name="utm_campaign" id="utmCampaign">
-    <input type="hidden" name="utm_content" id="utmContent">
-    <button type="submit" class="signup__button">Join the Waitlist</button>
-    <p class="signup__disclaimer">Free to join. No obligation. We'll notify you when the campaign goes live.</p>
-  </form>
 </section>
 
 <section class="thank-you" id="thankYou">
@@ -169,10 +205,6 @@ def build_variant_html(lp: dict) -> str:
     <button class="share__btn" data-share="email">Email</button>
     <button class="share__btn" data-share="copy">Copy Link</button>
   </div>
-</section>
-
-<section class="campaign-section">
-  {hero_paragraphs}
 </section>
 
 {sections_html}
@@ -209,12 +241,6 @@ def build_variant_html(lp: dict) -> str:
     <button class="vip__button" id="vipDepositBtn">Secure VIP Access</button>
     <p class="vip__refund">100% refundable. No obligation to invest.</p>
   </div>
-</section>
-
-<section class="campaign-section" style="text-align: center;">
-  <h2 class="campaign-section__title">Don't miss out.</h2>
-  <p class="campaign-section__text" style="max-width: 440px; margin: 0 auto 24px;">Join the waitlist now. It takes 10 seconds and you'll be first to know when FarmThru opens investment to the public.</p>
-  <a href="#signupForm" class="signup__button" style="display: inline-block; max-width: 320px; text-decoration: none;">Join the Waitlist</a>
 </section>
 
 <footer class="campaign-footer">

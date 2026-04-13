@@ -5,60 +5,56 @@
   <a href="#signupForm" class="campaign-header__cta">Join Waitlist</a>
 </header>
 
-<section class="hero">
-  <span class="hero__badge">Pre-Launch</span>
-  <h1 class="hero__title">The label said 'farm fresh.' The farmer said she hadn't been paid in 90 days.</h1>
-  <p class="hero__subtitle">I started building a grocery store that pays farmers first. You can own a piece of it.</p>
-
-  <img src="https://farmthru.com.au/cdn/shop/files/69003bffe27c151e286d3416_Rachel_Cow_1.jpg?v=1763463097" alt="FarmThru partner farm" class="hero__image">
-
-  <div class="countdown" id="countdown">
-    <div class="countdown__block">
-      <span class="countdown__number" data-days>00</span>
-      <span class="countdown__label">Days</span>
+<section class="hero--light">
+  <div class="hero__content">
+    <div class="hero__text">
+      <h1>The label said 'farm fresh.' The farmer said she hadn't been paid in 90 days.</h1>
+      <p>I started building a grocery store that pays farmers first. You can own a piece of it.</p>
+      <div class="countdown" id="countdown" style="justify-content: flex-start; margin-top: 20px; margin-bottom: 0;">
+        <div class="countdown__block">
+          <span class="countdown__number" data-days>00</span>
+          <span class="countdown__label">Days</span>
+        </div>
+        <div class="countdown__block">
+          <span class="countdown__number" data-hours>00</span>
+          <span class="countdown__label">Hours</span>
+        </div>
+        <div class="countdown__block">
+          <span class="countdown__number" data-mins>00</span>
+          <span class="countdown__label">Mins</span>
+        </div>
+        <div class="countdown__block">
+          <span class="countdown__number" data-secs>00</span>
+          <span class="countdown__label">Secs</span>
+        </div>
+      </div>
     </div>
-    <div class="countdown__block">
-      <span class="countdown__number" data-hours>00</span>
-      <span class="countdown__label">Hours</span>
-    </div>
-    <div class="countdown__block">
-      <span class="countdown__number" data-mins>00</span>
-      <span class="countdown__label">Mins</span>
-    </div>
-    <div class="countdown__block">
-      <span class="countdown__number" data-secs>00</span>
-      <span class="countdown__label">Secs</span>
+    <div class="signup-card" id="formContainer">
+      <h3>Save your spot</h3>
+      <div class="social-proof" style="margin-bottom: 16px; margin-top: 0;">
+        <div class="social-proof__avatars">
+          <span class="social-proof__avatar">JB</span>
+          <span class="social-proof__avatar">KL</span>
+          <span class="social-proof__avatar">AM</span>
+        </div>
+        <span>Join <span class="social-proof__count" id="signupCounter" data-count="0">0</span> people on the waitlist</span>
+      </div>
+      <form class="signup__form" id="signupForm">
+        <div class="signup__field"><input type="text" name="name" class="signup__input" placeholder="First name" autocomplete="given-name"></div>
+        <div class="signup__field"><input type="email" name="email" class="signup__input" placeholder="Email address" required autocomplete="email"></div>
+        <div class="signup__field"><input type="tel" name="phone" class="signup__input" placeholder="Mobile (optional)" autocomplete="tel"></div>
+        <input type="hidden" name="utm_source" id="utmSource">
+        <input type="hidden" name="utm_medium" id="utmMedium">
+        <input type="hidden" name="utm_campaign" id="utmCampaign">
+        <input type="hidden" name="utm_content" id="utmContent">
+        <button type="submit" class="signup__button">Join the Waitlist</button>
+        <p class="signup__disclaimer">Free to join. No obligation. We'll notify you when the campaign goes live.</p>
+      </form>
     </div>
   </div>
-
-  <div class="social-proof">
-    <div class="social-proof__avatars">
-      <span class="social-proof__avatar">JB</span>
-      <span class="social-proof__avatar">KL</span>
-      <span class="social-proof__avatar">AM</span>
-    </div>
-    <span>Join <span class="social-proof__count" id="signupCounter" data-count="0">0</span> people on the waitlist</span>
+  <div class="hero__photo">
+    <img src="https://farmthru.com.au/cdn/shop/files/69003bffe27c151e286d3416_Rachel_Cow_1.jpg?v=1763463097" alt="FarmThru partner farm">
   </div>
-</section>
-
-<section class="signup" id="formContainer">
-  <form class="signup__form" id="signupForm">
-    <div class="signup__field">
-      <input type="text" name="name" class="signup__input" placeholder="First name" autocomplete="given-name">
-    </div>
-    <div class="signup__field">
-      <input type="email" name="email" class="signup__input" placeholder="Email address" required autocomplete="email">
-    </div>
-    <div class="signup__field">
-      <input type="tel" name="phone" class="signup__input" placeholder="Mobile (optional, for SMS updates)" autocomplete="tel">
-    </div>
-    <input type="hidden" name="utm_source" id="utmSource">
-    <input type="hidden" name="utm_medium" id="utmMedium">
-    <input type="hidden" name="utm_campaign" id="utmCampaign">
-    <input type="hidden" name="utm_content" id="utmContent">
-    <button type="submit" class="signup__button">Join the Waitlist</button>
-    <p class="signup__disclaimer">Free to join. No obligation. We'll notify you when the campaign goes live.</p>
-  </form>
 </section>
 
 <section class="thank-you" id="thankYou">
@@ -77,13 +73,10 @@
 </section>
 
 <section class="campaign-section">
+  <h2 class="campaign-section__title">The problem isn't the food. It's the distance between you and the truth.</h2>
   <p class="campaign-section__text">Last winter I drove three hours north to Kempsey, NSW. I sat in Rachel Ward's farmhouse kitchen while she explained how regenerative farming actually works. Then a neighbouring farmer told me supermarkets owed her for three months of product. She was considering selling her herd.</p>
   <p class="campaign-section__text">I came home and checked my fridge. Every label promised something. 'Natural.' 'Farm fresh.' 'Locally sourced.' None of it meant what I thought it meant.</p>
   <p class="campaign-section__text">That week I stopped waiting for the system to fix itself. I started building FarmThru.</p>
-</section>
-
-<section class="campaign-section">
-  <h2 class="campaign-section__title">The problem isn't the food. It's the distance between you and the truth.</h2>
   <p class="campaign-section__text">Most grocery products travel around 2,400km before reaching a shelf. That journey requires wholesalers, warehouses, and weeks of cold storage.</p>
   <p class="campaign-section__text">Farmers absorb the cost. You absorb the compromise. The food on your plate is older, blander, and further from its source than you'd ever guess.</p>
   <p class="campaign-section__text">FarmThru operates with zero warehouses, zero wholesalers, zero middlemen. Food goes straight from farm to hub. You order online, then collect from our Brookvale hub Monday to Friday.</p>
@@ -104,20 +97,14 @@
 2. We source directly from our farm partners. No warehouse. No middleman.
 3. Collect from the Brookvale hub, Monday to Friday, on your schedule.</p>
   <p class="campaign-section__text">No commitment. No subscription lock-in. Order when you want. Skip when you want.</p>
-</section>
-
-<section class="campaign-section">
-  <h2 class="campaign-section__title">I'm not asking you to just shop here. I'm inviting you to own a piece of it.</h2>
-  <p class="campaign-section__text">FarmThru is launching an equity crowdfunding campaign. That means everyday people, not just venture capital, can become part owners of a grocery store that pays farmers first.</p>
+  <p class="campaign-section__text">I'm not asking you to just shop here. I'm inviting you to own a piece of it.
+FarmThru is launching an equity crowdfunding campaign. That means everyday people, not just venture capital, can become part owners of a grocery store that pays farmers first.</p>
   <p class="campaign-section__text">This matters because ownership shapes priorities. When customers and farmers have a stake, the store stays accountable to the people it serves.</p>
   <p class="campaign-section__text">Join the waitlist now with a $5 refundable deposit. It secures your priority access before the campaign opens. People who put skin in the game early are 30x more likely to follow through.</p>
   <p class="campaign-section__text">The waitlist is for future investors and future customers. Both matter equally. Whether you want to shop, invest, or both, this is where it starts.</p>
   <p class="campaign-section__text">Values and money finally pointing the same direction.</p>
-</section>
-
-<section class="campaign-section">
-  <h2 class="campaign-section__title">Why I'm building this in the open</h2>
-  <p class="campaign-section__text">I'm not a food industry insider. I didn't come from supermarket boardrooms or agricultural conglomerates.</p>
+  <p class="campaign-section__text">Why I'm building this in the open
+I'm not a food industry insider. I didn't come from supermarket boardrooms or agricultural conglomerates.</p>
   <p class="campaign-section__text">I'm someone who stood in a farmer's kitchen, heard the truth, and couldn't unhear it. The system that feeds us is broken for the people who grow our food. And it quietly compromises what ends up on our plates.</p>
   <p class="campaign-section__text">FarmThru is the alternative I wished existed. A grocery store where the supply chain is transparent, the farmers are paid fairly, and you can see exactly where every product originates.</p>
   <p class="campaign-section__text">We'll show you where your food comes from. That's not a tagline. It's the entire point.</p>
@@ -157,17 +144,11 @@
   </div>
 </section>
 
-<section class="campaign-section" style="text-align: center;">
-  <h2 class="campaign-section__title">Don't miss out.</h2>
-  <p class="campaign-section__text" style="max-width: 440px; margin: 0 auto 24px;">Join the waitlist now. It takes 10 seconds and you'll be first to know when FarmThru opens investment to the public.</p>
-  <a href="#signupForm" class="signup__button" style="display: inline-block; max-width: 320px; text-decoration: none;">Join the Waitlist</a>
-</section>
-
 <footer class="campaign-footer">
   <div class="campaign-footer__logos">
     <img src="https://farmthru.com.au/cdn/shop/files/Farmthru_he.webp?v=1771293890" alt="FarmThru" class="campaign-footer__logo" style="filter: brightness(0) invert(1);">
   </div>
-  <p class="campaign-footer__disclaimer">FarmThru equity crowdfunding is conducted under the Australian Securities and Investments Commission (ASIC) crowd-sourced funding framework. Investing in early-stage companies carries significant risk, including the potential loss of your entire investment. Past performance is not indicative of future results. No returns are projected or guaranteed. You should consider whether this investment is appropriate for your financial situation and seek independent financial advice if needed. The $5 deposit is fully refundable at any time before you confirm an investment. Any investment decision should be based on the offer document, which will be available when the campaign launches.</p>
+  <p class="campaign-footer__disclaimer">FarmThru equity crowdfunding is conducted under the Australian Securities and Investments Commission (ASIC) crowd-sourced funding framework. Investing in early-stage companies carries significant risk, including the potential loss of your entire investment. Past performance is not indicative of future results. No returns are projected or guaranteed. You should consider whether this investment is appropriate for your financial situation and seek independent financial advice if needed. The $5 deposit is fully refundable at any time before you confirm an investment. Any investment decision should be based on the offer document, which will be available when the campaign launches. This page is not financial advice.</p>
 </footer>
 
 <div class="sticky-cta hidden" id="stickyCta">
