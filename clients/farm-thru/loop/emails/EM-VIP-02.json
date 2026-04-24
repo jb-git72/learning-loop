@@ -1,15 +1,16 @@
 {
-  "email_id": "EM-VIP-02",
-  "content_type": "email",
   "angle": "mechanism-walkthrough",
   "tactic": "segment:vip|drip-2|deposit+10d|offer-mechanics",
-  "hook_type": "direct_address",
+  "hook_type": "story",
   "funnel": "MOF",
-  "email_type": "nurture",
-  "subject": "How the offer will actually work",
-  "preheader": "So you're not making the call cold on launch day.",
-  "body": "Hi {first_name},\n\nQuick walkthrough so launch day isn't the first time you see the mechanics.\n\nOn 22 June 2026 you get an email from me. Subject line will be clear. Inside is the direct Birchal offer link. That's your 24-hour head start. The public list sees it on 23 June.\n\nWhen you click through on Birchal, you'll see the full offer document. Valuation, financials, business plan, the honest risk section. Minimum investment is $50. Maximum is $10,000 per investor.\n\nYou decide how much. You read the document. You complete the investment through Birchal, not through us. Birchal handles the money and the compliance. Your $5 VIP deposit is then either rolled into your investment or refunded if you decide it's not for you.\n\nA few things worth thinking about between now and 22 June.\n\nHow much feels sensible. Early-stage investment carries real risk. Don't invest money you need elsewhere. Read the risk section before you commit.\n\nWhether you want to ask a question first. Hit reply and I'll answer it directly before launch day, not after.\n\nThat's it. Next email from me is the head-start link on 22 June.\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\n\nRachel and the FarmThru team",
-  "cta": "Reply with any questions",
-  "sender_name": "Rachel and the FarmThru team",
-  "creative_brief": "Clean step-by-step layout. Optional numbered list for the three-step investment flow. Plain, procedural tone. No hero image. Soft reply-to CTA only."
+  "content_type": "email",
+  "creative_brief": "Clean, editorial layout. No hero image needed. Use a simple horizontal rule to separate the three sections. Warm off-white background, dark text. CTA button below sign-off: 'See the Birchal offer page'.",
+  "generated_at": "2026-04-24T22:22:23.636580",
+  "email_id": "EM-VIP-02",
+  "subject": "Your 24-hour head start: here's exactly how it works",
+  "preheader": "Walk through the mechanics before launch day. No surprises.",
+  "body": "Hi {first_name},\n\nLast week a VIP asked me: \"What actually happens when the round opens?\"\n\nI realised I'd never spelled it out properly. So here it is.\n\n---\n\nOn the evening of 22 June, you get an email from me. Subject line will be unmissable. Inside is your direct Birchal link, live 24 hours before the public sees anything.\n\nYou click through. You choose your amount, anywhere from $50 to $10,000. You confirm. That's it.\n\nNo scramble. No watching a countdown with everyone else. You're already in.\n\n---\n\nWhy does the head start matter?\n\nCrowdfunding rounds can fill fast, especially when a community has been waiting. VIPs who move on day one lock their position before the public wave arrives.\n\nThe $5 refundable deposit you placed is your proof of intent. It's not deducted from your investment. It just held your spot.\n\n---\n\nIf you want to think it over before 23 June, that's exactly what this window is for. Have a number in mind. Know your \"yes\" before the link lands.\n\nI'll be in your inbox on 22 June.\n\nRachel\n\n---\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.",
+  "cta": "cfe_campaign",
+  "sender_name": "Rachel & the FarmThru team",
+  "email_type": "nurture"
 }

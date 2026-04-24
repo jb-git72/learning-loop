@@ -1,15 +1,16 @@
 {
-  "email_id": "EM-WELCOME-NONVIP",
-  "content_type": "email",
   "angle": "onboarding-welcome",
   "tactic": "segment:nonvip|welcome|upgrade-to-vip",
   "hook_type": "direct_address",
   "funnel": "TOF",
-  "email_type": "welcome",
-  "subject": "You're on the FarmThru list",
-  "preheader": "Here's what happens next. And how to get in first.",
-  "body": "Hi {first_name},\n\nWelcome. You're officially on the FarmThru list.\n\nQuick context. We're a farm-direct grocery store. Regenerative farms across NSW send produce straight to our Brookvale hub. Families order online and collect Monday to Friday. No wholesalers sitting in the middle. No warehouses marking it up.\n\nThat's what you just signed up for.\n\nOver the next couple of weeks I'll send three short notes. One about the hub and the farms behind it. One about why we're opening FarmThru to community ownership. One before the round opens to the public on 23 June.\n\nOne more thing. We're running a VIP list. A $5 refundable deposit locks your spot and gets you the offer link 24 hours before the public list. If you decide it's not for you, you get the $5 back. No questions.\n\nIf that's interesting, there's a link below. If not, keep an eye out for the next email.\n\nEither way, glad you're here.\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\n\nRachel and the FarmThru team",
-  "cta": "Upgrade to VIP for $5 refundable",
-  "sender_name": "Rachel and the FarmThru team",
-  "creative_brief": "Plain-text feel, minimal styling. Optional small masthead. Single CTA button mid-lower body linking to VIP deposit page. No hero image. Warm, conversational layout."
+  "content_type": "email",
+  "creative_brief": "Clean, single-column layout with warm off-white background. Rachel's signature at close. No hero image needed, let the copy breathe. One CTA button: 'Reserve my VIP spot for $5'.",
+  "generated_at": "2026-04-24T22:22:52.340932",
+  "email_id": "EM-WELCOME-NONVIP",
+  "subject": "You're on the list, {first_name}. Here's the honest version.",
+  "preheader": "No ongoing commitment. No delivery. Just food that goes straight from farm to hub.",
+  "body": "Hi {first_name},\n\nRemember why you signed up?\n\nNot for another meal kit. Not for a loyalty card. Because something about the way grocery works felt broken, and this felt different.\n\nIt is different. Here's what FarmThru actually is.\n\nWe partner directly with regenerative farms. You order online, then collect from your nearest hub in Brookvale, Monday to Friday. No middlemen marking up the margin. No cold chain stretching 2,400km across the country.\n\nStraight from farm to hub.\n\nThat's it. That's the whole model. And because we cut the supply chain, farmers get paid more and you pay less than you'd expect for food this good.\n\nNo commitment. Order when you want. Collect when it suits you.\n\nNow here's something most people on this list don't know yet.\n\nFarmThru is opening a community funding round on 23 June. Minimum $50. And right now, for a refundable $5 deposit, you can lock a VIP spot and see the offer 24 hours before the public.\n\nIf you want to be a partner in the grocery store that pays farmers first, that's how you get there first.\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.",
+  "cta": "cfe_waitlist",
+  "sender_name": "Rachel & the FarmThru team",
+  "email_type": "welcome"
 }

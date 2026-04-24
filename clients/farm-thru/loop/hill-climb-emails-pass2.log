@@ -1,0 +1,119 @@
+Filtered to 8 email items
+Loaded 8 items. Target: 0.80 (strong_draft)
+Max iterations per item: 5
+Strategy: evolutionary (population=5)
+LLM scoring: enabled
+Pairwise gating: enabled
+Workers: 4 (concurrent ads per iteration)
+
+Initial: 0 at target, 8 below target
+
+--- Iteration 1: 8 items below target (pop=5, workers=4) ---
+  EM-NONVIP-03 (email): 0.664 [needs_work]
+    [crossover(EM-VIP-02)] 0.760 +
+    [improve] 0.793 +
+    [crossover(EM-WELCOME-VIP)] 0.667 +
+    [targeted(opening_diversity)] 0.742 +
+    [mutate(newness)] 0.712 +
+    => ACCEPTED [improve] 0.793 (+0.129) pairwise 5/5
+  EM-NONVIP-02 (email): 0.678 [needs_work]
+    [mutate(fomo)] 0.725 +
+    [improve] 0.712 +
+    [crossover(EM-VIP-02)] 0.817 +
+    [targeted(opening_diversity)] 0.709 +
+    [crossover(EM-NONVIP-01)] 0.592 =
+    => ACCEPTED [crossover(EM-VIP-02)] 0.817 (+0.139) pairwise 4/5
+  EM-VIP-01 (email): 0.630 [needs_work]
+    [crossover(EM-NONVIP-01)] 0.817 +
+    [crossover(EM-VIP-02)] 0.824 +
+    [improve] 0.780 +
+    [mutate(newness)] 0.820 +
+    [targeted(opening_diversity)] 0.759 +
+    => ACCEPTED [crossover(EM-VIP-02)] 0.824 (+0.193) pairwise 5/5
+  EM-NONVIP-01 (email): 0.780 [strong_draft]
+    [crossover(EM-VIP-02)] 0.811 +
+    [improve] 0.763 =
+    [targeted(opening_diversity)] 0.766 =
+    [crossover(EM-NONVIP-02)] 0.792 +
+    [mutate(if_then)] 0.763 =
+    => ACCEPTED [crossover(EM-VIP-02)] 0.811 (+0.032) pairwise 4/5
+  EM-VIP-02 (email): 0.698 [needs_work]
+    [crossover(EM-WELCOME-VIP)] 0.780 +
+    [targeted(opening_diversity)] 0.715 +
+    [crossover(EM-NONVIP-01)] 0.731 +
+    [mutate(story)] 0.837 +
+    [improve] 0.685 =
+    => ACCEPTED [mutate(story)] 0.837 (+0.139) pairwise 4/5
+  EM-WELCOME-NONVIP (email): 0.661 [needs_work]
+    [crossover(EM-NONVIP-03)] 0.625 =
+    [mutate(newness)] 0.692 +
+    [improve] 0.728 +
+    [targeted(opening_diversity)] 0.650 =
+    [crossover(EM-NONVIP-02)] 0.773 +
+    => ACCEPTED [crossover(EM-NONVIP-02)] 0.773 (+0.112) pairwise 4/5
+  EM-VIP-03 (email): 0.658 [needs_work]
+    [crossover(EM-NONVIP-03)] 0.814 +
+    [mutate(direct_address)] 0.783 +
+    [targeted(opening_diversity)] 0.841 +
+    [improve] 0.793 +
+    [crossover(EM-NONVIP-02)] 0.757 +
+    => ACCEPTED [targeted(opening_diversity)] 0.841 (+0.183) pairwise 5/5
+  EM-WELCOME-VIP (email): 0.736 [strong_draft]
+    [crossover(EM-NONVIP-01)] 0.782 +
+    [targeted(opening_diversity)] 0.734 =
+    [mutate(bold_claim)] 0.766 +
+    [improve] 0.746 +
+    [crossover(EM-NONVIP-02)] 0.799 +
+    => ACCEPTED [crossover(EM-NONVIP-02)] 0.799 (+0.063) pairwise 5/5
+
+--- Iteration 2: 3 items below target (pop=5, workers=4) ---
+  EM-WELCOME-NONVIP (email): 0.773 [strong_draft]
+    [mutate(if_then)] 0.605 =
+    [crossover(EM-VIP-02)] 0.650 =
+    [crossover(EM-VIP-03)] 0.807 +
+    [targeted(opening_diversity)] 0.780 +
+    [improve] 0.667 =
+    => ACCEPTED [crossover(EM-VIP-03)] 0.807 (+0.034) pairwise 4/5
+  EM-NONVIP-03 (email): 0.793 [strong_draft]
+    [targeted(opening_diversity)] 0.622 =
+    [improve] 0.738 =
+    [crossover(EM-VIP-02)] 0.746 =
+    [mutate(contrarian)] 0.616 =
+    [crossover(EM-VIP-01)] 0.760 =
+    => no improvement, kept original
+  EM-WELCOME-VIP (email): 0.799 [strong_draft]
+    [targeted(opening_diversity)] 0.622 =
+    [crossover(EM-VIP-02)] 0.851 +
+    [mutate(contrarian)] 0.824 +
+    [improve] 0.763 =
+    [crossover(EM-VIP-01)] 0.844 +
+    => ACCEPTED [crossover(EM-VIP-02)] 0.851 (+0.052) pairwise 4/5
+
+--- Iteration 3: 1 items below target (pop=5, workers=4) ---
+  EM-NONVIP-03 (email): 0.793 [strong_draft]
+    [improve] 0.641 =
+    [mutate(question)] 0.705 =
+    [crossover(EM-VIP-03)] 0.841 +
+    [crossover(EM-VIP-02)] 0.815 +
+    [wildcard(quoted_objection)] 0.742 =
+    => ACCEPTED [crossover(EM-VIP-03)] 0.841 (+0.047) pairwise 5/5
+
+All items at target after iteration 3!
+=== HILL-CLIMB COMPLETE ===
+Strategy: evolutionary
+Improvements made: 11
+Avg composite: 0.8286
+Still below target: 0
+  production_ready: 1
+  strong_draft: 7
+  needs_work: 0
+  rewrite: 0
+
+=== STRATEGY ANALYSIS (saved to strategy-tracker-20260424T122330.json) ===
+Mode         Attempts  Wins   Win%  Improv    Avg Δ  Avg Win Δ    Max Δ
+---------------------------------------------------------------------------
+improve            12     1  8.3%       6  +0.0120    +0.0874  +0.1492
+mutate             12     1  8.3%       8  +0.0156    +0.0796  +0.1898
+targeted           11     1  9.1%       6  +0.0065    +0.0740  +0.1831
+crossover          24     8 33.3%      19  +0.0470    +0.0764  +0.1932
+wildcard            1     0  0.0%       0  -0.0508    +0.0000  -0.0508

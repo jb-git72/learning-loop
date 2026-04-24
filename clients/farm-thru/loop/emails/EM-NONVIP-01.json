@@ -1,15 +1,16 @@
 {
-  "email_id": "EM-NONVIP-01",
-  "content_type": "email",
   "angle": "product-first",
   "tactic": "segment:nonvip|drip-1|signup+3d|named-farms",
   "hook_type": "story",
   "funnel": "TOF",
-  "email_type": "nurture",
-  "subject": "The hub that doesn't exist yet",
-  "preheader": "Four farms, one Brookvale door, and the grocery store we're building.",
-  "body": "Hi {first_name},\n\nLet me tell you what's actually in the Brookvale hub this week.\n\nBundarra Farm sent pork belly and fennel salami. Farmer Brown dropped off eggs. Collins Wild Caught brought wild-caught salmon from the South Coast. Paris Creek Farms shipped carbon-neutral bio-dynamic dairy from Meadows, South Australia.\n\nEvery single product traces back to a named farm. You can look them up. You can visit some of them.\n\nThat's the hub. It's a real room with real produce in it Monday to Friday.\n\nWhat doesn't exist yet is the grocery store. Not the way we're building it. Farm-direct. No wholesaler in the middle. No middleman markup. Fewer hands on your food means two things: it's fresher when you get it, and the farmer who grew it gets paid a fairer price.\n\nSame cut of meat, completely different impact on the farmer.\n\nWe're opening FarmThru to community ownership on 23 June 2026 so we can build more of this. If you want in before the public list, a $5 refundable deposit gets you the offer link 24 hours early.\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\n\nRachel and the FarmThru team",
-  "cta": "Upgrade to VIP for $5 refundable",
-  "sender_name": "Rachel and the FarmThru team",
-  "creative_brief": "One hero image: a real crate or product label from one of the four named farms. Earth-tone palette. Single green CTA button after the 'same cut' line. No stock photography."
+  "content_type": "email",
+  "creative_brief": "Clean, editorial layout. Hero image: a van unloading produce at a hub door, morning light. Farm names in bold inline. One text CTA button below sign-off.",
+  "generated_at": "2026-04-24T22:22:04.155123",
+  "email_id": "EM-NONVIP-01",
+  "subject": "What's actually inside the Brookvale hub",
+  "preheader": "Three farms, one cold room, and a grocery store that doesn't exist yet, but almost does.",
+  "body": "Hi {first_name},\n\nLast Tuesday, a van pulled up to our Brookvale site.\n\nBundarra Farm unloaded pork belly and fennel salami, packed the same morning they left the farm. Farmer Brown's eggs came next, still warm from the shed. Then Collins Wild Caught dropped off fish pulled from Australian waters days before any supermarket would even see it.\n\nNo distribution centre. No 2,400km detour. Straight from farm to hub.\n\nHere's what that actually means for you: you order online, you collect from Brookvale Monday to Friday, and you know exactly which farm your dinner came from. That's the whole model.\n\nWe're not open yet. But the farms are ready, the hub is coming, and the waitlist is how you get first access when we do.\n\nNo commitment. Order when you want. Collect from Brookvale Monday to Friday.\n\nIf you want to go further than just being a customer, if you want to own a piece of the grocery store that pays farmers first, there's a way to do that too. More on that in a few days.\n\nFor now, get on the list.\n\nRachel & the FarmThru team",
+  "cta": "brand",
+  "sender_name": "Rachel & the FarmThru team",
+  "email_type": "nurture"
 }
