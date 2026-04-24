@@ -1,0 +1,15 @@
+{
+  "email_id": "EM-NONVIP-02",
+  "content_type": "email",
+  "angle": "cause-purpose",
+  "tactic": "segment:nonvip|drip-2|signup+10d|cfe-mechanism",
+  "hook_type": "contrarian",
+  "funnel": "MOF",
+  "email_type": "nurture",
+  "subject": "Why we need to own this ourselves",
+  "preheader": "The short answer: if the big chains own it, it stops being what it is.",
+  "body": "Hi {first_name},\n\nA grocery store owned by a big chain will cut the farmer's price.\n\nThat's the whole problem we started FarmThru to fix. Once a supply chain has three wholesalers and a distribution centre sitting between the farmer and your kitchen, the farmer is the easiest link to squeeze. It's not malice. It's maths.\n\nFor FarmThru to stay what it is, it has to be owned by the people who care about it staying what it is. Families who want honest food. Farmers who want a fair price. A community that decided the big-chain model wasn't working.\n\nThat's why we're running an equity crowdfunding campaign on Birchal.\n\nMinimum investment is $50. Maximum is $10,000 per investor. The launch date is 23 June 2026. You can own a piece of the grocery store you buy from.\n\nOne honest note. This is an early-stage business. Early-stage investments carry real risk. You could lose some or all of what you invest. The full risk picture will be in the disclosure document on Birchal. Read it before you commit.\n\nIf you want first access before the public list opens, a $5 refundable deposit gets you the offer link 24 hours early and priority updates between now and launch.\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\n\nRachel and the FarmThru team",
+  "cta": "Upgrade to VIP for $5 refundable",
+  "sender_name": "Rachel and the FarmThru team",
+  "creative_brief": "Clean single-column layout. Optional simple supply-chain diagram showing farm to hub to you versus the long-chain alternative. Single green CTA after the 'own a piece' line."
+}

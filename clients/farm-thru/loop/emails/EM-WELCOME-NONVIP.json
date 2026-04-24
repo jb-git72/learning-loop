@@ -1,0 +1,15 @@
+{
+  "email_id": "EM-WELCOME-NONVIP",
+  "content_type": "email",
+  "angle": "onboarding-welcome",
+  "tactic": "segment:nonvip|welcome|upgrade-to-vip",
+  "hook_type": "direct_address",
+  "funnel": "TOF",
+  "email_type": "welcome",
+  "subject": "You're on the FarmThru list",
+  "preheader": "Here's what happens next. And how to get in first.",
+  "body": "Hi {first_name},\n\nWelcome. You're officially on the FarmThru list.\n\nQuick context. We're a farm-direct grocery store. Regenerative farms across NSW send produce straight to our Brookvale hub. Families order online and collect Monday to Friday. No wholesalers sitting in the middle. No warehouses marking it up.\n\nThat's what you just signed up for.\n\nOver the next couple of weeks I'll send three short notes. One about the hub and the farms behind it. One about why we're opening FarmThru to community ownership. One before the round opens to the public on 23 June.\n\nOne more thing. We're running a VIP list. A $5 refundable deposit locks your spot and gets you the offer link 24 hours before the public list. If you decide it's not for you, you get the $5 back. No questions.\n\nIf that's interesting, there's a link below. If not, keep an eye out for the next email.\n\nEither way, glad you're here.\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\n\nRachel and the FarmThru team",
+  "cta": "Upgrade to VIP for $5 refundable",
+  "sender_name": "Rachel and the FarmThru team",
+  "creative_brief": "Plain-text feel, minimal styling. Optional small masthead. Single CTA button mid-lower body linking to VIP deposit page. No hero image. Warm, conversational layout."
+}
