@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
-"""Score all content in a client's loop directory and output JSON results."""
+"""Score all content in a client's loop directory and output JSON results.
+
+Flags:
+  --no-llm              Skip the LLM judge (deterministic only)
+  --verbose             Print full per-ad reports to stderr
+  --type <content_type> Only score items whose content_type matches
+                        (e.g. --type email, --type meta-ad, --type landing-page).
+                        Accepts both "--type X" and "--type=X" forms.
+"""
 
 import json
 import os
@@ -23,20 +31,50 @@ if env_path.exists():
 from engine.scorer import load_client, score_ad, format_report
 
 
+def _parse_type_flag(argv):
+    """Extract --type <value> or --type=<value> from argv.
+
+    Returns the value (str) or None if unset. Does not mutate argv.
+    """
+    for i, arg in enumerate(argv):
+        if arg == "--type" and i + 1 < len(argv):
+            return argv[i + 1]
+        if arg.startswith("--type="):
+            return arg.split("=", 1)[1]
+    return None
+
+
 def main():
-    client_id = sys.argv[1] if len(sys.argv) > 1 else "farm-thru"
+    # Pull positional client id, skipping any known flag values to avoid
+    # treating "--type" / "email" as the client id.
+    client_id = "farm-thru"
+    skip_next = False
+    for i, arg in enumerate(sys.argv[1:], start=1):
+        if skip_next:
+            skip_next = False
+            continue
+        if arg.startswith("--"):
+            # Flags with values: --type; boolean flags: --no-llm, --verbose
+            if arg == "--type":
+                skip_next = True
+            continue
+        client_id = arg
+        break
+
     use_llm = "--no-llm" not in sys.argv
     verbose = "--verbose" in sys.argv
+    type_filter = _parse_type_flag(sys.argv)
 
     client_dir = root / "clients" / client_id
     shared_dir = root / "shared"
     client = load_client(client_dir, shared_dir)
 
     loop_dir = client_dir / "loop"
-    all_ads = []
+    all_ads = []           # full corpus — used for cross-type differentiation context
+    ads_to_score = []      # subset actually scored (after --type filter)
     all_results = []
 
-    # Collect all content files
+    # Collect all content files, honoring --type filter at scan time
     for subdir in ["meta-ads", "landing-pages", "emails"]:
         content_dir = loop_dir / subdir
         if not content_dir.exists():
@@ -47,10 +85,17 @@ def main():
                     ad = json.load(fh)
                 ad["_file"] = str(f.relative_to(root))
                 all_ads.append(ad)
+                if type_filter and ad.get("content_type") != type_filter:
+                    continue
+                ads_to_score.append(ad)
 
-    print(f"Scoring {len(all_ads)} items (LLM={'on' if use_llm else 'off'})...", file=sys.stderr)
+    filter_desc = f", filter=content_type={type_filter}" if type_filter else ""
+    print(
+        f"Scoring {len(ads_to_score)} items (LLM={'on' if use_llm else 'off'}{filter_desc})...",
+        file=sys.stderr,
+    )
 
-    for ad in all_ads:
+    for ad in ads_to_score:
         file_path = ad.pop("_file")
         report = score_ad(ad, client, existing_ads=all_ads, use_llm=use_llm)
         # Resolve ID from all possible fields (scorer only checks ad_id)
