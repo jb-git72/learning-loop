@@ -60,6 +60,10 @@ def parse_args():
     parser.add_argument("--tournament", action="store_true", help="Tournament mode: cull bottom 50%% after each iteration")
     parser.add_argument("--seed-lhs", action="store_true",
                         help="Latin Hypercube seed: try one cell per hook before bandit kicks in (map-elites only)")
+    parser.add_argument("--disable-strategy", dest="disable_strategy", default="",
+                        help="Comma-separated strategy modes to skip (e.g. 'wildcard,crossover'). "
+                             "Valid modes: improve, mutate, targeted, crossover, wildcard. "
+                             "Disabled modes are fully suppressed during candidate selection.")
 
     # Support legacy positional-only invocation: hill_climb.py <client> <iters>
     # Also support the old --type=X inline style
@@ -67,6 +71,17 @@ def parse_args():
     for u in unknown:
         if u.startswith("--type="):
             args.type_filter = u.split("=", 1)[1]
+
+    # Parse --disable-strategy into a set of mode names
+    disabled = {m.strip() for m in args.disable_strategy.split(",") if m.strip()}
+    valid_modes = {"improve", "mutate", "targeted", "crossover", "wildcard"}
+    unknown_modes = disabled - valid_modes
+    if unknown_modes:
+        parser.error(
+            f"Unknown strategy mode(s) passed to --disable-strategy: {sorted(unknown_modes)}. "
+            f"Valid modes: {sorted(valid_modes)}"
+        )
+    args.disabled_modes = disabled
     return args
 
 
@@ -232,8 +247,17 @@ def _generate_and_lint(ad, item, client_dir, shared_dir, client, all_ads, recent
 # ---------------------------------------------------------------------------
 
 def run_greedy(all_items, all_ads, client, client_dir, shared_dir, max_iterations, target, use_llm,
-               use_pairwise=False):
-    """Original 1-candidate-per-iteration greedy hill-climb."""
+               use_pairwise=False, disabled_modes=None):
+    """Original 1-candidate-per-iteration greedy hill-climb.
+
+    Greedy mode only uses "improve". If "improve" is in disabled_modes this
+    is a no-op and we return immediately.
+    """
+    disabled_modes = disabled_modes or set()
+    if "improve" in disabled_modes:
+        print("Greedy strategy only uses 'improve' mode — skipping entire run because 'improve' is disabled.")
+        return 0
+
     recent_failures = []
     improved = 0
 
@@ -295,12 +319,16 @@ def run_greedy(all_items, all_ads, client, client_dir, shared_dir, max_iteration
 # ---------------------------------------------------------------------------
 
 def _build_candidate_configs(ad, all_items, iteration, population_size,
-                             playbook, recent_hooks, tested_hooks):
+                             playbook, recent_hooks, tested_hooks,
+                             disabled_modes=None):
     """Pre-build all candidate config dicts for a single ad (Tier 3).
 
     Pure function — no API calls, no I/O. Just strategy selection.
     Returns list of candidate config dicts.
+
+    disabled_modes: set of mode names to skip entirely (e.g. {"wildcard"}).
     """
+    disabled_modes = disabled_modes or set()
     content_type = ad.get("content_type", "meta-ad")
     current_hook = ad.get("hook_type", "story")
     weak_dims = None  # caller passes report separately
@@ -308,36 +336,72 @@ def _build_candidate_configs(ad, all_items, iteration, population_size,
     candidates = []
 
     # Slot 1: exploitation — improve with current hook
-    candidates.append({
-        "mode": "improve",
-        "hook_type": current_hook,
-        "donor_ad": None,
-        "weak_dimensions": None,
-        "label": "improve",
-    })
+    if "improve" not in disabled_modes:
+        candidates.append({
+            "mode": "improve",
+            "hook_type": current_hook,
+            "donor_ad": None,
+            "weak_dimensions": None,
+            "label": "improve",
+        })
 
     # Slot 2: exploration via benchmark-informed mutation
     mutated_hook = _pick_mutated_hook(current_hook, playbook, recent_hooks)
-    candidates.append({
-        "mode": "mutate",
-        "hook_type": mutated_hook,
-        "donor_ad": None,
-        "weak_dimensions": None,
-        "label": f"mutate({mutated_hook})",
-    })
+    if "mutate" not in disabled_modes:
+        candidates.append({
+            "mode": "mutate",
+            "hook_type": mutated_hook,
+            "donor_ad": None,
+            "weak_dimensions": None,
+            "label": f"mutate({mutated_hook})",
+        })
 
     return candidates, mutated_hook
 
 
 def _build_remaining_candidates(candidates, mutated_hook, ad, all_items, iteration,
                                 population_size, playbook, recent_hooks, tested_hooks,
-                                weak_dims):
-    """Build slots 3+ after weak_dims are known."""
+                                weak_dims, disabled_modes=None):
+    """Build slots 3+ after weak_dims are known.
+
+    disabled_modes: set of mode names to skip entirely (e.g. {"wildcard"}).
+    When a preferred mode is disabled, this falls through to the next eligible
+    option so slots don't collapse to zero candidates.
+    """
+    disabled_modes = disabled_modes or set()
     content_type = ad.get("content_type", "meta-ad")
     current_hook = ad.get("hook_type", "story")
 
-    # Slot 3: wildcard every 3rd iteration, otherwise targeted
-    if (iteration + 1) % 3 == 0:
+    def _try_add_targeted():
+        if weak_dims and "targeted" not in disabled_modes:
+            candidates.append({
+                "mode": "targeted",
+                "hook_type": current_hook,
+                "donor_ad": None,
+                "weak_dimensions": weak_dims,
+                "label": f"targeted({weak_dims[0][0]})",
+            })
+            return True
+        return False
+
+    def _try_add_mutate(label_suffix=None, hook_override=None):
+        if "mutate" in disabled_modes:
+            return False
+        hook = hook_override or _pick_mutated_hook(current_hook, playbook, recent_hooks)
+        label = f"mutate({label_suffix})" if label_suffix else f"mutate({hook})"
+        candidates.append({
+            "mode": "mutate",
+            "hook_type": hook,
+            "donor_ad": None,
+            "weak_dimensions": None,
+            "label": label,
+        })
+        return True
+
+    # Slot 3: wildcard every 3rd iteration, otherwise targeted, otherwise mutate
+    wildcard_turn = (iteration + 1) % 3 == 0
+    slot3_filled = False
+    if wildcard_turn and "wildcard" not in disabled_modes:
         wc_hook = _pick_wildcard_hook(playbook, tested_hooks)
         candidates.append({
             "mode": "wildcard",
@@ -346,28 +410,23 @@ def _build_remaining_candidates(candidates, mutated_hook, ad, all_items, iterati
             "weak_dimensions": None,
             "label": f"wildcard({wc_hook})",
         })
-    elif weak_dims:
-        candidates.append({
-            "mode": "targeted",
-            "hook_type": current_hook,
-            "donor_ad": None,
-            "weak_dimensions": weak_dims,
-            "label": f"targeted({weak_dims[0][0]})",
-        })
+        slot3_filled = True
+    elif weak_dims and _try_add_targeted():
+        slot3_filled = True
     else:
         # Fallback: another mutation with a different hook
         alt_hook = _pick_mutated_hook(mutated_hook, playbook, recent_hooks)
-        candidates.append({
-            "mode": "mutate",
-            "hook_type": alt_hook,
-            "donor_ad": None,
-            "weak_dimensions": None,
-            "label": f"mutate({alt_hook})",
-        })
+        slot3_filled = _try_add_mutate(hook_override=alt_hook)
+
+    # If the preferred option was disabled and we haven't filled slot 3 yet,
+    # try the next-best option so we still produce at least one candidate.
+    if not slot3_filled:
+        if not _try_add_targeted():
+            _try_add_mutate()
 
     # Slots 4+: crossover candidates if population > 3
     for _ in range(max(0, population_size - 3)):
-        donor = _pick_donor_ad(all_items, ad, content_type)
+        donor = _pick_donor_ad(all_items, ad, content_type) if "crossover" not in disabled_modes else None
         if donor:
             candidates.append({
                 "mode": "crossover",
@@ -377,23 +436,9 @@ def _build_remaining_candidates(candidates, mutated_hook, ad, all_items, iterati
                 "label": f"crossover({_get_ad_id(donor)})",
             })
         else:
-            # No donor available — fall back to targeted or mutate
-            if weak_dims:
-                candidates.append({
-                    "mode": "targeted",
-                    "hook_type": current_hook,
-                    "donor_ad": None,
-                    "weak_dimensions": weak_dims,
-                    "label": f"targeted({weak_dims[0][0]})",
-                })
-            else:
-                candidates.append({
-                    "mode": "mutate",
-                    "hook_type": _pick_mutated_hook(current_hook, playbook, recent_hooks),
-                    "donor_ad": None,
-                    "weak_dimensions": None,
-                    "label": "mutate(fallback)",
-                })
+            # No donor available (or crossover disabled) — fall back to targeted or mutate
+            if not _try_add_targeted():
+                _try_add_mutate(label_suffix="fallback")
 
     return candidates
 
@@ -416,12 +461,16 @@ def _process_single_candidate(cand, ad, item, client_dir, shared_dir, client,
 def _process_single_ad(item, all_items, all_ads, client, client_dir, shared_dir,
                         iteration, population_size, playbook,
                         recent_hooks_per_item, tested_hooks_per_item,
-                        use_llm, use_pairwise, all_items_lock):
+                        use_llm, use_pairwise, all_items_lock,
+                        disabled_modes=None):
     """Process all candidates for a single ad in parallel (Tier 1).
 
     Returns (ad_id, improved_flag, output_lines, hook_updates).
     hook_updates is (ad_id, tried_hooks) for the caller to apply.
+
+    disabled_modes: set of mode names to skip entirely (e.g. {"wildcard"}).
     """
+    disabled_modes = disabled_modes or set()
     ad = item["ad"]
     ad_id = _get_ad_id(ad)
     content_type = ad.get("content_type", "meta-ad")
@@ -440,12 +489,21 @@ def _process_single_ad(item, all_items, all_ads, client, client_dir, shared_dir,
 
     # Tier 3: Pre-build all candidate configs before any API calls
     candidates, mutated_hook = _build_candidate_configs(
-        ad, all_items, iteration, population_size, playbook, recent_hooks, tested_hooks
+        ad, all_items, iteration, population_size, playbook, recent_hooks, tested_hooks,
+        disabled_modes=disabled_modes,
     )
     candidates = _build_remaining_candidates(
         candidates, mutated_hook, ad, all_items, iteration, population_size,
-        playbook, recent_hooks, tested_hooks, weak_dims
+        playbook, recent_hooks, tested_hooks, weak_dims,
+        disabled_modes=disabled_modes,
     )
+
+    # If every candidate slot was disabled, bail out gracefully for this ad.
+    if not candidates:
+        output_lines.append(
+            f"    => skipped: all candidate modes disabled (disabled={sorted(disabled_modes)})"
+        )
+        return ad_id, 0, output_lines, (ad_id, recent_hooks, []), [], []
 
     # Tier 1: Run all candidates in parallel
     best_candidate = None
@@ -535,7 +593,8 @@ def _process_single_ad(item, all_items, all_ads, client, client_dir, shared_dir,
 
 def run_evolutionary(all_items, all_ads, client, client_dir, shared_dir,
                      max_iterations, target, population_size, use_llm,
-                     use_pairwise=False, max_workers=4, tournament=False):
+                     use_pairwise=False, max_workers=4, tournament=False,
+                     disabled_modes=None):
     """Population-based evolutionary hill-climb with mutation, crossover,
     wildcard, and dimension-targeted improvement.
 
@@ -544,7 +603,10 @@ def run_evolutionary(all_items, all_ads, client, client_dir, shared_dir,
     Tier 1: Candidates within an ad run in parallel (ThreadPoolExecutor).
     Tier 2: Ads within an iteration run in parallel (up to max_workers).
     Tier 3: Candidate configs are pre-built before any API calls.
+
+    disabled_modes: set of mode names to fully suppress (e.g. {"wildcard"}).
     """
+    disabled_modes = disabled_modes or set()
     recent_failures = []
     improved = 0
     recent_hooks_per_item = {}  # track recent hooks tried per ad_id
@@ -576,7 +638,8 @@ def run_evolutionary(all_items, all_ads, client, client_dir, shared_dir,
                     _process_single_ad, item, all_items, all_ads, client,
                     client_dir, shared_dir, iteration, population_size, playbook,
                     recent_hooks_per_item, tested_hooks_per_item,
-                    use_llm, use_pairwise, all_items_lock
+                    use_llm, use_pairwise, all_items_lock,
+                    disabled_modes,
                 ): item
                 for item in below
             }
@@ -618,13 +681,25 @@ def run_evolutionary(all_items, all_ads, client, client_dir, shared_dir,
 
 def run_map_elites(all_items, all_ads, client, client_dir, shared_dir,
                    max_iterations, target, use_llm, max_workers=4,
-                   seed_lhs=False):
+                   seed_lhs=False, type_filter=None):
     """MAP-Elites: fill an angle×hook grid with the best ad per cell.
 
     Competition is LOCAL — each cell only competes against itself.
     Uses Thompson Sampling (Beta priors from benchmarks) to select cells.
+
+    type_filter: content_type to generate (e.g. "meta-ad", "email",
+    "landing-page"). Defaults to "meta-ad" for backwards compatibility.
     """
     strategy_tracker = []
+
+    # Resolve content type + output subdir. Defaults preserve prior behavior.
+    content_type = type_filter or "meta-ad"
+    subdir_map = {
+        "meta-ad": "meta-ads",
+        "email": "emails",
+        "landing-page": "landing-pages",
+    }
+    output_subdir = subdir_map.get(content_type, f"{content_type}s")
 
     # Load hooks and angles
     config_path = client_dir / "config.json"
@@ -640,8 +715,8 @@ def run_map_elites(all_items, all_ads, client, client_dir, shared_dir,
     playbook = _load_industry_playbook(client_dir)
     hook_weights = playbook.get("hook_weights", {})
     loop_dir = client_dir / "loop"
-    meta_dir = loop_dir / "meta-ads"
-    meta_dir.mkdir(exist_ok=True)
+    output_dir = loop_dir / output_subdir
+    output_dir.mkdir(exist_ok=True)
 
     # Angle strength from review data (approval rates)
     angle_strength = {
@@ -760,10 +835,10 @@ def run_map_elites(all_items, all_ads, client, client_dir, shared_dir,
                     client_dir=client_dir,
                     current_best=parent_ad,
                     recent_failures=[],
-                    content_type="meta-ad",
+                    content_type=content_type,
                     mode="improve" if parent_ad and task_type == "improve" else "mutate",
                 )
-                new_ad["content_type"] = "meta-ad"
+                new_ad["content_type"] = content_type
 
                 # Lint
                 lint_result = lint(new_ad, client_dir, shared_dir)
@@ -837,7 +912,7 @@ def run_map_elites(all_items, all_ads, client, client_dir, shared_dir,
                     new_ad["angle"] = angle
                     new_ad["hook_type"] = hook
 
-                    file_path = meta_dir / f"{angle}--{hook}.json"
+                    file_path = output_dir / f"{angle}--{hook}.json"
                     with open(file_path, "w") as f:
                         json.dump(new_ad, f, indent=2, ensure_ascii=False)
                         f.write("\n")
@@ -1016,6 +1091,8 @@ def main():
     print(f"LLM scoring: {'enabled' if use_llm else 'disabled (deterministic only)'}")
     print(f"Pairwise gating: {'enabled' if args.use_pairwise else 'disabled'}")
     print(f"Workers: {args.workers} (concurrent ads per iteration)")
+    if args.disabled_modes:
+        print(f"Disabled strategy modes: {sorted(args.disabled_modes)}")
     print()
 
     # Initial scoring
@@ -1037,13 +1114,20 @@ def main():
             all_items, all_ads, client, client_dir, shared_dir,
             args.iterations, args.target, use_llm,
             use_pairwise=args.use_pairwise,
+            disabled_modes=args.disabled_modes,
         )
     elif args.strategy == "map-elites":
+        if args.disabled_modes:
+            print(
+                f"NOTE: --disable-strategy={sorted(args.disabled_modes)} is not wired into map-elites "
+                "(it uses a different task-type model). Flag is ignored for this strategy."
+            )
         improved, strategy_tracker = run_map_elites(
             all_items, all_ads, client, client_dir, shared_dir,
             args.iterations, args.target, use_llm,
             max_workers=args.workers,
             seed_lhs=args.seed_lhs,
+            type_filter=args.type_filter,
         )
     else:
         improved, strategy_tracker = run_evolutionary(
@@ -1052,6 +1136,7 @@ def main():
             use_pairwise=args.use_pairwise,
             max_workers=args.workers,
             tournament=args.tournament,
+            disabled_modes=args.disabled_modes,
         )
 
     # Final summary
