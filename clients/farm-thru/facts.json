@@ -444,19 +444,18 @@
     {
       "fact_id": "INV-006",
       "category": "investment",
-      "claim": "Launch date: mid-2026 (exact month to be confirmed)",
+      "claim": "Launch date: 2026-06-23 (23 June 2026)",
       "claim_patterns": [
-        "mid.2026",
-        "launching.*2026",
-        "opens.*2026",
-        "live.*2026",
-        "2026 launch"
+        "23 June 2026",
+        "June 2026",
+        "2026-06-23",
+        "launching.*June 2026",
+        "opens.*June 2026"
       ],
-      "source": "farmthru.com.au / Birchal campaign",
-      "confidence": "UNVERIFIED",
-      "note": "Round 2 review said 'likely June, not July'. Do not hardcode a specific month — use 'mid-2026' or 'coming soon' until confirmed.",
-      "last_verified": "2026-04-03",
-      "contradicts_if": "(June|August|September|October|November|December|January|February|March|April|May) 2026.*(launch|open|live|go live)"
+      "source": "Confirmed by founder (2026-04-24)",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-24",
+      "contradicts_if": "(July|August|September|October|November|December|January|February|March|April|May) 2026.*(launch|open|live|go live)"
     },
     {
       "fact_id": "MKT-001",
