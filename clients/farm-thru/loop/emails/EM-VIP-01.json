@@ -1,15 +1,16 @@
 {
-  "email_id": "EM-VIP-01",
-  "content_type": "email",
   "angle": "insider-note",
   "tactic": "segment:vip|drip-1|deposit+3d|behind-scenes",
   "hook_type": "story",
   "funnel": "MOF",
-  "email_type": "founder_story",
-  "subject": "Something I wouldn't say publicly",
-  "preheader": "An insider note for the VIP list. Keep it between us.",
-  "body": "Hi {first_name},\n\nA note I wouldn't write publicly.\n\nWe picked equity crowdfunding over VC because a VC would ask us to lift prices or cut the farmer's rate inside two years. I know because I had the conversations. Two of them went well until that part.\n\nThe Brookvale hub runs on days-old stock from named NSW farms. If we move fast enough on volume, the hub gets more efficient and the farmer's price holds or goes up. If we move slow, the hub stays expensive to run and something has to give. The whole model rests on reaching a scale where farm-direct is cheaper for families and fairer for farmers at the same time.\n\nThat's why community ownership matters to this specific business. Capital that doesn't need us to compromise on the thing that makes us worth owning in the first place.\n\nI'm telling you this because you're already in. You put down the $5. You're getting the offer link 24 hours before the public list on 23 June. This isn't a pitch. It's the thinking behind the pitch.\n\nIf you have a question, hit reply. I read every one.\n\nRachel\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.",
-  "cta": "Reply with any questions",
-  "sender_name": "Rachel Ward",
-  "creative_brief": "Letter-style layout. No hero image. Minimal masthead. Signed 'Rachel' (first name only) to reinforce the one-to-one voice. No CTA button — the soft CTA is reply-to."
+  "content_type": "email",
+  "creative_brief": "Clean founder-letter format. No hero image. Rachel's name in the sign-off with a handwritten-style font if available. Warm off-white background, single column, generous line spacing to match the personal tone.",
+  "generated_at": "2026-04-24T22:22:05.111031",
+  "email_id": "EM-VIP-01",
+  "subject": "What I told the farmer on Tuesday",
+  "preheader": "An honest note I'd only share with people already in. Keep it between us.",
+  "body": "Hi {first_name},\n\nOn Tuesday I was on the phone with one of our partner farmers. He asked me straight: \"Rachel, why didn't you just take investor money and scale fast?\"\n\nI told him the truth. Every VC conversation I had came back to the same pressure point. Lift margins, trim the farm gate price, optimise the unit economics. Polite language for the same old outcome: farmers absorb the cost so the cap table wins.\n\nThat's the moment FarmThru stopped being a business plan and became something I had to own differently.\n\nSo we chose equity crowdfunding on Birchal. Minimum $50. Maximum $10,000. The people who believe in paying farmers first get to be part of the structure that makes it stick, not just customers of it.\n\nYou're on the VIP list because you put down a $5 refundable deposit. That means on 22 June 2026, you get the Birchal link 24 hours before it goes public. Day one funding matters. It signals to every farmer we work with that this model has real backing.\n\nI won't send you a pitch deck. But if you have questions before launch, just reply to this email. I read every one.\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.",
+  "cta": "cfe_waitlist",
+  "sender_name": "Rachel & the FarmThru team",
+  "email_type": "founder_story"
 }

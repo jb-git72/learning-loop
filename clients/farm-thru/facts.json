@@ -629,6 +629,103 @@
       "source": "FarmThru Brand Guidelines v1.1",
       "confidence": "HIGH",
       "last_verified": "2026-04-03"
+    },
+    {
+      "fact_id": "INV-007",
+      "category": "investment",
+      "claim": "VIPs who place a $5 refundable deposit receive the Birchal offer link 24 hours before the public launch.",
+      "claim_patterns": [
+        "24 hours",
+        "24-hour",
+        "24 hour head start",
+        "head start",
+        "twenty-four hours",
+        "twenty four hours",
+        "day before",
+        "full day before",
+        "one day before",
+        "early access",
+        "first access",
+        "priority access",
+        "a day before",
+        "24h before",
+        "24 hours before"
+      ],
+      "source": "Founder confirmation (2026-04-24)",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-24",
+      "note": "VERIFIED 2026-04-24: Founder confirmed the 24-hour VIP head start is a real mechanical guarantee of the Birchal CSF round. VIPs who pay the $5 refundable deposit receive the direct Birchal link 24 hours before the public sees the offer. Safe to use in copy."
+    },
+    {
+      "fact_id": "LEG-001",
+      "category": "regulatory",
+      "claim": "ASIC RG 261 (CSF) required disclaimer boilerplate: \"This is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\"",
+      "claim_patterns": [
+        "not financial advice",
+        "no financial advice",
+        "independent financial advice",
+        "seek independent",
+        "disclosure document",
+        "CSF offer document",
+        "offer document",
+        "consider your personal circumstances",
+        "information only",
+        "this is information only"
+      ],
+      "source": "ASIC RG 261 (Crowd-sourced funding guidance) + Birchal standard boilerplate",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-24",
+      "note": "REQUIRED regulatory boilerplate for CSF offers in Australia. Safe to use — and legally expected — in any investment-related email or landing page. Fact exists so the scorer recognises the disclaimer as verified, not unverified."
+    },
+    {
+      "fact_id": "FP-007",
+      "category": "farm_partners",
+      "claim": "Mandolé Orchard (Wyangan, NSW): dates, activated nuts, almonds.",
+      "claim_patterns": [
+        "Mandolé Orchard",
+        "Mandole Orchard",
+        "Mandolé",
+        "Mandole",
+        "Wyangan",
+        "dates.*almonds",
+        "activated nuts"
+      ],
+      "source": "farmthru.com.au/collections/all (verified 2026-04-24)",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-24"
+    },
+    {
+      "fact_id": "FP-008",
+      "category": "farm_partners",
+      "claim": "Nonie's (Botany, NSW): artisan sourdough bread.",
+      "claim_patterns": [
+        "Nonie's",
+        "Nonies",
+        "Botany",
+        "sourdough",
+        "artisan bread"
+      ],
+      "source": "farmthru.com.au/collections/all (verified 2026-04-24)",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-24"
+    },
+    {
+      "fact_id": "BM-009",
+      "category": "business_model",
+      "claim": "Brookvale hub full address: Unit 23, 10-18 Orchard Road, Brookvale NSW 2100.",
+      "claim_patterns": [
+        "Unit 23",
+        "10-18 Orchard",
+        "Orchard Road",
+        "Orchard Rd",
+        "Brookvale NSW 2100",
+        "2100",
+        "Unit 23, 10-18"
+      ],
+      "source": "farmthru.com.au/collections/all (verified 2026-04-24)",
+      "confidence": "HIGH",
+      "last_verified": "2026-04-24",
+      "note": "Full pickup address exposed on farmthru.com.au. Safe to reference in operational (non-investor) copy. Only 1 hub — BM-004 still governs no-plural-hubs language."
     }
   ]
 }
