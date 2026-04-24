@@ -247,6 +247,7 @@ def build_variant_html(lp: dict) -> str:
   <div class="campaign-footer__logos">
     <img src="{LOGO_URL}" alt="FarmThru" class="campaign-footer__logo" style="filter: brightness(0) invert(1);">
   </div>
+  <p class="campaign-footer__disclaimer"><strong>Always consider the general CSF risk warning and offer document before investing.</strong></p>
   <p class="campaign-footer__disclaimer">{compliance}</p>
 </footer>
 
