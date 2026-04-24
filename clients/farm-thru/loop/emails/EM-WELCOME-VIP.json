@@ -1,0 +1,15 @@
+{
+  "email_id": "EM-WELCOME-VIP",
+  "content_type": "email",
+  "angle": "vip-confirmation",
+  "tactic": "segment:vip|welcome|lock-in-head-start",
+  "hook_type": "direct_address",
+  "funnel": "MOF",
+  "email_type": "welcome",
+  "subject": "You're VIP. Here's what that means",
+  "preheader": "Your $5 is refundable. Your 24-hour head start is not negotiable.",
+  "body": "Hi {first_name},\n\nYou're in. Your VIP spot is locked.\n\nHere's exactly what that gets you.\n\nWhen the equity raise opens on Birchal on 23 June 2026, VIPs get the offer link in their inbox 24 hours before the public list. That's a mechanical head start, not a vague promise. You see the offer, read the document, and decide while the public list is still waiting.\n\nMinimum investment is $50. Maximum is $10,000 per investor. Full details land in the disclosure document on Birchal when the round opens.\n\nIf you change your mind between now and then, your $5 is fully refundable. Email us and we send it back.\n\nBetween now and launch I'll send two more notes. One is a behind-the-scenes piece I wouldn't write publicly. One walks through how the offer actually works, so you're not making the call cold on launch day.\n\nIf you have a question right now, hit reply. I read every one.\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\n\nRachel and the FarmThru team",
+  "cta": "Reply with any questions",
+  "sender_name": "Rachel and the FarmThru team",
+  "creative_brief": "Plain-text feel. Warm confirmation tone. No hero image. Optional small 'VIP' badge or mark near the masthead. Single soft CTA at the bottom (reply-to, not a button)."
+}

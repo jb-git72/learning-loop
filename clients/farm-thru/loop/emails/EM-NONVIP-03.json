@@ -1,0 +1,15 @@
+{
+  "email_id": "EM-NONVIP-03",
+  "content_type": "email",
+  "angle": "launch-countdown",
+  "tactic": "segment:nonvip|drip-3|launch-7d|calendar-prep",
+  "hook_type": "announcement",
+  "funnel": "BOF",
+  "email_type": "countdown",
+  "subject": "The round opens 23 June",
+  "preheader": "A week out. Here's what to put in your calendar and how it'll work.",
+  "body": "Hi {first_name},\n\nOne week until the round opens.\n\nOn 23 June 2026 the FarmThru equity crowdfunding offer goes live on Birchal. Minimum investment is $50. Maximum is $10,000 per investor.\n\nThree things to do between now and next Monday.\n\nOne. Put 23 June in your calendar. Day-1 funding matters a lot in crowdfunding campaigns. Strong day one is what pulls other people in.\n\nTwo. Read the disclosure document when it goes live on Birchal. It'll have the financials, the plan, and the honest risk section. Don't invest without reading it. Early-stage businesses carry real risk and you could lose some or all of what you invest.\n\nThree. If you still want the 24-hour head start on the public list, there's still time to upgrade to VIP for a $5 refundable deposit. VIPs get the offer link on 22 June, one day before public. After that the list closes.\n\nThat's the plan for this week. I'll send the next email when the round is live.\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\n\nRachel and the FarmThru team",
+  "cta": "Upgrade to VIP before 22 June",
+  "sender_name": "Rachel and the FarmThru team",
+  "creative_brief": "Minimal design. Clear date '23 June 2026' typographically emphasised near the top. Single CTA button mid-body. No stock photography. Focus on calendar clarity."
+}

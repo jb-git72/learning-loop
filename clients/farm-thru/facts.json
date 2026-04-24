@@ -250,7 +250,7 @@
     {
       "fact_id": "FP-001",
       "category": "farm_partners",
-      "claim": "Rachel Ward \u2014 actor-turned-regenerative-farming advocate, founder of Rachel's Farm (Kempsey, NSW). Key partner and supplier to FarmThru, not titled co-founder.",
+      "claim": "Rachel Ward \u2014 co-founder of FarmThru. Also founder of Rachel's Farm (Kempsey, NSW) and a key partner/supplier. Actor-turned-regenerative-farming advocate.",
       "claim_patterns": [
         "2020 bushfire",
         "regenerative.*advocate",
@@ -262,12 +262,13 @@
         "Rachel('s)? Farm",
         "Rachel Ward",
         "Rachel's Farm",
-        "partner.*supplier"
+        "partner.*supplier",
+        "co.?founder"
       ],
-      "source": "farmthru.com.au (verified 2026-04-03)",
-      "note": "CORRECTED: Rachel is NOT co-founder of FarmThru. She is founder of Rachel's Farm (her own cattle farm) and a key partner/supplier. Do NOT call her 'co-founder of FarmThru'.",
+      "source": "farmthru.com.au (verified 2026-04-03); founder title confirmed 2026-04-24",
+      "note": "RECONCILED 2026-04-24: Rachel is co-founder of FarmThru (primary framing). She is also founder of Rachel's Farm (her own cattle farm in Kempsey) and a key partner/supplier to FarmThru. Lead with 'co-founder', then context.",
       "confidence": "HIGH",
-      "last_verified": "2026-04-03"
+      "last_verified": "2026-04-24"
     },
     {
       "fact_id": "FP-002",

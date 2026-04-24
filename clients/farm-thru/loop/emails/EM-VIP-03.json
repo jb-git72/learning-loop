@@ -1,0 +1,15 @@
+{
+  "email_id": "EM-VIP-03",
+  "content_type": "email",
+  "angle": "head-start-announcement",
+  "tactic": "segment:vip|drip-3|launch-1d|birchal-link",
+  "hook_type": "announcement",
+  "funnel": "BOF",
+  "email_type": "announcement",
+  "subject": "Your early-access link for tomorrow",
+  "preheader": "23 June. 24 hours before the public list. Day one matters.",
+  "body": "Hi {first_name},\n\nThe round opens tomorrow, 23 June 2026.\n\nAs a VIP you're getting this link 24 hours before the public list sees it. That's the head start you paid the $5 for. Use it or don't, but the window is now.\n\nDirect link to the FarmThru offer on Birchal: [Birchal URL]\n\nTwo practical notes before you click through.\n\nOne. Day-1 funding is genuinely load-bearing. Strong momentum in the first 24 hours is what pulls the broader list in when the campaign goes public tomorrow. If you were planning to invest anyway, today is the day that matters.\n\nTwo. Read the offer document on Birchal before you commit. Valuation, financials, risk section. Minimum investment is $50. Maximum is $10,000 per investor. Early-stage businesses carry real risk and you could lose some or all of what you invest.\n\nYour $5 VIP deposit rolls into your investment if you go ahead, or you can refund it if not. Either is fine.\n\nIf a question comes up while you're on the offer page, hit reply.\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\n\nRachel and the FarmThru team",
+  "cta": "Open your VIP Birchal link",
+  "sender_name": "Rachel and the FarmThru team",
+  "creative_brief": "Launch-day announcement feel. Date '23 June 2026' prominent at top. Single bold CTA button for the Birchal link. Minimal copy framing around the link. Optional small VIP mark near masthead."
+}

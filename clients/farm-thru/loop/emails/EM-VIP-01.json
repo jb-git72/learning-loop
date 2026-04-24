@@ -1,0 +1,15 @@
+{
+  "email_id": "EM-VIP-01",
+  "content_type": "email",
+  "angle": "insider-note",
+  "tactic": "segment:vip|drip-1|deposit+3d|behind-scenes",
+  "hook_type": "story",
+  "funnel": "MOF",
+  "email_type": "founder_story",
+  "subject": "Something I wouldn't say publicly",
+  "preheader": "An insider note for the VIP list. Keep it between us.",
+  "body": "Hi {first_name},\n\nA note I wouldn't write publicly.\n\nWe picked equity crowdfunding over VC because a VC would ask us to lift prices or cut the farmer's rate inside two years. I know because I had the conversations. Two of them went well until that part.\n\nThe Brookvale hub runs on days-old stock from named NSW farms. If we move fast enough on volume, the hub gets more efficient and the farmer's price holds or goes up. If we move slow, the hub stays expensive to run and something has to give. The whole model rests on reaching a scale where farm-direct is cheaper for families and fairer for farmers at the same time.\n\nThat's why community ownership matters to this specific business. Capital that doesn't need us to compromise on the thing that makes us worth owning in the first place.\n\nI'm telling you this because you're already in. You put down the $5. You're getting the offer link 24 hours before the public list on 23 June. This isn't a pitch. It's the thinking behind the pitch.\n\nIf you have a question, hit reply. I read every one.\n\nRachel\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.",
+  "cta": "Reply with any questions",
+  "sender_name": "Rachel Ward",
+  "creative_brief": "Letter-style layout. No hero image. Minimal masthead. Signed 'Rachel' (first name only) to reinforce the one-to-one voice. No CTA button — the soft CTA is reply-to."
+}
