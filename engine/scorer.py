@@ -13,9 +13,10 @@ IMMUTABLE — the writer agent cannot modify this file.
 """
 
 import json
+from dataclasses import asdict
 from pathlib import Path
 
-from . import rule_checker, fact_checker, rubric_scorer
+from . import compliance_checker, fact_checker, rubric_scorer, rule_checker
 
 
 def load_client(client_dir, shared_dir):
@@ -73,6 +74,23 @@ def score_ad(
     content_type = ad.get("content_type", "meta-ad")
     rubric = client.get("rubrics", {}).get(content_type, client.get("rubric", {}))
 
+    # Gate 0: Regulatory compliance (HARD GATE — runs before client rules)
+    # BLOCKING violations zero the composite, same as critical_rule_failure.
+    # Off by default for clients that don't opt in via config.compliance.enabled.
+    compliance_cfg = config.get("compliance", {}) or {}
+    compliance_enabled = bool(compliance_cfg.get("enabled", False))
+    if compliance_enabled:
+        compliance_text = fact_checker._get_all_text(ad)
+        compliance_result = compliance_checker.check_compliance(
+            text=compliance_text,
+            content_type=content_type,
+            applies_to=compliance_cfg.get("applies_to", "issuer"),
+            rules_path=compliance_cfg.get("rules_path"),
+            enable_llm=use_llm,
+        )
+    else:
+        compliance_result = compliance_checker.ComplianceResult()
+
     # Gate 1: Rule compliance
     rules_result = rule_checker.check_rules(
         ad,
@@ -103,6 +121,10 @@ def score_ad(
     # Start with rubric as the base score
     composite = rubric_normalized
 
+    # Gate: regulatory BLOCKING violation = 0.0 (runs first — pulled copy)
+    if compliance_enabled and not compliance_result.passed:
+        composite = 0.0
+
     # Gate: critical rule failure = 0.0
     if rules_result["critical_failure"]:
         composite = 0.0
@@ -129,10 +151,22 @@ def score_ad(
             penalty = min(non_critical_failures * 0.05, 0.20)
             composite = composite * (1.0 - penalty)
 
+    # Penalty: compliance WARNINGs (non-blocking) — 3% each, capped at 15%.
+    # Smaller hit than client-rule failures because these come from a much
+    # larger and noisier rule library.
+    compliance_warning_count = len(compliance_result.warnings)
+    if compliance_enabled and compliance_warning_count > 0:
+        penalty = min(compliance_warning_count * 0.03, 0.15)
+        composite = composite * (1.0 - penalty)
+
     composite = round(max(0.0, composite), 4)
 
     # Verdict thresholds (recalibrated for rubric-only scoring)
-    if rules_result["critical_failure"] or facts_result["contradicted"] > 0:
+    if (
+        (compliance_enabled and not compliance_result.passed)
+        or rules_result["critical_failure"]
+        or facts_result["contradicted"] > 0
+    ):
         verdict = "rewrite"
     elif composite >= 0.85:
         verdict = "production_ready"
@@ -147,6 +181,7 @@ def score_ad(
         "ad_id": ad.get("ad_id", "unknown"),
         "composite": composite,
         "verdict": verdict,
+        "compliance": _serialize_compliance(compliance_result, compliance_enabled),
         "rule_compliance": rules_result,
         "fact_accuracy": facts_result,
         "rubric": {
@@ -156,6 +191,7 @@ def score_ad(
             "dimension_details": rubric_result["dimension_details"],
         },
         "overrides": {
+            "compliance_blocking": compliance_enabled and not compliance_result.passed,
             "critical_rule_failure": rules_result["critical_failure"],
             "fact_contradiction": facts_result["contradicted"] > 0,
         },
@@ -164,6 +200,7 @@ def score_ad(
             "non_critical_rule_failures": sum(
                 1 for f in rules_result["failures"] if f["severity"] != "critical"
             ),
+            "compliance_warnings": compliance_warning_count,
         },
         "scoring_method": {
             "deterministic_dimensions": sum(
@@ -182,6 +219,21 @@ def score_ad(
     }
 
 
+def _serialize_compliance(result, enabled):
+    """Convert ComplianceResult dataclass into a JSON-friendly dict."""
+    if not enabled:
+        return {"enabled": False}
+    return {
+        "enabled": True,
+        "passed": result.passed,
+        "rules_evaluated": result.rules_evaluated,
+        "rules_skipped_out_of_scope": result.rules_skipped_out_of_scope,
+        "blocking_violations": [asdict(v) for v in result.blocking_violations],
+        "warnings": [asdict(v) for v in result.warnings],
+        "advisory": [asdict(v) for v in result.advisory],
+    }
+
+
 def format_report(report):
     """Format a score report as human-readable text."""
     lines = []
@@ -190,17 +242,41 @@ def format_report(report):
     lines.append("Verdict: %s" % report["verdict"].upper())
     lines.append("")
 
+    if report["overrides"].get("compliance_blocking"):
+        lines.append("!! REGULATORY COMPLIANCE FAILURE — score overridden to 0.0")
     if report["overrides"]["critical_rule_failure"]:
         lines.append("!! CRITICAL RULE FAILURE — score overridden to 0.0")
     if report["overrides"]["fact_contradiction"]:
         lines.append("!! FACT CONTRADICTION — score overridden to 0.0")
 
     pen = report.get("penalties", {})
+    if pen.get("compliance_warnings", 0) > 0:
+        lines.append("!! %d compliance warning(s) — score penalised" % pen["compliance_warnings"])
     if pen.get("non_critical_rule_failures", 0) > 0:
         lines.append("!! %d non-critical rule failure(s) — score penalised" % pen["non_critical_rule_failures"])
     if pen.get("unverified_claims", 0) > 0:
         lines.append("!! %d unverified claim(s) — score may be penalised" % pen["unverified_claims"])
     lines.append("")
+
+    # Regulatory compliance (only render when enabled)
+    cc = report.get("compliance", {})
+    if cc.get("enabled"):
+        gate = "PASS" if cc.get("passed") else "FAIL"
+        lines.append(
+            "--- Compliance [%s]: %d rules evaluated, %d out-of-scope ---"
+            % (gate, cc.get("rules_evaluated", 0), cc.get("rules_skipped_out_of_scope", 0))
+        )
+        for v in cc.get("blocking_violations", []):
+            lines.append(
+                "  [BLOCKING] %s (%s): %s — %s"
+                % (v["rule_id"], "/".join(v["source_ref"]), v["line_hint"], v["fix_message"])
+            )
+        for v in cc.get("warnings", []):
+            lines.append(
+                "  [WARNING]  %s (%s): %s"
+                % (v["rule_id"], "/".join(v["source_ref"]), v["line_hint"])
+            )
+        lines.append("")
 
     # Rule compliance
     rc = report["rule_compliance"]

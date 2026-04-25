@@ -218,7 +218,8 @@ def _build_rules_summary(config: dict, content_type: str) -> str:
     # Config-driven rules (preferred)
     prompt_rules = config.get("prompt_rules", {})
     if isinstance(prompt_rules, dict) and content_type in prompt_rules:
-        return "RULES (violating ANY zeros your score — read carefully):\n" + prompt_rules[content_type]
+        rules = "RULES (violating ANY zeros your score — read carefully):\n" + prompt_rules[content_type]
+        return _append_compliance_summary(rules, config, content_type)
 
     # Hardcoded fallback for clients without prompt_rules in config
     client_id = config.get("client_id", "")
@@ -238,7 +239,57 @@ def _build_rules_summary(config: dict, content_type: str) -> str:
 - No condescension ("we'll wait", "simple maths")
 - Lead with value/benefit, not price"""
 
-    return rules
+    return _append_compliance_summary(rules, config, content_type)
+
+
+def _append_compliance_summary(rules_text: str, config: dict, content_type: str) -> str:
+    """Append a regulatory-compliance summary when the client opts in.
+
+    Reads the same compliance_rules.json the scorer uses, filters to BLOCKING
+    rules in scope for this content_type + applies_to, and inlines the rule
+    claims so the writer LLM sees the exact gates that will zero its score.
+    Skips silently if compliance is disabled or the rules file is unavailable.
+    """
+    compliance_cfg = config.get("compliance", {}) or {}
+    if not compliance_cfg.get("enabled"):
+        return rules_text
+
+    try:
+        from engine import compliance_checker
+        rules_path = compliance_cfg.get("rules_path")
+        data = compliance_checker._load_rules(rules_path)
+    except Exception:
+        return rules_text
+
+    applies_to = compliance_cfg.get("applies_to", "issuer")
+    blocking_claims = []
+    for rule in data.get("rules", []):
+        if rule.get("severity") != "BLOCKING":
+            continue
+        if not compliance_checker._rule_in_scope(rule, content_type, applies_to):
+            continue
+        claim = rule.get("claim", "").strip()
+        if claim:
+            blocking_claims.append(f"- [{rule.get('rule_id', '?')}] {claim}")
+
+    if not blocking_claims:
+        return rules_text
+
+    # Cap to avoid swamping the prompt; the writer doesn't need the full library.
+    cap = int(compliance_cfg.get("prompt_rule_cap", 12))
+    shown = blocking_claims[:cap]
+    overflow = len(blocking_claims) - len(shown)
+
+    header = (
+        "\n\nREGULATORY COMPLIANCE (BLOCKING — failing any zeros your score):"
+    )
+    body = "\n".join(shown)
+    footer = (
+        f"\n... +{overflow} more BLOCKING rules from the CSF rule library are also enforced."
+        if overflow > 0
+        else ""
+    )
+    return rules_text + header + "\n" + body + footer
 
 
 def _build_prompt(
