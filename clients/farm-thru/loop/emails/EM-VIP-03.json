@@ -4,13 +4,16 @@
   "hook_type": "announcement",
   "funnel": "BOF",
   "content_type": "email",
-  "creative_brief": "Clean, warm founder-voice layout. Single column, no hero image needed. Bold the date '23 June 2026' and '$50' minimum in-body. Soft off-white background, FarmThru green CTA button reading 'Go to Birchal tomorrow' — greyed out or replaced with a countdown-style note since the link arrives the next day.",
+  "creative_brief": "Clean, warm founder-voice layout. Single column, no hero image needed. Bold the date '23 June 2026' and '$50' minimum in-body. Soft off-white background, FarmThru green CTA button reading 'Go to Birchal tomorrow' \u2014 greyed out or replaced with a countdown-style note since the link arrives the next day.",
   "generated_at": "2026-04-24T22:22:23.065714",
   "email_id": "EM-VIP-03",
   "subject": "Tomorrow is yours, {first_name}",
   "preheader": "Your VIP link goes live 23 June. 24 hours before anyone else sees it.",
-  "body": "Hi {first_name},\n\nRemember why you put that $5 down?\n\nNot for a discount. Not for a freebie. Because you wanted to be the kind of person who owns a piece of the grocery store that pays farmers first, not the kind who hears about it six months later and wishes they'd moved sooner.\n\nTomorrow is that moment.\n\n23 June 2026. The FarmThru round opens on Birchal, and your VIP link lands in this inbox 24 hours before the public list sees it. Day one funding matters. The investors who move first set the tone for every family and farmer who comes after.\n\nYou can invest from $50. Maximum is $10,000. The link is yours. The timing is yours.\n\nWatch for our email tomorrow morning.\n\nThis is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\n\nRachel & the FarmThru team",
+  "body": "Hi {first_name},\n\nRemember why you placed that refundable deposit?\n\nNot for a discount. Not for a freebie. Because you wanted to be the kind of person who owns a piece of the grocery store that pays farmers first, not the kind who hears about it six months later and wishes they'd moved sooner.\n\nTomorrow is that moment.\n\n23 June 2026. The FarmThru round opens on Birchal, and your VIP link lands in this inbox 24 hours before the public list sees it. Day one funding matters. The investors who move first set the tone for every family and farmer who comes after.\n\nThe link is yours. The timing is yours.\n\nWatch for our email tomorrow morning.\n\nAlways consider the general CSF risk warning and offer document before investing.\n\nRachel & the FarmThru team",
   "cta": "cfe_campaign",
   "sender_name": "Rachel & the FarmThru team",
-  "email_type": "announcement"
+  "email_type": "announcement",
+  "user_review_status": "revise",
+  "user_review_note": "We need to remove anything about investing dollar amounts. No minimum investment, no maximum. We can say that we are going to do a raise, but not those parts. Also, must as the CSF warning.  \"Always consider the general CSF risk warning and offer document before investing.\"",
+  "updated_at": "2026-04-25T03:50:00+10:00"
 }

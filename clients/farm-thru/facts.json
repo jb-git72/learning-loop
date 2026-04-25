@@ -659,23 +659,18 @@
     {
       "fact_id": "LEG-001",
       "category": "regulatory",
-      "claim": "ASIC RG 261 (CSF) required disclaimer boilerplate: \"This is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\"",
+      "claim": "FMTH-mandated CSF risk warning, exact wording: \"Always consider the general CSF risk warning and offer document before investing.\" This phrase MUST appear at the end of every email body, every landing page, every ad copy. Do not reword. Do not substitute the longer 'not financial advice' boilerplate.",
       "claim_patterns": [
-        "not financial advice",
-        "no financial advice",
-        "independent financial advice",
-        "seek independent",
-        "disclosure document",
-        "CSF offer document",
-        "offer document",
-        "consider your personal circumstances",
-        "information only",
-        "this is information only"
+        "Always consider the general CSF risk warning",
+        "general CSF risk warning",
+        "CSF risk warning and offer document",
+        "consider the general CSF",
+        "CSF risk warning"
       ],
-      "source": "ASIC RG 261 (Crowd-sourced funding guidance) + Birchal standard boilerplate",
+      "source": "Founder directive 2026-04-25 — replaces prior ASIC RG 261 boilerplate",
       "confidence": "HIGH",
-      "last_verified": "2026-04-24",
-      "note": "REQUIRED regulatory boilerplate for CSF offers in Australia. Safe to use — and legally expected — in any investment-related email or landing page. Fact exists so the scorer recognises the disclaimer as verified, not unverified."
+      "last_verified": "2026-04-25",
+      "note": "MANDATORY for every customer-facing surface (emails, landing pages, ads). Use exact wording — no paraphrasing. Replaces the older 'This is not financial advice...' boilerplate; do not use both."
     },
     {
       "fact_id": "FP-007",
