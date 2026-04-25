@@ -1,17 +1,28 @@
 {
   "jurisdiction": "AU-CSF",
-  "regulations_covered": ["RG-261", "RG-262"],
+  "regulations_covered": [
+    "RG-261",
+    "RG-262"
+  ],
   "last_updated": "2026-04-26",
-  "notes": "ASIC Crowd-Sourced Funding compliance rules. Real rule set will be extracted from RG 261 and RG 262 markdown by parallel agents. This file seeds the engine with 5 sample rules for end-to-end validation.",
+  "notes": "ASIC CSF compliance rules. 5 seed rules + 39 distilled from RG 261 (issuer obligations, sections C/D/E primarily) + 52 distilled from RG 262 (intermediary obligations). Distillation by parallel agents 2026-04-26.",
   "rules": [
     {
       "rule_id": "ADV-001",
       "category": "advertising",
       "claim": "Marketing must direct readers to the offer document and general CSF risk warning per s738ZG(6)",
-      "source_ref": ["RG-261.92", "s738ZG(6)"],
+      "source_ref": [
+        "RG-261.92",
+        "s738ZG(6)"
+      ],
       "severity": "BLOCKING",
       "scope": {
-        "content_types": ["email", "landing-page", "meta-ad", "social-post"],
+        "content_types": [
+          "email",
+          "landing-page",
+          "meta-ad",
+          "social-post"
+        ],
         "phase": "during-offer",
         "applies_to": "issuer"
       },
@@ -26,10 +37,19 @@
       "rule_id": "ADV-002",
       "category": "advertising",
       "claim": "Marketing copy must not state specific investment dollar amounts (deposit, minimum, maximum) outside of the offer document",
-      "source_ref": ["RG-261.96", "RG-261.99", "founder directive 2026-04-25"],
+      "source_ref": [
+        "RG-261.96",
+        "RG-261.99",
+        "founder directive 2026-04-25"
+      ],
       "severity": "BLOCKING",
       "scope": {
-        "content_types": ["email", "landing-page", "meta-ad", "social-post"],
+        "content_types": [
+          "email",
+          "landing-page",
+          "meta-ad",
+          "social-post"
+        ],
         "phase": "during-offer",
         "applies_to": "issuer"
       },
@@ -53,10 +73,18 @@
       "rule_id": "ADV-003",
       "category": "advertising",
       "claim": "CSF offers must not be solicited via DM/email reply/phone — anti-hawking under s736",
-      "source_ref": ["RG-261.115", "s736"],
+      "source_ref": [
+        "RG-261.115",
+        "s736"
+      ],
       "severity": "BLOCKING",
       "scope": {
-        "content_types": ["email", "landing-page", "meta-ad", "social-post"],
+        "content_types": [
+          "email",
+          "landing-page",
+          "meta-ad",
+          "social-post"
+        ],
         "phase": "during-offer",
         "applies_to": "issuer"
       },
@@ -73,10 +101,18 @@
       "rule_id": "ADV-004",
       "category": "advertising",
       "claim": "Forward-looking statements (forecasts, projections, growth targets) must have stated reasonable grounds; speculative claims are misleading",
-      "source_ref": ["RG-261.197", "RG-261.198", "s738U(2)"],
+      "source_ref": [
+        "RG-261.197",
+        "RG-261.198",
+        "s738U(2)"
+      ],
       "severity": "WARNING",
       "scope": {
-        "content_types": ["email", "landing-page", "meta-ad"],
+        "content_types": [
+          "email",
+          "landing-page",
+          "meta-ad"
+        ],
         "phase": "during-offer",
         "applies_to": "issuer"
       },
@@ -88,10 +124,16 @@
       "rule_id": "DISC-001",
       "category": "disclosure",
       "claim": "Superseded ASIC RG 261 disclaimer wording — replaced by founder-directed CSF warning 2026-04-25",
-      "source_ref": ["founder directive 2026-04-25"],
+      "source_ref": [
+        "founder directive 2026-04-25"
+      ],
       "severity": "WARNING",
       "scope": {
-        "content_types": ["email", "landing-page", "meta-ad"],
+        "content_types": [
+          "email",
+          "landing-page",
+          "meta-ad"
+        ],
         "phase": "always",
         "applies_to": "issuer"
       },
@@ -100,6 +142,2077 @@
         "This is not financial advice\\. Consider seeking independent financial advice\\. Full details in the disclosure document on Birchal"
       ],
       "violation_message": "Replace with the canonical CSF warning: 'Always consider the general CSF risk warning and offer document before investing.'"
+    },
+    {
+      "rule_id": "ADV-005",
+      "category": "advertising",
+      "claim": "Comments on the CSF intermediary's communication facility by issuer officers/employees/agents must clearly disclose their relationship to the company or intermediary",
+      "source_ref": [
+        "RG-261.104",
+        "RG-261.105",
+        "s738ZG"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "social-post",
+          "landing-page"
+        ],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this comment posted on a CSF intermediary's communication facility (or a social-style comment about a CSF offer). If the author is an officer, employee, agent, related party or associate of the issuer or the intermediary, the post MUST clearly disclose that relationship (e.g. 'I'm a director of X', 'I work for the company'). If you can identify it is from such a person but no relationship disclosure is present, fail. If the post is from an external/independent party, or from someone whose role is clearly disclosed, pass. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add a clear disclosure of your relationship to the company or intermediary (e.g. 'Disclosure: I'm a director of [Company]')."
+    },
+    {
+      "rule_id": "ADV-006",
+      "category": "advertising",
+      "claim": "Advertising must not give undue prominence to benefits/returns over risks — risks must be clearly signposted with comparable prominence",
+      "source_ref": [
+        "RG-261.99",
+        "RG-261.100",
+        "RG-261.196"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "email",
+          "landing-page",
+          "meta-ad",
+          "social-post"
+        ],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF marketing copy. Does it overstate or give unbalanced emphasis to potential benefits (returns, growth, upside, traction, valuation, market size) without comparable prominence given to risks (loss of capital, illiquidity, early-stage, speculative)? A short risk warning bullet at the very bottom while the body is 90% benefits is unbalanced. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief explanation of the imbalance>\"}",
+      "violation_message": "Add prominent, in-body risk disclosure (loss of capital, illiquidity) — not just a small footer. The risk content should be visually weighted like the benefits content."
+    },
+    {
+      "rule_id": "ADV-007",
+      "category": "misleading",
+      "claim": "Issuer must not present its own views or those of insiders/associates as if they were independent investor or third-party views",
+      "source_ref": [
+        "RG-261.99(c)"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "email",
+          "landing-page",
+          "meta-ad",
+          "social-post"
+        ],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF marketing copy. Does it present any views about the offer, the company, or the shares as the views of investors, customers, or unrelated third parties — when in fact those views are (or appear to be) from the company itself, its directors, employees, the intermediary, or their associates? Look for fake testimonials, undisclosed-staff 'reviews', or sock-puppet style endorsements. Pass if testimonials are clearly attributed to genuinely independent investors/customers. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Either remove the disguised endorsement, or relabel it with a disclosure of the speaker's relationship to the company."
+    },
+    {
+      "rule_id": "ADV-008",
+      "category": "advertising",
+      "claim": "Issuer must not provide or arrange financial assistance (loans, deposits-to-be-credited, deferred payment, etc.) to enable retail investors to invest",
+      "source_ref": [
+        "RG-261.88",
+        "RG-261.89",
+        "RG-261.90",
+        "s738ZE"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "email",
+          "landing-page",
+          "meta-ad",
+          "social-post"
+        ],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "regex_forbidden",
+      "forbidden_patterns": [
+        "(?i)loan to invest",
+        "(?i)we(?: will| ?'ll|)? lend you",
+        "(?i)pay (later|in instalments|over time) to invest",
+        "(?i)credit (line|facility) to (invest|buy shares)",
+        "(?i)finance (your|the) investment",
+        "(?i)defer (payment|your investment)",
+        "(?i)(buy now,? pay later|BNPL).{0,40}(invest|shares)"
+      ],
+      "violation_message": "Remove. The issuer (and its related parties and the intermediary) cannot provide or arrange financial assistance for retail investors to participate — see s738ZE."
+    },
+    {
+      "rule_id": "ADV-009",
+      "category": "advertising",
+      "claim": "Issuer must not run more than one CSF offer at a time; advertising or trailers for a 'next round' while a current offer is open is prohibited",
+      "source_ref": [
+        "RG-261.87",
+        "s738R"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "email",
+          "landing-page",
+          "meta-ad",
+          "social-post"
+        ],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "regex_forbidden",
+      "forbidden_patterns": [
+        "(?i)(next|second|another|upcoming) (csf|crowdfunding|crowd-sourced) (offer|round|raise)",
+        "(?i)stay tuned for (our )?(next|second) raise",
+        "(?i)another (raise|round) is coming"
+      ],
+      "violation_message": "Remove references to a concurrent or imminent additional CSF offer. Only one CSF offer per issuer (and its related parties) may be open at a time — see s738R."
+    },
+    {
+      "rule_id": "ADV-010",
+      "category": "advertising",
+      "claim": "Issuer must use exactly one CSF intermediary's platform for a given offer — advertising must not direct investors to a non-intermediary URL to apply",
+      "source_ref": [
+        "RG-261.74",
+        "RG-261.114",
+        "s738L(1)"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "email",
+          "landing-page",
+          "meta-ad",
+          "social-post"
+        ],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "regex_forbidden",
+      "forbidden_patterns": [
+        "(?i)apply (now |here )?(at|on|via) (our|the company) website",
+        "(?i)invest (now |today |here )?(at|via) (?!.*(birchal|equitise|onmarket|swarmer|vested))(https?://|www\\.)",
+        "(?i)skip the platform",
+        "(?i)direct (investment|application) (form|link)"
+      ],
+      "violation_message": "All applications must go via a single licensed CSF intermediary's platform (e.g. Birchal). Replace any direct-application URL with the intermediary's offer page."
+    },
+    {
+      "rule_id": "ADV-011",
+      "category": "advertising",
+      "claim": "Issuer must not give personal financial product advice — no statements tailored to an individual's objectives, situation, or needs",
+      "source_ref": [
+        "RG-261.111",
+        "RG-261.112",
+        "RG-261.113",
+        "s766B",
+        "reg 7.1.08(3)"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "email",
+          "landing-page",
+          "meta-ad",
+          "social-post"
+        ],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF marketing copy. Does it give personal financial product advice — i.e. recommendations tailored to an individual reader's financial situation, objectives, or needs (e.g. 'Given your retirement goals, this offer is right for you', 'If you're over 50, this is a smart investment', 'Based on your income, you should invest $X')? General statements about the company or offer are fine; personalised investment recommendations are not. Pass if the copy is general only. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Remove personalised investment recommendations. The issuer is not licensed to provide financial product advice. Use general factual statements only."
+    },
+    {
+      "rule_id": "ADV-012",
+      "category": "advertising",
+      "claim": "When making general statements about shares, issuer should advise investors that it is not licensed to provide financial product advice",
+      "source_ref": [
+        "RG-261.113"
+      ],
+      "severity": "ADVISORY",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "email"
+        ],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF marketing copy. If it contains general advice about the company's shares (any opinion, comparison, or framing about the value/merit of the investment beyond bare facts), does it include a clear statement that the company is not licensed to provide financial product advice (e.g. 'We are not licensed to provide financial product advice in relation to our shares')? If the copy contains only bare facts and no advice, pass. If it contains general advice but lacks the disclaimer, fail. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add a sentence: 'We are not licensed to provide financial product advice in relation to our shares. Consider seeking independent advice.'"
+    },
+    {
+      "rule_id": "ADV-013",
+      "category": "advertising",
+      "claim": "Comparative claims and superlatives about the offer/company must be substantiated and balanced — unsupported 'best/leading/world-class' framing is misleading",
+      "source_ref": [
+        "RG-261.96",
+        "RG-261.97",
+        "RG-261.99",
+        "RG-234"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "email",
+          "landing-page",
+          "meta-ad",
+          "social-post"
+        ],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF marketing copy. Does it contain any comparative claim, superlative, or market-leadership statement (e.g. 'Australia's #1', 'fastest growing', 'leading provider', 'best in market', 'world-class', 'unmatched', 'only company that...') WITHOUT a clear, substantiated source, methodology, or basis stated nearby? Generic puffery used in superlative form fails. Concrete, sourced claims (e.g. 'ranked #1 by [Source, Date]') pass. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Either substantiate the comparative claim with a clear source/date/methodology, or remove the superlative."
+    },
+    {
+      "rule_id": "ADV-014",
+      "category": "advertising",
+      "claim": "Issuer must not offer inducements, bonuses, gifts, discounts or perks tied to investing in the CSF offer (other than the share rights themselves)",
+      "source_ref": [
+        "RG-261.89",
+        "RG-261.91",
+        "s738ZE"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "email",
+          "landing-page",
+          "meta-ad",
+          "social-post"
+        ],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "regex_forbidden",
+      "forbidden_patterns": [
+        "(?i)(free|bonus|complimentary) (gift|product|merch|item|hamper)\\b.{0,80}(invest|shares|application)",
+        "(?i)invest(ors|) (and|to|will) (get|receive|earn) (a |an )?(free|bonus|discount|voucher|gift|perk|reward)",
+        "(?i)(perks?|rewards?) for invest(ing|ors)",
+        "(?i)(?<!shareholder )(discount|voucher|coupon).{0,40}(invest|shares)"
+      ],
+      "whitelist_contexts": [
+        "shareholder discount on future product purchases (post-investment ongoing benefit)",
+        "shareholder rights",
+        "dividend rights"
+      ],
+      "violation_message": "Remove inducements tied to investment. Inducements may amount to financial assistance (s738ZE), artificially inflate demand, or be misleading. Share-class rights (voting, dividends) are fine; sweeteners are not."
+    },
+    {
+      "rule_id": "ADV-015",
+      "category": "hawking",
+      "claim": "Issuer must not make unsolicited approaches (calls, meetings) to invite investment in the CSF offer",
+      "source_ref": [
+        "RG-261.115",
+        "RG-261.116",
+        "s736"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "email",
+          "social-post",
+          "meta-ad"
+        ],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "regex_forbidden",
+      "forbidden_patterns": [
+        "(?i)we'?ll (call|phone|ring) you to (discuss|talk about|walk you through) (the )?(offer|investment|raise)",
+        "(?i)book a (call|meeting|chat) (to|about) invest",
+        "(?i)schedule a one[- ]on[- ]one (about|to discuss) (the )?(offer|raise|investment)",
+        "(?i)cold[- ]call (you )?about"
+      ],
+      "violation_message": "Remove. Unsolicited calls or meetings to invite investment may breach the s736 securities-hawking prohibition. All offers must be made via the CSF intermediary's platform."
+    },
+    {
+      "rule_id": "ADV-016",
+      "category": "advertising",
+      "claim": "Endorsements, celebrity mentions, or third-party praise must be true, current, attributable, and consented to — quoting or implying endorsement without basis is misleading",
+      "source_ref": [
+        "RG-261.96",
+        "RG-261.99",
+        "RG-234",
+        "s1041H"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "email",
+          "landing-page",
+          "meta-ad",
+          "social-post"
+        ],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF marketing copy. Does it use a celebrity, public figure, well-known company, government body, or media outlet name in a way that implies endorsement, partnership, or approval — without a clear, current, verifiable basis (e.g. 'As seen on [outlet]' without a link/date; 'Endorsed by [name]' without quote/source; logo soup of brands the company doesn't actually have a relationship with)? Pass if endorsements are clearly sourced and current. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Either add a sourced, current, consented citation (with date and link) or remove the implied endorsement."
+    },
+    {
+      "rule_id": "ADV-017",
+      "category": "advertising",
+      "claim": "Comments by the issuer on the communication facility must be made in good faith — promotional puffery dressed as a Q&A response is a breach of the advertising rules",
+      "source_ref": [
+        "RG-261.104",
+        "RG-261.105"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "social-post",
+          "landing-page"
+        ],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this issuer comment on a CSF communication facility. Is it a good-faith answer to a genuine investor question, or is it promotional/marketing copy disguised as a Q&A response (e.g. self-asked softball questions, marketing slogans where a factual answer is expected, evasion of negative questions)? Pass if the comment is a balanced, factual, good-faith response. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Rewrite as a good-faith, balanced, factual answer. Do not use the communication facility to push marketing copy."
+    },
+    {
+      "rule_id": "DISC-002",
+      "category": "disclosure",
+      "claim": "Offer document Section 1 must include the prescribed verbatim general risk warning from reg 6D.3A.03 — at least the opening sentence must appear word-for-word",
+      "source_ref": [
+        "RG-261.142",
+        "RG-261.143",
+        "reg 6D.3A.03"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "required_phrase",
+      "required_phrase_patterns": [
+        "Crowd-sourced funding is risky\\.",
+        "(?:You may lose your entire investment|you should be in a position to bear this risk)",
+        "(?:Your investment is unlikely to be liquid|unlikely to be able to sell your shares)",
+        "(?:Ask questions|seek independent financial advice)"
+      ],
+      "violation_message": "Reproduce the prescribed general risk warning text from reg 6D.3A.03 verbatim in Section 1 of the offer document. Begin: 'Crowd-sourced funding is risky. Issuers using this facility include new or rapidly growing ventures...'"
+    },
+    {
+      "rule_id": "DISC-003",
+      "category": "disclosure",
+      "claim": "Offer document must describe how funds raised will be used, broken down by purpose for both minimum and maximum subscription scenarios",
+      "source_ref": [
+        "RG-261.180",
+        "RG-261.181",
+        "Table 19",
+        "reg 6D.3A.05"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF offer document (or the relevant section). Does it describe how the funds raised will be used, with a breakdown by purpose covering BOTH the minimum subscription scenario AND the maximum subscription scenario? Generic statements like 'general business purposes' without breakdown fail. A clear table or list with categories (e.g. R&D, marketing, working capital, offer costs) and dollar/percentage allocations for both min and max passes. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail or 'no use-of-funds section'>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add a use-of-funds breakdown for both minimum and maximum subscription scenarios. Itemise major categories and explain working capital. If applicable, state which activities will be scaled back at the minimum subscription."
+    },
+    {
+      "rule_id": "DISC-004",
+      "category": "disclosure",
+      "claim": "Offer document must disclose payments (direct or indirect) from raised funds to directors, senior managers, related parties, controlling shareholders, the intermediary, or promoters/marketers",
+      "source_ref": [
+        "RG-261.180",
+        "Table 19"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF offer document. Does it explicitly disclose whether any of the raised funds will be paid (directly or indirectly, including via interposed entities) to: (a) current/proposed directors or senior managers; (b) related parties; (c) controlling shareholders or persons with >20% voting rights; (d) the CSF intermediary or its related parties; (e) any person promoting or marketing the offer? A statement covering all five categories (even if 'nil' for some) passes. Silence on the topic fails. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail or 'topic absent'>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add an explicit related-party-payments disclosure section covering all five categories (directors/senior managers, related parties, controlling shareholders, the intermediary, marketers). State 'nil' where applicable rather than omitting."
+    },
+    {
+      "rule_id": "DISC-005",
+      "category": "disclosure",
+      "claim": "Offer document must include the main 3-5 risks specific and tailored to the company — generic risks alone are insufficient",
+      "source_ref": [
+        "RG-261.153",
+        "RG-261.155",
+        "RG-261.157"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read the risks section of this CSF offer document. Does it disclose the main risks (typically 3-5, more if needed) that are SPECIFIC and TAILORED to this company's business model and circumstances — not generic risks copy-pasted from a template (e.g. 'general economic conditions', 'interest rate risk', 'illiquidity of shares' as the entire list)? Risks should be ordered roughly from most to least important. A risks section dominated by generic boilerplate fails. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Replace generic risks with 3-5 risks specific to this company's business model (e.g. key personnel, product validation, supplier dependence, regulatory approval pending). Order from most to least material."
+    },
+    {
+      "rule_id": "DISC-006",
+      "category": "disclosure",
+      "claim": "Offer document must disclose details and circumstances of any criminal/civil convictions, penalties, enforceable undertakings or insolvencies against the company or its directors/senior managers (last 10 years)",
+      "source_ref": [
+        "RG-261.144",
+        "Table 13",
+        "Table 16",
+        "RG-261.150"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF offer document. Does it contain a section that explicitly addresses legal/disciplinary actions against the company AND against each director/senior manager — covering: criminal convictions, civil penalties (Corporations Act and other laws in last 10 years), disqualifications, banning orders (s920A/921A), prior insolvencies, and ASIC enforceable undertakings? A statement of 'nil' or 'none in the last 10 years' for each is acceptable; complete absence of the section fails. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail or 'section absent'>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add a 'Legal and disciplinary actions' subsection for both the Company and each director/senior manager. State 'nil' or 'none in the last 10 years' if applicable — do not omit the section."
+    },
+    {
+      "rule_id": "DISC-007",
+      "category": "disclosure",
+      "claim": "Offer document must include financial statements (balance sheet, P&L, cash flow, changes in equity) for the most recent financial year, prepared per accounting standards",
+      "source_ref": [
+        "RG-261.161",
+        "RG-261.165",
+        "RG-261.166",
+        "Table 18",
+        "reg 6D.3A.04"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF offer document. Does Section 2 (or an appendix it cross-references) include the company's financial statements covering: (a) statement of financial position (balance sheet); (b) profit and loss / income statement; (c) cash flow statement; (d) statement of changes in equity? The statements should be for the most recent completed financial year (or, for companies <12 months old, from incorporation to one month before the offer). A summary in Section 2 with full statements in an appendix is acceptable provided cross-referenced. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote or 'financial statements absent'>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Include the four required financial statements (balance sheet, P&L, cash flow, changes in equity) for the most recent financial year, prepared in accordance with the accounting standards. Cross-reference if placed in an appendix."
+    },
+    {
+      "rule_id": "DISC-008",
+      "category": "disclosure",
+      "claim": "Offer document must describe previous CSF offers by the company, its directors/senior managers' other companies, related parties, or controlling shareholders' other companies — including outcomes",
+      "source_ref": [
+        "RG-261.180",
+        "Table 19"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF offer document. Does it include a 'previous CSF offers' subsection that addresses prior CSF offers made by: (a) the company itself; (b) other companies in which the directors/senior managers held those roles at the time of that offer; (c) the company's related parties; (d) other companies controlled (at the time of those offers) by a person who controls this company? Each disclosed offer should state who made it, when, and outcome (complete vs unsuccessful, amount raised). 'No previous CSF offers' is an acceptable statement. Total absence of the subsection fails. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote or 'subsection absent'>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add a 'Previous CSF offers' subsection covering all four categories. State 'no previous CSF offers' if applicable; do not omit."
+    },
+    {
+      "rule_id": "DISC-009",
+      "category": "disclosure",
+      "claim": "Offer document must describe rights associated with the shares — voting, dividends, transfer restrictions, special rights — in plain language from the investor's perspective",
+      "source_ref": [
+        "RG-261.146",
+        "RG-261.180",
+        "Table 15",
+        "Table 19"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF offer document. Does it include a 'rights associated with the shares' section covering: voting rights, dividend rights, rights in winding-up, rights to call/receive notice of general meetings, rights to elect/remove directors, AND any restrictions on transfer (e.g. directors' approval needed) or special rights of majority shareholders (pre-emptive, drag-along, tag-along)? The description should be plain-language, not just a constitution dump. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote or 'section absent'>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add a plain-language 'Rights associated with the shares' section covering voting, dividends, winding-up, meetings, director election/removal, and any transfer restrictions or majority-shareholder special rights."
+    },
+    {
+      "rule_id": "DISC-010",
+      "category": "disclosure",
+      "claim": "Offer document must include a description of cooling-off rights (5 business days, unconditional, exercised via the intermediary)",
+      "source_ref": [
+        "RG-261.182",
+        "RG-261.183",
+        "Table 20",
+        "s738ZD"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "required_phrase",
+      "required_phrase_patterns": [
+        "(?i)cooling[- ]off",
+        "(?i)(five|5) (business )?days?",
+        "(?i)withdraw (your |their )?application"
+      ],
+      "violation_message": "Add a cooling-off rights subsection in Section 4: explain the unconditional 5-business-day right to withdraw, that withdrawal is exercised via the CSF intermediary's platform, and that the intermediary refunds application money in full."
+    },
+    {
+      "rule_id": "DISC-011",
+      "category": "disclosure",
+      "claim": "Offer document must describe the offer terms: share class (fully-paid ordinary), price, minimum and maximum subscription, opening and closing dates",
+      "source_ref": [
+        "RG-261.180",
+        "Table 19"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF offer document. Does Section 3 describe ALL of: (a) the share type (must be fully-paid ordinary shares); (b) the offer price per share; (c) the minimum subscription amount; (d) the maximum subscription amount; (e) the opening date; (f) the closing date or offer period (max 3 months)? Missing any one of these fails. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote or 'missing: <items>'>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add the missing offer terms: share class (fully-paid ordinary), price, min subscription, max subscription, opening date, closing date (within 3 months of opening)."
+    },
+    {
+      "rule_id": "DISC-012",
+      "category": "disclosure",
+      "claim": "Offer document must include the company's capital structure — all classes of shares, options, convertibles on issue, including post-offer dilution on undiluted and fully-diluted basis",
+      "source_ref": [
+        "RG-261.146",
+        "Table 15"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF offer document. Does Section 2 describe the company's capital structure — all classes of issued shares (ordinary, preference, etc.) with counts, all options on issue with key terms (exercise price, expiry), all other securities (e.g. convertible notes), AND the post-offer issued capital (ideally on both undiluted and fully diluted bases)? A summary plus appendix detail is fine. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote or 'capital structure absent'>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add a complete capital structure section: all classes of shares (with counts), all options (with terms), other securities, and post-offer issued capital on undiluted and fully-diluted bases."
+    },
+    {
+      "rule_id": "DISC-013",
+      "category": "disclosure",
+      "claim": "Offer document must include written consents from each director, proposed director, and statement-makers; consents must not be withdrawn before publication",
+      "source_ref": [
+        "RG-261.64",
+        "RG-261.66",
+        "Table 6",
+        "s738M"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "pre-launch",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF offer document. Where it includes statements attributed to a named third party (expert, customer, supplier, named director other than via biography), does the document state that the named person has given consent to the inclusion of the statement in the form and context used? A blanket 'all named parties have consented' statement is acceptable. If named statement-attributions appear without any consent disclosure, fail. If no named third-party statements exist, pass. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add a consents statement noting that each named person whose statement appears in the document has consented to its inclusion in the form and context used (s738M)."
+    },
+    {
+      "rule_id": "MISL-001",
+      "category": "misleading",
+      "claim": "No CSF communication may contain false or misleading statements (s1041E/F/H, s738U) — facts must be accurate and current",
+      "source_ref": [
+        "RG-261.96",
+        "RG-261.110",
+        "RG-261.190",
+        "RG-261.192",
+        "s1041E",
+        "s1041F",
+        "s1041H",
+        "s738U"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "email",
+          "landing-page",
+          "meta-ad",
+          "social-post",
+          "offer-document"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF marketing copy or offer document content. Identify any statement of present or past fact (revenue, customer count, partnerships, awards, regulatory approvals, technical capability, market size, growth metrics) that is presented as definite. For each, assess whether it is plausible AS WRITTEN or whether it appears: (a) internally inconsistent with other claims in the same copy; (b) using vague proxies for harder facts ('thousands of users' where context implies registrations not active users); (c) materially time-stale (e.g. presenting a 2-year-old figure as current); (d) a half-truth (e.g. 'partnered with [BigCo]' where 'partnership' is a single pilot). Pass if all factual claims are concrete, internally consistent, and plausibly current. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Substantiate the flagged claim with a date, source, and precise definition. Or remove/soften it. False or misleading factual statements expose the issuer and directors to s1041H and s738Y liability."
+    },
+    {
+      "rule_id": "MISL-002",
+      "category": "misleading",
+      "claim": "Half-truths and material omissions — disclosing only part of a material fact in a way that creates a misleading impression — are deemed misleading",
+      "source_ref": [
+        "RG-261.194(c)",
+        "RG-261.196",
+        "s738U"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "email",
+          "landing-page",
+          "meta-ad",
+          "offer-document"
+        ],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF copy. Are there any statements that disclose only part of a material fact and thereby create a misleading impression (e.g. citing a one-off revenue spike as current run-rate, naming a partner without saying the deal expired, claiming 'profitable' for a single quarter without context, citing growth % from a tiny base)? Pass if all material facts are presented in context. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add the missing context (period covered, base, current status, denominator) so the statement does not create a misleading impression."
+    },
+    {
+      "rule_id": "MISL-003",
+      "category": "misleading",
+      "claim": "Offer-document statements must not become misleading when extracted out of context for advertising — the ad version must preserve the qualifications around the claim",
+      "source_ref": [
+        "RG-261.98",
+        "RG-261.99"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "email",
+          "meta-ad",
+          "social-post",
+          "landing-page"
+        ],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF advertising copy. Does it extract a positive figure or claim from the offer document (e.g. revenue, growth, market opportunity, partnership, valuation) but strip away the surrounding qualifications, basis, or context that the offer document carries? An advertising headline that reads 'Targeting $1B market' when the offer document caveats with assumptions, addressable share, and timeline fails. Pass if the ad faithfully carries the qualifications. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Either include the qualifying context in the ad, or use a phrasing that does not require the missing qualifier to be accurate."
+    },
+    {
+      "rule_id": "MISL-004",
+      "category": "misleading",
+      "claim": "Forecast/projection figures must be paired with stated assumptions, methodology, and timeframe — bare numbers are misleading",
+      "source_ref": [
+        "RG-261.177",
+        "RG-261.178",
+        "RG-261.198",
+        "RG-261.200",
+        "RG-170"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "offer-document",
+          "email"
+        ],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF copy. For any forecast, target, or projection (revenue, customers, profit, valuation, growth %), does the copy state nearby: (a) the timeframe; (b) the key assumptions; (c) the methodology or basis (e.g. internal model, independent expert report, contracted revenue, signed LOIs)? Bare numbers ('We will hit $5M ARR') without basis fail. Numbers with at least timeframe + assumption + method pass. Speculative forecasts based only on hypotheticals fail under RG 261.200. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Either state the timeframe, key assumptions, and basis (independent report, signed contracts, etc.), or remove the forecast. Speculative projections without reasonable grounds are misleading under s738U(2)."
+    },
+    {
+      "rule_id": "DEFEC-001",
+      "category": "disclosure",
+      "claim": "A supplementary CSF offer document must begin with a statement that it is a supplementary offer document, identify the original, and state it is to be read with the original",
+      "source_ref": [
+        "RG-261.214",
+        "s738W"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "If this document is a SUPPLEMENTARY CSF offer document (or appears intended as one — e.g. references correcting a defect in an earlier offer document), does it open with: (a) a statement that it is a supplementary CSF offer document; (b) identification of the original offer document it supplements (date/title); (c) a statement that it is to be read together with the original (and any other supplementary documents)? If this is not a supplementary document, pass. If it is and any of the three opening elements is missing, fail. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add the three opening elements: (1) 'This is a supplementary CSF offer document'; (2) identify the original (date, title); (3) 'This document is to be read together with the original CSF offer document [and supplementary document dated X].'"
+    },
+    {
+      "rule_id": "DEFEC-002",
+      "category": "disclosure",
+      "claim": "A replacement CSF offer document must begin with a statement that it is a replacement offer document and identify the original it replaces",
+      "source_ref": [
+        "RG-261.215",
+        "s738W"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "If this document is a REPLACEMENT CSF offer document, does it open with: (a) a clear statement that it is a replacement CSF offer document; AND (b) identification of the original offer document it replaces (date/title)? If this is not a replacement document, pass. If it is and either element is missing, fail. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add the two opening elements: (1) 'This is a replacement CSF offer document'; (2) identify the original (date, title) it replaces."
+    },
+    {
+      "rule_id": "DEFEC-003",
+      "category": "disclosure",
+      "claim": "A supplementary or replacement offer document must not vary the offer terms or the offer period — only correct defects or improve clarity",
+      "source_ref": [
+        "RG-261.213",
+        "RG-261.216"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "If this is a supplementary or replacement CSF offer document, does it appear to change the offer terms (price, share class, min/max subscription) or extend/shorten the offer period beyond what the original specified? Such changes are not permitted — supplementary/replacement docs may only correct defects or comply with the 'clear, concise and effective' requirement. If it is not a supplementary/replacement, or if it only corrects defects, pass. If it varies offer terms or extends the period, fail. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Remove the variation. Supplementary/replacement offer documents cannot change offer terms or period. To change terms, withdraw the offer and run a new one."
+    },
+    {
+      "rule_id": "ELIG-001",
+      "category": "eligibility",
+      "claim": "CSF offer must be expressly stated to be made under the CSF regime (Pt 6D.3A of the Corporations Act)",
+      "source_ref": [
+        "RG-261.36",
+        "s738B(b)"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "required_phrase",
+      "required_phrase_patterns": [
+        "(?i)(crowd[- ]sourced funding|CSF) (regime|offer)",
+        "(?i)Part 6D\\.3A|Pt 6D\\.3A"
+      ],
+      "violation_message": "Include an explicit statement on the cover/intro of the offer document, e.g. 'This Offer is made under the CSF regime in Part 6D.3A of the Corporations Act 2001.'"
+    },
+    {
+      "rule_id": "ELIG-002",
+      "category": "eligibility",
+      "claim": "CSF offer must seek no more than $5M from this issuer (and related parties) in any 12-month period — issuer cap",
+      "source_ref": [
+        "RG-261.6",
+        "RG-261.42",
+        "RG-261.43",
+        "s738G(1)(d)",
+        "s738G(2)"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document",
+          "landing-page",
+          "meta-ad",
+          "email"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "regex_forbidden",
+      "forbidden_patterns": [
+        "(?i)raise (up to |a maximum of )?\\$([6-9]|[1-9]\\d+)[\\s,]?\\d{0,3}\\s?(M|million)\\b",
+        "(?i)maximum subscription[^\\.]{0,80}\\$([6-9]|[1-9]\\d+)[\\s,]?\\d{0,3}\\s?(M|million)\\b"
+      ],
+      "whitelist_contexts": [
+        "$130B grocery market (market size, not raise amount)",
+        "$25M asset cap (eligibility test, not raise amount)",
+        "$25 million revenue cap (eligibility test, not raise amount)"
+      ],
+      "violation_message": "Reduce the maximum subscription to no more than $5,000,000. The CSF issuer cap is $5M per company (and its related parties) in any 12-month period — see s738G(2)."
+    },
+    {
+      "rule_id": "ELIG-003",
+      "category": "eligibility",
+      "claim": "CSF offers must only be of fully-paid ordinary shares — preference shares, options, debentures, partly-paid shares are not eligible",
+      "source_ref": [
+        "RG-261.37",
+        "s738G(1)(a)",
+        "s738G(1)(c)",
+        "reg 6D.3A.01"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document",
+          "landing-page",
+          "meta-ad",
+          "email"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "regex_forbidden",
+      "forbidden_patterns": [
+        "(?i)offer(ing)? of (preference shares|partly[- ]paid shares|options|debentures|convertible notes)",
+        "(?i)(SAFE notes?|convertible notes?) (under|via) (this )?(csf|crowd[- ]sourced funding) offer",
+        "(?i)preference shares? (under|via) (this )?(csf|crowd[- ]sourced funding) offer"
+      ],
+      "whitelist_contexts": [
+        "preference shares already on issue (capital structure disclosure)",
+        "options on issue prior to the offer (capital structure disclosure)",
+        "convertible notes already on issue (capital structure disclosure)"
+      ],
+      "violation_message": "Restrict the CSF offer to fully-paid ordinary shares only. Other securities (preference, options, convertibles, partly-paid) are not eligible under the CSF regime — see reg 6D.3A.01."
+    },
+    {
+      "rule_id": "ELIG-004",
+      "category": "eligibility",
+      "claim": "CSF offer period is capped at three months from when the offer opens — closing date must not exceed three months from opening",
+      "source_ref": [
+        "RG-261.76",
+        "RG-261.77",
+        "RG-261.80(a)"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF offer document. If it states an opening date and a closing date (or offer period), is the offer period three months or less? An offer period longer than three months from the opening date is not permitted (s738ZG-related; the offer must be closed by the intermediary at the earlier of three months or the stated closing date). If you can't determine dates, pass. If the gap exceeds three months, fail. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact dates if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Set the closing date to no more than three months after the opening date. The offer period cannot be extended later — supplementary/replacement offer documents cannot vary the period."
+    },
+    {
+      "rule_id": "ELIG-005",
+      "category": "eligibility",
+      "claim": "Funds raised via CSF cannot be used to invest in other companies/entities/schemes, nor to loan to related parties (other than wholly-owned subsidiaries)",
+      "source_ref": [
+        "RG-261.40",
+        "RG-261.41",
+        "s738G(1)(e)",
+        "reg 6D.3A.01"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF offer document's use-of-funds section. Does any portion of the proceeds appear to be allocated to: (a) investing in other companies, entities, or schemes (including managed funds, equity stakes in third parties, venture capital allocations); or (b) loans/credit facilities/financial accommodation to related parties (other than wholly-owned subsidiaries)? Even small amounts disqualify. If use-of-funds is operational (R&D, marketing, working capital, capex, hiring, debt repayment to non-related-party creditors, payment to wholly-owned subs), pass. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Remove any allocation to investing in other entities or to lending to related parties. Such allocations make the entire offer ineligible under s738G(1)(e). Loans to wholly-owned subsidiaries are permitted."
+    },
+    {
+      "rule_id": "GOV-001",
+      "category": "governance",
+      "claim": "Public companies relying on the AGM concession must disclose its effect: shareholders won't have an open forum to question directors annually",
+      "source_ref": [
+        "RG-261.246",
+        "RG-261.247",
+        "Table 20"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "If this offer document is from a public company that intends to rely on the temporary AGM concession (s250N(5)/(6)), does Section 4 explain the practical effect — that shareholders will NOT have an annual general meeting opportunity to directly question directors and management in an open forum, and shareholders with at least 5% of votes can still call a meeting? If the issuer is a proprietary company, or if the public company is not relying on the concession, pass. Otherwise, the disclosure must be present. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add an AGM-concession disclosure in Section 4 explaining shareholders will not have an annual open forum, and that 5%+ shareholders can still requisition a meeting."
+    },
+    {
+      "rule_id": "GOV-002",
+      "category": "governance",
+      "claim": "Public companies relying on the audit concession must disclose its effect: financial reports won't have independent auditor assurance unless >$3M raised",
+      "source_ref": [
+        "RG-261.249",
+        "RG-261.250",
+        "RG-261.251",
+        "Table 20"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "If this offer document is from a public company that intends to rely on the audit concession (s301(5)), does Section 4 explain that the company's financial reports will NOT be subject to independent auditor oversight (no independent assurance of true-and-fair view or accounting-standards compliance) UNLESS the company raises $3M or more from CSF offers? If the issuer is not eligible/relying on this concession, pass. Otherwise, this disclosure must be present. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add an audit-concession disclosure in Section 4 explaining the absence of auditor oversight and the $3M trigger that ends the concession."
+    },
+    {
+      "rule_id": "INT-001",
+      "category": "governance",
+      "claim": "A CSF intermediary must hold an AFS licence with an authorisation expressly to provide a crowd-funding service",
+      "source_ref": [
+        "RG-262.28",
+        "s911A"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "email"
+        ],
+        "phase": "always",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this platform copy. Does it claim or imply that the platform operator is providing a crowd-funding service? If so, does the copy disclose the operator's AFS licence number (or clearly state authorisation to provide a crowd-funding service)? Pass if (a) the copy is not promoting a crowd-funding service, or (b) it discloses an AFS licence number / 'authorised under our AFS licence' wording. Fail if the copy promotes a crowd-funding service but lacks any AFS licence reference. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add the AFS licence number and a statement that the platform is authorised to provide a crowd-funding service."
+    },
+    {
+      "rule_id": "INT-002",
+      "category": "governance",
+      "claim": "Intermediary must act efficiently, honestly and fairly under s912A(1)(a)",
+      "source_ref": [
+        "RG-262.30",
+        "s912A(1)(a)"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "email",
+          "meta-ad",
+          "social-post"
+        ],
+        "phase": "always",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF intermediary marketing copy. Does it contain any statement that could reasonably be characterised as inefficient, dishonest or unfair towards investors or issuers? Examples: hidden fees framed as free, performance promises without basis, denigrating competitors with unfounded claims, or representing services the licensee does not provide. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Revise to ensure the statement is clearly true, balanced and reflects services you actually provide under your AFS licence."
+    },
+    {
+      "rule_id": "INT-003",
+      "category": "disclosure",
+      "claim": "Intermediary must disclose conflicts of interest, in particular fee dependence on offer success",
+      "source_ref": [
+        "RG-262.33",
+        "RG-262.36",
+        "s912A(1)(aa)"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "offer-document"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF intermediary platform copy. Does it disclose: (a) the fees the intermediary receives from the offering company, and (b) any equity interest the intermediary takes in the company, and (c) the fact that the intermediary's remuneration may depend on offer success? Pass only if all three are reasonably addressed somewhere in the page (or clearly linked from the page). Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add a fees-and-interests disclosure block: state the intermediary fee, any equity taken, and that remuneration depends on offer success."
+    },
+    {
+      "rule_id": "INT-004",
+      "category": "disclosure",
+      "claim": "Intermediary must provide a Financial Services Guide (FSG) to retail clients before providing the financial service",
+      "source_ref": [
+        "RG-262.106",
+        "RG-262.107",
+        "Div 2 Pt 7.7"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page"
+        ],
+        "phase": "always",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF intermediary platform copy (typically the application page or sign-up flow). Does the copy reference, link to, or display a Financial Services Guide (FSG)? Pass if 'FSG', 'Financial Services Guide' or an equivalent phrase appears with a link or display mechanism. Fail if there is no FSG reference on a page that begins providing financial services to retail investors. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add a clear link to the Financial Services Guide on or before the application facility."
+    },
+    {
+      "rule_id": "INT-005",
+      "category": "disclosure",
+      "claim": "FSG must clearly explain how the intermediary is remunerated",
+      "source_ref": [
+        "RG-262.109"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "offer-document",
+          "landing-page"
+        ],
+        "phase": "always",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this Financial Services Guide or remuneration section of an intermediary platform. Does it clearly explain how the intermediary is paid (e.g. percentage of funds raised, equity in offering company, flat fee, success fee)? Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add a plain-English remuneration disclosure to the FSG: who pays, how much, and whether it is success-based."
+    },
+    {
+      "rule_id": "INT-006",
+      "category": "disclosure",
+      "claim": "Intermediary platform must reference dispute resolution: IDR procedures and AFCA membership",
+      "source_ref": [
+        "RG-262.78",
+        "RG-262.79",
+        "RG-262.80",
+        "s912A(1)(g)"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "landing-page"
+        ],
+        "phase": "always",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF intermediary platform copy. Does it describe how a complaint can be made (internal dispute resolution / IDR) AND reference AFCA (Australian Financial Complaints Authority) for external dispute resolution? Both elements should be findable. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add a complaints/dispute resolution section that describes the IDR process and links to AFCA membership."
+    },
+    {
+      "rule_id": "INT-007",
+      "category": "advertising",
+      "claim": "Intermediary advertising of a CSF offer must direct readers to the offer document and general CSF risk warning per s738ZG(6)",
+      "source_ref": [
+        "RG-262.113",
+        "RG-262.114",
+        "RG-262.117",
+        "s738ZG"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "email",
+          "landing-page",
+          "meta-ad",
+          "social-post"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "required_phrase",
+      "required_phrase_patterns": [
+        "(?i)general (CSF )?risk warning",
+        "(?i)offer document"
+      ],
+      "violation_message": "Any intermediary advertising that refers to a CSF offer must include a statement directing readers to the CSF offer document and the general CSF risk warning."
+    },
+    {
+      "rule_id": "INT-008",
+      "category": "advertising",
+      "claim": "Intermediary advertising must be balanced — risks and disclaimers must not be buried at the bottom of the page",
+      "source_ref": [
+        "RG-262.118",
+        "RG-262.120"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "email"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF intermediary marketing copy. Does the copy emphasise potential returns/benefits while burying risks or disclaimers in fine print, footer text, or below-the-fold scrolling? Pass if risk disclosure is reasonably balanced with benefit messaging and is presented at similar prominence. Fail if benefits dominate and risks/disclaimers are demoted to footer/click-through. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Move the CSF risk warning and key risk discussion above the fold or to similar visual prominence as benefit messaging."
+    },
+    {
+      "rule_id": "INT-009",
+      "category": "misleading",
+      "claim": "Intermediary must not present success stories without acknowledging non-returning or unsuccessful offers",
+      "source_ref": [
+        "RG-262.119"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "email",
+          "meta-ad",
+          "social-post"
+        ],
+        "phase": "always",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF intermediary marketing copy. Does it cite success stories, raise totals, or company highlights from past CSF offers WITHOUT acknowledging that (a) some/all of those companies have not yet returned funds to investors, or (b) other companies on the platform have failed to raise funds? Pass if success stories are balanced with that context, or if no success claims are made. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "When citing past CSF success, add context that returns are not guaranteed and that other offers on the platform have not succeeded."
+    },
+    {
+      "rule_id": "INT-010",
+      "category": "misleading",
+      "claim": "Intermediary must not present its own/associate investments or cooling-off-eligible amounts as confirmed unassociated public investor interest",
+      "source_ref": [
+        "RG-262.119"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "meta-ad",
+          "social-post"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF intermediary copy that quotes a current investment level (e.g. 'raised $X', 'Y investors', 'Z% subscribed'). Does the copy clarify whether those figures: (a) include investments by the intermediary or its associates / associates of the offering company; or (b) include amounts still subject to 5-business-day cooling-off withdrawal? If neither is clarified and a public-interest implication is created, fail. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Either exclude associate/cooling-off amounts from the headline figure, or footnote that the figure includes them."
+    },
+    {
+      "rule_id": "INT-011",
+      "category": "advertising",
+      "claim": "Intermediary advertising must not include forward-looking financial projections about an offering company without stated reasonable grounds",
+      "source_ref": [
+        "RG-262.112",
+        "RG-262.118",
+        "RG-262.116"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "email",
+          "meta-ad"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF intermediary marketing copy referencing an offering company. Does it contain forward-looking financial statements (forecasts, expected returns, projected revenue, growth targets, future valuation, profitability projections) WITHOUT stating supporting assumptions, basis, or evidence? Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Either add the basis/assumptions for the forward-looking claim, or remove it from intermediary marketing."
+    },
+    {
+      "rule_id": "INT-012",
+      "category": "advertising",
+      "claim": "Intermediary platform must not provide financial product advice unless its AFS licence authorises advice",
+      "source_ref": [
+        "RG-262.122",
+        "RG-262.123",
+        "s766B"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "email",
+          "social-post"
+        ],
+        "phase": "always",
+        "applies_to": "intermediary"
+      },
+      "check_type": "regex_forbidden",
+      "forbidden_patterns": [
+        "(?i)we recommend (you )?(invest|buy|apply for)",
+        "(?i)you should (invest|buy|apply for) (this|these) shares",
+        "(?i)our (top|best) pick",
+        "(?i)(strong|top) buy",
+        "(?i)staff favourite (offer|investment)",
+        "(?i)editor['’]s (pick|choice)"
+      ],
+      "violation_message": "Remove the recommendation language. Filtering/screening commentary that influences a product decision is financial product advice and requires a separate AFS licence authorisation (RG 262.122-125)."
+    },
+    {
+      "rule_id": "INT-013",
+      "category": "misleading",
+      "claim": "Intermediary platform must clearly segregate CSF offers from other (non-CSF) funding products on the same website",
+      "source_ref": [
+        "RG-262.20"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "landing-page"
+        ],
+        "phase": "always",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this intermediary platform copy. If the platform offers other (non-CSF) funding products alongside CSF offers (e.g. wholesale offers, marketplace lending, business introduction services), does the copy clearly distinguish CSF offers from the other products and make clear which capacity (AFS-licensed CSF intermediary vs. other) is providing each? Pass if only CSF offers are shown, or if segregation is explicit. Fail if products are blended without distinction. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Clearly label CSF offers vs other funding products. State the licence capacity in which each is provided."
+    },
+    {
+      "rule_id": "GATE-001",
+      "category": "gatekeeper",
+      "claim": "Intermediary must perform identity, eligibility, key-personnel and offer-document checks before publishing a CSF offer document (s738Q)",
+      "source_ref": [
+        "RG-262.127",
+        "RG-262.128",
+        "RG-262.129",
+        "s738Q",
+        "reg 6D.3A.08"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "offer-document"
+        ],
+        "phase": "pre-launch",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF intermediary platform copy describing the intermediary's process for hosting an offer. Does the copy describe (or reasonably reference) the gatekeeper checks the intermediary performs before publishing an offer document — specifically: company identity (name, ACN, address), eligibility under s738H, and identity/character of directors and senior managers? Pass if the process is described or linked. Fail if the platform claims to host offers but says nothing about pre-publication checks. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add a 'how we vet offers' section that describes the s738Q gatekeeper checks (identity, eligibility, key personnel)."
+    },
+    {
+      "rule_id": "GATE-002",
+      "category": "gatekeeper",
+      "claim": "Intermediary must not publish a CSF offer document if not satisfied about the identity of the offering company, directors or other officers",
+      "source_ref": [
+        "RG-262.144",
+        "s738Q(5)"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "pre-launch",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Review this offer document and the intermediary's pre-publication notes. Is there evidence that the intermediary verified the company identity (name, ACN, registered office, principal place of business) AND the identity of all current and proposed directors, officers and senior managers? Fail if the offer document is being prepared for publication and there is no record of identity verification, or if any named officer is unverified. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Do not publish until identity of company AND every director/officer/senior manager is verified. Repeat the check immediately before publishing (RG 262.132)."
+    },
+    {
+      "rule_id": "GATE-003",
+      "category": "gatekeeper",
+      "claim": "Intermediary must not publish if there is reason to believe a director or officer is not of good fame or character",
+      "source_ref": [
+        "RG-262.144",
+        "s738Q(5)"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "pre-launch",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Review this offer document and any associated background notes about the offering company's directors/officers. Is there evidence that the intermediary checked for: prior criminal/civil penalty proceedings involving dishonesty or fraud; insolvency history; bans from managing corporations; bans from providing financial services; and any failure to be frank and honest in dealings with the intermediary? Fail if there is no record of any character check, or if a known red flag was not addressed. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Document a good-fame-and-character check for every named director/officer (criminal, civil penalty, insolvency, bannings) before publishing."
+    },
+    {
+      "rule_id": "GATE-004",
+      "category": "gatekeeper",
+      "claim": "Intermediary must not publish if there is reason to believe the offering company knowingly engaged in misleading or deceptive conduct in relation to the offer",
+      "source_ref": [
+        "RG-262.144",
+        "RG-262.161",
+        "s738Q(5)(c)"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Review this offer document, communication facility logs, and pre-offer correspondence. Is there reason to believe the offering company or any director/officer knowingly made misleading or deceptive statements in connection with the offer (e.g. dishonest pre-offer representations, misleading answers to communication-facility questions)? Pass if no such evidence exists. Fail if there is reason to believe AND the intermediary has not removed/closed the offer. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Remove the CSF offer document from your platform and close the offer. Notify ASIC within 10 days (RG 78)."
+    },
+    {
+      "rule_id": "GATE-005",
+      "category": "gatekeeper",
+      "claim": "Intermediary must not publish if there is reason to believe the offer is not an eligible CSF offer (e.g. issuer cap breach)",
+      "source_ref": [
+        "RG-262.144",
+        "s738Q(5)(d)",
+        "s738H"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "pre-launch",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Review this offer document and the offering company's historical fundraising. Is the offer eligible under s738H — including the issuer cap (total CSF raise across all CSF offers in any 12-month period must not exceed $5 million)? Verify: company is unlisted, has <$25m assets and <$25m revenue, has principal place of business in Australia, and most directors are ordinarily resident in Australia. Fail if any eligibility criterion is not satisfied. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Confirm full s738H eligibility before publishing. If the issuer cap or any criterion is not met, refuse to publish."
+    },
+    {
+      "rule_id": "GATE-006",
+      "category": "gatekeeper",
+      "claim": "Intermediary must check the offering company has its principal place of business in Australia and most directors ordinarily resident in Australia",
+      "source_ref": [
+        "RG-262.131"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "pre-launch",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Review this offer document. Is the offering company's principal place of business stated as being in Australia, and are a majority of named directors stated as being ordinarily resident in Australia? If the company has requested funds raised be paid to an offshore bank account, has the intermediary documented additional inquiries before agreeing? Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Verify principal place of business in Australia and majority-Australian-resident directors. If offshore payment requested, conduct further inquiries before agreeing."
+    },
+    {
+      "rule_id": "GATE-007",
+      "category": "gatekeeper",
+      "claim": "Intermediary must verify the CSF offer document contains all required information per regs 6D.3A.02-6D.3A.06 and is clear, concise and effective",
+      "source_ref": [
+        "RG-262.129",
+        "RG-262.141",
+        "reg 6D.3A.08(3)",
+        "reg 6D.3A.09(4)"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "pre-launch",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Review this CSF offer document. Does it contain ALL information prescribed by regs 6D.3A.02-6D.3A.06 (company information, business description, risks, financial information, terms of offer, investor rights, etc.) AND is the document worded and presented in a clear, concise and effective manner (no jargon, structured headings, balanced length)? Mere mention of a topic is not sufficient — each required element must contain substantive information. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Run the offer document against the reg 6D.3A.02-6D.3A.06 checklist (see RG 261). Confirm each required element is substantively addressed and that the writing is clear, concise and effective."
+    },
+    {
+      "rule_id": "GATE-008",
+      "category": "gatekeeper",
+      "claim": "Intermediary must repeat gatekeeper checks immediately before publishing if the original check is not contemporaneous",
+      "source_ref": [
+        "RG-262.132"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "pre-launch",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Review the dated record of gatekeeper checks for this offer. Were all required checks repeated within a short window before publication, or does the most recent check date for any element fall several weeks before the planned publication date? Fail if any check is more than ~4 weeks old at the planned publication date. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Re-run the gatekeeper checks within a few business days of the publication date so they are current."
+    },
+    {
+      "rule_id": "GATE-009",
+      "category": "gatekeeper",
+      "claim": "Intermediary must have a documented written process for requiring information from offering companies and verifying it",
+      "source_ref": [
+        "RG-262.137",
+        "RG-262.138",
+        "reg 6D.3A.09(3)"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "offer-document"
+        ],
+        "phase": "always",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this intermediary platform copy or onboarding materials. Does the copy describe a documented process by which the intermediary explains its information requirements to offering companies in writing AND requires the company to provide information following a defined, documented process — including contractual promises, support from independent sources, and personal director confirmations? Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add a documented onboarding/information-request process. It must include written explanation of what the intermediary needs, contractual promises by the issuer, requests for independent supporting evidence, and personal director attestations."
+    },
+    {
+      "rule_id": "GATE-010",
+      "category": "gatekeeper",
+      "claim": "Intermediary must have written 'adequate arrangements' to ensure ongoing compliance with gatekeeper obligations",
+      "source_ref": [
+        "RG-262.145",
+        "RG-262.191"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page"
+        ],
+        "phase": "always",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF intermediary platform or compliance copy. Does the platform reference (or link to) documented internal arrangements (policies, systems, procedures) for ensuring compliance with gatekeeper obligations? Failure to have such written arrangements is itself an offence under s738Q. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Establish and document written gatekeeper compliance arrangements (policies, systems, procedures). Failure is itself a strict-liability offence."
+    },
+    {
+      "rule_id": "GATE-011",
+      "category": "gatekeeper",
+      "claim": "Intermediary must check each supplementary or replacement CSF offer document to a reasonable standard before publication",
+      "source_ref": [
+        "RG-262.179"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "offer-document"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Review the intermediary's record of checks for this supplementary or replacement CSF offer document. Has the new/changed content been checked to the standard required for an original document (regs 6D.3A.08-09)? Pass if checked. Fail if published without re-checking new/changed content. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Treat the supplementary/replacement document as a new document. Re-run the gatekeeper checks on the new/changed content before publishing."
+    },
+    {
+      "rule_id": "PLAT-001",
+      "category": "disclosure",
+      "claim": "Platform must prominently display the prescribed general CSF risk warning while a CSF offer is open or suspended",
+      "source_ref": [
+        "RG-262.146",
+        "RG-262.147",
+        "RG-262.148",
+        "s738ZA"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "offer-document"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "required_phrase",
+      "required_phrase_patterns": [
+        "(?i)general (CSF )?risk warning",
+        "(?i)crowd-sourced funding (is|involves) (a )?(risky|high.risk)"
+      ],
+      "violation_message": "Display the prescribed general CSF risk warning prominently. It must appear on a page the investor must access before applying — not buried in a footer or a click-through page."
+    },
+    {
+      "rule_id": "PLAT-002",
+      "category": "disclosure",
+      "claim": "Platform must prominently display the platform fees paid to the intermediary by the offering company, and any interests the intermediary takes in the company",
+      "source_ref": [
+        "RG-262.146"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "offer-document"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF offer page on the intermediary's platform. Is the platform fee paid by the offering company to the intermediary clearly disclosed (e.g. percentage of funds raised, flat fee), and is any equity interest the intermediary has or intends to take in the company also disclosed? Both must be findable while the offer is open or suspended. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add a fees-and-interests disclosure block to every open CSF offer page: state the intermediary fee and any equity interest taken in the company."
+    },
+    {
+      "rule_id": "PLAT-003",
+      "category": "disclosure",
+      "claim": "Platform must prominently display retail clients' cooling-off rights statement and the method to exercise them while an offer is open or suspended",
+      "source_ref": [
+        "RG-262.146",
+        "RG-262.184",
+        "RG-262.185"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "offer-document"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "required_phrase",
+      "required_phrase_patterns": [
+        "(?i)(five|5) business days",
+        "(?i)(cooling.off|withdraw your application)"
+      ],
+      "violation_message": "Add a prominent statement that retail clients have an unconditional right to withdraw their application within 5 business days, plus a clear method (preferably a one-click online facility) to exercise that right."
+    },
+    {
+      "rule_id": "PLAT-004",
+      "category": "disclosure",
+      "claim": "CSF offer document must be published on the platform and accessible before an investor applies",
+      "source_ref": [
+        "RG-262.149",
+        "RG-262.150"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF offer page. Is the CSF offer document displayed (or downloadable) on the same page as the application facility, BEFORE the investor can submit an application? Pass if the offer document is visible/downloadable and the application requires acknowledgement of having read it. Fail if the offer document is hidden behind multiple clicks or only delivered after application. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Display or directly link the CSF offer document on the application page so investors can review (and acknowledge) it before applying."
+    },
+    {
+      "rule_id": "PLAT-005",
+      "category": "gatekeeper",
+      "claim": "Intermediary must provide an application facility through which all applications are made; off-platform applications must be rejected and refunded",
+      "source_ref": [
+        "RG-262.151"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "offer-document"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this intermediary platform copy. Does the copy direct all applications through an on-platform application facility AND state (or imply via process) that off-platform applications (e.g. via direct email, phone, DM) will be rejected and any money refunded? Pass if the application channel is exclusively on-platform. Fail if the copy invites or accepts applications via channels other than the application facility. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Route 100% of applications through the on-platform application facility. Reject and refund any application made through other channels as soon as practicable."
+    },
+    {
+      "rule_id": "PLAT-006",
+      "category": "gatekeeper",
+      "claim": "Application facility must only be available while a CSF offer is open (not while closed or suspended)",
+      "source_ref": [
+        "RG-262.152",
+        "RG-262.173"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF offer page. If the offer is currently closed or suspended (look for explicit indicators), is the application facility disabled / not accepting applications? Pass if the application facility is only enabled while the offer is open. Fail if applications can be made on a closed or suspended offer. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Disable the application facility whenever the offer is closed or suspended. Display a clear status indicator on the page."
+    },
+    {
+      "rule_id": "COND-001",
+      "category": "gatekeeper",
+      "claim": "Intermediary must provide a communication facility for each CSF offer while the offer is open or suspended",
+      "source_ref": [
+        "RG-262.153",
+        "RG-262.154",
+        "RG-262.155"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "offer-document"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF offer page. Is there a communication facility (Q&A forum, comments section, or equivalent) on the page that allows people who can access the offer document to: (a) make posts about the offer, (b) see other posts, and (c) ask questions of the company and the intermediary? Both the company and the intermediary must be able to reply. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add a communication facility to the offer page. It must allow posts, viewing posts, asking the company/intermediary questions, and replies from both."
+    },
+    {
+      "rule_id": "COND-002",
+      "category": "disclosure",
+      "claim": "Officers, employees, agents and associates of the offering company or intermediary must clearly disclose their affiliation when posting on the communication facility",
+      "source_ref": [
+        "RG-262.157"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "social-post",
+          "landing-page"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read these communication-facility posts. For each post made by a person who is an officer, employee, agent, related party or associate of either the offering company or the CSF intermediary: is the affiliation clearly disclosed in the post (e.g. byline 'CFO, [Company]', 'Birchal team', 'Director')? Fail if any insider post lacks affiliation disclosure. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Require a clear affiliation tag on every post by an insider (company officer/employee/agent/associate, or intermediary staff/associate)."
+    },
+    {
+      "rule_id": "COND-003",
+      "category": "gatekeeper",
+      "claim": "Intermediary must monitor the communication facility and remove misleading, unlawful or clearly irrelevant posts",
+      "source_ref": [
+        "RG-262.158",
+        "RG-262.159",
+        "RG-262.160"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "landing-page"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read the communication-facility posts on this CSF offer page. Are there posts that appear misleading, unlawful, or clearly irrelevant that have NOT been removed/moderated? OR alternatively, are posts being removed merely because they are negative or critical of the offer/company/intermediary (which would be impermissible)? Fail in either case. Pass if monitoring appears appropriate. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Remove misleading/unlawful/irrelevant posts. Do NOT remove posts merely because they are negative or critical — frank discussion in good faith is the purpose of the facility."
+    },
+    {
+      "rule_id": "COND-004",
+      "category": "gatekeeper",
+      "claim": "Intermediary must close or remove the offer if the offering company knowingly engaged in misleading or deceptive conduct (including via communication facility responses)",
+      "source_ref": [
+        "RG-262.161",
+        "RG-262.162",
+        "RG-262.163",
+        "s738Q(5)(c)"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "social-post",
+          "offer-document"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Review the communication-facility responses by the offering company and any subsequent action by the intermediary. Has the company responded to a question with information you have reason to believe is knowingly misleading or deceptive? If so, has the intermediary removed the CSF offer document and closed the offer? Pass if no such conduct or action taken. Fail if conduct exists and offer remains open. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Remove the offer document and close the offer. The 'reason to believe' standard does not require proof beyond reasonable doubt."
+    },
+    {
+      "rule_id": "RISK-001",
+      "category": "eligibility",
+      "claim": "Retail client must complete the prescribed risk acknowledgement (reg 6D.3A.07 wording) before applying under a CSF offer",
+      "source_ref": [
+        "RG-262.187",
+        "reg 6D.3A.07"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "offer-document"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "required_phrase",
+      "required_phrase_patterns": [
+        "(?i)risk acknowledgement",
+        "(?i)(I|you) acknowledge .{0,80}(risk|invest|crowd)"
+      ],
+      "violation_message": "Insert the prescribed risk acknowledgement (exact wording per reg 6D.3A.07) into the application flow. Retail clients cannot proceed to apply without completing it."
+    },
+    {
+      "rule_id": "RISK-002",
+      "category": "eligibility",
+      "claim": "Intermediary must enforce the $10,000 / 12-month investor cap per offering company per retail client",
+      "source_ref": [
+        "RG-262.188",
+        "RG-262.189"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "offer-document"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this intermediary platform copy and any application-facility flow. Does the platform describe (and implement) a check that prevents a retail client from applying for more than $10,000 across all CSF offers from the same offering company within any rolling 12-month period? The check should rely on a reasonable retail-client identification process. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Implement a $10,000/12-month/issuer cap check at the application facility for retail clients. Reject any application that would breach the cap."
+    },
+    {
+      "rule_id": "RISK-003",
+      "category": "eligibility",
+      "claim": "Retail clients have an unconditional right to withdraw within 5 business days; intermediary must facilitate this in an honest, efficient and fair manner (preferably online)",
+      "source_ref": [
+        "RG-262.183",
+        "RG-262.185",
+        "RG-262.186"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "email"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this intermediary platform copy. Is the cooling-off withdrawal mechanism: (a) clearly described, (b) available online (one-click or simple form), (c) clear about when the 5-business-day window starts and ends? Fail if withdrawal requires a phone call, email, paper form, or any process likely to be a barrier. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Provide a one-click online cooling-off withdrawal facility. State explicitly when the 5-business-day period begins (e.g. on application submission)."
+    },
+    {
+      "rule_id": "RISK-004",
+      "category": "eligibility",
+      "claim": "Intermediary must not financially assist a retail client to acquire shares under a CSF offer it is hosting or intending to host",
+      "source_ref": [
+        "RG-262.190"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "email",
+          "meta-ad",
+          "social-post"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "regex_forbidden",
+      "forbidden_patterns": [
+        "(?i)(loan|finance|credit|payment plan|BNPL|buy now.?pay later|installments?) (to|for) (invest|apply|buy shares)",
+        "(?i)we['’]ll (lend|finance|cover) your (investment|application)",
+        "(?i)0% (interest|finance) (to invest|on (your )?application)",
+        "(?i)defer (your |the )?(investment|application) (payment|fee)"
+      ],
+      "violation_message": "Remove. The intermediary cannot financially assist or arrange financial assistance for a retail client to invest in a CSF offer it is hosting (RG 262.190)."
+    },
+    {
+      "rule_id": "RISK-005",
+      "category": "eligibility",
+      "claim": "Intermediary must determine retail-client status before the person uses the application facility",
+      "source_ref": [
+        "RG-262.182"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "landing-page"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this intermediary platform copy. Does the application flow include a step to determine whether the applicant is a retail or wholesale client BEFORE they use the application facility (and a clear disclosure of the consequences if status changes)? Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Add a retail/wholesale client classification step prior to the application facility. Default to retail-client treatment unless wholesale status is established."
+    },
+    {
+      "rule_id": "INT-014",
+      "category": "governance",
+      "claim": "Application money received from investors must be held in a s981B trust account",
+      "source_ref": [
+        "RG-262.103",
+        "RG-262.164",
+        "s981B",
+        "regs 7.8.01-7.8.03"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "offer-document"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this intermediary platform copy describing how application money is held. Does the copy state that investor application money is held in a trust account in the licensee's name (s981B-compliant)? Pass if the trust-account language is present. Fail if the copy is silent or implies the intermediary holds funds in an operating account or directly transfers them to the issuer pre-completion. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "State that application money is held in a s981B trust account in the licensee's name and is segregated from the licensee's own funds until the offer completes."
+    },
+    {
+      "rule_id": "INT-015",
+      "category": "governance",
+      "claim": "Intermediary must refund application money promptly when a CSF offer is closed without completion, when an applicant withdraws, or when an application is rejected",
+      "source_ref": [
+        "RG-262.165",
+        "RG-262.168"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "email",
+          "offer-document"
+        ],
+        "phase": "post-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this intermediary copy describing what happens to application money in the events of: (a) offer closure without completion, (b) cooling-off withdrawal, or (c) application rejection. Does the copy clearly commit to refunding application money to the applicant as soon as practicable in each case? Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Document the refund process for each scenario (closure-without-completion, cooling-off, rejection) and commit to a 'as soon as practicable' refund timeframe."
+    },
+    {
+      "rule_id": "INT-016",
+      "category": "gatekeeper",
+      "claim": "Intermediary must close a CSF offer at the earliest of: 3 months after the offer is made; close date in offer document; full subscription; company withdrawal; or required removal under gatekeeper obligations",
+      "source_ref": [
+        "RG-262.166",
+        "RG-262.167",
+        "RG-262.169"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "offer-document"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF offer page. Has the offer been open for more than 3 months from when it was first published? Has it remained open past any close date specified in the offer document? Has it remained open after the maximum subscription was reached? If yes to any of these, fail. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Close the offer immediately. The CSF regime requires closure at the earliest of: 3 months from publication, the offer document close date, full subscription, company withdrawal, or any gatekeeper-triggered removal."
+    },
+    {
+      "rule_id": "INT-017",
+      "category": "gatekeeper",
+      "claim": "Intermediary must suspend a CSF offer if it becomes aware the offer document is defective (and not closed)",
+      "source_ref": [
+        "RG-262.170",
+        "RG-262.171",
+        "RG-262.172",
+        "RG-262.173"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "offer-document"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Review this CSF offer page and any associated alerts. Is there a known defect in the offer document (misleading or deceptive statement, omission of required information, or new material circumstance)? If so, has the intermediary either closed or suspended the offer (with a visible suspension notice on the platform) AND notified the offering company AND removed the offer document? Pass if no defect or fully actioned. Fail otherwise. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "On becoming aware of a defective offer document: (1) notify the issuer ASAP, (2) remove the offer document, (3) suspend or close the offer with a visible notice on the platform, (4) reject any new applications during suspension."
+    },
+    {
+      "rule_id": "INT-018",
+      "category": "gatekeeper",
+      "claim": "Where a supplementary or replacement offer document is published to correct a materially adverse defect, the intermediary must send it to existing applicants with a 14-day withdrawal notice",
+      "source_ref": [
+        "RG-262.177"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "email"
+        ],
+        "phase": "during-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "required_phrase",
+      "required_phrase_patterns": [
+        "(?i)(14|fourteen) days",
+        "(?i)(supplementary|replacement) (offer )?document",
+        "(?i)(withdraw your application|application money refunded)"
+      ],
+      "violation_message": "When a supplementary/replacement document corrects a materially adverse defect, email it to all existing applicants with a notice that they may withdraw within 14 days and have their application money refunded."
+    },
+    {
+      "rule_id": "DRPT-001",
+      "category": "governance",
+      "claim": "Intermediary must report annually to ASIC under s912C with prescribed CSF data (after each financial year)",
+      "source_ref": [
+        "RG-262.193",
+        "RG-262.194",
+        "s912C"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page"
+        ],
+        "phase": "post-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this CSF intermediary platform copy or compliance section. Does the platform reference an annual ASIC reporting process under s912C (or equivalent)? Note: this is a process check — the rule is satisfied if the platform documentation acknowledges the annual reporting obligation, even if the report itself is not in the copy. Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Document the s912C annual data reporting process internally and reference it in your compliance materials."
+    },
+    {
+      "rule_id": "DRPT-002",
+      "category": "governance",
+      "claim": "Intermediary must keep records sufficient to report on successful CSF offers, including offer date, company name/industry, min/max subscription, amount raised, days to raise, and any extensions",
+      "source_ref": [
+        "RG-262.195(b)"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "landing-page"
+        ],
+        "phase": "post-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Review this intermediary's record-keeping documentation or platform archive. For each successful CSF offer, does the record contain: offer date, company name and industry, min/max subscription sought, amount raised, days taken to raise, and details of any time extensions? Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Capture the full successful-offer dataset (date, company, industry, min/max sub, amount raised, days to raise, extensions) for every closed offer to enable annual ASIC reporting."
+    },
+    {
+      "rule_id": "DRPT-003",
+      "category": "governance",
+      "claim": "Intermediary must record details of unsuccessful, closed, suspended or refused CSF offers including reasons and refund details",
+      "source_ref": [
+        "RG-262.195(c)"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "landing-page"
+        ],
+        "phase": "post-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Review this intermediary's record-keeping documentation. For unsuccessful, closed-without-completion, or refused-publication offers, does the record contain: reason for closure/refusal, amounts refunded and refund timing, amounts not refunded with explanation, and gatekeeper-check failure description (if applicable)? Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Capture for each unsuccessful/closed/refused offer: reason, refund amounts and dates, any non-refund explanation, gatekeeper-check failure narrative."
+    },
+    {
+      "rule_id": "DRPT-004",
+      "category": "governance",
+      "claim": "Intermediary must record investor data per offer including investor counts by retail/wholesale type, average investment, cooling-off uses, and complaint counts",
+      "source_ref": [
+        "RG-262.195(e)"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "landing-page"
+        ],
+        "phase": "post-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Review this intermediary's record-keeping documentation. For each successful CSF offer and reporting period, does the record capture: investor counts split by retail/wholesale, average investment per type, count of clients exercising cooling-off rights, count of retail-client complaints by offer, and number of complaints referred to AFCA? Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Capture investor counts (retail vs wholesale), average amounts, cooling-off usage, complaint counts and AFCA referrals per offer per reporting period."
+    },
+    {
+      "rule_id": "DRPT-005",
+      "category": "governance",
+      "claim": "Intermediary must record platform operational data including outages, outsourcing, remuneration per offer, and communication-facility moderation actions",
+      "source_ref": [
+        "RG-262.195(f)"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "landing-page"
+        ],
+        "phase": "post-offer",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Review this intermediary's record-keeping documentation. Does the record capture: platform outages (count and duration), communication-facility outages, material outsourcing arrangements, remuneration received per offer (cash and equity), and per-offer communication-facility moderation actions (count and reasons for each removal)? Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Capture platform/comms-facility outages, outsourcing arrangements, per-offer remuneration (cash + equity), and per-offer moderation actions with reasons."
+    },
+    {
+      "rule_id": "INT-019",
+      "category": "governance",
+      "claim": "Intermediary must keep financial records and lodge annual audited financial statements with ASIC under s989B",
+      "source_ref": [
+        "RG-262.47",
+        "RG-262.105",
+        "s988A",
+        "s989B"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page"
+        ],
+        "phase": "always",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this intermediary platform's compliance or governance materials. Does the platform reference an annual lodgement of audited financial statements (P&L, balance sheet) with ASIC, with the auditor also reporting on s981B trust account compliance? Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Lodge annual audited financial statements with ASIC under s989B. Auditor must also report on trust account compliance."
+    },
+    {
+      "rule_id": "INT-020",
+      "category": "governance",
+      "claim": "Intermediary must report reportable situations (significant breaches) to ASIC under s912DAA",
+      "source_ref": [
+        "RG-262.13",
+        "RG-262.73",
+        "RG-262.143",
+        "RG-262.192",
+        "s912DAA"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "landing-page"
+        ],
+        "phase": "always",
+        "applies_to": "intermediary"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this intermediary's compliance documentation. Does the platform document a process for identifying and reporting 'reportable situations' (significant breaches of financial services laws, including gatekeeper failures) to ASIC under s912DAA, with reporting within the prescribed window (10 days for significant breaches)? Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief>\"}",
+      "violation_message": "Document a breach-reporting process aligned with RG 78 and s912DAA. Significant breaches must be notified to ASIC within 10 days of becoming aware."
+    },
+    {
+      "rule_id": "PLAT-007",
+      "category": "misleading",
+      "claim": "Intermediary must not denigrate or imply unauthorised competing services (e.g. business introduction services framed as crowd-funding under the CSF regime)",
+      "source_ref": [
+        "RG-262.22",
+        "RG-262.25"
+      ],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": [
+          "landing-page",
+          "email",
+          "meta-ad",
+          "social-post"
+        ],
+        "phase": "always",
+        "applies_to": "intermediary"
+      },
+      "check_type": "regex_forbidden",
+      "forbidden_patterns": [
+        "(?i)(unlike|better than|safer than) (other|unlicensed) (crowd.?funding|business introduction)",
+        "(?i)(the only|the first) (real|true|legitimate) (crowd.?funding|CSF) platform"
+      ],
+      "violation_message": "Remove the comparative claim. State your AFS-licensed status without denigrating named or unnamed competitors. RG 262.22 requires care that retail clients are not misled about which services are CSF-regulated."
     }
   ]
 }
