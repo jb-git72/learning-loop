@@ -1,0 +1,105 @@
+{
+  "jurisdiction": "AU-CSF",
+  "regulations_covered": ["RG-261", "RG-262"],
+  "last_updated": "2026-04-26",
+  "notes": "ASIC Crowd-Sourced Funding compliance rules. Real rule set will be extracted from RG 261 and RG 262 markdown by parallel agents. This file seeds the engine with 5 sample rules for end-to-end validation.",
+  "rules": [
+    {
+      "rule_id": "ADV-001",
+      "category": "advertising",
+      "claim": "Marketing must direct readers to the offer document and general CSF risk warning per s738ZG(6)",
+      "source_ref": ["RG-261.92", "s738ZG(6)"],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": ["email", "landing-page", "meta-ad", "social-post"],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "required_phrase",
+      "required_phrase_patterns": [
+        "Always consider the general CSF risk warning",
+        "general CSF risk warning"
+      ],
+      "violation_message": "Add 'Always consider the general CSF risk warning and offer document before investing.' to the bottom of the content."
+    },
+    {
+      "rule_id": "ADV-002",
+      "category": "advertising",
+      "claim": "Marketing copy must not state specific investment dollar amounts (deposit, minimum, maximum) outside of the offer document",
+      "source_ref": ["RG-261.96", "RG-261.99", "founder directive 2026-04-25"],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": ["email", "landing-page", "meta-ad", "social-post"],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "regex_forbidden",
+      "forbidden_patterns": [
+        "\\$5\\s*(refundable|deposit|VIP)",
+        "\\$50\\s*(min|investment|minimum)",
+        "\\$10[,.]?000\\s*(max|maximum)",
+        "(?i)minimum investment is \\$"
+      ],
+      "whitelist_contexts": [
+        "$3.80/kg",
+        "farmer pay",
+        "$130B",
+        "grocery market",
+        "market size"
+      ],
+      "violation_message": "Remove specific investment $ amounts. Use generic phrasing like 'small refundable deposit' or 'low minimum entry'."
+    },
+    {
+      "rule_id": "ADV-003",
+      "category": "advertising",
+      "claim": "CSF offers must not be solicited via DM/email reply/phone — anti-hawking under s736",
+      "source_ref": ["RG-261.115", "s736"],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": ["email", "landing-page", "meta-ad", "social-post"],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "regex_forbidden",
+      "forbidden_patterns": [
+        "(?i)reply to (this email|us) to (invest|apply|buy shares|join)",
+        "(?i)DM (us )?to (invest|apply)",
+        "(?i)call (us )?to invest",
+        "(?i)invest directly via"
+      ],
+      "violation_message": "Remove. Investments must go via the licensed CSF intermediary (e.g. Birchal), not via direct contact."
+    },
+    {
+      "rule_id": "ADV-004",
+      "category": "advertising",
+      "claim": "Forward-looking statements (forecasts, projections, growth targets) must have stated reasonable grounds; speculative claims are misleading",
+      "source_ref": ["RG-261.197", "RG-261.198", "s738U(2)"],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": ["email", "landing-page", "meta-ad"],
+        "phase": "during-offer",
+        "applies_to": "issuer"
+      },
+      "check_type": "llm_judge",
+      "llm_prompt": "Read this marketing copy. Does it contain any forward-looking financial statement (forecast, growth target, expected return, projected revenue, future valuation, profitability projection) WITHOUT stating supporting assumptions, basis, or evidence? Return JSON: {\"pass\": <bool>, \"evidence\": \"<exact quote if fail>\", \"reason\": \"<brief explanation>\"}",
+      "violation_message": "Either add the basis/assumptions for the forward-looking claim, or remove it."
+    },
+    {
+      "rule_id": "DISC-001",
+      "category": "disclosure",
+      "claim": "Superseded ASIC RG 261 disclaimer wording — replaced by founder-directed CSF warning 2026-04-25",
+      "source_ref": ["founder directive 2026-04-25"],
+      "severity": "WARNING",
+      "scope": {
+        "content_types": ["email", "landing-page", "meta-ad"],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "regex_forbidden",
+      "forbidden_patterns": [
+        "This is not financial advice\\. Consider seeking independent financial advice\\. Full details in the disclosure document on Birchal"
+      ],
+      "violation_message": "Replace with the canonical CSF warning: 'Always consider the general CSF risk warning and offer document before investing.'"
+    }
+  ]
+}
