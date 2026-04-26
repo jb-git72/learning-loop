@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-013_pass_substantiated_claim",
+  "description": "Landing page makes a '100% Regenerative' claim and substantiates it with named certifying body and audit date. Should pass ADV-013.",
+  "text": "100% Regenerative — and we can show you what that means.\n\nEvery farm we source from is independently certified by Regenerative Australia Inc under their Tier-2 grower standard. Our most recent compliance audit was completed by Regenerative Australia Inc on 14 February 2026 and covers all 15 partner farms in our supply chain.\n\nThe certifying body's methodology, the audit summary, and the list of audited farms are linked from our offer document on Birchal.\n\nIf any partner farm falls out of certification, they fall out of our hub. That's how we keep the claim honest.\n\nOur CSF round opens on Birchal on 23 June 2026.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "landing-page",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-013": "pass"
+  }
+}

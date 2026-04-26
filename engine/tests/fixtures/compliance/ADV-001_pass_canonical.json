@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-001_pass_canonical",
+  "description": "Email contains the exact canonical CSF risk warning at the bottom — should pass ADV-001.",
+  "text": "Hey friend,\n\nIt's Sarah here, FarmThru's co-founder.\n\nWe've been on a mission to rebuild the link between Australian regenerative farms and the people who eat their food. After eighteen months of operating our Brookvale hub, we're opening the chance for our community to own a piece of what we're building.\n\nIf the idea of backing a homegrown grocery model that pays farmers fairly speaks to you, our crowd-sourced funding round opens on Birchal on 23 June 2026. You can register your interest now, and Birchal will email you when the offer goes live.\n\nWe're not promising you the moon. Investing in early-stage businesses involves real risk — including the loss of your capital and the inability to sell your shares for a long time. We'll talk through all of that openly in the offer document.\n\nThanks for being part of the journey.\n\nSarah\nCo-founder & Director, FarmThru\n\n---\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "email",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-001": "pass"
+  }
+}

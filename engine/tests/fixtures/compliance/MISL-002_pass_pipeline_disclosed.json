@@ -1,0 +1,10 @@
+{
+  "fixture_id": "MISL-002_pass_pipeline_disclosed",
+  "description": "Email separates current signed agreements from pipeline farms — no half-truth, the status of each is clear. Should pass MISL-002.",
+  "text": "An honest update on the partner-farm count.\n\nWe get this question a lot in the lead-up to the raise: how many farms do you actually work with?\n\nHere's the precise answer.\n\nAs of 26 April 2026, we have 15 partner farms with signed multi-season supply agreements. They're all named in the offer document on Birchal, with their location, their lead grower, and the produce categories they cover.\n\nA further 5 farms are in our pipeline — meaning we've completed the on-farm visit and the technical compliance review, but the supply agreement has not yet been signed. We expect 3 to 4 of those to convert in Q3 2026, but we can't guarantee any of them will.\n\nWe think the distinction matters. Signed is signed; pipeline is pipeline. We won't conflate the two in any of our marketing.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "email",
+  "applies_to": "issuer",
+  "expected": {
+    "MISL-002": "pass"
+  }
+}

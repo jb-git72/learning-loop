@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-003_pass_birchal_link",
+  "description": "Email directs investors only to Birchal as the licensed intermediary, with no DM/reply/phone solicitation — should pass ADV-003.",
+  "text": "Hello,\n\nFarmThru's CSF round opens on Birchal on 23 June 2026.\n\nIf you'd like to be notified when the offer goes live, head to our Birchal expression-of-interest page (link below) and Birchal will email you directly.\n\nAll applications are processed through Birchal — they're the licensed CSF intermediary handling the round. We don't process applications ourselves and we can't sign anyone up by email or phone.\n\nWe'll keep this list small and the updates infrequent. Thanks for being part of the FarmThru community.\n\nSarah\nCo-founder & Director, FarmThru\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "email",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-003": "pass"
+  }
+}

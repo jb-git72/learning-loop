@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-013_fail_unsubstantiated_superlative",
+  "description": "Meta ad uses 'Australia's #1 regenerative grocery' and '100% Regenerative' superlatives with no source — should fail ADV-013.",
+  "text": "FarmThru — Australia's #1 regenerative grocery.\n\n100% Regenerative. The country's leading farm-to-shelf model. The fastest-growing regen brand in the southern hemisphere. World-class supply chain.\n\nOur community round opens on Birchal on 23 June 2026. Be part of the brand redefining how Aussies eat.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "meta-ad",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-013": "fail"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-017_fail_softball_self_question",
+  "description": "Issuer-posted Q&A on the communication facility where the company asks itself a soft-ball question and answers it with a marketing pitch. Should fail ADV-017.",
+  "text": "Q&A — from FarmThru on the Birchal communication facility.\n\nQ: Why is now the perfect time to invest in FarmThru?\n\nA: Because Australian shoppers have never been more ready for a regenerative grocery brand they can trust! Our Brookvale hub is the proof that the model works. Our partner farms are the proof that the supply chain holds together. Our community is the proof that there's hunger for this. There has literally never been a better moment to back the future of Aussie food than today.\n\nReady to be a shareholder? Round opens 23 June 2026.\n\nSarah Wilkinson, FarmThru co-founder & director.",
+  "content_type": "offer-document",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-017": "fail"
+  }
+}

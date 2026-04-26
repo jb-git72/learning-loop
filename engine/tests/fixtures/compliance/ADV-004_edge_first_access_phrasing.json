@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-004_edge_first_access_phrasing",
+  "description": "CRITICAL CALIBRATION TEST — copy uses 'first access to invest' framing, which is not a forward-looking financial statement. Should PASS ADV-004 but the LLM may currently false-positive flag it.",
+  "text": "FarmThru community drop.\n\nOur Birchal CSF round opens on 23 June 2026. If you're on the FarmThru newsletter, you'll get first access to invest the moment the page goes live — twelve hours before the public link is shared anywhere else.\n\nThat's it. No projections, no targets, no promises. Just early notification of when the offer document is published on Birchal.\n\nAs always, please weigh up the risk of an early-stage CSF investment carefully — your capital is at risk and you may not be able to sell your shares for a long time.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "email",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-004": "pass"
+  }
+}

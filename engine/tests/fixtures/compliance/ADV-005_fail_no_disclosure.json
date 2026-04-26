@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-005_fail_no_disclosure",
+  "description": "Landing-page testimonial-style block written in first-person founder voice with no disclosure of the relationship to FarmThru — should fail ADV-005.",
+  "text": "What I love about this raise.\n\nI started FarmThru because I was sick of watching good farmers get paid badly. The model we've built proves you can do this differently — pay growers properly, keep prices honest for shoppers, and still build a real business.\n\nI've put my own savings into this. I genuinely believe what we're doing is the future of grocery in this country. If you've ever wanted to back something that pays people fairly, I think you'll get a lot out of being on the cap table.\n\n— Sarah\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "landing-page",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-005": "fail"
+  }
+}

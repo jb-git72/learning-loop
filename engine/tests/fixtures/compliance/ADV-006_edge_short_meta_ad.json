@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-006_edge_short_meta_ad",
+  "description": "CRITICAL CALIBRATION TEST — short Meta ad that mentions the risk warning AND a brief in-body acknowledgement of risk. ADV-006 imbalance check should PASS for short-form formats with proportionate risk language, but the LLM may currently false-positive flag it.",
+  "text": "Own a piece of FarmThru.\n\nA regen grocery hub in Brookvale. Real Aussie farms. Fair pricing both ways.\n\nCSF round opens 23 June 2026 on Birchal. Early-stage investment — your capital is at risk and shares are illiquid.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "meta-ad",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-006": "pass"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-005_pass_disclosed_director",
+  "description": "Social post / Q&A response by founder, with relationship clearly disclosed up front — should pass ADV-005.",
+  "text": "Hey Tom — great question on operating margin.\n\nDisclosure: I'm Sarah Wilkinson, FarmThru's co-founder and a director on the board, so the answer below comes from inside the company.\n\nOur unit-margin on the Brookvale hub run-rate sits in the high teens after farmer-pay and inbound logistics. The blended gross margin is lower than that because we deliberately price our pantry staples close to break-even to keep weekly basket affordability in line with the major chains. The detailed margin breakdown by category is in the financial section of the offer document on Birchal.\n\nHappy to answer follow-ups in this thread.\n\nSarah",
+  "content_type": "social-post",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-005": "pass"
+  }
+}

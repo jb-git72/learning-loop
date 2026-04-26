@@ -86,7 +86,8 @@ def score_ad(
             content_type=content_type,
             applies_to=compliance_cfg.get("applies_to", "issuer"),
             rules_path=compliance_cfg.get("rules_path"),
-            enable_llm=use_llm,
+            enable_llm=use_llm and compliance_cfg.get("enable_llm", True),
+            model=compliance_cfg.get("model"),
         )
     else:
         compliance_result = compliance_checker.ComplianceResult()

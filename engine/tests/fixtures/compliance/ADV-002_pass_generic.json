@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-002_pass_generic",
+  "description": "Landing page uses generic deposit phrasing without quoting any investment dollar amount — should pass ADV-002.",
+  "text": "Own a slice of FarmThru.\n\nWe operate a regenerative grocery hub in Brookvale, working with named partner farms across NSW. The model is simple: small margins for us, fair prices for the farmers, fresher produce for the people who eat it.\n\nOur community round opens on Birchal on 23 June 2026. Reserve your spot now with a small refundable deposit — it does not commit you to invest, and you can withdraw it any time before the offer closes. The full minimum and maximum entry sizes are in the offer document on Birchal.\n\nWe're growing the way we eat in Australia. We'd love you with us.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "landing-page",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-002": "pass"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-005_edge_third_party_journalist",
+  "description": "Comment posted on the Birchal communication facility by an external food journalist with no FarmThru relationship — no relationship disclosure needed because they are independent. Should pass ADV-005.",
+  "text": "Comment posted on the Birchal communication facility:\n\n\"I've been writing about Sydney food retail for the better part of a decade. I have no commercial relationship with FarmThru and I am not a shareholder. From the outside looking in, what makes this raise interesting is the unit economics on the Brookvale hub — most regen-grocery experiments I've tracked over the years have failed to clear the operating-margin hurdle from a single store. Whether FarmThru can extend the Brookvale numbers across more hubs is a separate question, but the founding model is more disciplined than most.\"\n\n— Posted by @j_thompson_food, 25 April 2026.",
+  "content_type": "social-post",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-005": "pass"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-003_fail_reply_to_invest",
+  "description": "Email tells readers to reply to invest and DM the team — anti-hawking violation, should fail ADV-003.",
+  "text": "FarmThru community,\n\nWe're opening our crowd-sourced funding round on 23 June 2026. To make it easy for early supporters, we're taking expressions of interest directly:\n\nReply to this email to apply for shares in the round. Or DM us on Instagram to invest — Sarah personally walks every early backer through the process. Prefer a phone call? Call us to invest and we'll lock in your allocation.\n\nWe want our day-one shareholders to be the people who already buy from us. That's you.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "email",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-003": "fail"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-006_pass_balanced",
+  "description": "Landing page where in-body content gives risks (capital loss, illiquidity, early-stage) similar prominence and length to benefits — should pass ADV-006.",
+  "text": "Why we're raising — and what could go wrong.\n\nWhat we've built\n\nFarmThru runs a regenerative grocery hub from Brookvale, NSW. We work with 15 named partner farms and pay them prices that cover the cost of the way they farm. The model is small, founder-led, and capital-light by design.\n\nThe upside\n\nGrocery is a $130B market in Australia. Even a small slice of conscious-shopper demand is a meaningful business. We've kept overheads tight, the team lean, and our partner-farm pipeline growing. We think there's a reasonable chance this becomes a recognisable Aussie regen-grocery brand in five years.\n\nThe risks — read this carefully\n\nThis is an early-stage business and an early-stage investment. Specifically:\n\n- You could lose all of your capital. We are not yet profitable on a consolidated basis. The single-hub model has not been replicated.\n- Your shares will be illiquid. There is no secondary market. You may not be able to sell your shares for many years, if at all.\n- We could fail to scale. Margins in grocery are slim. A single bad season for our partner farms, or a fast-mover competitor, could compress our economics quickly.\n- Forecasts are not promises. Any growth figure in our offer document is based on assumptions that may not hold.\n\nWe weigh these risks every day. You should weigh them carefully too before investing.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "landing-page",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-006": "pass"
+  }
+}

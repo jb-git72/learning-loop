@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-007_edge_disclosed_partner_quote",
+  "description": "A quote from a real partner farmer with relationship clearly disclosed — should PASS ADV-007 (this is exactly the kind of attributed third-party voice that the rule allows).",
+  "text": "Voices from our partner farms.\n\nDisclosure: Mark Henley owns Henley Heritage Farm in the Hawkesbury and is one of FarmThru's 15 named partner farms. He has supplied FarmThru since the Brookvale hub opened in 2024. He is not a shareholder of FarmThru and has no financial interest in this CSF round.\n\n\"Before FarmThru, the gate price for my heritage carrots barely covered the diesel. Now I get paid a price I can plan my season around. That's the difference for a small grower.\"\n— Mark Henley, Henley Heritage Farm, Hawkesbury NSW. Quote provided April 2026 with consent for use in this campaign.\n\nWe think Mark's experience is the most honest case for what FarmThru is trying to build. Our crowd-sourced funding round opens on Birchal on 23 June 2026.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "landing-page",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-007": "pass"
+  }
+}

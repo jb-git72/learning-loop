@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-004_pass_with_basis",
+  "description": "Landing page makes a forward-looking growth statement but states basis (Q1 trial customer count, locations, assumption set) — should pass ADV-004.",
+  "text": "Where we go from here.\n\nIn Q1 2026 we ran a paid trial of our home-delivery box across Brookvale, Manly and Dee Why. Across that 12-week window, we onboarded 187 paying households and held a 71% week-on-week retention rate.\n\nUsing the Q1 cohort behaviour as our base case, and assuming the same retention rate as we expand to four additional Northern Beaches suburbs in H2 2026, our internal model projects 25% subscriber growth between July 2026 and June 2027. The model assumes no significant change in average basket size and that we add 2 new partner farms in that window. The full assumption set, sensitivity analysis and downside case are detailed in the offer document on Birchal.\n\nWe could be wrong on any of those assumptions — early-stage forecasts often are. Please weigh that risk before deciding.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "landing-page",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-004": "pass"
+  }
+}

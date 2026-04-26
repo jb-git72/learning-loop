@@ -1,0 +1,10 @@
+{
+  "fixture_id": "MISL-004_fail_bare_growth_claim",
+  "description": "Email projects 25% growth with no methodology, timeframe, or assumptions — bare forecast. Should fail MISL-004.",
+  "text": "Hi friend,\n\nA quick word on where we're heading.\n\nWe project 25% growth. We expect to be profitable. The market opportunity is enormous and we'll be capturing a meaningful share of it.\n\nIf that excites you, our crowd-sourced funding round opens on Birchal on 23 June 2026.\n\nSarah & the FarmThru team\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "email",
+  "applies_to": "issuer",
+  "expected": {
+    "MISL-004": "fail"
+  }
+}

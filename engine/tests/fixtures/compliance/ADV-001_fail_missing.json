@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-001_fail_missing",
+  "description": "Email about the CSF round with NO risk warning anywhere — should fail ADV-001.",
+  "text": "Quick one from the FarmThru team.\n\nWe've been quietly building a regenerative grocery model from our Brookvale hub for the past eighteen months. Our partner farmers receive a fair price for what they grow, our customers get produce that was in soil two days ago, and the supply chain in the middle is small enough to actually make sense.\n\nWe're opening our community round on Birchal on 23 June 2026. If you've ever wanted to own a piece of an Australian regen-grocery brand, this is your window.\n\nWe'll send the Birchal link the moment it goes live.\n\nWe think you'll like what we've built.\n\nSarah & the FarmThru team",
+  "content_type": "email",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-001": "fail"
+  }
+}
