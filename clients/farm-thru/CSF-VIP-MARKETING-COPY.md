@@ -69,6 +69,8 @@ FarmThru's CSF offer is now live at Birchal: {{birchal_url}} Reply STOP to opt o
 
 (128 chars with the real URL — fits one SMS segment.)
 
+*(SMS is sent MANUALLY by the founder/agency via a manual SMS provider — no automated pipeline. The template above is the canonical text; copy it into the manual provider tool at send time.)*
+
 ---
 
 ## 7. SMS template — purchase confirmation
