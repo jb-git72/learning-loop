@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-017_fail_marketing_slogan",
+  "description": "Issuer Q&A response on the Birchal communication facility that ducks a factual question and replies with marketing slogans / promotional puffery. Should fail ADV-017.",
+  "text": "Investor question (posted by user @markj on the Birchal Q&A facility):\n\n> Can you share your current monthly burn rate and your runway in months?\n\nResponse from FarmThru:\n\nGreat question, Mark — and thanks for being part of the FarmThru community!\n\nWe're so excited about this round. The Brookvale hub is humming, our farmer partners are loving the model, and our customers are telling all their friends. The momentum is incredible. We genuinely believe this is the moment for regenerative grocery to go mainstream in Australia, and we'd love you on the journey.\n\nBack the future of Aussie food. The community round opens on 23 June 2026 — don't miss your chance to be on the cap table from day one.\n\n— Team FarmThru",
+  "content_type": "offer-document",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-017": "fail"
+  }
+}

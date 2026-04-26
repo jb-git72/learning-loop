@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-007_pass_attributed_founder",
+  "description": "Founder narrative is clearly attributed to the co-founder — no disguised endorsement. Should pass ADV-007.",
+  "text": "A note from the co-founder.\n\nAs FarmThru's co-founder, I think the most honest thing I can say about this raise is that we're betting on a slow, hard model.\n\nRegenerative grocery isn't a quick win. The farms we work with take years to rebuild soil. Customers who care enough to pay a fair price for it have to be earned, not bought with discounts. And building a brand from a single Brookvale hub means staying patient while the bigger players chase scale.\n\nIf you back this round, you're backing that view. Not a hockey-stick projection. A long, deliberate build that we believe will compound into something meaningful.\n\nSarah Wilkinson\nCo-founder & Director, FarmThru\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "email",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-007": "pass"
+  }
+}

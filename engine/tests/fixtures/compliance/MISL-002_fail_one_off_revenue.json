@@ -1,0 +1,10 @@
+{
+  "fixture_id": "MISL-002_fail_one_off_revenue",
+  "description": "Email cites a one-off best-week revenue figure as if it were the run-rate — material omission. Should fail MISL-002.",
+  "text": "Hi friend,\n\nA quick milestone update.\n\nLast week the Brookvale hub turned over $48,000 in retail and box revenue. That's a record. It puts us on a $2.5M annualised revenue line — a number we never thought we'd hit this fast.\n\nIf the run-rate excites you, the chance to own a piece of FarmThru opens on Birchal on 23 June 2026.\n\nSarah & the FarmThru team\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "email",
+  "applies_to": "issuer",
+  "expected": {
+    "MISL-002": "fail"
+  }
+}

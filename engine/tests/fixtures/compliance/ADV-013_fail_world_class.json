@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-013_fail_world_class",
+  "description": "Email uses 'world-class', 'unmatched', 'best in market' superlatives without any substantiating source — should fail ADV-013.",
+  "text": "Hi friend,\n\nA quick update from the Brookvale hub.\n\nWe've spent the past eighteen months quietly building what we believe is the best in market regenerative grocery operation in Australia. Our farmer relationships are unmatched. Our world-class team has built a supply chain that the supermarket majors can't replicate.\n\nIf you want to back the leading provider of regenerative groceries in this country, our CSF round opens on Birchal on 23 June 2026.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "email",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-013": "fail"
+  }
+}

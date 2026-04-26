@@ -1,0 +1,10 @@
+{
+  "fixture_id": "MISL-001_fail_unverifiable_claim",
+  "description": "Landing page makes an unverifiable, definite-sounding factual claim ('Australia's #1 regenerative grocery — over 10,000 customers already') with no support. Should fail MISL-001.",
+  "text": "Australia's #1 regenerative grocery.\n\nIn just eighteen months from a single Brookvale hub, FarmThru has grown to over 10,000 customers already, partnered with the country's leading regen farms, and become the most-talked-about food brand in Sydney.\n\nWe've been profitable since launch. Our supply chain is the most efficient in the regen sector. Australia's most respected food media has called us the future.\n\nNow it's your turn to own a piece of the brand redefining how Australians eat. Our community round opens on Birchal on 23 June 2026.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "landing-page",
+  "applies_to": "issuer",
+  "expected": {
+    "MISL-001": "fail"
+  }
+}

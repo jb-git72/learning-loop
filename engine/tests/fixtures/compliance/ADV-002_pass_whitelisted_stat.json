@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-002_pass_whitelisted_stat",
+  "description": "Email mentions farmer-pay stat $3.80/kg and the $130B grocery market size — both are whitelisted contexts, should pass ADV-002.",
+  "text": "Hi friend,\n\nA quick story to share before our raise.\n\nOne of our partner growers in the Hawkesbury sells us heritage carrots at $3.80/kg — almost double the gate price the major chains were paying him last summer. That extra margin is what kept his soil-restoration program going through winter.\n\nThis is the story we want to scale. Australian groceries are a $130B market. We don't need a big slice to make a meaningful difference for regen growers — we just need a model that pays them properly and a community of customers who care.\n\nOur CSF round opens on Birchal on 23 June 2026. If you've been waiting for a chance to back this idea, this is it.\n\nWith real risks involved — including loss of capital and inability to sell your shares for a long time — please read the offer document on Birchal before deciding.\n\nThanks,\nSarah\nCo-founder & Director, FarmThru\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "email",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-002": "pass"
+  }
+}

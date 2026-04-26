@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-006_fail_benefits_only",
+  "description": "Landing page is 95% benefits/upside with only the canonical footer warning — no in-body risk discussion. Should fail ADV-006.",
+  "text": "Back the future of Aussie groceries.\n\nFarmThru is the regenerative grocery brand redefining how food gets from the soil to the plate. From our Brookvale hub, we work with the country's best regen farms to deliver the freshest, most nutrient-dense produce to households across the Northern Beaches.\n\nWhy this is special\n\n- A fast-growing customer base of conscious shoppers who care about provenance.\n- A $130B market opportunity right at our doorstep.\n- A loyal, growing list of named partner farmers ready to scale with us.\n- A founding team with deep experience in food systems and brand-building.\n- Strong unit economics on the Brookvale hub.\n- A clear path to multi-hub expansion across Sydney by 2028.\n- A community that already believes in what we're doing.\n\nThis is a genuinely exciting moment to be backing Australian regenerative agriculture. Our community round opens on Birchal on 23 June 2026 — register your interest now.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "landing-page",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-006": "fail"
+  }
+}

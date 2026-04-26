@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-004_fail_bare_projection",
+  "description": "Email contains a bare 25% growth projection in 12 months with no assumptions or basis — should fail ADV-004.",
+  "text": "FarmThru shareholder update — pre-raise edition.\n\nWe project 25% growth over the next 12 months. We project our customer base will double by mid-2027. We expect to be profitable in FY28.\n\nIf those numbers excite you as much as they excite us, our crowd-sourced funding round opens on Birchal on 23 June 2026.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "email",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-004": "fail"
+  }
+}

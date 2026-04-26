@@ -56,10 +56,15 @@ class ComplianceResult:
     advisory: list[Violation] = field(default_factory=list)
     rules_evaluated: int = 0
     rules_skipped_out_of_scope: int = 0
+    # Rule IDs that were actually executed against the text. Lets accuracy
+    # evaluators tell "rule ran and passed" apart from "rule was out of
+    # scope". Excludes rules skipped by scope, by check_type, or because
+    # enable_llm was False.
+    evaluated_rule_ids: list[str] = field(default_factory=list)
 
 
 # -------------------------------------------------------------------------
-# Module-level cache
+# Module-level cache + defaults
 # -------------------------------------------------------------------------
 
 _RULES_CACHE: dict[str, dict] = {}
@@ -71,6 +76,13 @@ _DEFAULT_RULES_PATH = (
     / "csf-australia"
     / "compliance_rules.json"
 )
+
+# Default model for llm_judge rules. Sonnet 4.6 strikes the right balance
+# between accuracy on regulatory judgements and per-call cost. Override
+# globally via the `model` argument to check_compliance(), or per-rule
+# via the rule's optional `model` field. Use `claude-opus-4-7` for the
+# highest-stakes calibration runs.
+_DEFAULT_MODEL = "claude-sonnet-4-6"
 
 
 def _load_rules(rules_path: str | None = None) -> dict:
@@ -102,6 +114,7 @@ def check_compliance(
     applies_to: str = "issuer",
     rules_path: str | None = None,
     enable_llm: bool = True,
+    model: str | None = None,
 ) -> ComplianceResult:
     """Run all in-scope compliance rules against `text`.
 
@@ -118,6 +131,9 @@ def check_compliance(
         enable_llm: When False, llm_judge rules are skipped silently
             (counted as out-of-scope so callers can see why). Used by
             the cheap path of hill-climb runs.
+        model: Override the default LLM judge model. Per-rule override
+            (rule['model']) takes precedence; this argument is the
+            client-level override; falls back to _DEFAULT_MODEL.
 
     Returns:
         ComplianceResult — `passed` is False iff any BLOCKING violation
@@ -146,13 +162,14 @@ def check_compliance(
         elif check_type == "regex_forbidden":
             violation = _check_regex_forbidden(rule, text)
         elif check_type == "llm_judge":
-            violation = _check_llm_judge(rule, text)
+            violation = _check_llm_judge(rule, text, model_override=model)
         else:
             # Unknown check type — skip but don't crash.
             result.rules_skipped_out_of_scope += 1
             continue
 
         result.rules_evaluated += 1
+        result.evaluated_rule_ids.append(rule.get("rule_id", "?"))
 
         if violation is not None:
             sev = violation.severity
@@ -230,26 +247,40 @@ def _check_regex_forbidden(rule: dict, text: str) -> Violation | None:
     return None
 
 
-def _check_llm_judge(rule: dict, text: str) -> Violation | None:
-    """Call Haiku, parse JSON {pass, evidence, reason}; violation if pass is false."""
+def _check_llm_judge(rule: dict, text: str, model_override: str | None = None) -> Violation | None:
+    """Call the LLM judge, parse JSON {pass, evidence, reason}; violation if pass is false.
+
+    Model resolution order: rule['model'] → model_override (client config)
+    → _DEFAULT_MODEL. Lets per-rule heavyweights coexist with cheap defaults.
+    """
     prompt = rule.get("llm_prompt", "")
     if not prompt:
         return None
 
-    full_prompt = f"{prompt}\n\nCONTENT TO REVIEW:\n{text}"
+    # Inject grounding context the LLM otherwise lacks (today's date) so
+    # rules like MISL-001 can reason about whether a future date is
+    # speculative vs scheduled.
+    import datetime as _dt
+    today = _dt.date.today().isoformat()
+    full_prompt = (
+        f"Today's date is {today}.\n\n"
+        f"{prompt}\n\nCONTENT TO REVIEW:\n{text}"
+    )
 
     api_key = os.environ.get("ANTHROPIC_API_KEY", "")
     if not api_key:
         # No key — silently skip rather than block the pipeline.
         return None
 
+    model = rule.get("model") or model_override or _DEFAULT_MODEL
+
     try:
         import anthropic
 
         client = anthropic.Anthropic(api_key=api_key)
         response = client.messages.create(
-            model="claude-haiku-4-5-20251001",
-            max_tokens=300,
+            model=model,
+            max_tokens=400,
             temperature=0.0,
             messages=[{"role": "user", "content": full_prompt}],
         )

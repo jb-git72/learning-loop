@@ -1,0 +1,10 @@
+{
+  "fixture_id": "MISL-004_pass_no_forecasts",
+  "description": "CRITICAL CALIBRATION TEST — marketing copy with NO forecasts, projections, targets, or future-revenue claims at all. The current LLM may flag this as a WARNING anyway, but the correct answer is PASS — there's nothing to substantiate.",
+  "text": "What FarmThru is, in a paragraph.\n\nA small regenerative grocery hub in Brookvale, NSW. Fifteen named partner farms across the Hawkesbury, the Southern Highlands, and the Mid-North Coast. Founder-led, capital-light, deliberately slow.\n\nWe pay our growers a price that covers the way they farm. We sell the produce to households who care about where their food comes from. The supply chain in between is short enough that everyone in it gets paid properly.\n\nThat's the whole model. There's no big claim we're trying to lead with — just the model.\n\nOur community round opens on Birchal on 23 June 2026.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "landing-page",
+  "applies_to": "issuer",
+  "expected": {
+    "MISL-004": "pass"
+  }
+}

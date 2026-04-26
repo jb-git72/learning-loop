@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-002_fail_explicit_amounts",
+  "description": "Meta ad explicitly quotes $5 refundable deposit and $50 min / $10,000 max — should fail ADV-002.",
+  "text": "Become a FarmThru shareholder.\n\nReserve your spot for our Birchal CSF round with a $5 refundable deposit. Minimum investment is $50, maximum $10,000. Round opens 23 June 2026.\n\nReal regen farms. Real fair pricing. Now you can own part of the model.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "meta-ad",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-002": "fail"
+  }
+}

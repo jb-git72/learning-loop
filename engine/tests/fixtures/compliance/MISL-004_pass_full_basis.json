@@ -1,0 +1,10 @@
+{
+  "fixture_id": "MISL-004_pass_full_basis",
+  "description": "Landing page contains a forecast with stated timeframe (2027), assumptions (200 confirmed pre-orders, 8 partner farms, 35 SKUs), and methodology (model basis). Should pass MISL-004.",
+  "text": "Where we think the Brookvale hub gets to.\n\nOur internal financial model projects $400,000 in retail and box revenue for the calendar year 2027. The model is built on three concrete inputs:\n\n1. 200 confirmed pre-orders for the home-delivery box, captured during our Q1 2026 trial. These households are charged on the day deliveries resume in July 2026.\n2. 8 named partner farms supplying 35 SKUs each on signed multi-season agreements. The supply schedule is in the offer document.\n3. A constant blended basket size based on the actual Q1 trial average, with no assumed uplift from cross-sell or expansion ranges.\n\nThe model is internal — not reviewed by an independent expert. It assumes no significant supply disruption and no material change in basket size. The full assumption table, sensitivity analysis, and downside case are in the financial section of the offer document on Birchal.\n\nForecasts are inherently uncertain. We could miss this figure. Please weigh that risk before deciding.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "landing-page",
+  "applies_to": "issuer",
+  "expected": {
+    "MISL-004": "pass"
+  }
+}

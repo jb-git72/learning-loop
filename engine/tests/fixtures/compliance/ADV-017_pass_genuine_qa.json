@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-017_pass_genuine_qa",
+  "description": "Issuer Q&A response on the Birchal communication facility that gives a substantive, balanced, factual answer to a real investor question. Should pass ADV-017.",
+  "text": "Investor question (posted by user @rachel_n on the Birchal Q&A facility):\n\n> What's your customer-acquisition cost on the Brookvale hub today, and how does it compare to the major chains?\n\nResponse from Sarah Wilkinson, FarmThru co-founder & director:\n\nGood question, Rachel.\n\nIn Q1 2026 our blended customer-acquisition cost was $42 per acquired household, measured across paid social, local print and word-of-mouth referral. The figure is calculated as total marketing spend in the quarter divided by net new paying households on a 30-day-active basis.\n\nWe don't have direct visibility into the major chains' CAC, but published industry estimates put it in the low single digits per shopper, mostly because they advertise from a position of pre-existing brand presence. Our figure is materially higher and we expect it to remain so until our brand recognition catches up. The full CAC trend by quarter and the marketing-spend assumptions behind our forecasts are in the financial section of the offer document.\n\nHappy to dig into any specific channel.\n\nSarah",
+  "content_type": "offer-document",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-017": "pass"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "fixture_id": "MISL-002_fail_unstable_number",
+  "description": "Landing page headline says '15+ Named Farms' as a definite figure, but the body waffles 'around 15 to 20 partner farms' — half-truth that misleads on the actual count. Should fail MISL-002.",
+  "text": "15+ Named Farms. One Honest Supply Chain.\n\nFarmThru works with 15+ named regenerative partner farms across NSW. Every one of them is paid a fair price for the way they farm.\n\nFurther down the page:\n\nFAQ — How many partner farms does FarmThru work with?\n\nAround 15 to 20 partner farms supply our Brookvale hub depending on season and crop windows. The exact number fluctuates as we add and rotate growers, so the figure on this page is approximate.\n\nOur community round opens on Birchal on 23 June 2026.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "landing-page",
+  "applies_to": "issuer",
+  "expected": {
+    "MISL-002": "fail"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-001_edge_wrong_wording",
+  "description": "Email contains a similar-but-wrong disclaimer — does not contain the required canonical phrase, should FAIL ADV-001.",
+  "text": "Hi there,\n\nWe're FarmThru — a small regenerative grocery brand operating from a Brookvale hub. Real food from named Aussie farms, reasonable margins for everyone in the chain.\n\nOur crowd-sourced funding round opens on Birchal on 23 June 2026. We'd love to have you on the cap table.\n\nA quick note before you decide: investing in CSF carries risk — read the docs on Birchal carefully and only invest what you can afford to lose. This is not financial advice.\n\nMore detail in the Birchal offer document when it lands.\n\nThanks,\nThe FarmThru team",
+  "content_type": "email",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-001": "fail"
+  }
+}

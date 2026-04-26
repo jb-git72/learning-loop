@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-003_fail_dm_us",
+  "description": "Social post invites investors to DM the company to invest, bypassing Birchal — should fail ADV-003.",
+  "text": "Big news from the Brookvale hub.\n\nWe're opening our community round soon. If you've been buying from us for a while and want to own part of what we're building, this is your moment.\n\nDM us to invest and we'll add you to the priority list before the public Birchal page goes live. We want our long-time customers in first.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "social-post",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-003": "fail"
+  }
+}

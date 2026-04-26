@@ -1,0 +1,10 @@
+{
+  "fixture_id": "MISL-001_pass_verifiable_address",
+  "description": "Email contains verifiable factual claims (hub address, partner farm count) presented concretely with sources. Should pass MISL-001.",
+  "text": "Hi friend,\n\nA quick logistics note ahead of the raise.\n\nFarmThru operates from one premises: our Brookvale hub at Unit 23, 10-18 Orchard Road, Brookvale NSW 2100. We took possession of the lease in March 2024 and the hub has been operational continuously since June 2024.\n\nAs of 26 April 2026 we have signed supply agreements with 15 partner farms, all listed by name and location in the offer document on Birchal. The full lease summary, the operational timeline, and the partner-farm register are all attached to the offer document.\n\nIf you'd like to walk through the hub before the round opens, drop us a line via the Birchal contact form and we'll arrange a visit.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "email",
+  "applies_to": "issuer",
+  "expected": {
+    "MISL-001": "pass"
+  }
+}

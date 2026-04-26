@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-007_fail_sock_puppet_dialogue",
+  "description": "Constructed dialogue between founder and a 'farmer' positioned as a soft-ball customer endorsement, with the farmer's relationship to the company hidden — should fail ADV-007.",
+  "text": "Conversations from the hub.\n\n\"Sarah, why didn't you take VC money?\" the farmer asked, leaning against a crate of carrots.\n\n\"Because then you wouldn't get paid properly,\" Sarah said. \"VCs would push us to crush margin upstream. The whole point of FarmThru is the opposite.\"\n\nThe farmer thought for a moment. \"Honestly, I've never been treated like this by a buyer. You're the first ones who've made my farm financially viable. Every single Australian should be putting their money behind FarmThru — this is the future.\"\n\nThat conversation, more or less, is why we're opening our community round on Birchal on 23 June 2026.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "landing-page",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-007": "fail"
+  }
+}

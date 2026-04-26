@@ -1,0 +1,10 @@
+{
+  "fixture_id": "MISL-001_pass_future_csf_date",
+  "description": "CRITICAL CALIBRATION TEST — copy states 'The CSF round opens 23 June 2026 on Birchal'. This is a verifiable scheduled future date with confirmed intermediary. The current LLM may flag it as 'stale' due to lack of temporal context, but the correct answer is PASS.",
+  "text": "Save the date.\n\nFarmThru's crowd-sourced funding round opens 23 June 2026 on Birchal. Birchal is the licensed CSF intermediary handling the round, and they will publish the offer document at the same time.\n\nIf you'd like to be notified when the offer goes live, the Birchal expression-of-interest page is the best way to lock in early notice.\n\nNo deposit, no commitment, no obligation. Just an early ping when the page is live.\n\nSarah Wilkinson\nCo-founder & Director, FarmThru\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "email",
+  "applies_to": "issuer",
+  "expected": {
+    "MISL-001": "pass"
+  }
+}
