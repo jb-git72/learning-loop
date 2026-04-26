@@ -203,7 +203,7 @@
     "email": "- Single CTA per email\n- Short paragraphs (max 3 sentences each)\n- Founder voice when appropriate\n- Every number must trace to a verified fact above\n- If the email mentions investment, Birchal, equity, crowdfunding, $50, $5 deposit, or waitlist — add as the FINAL paragraph before the sign-off: \"This is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.\""
   },
   "compliance": {
-    "enabled": false,
+    "enabled": true,
     "applies_to": "issuer",
     "enable_llm": true,
     "model": "claude-sonnet-4-6",
