@@ -318,3 +318,75 @@ def test_fmth_priority_passes_on_birchal_approved_phrasing():
 
     blocking_ids = [v.rule_id for v in result.blocking_violations]
     assert "FMTH-PRIORITY-001" not in blocking_ids
+
+
+# -------------------------------------------------------------------------
+# 9. FMTH-NO-DOLLAR-METAAD — Meta platform-policy ban on explicit $ amounts
+# -------------------------------------------------------------------------
+
+def test_fmth_no_dollar_metaad_blocks_explicit_amount():
+    """FMTH-NO-DOLLAR-METAAD must fire when a meta-ad contains an explicit
+    dollar amount. Meta financial-vertical platform policy frequently
+    rejects ads with explicit $ amounts. Writer must paraphrase to
+    'a small refundable deposit' or similar prose.
+    """
+    text = (
+        "Be part of FarmThru. Lock in early access to invest from $50 when our "
+        "CSF round opens. Reserve your spot with a small refundable deposit. "
+        "See the general CSF risk warning + offer document."
+    )
+    result = check_compliance(text, content_type="meta-ad", enable_llm=False)
+
+    blocking_ids = [v.rule_id for v in result.blocking_violations]
+    assert "FMTH-NO-DOLLAR-METAAD" in blocking_ids
+    assert result.passed is False
+
+
+def test_fmth_no_dollar_metaad_passes_when_paraphrased():
+    """Meta-ad copy that paraphrases dollar values via prose ('a small
+    refundable deposit') must NOT trigger FMTH-NO-DOLLAR-METAAD. Confirms
+    the canonical Task 3 rewrite pattern (PR #94) is forward-compatible.
+    """
+    text = (
+        "Be part of FarmThru. Lock in early access to invest when our CSF "
+        "round opens. Reserve your spot with a small refundable deposit. "
+        "See the general CSF risk warning + offer document."
+    )
+    result = check_compliance(text, content_type="meta-ad", enable_llm=False)
+
+    blocking_ids = [v.rule_id for v in result.blocking_violations]
+    assert "FMTH-NO-DOLLAR-METAAD" not in blocking_ids
+
+
+def test_fmth_no_dollar_metaad_does_not_fire_on_landing_page():
+    """The no-$ rule is scoped to meta-ad ONLY — landing pages and emails
+    can (and should) state the exact deposit amount. Guards against
+    accidental scope creep that would over-restrict LP/email copy.
+    """
+    text = (
+        "Reserve your VIP spot. Place a $5 refundable deposit to lock in "
+        "early access to the investment offer when our Birchal CSF round "
+        "opens. Always consider the general CSF risk warning and offer "
+        "document before investing."
+    )
+    result = check_compliance(text, content_type="landing-page", enable_llm=False)
+
+    all_ids = [v.rule_id for v in result.blocking_violations + result.warnings + result.advisory]
+    assert "FMTH-NO-DOLLAR-METAAD" not in all_ids
+    # Rule must have been excluded by scope (not in evaluated_rule_ids).
+    assert "FMTH-NO-DOLLAR-METAAD" not in result.evaluated_rule_ids
+
+
+def test_fmth_no_dollar_metaad_does_not_fire_on_email():
+    """Companion to the LP test — the no-$ rule must also be out-of-scope
+    for emails. Emails are a longer-form channel where exact deposit
+    amounts are appropriate (and required by FMTH-010 refundable disclaimer).
+    """
+    text = (
+        "Reserve your VIP spot for a $5 refundable deposit. We'll send the "
+        "offer link via Birchal when the CSF round opens. Always consider "
+        "the general CSF risk warning and offer document before investing."
+    )
+    result = check_compliance(text, content_type="email", enable_llm=False)
+
+    assert "FMTH-NO-DOLLAR-METAAD" not in result.evaluated_rule_ids

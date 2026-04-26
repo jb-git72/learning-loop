@@ -35,10 +35,11 @@
         "not financial advice",
         "disclosure document",
         "consider seeking independent",
-        "seek independent financial advice"
+        "seek independent financial advice",
+        "general CSF risk warning"
       ],
       "case_sensitive": false,
-      "rationale": "ASIC RG 234 requires balanced disclosure for equity crowdfunding campaigns. Content that mentions investment must include disclaimers, but pure product/brand content is exempt."
+      "rationale": "ASIC RG 234 requires balanced disclosure for equity crowdfunding campaigns. Content that mentions investment must include disclaimers, but pure product/brand content is exempt. The 'general CSF risk warning' phrasing is the canonical s738ZG safe-harbour reference and resolves the structural conflict with FMTH-016 (which bans the longer disclaimer phrases above in meta-ad fields) — meta-ads can use the safe-harbour wording to satisfy both rules. Documented per PICKUP 2026-04-27 task 4c."
     },
     {
       "rule_id": "FMTH-002",
@@ -519,6 +520,26 @@
       "rationale": "Birchal response 2026-04-26 (logged in CSF-VIP-BIRCHAL-SUBMISSION.md §9, item 1): the equal-access boilerplate is not required because Birchal's communication-facility design already covers the disclosure obligation. This rule is documentation-only — the engine ignores 'documentation_note' check_type. Acts as an audit trail so future reviewers see the override is intentional, not an oversight.",
       "supersedes": [],
       "ack_source": "Birchal review email 2026-04-26"
+    },
+    {
+      "rule_id": "FMTH-NO-DOLLAR-METAAD",
+      "name": "no_dollar_amounts_in_meta_ads",
+      "severity": "critical",
+      "type": "regex_absent",
+      "description": "Block any explicit dollar amount in meta-ad copy. Reference dollar values via 'a small refundable deposit' or similar prose. Meta platforms in financial verticals frequently reject ads with explicit $ amounts (rejected as misleading financial promotion).",
+      "fields": [
+        "primary_text",
+        "headline",
+        "description"
+      ],
+      "content_types": [
+        "meta-ad"
+      ],
+      "patterns": [
+        "\\$\\d+"
+      ],
+      "case_sensitive": false,
+      "rationale": "Meta ads in financial verticals are frequently rejected for explicit dollar amounts. Reference dollar values via 'a small refundable deposit' or similar. Hard-block — variant cannot ship with explicit $ amount. PICKUP 2026-04-27 task 4."
     },
     {
       "rule_id": "FMTH-EARLY-ACCESS-001",

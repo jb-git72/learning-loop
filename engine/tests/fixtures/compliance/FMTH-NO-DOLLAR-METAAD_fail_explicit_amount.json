@@ -1,0 +1,10 @@
+{
+  "fixture_id": "FMTH-NO-DOLLAR-METAAD_fail_explicit_amount",
+  "description": "Meta-ad copy with an explicit '$50' minimum-investment amount. Should FAIL FMTH-NO-DOLLAR-METAAD — Meta financial-vertical platform policy frequently rejects ads with explicit $ amounts. Writer must paraphrase to 'a small refundable deposit' or similar. PICKUP 2026-04-27 task 4.",
+  "text": "Be part of FarmThru. Lock in early access to invest from $50 when our CSF round opens.\n\nReserve your spot with a small refundable deposit. VIP investors get the offer link before the public link goes live.\n\nSee the general CSF risk warning + offer document.",
+  "content_type": "meta-ad",
+  "applies_to": "issuer",
+  "expected": {
+    "FMTH-NO-DOLLAR-METAAD": "fail"
+  }
+}

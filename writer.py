@@ -219,6 +219,7 @@ def _build_rules_summary(config: dict, content_type: str) -> str:
     prompt_rules = config.get("prompt_rules", {})
     if isinstance(prompt_rules, dict) and content_type in prompt_rules:
         rules = "RULES (violating ANY zeros your score — read carefully):\n" + prompt_rules[content_type]
+        rules = _append_content_type_rules(rules, config, content_type)
         return _append_compliance_summary(rules, config, content_type)
 
     # Hardcoded fallback for clients without prompt_rules in config
@@ -239,7 +240,29 @@ def _build_rules_summary(config: dict, content_type: str) -> str:
 - No condescension ("we'll wait", "simple maths")
 - Lead with value/benefit, not price"""
 
+    rules = _append_content_type_rules(rules, config, content_type)
     return _append_compliance_summary(rules, config, content_type)
+
+
+def _append_content_type_rules(rules_text: str, config: dict, content_type: str) -> str:
+    """Append client rules that are scoped to a single content_type via the
+    `content_types` field in clients/<slug>/rules.json. Keeps meta-ad-only
+    rules out of LP / email prompts and vice versa. Currently surfaces just
+    the FMTH-NO-DOLLAR-METAAD rule because it materially changes generation
+    strategy (writer must paraphrase $ amounts) and is otherwise easy to
+    miss.
+    """
+    client_id = config.get("client_id", "")
+    if client_id != "farm-thru" or content_type != "meta-ad":
+        return rules_text
+
+    return rules_text + (
+        "\n- NEVER include explicit dollar amounts ($5, $50, $10K, $130B etc.) "
+        "in primary_text, headline, or description. Reference dollar values "
+        "via prose like 'a small refundable deposit' or 'tens of thousands' "
+        "instead. [FMTH-NO-DOLLAR-METAAD — Meta financial-vertical platform "
+        "policy frequently rejects ads with explicit $ amounts; hard-block.]"
+    )
 
 
 def _append_compliance_summary(rules_text: str, config: dict, content_type: str) -> str:

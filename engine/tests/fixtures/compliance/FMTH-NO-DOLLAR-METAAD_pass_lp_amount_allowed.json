@@ -1,0 +1,10 @@
+{
+  "fixture_id": "FMTH-NO-DOLLAR-METAAD_pass_lp_amount_allowed",
+  "description": "Landing-page copy WITH explicit '$5' refundable deposit amount. The new FMTH-NO-DOLLAR-METAAD rule is scoped to meta-ad only — LPs and emails can (and should) state the exact deposit amount, so the rule must be out-of-scope here. Also confirms ADV-001 still passes via the canonical safe-harbour wording. Guards against accidental scope creep on the no-$ rule. PICKUP 2026-04-27 task 4.",
+  "text": "Reserve your VIP spot in the FarmThru CSF round.\n\nPlace a $5 refundable deposit to lock in early access to the investment offer when our Birchal round opens. Fully refundable at any time before the round closes.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "landing-page",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-001": "pass"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "fixture_id": "FMTH-NO-DOLLAR-METAAD_pass_no_amount",
+  "description": "Meta-ad copy that paraphrases dollar values via prose ('small refundable deposit') instead of stating them. Should PASS FMTH-NO-DOLLAR-METAAD. Confirms the Task 3 rewrite pattern (PR #94) is forward-compatible with the new no-$ rule. PICKUP 2026-04-27 task 4.",
+  "text": "Be part of FarmThru. Lock in early access to invest when our CSF round opens.\n\nReserve your spot with a small refundable deposit. VIP investors get the offer link before the public link goes live.\n\nSee the general CSF risk warning + offer document.",
+  "content_type": "meta-ad",
+  "applies_to": "issuer",
+  "expected": {
+    "FMTH-NO-DOLLAR-METAAD": "pass"
+  }
+}
