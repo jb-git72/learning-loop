@@ -10,7 +10,7 @@ This is paste-and-go copy for the VIP Supporter product. Every section that ment
 
 ## 1. Elevator pitch
 
-VIP Supporter is FarmThru's $5 thank-you product for people who want to back the launch before the round goes live. Pay $5 and we'll invite you to a live founder Q&A, text you the moment our Birchal round opens, and keep you on the founder updates list throughout the campaign. Refundable on request. Investing happens at Birchal where every applicant applies on the same terms.
+VIP Supporter is FarmThru's $5 thank-you product for people who want to back the launch before the round goes live. Pay $5 and we'll text you the moment our Birchal round opens, plus keep you on the founder updates list throughout the campaign. Refundable on request. Investing happens at Birchal where every applicant applies on the same terms.
 
 ---
 
@@ -18,7 +18,7 @@ VIP Supporter is FarmThru's $5 thank-you product for people who want to back the
 
 **Headline**: Back FarmThru's launch. $5.
 
-**Sub**: Pay $5 to support FarmThru's launch. As a thank-you, you'll get a live founder Q&A, an SMS the moment our Birchal round opens, and founder updates throughout the campaign. Refundable.
+**Sub**: Pay $5 to support FarmThru's launch. As a thank-you, you'll get an SMS the moment our Birchal round opens, plus founder updates throughout the campaign. Refundable.
 
 ---
 
@@ -28,7 +28,6 @@ VIP Supporter is FarmThru's $5 thank-you product for people who want to back the
 
 Pay $5 to support FarmThru's launch. As a thank-you, you'll receive:
 
-- An invite to a live founder Q&A session (around 30 minutes, scheduled before the round opens)
 - A priority SMS the moment our CSF round opens at Birchal
 - Founder updates by email throughout the campaign
 
@@ -44,7 +43,7 @@ In deciding whether to apply for shares in the CSF offer, you should consider th
 
 **Section header**: Want to back the launch? Become a VIP Supporter.
 
-For $5 you'll get an invite to our live founder Q&A, a priority SMS the moment our Birchal round opens, and founder updates throughout the campaign. The $5 supports our launch marketing and is refundable on request before the round closes.
+For $5 you'll get a priority SMS the moment our Birchal round opens, plus founder updates throughout the campaign. The $5 supports our launch marketing and is refundable on request before the round closes.
 
 All investors apply on the same terms when the round opens at Birchal. The VIP Supporter product does not provide earlier or preferential investment access.
 
@@ -55,10 +54,10 @@ In deciding whether to apply for shares in the CSF offer, you should consider th
 ## 5. Stripe checkout product description
 
 ```
-VIP Supporter — $5 thank-you for backing FarmThru's launch. Includes live founder Q&A invite, SMS when our Birchal round opens, and founder updates. Refundable on request. Investment access at Birchal is equal for everyone.
+VIP Supporter — $5 thank-you for backing FarmThru's launch. Includes SMS when our Birchal round opens, plus founder updates. Refundable on request. Investment access at Birchal is equal for everyone.
 ```
 
-(225 characters — under Stripe's 250 limit.)
+(under Stripe's 250 limit.)
 
 ---
 
@@ -75,10 +74,10 @@ FarmThru's CSF round is now live at Birchal. Apply on the same terms as everyone
 ## 7. SMS template — purchase confirmation
 
 ```
-Thanks for backing FarmThru. Your $5 VIP Supporter is confirmed. Q&A invite + round-open SMS coming. Refund anytime: hello@farmthru.com.au
+Thanks for backing FarmThru. Your $5 VIP Supporter is confirmed. Round-open SMS + founder updates coming. Refund anytime: hello@farmthru.com.au
 ```
 
-(137 characters.)
+(under 160 characters.)
 
 ---
 
@@ -90,7 +89,6 @@ Thanks for becoming a VIP Supporter. Your $5 helps fund our launch marketing and
 
 Here's what to expect from us:
 
-- An email invite to our live founder Q&A (around 30 minutes, scheduled before the round opens)
 - A priority SMS the moment our CSF round opens at Birchal
 - Founder updates throughout the campaign
 
@@ -104,21 +102,9 @@ In deciding whether to apply for shares in the CSF offer, you should consider th
 
 ---
 
-## 9. Founder Q&A invitation copy
+## 9. Pre-launch announcement (Slack/social)
 
-**Subject**: Your founder Q&A invite
-
-Thanks again for backing FarmThru. Here's the founder Q&A you signed up for. It's around 30 minutes, live with Rachel and the team. Bring your questions about the farms, the hubs, the model — anything you want to know before the round opens.
-
-We'll email you the date, time, and join link before the session.
-
-In deciding whether to apply for shares in the CSF offer, you should consider the CSF offer document and the general risk warning at {{birchal_url}}.
-
----
-
-## 10. Pre-launch announcement (Slack/social)
-
-We're getting close to launch. If you want to back FarmThru before the round opens, our VIP Supporter product is live — $5, refundable, includes a live founder Q&A, an SMS the moment the round opens at Birchal, and founder updates throughout the campaign.
+We're getting close to launch. If you want to back FarmThru before the round opens, our VIP Supporter product is live — $5, refundable, includes an SMS the moment the round opens at Birchal, plus founder updates throughout the campaign.
 
 The $5 supports our launch marketing. Investing is open to everyone on the same terms when our Birchal round goes live.
 
@@ -128,10 +114,10 @@ In deciding whether to apply for shares in the CSF offer, you should consider th
 
 ---
 
-## 11. Talking points for sales calls
+## 10. Talking points for sales calls
 
 - VIP Supporter is a $5 thank-you product. It funds our launch marketing.
-- For $5, supporters get a live founder Q&A invite, a priority SMS when our Birchal round opens, and founder updates by email.
+- For $5, supporters get a priority SMS when our Birchal round opens, plus founder updates by email.
 - The $5 is a real Stripe charge and it's refundable on request before the round closes.
 - It is not an investment-access product. Everyone applies on the same terms at Birchal when the round opens.
 - We submitted the product to Birchal for sign-off before launch — they've reviewed the wording and the structure.
@@ -140,19 +126,19 @@ In deciding whether to apply for shares in the CSF offer, you should consider th
 
 ---
 
-## 12. FAQ snippets
+## 11. FAQ snippets
 
 **Q: What does the $5 actually buy?**
-A: Three things. An invite to a live founder Q&A (about 30 minutes), a priority SMS the moment our Birchal round opens, and founder updates by email throughout the campaign. The $5 supports our launch marketing.
+A: Two things. A priority SMS the moment our Birchal round opens, plus founder updates by email throughout the campaign. The $5 supports our launch marketing.
 
 **Q: Do VIP Supporters get to invest earlier?**
-A: No. All investors apply on the same terms when the round opens at Birchal. The VIP Supporter product does not provide earlier or preferential investment access.
+A: No. All investors apply on the same terms when the round opens at Birchal. The VIP Supporter product does not provide earlier or preferential investment access. The SMS just means you hear about it the moment it opens.
 
 **Q: Is this a payment for early investment access?**
-A: No. The $5 buys the Q&A invite, the SMS notification, and the founder updates email — three real services on the communications side. Investment access happens at Birchal and is equal for everyone.
+A: No. The $5 buys the SMS notification and the founder updates email — two real communications services. Investment access happens at Birchal and is equal for everyone.
 
 **Q: What happens if FarmThru's round doesn't open?**
-A: We'll refund your $5 in full. You'll still get the founder updates we promised, and the Q&A will go ahead either way so you can hear directly from the team.
+A: We'll refund your $5 in full. You'll still get the founder updates we promised so you can hear directly from the team.
 
 **Q: Can I get a refund?**
 A: Yes. Reply to your confirmation email any time before the round closes and we'll process the refund within two business days. No questions asked.
