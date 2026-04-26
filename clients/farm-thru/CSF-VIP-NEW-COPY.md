@@ -181,17 +181,15 @@ up, this is a content spec — the template should live here and in the
 mission-control admin docs. When SMS sending lands, this is the canonical text:
 
 ```
-FarmThru's CSF offer is now live at Birchal: {{birchal_url}}
-All investors apply on the same terms — your VIP Supporter contribution
-does not provide earlier or preferential investment access.
-Consider the CSF offer document and the general risk warning at
-{{birchal_url}} before applying.
-Reply STOP to opt out.
+FarmThru's CSF offer is now live at Birchal: {{birchal_url}} Reply STOP to opt out.
 ```
 
-Length: ~340 chars (will fit two-segment SMS). If the founder wants a
-shorter variant, the equal-access line can be compressed but the
-s738ZG(6) safe-harbour link to the offer document and warning MUST stay.
+Length: 128 chars with the real URL — fits one SMS segment. Trade-off:
+the full s738ZG(6) safe-harbour text doesn't fit. The link takes
+recipients to the general CSF risk warning page (which references the
+offer document). The full mandatory disclosures appear on every other
+VIP touchpoint customers reach after clicking (LP, welcome email,
+Stripe, drip emails).
 
 ### 2.7 Mission-control admin VIP descriptions (`templates/mission-control.html`)
 
