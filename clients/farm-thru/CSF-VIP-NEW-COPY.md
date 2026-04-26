@@ -25,12 +25,12 @@ The legacy badge text "VIP ACCESS" must be replaced everywhere with
 
 ### 1.2 The pitch (one sentence)
 > Pay $5 to support FarmThru's launch. As a thank-you, you'll receive a
-> priority SMS when our round opens at Birchal, plus founder updates
+> priority SMS when our round opens at Birchal, plus updates
 > throughout the campaign.
 
 ### 1.3 What the $5 buys (the two deliverables)
 1. Priority SMS notification when the round goes live at Birchal.
-2. Founder updates email throughout the campaign.
+2. Updates email throughout the campaign.
 
 ### 1.4 Mandatory disclosures (verbatim — required on every VIP touchpoint that mentions or implies the offer)
 
@@ -75,10 +75,10 @@ Rewrite only the visible text.
   <div class="vip__card">
     <span class="vip__badge">VIP SUPPORTER</span>
     <h2 class="vip__title">Support FarmThru's launch for $5.</h2>
-    <p class="vip__text">Pay $5 to support FarmThru's launch. As a thank-you, you'll receive a priority SMS when our round opens at Birchal, plus founder updates throughout the campaign.</p>
+    <p class="vip__text">Pay $5 to support FarmThru's launch. As a thank-you, you'll receive a priority SMS when our round opens at Birchal, plus updates throughout the campaign.</p>
     <ul class="vip__perks">
       <li class="vip__perk">Priority SMS notification when the round opens at Birchal</li>
-      <li class="vip__perk">Founder updates email throughout the campaign</li>
+      <li class="vip__perk">Updates email throughout the campaign</li>
     </ul>
     <button class="vip__button" id="vipDepositBtn">Support FarmThru — $5</button>
     <p class="vip__refund">$5 refundable on request before the round closes.</p>
@@ -102,10 +102,10 @@ Preserve all template structure (`{% if %}` blocks, IDs, classes).
 <div class="vip__card" id="vipCard">
   <span class="vip__badge">VIP SUPPORTER</span>
   <h2 class="vip__title">Support FarmThru's launch.</h2>
-  <p class="vip__text">Pay {{ meta.get("deposit_amount", "$5") }} to support FarmThru's launch. As a thank-you, you'll receive a priority SMS when our round opens at Birchal, plus founder updates throughout the campaign.</p>
+  <p class="vip__text">Pay {{ meta.get("deposit_amount", "$5") }} to support FarmThru's launch. As a thank-you, you'll receive a priority SMS when our round opens at Birchal, plus updates throughout the campaign.</p>
   <ul class="vip__perks">
     <li class="vip__perk">Priority SMS notification when the round opens at Birchal</li>
-    <li class="vip__perk">Founder updates email throughout the campaign</li>
+    <li class="vip__perk">Updates email throughout the campaign</li>
   </ul>
   <div class="vip__price">Supporter contribution: <strong>{{ meta.get("deposit_amount", "$5") }}</strong></div>
   <button class="vip__button" id="vipDepositBtn">Support FarmThru — {{ meta.get("deposit_amount", "$5") }}</button>
@@ -121,7 +121,7 @@ Preserve all template structure (`{% if %}` blocks, IDs, classes).
 <div class="vip__card" id="vipCard">
   <span class="vip__badge" style="background: var(--brand-accent, #2e8b57);">SUPPORTER CONFIRMED</span>
   <h2 class="vip__title">Thank you for supporting FarmThru.</h2>
-  <p class="vip__text">Your $5 supporter contribution is confirmed. Look out for your priority SMS when the round opens at Birchal, plus founder updates over the coming weeks. Check your inbox for your welcome email.</p>
+  <p class="vip__text">Your $5 supporter contribution is confirmed. Look out for your priority SMS when the round opens at Birchal, plus updates over the coming weeks. Check your inbox for your welcome email.</p>
   <p class="vip__disclosure" style="font-size: 12px; color: #888; line-height: 1.5; margin-top: 14px;">All investors apply on the same terms when the round opens at Birchal. The VIP Supporter product does not provide earlier or preferential investment access.</p>
   <p class="vip__disclosure" style="font-size: 12px; color: #888; line-height: 1.5; margin-top: 8px;">In deciding whether to apply for shares in the CSF offer, you should consider the CSF offer document and the general risk warning at {{ meta.get("birchal_url", "{{birchal_url}}") }}.</p>
 </div>
@@ -137,7 +137,7 @@ VIP paragraph (replaces lines around line 95):
 > {client_name} is opening a community funding round on 23 June at Birchal.
 > Want to support our launch? For $5 (refundable on request before the round
 > closes), you'll get a priority SMS when the round opens at Birchal, plus
-> founder updates throughout the campaign.
+> updates throughout the campaign.
 
 Replace the existing CTA copy:
 - Old button text: `Reserve VIP access (refundable)`
@@ -166,7 +166,7 @@ must NOT change.
     "description": (
         f"Pay {deposit_display} to support {client_name}'s launch. "
         f"Thank-you: priority SMS when our round opens at Birchal, "
-        f"plus founder updates. Refundable on request before the round "
+        f"plus updates. Refundable on request before the round "
         f"closes. VIP Supporter does not provide earlier or preferential "
         f"investment access."
     ),
@@ -242,7 +242,7 @@ Body draft:
 > As a thank-you, here's what you'll receive over the coming weeks:
 >
 > 1. A priority SMS the moment our offer goes live at Birchal.
-> 2. Founder updates by email throughout the campaign — what we're
+> 2. Updates by email throughout the campaign — what we're
 >    building, which farms are joining the hub, and how the offer is structured.
 >
 > If you change your mind, your $5 is refundable on request before the
@@ -285,7 +285,7 @@ CTA button: `Visit FarmThru` linking to `{{CAMPAIGN_URL}}`.
 > stick, not just customers of it.
 >
 > Thank you for chipping in $5 to support our launch. Your priority SMS
-> and founder updates are on the way.
+> and updates are on the way.
 >
 > If you have questions before our CSF offer opens, just reply to this
 > email. I read every one.
@@ -324,7 +324,7 @@ CTA button: `Visit FarmThru` → `{{CAMPAIGN_URL}}`.
 > investors equally and that's the point.
 >
 > What the $5 supports: our pre-launch work and the two thank-you
-> services we promised — the priority SMS and the founder updates.
+> services we promised — the priority SMS and the updates.
 >
 > If you want to think about whether to apply when the offer opens, the
 > Birchal offer document and risk warning are the right places to start.
