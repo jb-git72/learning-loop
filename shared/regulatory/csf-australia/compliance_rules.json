@@ -2237,6 +2237,28 @@
         "(?i)\\bpriorit(?:y|ies|ised|izing|ising|ize|ise)\\b"
       ],
       "violation_message": "Replace 'priority' with 'early'. Founder directive 2026-04-26: the word 'priority' is globally banned in FMTH VIP / investment copy (priority access, priority SMS, priority allocation, priority investor updates, priority notification — all retired)."
+    },
+    {
+      "rule_id": "FMTH-NO-DOLLAR-METAAD",
+      "category": "client-override",
+      "claim": "FMTH-only platform-policy rule: meta-ads (Facebook/Instagram) must not contain explicit dollar amounts. Reference dollar values via 'a small refundable deposit' or similar prose. NOT an ASIC requirement — Meta platform policy in financial verticals frequently rejects ads with explicit $ amounts. Other CSF clients on non-Meta channels can disable this rule.",
+      "source_ref": [
+        "Meta financial-services advertising policy",
+        "PICKUP 2026-04-27 task 4"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "meta-ad"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "regex_forbidden",
+      "forbidden_patterns": [
+        "\\$\\d+"
+      ],
+      "violation_message": "Strip the $ amount from this meta-ad. Reference dollar values via 'a small refundable deposit' or similar prose. PICKUP 2026-04-27 task 4 — bakes Meta platform policy into the writer + scorer so future generation never produces non-compliant FMTH meta-ads in the first place."
     }
   ]
 }
