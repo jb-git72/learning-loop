@@ -64,10 +64,10 @@ VIP Supporter — $5 thank-you for backing FarmThru's launch. Includes SMS when 
 ## 6. SMS template — round opens
 
 ```
-FarmThru's CSF round is now live at Birchal. Apply on the same terms as everyone else. Read the offer + risk warning first: {{birchal_url}}
+FarmThru's CSF offer is now live at Birchal: {{birchal_url}} Reply STOP to opt out.
 ```
 
-(140 characters.)
+(128 chars with the real URL — fits one SMS segment.)
 
 ---
 
