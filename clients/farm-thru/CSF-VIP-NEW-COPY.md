@@ -175,10 +175,9 @@ must NOT change.
 
 ### 2.6 SMS template — round opens (priority SMS sent to VIP supporters)
 
-There is currently no Twilio/SMS sending pipeline in sales-skill (only a
-phone-collection input on the LP signup form). Until the founder wires one
-up, this is a content spec — the template should live here and in the
-mission-control admin docs. When SMS sending lands, this is the canonical text:
+SMS is sent MANUALLY by the founder/agency via a manual SMS provider. The
+template stays; no Twilio integration needed. When SMS sends land, the
+template above is the canonical text.
 
 ```
 FarmThru's CSF offer is now live at Birchal: {{birchal_url}} Reply STOP to opt out.
