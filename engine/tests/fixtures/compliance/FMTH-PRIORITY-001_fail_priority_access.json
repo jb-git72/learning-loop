@@ -1,0 +1,10 @@
+{
+  "fixture_id": "FMTH-PRIORITY-001_fail_priority_access",
+  "description": "VIP card copy uses 'priority access' — should fail FMTH-PRIORITY-001 (founder directive 2026-04-26 globally bans the word 'priority' in FMTH VIP / investment copy).",
+  "text": "Secure your VIP spot in FarmThru.\n\nPlace a small refundable deposit and lock in priority access to the FarmThru investment offer when our Birchal CSF round opens. VIP investors get the offer link before the public link goes live, plus founder updates throughout the campaign.\n\nFully refundable at any time before the round closes.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "landing-page",
+  "applies_to": "issuer",
+  "expected": {
+    "FMTH-PRIORITY-001": "fail"
+  }
+}

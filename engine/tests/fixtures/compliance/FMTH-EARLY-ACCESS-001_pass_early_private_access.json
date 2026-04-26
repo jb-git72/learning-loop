@@ -1,0 +1,11 @@
+{
+  "fixture_id": "FMTH-EARLY-ACCESS-001_pass_early_private_access",
+  "description": "Birchal-approved phrasing: 'early private access to the investment offer'. Should PASS every shared rule. Confirms there is no shared rule banning 'early access' or 'early private access' — Birchal's 2026-04-26 approval is consistent with the existing rule design (ADV-004, MISL-004 explicitly do NOT flag 'early/first/priority access' as forecasts). Documentation rule FMTH-EARLY-ACCESS-001 (in clients/farm-thru/rules.json) records the Birchal acknowledgement; engine ignores it (documentation_note check_type).",
+  "text": "Secure early private access to the FarmThru investment offer.\n\nPlace a small refundable deposit to secure VIP status. VIP investors get early private access to the investment offer at Birchal when our CSF round opens, plus founder updates from Rachel and the team before the campaign opens to the public.\n\nFully refundable at any time before the round closes.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "landing-page",
+  "applies_to": "issuer",
+  "expected": {
+    "FMTH-PRIORITY-001": "pass",
+    "ADV-001": "pass"
+  }
+}

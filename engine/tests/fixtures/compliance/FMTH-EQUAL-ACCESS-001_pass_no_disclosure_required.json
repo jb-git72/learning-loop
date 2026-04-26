@@ -1,0 +1,11 @@
+{
+  "fixture_id": "FMTH-EQUAL-ACCESS-001_pass_no_disclosure_required",
+  "description": "VIP card copy without the equal-access boilerplate ('All investors apply on the same terms... does not provide earlier or preferential investment access'). Should PASS — no shared rule requires the equal-access disclosure for FMTH (Birchal 2026-04-26 confirmed it is not required; documented in clients/farm-thru/rules.json FMTH-EQUAL-ACCESS-001 and CSF-VIP-BIRCHAL-SUBMISSION.md §9, item 1). Verifies that the absence of an equal-access disclosure does NOT trigger any shared CSF rule.",
+  "text": "Become a FarmThru VIP.\n\nA small refundable deposit secures VIP status. VIP investors get early access to the investment offer when our CSF round opens at Birchal, plus founder updates throughout the campaign.\n\nFully refundable at any time before the round closes.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "landing-page",
+  "applies_to": "issuer",
+  "expected": {
+    "FMTH-PRIORITY-001": "pass",
+    "ADV-001": "pass"
+  }
+}
