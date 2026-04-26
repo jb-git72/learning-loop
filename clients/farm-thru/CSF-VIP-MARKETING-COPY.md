@@ -106,11 +106,11 @@ In deciding whether to apply for shares in the CSF offer, you should consider th
 
 ## 9. Founder Q&A invitation copy
 
-**Subject**: Your founder Q&A invite — pick a time
+**Subject**: Your founder Q&A invite
 
 Thanks again for backing FarmThru. Here's the founder Q&A you signed up for. It's around 30 minutes, live with Rachel and the team. Bring your questions about the farms, the hubs, the model — anything you want to know before the round opens.
 
-Pick a time that works: {{qa_booking_url}}
+We'll email you the date, time, and join link before the session.
 
 In deciding whether to apply for shares in the CSF offer, you should consider the CSF offer document and the general risk warning at {{birchal_url}}.
 
@@ -166,9 +166,8 @@ In deciding whether to apply for shares in the CSF offer, you should consider th
 
 ## Placeholders used
 
-- `{{birchal_url}}` — Birchal offer/risk-warning URL (swap at send)
+- `{{birchal_url}}` — Birchal CSF general risk warning URL (https://www.birchal.com/legal-pages/general-csf-risk-warning)
 - `{{vip_url}}` — FarmThru VIP Supporter landing page
-- `{{qa_booking_url}}` — Founder Q&A booking link
 
 ## Compliance check
 
