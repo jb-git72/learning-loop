@@ -4,11 +4,12 @@
   "hook_type": "if_then",
   "funnel": "TOF",
   "content_type": "meta-ad",
-  "creative_brief": "Split-screen visual: left side shows a long, winding conveyor belt with six generic toll-booth style checkpoints between a farm and a kitchen table. Right side shows a single clean line from farm to a FarmThru hub. Muted, documentary tone. No text overlay beyond the FarmThru logo.",
+  "creative_brief": "Split-screen visual: left side shows a long, winding conveyor belt with multiple checkpoints between a farm and a kitchen table. Right side shows a single clean line from farm to a FarmThru hub. Muted, documentary tone.",
   "generated_at": "2026-04-05T02:54:19.232032",
   "ad_id": "CFE-101",
-  "primary_text": "180km. That's how far Rachel's beef travels from Kempsey to families in Sydney.\n\nSupermarket beef? Closer to 2,400km through warehouses and wholesalers.\n\nWe built FarmThru to close that gap. Farm-direct grocery, no unnecessary middlemen. Around 15 to 20 partner farms across NSW, all traceable. Order online, collect from Brookvale Monday to Friday.\n\nNo subscription. No lock-in. Just food you can trace back to the person who grew it.\n\nWe're building something worth owning. You can be part of it.",
-  "headline": "180km, not 2,400. Own a piece of why.",
-  "description": "Farm-direct grocery changing how Sydney families eat. No middlemen, no lock-in.",
-  "cta": "cfe_campaign"
+  "primary_text": "Rachel's beef travels a fraction of the distance supermarket beef does, from Kempsey to families in Sydney.\n\nSupermarket beef can pass through warehouses spanning thousands of km.\n\nWe built FarmThru to close that gap. Around 15 to 20 partner farms across NSW, all traceable.\n\nNo commitment. Order online, collect from Brookvale.\n\nWe're building something worth owning. Be part of it.\n\nSee the general CSF risk warning + offer document.",
+  "headline": "Closer farms, fairer prices.",
+  "description": "Farm-direct grocery changing how Sydney families eat. No middlemen.",
+  "cta": "cfe_campaign",
+  "updated_at": "2026-04-26T23:10:15+00:00"
 }

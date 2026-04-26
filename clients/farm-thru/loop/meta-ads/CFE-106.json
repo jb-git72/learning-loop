@@ -4,11 +4,12 @@
   "hook_type": "social_proof",
   "funnel": "TOF",
   "content_type": "meta-ad",
-  "creative_brief": "Photo-style image: a real moment at the Brookvale hub where a farmer and a customer are talking over a counter with recognisable produce (pork cuts, eggs). Warm lighting, no text overlay. Community feel, not retail feel.",
+  "creative_brief": "Photo-style image: a real moment at the Brookvale hub where a farmer and a customer are talking over a counter with recognisable produce (pork cuts, eggs). Warm lighting. Community feel, not retail feel.",
   "generated_at": "2026-04-05T01:25:54.207629",
   "ad_id": "CFE-106",
-  "primary_text": "When Rachel Ward started supplying us from her farm in Kempsey, something shifted.\n\nFamilies collecting from our Brookvale hub started talking to each other. Swapping recipes. Asking which farm grew the carrots their kids actually ate.\n\nThen they started asking a different question: \"How do we become part of this?\"\n\nNot as customers. As co-owners.\n\nBecause when you know your eggs come from Farmer Brown and your salmon comes wild-caught off the South Coast, you stop feeling like a transaction. You feel like you belong to something.\n\nNo middlemen. No wholesalers. Just a community that owns what it eats.\n\nWe can't promise where this goes. But we can show you where your food comes from.",
-  "headline": "They didn't want to shop here. They wanted to own it.",
+  "primary_text": "When Rachel Ward started supplying us from her farm in Kempsey, something shifted.\n\nFamilies collecting from Brookvale started talking to each other. Swapping recipes. Asking which farm grew the carrots their kids actually ate.\n\nThen they asked: how do we become part of this? Not as customers. As co-owners.\n\nA community that owns what it eats.\n\nSee the general CSF risk warning + offer document.",
+  "headline": "They didn't shop. They wanted to own it.",
   "description": "Be part of a farm-direct grocery store built by the people who eat from it.",
-  "cta": "cfe_campaign"
+  "cta": "cfe_campaign",
+  "updated_at": "2026-04-26T23:10:15+00:00"
 }

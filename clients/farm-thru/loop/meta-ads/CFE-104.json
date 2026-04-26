@@ -1,14 +1,15 @@
 {
   "angle": "urgency-scarcity",
-  "tactic": "waitlist-priority",
+  "tactic": "waitlist-early-access",
   "hook_type": "bold_claim",
   "funnel": "MOF",
   "content_type": "meta-ad",
-  "creative_brief": "Split-screen visual: left side shows a long, winding highway with a refrigerated truck (overlaid text '2,400km'), right side shows a short country road from green pasture to the Brookvale hub (overlaid text '280km'). Clean, warm tones. FarmThru logo bottom right.",
+  "creative_brief": "Split-screen visual: left side shows a long, winding highway with a refrigerated truck (overlaid '10x further'), right side shows a short country road from green pasture to the Brookvale hub. Clean, warm tones.",
   "generated_at": "2026-04-04T09:26:09.030872",
   "ad_id": "CFE-104",
-  "primary_text": "Most grocery runs feel routine. But what if I told you the food in your fridge travelled further than your last holiday?\n\nThe big chains move a single cut of beef up to 2,400km through cold storage before it reaches you. Rachel Ward's regenerative cattle travel just 280km from her farm to our Brookvale hub.\n\nSame quality. Fraction of the distance. No middlemen, no wholesalers inflating the price.\n\nWe're building something different and the waitlist is how you get first access. Early spots are limited. Once our hub capacity fills, new orders queue behind existing collectors.\n\nNo lock-in. No commitment. Order when you want, collect from Brookvale Monday to Friday.",
-  "headline": "Only 280km from farm to your next meal",
-  "description": "Waitlist members get first access to FarmThru's Brookvale hub. Spots are limited.",
-  "cta": "cfe_waitlist"
+  "primary_text": "Most grocery runs feel routine. But what if I told you the food in your fridge travelled 10x further than your last weekend trip?\n\nThe big chains move beef thousands of km through cold storage. Rachel Ward's regenerative cattle travel a fraction of that to Brookvale.\n\nSame quality. Fraction of the distance. No middlemen.\n\nJoin the waitlist for early access when our hub capacity expands.\n\nNo commitment.\n\nSee the general CSF risk warning + offer document.",
+  "headline": "10x closer to your next meal",
+  "description": "Waitlist members get early access to FarmThru's Brookvale hub.",
+  "cta": "cfe_waitlist",
+  "updated_at": "2026-04-26T23:10:15+00:00"
 }
