@@ -4,11 +4,12 @@
   "hook_type": "if_then",
   "funnel": "TOF",
   "content_type": "meta-ad",
-  "creative_brief": "Split frame: left side shows a generic supermarket barcode on shrink-wrapped meat, cold and anonymous. Right side shows a hand-written farm name tag on butcher paper (e.g. 'Bundarra Farm, NSW') with warm, natural light. Clean typography overlays the if/then hook.",
+  "creative_brief": "Split frame: left side shows a generic supermarket barcode on shrink-wrapped meat, cold and anonymous. Right side shows a hand-written farm name tag on butcher paper (e.g. 'Bundarra Farm, NSW') with warm, natural light.",
   "generated_at": "2026-04-05T02:44:53.197251",
   "ad_id": "BR-110",
-  "primary_text": "Every week you buy groceries that quietly erase the farmer who grew them.\n\nNo name. No face. No story. Just a barcode and a 2,400km cold chain.\n\nFarmThru exists because that erasure isn't inevitable. It's a choice.\n\nWe built a grocery store with zero wholesalers, zero middlemen. Pork from Bundarra Farm. Wild-caught fish from Collins on the South Coast. Eggs from Farmer Brown. Every product traceable to the person who raised it.\n\nNo commitment. Order when you want. Collect from Brookvale Monday to Friday.\n\nOwn a piece of the grocery store that pays farmers first.",
-  "headline": "A grocery store that names every farmer",
+  "primary_text": "Every week you buy groceries that quietly erase the farmer who grew them.\n\nNo name. No face. Just a barcode and a long cold chain.\n\nFarmThru exists because that erasure isn't inevitable. We built a grocery store with zero wholesalers. Pork from Bundarra. Wild-caught fish from Collins. Eggs from Farmer Brown.\n\nCollect from Brookvale, Mon to Fri.\n\nOwn a piece of the grocery store that pays farmers first.\n\nSee the general CSF risk warning + offer document.",
+  "headline": "A grocery store that names farmers",
   "description": "Farm-direct. No middlemen. Real names behind every product you collect.",
-  "cta": "cfe_campaign"
+  "cta": "cfe_campaign",
+  "updated_at": "2026-04-26T23:10:15+00:00"
 }

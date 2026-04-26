@@ -4,11 +4,12 @@
   "hook_type": "question",
   "funnel": "TOF",
   "content_type": "meta-ad",
-  "creative_brief": "Close-up hero shot of richly marbled, deep-red grass-fed beef on butcher paper, slightly unwrapped, with visible moisture and texture. Warm, natural lighting. No packaging, no plastic. Small text overlay: 'Days old, not weeks.'",
+  "creative_brief": "Close-up hero shot of richly marbled, deep-red grass-fed beef on butcher paper, slightly unwrapped, with visible moisture and texture. Warm, natural lighting. No packaging. Small text overlay: 'Straight from farm to hub.'",
   "generated_at": "2026-04-05T00:29:15.768452",
   "ad_id": "BR-101",
-  "primary_text": "Last Tuesday a farmer in Kempsey pulled beef from the cool room. By Thursday it was at the Brookvale hub.\n\nNo middlemen. No distribution centre. No weeks in cold storage.\n\nJust 100% grass-fed beef, raised on open pasture. No hormones, no feedlots. The farm name is on every cut.\n\nThe colour is different. Deeper red, not pale pink. The fat is golden. It smells clean when it hits the pan.\n\nNo middlemen. No commitment. Sydney families collect from the Brookvale hub, Monday to Friday.",
+  "primary_text": "Last Tuesday a farmer in Kempsey pulled beef from the cool room. By Thursday it was at the Brookvale hub.\n\nNo middlemen. No weeks in cold storage.\n\n100% grass-fed beef, raised on open pasture. No hormones, no feedlots. The farm name is on every cut.\n\nDeeper red. Golden fat. Clean smell when it hits the pan.\n\nNo commitment. Collect from Brookvale, Monday to Friday.\n\nSee the general CSF risk warning + offer document.",
   "headline": "Paddock on Tuesday, yours by Thursday",
-  "description": "100% grass-fed beef from named NSW farms. Collected fresh from the Brookvale hub.",
-  "cta": "brand"
+  "description": "100% grass-fed beef from named NSW farms. Collect fresh from the Brookvale hub.",
+  "cta": "brand",
+  "updated_at": "2026-04-26T23:10:15+00:00"
 }

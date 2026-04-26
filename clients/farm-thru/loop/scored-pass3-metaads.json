@@ -1,0 +1,3072 @@
+[
+  {
+    "ad_id": "BR-101",
+    "composite": 0.8073,
+    "verdict": "strong_draft",
+    "compliance": {
+      "enabled": true,
+      "passed": true,
+      "rules_evaluated": 12,
+      "rules_skipped_out_of_scope": 85,
+      "blocking_violations": [],
+      "warnings": [],
+      "advisory": []
+    },
+    "rule_compliance": {
+      "score": 1.0,
+      "passed": 31,
+      "total": 31,
+      "failures": [],
+      "critical_failure": false
+    },
+    "fact_accuracy": {
+      "score": 0.6667,
+      "claims_found": 3,
+      "verified": 2,
+      "unverified": 1,
+      "contradicted": 0,
+      "details": [
+        {
+          "claim": "100%",
+          "fact_id": "PQ-001",
+          "status": "verified",
+          "confidence": "HIGH"
+        },
+        {
+          "claim": "grass-fed",
+          "fact_id": "",
+          "status": "unverified",
+          "confidence": ""
+        },
+        {
+          "claim": "no hormones/antibiotics",
+          "fact_id": "PQ-003",
+          "status": "verified",
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    "rubric": {
+      "weighted_total": 59.5,
+      "max_possible": 71.25,
+      "raw_scores": {
+        "angle_clarity": 3,
+        "motivation_match": 2,
+        "tactic_execution": 4,
+        "specificity": 4,
+        "objection_preemption": 4,
+        "receptionist_test": 3,
+        "scroll_stop_hook": 5,
+        "cta_clarity": 5,
+        "platform_fit": 5,
+        "differentiation": 4,
+        "opening_diversity": 4,
+        "sentence_variance": 3,
+        "emotional_register": 3,
+        "lp_readability": 3
+      },
+      "dimension_details": {
+        "angle_clarity": {
+          "score": 3,
+          "weight": 2.0,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: reasonable length for angle clarity"
+        },
+        "motivation_match": {
+          "score": 2,
+          "weight": 2.0,
+          "weighted": 4.0,
+          "method": "heuristic",
+          "detail": "Heuristic: low emotional resonance"
+        },
+        "tactic_execution": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: hook=True, body=True, cta=True"
+        },
+        "specificity": {
+          "score": 4,
+          "weight": 1.25,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "0 dollar amounts, 2 numbers, 3 names = 5 specifics"
+        },
+        "objection_preemption": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "4/5 objection signals: no commitment, hub clarity, no middlemen, provenance"
+        },
+        "receptionist_test": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "3/5 answered: what: no, source: yes, different: yes, how: yes, why_now: no"
+        },
+        "scroll_stop_hook": {
+          "score": 5,
+          "weight": 1.75,
+          "weighted": 8.75,
+          "method": "deterministic",
+          "detail": "Story hook with specific moment: 'Last Tuesday a farmer in Kempsey pulled beef from the cool r...'"
+        },
+        "cta_clarity": {
+          "score": 5,
+          "weight": 1.0,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "CTA matches approved list: 'brand'"
+        },
+        "platform_fit": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "All platform constraints met, conversational tone"
+        },
+        "differentiation": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "deterministic",
+          "detail": "Avg bigram sim: 0.085, max: 0.137 (vs 17 same-type ads)"
+        },
+        "opening_diversity": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "Opening 'last tuesday a': first word shared with 1, first 3 words shared with 0 of 18 same-type ads"
+        },
+        "sentence_variance": {
+          "score": 3,
+          "weight": 0.5,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "13 sentences, avg 5.6 words, std dev 3.0"
+        },
+        "emotional_register": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "Register: story \u2014 4/17 same-type ads share it (24%)"
+        },
+        "lp_readability": {
+          "score": 3,
+          "weight": 1.0,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "No scorer available for dimension"
+        }
+      }
+    },
+    "overrides": {
+      "compliance_blocking": false,
+      "critical_rule_failure": false,
+      "fact_contradiction": false
+    },
+    "penalties": {
+      "unverified_claims": 1,
+      "non_critical_rule_failures": 0,
+      "compliance_warnings": 0
+    },
+    "scoring_method": {
+      "deterministic_dimensions": 11,
+      "llm_judged_dimensions": 0,
+      "heuristic_dimensions": 3
+    }
+  },
+  {
+    "ad_id": "BR-102",
+    "composite": 0.5867,
+    "verdict": "needs_work",
+    "compliance": {
+      "enabled": true,
+      "passed": true,
+      "rules_evaluated": 12,
+      "rules_skipped_out_of_scope": 85,
+      "blocking_violations": [],
+      "warnings": [],
+      "advisory": []
+    },
+    "rule_compliance": {
+      "score": 1.0,
+      "passed": 31,
+      "total": 31,
+      "failures": [],
+      "critical_failure": false
+    },
+    "fact_accuracy": {
+      "score": 0.5,
+      "claims_found": 2,
+      "verified": 1,
+      "unverified": 1,
+      "contradicted": 0,
+      "details": [
+        {
+          "claim": "grass-fed",
+          "fact_id": "",
+          "status": "unverified",
+          "confidence": ""
+        },
+        {
+          "claim": "no hormones/antibiotics",
+          "fact_id": "PQ-003",
+          "status": "verified",
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    "rubric": {
+      "weighted_total": 52.25,
+      "max_possible": 71.25,
+      "raw_scores": {
+        "angle_clarity": 3,
+        "motivation_match": 2,
+        "tactic_execution": 4,
+        "specificity": 3,
+        "objection_preemption": 3,
+        "receptionist_test": 4,
+        "scroll_stop_hook": 2,
+        "cta_clarity": 5,
+        "platform_fit": 5,
+        "differentiation": 4,
+        "opening_diversity": 4,
+        "sentence_variance": 3,
+        "emotional_register": 2,
+        "lp_readability": 3
+      },
+      "dimension_details": {
+        "angle_clarity": {
+          "score": 3,
+          "weight": 2.0,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: reasonable length for angle clarity"
+        },
+        "motivation_match": {
+          "score": 2,
+          "weight": 2.0,
+          "weighted": 4.0,
+          "method": "heuristic",
+          "detail": "Heuristic: low emotional resonance"
+        },
+        "tactic_execution": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: hook=True, body=True, cta=True"
+        },
+        "specificity": {
+          "score": 3,
+          "weight": 1.25,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "0 dollar amounts, 0 numbers, 3 names = 3 specifics"
+        },
+        "objection_preemption": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "3/5 objection signals: no commitment, hub clarity, no middlemen"
+        },
+        "receptionist_test": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "4/5 answered: what: yes, source: yes, different: yes, how: yes, why_now: no"
+        },
+        "scroll_stop_hook": {
+          "score": 2,
+          "weight": 1.75,
+          "weighted": 3.5,
+          "method": "deterministic",
+          "detail": "Generic opening: 'Three weeks. That's how long supermarket beef can sit in col...'"
+        },
+        "cta_clarity": {
+          "score": 5,
+          "weight": 1.0,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "CTA matches approved list: 'brand'"
+        },
+        "platform_fit": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "All platform constraints met, conversational tone"
+        },
+        "differentiation": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "deterministic",
+          "detail": "Avg bigram sim: 0.097, max: 0.189 (vs 17 same-type ads)"
+        },
+        "opening_diversity": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "Opening 'three weeks that': first word shared with 1, first 3 words shared with 0 of 18 same-type ads"
+        },
+        "sentence_variance": {
+          "score": 3,
+          "weight": 0.5,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "13 sentences, avg 5.5 words, std dev 3.8"
+        },
+        "emotional_register": {
+          "score": 2,
+          "weight": 0.75,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "Register: other \u2014 6/17 same-type ads share it (35%)"
+        },
+        "lp_readability": {
+          "score": 3,
+          "weight": 1.0,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "No scorer available for dimension"
+        }
+      }
+    },
+    "overrides": {
+      "compliance_blocking": false,
+      "critical_rule_failure": false,
+      "fact_contradiction": false
+    },
+    "penalties": {
+      "unverified_claims": 1,
+      "non_critical_rule_failures": 0,
+      "compliance_warnings": 0
+    },
+    "scoring_method": {
+      "deterministic_dimensions": 11,
+      "llm_judged_dimensions": 0,
+      "heuristic_dimensions": 3
+    }
+  },
+  {
+    "ad_id": "BR-103",
+    "composite": 0.8105,
+    "verdict": "strong_draft",
+    "compliance": {
+      "enabled": true,
+      "passed": true,
+      "rules_evaluated": 12,
+      "rules_skipped_out_of_scope": 85,
+      "blocking_violations": [],
+      "warnings": [],
+      "advisory": []
+    },
+    "rule_compliance": {
+      "score": 1.0,
+      "passed": 31,
+      "total": 31,
+      "failures": [],
+      "critical_failure": false
+    },
+    "fact_accuracy": {
+      "score": 1.0,
+      "claims_found": 1,
+      "verified": 1,
+      "unverified": 0,
+      "contradicted": 0,
+      "details": [
+        {
+          "claim": "zero middlemen",
+          "fact_id": "POS-002",
+          "status": "verified",
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    "rubric": {
+      "weighted_total": 57.75,
+      "max_possible": 71.25,
+      "raw_scores": {
+        "angle_clarity": 3,
+        "motivation_match": 2,
+        "tactic_execution": 4,
+        "specificity": 2,
+        "objection_preemption": 3,
+        "receptionist_test": 4,
+        "scroll_stop_hook": 5,
+        "cta_clarity": 5,
+        "platform_fit": 5,
+        "differentiation": 5,
+        "opening_diversity": 4,
+        "sentence_variance": 3,
+        "emotional_register": 2,
+        "lp_readability": 3
+      },
+      "dimension_details": {
+        "angle_clarity": {
+          "score": 3,
+          "weight": 2.0,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: reasonable length for angle clarity"
+        },
+        "motivation_match": {
+          "score": 2,
+          "weight": 2.0,
+          "weighted": 4.0,
+          "method": "heuristic",
+          "detail": "Heuristic: low emotional resonance"
+        },
+        "tactic_execution": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: hook=True, body=True, cta=True"
+        },
+        "specificity": {
+          "score": 2,
+          "weight": 1.25,
+          "weighted": 2.5,
+          "method": "deterministic",
+          "detail": "0 dollar amounts, 0 numbers, 2 names = 2 specifics"
+        },
+        "objection_preemption": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "3/5 objection signals: no commitment, hub clarity, no middlemen"
+        },
+        "receptionist_test": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "4/5 answered: what: yes, source: yes, different: yes, how: yes, why_now: no"
+        },
+        "scroll_stop_hook": {
+          "score": 5,
+          "weight": 1.75,
+          "weighted": 8.75,
+          "method": "deterministic",
+          "detail": "Quoted objection hook: '\"I never used to read the label.\"...'"
+        },
+        "cta_clarity": {
+          "score": 5,
+          "weight": 1.0,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "CTA matches approved list: 'cfe_campaign'"
+        },
+        "platform_fit": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "All platform constraints met, conversational tone"
+        },
+        "differentiation": {
+          "score": 5,
+          "weight": 1.5,
+          "weighted": 7.5,
+          "method": "deterministic",
+          "detail": "Avg bigram sim: 0.079, max: 0.118 (vs 17 same-type ads)"
+        },
+        "opening_diversity": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "Opening 'i never used': first word shared with 1, first 3 words shared with 0 of 18 same-type ads"
+        },
+        "sentence_variance": {
+          "score": 3,
+          "weight": 0.5,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "8 sentences, avg 8.0 words, std dev 4.6"
+        },
+        "emotional_register": {
+          "score": 2,
+          "weight": 0.75,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "Register: other \u2014 6/17 same-type ads share it (35%)"
+        },
+        "lp_readability": {
+          "score": 3,
+          "weight": 1.0,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "No scorer available for dimension"
+        }
+      }
+    },
+    "overrides": {
+      "compliance_blocking": false,
+      "critical_rule_failure": false,
+      "fact_contradiction": false
+    },
+    "penalties": {
+      "unverified_claims": 0,
+      "non_critical_rule_failures": 0,
+      "compliance_warnings": 0
+    },
+    "scoring_method": {
+      "deterministic_dimensions": 11,
+      "llm_judged_dimensions": 0,
+      "heuristic_dimensions": 3
+    }
+  },
+  {
+    "ad_id": "BR-104",
+    "composite": 0.8175,
+    "verdict": "strong_draft",
+    "compliance": {
+      "enabled": true,
+      "passed": true,
+      "rules_evaluated": 12,
+      "rules_skipped_out_of_scope": 85,
+      "blocking_violations": [],
+      "warnings": [],
+      "advisory": []
+    },
+    "rule_compliance": {
+      "score": 1.0,
+      "passed": 31,
+      "total": 31,
+      "failures": [],
+      "critical_failure": false
+    },
+    "fact_accuracy": {
+      "score": 1.0,
+      "claims_found": 1,
+      "verified": 1,
+      "unverified": 0,
+      "contradicted": 0,
+      "details": [
+        {
+          "claim": "zero middlemen",
+          "fact_id": "POS-002",
+          "status": "verified",
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    "rubric": {
+      "weighted_total": 58.25,
+      "max_possible": 71.25,
+      "raw_scores": {
+        "angle_clarity": 3,
+        "motivation_match": 2,
+        "tactic_execution": 4,
+        "specificity": 3,
+        "objection_preemption": 4,
+        "receptionist_test": 4,
+        "scroll_stop_hook": 5,
+        "cta_clarity": 5,
+        "platform_fit": 5,
+        "differentiation": 4,
+        "opening_diversity": 3,
+        "sentence_variance": 3,
+        "emotional_register": 3,
+        "lp_readability": 3
+      },
+      "dimension_details": {
+        "angle_clarity": {
+          "score": 3,
+          "weight": 2.0,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: reasonable length for angle clarity"
+        },
+        "motivation_match": {
+          "score": 2,
+          "weight": 2.0,
+          "weighted": 4.0,
+          "method": "heuristic",
+          "detail": "Heuristic: low emotional resonance"
+        },
+        "tactic_execution": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: hook=True, body=True, cta=True"
+        },
+        "specificity": {
+          "score": 3,
+          "weight": 1.25,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "0 dollar amounts, 0 numbers, 3 names = 3 specifics"
+        },
+        "objection_preemption": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "4/5 objection signals: no commitment, hub clarity, no middlemen, provenance"
+        },
+        "receptionist_test": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "4/5 answered: what: yes, source: yes, different: yes, how: yes, why_now: no"
+        },
+        "scroll_stop_hook": {
+          "score": 5,
+          "weight": 1.75,
+          "weighted": 8.75,
+          "method": "deterministic",
+          "detail": "Named story hook: 'When did you last know the name of the farmer who raised you...'"
+        },
+        "cta_clarity": {
+          "score": 5,
+          "weight": 1.0,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "CTA matches approved list: 'cfe_campaign'"
+        },
+        "platform_fit": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "All platform constraints met, conversational tone"
+        },
+        "differentiation": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "deterministic",
+          "detail": "Avg bigram sim: 0.103, max: 0.137 (vs 17 same-type ads)"
+        },
+        "opening_diversity": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "Opening 'when did you': first word shared with 2, first 3 words shared with 0 of 18 same-type ads"
+        },
+        "sentence_variance": {
+          "score": 3,
+          "weight": 0.5,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "9 sentences, avg 7.3 words, std dev 3.1"
+        },
+        "emotional_register": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "Register: question \u2014 3/17 same-type ads share it (18%)"
+        },
+        "lp_readability": {
+          "score": 3,
+          "weight": 1.0,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "No scorer available for dimension"
+        }
+      }
+    },
+    "overrides": {
+      "compliance_blocking": false,
+      "critical_rule_failure": false,
+      "fact_contradiction": false
+    },
+    "penalties": {
+      "unverified_claims": 0,
+      "non_critical_rule_failures": 0,
+      "compliance_warnings": 0
+    },
+    "scoring_method": {
+      "deterministic_dimensions": 11,
+      "llm_judged_dimensions": 0,
+      "heuristic_dimensions": 3
+    }
+  },
+  {
+    "ad_id": "BR-105",
+    "composite": 0.8246,
+    "verdict": "strong_draft",
+    "compliance": {
+      "enabled": true,
+      "passed": true,
+      "rules_evaluated": 12,
+      "rules_skipped_out_of_scope": 85,
+      "blocking_violations": [],
+      "warnings": [],
+      "advisory": []
+    },
+    "rule_compliance": {
+      "score": 1.0,
+      "passed": 31,
+      "total": 31,
+      "failures": [],
+      "critical_failure": false
+    },
+    "fact_accuracy": {
+      "score": 1.0,
+      "claims_found": 0,
+      "verified": 0,
+      "unverified": 0,
+      "contradicted": 0,
+      "details": []
+    },
+    "rubric": {
+      "weighted_total": 58.75,
+      "max_possible": 71.25,
+      "raw_scores": {
+        "angle_clarity": 3,
+        "motivation_match": 2,
+        "tactic_execution": 4,
+        "specificity": 4,
+        "objection_preemption": 3,
+        "receptionist_test": 4,
+        "scroll_stop_hook": 5,
+        "cta_clarity": 5,
+        "platform_fit": 5,
+        "differentiation": 4,
+        "opening_diversity": 3,
+        "sentence_variance": 3,
+        "emotional_register": 3,
+        "lp_readability": 3
+      },
+      "dimension_details": {
+        "angle_clarity": {
+          "score": 3,
+          "weight": 2.0,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: reasonable length for angle clarity"
+        },
+        "motivation_match": {
+          "score": 2,
+          "weight": 2.0,
+          "weighted": 4.0,
+          "method": "heuristic",
+          "detail": "Heuristic: low emotional resonance"
+        },
+        "tactic_execution": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: hook=True, body=True, cta=True"
+        },
+        "specificity": {
+          "score": 4,
+          "weight": 1.25,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "0 dollar amounts, 0 numbers, 5 names = 5 specifics"
+        },
+        "objection_preemption": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "3/5 objection signals: no commitment, hub clarity, no middlemen"
+        },
+        "receptionist_test": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "4/5 answered: what: yes, source: yes, different: yes, how: yes, why_now: no"
+        },
+        "scroll_stop_hook": {
+          "score": 5,
+          "weight": 1.75,
+          "weighted": 8.75,
+          "method": "deterministic",
+          "detail": "Named story hook: 'When was the last time you bought groceries and actually fel...'"
+        },
+        "cta_clarity": {
+          "score": 5,
+          "weight": 1.0,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "CTA matches approved list: 'brand'"
+        },
+        "platform_fit": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "All platform constraints met, conversational tone"
+        },
+        "differentiation": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "deterministic",
+          "detail": "Avg bigram sim: 0.081, max: 0.119 (vs 17 same-type ads)"
+        },
+        "opening_diversity": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "Opening 'when was the': first word shared with 2, first 3 words shared with 0 of 18 same-type ads"
+        },
+        "sentence_variance": {
+          "score": 3,
+          "weight": 0.5,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "10 sentences, avg 7.3 words, std dev 3.8"
+        },
+        "emotional_register": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "Register: question \u2014 3/17 same-type ads share it (18%)"
+        },
+        "lp_readability": {
+          "score": 3,
+          "weight": 1.0,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "No scorer available for dimension"
+        }
+      }
+    },
+    "overrides": {
+      "compliance_blocking": false,
+      "critical_rule_failure": false,
+      "fact_contradiction": false
+    },
+    "penalties": {
+      "unverified_claims": 0,
+      "non_critical_rule_failures": 0,
+      "compliance_warnings": 0
+    },
+    "scoring_method": {
+      "deterministic_dimensions": 11,
+      "llm_judged_dimensions": 0,
+      "heuristic_dimensions": 3
+    }
+  },
+  {
+    "ad_id": "BR-106",
+    "composite": 0.8035,
+    "verdict": "strong_draft",
+    "compliance": {
+      "enabled": true,
+      "passed": true,
+      "rules_evaluated": 12,
+      "rules_skipped_out_of_scope": 85,
+      "blocking_violations": [],
+      "warnings": [],
+      "advisory": []
+    },
+    "rule_compliance": {
+      "score": 1.0,
+      "passed": 31,
+      "total": 31,
+      "failures": [],
+      "critical_failure": false
+    },
+    "fact_accuracy": {
+      "score": 1.0,
+      "claims_found": 1,
+      "verified": 1,
+      "unverified": 0,
+      "contradicted": 0,
+      "details": [
+        {
+          "claim": "no hormones/antibiotics",
+          "fact_id": "PQ-003",
+          "status": "verified",
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    "rubric": {
+      "weighted_total": 57.25,
+      "max_possible": 71.25,
+      "raw_scores": {
+        "angle_clarity": 3,
+        "motivation_match": 2,
+        "tactic_execution": 4,
+        "specificity": 3,
+        "objection_preemption": 3,
+        "receptionist_test": 4,
+        "scroll_stop_hook": 4,
+        "cta_clarity": 5,
+        "platform_fit": 5,
+        "differentiation": 4,
+        "opening_diversity": 5,
+        "sentence_variance": 3,
+        "emotional_register": 3,
+        "lp_readability": 3
+      },
+      "dimension_details": {
+        "angle_clarity": {
+          "score": 3,
+          "weight": 2.0,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: reasonable length for angle clarity"
+        },
+        "motivation_match": {
+          "score": 2,
+          "weight": 2.0,
+          "weighted": 4.0,
+          "method": "heuristic",
+          "detail": "Heuristic: low emotional resonance"
+        },
+        "tactic_execution": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: hook=True, body=True, cta=True"
+        },
+        "specificity": {
+          "score": 3,
+          "weight": 1.25,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "0 dollar amounts, 0 numbers, 4 names = 4 specifics"
+        },
+        "objection_preemption": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "3/5 objection signals: no commitment, hub clarity, no middlemen"
+        },
+        "receptionist_test": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "4/5 answered: what: yes, source: yes, different: yes, how: yes, why_now: no"
+        },
+        "scroll_stop_hook": {
+          "score": 4,
+          "weight": 1.75,
+          "weighted": 7.0,
+          "method": "deterministic",
+          "detail": "Question hook: 'Do you know the name of the farm that raised your last steak...'"
+        },
+        "cta_clarity": {
+          "score": 5,
+          "weight": 1.0,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "CTA matches approved list: 'cfe_campaign'"
+        },
+        "platform_fit": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "All platform constraints met, conversational tone"
+        },
+        "differentiation": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "deterministic",
+          "detail": "Avg bigram sim: 0.081, max: 0.189 (vs 17 same-type ads)"
+        },
+        "opening_diversity": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "Opening 'do you know': first word shared with 0, first 3 words shared with 0 of 18 same-type ads"
+        },
+        "sentence_variance": {
+          "score": 3,
+          "weight": 0.5,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "9 sentences, avg 7.8 words, std dev 3.0"
+        },
+        "emotional_register": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "Register: question \u2014 3/17 same-type ads share it (18%)"
+        },
+        "lp_readability": {
+          "score": 3,
+          "weight": 1.0,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "No scorer available for dimension"
+        }
+      }
+    },
+    "overrides": {
+      "compliance_blocking": false,
+      "critical_rule_failure": false,
+      "fact_contradiction": false
+    },
+    "penalties": {
+      "unverified_claims": 0,
+      "non_critical_rule_failures": 0,
+      "compliance_warnings": 0
+    },
+    "scoring_method": {
+      "deterministic_dimensions": 11,
+      "llm_judged_dimensions": 0,
+      "heuristic_dimensions": 3
+    }
+  },
+  {
+    "ad_id": "BR-107",
+    "composite": 0.5625,
+    "verdict": "needs_work",
+    "compliance": {
+      "enabled": true,
+      "passed": true,
+      "rules_evaluated": 12,
+      "rules_skipped_out_of_scope": 85,
+      "blocking_violations": [],
+      "warnings": [],
+      "advisory": []
+    },
+    "rule_compliance": {
+      "score": 1.0,
+      "passed": 31,
+      "total": 31,
+      "failures": [],
+      "critical_failure": false
+    },
+    "fact_accuracy": {
+      "score": 0.3333,
+      "claims_found": 3,
+      "verified": 1,
+      "unverified": 2,
+      "contradicted": 0,
+      "details": [
+        {
+          "claim": "regenerative farming",
+          "fact_id": "",
+          "status": "unverified",
+          "confidence": ""
+        },
+        {
+          "claim": "grass-fed",
+          "fact_id": "",
+          "status": "unverified",
+          "confidence": ""
+        },
+        {
+          "claim": "zero middlemen",
+          "fact_id": "POS-002",
+          "status": "verified",
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    "rubric": {
+      "weighted_total": 57.25,
+      "max_possible": 71.25,
+      "raw_scores": {
+        "angle_clarity": 3,
+        "motivation_match": 2,
+        "tactic_execution": 4,
+        "specificity": 3,
+        "objection_preemption": 3,
+        "receptionist_test": 4,
+        "scroll_stop_hook": 4,
+        "cta_clarity": 5,
+        "platform_fit": 5,
+        "differentiation": 4,
+        "opening_diversity": 5,
+        "sentence_variance": 3,
+        "emotional_register": 3,
+        "lp_readability": 3
+      },
+      "dimension_details": {
+        "angle_clarity": {
+          "score": 3,
+          "weight": 2.0,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: reasonable length for angle clarity"
+        },
+        "motivation_match": {
+          "score": 2,
+          "weight": 2.0,
+          "weighted": 4.0,
+          "method": "heuristic",
+          "detail": "Heuristic: low emotional resonance"
+        },
+        "tactic_execution": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: hook=True, body=True, cta=True"
+        },
+        "specificity": {
+          "score": 3,
+          "weight": 1.25,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "0 dollar amounts, 0 numbers, 4 names = 4 specifics"
+        },
+        "objection_preemption": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "3/5 objection signals: no commitment, hub clarity, no middlemen"
+        },
+        "receptionist_test": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "4/5 answered: what: yes, source: yes, different: yes, how: yes, why_now: no"
+        },
+        "scroll_stop_hook": {
+          "score": 4,
+          "weight": 1.75,
+          "weighted": 7.0,
+          "method": "deterministic",
+          "detail": "Question hook: 'If your beef travelled 10x the distance before reaching the ...'"
+        },
+        "cta_clarity": {
+          "score": 5,
+          "weight": 1.0,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "CTA matches approved list: 'cfe_campaign'"
+        },
+        "platform_fit": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "All platform constraints met, conversational tone"
+        },
+        "differentiation": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "deterministic",
+          "detail": "Avg bigram sim: 0.092, max: 0.137 (vs 17 same-type ads)"
+        },
+        "opening_diversity": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "Opening 'if your beef': first word shared with 0, first 3 words shared with 0 of 18 same-type ads"
+        },
+        "sentence_variance": {
+          "score": 3,
+          "weight": 0.5,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "10 sentences, avg 7.1 words, std dev 4.1"
+        },
+        "emotional_register": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "Register: question \u2014 3/17 same-type ads share it (18%)"
+        },
+        "lp_readability": {
+          "score": 3,
+          "weight": 1.0,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "No scorer available for dimension"
+        }
+      }
+    },
+    "overrides": {
+      "compliance_blocking": false,
+      "critical_rule_failure": false,
+      "fact_contradiction": false
+    },
+    "penalties": {
+      "unverified_claims": 2,
+      "non_critical_rule_failures": 0,
+      "compliance_warnings": 0
+    },
+    "scoring_method": {
+      "deterministic_dimensions": 11,
+      "llm_judged_dimensions": 0,
+      "heuristic_dimensions": 3
+    }
+  },
+  {
+    "ad_id": "BR-108",
+    "composite": 0.7394,
+    "verdict": "strong_draft",
+    "compliance": {
+      "enabled": true,
+      "passed": true,
+      "rules_evaluated": 12,
+      "rules_skipped_out_of_scope": 85,
+      "blocking_violations": [],
+      "warnings": [],
+      "advisory": []
+    },
+    "rule_compliance": {
+      "score": 1.0,
+      "passed": 31,
+      "total": 31,
+      "failures": [],
+      "critical_failure": false
+    },
+    "fact_accuracy": {
+      "score": 0.6667,
+      "claims_found": 3,
+      "verified": 2,
+      "unverified": 1,
+      "contradicted": 0,
+      "details": [
+        {
+          "claim": "pasture-raised",
+          "fact_id": "",
+          "status": "unverified",
+          "confidence": ""
+        },
+        {
+          "claim": "no hormones/antibiotics",
+          "fact_id": "PQ-003",
+          "status": "verified",
+          "confidence": "HIGH"
+        },
+        {
+          "claim": "zero middlemen",
+          "fact_id": "POS-002",
+          "status": "verified",
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    "rubric": {
+      "weighted_total": 54.5,
+      "max_possible": 71.25,
+      "raw_scores": {
+        "angle_clarity": 3,
+        "motivation_match": 2,
+        "tactic_execution": 4,
+        "specificity": 3,
+        "objection_preemption": 3,
+        "receptionist_test": 4,
+        "scroll_stop_hook": 2,
+        "cta_clarity": 5,
+        "platform_fit": 5,
+        "differentiation": 5,
+        "opening_diversity": 5,
+        "sentence_variance": 3,
+        "emotional_register": 2,
+        "lp_readability": 3
+      },
+      "dimension_details": {
+        "angle_clarity": {
+          "score": 3,
+          "weight": 2.0,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: reasonable length for angle clarity"
+        },
+        "motivation_match": {
+          "score": 2,
+          "weight": 2.0,
+          "weighted": 4.0,
+          "method": "heuristic",
+          "detail": "Heuristic: low emotional resonance"
+        },
+        "tactic_execution": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: hook=True, body=True, cta=True"
+        },
+        "specificity": {
+          "score": 3,
+          "weight": 1.25,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "0 dollar amounts, 0 numbers, 3 names = 3 specifics"
+        },
+        "objection_preemption": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "3/5 objection signals: no commitment, hub clarity, no middlemen"
+        },
+        "receptionist_test": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "4/5 answered: what: yes, source: yes, different: yes, how: yes, why_now: no"
+        },
+        "scroll_stop_hook": {
+          "score": 2,
+          "weight": 1.75,
+          "weighted": 3.5,
+          "method": "deterministic",
+          "detail": "Generic opening: 'Crack one of these eggs and the yolk is almost orange. Thick...'"
+        },
+        "cta_clarity": {
+          "score": 5,
+          "weight": 1.0,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "CTA matches approved list: 'brand'"
+        },
+        "platform_fit": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "All platform constraints met, conversational tone"
+        },
+        "differentiation": {
+          "score": 5,
+          "weight": 1.5,
+          "weighted": 7.5,
+          "method": "deterministic",
+          "detail": "Avg bigram sim: 0.078, max: 0.125 (vs 17 same-type ads)"
+        },
+        "opening_diversity": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "Opening 'crack one of': first word shared with 0, first 3 words shared with 0 of 18 same-type ads"
+        },
+        "sentence_variance": {
+          "score": 3,
+          "weight": 0.5,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "12 sentences, avg 6.0 words, std dev 3.4"
+        },
+        "emotional_register": {
+          "score": 2,
+          "weight": 0.75,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "Register: other \u2014 6/17 same-type ads share it (35%)"
+        },
+        "lp_readability": {
+          "score": 3,
+          "weight": 1.0,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "No scorer available for dimension"
+        }
+      }
+    },
+    "overrides": {
+      "compliance_blocking": false,
+      "critical_rule_failure": false,
+      "fact_contradiction": false
+    },
+    "penalties": {
+      "unverified_claims": 1,
+      "non_critical_rule_failures": 0,
+      "compliance_warnings": 0
+    },
+    "scoring_method": {
+      "deterministic_dimensions": 11,
+      "llm_judged_dimensions": 0,
+      "heuristic_dimensions": 3
+    }
+  },
+  {
+    "ad_id": "BR-109",
+    "composite": 0.786,
+    "verdict": "strong_draft",
+    "compliance": {
+      "enabled": true,
+      "passed": true,
+      "rules_evaluated": 12,
+      "rules_skipped_out_of_scope": 85,
+      "blocking_violations": [],
+      "warnings": [],
+      "advisory": []
+    },
+    "rule_compliance": {
+      "score": 1.0,
+      "passed": 31,
+      "total": 31,
+      "failures": [],
+      "critical_failure": false
+    },
+    "fact_accuracy": {
+      "score": 1.0,
+      "claims_found": 0,
+      "verified": 0,
+      "unverified": 0,
+      "contradicted": 0,
+      "details": []
+    },
+    "rubric": {
+      "weighted_total": 56.0,
+      "max_possible": 71.25,
+      "raw_scores": {
+        "angle_clarity": 3,
+        "motivation_match": 2,
+        "tactic_execution": 4,
+        "specificity": 3,
+        "objection_preemption": 4,
+        "receptionist_test": 4,
+        "scroll_stop_hook": 4,
+        "cta_clarity": 5,
+        "platform_fit": 5,
+        "differentiation": 4,
+        "opening_diversity": 4,
+        "sentence_variance": 2,
+        "emotional_register": 2,
+        "lp_readability": 3
+      },
+      "dimension_details": {
+        "angle_clarity": {
+          "score": 3,
+          "weight": 2.0,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: reasonable length for angle clarity"
+        },
+        "motivation_match": {
+          "score": 2,
+          "weight": 2.0,
+          "weighted": 4.0,
+          "method": "heuristic",
+          "detail": "Heuristic: low emotional resonance"
+        },
+        "tactic_execution": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: hook=True, body=True, cta=True"
+        },
+        "specificity": {
+          "score": 3,
+          "weight": 1.25,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "0 dollar amounts, 0 numbers, 4 names = 4 specifics"
+        },
+        "objection_preemption": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "4/5 objection signals: no commitment, hub clarity, no middlemen, provenance"
+        },
+        "receptionist_test": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "4/5 answered: what: yes, source: yes, different: yes, how: yes, why_now: no"
+        },
+        "scroll_stop_hook": {
+          "score": 4,
+          "weight": 1.75,
+          "weighted": 7.0,
+          "method": "deterministic",
+          "detail": "Question hook: 'I've been farming cattle in Kempsey for years. When I see be...'"
+        },
+        "cta_clarity": {
+          "score": 5,
+          "weight": 1.0,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "CTA matches approved list: 'cfe_campaign'"
+        },
+        "platform_fit": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "All platform constraints met, conversational tone"
+        },
+        "differentiation": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "deterministic",
+          "detail": "Avg bigram sim: 0.084, max: 0.115 (vs 17 same-type ads)"
+        },
+        "opening_diversity": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "Opening 'i ve been': first word shared with 1, first 3 words shared with 0 of 18 same-type ads"
+        },
+        "sentence_variance": {
+          "score": 2,
+          "weight": 0.5,
+          "weighted": 1.0,
+          "method": "deterministic",
+          "detail": "10 sentences, avg 6.6 words, std dev 2.6"
+        },
+        "emotional_register": {
+          "score": 2,
+          "weight": 0.75,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "Register: other \u2014 6/17 same-type ads share it (35%)"
+        },
+        "lp_readability": {
+          "score": 3,
+          "weight": 1.0,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "No scorer available for dimension"
+        }
+      }
+    },
+    "overrides": {
+      "compliance_blocking": false,
+      "critical_rule_failure": false,
+      "fact_contradiction": false
+    },
+    "penalties": {
+      "unverified_claims": 0,
+      "non_critical_rule_failures": 0,
+      "compliance_warnings": 0
+    },
+    "scoring_method": {
+      "deterministic_dimensions": 11,
+      "llm_judged_dimensions": 0,
+      "heuristic_dimensions": 3
+    }
+  },
+  {
+    "ad_id": "BR-110",
+    "composite": 0.7825,
+    "verdict": "strong_draft",
+    "compliance": {
+      "enabled": true,
+      "passed": true,
+      "rules_evaluated": 12,
+      "rules_skipped_out_of_scope": 85,
+      "blocking_violations": [],
+      "warnings": [],
+      "advisory": []
+    },
+    "rule_compliance": {
+      "score": 1.0,
+      "passed": 31,
+      "total": 31,
+      "failures": [],
+      "critical_failure": false
+    },
+    "fact_accuracy": {
+      "score": 1.0,
+      "claims_found": 1,
+      "verified": 1,
+      "unverified": 0,
+      "contradicted": 0,
+      "details": [
+        {
+          "claim": "zero middlemen",
+          "fact_id": "POS-002",
+          "status": "verified",
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    "rubric": {
+      "weighted_total": 55.75,
+      "max_possible": 71.25,
+      "raw_scores": {
+        "angle_clarity": 3,
+        "motivation_match": 2,
+        "tactic_execution": 4,
+        "specificity": 4,
+        "objection_preemption": 2,
+        "receptionist_test": 5,
+        "scroll_stop_hook": 2,
+        "cta_clarity": 5,
+        "platform_fit": 5,
+        "differentiation": 5,
+        "opening_diversity": 5,
+        "sentence_variance": 3,
+        "emotional_register": 2,
+        "lp_readability": 3
+      },
+      "dimension_details": {
+        "angle_clarity": {
+          "score": 3,
+          "weight": 2.0,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: reasonable length for angle clarity"
+        },
+        "motivation_match": {
+          "score": 2,
+          "weight": 2.0,
+          "weighted": 4.0,
+          "method": "heuristic",
+          "detail": "Heuristic: low emotional resonance"
+        },
+        "tactic_execution": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: hook=True, body=True, cta=True"
+        },
+        "specificity": {
+          "score": 4,
+          "weight": 1.25,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "0 dollar amounts, 0 numbers, 5 names = 5 specifics"
+        },
+        "objection_preemption": {
+          "score": 2,
+          "weight": 0.75,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "2/5 objection signals: hub clarity, no middlemen"
+        },
+        "receptionist_test": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "5/5 answered: what: yes, source: yes, different: yes, how: yes, why_now: yes"
+        },
+        "scroll_stop_hook": {
+          "score": 2,
+          "weight": 1.75,
+          "weighted": 3.5,
+          "method": "deterministic",
+          "detail": "Generic opening: 'Every week you buy groceries that quietly erase the farmer w...'"
+        },
+        "cta_clarity": {
+          "score": 5,
+          "weight": 1.0,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "CTA matches approved list: 'cfe_campaign'"
+        },
+        "platform_fit": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "All platform constraints met, conversational tone"
+        },
+        "differentiation": {
+          "score": 5,
+          "weight": 1.5,
+          "weighted": 7.5,
+          "method": "deterministic",
+          "detail": "Avg bigram sim: 0.077, max: 0.107 (vs 17 same-type ads)"
+        },
+        "opening_diversity": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "Opening 'every week you': first word shared with 0, first 3 words shared with 0 of 18 same-type ads"
+        },
+        "sentence_variance": {
+          "score": 3,
+          "weight": 0.5,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "12 sentences, avg 6.4 words, std dev 3.4"
+        },
+        "emotional_register": {
+          "score": 2,
+          "weight": 0.75,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "Register: other \u2014 6/17 same-type ads share it (35%)"
+        },
+        "lp_readability": {
+          "score": 3,
+          "weight": 1.0,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "No scorer available for dimension"
+        }
+      }
+    },
+    "overrides": {
+      "compliance_blocking": false,
+      "critical_rule_failure": false,
+      "fact_contradiction": false
+    },
+    "penalties": {
+      "unverified_claims": 0,
+      "non_critical_rule_failures": 0,
+      "compliance_warnings": 0
+    },
+    "scoring_method": {
+      "deterministic_dimensions": 11,
+      "llm_judged_dimensions": 0,
+      "heuristic_dimensions": 3
+    }
+  },
+  {
+    "ad_id": "CFE-101",
+    "composite": 0.7649,
+    "verdict": "strong_draft",
+    "compliance": {
+      "enabled": true,
+      "passed": true,
+      "rules_evaluated": 12,
+      "rules_skipped_out_of_scope": 85,
+      "blocking_violations": [],
+      "warnings": [],
+      "advisory": []
+    },
+    "rule_compliance": {
+      "score": 1.0,
+      "passed": 31,
+      "total": 31,
+      "failures": [],
+      "critical_failure": false
+    },
+    "fact_accuracy": {
+      "score": 1.0,
+      "claims_found": 0,
+      "verified": 0,
+      "unverified": 0,
+      "contradicted": 0,
+      "details": []
+    },
+    "rubric": {
+      "weighted_total": 54.5,
+      "max_possible": 71.25,
+      "raw_scores": {
+        "angle_clarity": 3,
+        "motivation_match": 2,
+        "tactic_execution": 4,
+        "specificity": 3,
+        "objection_preemption": 4,
+        "receptionist_test": 5,
+        "scroll_stop_hook": 2,
+        "cta_clarity": 5,
+        "platform_fit": 5,
+        "differentiation": 4,
+        "opening_diversity": 4,
+        "sentence_variance": 3,
+        "emotional_register": 3,
+        "lp_readability": 3
+      },
+      "dimension_details": {
+        "angle_clarity": {
+          "score": 3,
+          "weight": 2.0,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: reasonable length for angle clarity"
+        },
+        "motivation_match": {
+          "score": 2,
+          "weight": 2.0,
+          "weighted": 4.0,
+          "method": "heuristic",
+          "detail": "Heuristic: low emotional resonance"
+        },
+        "tactic_execution": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: hook=True, body=True, cta=True"
+        },
+        "specificity": {
+          "score": 3,
+          "weight": 1.25,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "0 dollar amounts, 0 numbers, 3 names = 3 specifics"
+        },
+        "objection_preemption": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "4/5 objection signals: no commitment, hub clarity, no middlemen, provenance"
+        },
+        "receptionist_test": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "5/5 answered: what: yes, source: yes, different: yes, how: yes, why_now: yes"
+        },
+        "scroll_stop_hook": {
+          "score": 2,
+          "weight": 1.75,
+          "weighted": 3.5,
+          "method": "deterministic",
+          "detail": "Generic opening: 'Rachel's beef travels a fraction of the distance supermarket...'"
+        },
+        "cta_clarity": {
+          "score": 5,
+          "weight": 1.0,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "CTA matches approved list: 'cfe_campaign'"
+        },
+        "platform_fit": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "All platform constraints met, conversational tone"
+        },
+        "differentiation": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "deterministic",
+          "detail": "Avg bigram sim: 0.082, max: 0.120 (vs 17 same-type ads)"
+        },
+        "opening_diversity": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "Opening 'rachel s beef': first word shared with 1, first 3 words shared with 0 of 18 same-type ads"
+        },
+        "sentence_variance": {
+          "score": 3,
+          "weight": 0.5,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "9 sentences, avg 7.7 words, std dev 4.2"
+        },
+        "emotional_register": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "Register: story \u2014 4/17 same-type ads share it (24%)"
+        },
+        "lp_readability": {
+          "score": 3,
+          "weight": 1.0,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "No scorer available for dimension"
+        }
+      }
+    },
+    "overrides": {
+      "compliance_blocking": false,
+      "critical_rule_failure": false,
+      "fact_contradiction": false
+    },
+    "penalties": {
+      "unverified_claims": 0,
+      "non_critical_rule_failures": 0,
+      "compliance_warnings": 0
+    },
+    "scoring_method": {
+      "deterministic_dimensions": 11,
+      "llm_judged_dimensions": 0,
+      "heuristic_dimensions": 3
+    }
+  },
+  {
+    "ad_id": "CFE-102",
+    "composite": 0.7509,
+    "verdict": "strong_draft",
+    "compliance": {
+      "enabled": true,
+      "passed": true,
+      "rules_evaluated": 12,
+      "rules_skipped_out_of_scope": 85,
+      "blocking_violations": [],
+      "warnings": [],
+      "advisory": []
+    },
+    "rule_compliance": {
+      "score": 1.0,
+      "passed": 31,
+      "total": 31,
+      "failures": [],
+      "critical_failure": false
+    },
+    "fact_accuracy": {
+      "score": 1.0,
+      "claims_found": 1,
+      "verified": 1,
+      "unverified": 0,
+      "contradicted": 0,
+      "details": [
+        {
+          "claim": "zero middlemen",
+          "fact_id": "POS-002",
+          "status": "verified",
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    "rubric": {
+      "weighted_total": 53.5,
+      "max_possible": 71.25,
+      "raw_scores": {
+        "angle_clarity": 3,
+        "motivation_match": 2,
+        "tactic_execution": 4,
+        "specificity": 2,
+        "objection_preemption": 1,
+        "receptionist_test": 4,
+        "scroll_stop_hook": 2,
+        "cta_clarity": 5,
+        "platform_fit": 5,
+        "differentiation": 5,
+        "opening_diversity": 5,
+        "sentence_variance": 2,
+        "emotional_register": 5,
+        "lp_readability": 3
+      },
+      "dimension_details": {
+        "angle_clarity": {
+          "score": 3,
+          "weight": 2.0,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: reasonable length for angle clarity"
+        },
+        "motivation_match": {
+          "score": 2,
+          "weight": 2.0,
+          "weighted": 4.0,
+          "method": "heuristic",
+          "detail": "Heuristic: low emotional resonance"
+        },
+        "tactic_execution": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: hook=True, body=True, cta=True"
+        },
+        "specificity": {
+          "score": 2,
+          "weight": 1.25,
+          "weighted": 2.5,
+          "method": "deterministic",
+          "detail": "0 dollar amounts, 0 numbers, 1 names = 1 specifics"
+        },
+        "objection_preemption": {
+          "score": 1,
+          "weight": 0.75,
+          "weighted": 0.75,
+          "method": "deterministic",
+          "detail": "1/5 objection signals: no middlemen"
+        },
+        "receptionist_test": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "4/5 answered: what: yes, source: yes, different: yes, how: no, why_now: yes"
+        },
+        "scroll_stop_hook": {
+          "score": 2,
+          "weight": 1.75,
+          "weighted": 3.5,
+          "method": "deterministic",
+          "detail": "Generic opening: 'You switched to regenerative groceries because the old syste...'"
+        },
+        "cta_clarity": {
+          "score": 5,
+          "weight": 1.0,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "CTA matches approved list: 'cfe_campaign'"
+        },
+        "platform_fit": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "All platform constraints met, conversational tone"
+        },
+        "differentiation": {
+          "score": 5,
+          "weight": 1.5,
+          "weighted": 7.5,
+          "method": "deterministic",
+          "detail": "Avg bigram sim: 0.076, max: 0.104 (vs 17 same-type ads)"
+        },
+        "opening_diversity": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "Opening 'you switched to': first word shared with 0, first 3 words shared with 0 of 18 same-type ads"
+        },
+        "sentence_variance": {
+          "score": 2,
+          "weight": 0.5,
+          "weighted": 1.0,
+          "method": "deterministic",
+          "detail": "7 sentences, avg 10.3 words, std dev 1.8"
+        },
+        "emotional_register": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "Register: direct \u2014 0/17 same-type ads share it (0%)"
+        },
+        "lp_readability": {
+          "score": 3,
+          "weight": 1.0,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "No scorer available for dimension"
+        }
+      }
+    },
+    "overrides": {
+      "compliance_blocking": false,
+      "critical_rule_failure": false,
+      "fact_contradiction": false
+    },
+    "penalties": {
+      "unverified_claims": 0,
+      "non_critical_rule_failures": 0,
+      "compliance_warnings": 0
+    },
+    "scoring_method": {
+      "deterministic_dimensions": 11,
+      "llm_judged_dimensions": 0,
+      "heuristic_dimensions": 3
+    }
+  },
+  {
+    "ad_id": "CFE-103",
+    "composite": 0.7754,
+    "verdict": "strong_draft",
+    "compliance": {
+      "enabled": true,
+      "passed": true,
+      "rules_evaluated": 12,
+      "rules_skipped_out_of_scope": 85,
+      "blocking_violations": [],
+      "warnings": [],
+      "advisory": []
+    },
+    "rule_compliance": {
+      "score": 1.0,
+      "passed": 31,
+      "total": 31,
+      "failures": [],
+      "critical_failure": false
+    },
+    "fact_accuracy": {
+      "score": 1.0,
+      "claims_found": 0,
+      "verified": 0,
+      "unverified": 0,
+      "contradicted": 0,
+      "details": []
+    },
+    "rubric": {
+      "weighted_total": 55.25,
+      "max_possible": 71.25,
+      "raw_scores": {
+        "angle_clarity": 3,
+        "motivation_match": 2,
+        "tactic_execution": 4,
+        "specificity": 3,
+        "objection_preemption": 3,
+        "receptionist_test": 5,
+        "scroll_stop_hook": 2,
+        "cta_clarity": 5,
+        "platform_fit": 5,
+        "differentiation": 5,
+        "opening_diversity": 4,
+        "sentence_variance": 3,
+        "emotional_register": 3,
+        "lp_readability": 3
+      },
+      "dimension_details": {
+        "angle_clarity": {
+          "score": 3,
+          "weight": 2.0,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: reasonable length for angle clarity"
+        },
+        "motivation_match": {
+          "score": 2,
+          "weight": 2.0,
+          "weighted": 4.0,
+          "method": "heuristic",
+          "detail": "Heuristic: low emotional resonance"
+        },
+        "tactic_execution": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: hook=True, body=True, cta=True"
+        },
+        "specificity": {
+          "score": 3,
+          "weight": 1.25,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "0 dollar amounts, 0 numbers, 3 names = 3 specifics"
+        },
+        "objection_preemption": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "3/5 objection signals: hub clarity, no middlemen, provenance"
+        },
+        "receptionist_test": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "5/5 answered: what: yes, source: yes, different: yes, how: yes, why_now: yes"
+        },
+        "scroll_stop_hook": {
+          "score": 2,
+          "weight": 1.75,
+          "weighted": 3.5,
+          "method": "deterministic",
+          "detail": "Generic opening: 'Rachel Ward used to lose money on every kilo of beef she sol...'"
+        },
+        "cta_clarity": {
+          "score": 5,
+          "weight": 1.0,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "CTA matches approved list: 'cfe_campaign'"
+        },
+        "platform_fit": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "All platform constraints met, conversational tone"
+        },
+        "differentiation": {
+          "score": 5,
+          "weight": 1.5,
+          "weighted": 7.5,
+          "method": "deterministic",
+          "detail": "Avg bigram sim: 0.080, max: 0.190 (vs 17 same-type ads)"
+        },
+        "opening_diversity": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "Opening 'rachel ward used': first word shared with 1, first 3 words shared with 0 of 18 same-type ads"
+        },
+        "sentence_variance": {
+          "score": 3,
+          "weight": 0.5,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "8 sentences, avg 9.0 words, std dev 4.3"
+        },
+        "emotional_register": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "Register: story \u2014 4/17 same-type ads share it (24%)"
+        },
+        "lp_readability": {
+          "score": 3,
+          "weight": 1.0,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "No scorer available for dimension"
+        }
+      }
+    },
+    "overrides": {
+      "compliance_blocking": false,
+      "critical_rule_failure": false,
+      "fact_contradiction": false
+    },
+    "penalties": {
+      "unverified_claims": 0,
+      "non_critical_rule_failures": 0,
+      "compliance_warnings": 0
+    },
+    "scoring_method": {
+      "deterministic_dimensions": 11,
+      "llm_judged_dimensions": 0,
+      "heuristic_dimensions": 3
+    }
+  },
+  {
+    "ad_id": "CFE-104",
+    "composite": 0.8421,
+    "verdict": "strong_draft",
+    "compliance": {
+      "enabled": true,
+      "passed": true,
+      "rules_evaluated": 12,
+      "rules_skipped_out_of_scope": 85,
+      "blocking_violations": [],
+      "warnings": [],
+      "advisory": []
+    },
+    "rule_compliance": {
+      "score": 1.0,
+      "passed": 31,
+      "total": 31,
+      "failures": [],
+      "critical_failure": false
+    },
+    "fact_accuracy": {
+      "score": 1.0,
+      "claims_found": 0,
+      "verified": 0,
+      "unverified": 0,
+      "contradicted": 0,
+      "details": []
+    },
+    "rubric": {
+      "weighted_total": 60.0,
+      "max_possible": 71.25,
+      "raw_scores": {
+        "angle_clarity": 3,
+        "motivation_match": 2,
+        "tactic_execution": 4,
+        "specificity": 3,
+        "objection_preemption": 3,
+        "receptionist_test": 4,
+        "scroll_stop_hook": 4,
+        "cta_clarity": 5,
+        "platform_fit": 5,
+        "differentiation": 5,
+        "opening_diversity": 4,
+        "sentence_variance": 4,
+        "emotional_register": 5,
+        "lp_readability": 3
+      },
+      "dimension_details": {
+        "angle_clarity": {
+          "score": 3,
+          "weight": 2.0,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: reasonable length for angle clarity"
+        },
+        "motivation_match": {
+          "score": 2,
+          "weight": 2.0,
+          "weighted": 4.0,
+          "method": "heuristic",
+          "detail": "Heuristic: low emotional resonance"
+        },
+        "tactic_execution": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: hook=True, body=True, cta=True"
+        },
+        "specificity": {
+          "score": 3,
+          "weight": 1.25,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "0 dollar amounts, 0 numbers, 4 names = 4 specifics"
+        },
+        "objection_preemption": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "3/5 objection signals: no commitment, hub clarity, no middlemen"
+        },
+        "receptionist_test": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "4/5 answered: what: yes, source: yes, different: yes, how: yes, why_now: no"
+        },
+        "scroll_stop_hook": {
+          "score": 4,
+          "weight": 1.75,
+          "weighted": 7.0,
+          "method": "deterministic",
+          "detail": "Question hook: 'Most grocery runs feel routine. But what if I told you the f...'"
+        },
+        "cta_clarity": {
+          "score": 5,
+          "weight": 1.0,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "CTA matches approved list: 'cfe_waitlist'"
+        },
+        "platform_fit": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "All platform constraints met, conversational tone"
+        },
+        "differentiation": {
+          "score": 5,
+          "weight": 1.5,
+          "weighted": 7.5,
+          "method": "deterministic",
+          "detail": "Avg bigram sim: 0.065, max: 0.083 (vs 17 same-type ads)"
+        },
+        "opening_diversity": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "Opening 'most grocery runs': first word shared with 1, first 3 words shared with 0 of 18 same-type ads"
+        },
+        "sentence_variance": {
+          "score": 4,
+          "weight": 0.5,
+          "weighted": 2.0,
+          "method": "deterministic",
+          "detail": "10 sentences, avg 7.6 words, std dev 5.3"
+        },
+        "emotional_register": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "Register: contrast \u2014 0/17 same-type ads share it (0%)"
+        },
+        "lp_readability": {
+          "score": 3,
+          "weight": 1.0,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "No scorer available for dimension"
+        }
+      }
+    },
+    "overrides": {
+      "compliance_blocking": false,
+      "critical_rule_failure": false,
+      "fact_contradiction": false
+    },
+    "penalties": {
+      "unverified_claims": 0,
+      "non_critical_rule_failures": 0,
+      "compliance_warnings": 0
+    },
+    "scoring_method": {
+      "deterministic_dimensions": 11,
+      "llm_judged_dimensions": 0,
+      "heuristic_dimensions": 3
+    }
+  },
+  {
+    "ad_id": "CFE-105",
+    "composite": 0.7088,
+    "verdict": "strong_draft",
+    "compliance": {
+      "enabled": true,
+      "passed": true,
+      "rules_evaluated": 12,
+      "rules_skipped_out_of_scope": 85,
+      "blocking_violations": [],
+      "warnings": [],
+      "advisory": []
+    },
+    "rule_compliance": {
+      "score": 1.0,
+      "passed": 31,
+      "total": 31,
+      "failures": [],
+      "critical_failure": false
+    },
+    "fact_accuracy": {
+      "score": 1.0,
+      "claims_found": 0,
+      "verified": 0,
+      "unverified": 0,
+      "contradicted": 0,
+      "details": []
+    },
+    "rubric": {
+      "weighted_total": 50.5,
+      "max_possible": 71.25,
+      "raw_scores": {
+        "angle_clarity": 3,
+        "motivation_match": 2,
+        "tactic_execution": 4,
+        "specificity": 2,
+        "objection_preemption": 2,
+        "receptionist_test": 3,
+        "scroll_stop_hook": 2,
+        "cta_clarity": 5,
+        "platform_fit": 5,
+        "differentiation": 5,
+        "opening_diversity": 4,
+        "sentence_variance": 2,
+        "emotional_register": 2,
+        "lp_readability": 3
+      },
+      "dimension_details": {
+        "angle_clarity": {
+          "score": 3,
+          "weight": 2.0,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: reasonable length for angle clarity"
+        },
+        "motivation_match": {
+          "score": 2,
+          "weight": 2.0,
+          "weighted": 4.0,
+          "method": "heuristic",
+          "detail": "Heuristic: low emotional resonance"
+        },
+        "tactic_execution": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: hook=True, body=True, cta=True"
+        },
+        "specificity": {
+          "score": 2,
+          "weight": 1.25,
+          "weighted": 2.5,
+          "method": "deterministic",
+          "detail": "0 dollar amounts, 0 numbers, 1 names = 1 specifics"
+        },
+        "objection_preemption": {
+          "score": 2,
+          "weight": 0.75,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "2/5 objection signals: no middlemen, provenance"
+        },
+        "receptionist_test": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "3/5 answered: what: yes, source: yes, different: yes, how: no, why_now: no"
+        },
+        "scroll_stop_hook": {
+          "score": 2,
+          "weight": 1.75,
+          "weighted": 3.5,
+          "method": "deterministic",
+          "detail": "Generic opening: 'Most supermarket food can't tell you where it's been....'"
+        },
+        "cta_clarity": {
+          "score": 5,
+          "weight": 1.0,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "CTA matches approved list: 'brand'"
+        },
+        "platform_fit": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "All platform constraints met, conversational tone"
+        },
+        "differentiation": {
+          "score": 5,
+          "weight": 1.5,
+          "weighted": 7.5,
+          "method": "deterministic",
+          "detail": "Avg bigram sim: 0.076, max: 0.120 (vs 17 same-type ads)"
+        },
+        "opening_diversity": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "Opening 'most supermarket food': first word shared with 1, first 3 words shared with 0 of 18 same-type ads"
+        },
+        "sentence_variance": {
+          "score": 2,
+          "weight": 0.5,
+          "weighted": 1.0,
+          "method": "deterministic",
+          "detail": "7 sentences, avg 8.4 words, std dev 3.0"
+        },
+        "emotional_register": {
+          "score": 2,
+          "weight": 0.75,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "Register: other \u2014 6/17 same-type ads share it (35%)"
+        },
+        "lp_readability": {
+          "score": 3,
+          "weight": 1.0,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "No scorer available for dimension"
+        }
+      }
+    },
+    "overrides": {
+      "compliance_blocking": false,
+      "critical_rule_failure": false,
+      "fact_contradiction": false
+    },
+    "penalties": {
+      "unverified_claims": 0,
+      "non_critical_rule_failures": 0,
+      "compliance_warnings": 0
+    },
+    "scoring_method": {
+      "deterministic_dimensions": 11,
+      "llm_judged_dimensions": 0,
+      "heuristic_dimensions": 3
+    }
+  },
+  {
+    "ad_id": "CFE-106",
+    "composite": 0.8105,
+    "verdict": "strong_draft",
+    "compliance": {
+      "enabled": true,
+      "passed": true,
+      "rules_evaluated": 12,
+      "rules_skipped_out_of_scope": 85,
+      "blocking_violations": [],
+      "warnings": [],
+      "advisory": []
+    },
+    "rule_compliance": {
+      "score": 1.0,
+      "passed": 31,
+      "total": 31,
+      "failures": [],
+      "critical_failure": false
+    },
+    "fact_accuracy": {
+      "score": 1.0,
+      "claims_found": 0,
+      "verified": 0,
+      "unverified": 0,
+      "contradicted": 0,
+      "details": []
+    },
+    "rubric": {
+      "weighted_total": 57.75,
+      "max_possible": 71.25,
+      "raw_scores": {
+        "angle_clarity": 3,
+        "motivation_match": 2,
+        "tactic_execution": 4,
+        "specificity": 2,
+        "objection_preemption": 2,
+        "receptionist_test": 5,
+        "scroll_stop_hook": 5,
+        "cta_clarity": 5,
+        "platform_fit": 5,
+        "differentiation": 5,
+        "opening_diversity": 3,
+        "sentence_variance": 3,
+        "emotional_register": 3,
+        "lp_readability": 3
+      },
+      "dimension_details": {
+        "angle_clarity": {
+          "score": 3,
+          "weight": 2.0,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: reasonable length for angle clarity"
+        },
+        "motivation_match": {
+          "score": 2,
+          "weight": 2.0,
+          "weighted": 4.0,
+          "method": "heuristic",
+          "detail": "Heuristic: low emotional resonance"
+        },
+        "tactic_execution": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: hook=True, body=True, cta=True"
+        },
+        "specificity": {
+          "score": 2,
+          "weight": 1.25,
+          "weighted": 2.5,
+          "method": "deterministic",
+          "detail": "0 dollar amounts, 0 numbers, 2 names = 2 specifics"
+        },
+        "objection_preemption": {
+          "score": 2,
+          "weight": 0.75,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "2/5 objection signals: hub clarity, no middlemen"
+        },
+        "receptionist_test": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "5/5 answered: what: yes, source: yes, different: yes, how: yes, why_now: yes"
+        },
+        "scroll_stop_hook": {
+          "score": 5,
+          "weight": 1.75,
+          "weighted": 8.75,
+          "method": "deterministic",
+          "detail": "Story hook with specific moment: 'When Rachel Ward started supplying us from her farm in Kemps...'"
+        },
+        "cta_clarity": {
+          "score": 5,
+          "weight": 1.0,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "CTA matches approved list: 'cfe_campaign'"
+        },
+        "platform_fit": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "All platform constraints met, conversational tone"
+        },
+        "differentiation": {
+          "score": 5,
+          "weight": 1.5,
+          "weighted": 7.5,
+          "method": "deterministic",
+          "detail": "Avg bigram sim: 0.070, max: 0.089 (vs 17 same-type ads)"
+        },
+        "opening_diversity": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "Opening 'when rachel ward': first word shared with 2, first 3 words shared with 0 of 18 same-type ads"
+        },
+        "sentence_variance": {
+          "score": 3,
+          "weight": 0.5,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "9 sentences, avg 7.2 words, std dev 3.8"
+        },
+        "emotional_register": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "Register: story \u2014 4/17 same-type ads share it (24%)"
+        },
+        "lp_readability": {
+          "score": 3,
+          "weight": 1.0,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "No scorer available for dimension"
+        }
+      }
+    },
+    "overrides": {
+      "compliance_blocking": false,
+      "critical_rule_failure": false,
+      "fact_contradiction": false
+    },
+    "penalties": {
+      "unverified_claims": 0,
+      "non_critical_rule_failures": 0,
+      "compliance_warnings": 0
+    },
+    "scoring_method": {
+      "deterministic_dimensions": 11,
+      "llm_judged_dimensions": 0,
+      "heuristic_dimensions": 3
+    }
+  },
+  {
+    "ad_id": "CFE-107",
+    "composite": 0.5951,
+    "verdict": "needs_work",
+    "compliance": {
+      "enabled": true,
+      "passed": true,
+      "rules_evaluated": 12,
+      "rules_skipped_out_of_scope": 85,
+      "blocking_violations": [],
+      "warnings": [],
+      "advisory": []
+    },
+    "rule_compliance": {
+      "score": 1.0,
+      "passed": 31,
+      "total": 31,
+      "failures": [],
+      "critical_failure": false
+    },
+    "fact_accuracy": {
+      "score": 0.5,
+      "claims_found": 2,
+      "verified": 1,
+      "unverified": 1,
+      "contradicted": 0,
+      "details": [
+        {
+          "claim": "grass-fed",
+          "fact_id": "",
+          "status": "unverified",
+          "confidence": ""
+        },
+        {
+          "claim": "zero middlemen",
+          "fact_id": "POS-002",
+          "status": "verified",
+          "confidence": "HIGH"
+        }
+      ]
+    },
+    "rubric": {
+      "weighted_total": 53.0,
+      "max_possible": 71.25,
+      "raw_scores": {
+        "angle_clarity": 3,
+        "motivation_match": 2,
+        "tactic_execution": 4,
+        "specificity": 3,
+        "objection_preemption": 3,
+        "receptionist_test": 5,
+        "scroll_stop_hook": 2,
+        "cta_clarity": 5,
+        "platform_fit": 5,
+        "differentiation": 4,
+        "opening_diversity": 4,
+        "sentence_variance": 3,
+        "emotional_register": 2,
+        "lp_readability": 3
+      },
+      "dimension_details": {
+        "angle_clarity": {
+          "score": 3,
+          "weight": 2.0,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: reasonable length for angle clarity"
+        },
+        "motivation_match": {
+          "score": 2,
+          "weight": 2.0,
+          "weighted": 4.0,
+          "method": "heuristic",
+          "detail": "Heuristic: low emotional resonance"
+        },
+        "tactic_execution": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: hook=True, body=True, cta=True"
+        },
+        "specificity": {
+          "score": 3,
+          "weight": 1.25,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "0 dollar amounts, 0 numbers, 3 names = 3 specifics"
+        },
+        "objection_preemption": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "3/5 objection signals: no commitment, hub clarity, no middlemen"
+        },
+        "receptionist_test": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "5/5 answered: what: yes, source: yes, different: yes, how: yes, why_now: yes"
+        },
+        "scroll_stop_hook": {
+          "score": 2,
+          "weight": 1.75,
+          "weighted": 3.5,
+          "method": "deterministic",
+          "detail": "Generic opening: 'Last week I opened a pack of supermarket beef. The fine prin...'"
+        },
+        "cta_clarity": {
+          "score": 5,
+          "weight": 1.0,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "CTA matches approved list: 'cfe_campaign'"
+        },
+        "platform_fit": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "All platform constraints met, conversational tone"
+        },
+        "differentiation": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "deterministic",
+          "detail": "Avg bigram sim: 0.098, max: 0.149 (vs 17 same-type ads)"
+        },
+        "opening_diversity": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "Opening 'last week i': first word shared with 1, first 3 words shared with 0 of 18 same-type ads"
+        },
+        "sentence_variance": {
+          "score": 3,
+          "weight": 0.5,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "12 sentences, avg 6.4 words, std dev 4.5"
+        },
+        "emotional_register": {
+          "score": 2,
+          "weight": 0.75,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "Register: other \u2014 6/17 same-type ads share it (35%)"
+        },
+        "lp_readability": {
+          "score": 3,
+          "weight": 1.0,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "No scorer available for dimension"
+        }
+      }
+    },
+    "overrides": {
+      "compliance_blocking": false,
+      "critical_rule_failure": false,
+      "fact_contradiction": false
+    },
+    "penalties": {
+      "unverified_claims": 1,
+      "non_critical_rule_failures": 0,
+      "compliance_warnings": 0
+    },
+    "scoring_method": {
+      "deterministic_dimensions": 11,
+      "llm_judged_dimensions": 0,
+      "heuristic_dimensions": 3
+    }
+  },
+  {
+    "ad_id": "CFE-108",
+    "composite": 0.8456,
+    "verdict": "strong_draft",
+    "compliance": {
+      "enabled": true,
+      "passed": true,
+      "rules_evaluated": 12,
+      "rules_skipped_out_of_scope": 85,
+      "blocking_violations": [],
+      "warnings": [],
+      "advisory": []
+    },
+    "rule_compliance": {
+      "score": 1.0,
+      "passed": 31,
+      "total": 31,
+      "failures": [],
+      "critical_failure": false
+    },
+    "fact_accuracy": {
+      "score": 1.0,
+      "claims_found": 0,
+      "verified": 0,
+      "unverified": 0,
+      "contradicted": 0,
+      "details": []
+    },
+    "rubric": {
+      "weighted_total": 60.25,
+      "max_possible": 71.25,
+      "raw_scores": {
+        "angle_clarity": 3,
+        "motivation_match": 2,
+        "tactic_execution": 4,
+        "specificity": 3,
+        "objection_preemption": 2,
+        "receptionist_test": 5,
+        "scroll_stop_hook": 5,
+        "cta_clarity": 5,
+        "platform_fit": 5,
+        "differentiation": 5,
+        "opening_diversity": 4,
+        "sentence_variance": 4,
+        "emotional_register": 3,
+        "lp_readability": 3
+      },
+      "dimension_details": {
+        "angle_clarity": {
+          "score": 3,
+          "weight": 2.0,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: reasonable length for angle clarity"
+        },
+        "motivation_match": {
+          "score": 2,
+          "weight": 2.0,
+          "weighted": 4.0,
+          "method": "heuristic",
+          "detail": "Heuristic: low emotional resonance"
+        },
+        "tactic_execution": {
+          "score": 4,
+          "weight": 1.5,
+          "weighted": 6.0,
+          "method": "heuristic",
+          "detail": "Heuristic: hook=True, body=True, cta=True"
+        },
+        "specificity": {
+          "score": 3,
+          "weight": 1.25,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "0 dollar amounts, 0 numbers, 4 names = 4 specifics"
+        },
+        "objection_preemption": {
+          "score": 2,
+          "weight": 0.75,
+          "weighted": 1.5,
+          "method": "deterministic",
+          "detail": "2/5 objection signals: hub clarity, no middlemen"
+        },
+        "receptionist_test": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "5/5 answered: what: yes, source: yes, different: yes, how: yes, why_now: yes"
+        },
+        "scroll_stop_hook": {
+          "score": 5,
+          "weight": 1.75,
+          "weighted": 8.75,
+          "method": "deterministic",
+          "detail": "Story hook with specific moment: 'Three months ago, Rachel Ward told me she was losing around ...'"
+        },
+        "cta_clarity": {
+          "score": 5,
+          "weight": 1.0,
+          "weighted": 5.0,
+          "method": "deterministic",
+          "detail": "CTA matches approved list: 'cfe_campaign'"
+        },
+        "platform_fit": {
+          "score": 5,
+          "weight": 0.75,
+          "weighted": 3.75,
+          "method": "deterministic",
+          "detail": "All platform constraints met, conversational tone"
+        },
+        "differentiation": {
+          "score": 5,
+          "weight": 1.5,
+          "weighted": 7.5,
+          "method": "deterministic",
+          "detail": "Avg bigram sim: 0.071, max: 0.190 (vs 17 same-type ads)"
+        },
+        "opening_diversity": {
+          "score": 4,
+          "weight": 0.75,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "Opening 'three months ago': first word shared with 1, first 3 words shared with 0 of 18 same-type ads"
+        },
+        "sentence_variance": {
+          "score": 4,
+          "weight": 0.5,
+          "weighted": 2.0,
+          "method": "deterministic",
+          "detail": "9 sentences, avg 7.9 words, std dev 5.2"
+        },
+        "emotional_register": {
+          "score": 3,
+          "weight": 0.75,
+          "weighted": 2.25,
+          "method": "deterministic",
+          "detail": "Register: story \u2014 4/17 same-type ads share it (24%)"
+        },
+        "lp_readability": {
+          "score": 3,
+          "weight": 1.0,
+          "weighted": 3.0,
+          "method": "deterministic",
+          "detail": "No scorer available for dimension"
+        }
+      }
+    },
+    "overrides": {
+      "compliance_blocking": false,
+      "critical_rule_failure": false,
+      "fact_contradiction": false
+    },
+    "penalties": {
+      "unverified_claims": 0,
+      "non_critical_rule_failures": 0,
+      "compliance_warnings": 0
+    },
+    "scoring_method": {
+      "deterministic_dimensions": 11,
+      "llm_judged_dimensions": 0,
+      "heuristic_dimensions": 3
+    }
+  }
+]
