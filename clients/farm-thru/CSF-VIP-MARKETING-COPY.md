@@ -166,18 +166,18 @@ Mandatory disclosures (down from 3 to 2 per Birchal 2026-04-26):
 2. **Refundability** — stated wherever the $5 is mentioned.
 3. ~~**Equal-access disclosure**~~ — DROPPED per Birchal 2026-04-26. No longer required.
 
-Banned phrases (revised list per Birchal 2026-04-26):
+Banned phrases (revised list per Birchal 2026-04-26 + founder direction):
 
 - ~~"first access to invest" / "early access"~~ — APPROVED. The phrase "early private access to the investment offer" is approved language.
 - "beat the queue" — still banned (manipulative, RG 261.95)
 - "lock in your investment early" — still banned
 - "1,500 VIPs ready to invest" — still banned (specific-number framing)
 - "limited spots — VIPs go first" — still banned (allocation framing)
-- "priority allocation" — still banned (founder direction: replace "priority" with "early")
+- The word **"priority"** in any form — globally banned per founder direction. Includes "priority", "priority SMS", "priority access", "priority allocation", "priority investor updates", "priority notification". Replace every occurrence with "early" or remove entirely.
 - ANY round-mention without the s738ZG(6) safe-harbour — still banned
 
 Verified across every section above:
 - s738ZG(6) safe-harbour line appears on every section that mentions the round
 - Refundability stated wherever the $5 is mentioned
 - Product referred to as "VIP" / "VIP investors" / "VIP access" (not "VIP Supporter") throughout
-- "Early" used in place of "priority" throughout per founder direction
+- "Early" used in place of "priority" throughout per founder direction; the word "priority" does not appear in any touchpoint copy section
