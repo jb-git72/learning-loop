@@ -248,3 +248,73 @@ def test_clean_copy_passes_overall():
     result = check_compliance(text, content_type="email", enable_llm=False)
     assert result.passed is True
     assert result.blocking_violations == []
+
+
+# -------------------------------------------------------------------------
+# 8. FMTH-PRIORITY-001 — founder-directive ban on "priority" word family
+# -------------------------------------------------------------------------
+
+def test_fmth_priority_blocks_priority_access():
+    """FMTH-PRIORITY-001 must fire when 'priority access' appears in copy.
+
+    Per founder directive 2026-04-26 (CSF-VIP-BIRCHAL-SUBMISSION.md §9),
+    the word 'priority' is globally banned in FMTH VIP / investment copy.
+    """
+    text = (
+        "Lock in priority access to the FarmThru investment offer when our "
+        "Birchal CSF round opens. Place a small refundable deposit to secure VIP. "
+        "Always consider the general CSF risk warning and offer document before investing."
+    )
+    result = check_compliance(text, content_type="landing-page", enable_llm=False)
+
+    blocking_ids = [v.rule_id for v in result.blocking_violations]
+    assert "FMTH-PRIORITY-001" in blocking_ids
+    assert result.passed is False
+
+
+def test_fmth_priority_blocks_priority_sms():
+    """The compound 'priority SMS' is one of the explicit retired phrasings
+    in CSF-VIP-BIRCHAL-SUBMISSION.md §9 — must fire FMTH-PRIORITY-001.
+    """
+    text = (
+        "We'll send you a priority SMS the moment the round opens at Birchal. "
+        "Always consider the general CSF risk warning and offer document before investing."
+    )
+    result = check_compliance(text, content_type="email", enable_llm=False)
+
+    blocking_ids = [v.rule_id for v in result.blocking_violations]
+    assert "FMTH-PRIORITY-001" in blocking_ids
+
+
+def test_fmth_priority_passes_when_replaced_with_early():
+    """The founder-approved replacement for 'priority' is 'early'. Copy that
+    uses 'early access' instead of 'priority access' must NOT trigger
+    FMTH-PRIORITY-001.
+    """
+    text = (
+        "Lock in early access to the FarmThru investment offer when our "
+        "Birchal CSF round opens. Place a small refundable deposit to secure VIP. "
+        "Always consider the general CSF risk warning and offer document before investing."
+    )
+    result = check_compliance(text, content_type="landing-page", enable_llm=False)
+
+    blocking_ids = [v.rule_id for v in result.blocking_violations]
+    assert "FMTH-PRIORITY-001" not in blocking_ids
+
+
+def test_fmth_priority_passes_on_birchal_approved_phrasing():
+    """Birchal-approved phrasing 'early private access to the investment offer'
+    must pass FMTH-PRIORITY-001 (no banned word) and is NOT blocked by any
+    'early access' rule (no such rule exists in the shared set — confirmed
+    by the existing ADV-004/MISL-004 prompts which explicitly do not flag
+    access-timing language as forecasts).
+    """
+    text = (
+        "VIP investors get early private access to the investment offer at Birchal "
+        "when our CSF round opens, plus founder updates from Rachel and the team. "
+        "Always consider the general CSF risk warning and offer document before investing."
+    )
+    result = check_compliance(text, content_type="landing-page", enable_llm=False)
+
+    blocking_ids = [v.rule_id for v in result.blocking_violations]
+    assert "FMTH-PRIORITY-001" not in blocking_ids

@@ -5,7 +5,7 @@
     "RG-262"
   ],
   "last_updated": "2026-04-26",
-  "notes": "ASIC CSF compliance rules. 5 seed rules + 39 distilled from RG 261 (issuer obligations, sections C/D/E primarily) + 52 distilled from RG 262 (intermediary obligations). Distillation by parallel agents 2026-04-26.",
+  "notes": "ASIC CSF compliance rules. 5 seed rules + 39 distilled from RG 261 (issuer obligations, sections C/D/E primarily) + 52 distilled from RG 262 (intermediary obligations). Distillation by parallel agents 2026-04-26.\n\nPer-client overrides: this shared rule set is conservative by default. Specific intermediaries (e.g. Birchal) may explicitly approve phrasing or drop disclosures that another intermediary would still require. Per-client overrides live under clients/<slug>/rules.json (loaded by engine/rule_checker.py) and clients/<slug>/config.json compliance.client_rule_overrides. See clients/farm-thru/rules.json (FMTH-PRIORITY-001, FMTH-EQUAL-ACCESS-001, FMTH-EARLY-ACCESS-001) for an FMTH-Birchal example: 'priority' globally banned by founder direction; 'early private access to the investment offer' explicitly approved by Birchal 2026-04-26; equal-access disclosure not required by Birchal 2026-04-26. Other CSF intermediaries may interpret these differently — keep shared rules conservative and override per client.",
   "rules": [
     {
       "rule_id": "ADV-001",
@@ -2212,6 +2212,31 @@
         "(?i)(the only|the first) (real|true|legitimate) (crowd.?funding|CSF) platform"
       ],
       "violation_message": "Remove the comparative claim. State your AFS-licensed status without denigrating named or unnamed competitors. RG 262.22 requires care that retail clients are not misled about which services are CSF-regulated."
+    },
+    {
+      "rule_id": "FMTH-PRIORITY-001",
+      "category": "client-override",
+      "claim": "FMTH-only founder directive: the word 'priority' must not appear in any FMTH VIP / investment touchpoint copy. Replace with 'early' or remove entirely. NOT an ASIC requirement — FMTH-specific and stricter than the regulator. Other CSF clients should disable this rule via their config.",
+      "source_ref": [
+        "founder directive 2026-04-26",
+        "CSF-VIP-BIRCHAL-SUBMISSION.md §9"
+      ],
+      "severity": "BLOCKING",
+      "scope": {
+        "content_types": [
+          "email",
+          "landing-page",
+          "meta-ad",
+          "social-post"
+        ],
+        "phase": "always",
+        "applies_to": "issuer"
+      },
+      "check_type": "regex_forbidden",
+      "forbidden_patterns": [
+        "(?i)\\bpriorit(?:y|ies|ised|izing|ising|ize|ise)\\b"
+      ],
+      "violation_message": "Replace 'priority' with 'early'. Founder directive 2026-04-26: the word 'priority' is globally banned in FMTH VIP / investment copy (priority access, priority SMS, priority allocation, priority investor updates, priority notification — all retired)."
     }
   ]
 }

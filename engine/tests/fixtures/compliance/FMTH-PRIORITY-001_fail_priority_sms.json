@@ -1,0 +1,10 @@
+{
+  "fixture_id": "FMTH-PRIORITY-001_fail_priority_sms",
+  "description": "Email mentions 'priority SMS when the round opens' — should fail FMTH-PRIORITY-001. The compound 'priority SMS' is one of the explicit retired phrasings called out in CSF-VIP-BIRCHAL-SUBMISSION.md §9.",
+  "text": "Hi friend,\n\nThe FarmThru CSF round opens 23 June 2026 on Birchal. As a VIP, you've already secured your spot.\n\nWe'll send you a priority SMS the moment the round opens, plus founder updates as we get closer.\n\nNothing changes about the investment terms — every investor applies through Birchal on the standard terms when the round opens. Your $5 is fully refundable.\n\nAlways consider the general CSF risk warning and offer document before investing.\n\nRachel & the FarmThru team",
+  "content_type": "email",
+  "applies_to": "issuer",
+  "expected": {
+    "FMTH-PRIORITY-001": "fail"
+  }
+}

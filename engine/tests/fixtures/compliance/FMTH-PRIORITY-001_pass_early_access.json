@@ -1,0 +1,10 @@
+{
+  "fixture_id": "FMTH-PRIORITY-001_pass_early_access",
+  "description": "Founder-approved replacement copy: 'priority' replaced with 'early' throughout. Should PASS FMTH-PRIORITY-001 — no banned word present.",
+  "text": "Secure your VIP spot in FarmThru.\n\nPlace a small refundable deposit and lock in early access to the FarmThru investment offer when our Birchal CSF round opens. VIP investors get the offer link before the public link goes live, plus founder updates throughout the campaign.\n\nFully refundable at any time before the round closes.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "landing-page",
+  "applies_to": "issuer",
+  "expected": {
+    "FMTH-PRIORITY-001": "pass"
+  }
+}

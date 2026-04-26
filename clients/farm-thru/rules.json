@@ -483,6 +483,55 @@
       ],
       "case_sensitive": false,
       "rationale": "Em dashes read cold and editorial. Use full stops, commas, or colons instead. User flagged this on every LP."
+    },
+    {
+      "rule_id": "FMTH-PRIORITY-001",
+      "name": "no_priority_in_vip_or_investment_copy",
+      "severity": "critical",
+      "type": "regex_absent",
+      "description": "Founder directive 2026-04-26: replace 'priority' with 'early' in all FMTH VIP / investment copy. The word 'priority' (in any compound — 'priority access', 'priority SMS', 'priority allocation', 'priority investor updates', 'priority notification') is globally banned in FMTH copy.",
+      "fields": [
+        "primary_text",
+        "headline",
+        "description",
+        "subject",
+        "preheader",
+        "body",
+        "hero_copy",
+        "subhead",
+        "sections"
+      ],
+      "patterns": [
+        "\\bpriorit(?:y|ies|ised|izing|ising|ize|ise)\\b"
+      ],
+      "case_sensitive": false,
+      "rationale": "Founder direction (2026-04-26, recorded in CSF-VIP-BIRCHAL-SUBMISSION.md §9): the word 'priority' must not appear in any FMTH VIP / investment touchpoint. Replace with 'early' or remove entirely. Hard-block — variant cannot ship while the word is present."
+    },
+    {
+      "rule_id": "FMTH-EQUAL-ACCESS-001",
+      "name": "equal_access_disclosure_not_required",
+      "severity": "normal",
+      "type": "documentation_note",
+      "description": "Birchal 2026-04-26 confirmed equal-access disclosure not required for FMTH VIP product. Any shared CSF rule that requires the equal-access boilerplate ('All investors apply on the same terms... does not provide earlier or preferential investment access') is overridden for FMTH and is intentionally NOT enforced.",
+      "fields": [],
+      "patterns": [],
+      "case_sensitive": false,
+      "rationale": "Birchal response 2026-04-26 (logged in CSF-VIP-BIRCHAL-SUBMISSION.md §9, item 1): the equal-access boilerplate is not required because Birchal's communication-facility design already covers the disclosure obligation. This rule is documentation-only — the engine ignores 'documentation_note' check_type. Acts as an audit trail so future reviewers see the override is intentional, not an oversight.",
+      "supersedes": [],
+      "ack_source": "Birchal review email 2026-04-26"
+    },
+    {
+      "rule_id": "FMTH-EARLY-ACCESS-001",
+      "name": "early_private_access_phrasing_approved",
+      "severity": "normal",
+      "type": "documentation_note",
+      "description": "Birchal 2026-04-26 approved 'early private access to the investment offer' phrasing for FMTH VIP product. The phrases 'early private access', 'early access to invest', and 'first access' are explicitly approved in FMTH VIP / investment copy and are NOT to be added to any banned-phrase list.",
+      "fields": [],
+      "patterns": [],
+      "case_sensitive": false,
+      "rationale": "Birchal response 2026-04-26 (logged in CSF-VIP-BIRCHAL-SUBMISSION.md §9, item 2): the VIP product is now positioned as genuinely providing early access to invest at Birchal, not merely a thank-you communications product. This rule is documentation-only — the engine ignores 'documentation_note' check_type. Acts as an audit trail to prevent regressions where a future reviewer adds an 'early access' ban.",
+      "supersedes": [],
+      "ack_source": "Birchal review email 2026-04-26"
     }
   ]
 }
