@@ -3,6 +3,12 @@
 **Scope**: learning-loop + sales-skill repos
 **Auditor**: Agent (read-only discovery, no code changes)
 
+> ## ⚠️ PRE-PIVOT SNAPSHOT — READ BEFORE USING
+>
+> This audit was the *trigger* for the Wave 5b rewrite. It captures the state of VIP touchpoints **before** Birchal's response of 2026-04-26. The framings flagged "HIGH severity" below (e.g. "first access to invest", "early access" without disclaimer) were **subsequently approved by Birchal** and the equal-access disclosure was **dropped as no-longer-required**.
+>
+> Do NOT use this document as a copy spec. Canonical post-pivot copy lives in `CSF-VIP-COPY-PACKAGE.md` and `CSF-VIP-BIRCHAL-SUBMISSION.md` §9. This file is preserved as the audit trail that initiated the rewrite.
+
 ## Summary
 - Total touchpoints found: 36 (23 production-active, 7 source-of-truth JSON, 6 archive/test)
 - Files with banned phrases: 36
