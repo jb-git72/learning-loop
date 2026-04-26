@@ -26,9 +26,14 @@ def main() -> int:
     md_text = path.read_text()
     html = markdown.markdown(md_text, extensions=["tables", "fenced_code"])
 
+    html_doc = (
+        '<!DOCTYPE html><html><head><meta charset="utf-8"></head>'
+        f"<body>{html}</body></html>"
+    )
+
     rtf = subprocess.check_output(
         ["textutil", "-stdin", "-stdout", "-format", "html", "-convert", "rtf"],
-        input=html.encode(),
+        input=html_doc.encode("utf-8"),
     )
     subprocess.run(["pbcopy"], input=rtf, check=True)
 
