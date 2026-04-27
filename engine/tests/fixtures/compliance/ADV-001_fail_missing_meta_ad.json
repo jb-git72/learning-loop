@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-001_fail_missing_meta_ad",
+  "description": "Meta-ad about the FarmThru CSF round with NO safe-harbour reference anywhere — must fail ADV-001 under the universal-channel gate (2026-04-27 founder directive). Compliance gate must hard-block missing safe-harbour on every channel without exception, not just emails.",
+  "text": "Own a piece of FarmThru. Our community round opens 23 June 2026. Reserve your spot today.",
+  "content_type": "meta-ad",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-001": "fail"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-001_fail_missing_sms",
+  "description": "SMS announcing the CSF round opening with no safe-harbour reference at all — must fail ADV-001 under the universal-channel gate (2026-04-27 founder directive). Tightest SMS character budget is no excuse to omit the safe-harbour: the shortened paraphrase 'general CSF risk warning' is acceptable and short.",
+  "text": "FarmThru: your VIP link is live. Reserve your spot before 23 Jun. https://birchal.com/farmthru",
+  "content_type": "sms",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-001": "fail"
+  }
+}

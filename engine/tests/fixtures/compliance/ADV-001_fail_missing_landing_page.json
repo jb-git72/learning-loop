@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-001_fail_missing_landing_page",
+  "description": "Landing-page about the FarmThru CSF round with no safe-harbour reference anywhere — must fail ADV-001 under the universal-channel gate (2026-04-27 founder directive). Confirms the rule fires on LPs not just emails.",
+  "text": "Own a piece of regen-ag\n\nFarmThru opens its CSF round on Birchal on 23 June 2026. Place a small refundable deposit to lock in early access when the round opens.\n\n100% refundable. No obligation to invest.",
+  "content_type": "landing-page",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-001": "fail"
+  }
+}
