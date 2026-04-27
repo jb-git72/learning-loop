@@ -3,16 +3,22 @@
   "content_type": "sms",
   "purpose": "purchase-confirmation",
   "audience": "vip-investors",
-  "body": "You're in. VIP early access secured. We'll text when the round opens at Birchal. See general CSF risk warning. Refund: hello@farmthru.com.au",
-  "char_count": 140,
+  "body": "You're in. VIP secured at FarmThru. We'll text the second Birchal opens. See general CSF risk warning. Refund anytime. Rachel",
+  "char_count": 125,
   "merge_tags": [],
   "send_segment": "single",
   "cta": "No action needed",
-  "creative_brief": "Sent immediately after the recipient pays the $5 refundable VIP deposit on Stripe. Job: confirm + reassure + give the refund channel + remind them the next SMS is the round-opens trigger. Transactional under Spam Act 2003 (sent in response to a user action) — no opt-out required. Single segment, 140 chars. The phrase 'general CSF risk warning' satisfies the universal ADV-001 safe-harbour gate even though no link is included; explicit Birchal mention triggers FMTH-001 disclaimer-required, which the same paraphrase also satisfies.",
+  "creative_brief": "Sent immediately after the recipient pays the $5 refundable VIP deposit on Stripe. Job: confirm + reassure + tell them the next SMS is the round-opens trigger. Transactional under Spam Act 2003 (sent in response to a user action) — no opt-out required. Single segment, 125 chars (no merge tags, raw == expanded). Pass-5 lifts: 'second Birchal opens' (motivation_match — felt urgency), 'Rachel' signoff (tone_brand_fit — founder voice + 1 named-specific). The phrase 'general CSF risk warning' satisfies the universal ADV-001 safe-harbour gate; explicit Birchal mention triggers FMTH-001 disclaimer-required, which the same paraphrase also satisfies. 'Refund anytime' replaces the email contact line — refund channel is already covered in the immediately-prior Stripe receipt.",
   "angle": "transparency-safety",
   "tactic": "vip-purchase-confirmation",
   "hook_type": "confirmation",
   "funnel": "BOF",
   "generated_at": "2026-04-27T13:00:00+10:00",
-  "source": "clients/farm-thru/CSF-VIP-COPY-PACKAGE.md §SMS purchase confirmation (compliance-revised: added 'at Birchal' + 'See general CSF risk warning' to satisfy ADV-001 + FMTH-001 within 160-char single-segment budget)"
+  "source": "clients/farm-thru/CSF-VIP-COPY-PACKAGE.md §SMS purchase confirmation (compliance-revised: added 'at Birchal' + 'See general CSF risk warning' to satisfy ADV-001 + FMTH-001 within 160-char single-segment budget)",
+  "hill_climb_pass": {
+    "pass": "pass5",
+    "parent_score": 0.7611,
+    "iteration_label": "confirm-V4",
+    "ts": "2026-04-27T18:00:00+10:00"
+  }
 }

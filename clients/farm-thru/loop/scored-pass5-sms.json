@@ -1,0 +1,273 @@
+{
+  "summary": {
+    "total": 2,
+    "avg_composite": 0.85,
+    "verdicts": {
+      "strong_draft": 1,
+      "production_ready": 1
+    },
+    "critical_failures": 0
+  },
+  "results": [
+    {
+      "ad_id": "SMS-VIP-CONFIRM",
+      "composite": 0.8333,
+      "verdict": "strong_draft",
+      "compliance": {
+        "enabled": true,
+        "passed": true,
+        "rules_evaluated": 1,
+        "rules_skipped_out_of_scope": 97,
+        "blocking_violations": [],
+        "warnings": [],
+        "advisory": []
+      },
+      "rule_compliance": {
+        "score": 1.0,
+        "passed": 32,
+        "total": 32,
+        "failures": [],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 1,
+        "verified": 1,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": [
+          {
+            "claim": "Birchal platform",
+            "fact_id": "INV-005",
+            "status": "verified",
+            "confidence": "HIGH"
+          }
+        ]
+      },
+      "rubric": {
+        "weighted_total": 37.5,
+        "max_possible": 45.0,
+        "raw_scores": {
+          "angle_clarity": 4,
+          "motivation_match": 3,
+          "specificity": 3,
+          "char_efficiency": 5,
+          "cta_clarity": 5,
+          "compliance_fit": 5,
+          "tone_brand_fit": 4,
+          "differentiation": 4
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle\u2014VIP early access as a reward for investor trust\u2014is clear and dominant, though 'transparency-safety' as a stated angle doesn't fully surface in the copy itself."
+          },
+          "motivation_match": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(batch): The message hits the investment motivation (ownership, early access) but misses the deeper felt need of these VIP investors: reassurance that their money is safe and their belief in the mission is validated."
+          },
+          "specificity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 0 numbers, 3 names = 3 specifics"
+          },
+          "char_efficiency": {
+            "score": 5,
+            "weight": 1.5,
+            "weighted": 7.5,
+            "method": "deterministic",
+            "detail": "125 chars expanded (125 raw) \u2014 tight single segment"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Confirmation with clear status signal \u2014 no link needed"
+          },
+          "compliance_fit": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "5/5 compliance: transactional \u2014 no opt-out required; short paraphrase 'general CSF risk warning' present"
+          },
+          "tone_brand_fit": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "llm",
+            "detail": "LLM(haiku-cli): Rachel's signature is the brand voice differentiator\u2014unmistakably FarmThru for the CFE/investor segment. 'You're in' and 'Refund anytime' are warm and practical, Birchal is specific to the brand, but the CSF warning line briefly flattens the founder tone."
+          },
+          "differentiation": {
+            "score": 4,
+            "weight": 0.5,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "No comparable ads of same content_type"
+          }
+        }
+      },
+      "overrides": {
+        "compliance_blocking": false,
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 0,
+        "compliance_warnings": 0
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 5,
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
+      },
+      "_file": "clients/farm-thru/loop/sms/SMS-VIP-CONFIRM.json",
+      "content_type": "sms",
+      "angle": "transparency-safety",
+      "hook_type": "confirmation",
+      "original_ad_name": "",
+      "headline": "purchase-confirmation",
+      "primary_text": "You're in. VIP secured at FarmThru. We'll text the second Birchal opens. See general CSF risk warning. Refund anytime. Rachel"
+    },
+    {
+      "ad_id": "SMS-VIP-OPEN",
+      "composite": 0.8667,
+      "verdict": "production_ready",
+      "compliance": {
+        "enabled": true,
+        "passed": true,
+        "rules_evaluated": 1,
+        "rules_skipped_out_of_scope": 97,
+        "blocking_violations": [],
+        "warnings": [],
+        "advisory": []
+      },
+      "rule_compliance": {
+        "score": 1.0,
+        "passed": 32,
+        "total": 32,
+        "failures": [],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 1,
+        "verified": 1,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": [
+          {
+            "claim": "Birchal platform",
+            "fact_id": "INV-005",
+            "status": "verified",
+            "confidence": "HIGH"
+          }
+        ]
+      },
+      "rubric": {
+        "weighted_total": 39.0,
+        "max_possible": 45.0,
+        "raw_scores": {
+          "angle_clarity": 5,
+          "motivation_match": 4,
+          "specificity": 3,
+          "char_efficiency": 5,
+          "cta_clarity": 5,
+          "compliance_fit": 5,
+          "tone_brand_fit": 3,
+          "differentiation": 4
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 5,
+            "weight": 1.5,
+            "weighted": 7.5,
+            "method": "llm",
+            "detail": "LLM(batch): The angle is unmistakable: VIP investors get early access to the FarmThru equity crowdfunding round on Birchal, and the message is reinforced by the subject line, body copy, and Rachel's signature."
+          },
+          "motivation_match": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "llm",
+            "detail": "LLM(batch): The ad hits the investment motivation strongly (ownership, early access, exclusivity) and leverages Rachel Ward's trusted voice, though it assumes prior familiarity with FarmThru and doesn't articulate the deeper 'why' of the business itself."
+          },
+          "specificity": {
+            "score": 3,
+            "weight": 1.25,
+            "weighted": 3.75,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 0 numbers, 3 names = 3 specifics"
+          },
+          "char_efficiency": {
+            "score": 5,
+            "weight": 1.5,
+            "weighted": 7.5,
+            "method": "deterministic",
+            "detail": "128 chars expanded (113 raw) \u2014 tight single segment"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Link present \u2014 natural single tap target"
+          },
+          "compliance_fit": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "5/5 compliance: opt-out present; URL routes to risk-warning page (safe-harbour OK); short paraphrase 'general CSF risk warning' present"
+          },
+          "tone_brand_fit": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(haiku-cli): Brand name and founder signature present, but the tone is transactional and neutral\u2014the message reads as a standard CFE announcement rather than distinctly Rachel or FarmThru; for an investor audience this lands competently but without the warmth or founder personality that would elevate it."
+          },
+          "differentiation": {
+            "score": 4,
+            "weight": 0.5,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "No comparable ads of same content_type"
+          }
+        }
+      },
+      "overrides": {
+        "compliance_blocking": false,
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 0,
+        "compliance_warnings": 0
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 5,
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
+      },
+      "_file": "clients/farm-thru/loop/sms/SMS-VIP-OPEN.json",
+      "content_type": "sms",
+      "angle": "urgency-scarcity",
+      "hook_type": "announcement",
+      "original_ad_name": "",
+      "headline": "round-opens-vip",
+      "primary_text": "Your VIP slot is open. FarmThru on Birchal: {{birchal_url}} See general CSF risk warning. STOP to opt out. Rachel"
+    }
+  ]
+}
