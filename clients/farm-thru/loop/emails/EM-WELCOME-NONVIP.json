@@ -4,16 +4,13 @@
   "hook_type": "direct_address",
   "funnel": "TOF",
   "content_type": "email",
-  "creative_brief": "Clean, single-column layout with warm off-white background. Rachel's signature at close. No hero image needed, let the copy breathe. One CTA button: 'Reserve my VIP spot for $5'.",
-  "generated_at": "2026-04-24T22:22:52.340932",
+  "creative_brief": "Clean, founder-voice layout. Rachel's signature at close. Single upgrade CTA button below the final paragraph, above the disclaimer. Warm off-white background, no hero image needed.",
+  "generated_at": "2026-04-27T10:10:20.849886",
   "email_id": "EM-WELCOME-NONVIP",
-  "subject": "You're on the list, {first_name}. Here's the honest version.",
-  "preheader": "No ongoing commitment. No delivery. Just food that goes straight from farm to hub.",
-  "body": "Hi {first_name},\n\nRemember why you signed up?\n\nNot for another meal kit. Not for a loyalty card. Because something about the way grocery works felt broken, and this felt different.\n\nIt is different. Here's what FarmThru actually is.\n\nWe partner directly with regenerative farms. You order online, then collect from your nearest hub in Brookvale, Monday to Friday. No middlemen marking up the margin. No cold chain stretching 2,400km across the country.\n\nStraight from farm to hub.\n\nThat's it. That's the whole model. And because we cut the supply chain, farmers get paid more and you pay less than you'd expect for food this good.\n\nNo commitment. Order when you want. Collect when it suits you.\n\nNow here's something most people on this list don't know yet.\n\nFarmThru is opening a community funding round on 23 June. And right now, for a small refundable deposit, you can lock a VIP spot and see the offer 24 hours before the public.\n\nIf you want to be a partner in the grocery store that pays farmers first, that's how you get there first.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "subject": "You're on the list. Here's what that actually means.",
+  "preheader": "No commitment. Order when you want. Collect from Brookvale Monday to Friday.",
+  "body": "Hi {first_name},\n\nSomeone asked me last week: \"What do I actually get by joining the FarmThru waitlist?\"\n\nI realised I'd never spelled it out. So here it is.\n\nYou're first to know when our Brookvale hub opens. You'll get early access to order direct from farms like Rachel's Farm, before we open to the public. No commitment. Order when you want. Collect Monday to Friday.\n\nThat's the waitlist. It's genuinely useful, and it costs nothing.\n\nBut there's a second thing happening alongside it.\n\nWe're raising a crowdfunding round on Birchal so everyday people can own a piece of FarmThru, not just shop here. VIP supporters get to see the offer 24 hours before anyone else, on the morning of 23 June.\n\nTo lock in VIP access, there's a small refundable deposit. If you decide not to invest when the round opens, it comes straight back to you. No questions.\n\nIf you want to be a partner in this, not just a customer, upgrading takes about 60 seconds.\n\nAlways consider the general CSF risk warning and offer document before investing.",
   "cta": "cfe_waitlist",
   "sender_name": "Rachel & the FarmThru team",
-  "email_type": "welcome",
-  "user_review_status": "revise",
-  "user_review_note": "We need to remove anything about investing dollar amounts. No minimum investment, no maximum. We can say that we are going to do a raise, but not those parts. Also, must as the CSF warning. \"Always consider the general CSF risk warning and offer document before investing.\"",
-  "updated_at": "2026-04-25T03:50:00+10:00"
+  "email_type": "welcome"
 }

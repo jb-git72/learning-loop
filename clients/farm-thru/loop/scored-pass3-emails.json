@@ -1,0 +1,1552 @@
+{
+  "summary": {
+    "total": 8,
+    "avg_composite": 0.5823,
+    "verdicts": {
+      "strong_draft": 6,
+      "rewrite": 2
+    },
+    "critical_failures": 0
+  },
+  "results": [
+    {
+      "ad_id": "EM-NONVIP-01",
+      "composite": 0.7778,
+      "verdict": "strong_draft",
+      "compliance": {
+        "enabled": true,
+        "passed": true,
+        "rules_evaluated": 23,
+        "rules_skipped_out_of_scope": 75,
+        "blocking_violations": [],
+        "warnings": [
+          {
+            "rule_id": "MISL-002",
+            "severity": "WARNING",
+            "category": "misleading",
+            "matched_text": "Local farms unloaded their produce, packed the same morning they left the farm... the farms are ready, the hub is coming",
+            "line_hint": "The email describes a van pulling up and farms unloading produce as a vivid, present-tense scene, creating the impression of an operational or near-operational business with confirmed farm supply relationships. However, the copy also states 'We're not open yet' and the hub is still 'coming.' The narrative framing of a specific delivery event implies current run-rate farm partnerships and a functioning supply chain, while the business is pre-revenue and pre-launch. Readers could reasonably infer the farm relationships and logistics described are confirmed and ongoing, when they may represent a single demonstration or pilot event. The gap between the implied operational reality and the disclosed pre-launch status is materially misleading.",
+            "source_ref": [
+              "RG-261.194(c)",
+              "RG-261.196",
+              "s738U"
+            ],
+            "fix_message": "Add the missing context (period covered, base, current status, denominator) so the statement does not create a misleading impression."
+          }
+        ],
+        "advisory": []
+      },
+      "rule_compliance": {
+        "score": 0.9688,
+        "passed": 31,
+        "total": 32,
+        "failures": [
+          {
+            "rule_id": "no_em_dashes",
+            "field": "body",
+            "detail": "Pattern matched in body: '\u2014' (rule: no_em_dashes)",
+            "severity": "normal"
+          }
+        ],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 0.5,
+        "claims_found": 1,
+        "verified": 1,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": [
+          {
+            "claim": "400km",
+            "fact_id": "PQ-006",
+            "status": "verified",
+            "confidence": "MEDIUM"
+          }
+        ]
+      },
+      "rubric": {
+        "weighted_total": 62.25,
+        "max_possible": 73.75,
+        "raw_scores": {
+          "angle_clarity": 5,
+          "motivation_match": 4,
+          "tactic_execution": 3,
+          "subject_line_power": 5,
+          "body_flow": 5,
+          "cta_clarity": 5,
+          "personalization": 4,
+          "specificity": 5,
+          "scroll_stop_hook": 2,
+          "differentiation": 5,
+          "opening_diversity": 1,
+          "sentence_variance": 5,
+          "emotional_register": 4
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 5,
+            "weight": 2.0,
+            "weighted": 10.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle is unmistakable: FarmThru is a grocery store where food goes directly from named local farms to you with zero middlemen, and you know exactly where it comes from."
+          },
+          "motivation_match": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "llm",
+            "detail": "LLM(batch): The ad hits transparency and access motivations strongly (knowing the farm, no distribution centre), but doesn't deeply activate the felt emotional need\u2014the relief, pride, or reconnection that comes with eating food you can trust."
+          },
+          "tactic_execution": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(batch): The hook (van arriving, farms unloading) is strong and narrative, but the body shifts abruptly from story to model explanation ('Here's what that actually means for you'), and the CTA is cut off mid-sentence, breaking the arc."
+          },
+          "subject_line_power": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Subject 'What's actually inside the Brookvale hub': 6 words (sweet spot), specific, no spam triggers"
+          },
+          "body_flow": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "5/5 flow: 994 chars (within limit), 11 paragraphs, good paragraph length"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'brand'"
+          },
+          "personalization": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "4/5 personalization: has merge tags, references reader context, reader-focused (11 'you' refs)"
+          },
+          "specificity": {
+            "score": 5,
+            "weight": 1.5,
+            "weighted": 7.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 1 numbers, 6 names = 7 specifics"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "Generic opening: 'Hi {first_name},...'"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.072, max: 0.104 (vs 7 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 1,
+            "weight": 0.75,
+            "weighted": 0.75,
+            "method": "deterministic",
+            "detail": "Opening 'hi': first word shared with 7, first 3 words shared with 7 of 8 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "17 sentences, avg 10.5 words, std dev 9.2"
+          },
+          "emotional_register": {
+            "score": 4,
+            "weight": 0.75,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "Register: story \u2014 1/7 same-type ads share it (14%)"
+          }
+        }
+      },
+      "overrides": {
+        "compliance_blocking": false,
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 1,
+        "compliance_warnings": 1
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 10,
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
+      },
+      "_file": "clients/farm-thru/loop/emails/EM-NONVIP-01.json",
+      "content_type": "email",
+      "angle": "product-first",
+      "hook_type": "story",
+      "original_ad_name": "",
+      "headline": "What's actually inside the Brookvale hub",
+      "primary_text": "Hi {first_name},\n\nYesterday a van pulled up to our Brookvale site.\n\nLocal farms unloaded their produce, packed the same morning they left the farm. Things you'd recognise if you ever stood in the padd"
+    },
+    {
+      "ad_id": "EM-NONVIP-02",
+      "composite": 0.0,
+      "verdict": "rewrite",
+      "compliance": {
+        "enabled": true,
+        "passed": false,
+        "rules_evaluated": 23,
+        "rules_skipped_out_of_scope": 75,
+        "blocking_violations": [
+          {
+            "rule_id": "MISL-001",
+            "severity": "BLOCKING",
+            "category": "misleading",
+            "matched_text": "Farmers like Bundarra Farm (pork), Collins Wild Caught (South Coast seafood), and Farmer Brown (eggs) get paid more because there's nobody else in the way.",
+            "line_hint": "The claim that named farmers 'get paid more' is stated as a definite present fact but is unsubstantiated \u2014 no comparative data, baseline pricing, or verified farmer testimony is provided. This is a material factual assertion about financial outcomes that cannot be assessed from the copy alone and may be a half-truth (e.g. farmers receive a higher farm-gate price but volumes or reliability may be lower, netting no actual gain). Additionally, 'No wholesalers. No warehouses. Zero.' is an absolute operational claim presented as current fact with no supporting evidence, and the framing 'families already ordering from us' implies an active, established customer base without any concrete metric (customer count, order volume, revenue), making it a vague proxy that could conflate registered accounts with active repeat purchasers. The June 2026 round date and Birchal platform reference are legitimate forward scheduling and are not flagged.",
+            "source_ref": [
+              "RG-261.96",
+              "RG-261.110",
+              "RG-261.190",
+              "RG-261.192",
+              "s1041E",
+              "s1041F",
+              "s1041H",
+              "s738U"
+            ],
+            "fix_message": "Substantiate the flagged claim with a date, source, and precise definition. Or remove/soften it. False or misleading factual statements expose the issuer and directors to s1041H and s738Y liability."
+          }
+        ],
+        "warnings": [
+          {
+            "rule_id": "ADV-006",
+            "severity": "WARNING",
+            "category": "advertising",
+            "matched_text": "\"You'd become a part-owner of FarmThru, alongside the farmers and the families already ordering from us.\" / \"You'd own a piece of the grocery store that pays farmers first.\" / \"The minimum is small enough that this isn't a big financial decision. But it is a structural one.\"",
+            "line_hint": "This is long-form copy (~280 words), so the short-form exemption does not apply. The body makes affirmative ownership/investment benefit claims and notably downplays financial risk with the line 'The minimum is small enough that this isn't a big financial decision' \u2014 which is a direct reassurance about risk that cuts against balanced disclosure. The only risk acknowledgement is a one-line boilerplate footer ('Always consider the general CSF risk warning and offer document before investing'), while the body contains zero mention of capital loss, illiquidity, or the speculative/early-stage nature of the investment. Under the long-form bar, the body must mention specific risks at least once with prose comparable to any single benefit claim. It does not.",
+            "source_ref": [
+              "RG-261.99",
+              "RG-261.100",
+              "RG-261.196"
+            ],
+            "fix_message": "Add prominent, in-body risk disclosure (loss of capital, illiquidity) \u2014 not just a small footer. The risk content should be visually weighted like the benefits content."
+          }
+        ],
+        "advisory": []
+      },
+      "rule_compliance": {
+        "score": 0.9688,
+        "passed": 31,
+        "total": 32,
+        "failures": [
+          {
+            "rule_id": "FMTH-013",
+            "field": "body",
+            "detail": "Pattern matched in body: 'warehouse' (rule: FMTH-013)",
+            "severity": "normal"
+          }
+        ],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 2,
+        "verified": 2,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": [
+          {
+            "claim": "24 hours",
+            "fact_id": "INV-007",
+            "status": "verified",
+            "confidence": "HIGH"
+          },
+          {
+            "claim": "Birchal platform",
+            "fact_id": "INV-005",
+            "status": "verified",
+            "confidence": "HIGH"
+          }
+        ]
+      },
+      "rubric": {
+        "weighted_total": 54.75,
+        "max_possible": 73.75,
+        "raw_scores": {
+          "angle_clarity": 4,
+          "motivation_match": 3,
+          "tactic_execution": 2,
+          "subject_line_power": 4,
+          "body_flow": 4,
+          "cta_clarity": 5,
+          "personalization": 5,
+          "specificity": 5,
+          "scroll_stop_hook": 2,
+          "differentiation": 5,
+          "opening_diversity": 1,
+          "sentence_variance": 4,
+          "emotional_register": 2
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 4,
+            "weight": 2.0,
+            "weighted": 8.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle is clear and dominant\u2014FarmThru fixes what organic labels don't by eliminating middlemen so farmers get paid fairly\u2014though it shares some space with a secondary theme about transparency/knowing where food comes from."
+          },
+          "motivation_match": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "llm",
+            "detail": "LLM(batch): The ad addresses a rational motivation (fairness to farmers) but doesn't activate the felt need of the primary audience segments, who are driven by access, quality, and value for their own families rather than abstract farmer equity."
+          },
+          "tactic_execution": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "llm",
+            "detail": "LLM(batch): The hook is strong (contrarian problem-flip), but the body breaks down mid-execution\u2014it names farms without connecting them to benefit, and the copy cuts off before reaching a CTA, leaving the narrative arc incomplete and the reader without a clear next step."
+          },
+          "subject_line_power": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "deterministic",
+            "detail": "Subject 'Buying organic doesn't fix the problem': 6 words (sweet spot), no spam triggers"
+          },
+          "body_flow": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "4/5 flow: 1454 chars (within limit), 13 paragraphs, 1 long paragraphs"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'cfe_waitlist'"
+          },
+          "personalization": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "5/5 personalization: has merge tags, references reader context, reader-focused (10 'you' refs), time-specific"
+          },
+          "specificity": {
+            "score": 5,
+            "weight": 1.5,
+            "weighted": 7.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 1 numbers, 8 names = 9 specifics"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "Generic opening: 'Hi {first_name},...'"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.061, max: 0.082 (vs 7 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 1,
+            "weight": 0.75,
+            "weighted": 0.75,
+            "method": "deterministic",
+            "detail": "Opening 'hi': first word shared with 7, first 3 words shared with 7 of 8 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 4,
+            "weight": 0.5,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "23 sentences, avg 10.5 words, std dev 7.4"
+          },
+          "emotional_register": {
+            "score": 2,
+            "weight": 0.75,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "Register: other \u2014 3/7 same-type ads share it (43%)"
+          }
+        }
+      },
+      "overrides": {
+        "compliance_blocking": true,
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 1,
+        "compliance_warnings": 1
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 10,
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
+      },
+      "_file": "clients/farm-thru/loop/emails/EM-NONVIP-02.json",
+      "content_type": "email",
+      "angle": "cause-purpose",
+      "hook_type": "contrarian",
+      "original_ad_name": "",
+      "headline": "Buying organic doesn't fix the problem",
+      "primary_text": "Hi {first_name},\n\nYou switched to organic. Maybe you started reading labels.\n\nBut here's what nobody tells you: the farmer growing that certified organic beef still gets paid last, after the wholesale"
+    },
+    {
+      "ad_id": "EM-NONVIP-03",
+      "composite": 0.0,
+      "verdict": "rewrite",
+      "compliance": {
+        "enabled": true,
+        "passed": false,
+        "rules_evaluated": 23,
+        "rules_skipped_out_of_scope": 75,
+        "blocking_violations": [
+          {
+            "rule_id": "MISL-001",
+            "severity": "BLOCKING",
+            "category": "misleading",
+            "matched_text": "One week, {first_name}. The round opens 23 June. ... Hi {first_name},",
+            "line_hint": "The email contains unresolved template placeholders ('{first_name}' appears twice), indicating this is an unsent or improperly rendered draft being reviewed as if it were final marketing copy. This is an internal inconsistency/production error rather than a factual claim issue, but it means the document as written is not a complete, deployable communication. Beyond that, the forward-scheduled date (23 June 2026) is legitimate given today's date (27 April 2026) and a credible platform reference (Birchal) is provided. The 'VIP / 24-hour head start before the public' claim warrants minor scrutiny as a half-truth \u2014 it implies preferential access that may conflict with CSF equal-access obligations depending on jurisdiction \u2014 but the primary failure is the unrendered placeholder variables rendering the document factually incomplete as written.",
+            "source_ref": [
+              "RG-261.96",
+              "RG-261.110",
+              "RG-261.190",
+              "RG-261.192",
+              "s1041E",
+              "s1041F",
+              "s1041H",
+              "s738U"
+            ],
+            "fix_message": "Substantiate the flagged claim with a date, source, and precise definition. Or remove/soften it. False or misleading factual statements expose the issuer and directors to s1041H and s738Y liability."
+          }
+        ],
+        "warnings": [
+          {
+            "rule_id": "MISL-002",
+            "severity": "WARNING",
+            "category": "misleading",
+            "matched_text": "'{first_name}' appears twice as an unfilled template placeholder, and 'One week, {first_name}. The round opens 23 June' / 'Seven days from now, the FarmThru round opens' \u2014 the date claim '23 June' is stated as definite, but today's date is 2026-04-27, making '23 June' nearly two months away, not 'one week' / 'seven days from now'.",
+            "line_hint": "The email states the round opens in 'one week' / 'seven days' on 23 June, but the current date is 27 April 2026, meaning 23 June is approximately 57 days away \u2014 not seven. This presents a materially false timeframe as a definite fact, which would create a misleading sense of urgency in a prospective investor. Additionally, the unfilled {first_name} placeholders indicate the copy was not finalised before review, raising the possibility that other variable content (e.g. investor-specific details) may also be incorrect or missing.",
+            "source_ref": [
+              "RG-261.194(c)",
+              "RG-261.196",
+              "s738U"
+            ],
+            "fix_message": "Add the missing context (period covered, base, current status, denominator) so the statement does not create a misleading impression."
+          }
+        ],
+        "advisory": [
+          {
+            "rule_id": "ADV-012",
+            "severity": "ADVISORY",
+            "category": "advertising",
+            "matched_text": "Early investors on day one set the tone for the whole round.",
+            "line_hint": "This phrase frames early investment as advantageous or influential, constituting general advice (an opinion about the merit/timing of investing). The copy lacks a clear statement that the company is not licensed to provide financial product advice in relation to its shares. The generic CSF risk warning reminder at the bottom does not substitute for the required licensing disclaimer.",
+            "source_ref": [
+              "RG-261.113"
+            ],
+            "fix_message": "Add a sentence: 'We are not licensed to provide financial product advice in relation to our shares. Consider seeking independent advice.'"
+          }
+        ]
+      },
+      "rule_compliance": {
+        "score": 1.0,
+        "passed": 32,
+        "total": 32,
+        "failures": [],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 2,
+        "verified": 2,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": [
+          {
+            "claim": "$50",
+            "fact_id": "INV-002",
+            "status": "verified",
+            "confidence": "HIGH"
+          },
+          {
+            "claim": "Birchal platform",
+            "fact_id": "INV-005",
+            "status": "verified",
+            "confidence": "HIGH"
+          }
+        ]
+      },
+      "rubric": {
+        "weighted_total": 54.5,
+        "max_possible": 73.75,
+        "raw_scores": {
+          "angle_clarity": 4,
+          "motivation_match": 3,
+          "tactic_execution": 2,
+          "subject_line_power": 5,
+          "body_flow": 4,
+          "cta_clarity": 5,
+          "personalization": 5,
+          "specificity": 3,
+          "scroll_stop_hook": 2,
+          "differentiation": 5,
+          "opening_diversity": 1,
+          "sentence_variance": 3,
+          "emotional_register": 5
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 4,
+            "weight": 2.0,
+            "weighted": 8.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle is clear and dominant\u2014this is a launch countdown that positions equity ownership as the primary hook\u2014but it slightly dilutes focus by pivoting from 'own a piece' to 'the food' to 'Tuesday,' creating minor competing themes."
+          },
+          "motivation_match": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "llm",
+            "detail": "LLM(batch): The ad addresses the felt need (reconnection to food, transparency, paying farmers fairly) at a rational level, but it doesn't activate the emotional driver; it names the problem without making the reader feel the urgency or personal stake of being an early owner."
+          },
+          "tactic_execution": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "llm",
+            "detail": "LLM(batch): The email attempts a countdown/announcement tactic but breaks down mid-body: the hook (seven days, round opens) connects to the value proposition, but then pivots awkwardly to 'this email isn't about the food' and cuts off at 'Here's your,' leaving no coherent CTA or narrative arc."
+          },
+          "subject_line_power": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Subject 'One week, {first_name}. The round opens ': 8 words (sweet spot), specific, no spam triggers"
+          },
+          "body_flow": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "4/5 flow: 1182 chars (within limit), 12 paragraphs, 1 long paragraphs"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'cfe_waitlist'"
+          },
+          "personalization": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "5/5 personalization: has merge tags, references reader context, reader-focused (14 'you' refs), time-specific"
+          },
+          "specificity": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "deterministic",
+            "detail": "1 dollar amounts, 0 numbers, 3 names = 4 specifics"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "Generic opening: 'Hi {first_name},...'"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.070, max: 0.094 (vs 7 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 1,
+            "weight": 0.75,
+            "weighted": 0.75,
+            "method": "deterministic",
+            "detail": "Opening 'hi': first word shared with 7, first 3 words shared with 7 of 8 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 3,
+            "weight": 0.5,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "26 sentences, avg 7.6 words, std dev 4.9"
+          },
+          "emotional_register": {
+            "score": 5,
+            "weight": 0.75,
+            "weighted": 3.75,
+            "method": "deterministic",
+            "detail": "Register: contrast \u2014 0/7 same-type ads share it (0%)"
+          }
+        }
+      },
+      "overrides": {
+        "compliance_blocking": true,
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 0,
+        "compliance_warnings": 1
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 10,
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
+      },
+      "_file": "clients/farm-thru/loop/emails/EM-NONVIP-03.json",
+      "content_type": "email",
+      "angle": "launch-countdown",
+      "hook_type": "announcement",
+      "original_ad_name": "",
+      "headline": "One week, {first_name}. The round opens 23 June.",
+      "primary_text": "Hi {first_name},\n\nSeven days from now, the FarmThru round opens.\n\nNot a soft launch. Not a waitlist shuffle. The actual moment you can own a piece of the grocery store that pays farmers first.\n\nYou jo"
+    },
+    {
+      "ad_id": "EM-VIP-01",
+      "composite": 0.8034,
+      "verdict": "strong_draft",
+      "compliance": {
+        "enabled": true,
+        "passed": true,
+        "rules_evaluated": 23,
+        "rules_skipped_out_of_scope": 75,
+        "blocking_violations": [],
+        "warnings": [],
+        "advisory": []
+      },
+      "rule_compliance": {
+        "score": 1.0,
+        "passed": 32,
+        "total": 32,
+        "failures": [],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 3,
+        "verified": 3,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": [
+          {
+            "claim": "24 hours",
+            "fact_id": "INV-007",
+            "status": "verified",
+            "confidence": "HIGH"
+          },
+          {
+            "claim": "equity crowdfunding",
+            "fact_id": "INV-005",
+            "status": "verified",
+            "confidence": "HIGH"
+          },
+          {
+            "claim": "Birchal platform",
+            "fact_id": "INV-005",
+            "status": "verified",
+            "confidence": "HIGH"
+          }
+        ]
+      },
+      "rubric": {
+        "weighted_total": 59.25,
+        "max_possible": 73.75,
+        "raw_scores": {
+          "angle_clarity": 5,
+          "motivation_match": 4,
+          "tactic_execution": 3,
+          "subject_line_power": 4,
+          "body_flow": 5,
+          "cta_clarity": 5,
+          "personalization": 4,
+          "specificity": 4,
+          "scroll_stop_hook": 2,
+          "differentiation": 5,
+          "opening_diversity": 1,
+          "sentence_variance": 4,
+          "emotional_register": 4
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 5,
+            "weight": 2.0,
+            "weighted": 10.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle is unmistakable: FarmThru exists because Rachel rejected the VC playbook that exploits farmers, making this a values-driven alternative to conventional scaling."
+          },
+          "motivation_match": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "llm",
+            "detail": "LLM(batch): The ad strongly activates the Rachel Ward Audience's trust in her integrity and the Conscious Family's desire for transparency and ethical sourcing, though it doesn't yet articulate the felt need for access or community as viscerally as it could."
+          },
+          "tactic_execution": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(batch): The hook (insider confession) and body (farmer conversation revealing the VC pressure) flow well, but the CTA is cut off mid-sentence, breaking the narrative arc and leaving the reader suspended rather than moved to action."
+          },
+          "subject_line_power": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "deterministic",
+            "detail": "Subject 'What I told the farmer on Tuesday': 7 words (sweet spot), no spam triggers"
+          },
+          "body_flow": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "5/5 flow: 1140 chars (within limit), 8 paragraphs, good paragraph length"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'cfe_waitlist'"
+          },
+          "personalization": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "4/5 personalization: has merge tags, reader-focused (6 'you' refs), time-specific"
+          },
+          "specificity": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 1 numbers, 4 names = 5 specifics"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "Generic opening: 'Hi {first_name},...'"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.056, max: 0.078 (vs 7 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 1,
+            "weight": 0.75,
+            "weighted": 0.75,
+            "method": "deterministic",
+            "detail": "Opening 'hi': first word shared with 7, first 3 words shared with 7 of 8 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 4,
+            "weight": 0.5,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "16 sentences, avg 12.7 words, std dev 5.4"
+          },
+          "emotional_register": {
+            "score": 4,
+            "weight": 0.75,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "Register: story \u2014 1/7 same-type ads share it (14%)"
+          }
+        }
+      },
+      "overrides": {
+        "compliance_blocking": false,
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 0,
+        "compliance_warnings": 0
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 10,
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
+      },
+      "_file": "clients/farm-thru/loop/emails/EM-VIP-01.json",
+      "content_type": "email",
+      "angle": "insider-note",
+      "hook_type": "story",
+      "original_ad_name": "",
+      "headline": "What I told the farmer on Tuesday",
+      "primary_text": "Hi {first_name},\n\nOn Tuesday I was on the phone with one of our partner farmers. He asked me straight: \"Rachel, why didn't you just take investor money and scale fast?\"\n\nI told him the truth. Every VC"
+    },
+    {
+      "ad_id": "EM-VIP-02",
+      "composite": 0.7864,
+      "verdict": "strong_draft",
+      "compliance": {
+        "enabled": true,
+        "passed": true,
+        "rules_evaluated": 23,
+        "rules_skipped_out_of_scope": 75,
+        "blocking_violations": [],
+        "warnings": [],
+        "advisory": []
+      },
+      "rule_compliance": {
+        "score": 1.0,
+        "passed": 32,
+        "total": 32,
+        "failures": [],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 3,
+        "verified": 3,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": [
+          {
+            "claim": "24 hours",
+            "fact_id": "INV-007",
+            "status": "verified",
+            "confidence": "HIGH"
+          },
+          {
+            "claim": "equity crowdfunding",
+            "fact_id": "INV-005",
+            "status": "verified",
+            "confidence": "HIGH"
+          },
+          {
+            "claim": "Birchal platform",
+            "fact_id": "INV-005",
+            "status": "verified",
+            "confidence": "HIGH"
+          }
+        ]
+      },
+      "rubric": {
+        "weighted_total": 58.0,
+        "max_possible": 73.75,
+        "raw_scores": {
+          "angle_clarity": 5,
+          "motivation_match": 3,
+          "tactic_execution": 4,
+          "subject_line_power": 5,
+          "body_flow": 5,
+          "cta_clarity": 5,
+          "personalization": 5,
+          "specificity": 3,
+          "scroll_stop_hook": 2,
+          "differentiation": 5,
+          "opening_diversity": 1,
+          "sentence_variance": 4,
+          "emotional_register": 2
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 5,
+            "weight": 2.0,
+            "weighted": 10.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle is unmistakable: VIP crowdfunding investors get a 24-hour head start with a simple, transparent process\u2014every element reinforces this single strategic position."
+          },
+          "motivation_match": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "llm",
+            "detail": "LLM(batch): The ad addresses the rational need (clarity on mechanics, no surprises) but misses the deeper felt motivations\u2014it doesn't articulate why this person *should* invest or what they're joining, only how the transaction works."
+          },
+          "tactic_execution": {
+            "score": 4,
+            "weight": 1.0,
+            "weighted": 4.0,
+            "method": "llm",
+            "detail": "LLM(batch): The tactic (mechanism walkthrough with VIP privilege hook) is well-structured and flows naturally from hook to body to implied CTA, though the copy cuts off mid-sentence and lacks a strong closing call-to-action."
+          },
+          "subject_line_power": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Subject 'Your 24-hour head start: here's exactly ': 9 words (sweet spot), specific, no spam triggers"
+          },
+          "body_flow": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "5/5 flow: 1076 chars (within limit), 17 paragraphs, good paragraph length"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'cfe_campaign'"
+          },
+          "personalization": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "5/5 personalization: has merge tags, references reader context, reader-focused (15 'you' refs), time-specific"
+          },
+          "specificity": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 1 numbers, 2 names = 3 specifics"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "Generic opening: 'Hi {first_name},...'"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.071, max: 0.093 (vs 7 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 1,
+            "weight": 0.75,
+            "weighted": 0.75,
+            "method": "deterministic",
+            "detail": "Opening 'hi': first word shared with 7, first 3 words shared with 7 of 8 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 4,
+            "weight": 0.5,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "23 sentences, avg 8.2 words, std dev 5.5"
+          },
+          "emotional_register": {
+            "score": 2,
+            "weight": 0.75,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "Register: other \u2014 3/7 same-type ads share it (43%)"
+          }
+        }
+      },
+      "overrides": {
+        "compliance_blocking": false,
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 0,
+        "compliance_warnings": 0
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 10,
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
+      },
+      "_file": "clients/farm-thru/loop/emails/EM-VIP-02.json",
+      "content_type": "email",
+      "angle": "mechanism-walkthrough",
+      "hook_type": "story",
+      "original_ad_name": "",
+      "headline": "Your 24-hour head start: here's exactly how it works",
+      "primary_text": "Hi {first_name},\n\nLast week a VIP asked me: \"What actually happens when the round opens?\"\n\nI realised I'd never spelled it out properly. So here it is.\n\n---\n\nOn the evening of 22 June, you get an emai"
+    },
+    {
+      "ad_id": "EM-VIP-03",
+      "composite": 0.8068,
+      "verdict": "strong_draft",
+      "compliance": {
+        "enabled": true,
+        "passed": true,
+        "rules_evaluated": 23,
+        "rules_skipped_out_of_scope": 75,
+        "blocking_violations": [],
+        "warnings": [],
+        "advisory": []
+      },
+      "rule_compliance": {
+        "score": 1.0,
+        "passed": 32,
+        "total": 32,
+        "failures": [],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 2,
+        "verified": 2,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": [
+          {
+            "claim": "24 hours",
+            "fact_id": "INV-007",
+            "status": "verified",
+            "confidence": "HIGH"
+          },
+          {
+            "claim": "Birchal platform",
+            "fact_id": "INV-005",
+            "status": "verified",
+            "confidence": "HIGH"
+          }
+        ]
+      },
+      "rubric": {
+        "weighted_total": 59.5,
+        "max_possible": 73.75,
+        "raw_scores": {
+          "angle_clarity": 5,
+          "motivation_match": 4,
+          "tactic_execution": 3,
+          "subject_line_power": 3,
+          "body_flow": 5,
+          "cta_clarity": 5,
+          "personalization": 4,
+          "specificity": 4,
+          "scroll_stop_hook": 2,
+          "differentiation": 5,
+          "opening_diversity": 1,
+          "sentence_variance": 5,
+          "emotional_register": 5
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 5,
+            "weight": 2.0,
+            "weighted": 10.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle is unmistakable: you're being given exclusive early access to an investment opportunity because you're the kind of person who acts on values, not because of discounts or freebies."
+          },
+          "motivation_match": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "llm",
+            "detail": "LLM(batch): The ad taps the felt need (identity-driven action, being first, owning values) and articulates it powerfully, though it leans slightly more into the investment/exclusivity angle than the core grocery/food motivation for some segments."
+          },
+          "tactic_execution": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(batch): The hook (reminder of why they deposited) flows well to the body (identity reframing), but the CTA is incomplete/cut off mid-sentence ('The investors who move'), breaking the narrative arc and leaving execution unfinished."
+          },
+          "subject_line_power": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "deterministic",
+            "detail": "Subject 'Tomorrow is yours, {first_name}': 4 words, no spam triggers"
+          },
+          "body_flow": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "5/5 flow: 754 chars (within limit), 9 paragraphs, good paragraph length"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'cfe_campaign'"
+          },
+          "personalization": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "4/5 personalization: has merge tags, reader-focused (3 'you' refs), time-specific"
+          },
+          "specificity": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 2 numbers, 4 names = 6 specifics"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "Generic opening: 'Hi {first_name},...'"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.079, max: 0.092 (vs 7 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 1,
+            "weight": 0.75,
+            "weighted": 0.75,
+            "method": "deterministic",
+            "detail": "Opening 'hi': first word shared with 7, first 3 words shared with 7 of 8 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "14 sentences, avg 9.5 words, std dev 9.1"
+          },
+          "emotional_register": {
+            "score": 5,
+            "weight": 0.75,
+            "weighted": 3.75,
+            "method": "deterministic",
+            "detail": "Register: question \u2014 0/7 same-type ads share it (0%)"
+          }
+        }
+      },
+      "overrides": {
+        "compliance_blocking": false,
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 0,
+        "compliance_warnings": 0
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 10,
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
+      },
+      "_file": "clients/farm-thru/loop/emails/EM-VIP-03.json",
+      "content_type": "email",
+      "angle": "head-start-announcement",
+      "hook_type": "announcement",
+      "original_ad_name": "",
+      "headline": "Tomorrow is yours, {first_name}",
+      "primary_text": "Hi {first_name},\n\nRemember why you placed that refundable deposit?\n\nNot for a discount. Not for a freebie. Because you wanted to be the kind of person who owns a piece of the grocery store that pays f"
+    },
+    {
+      "ad_id": "EM-WELCOME-NONVIP",
+      "composite": 0.7181,
+      "verdict": "strong_draft",
+      "compliance": {
+        "enabled": true,
+        "passed": true,
+        "rules_evaluated": 23,
+        "rules_skipped_out_of_scope": 75,
+        "blocking_violations": [],
+        "warnings": [],
+        "advisory": [
+          {
+            "rule_id": "ADV-012",
+            "severity": "ADVISORY",
+            "category": "advertising",
+            "matched_text": "If you want to be a partner in this, not just a customer, upgrading takes about 60 seconds.",
+            "line_hint": "The copy frames the investment as an opportunity to 'own a piece of FarmThru' and positions investors as 'partners,' which goes beyond bare facts and constitutes general advice about the merit/value of the investment. However, there is no statement that the company is not licensed to provide financial product advice in relation to its shares.",
+            "source_ref": [
+              "RG-261.113"
+            ],
+            "fix_message": "Add a sentence: 'We are not licensed to provide financial product advice in relation to our shares. Consider seeking independent advice.'"
+          }
+        ]
+      },
+      "rule_compliance": {
+        "score": 0.9688,
+        "passed": 31,
+        "total": 32,
+        "failures": [
+          {
+            "rule_id": "FMTH-014",
+            "field": "body",
+            "detail": "Pattern matched in body: 'lock in' (rule: FMTH-014)",
+            "severity": "normal"
+          }
+        ],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 3,
+        "verified": 3,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": [
+          {
+            "claim": "24 hours",
+            "fact_id": "INV-007",
+            "status": "verified",
+            "confidence": "HIGH"
+          },
+          {
+            "claim": "equity crowdfunding",
+            "fact_id": "INV-005",
+            "status": "verified",
+            "confidence": "HIGH"
+          },
+          {
+            "claim": "Birchal platform",
+            "fact_id": "INV-005",
+            "status": "verified",
+            "confidence": "HIGH"
+          }
+        ]
+      },
+      "rubric": {
+        "weighted_total": 55.75,
+        "max_possible": 73.75,
+        "raw_scores": {
+          "angle_clarity": 4,
+          "motivation_match": 3,
+          "tactic_execution": 2,
+          "subject_line_power": 5,
+          "body_flow": 4,
+          "cta_clarity": 5,
+          "personalization": 5,
+          "specificity": 5,
+          "scroll_stop_hook": 2,
+          "differentiation": 5,
+          "opening_diversity": 1,
+          "sentence_variance": 4,
+          "emotional_register": 2
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 4,
+            "weight": 2.0,
+            "weighted": 8.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle is clear and dominant\u2014FarmThru waitlist membership offers early access to farm-direct ordering with no commitment\u2014though the incomplete final sentence ('We're r') creates minor confusion about what the 'second thing' is."
+          },
+          "motivation_match": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "llm",
+            "detail": "LLM(batch): The ad addresses access and transparency motivations rationally (early access, direct from farms, no commitment) but doesn't activate the felt need\u2014it doesn't articulate why this matters emotionally or what problem it solves for the reader's life."
+          },
+          "tactic_execution": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "llm",
+            "detail": "LLM(batch): The welcome/upgrade tactic is attempted but breaks down: the hook (direct address question) connects to the body (waitlist benefits), but the body trails off mid-sentence before reaching a clear CTA, leaving the narrative arc incomplete and the reader uncertain what action to take next."
+          },
+          "subject_line_power": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Subject 'You're on the list. Here's what that act': 9 words (sweet spot), specific, no spam triggers"
+          },
+          "body_flow": {
+            "score": 4,
+            "weight": 1.25,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "4/5 flow: 1029 chars (within limit), 10 paragraphs, 1 long paragraphs"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'cfe_waitlist'"
+          },
+          "personalization": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "5/5 personalization: has merge tags, references reader context, reader-focused (7 'you' refs), time-specific"
+          },
+          "specificity": {
+            "score": 5,
+            "weight": 1.5,
+            "weighted": 7.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 1 numbers, 6 names = 7 specifics"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "Generic opening: 'Hi {first_name},...'"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.073, max: 0.104 (vs 7 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 1,
+            "weight": 0.75,
+            "weighted": 0.75,
+            "method": "deterministic",
+            "detail": "Opening 'hi': first word shared with 7, first 3 words shared with 7 of 8 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 4,
+            "weight": 0.5,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "17 sentences, avg 10.5 words, std dev 7.0"
+          },
+          "emotional_register": {
+            "score": 2,
+            "weight": 0.75,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "Register: other \u2014 3/7 same-type ads share it (43%)"
+          }
+        }
+      },
+      "overrides": {
+        "compliance_blocking": false,
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 1,
+        "compliance_warnings": 0
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 10,
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
+      },
+      "_file": "clients/farm-thru/loop/emails/EM-WELCOME-NONVIP.json",
+      "content_type": "email",
+      "angle": "onboarding-welcome",
+      "hook_type": "direct_address",
+      "original_ad_name": "",
+      "headline": "You're on the list. Here's what that actually means.",
+      "primary_text": "Hi {first_name},\n\nSomeone asked me last week: \"What do I actually get by joining the FarmThru waitlist?\"\n\nI realised I'd never spelled it out. So here it is.\n\nYou're first to know when our Brookvale h"
+    },
+    {
+      "ad_id": "EM-WELCOME-VIP",
+      "composite": 0.7661,
+      "verdict": "strong_draft",
+      "compliance": {
+        "enabled": true,
+        "passed": true,
+        "rules_evaluated": 23,
+        "rules_skipped_out_of_scope": 75,
+        "blocking_violations": [],
+        "warnings": [],
+        "advisory": []
+      },
+      "rule_compliance": {
+        "score": 1.0,
+        "passed": 32,
+        "total": 32,
+        "failures": [],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 1,
+        "verified": 1,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": [
+          {
+            "claim": "Birchal platform",
+            "fact_id": "INV-005",
+            "status": "verified",
+            "confidence": "HIGH"
+          }
+        ]
+      },
+      "rubric": {
+        "weighted_total": 56.5,
+        "max_possible": 73.75,
+        "raw_scores": {
+          "angle_clarity": 5,
+          "motivation_match": 3,
+          "tactic_execution": 2,
+          "subject_line_power": 5,
+          "body_flow": 5,
+          "cta_clarity": 5,
+          "personalization": 5,
+          "specificity": 3,
+          "scroll_stop_hook": 2,
+          "differentiation": 5,
+          "opening_diversity": 1,
+          "sentence_variance": 5,
+          "emotional_register": 2
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 5,
+            "weight": 2.0,
+            "weighted": 10.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle is unmistakable: early supporters get exclusive 24-hour access to the equity round before the public, and every sentence reinforces this single VIP positioning."
+          },
+          "motivation_match": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "llm",
+            "detail": "LLM(batch): The ad addresses the rational motivation (first-mover advantage, exclusivity) but doesn't tap the deeper emotional driver\u2014the felt need to own a piece of something they believe in or to be recognized as a true believer in the mission."
+          },
+          "tactic_execution": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "llm",
+            "detail": "LLM(batch): The tactic attempts a BAB structure (problem: 'what does VIP get me?' \u2192 solution: 24-hour head start) but the body cuts off mid-sentence and never reaches a clear CTA, breaking the narrative arc."
+          },
+          "subject_line_power": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Subject 'Your VIP spot is locked. Here's what tha': 9 words (sweet spot), specific, no spam triggers"
+          },
+          "body_flow": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "5/5 flow: 1133 chars (within limit), 11 paragraphs, good paragraph length"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "CTA matches approved list: 'cfe_campaign'"
+          },
+          "personalization": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "5/5 personalization: has merge tags, references reader context, reader-focused (13 'you' refs), time-specific"
+          },
+          "specificity": {
+            "score": 3,
+            "weight": 1.5,
+            "weighted": 4.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 0 numbers, 3 names = 3 specifics"
+          },
+          "scroll_stop_hook": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "Generic opening: 'Hi {first_name},...'"
+          },
+          "differentiation": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Avg bigram sim: 0.066, max: 0.093 (vs 7 same-type ads)"
+          },
+          "opening_diversity": {
+            "score": 1,
+            "weight": 0.75,
+            "weighted": 0.75,
+            "method": "deterministic",
+            "detail": "Opening 'hi': first word shared with 7, first 3 words shared with 7 of 8 same-type ads"
+          },
+          "sentence_variance": {
+            "score": 5,
+            "weight": 0.5,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "17 sentences, avg 11.4 words, std dev 9.0"
+          },
+          "emotional_register": {
+            "score": 2,
+            "weight": 0.75,
+            "weighted": 1.5,
+            "method": "deterministic",
+            "detail": "Register: other \u2014 3/7 same-type ads share it (43%)"
+          }
+        }
+      },
+      "overrides": {
+        "compliance_blocking": false,
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 0,
+        "compliance_warnings": 0
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 10,
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
+      },
+      "_file": "clients/farm-thru/loop/emails/EM-WELCOME-VIP.json",
+      "content_type": "email",
+      "angle": "vip-confirmation",
+      "hook_type": "direct_address",
+      "original_ad_name": "",
+      "headline": "Your VIP spot is locked. Here's what that means.",
+      "primary_text": "Hi {first_name},\n\nSomeone asked me recently: \"What does VIP actually get me?\"\n\nFair question. So let me spell it out.\n\nYour refundable deposit locked your spot in the first group to see the FarmThru e"
+    }
+  ]
+}

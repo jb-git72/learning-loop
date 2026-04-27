@@ -4,16 +4,13 @@
   "hook_type": "announcement",
   "funnel": "BOF",
   "content_type": "email",
-  "creative_brief": "Clean, calendar-forward layout. Bold the date '23 June 2026' and the dollar range '$50 to $10,000'. Warm off-white background, single column, no hero image needed. End with Rachel's signature block.",
-  "generated_at": "2026-04-24T22:23:21.108851",
+  "creative_brief": "Clean, single-column layout. Bold '23 June' as a visual anchor near the top. Numbered list styled as a simple checklist graphic. Warm off-white background, FarmThru green CTA button.",
+  "generated_at": "2026-04-27T10:08:11.268952",
   "email_id": "EM-NONVIP-03",
-  "subject": "Seven days, {first_name}. Here's your game plan.",
-  "preheader": "The FarmThru round opens 23 June. One week to get ready. Here's exactly what to do.",
-  "body": "Hi {first_name},\n\nRemember why you joined the waitlist?\n\nNot because you needed another grocery option. Because you wanted food that comes straight from farm to hub, and you wanted the farmers who grew it to actually get paid.\n\nThat moment is one week away.\n\n23 June 2026. The FarmThru equity crowdfunding offer opens on Birchal. When the round opens, it's open to everyone.\n\nHere's what I'd do right now, today.\n\nPut it in your calendar. Tuesday, 23 June. Set a reminder for the morning. Rounds like this can move fast in the first 24 hours, and you've already done the hard part by being here.\n\nDecide your number \u2014 the amount that feels right for you. Not a stretch. Not a throwaway. The amount where you'd genuinely feel like a partner in something that pays farmers first.\n\nThen show up on the 23rd.\n\nThat's it. No commitment today. No pressure. Just a plan.\n\nWe'll show you where your food comes from. And next week, you can own a piece of the store that makes that promise.\n\nAlways consider the general CSF risk warning and offer document before investing.\n\nRachel & the FarmThru team",
+  "subject": "One week, {first_name}. The round opens 23 June.",
+  "preheader": "Here's exactly what to do before Tuesday. Takes two minutes.",
+  "body": "Hi {first_name},\n\nSeven days from now, the FarmThru round opens.\n\nNot a soft launch. Not a waitlist shuffle. The actual moment you can own a piece of the grocery store that pays farmers first.\n\nYou joined because something felt wrong. The supermarket didn't know where your food came from. Honestly, neither did you. FarmThru fixes that: order online, collect from your nearest hub, and know exactly which farm grew it.\n\nBut this email isn't about the food.\n\nIt's about Tuesday, 23 June.\n\nHere's your two-minute game plan before the round opens:\n\n1. Block 23 June in your calendar now. Early investors on day one set the tone for the whole round.\n2. Read the offer document on Birchal before you invest. Not after. Before.\n3. Decide your number. Minimum is $50. Take sixty seconds and pick a figure you're genuinely comfortable with.\n\nThat's it. Three steps. Two minutes.\n\nWhen the round opens next Tuesday, you won't be scrambling. You'll already know your answer.\n\nIf you want early access and a 24-hour head start before the public, upgrade to a VIP spot before Sunday. Details on the page below.\n\nAlways consider the general CSF risk warning and offer document before investing.",
   "cta": "cfe_waitlist",
   "sender_name": "Rachel & the FarmThru team",
-  "email_type": "countdown",
-  "user_review_status": "revise",
-  "user_review_note": "We don't know to (ever) think we know what the person is doing, or why they are doing it. E.g. \"because you wanted food that comes straight from farm to hub. We need to remove anything about investing dollar amounts. No minimum investment, no maximum. We can say that we are going to do a raise, but not those parts. Also, must as the CSF warning.",
-  "updated_at": "2026-04-25T03:50:00+10:00"
+  "email_type": "countdown"
 }

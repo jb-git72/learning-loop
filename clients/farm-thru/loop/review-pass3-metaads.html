@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmThru Round 3 Review</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #1a1a1a; padding: 16px 20px; }
+.header { max-width: 1400px; margin: 0 auto 12px; }
+.header-info { font-size: 13px; color: #666; margin-bottom: 10px; }
+.status-bar { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+.status-pill { padding: 4px 12px; border-radius: 4px; font-size: 13px; font-weight: 500; background: #f0f0f0; }
+.status-pill.green { border: 1.5px solid #22c55e; color: #166534; }
+.status-pill.blue { border: 1.5px solid #3b82f6; color: #1d4ed8; }
+.status-pill.red { border: 1.5px solid #ef4444; color: #991b1b; }
+.toolbar { display: flex; gap: 0; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+.toolbar .sep { width: 16px; }
+.tbtn { padding: 6px 14px; border: 1px solid #ddd; background: white; cursor: pointer; font-size: 13px; font-weight: 500; color: #555; }
+.tbtn:first-child { border-radius: 6px 0 0 6px; }
+.tbtn:last-child { border-radius: 0 6px 6px 0; }
+.tbtn:not(:first-child) { border-left: none; }
+.tbtn.active { background: #1a1a1a; color: white; border-color: #1a1a1a; }
+.toolbar-right { margin-left: auto; display: flex; gap: 6px; }
+.toolbar-right .tbtn { border-radius: 6px; border: 1px solid #ddd; }
+.toolbar-right .tbtn:not(:first-child) { border-left: 1px solid #ddd; }
+.cards { max-width: 1400px; margin: 0 auto; }
+.card { background: white; border-radius: 8px; margin-bottom: 12px; padding: 16px 20px; border-left: 4px solid transparent; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.card.status-approved { border-left-color: #22c55e; }
+.card.status-revise { border-left-color: #3b82f6; }
+.card.status-kill { border-left-color: #ef4444; }
+.card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
+.card-id { font-weight: 700; font-size: 16px; }
+.type-badge { color: white; padding: 2px 10px; border-radius: 3px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; }
+.angle-label { color: #666; font-size: 13px; }
+.hl-preview { color: #444; font-size: 13px; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.card-right { display: flex; align-items: center; gap: 8px; margin-left: auto; flex-shrink: 0; }
+.score-circle { color: white; font-weight: 700; font-size: 13px; padding: 4px 10px; border-radius: 20px; min-width: 50px; text-align: center; }
+.verdict-label { font-size: 12px; font-weight: 600; color: #666; text-transform: uppercase; min-width: 80px; text-align: center; }
+.btn { padding: 5px 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px; cursor: pointer; background: white; font-weight: 500; }
+.btn-approve.active { background: #22c55e; color: white; border-color: #22c55e; }
+.btn-revise.active { background: #3b82f6; color: white; border-color: #3b82f6; }
+.btn-kill.active { background: #ef4444; color: white; border-color: #ef4444; }
+.btn:hover { opacity: 0.85; }
+.score-summary { font-size: 12px; color: #888; margin-bottom: 12px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 12px; }
+.field-label { font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.field-edit { width: 100%; padding: 10px; border: 1px solid #e0e0e0; border-radius: 6px; font-family: inherit; font-size: 14px; line-height: 1.6; resize: vertical; color: #1a1a1a; }
+.field-edit:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 2px rgba(59,130,246,0.15); }
+.field-static { font-size: 14px; color: #444; padding: 4px 0; }
+.char-count { font-size: 11px; color: #aaa; text-align: right; margin-top: 2px; }
+.tags-row { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.tag { background: #f0f0f0; padding: 3px 10px; border-radius: 4px; font-size: 12px; color: #555; }
+.creative-brief { font-size: 13px; color: #777; margin-bottom: 10px; }
+.notes-row { margin-top: 8px; }
+.notes { width: 100%; height: 50px; padding: 8px; border: 1px solid #e0e0e0; border-radius: 6px; font-family: inherit; font-size: 13px; resize: vertical; }
+.counter { max-width: 1400px; margin: 0 auto 12px; font-size: 13px; color: #888; }
+.card-top { cursor: pointer; user-select: none; }
+.card-top:hover { opacity: 0.85; }
+.card-body { display: none; }
+.card.expanded .card-body { display: block; }
+.collapse-indicator { font-size: 12px; color: #aaa; margin-right: 4px; transition: transform 0.15s; }
+.card.expanded .collapse-indicator { transform: rotate(90deg); }
+</style>
+</head>
+<body>
+<div class="header">
+    <div class="header-info">18 items | Brand guidelines v1.1 | Hub-and-collect | No named competitors | 0 critical failures</div>
+    <div class="status-bar" id="statusBar">
+        <span class="status-pill">18 items</span>
+        <span class="status-pill" id="pillPending">Pending: 18</span>
+        <span class="status-pill green" id="pillApproved">Approved: 0</span>
+        <span class="status-pill blue" id="pillEdited">Edited: 0</span>
+        <span class="status-pill red" id="pillKilled">Killed: 0</span>
+    </div>
+    <div class="toolbar">
+        <button class="tbtn active" onclick="setFilter('type','all',this)">All</button>
+        <button class="tbtn" onclick="setFilter('type','meta-ad',this)">Ads</button>
+        <button class="tbtn" onclick="setFilter('type','landing-page',this)">Pages</button>
+        <button class="tbtn" onclick="setFilter('type','email',this)">Emails</button>
+        <div class="sep"></div>
+        <button class="tbtn" onclick="setFilter('status','unreviewed',this)">Pending</button>
+        <button class="tbtn" onclick="setFilter('status','approved',this)">Approved</button>
+        <button class="tbtn" onclick="setFilter('status','revise',this)">Edited</button>
+        <button class="tbtn" onclick="setFilter('status','kill',this)">Killed</button>
+        <div class="sep"></div>
+        <button class="tbtn active" onclick="setSort('score',this)">Score &#9660;</button>
+        <button class="tbtn" onclick="setSort('name',this)">Name</button>
+        <div class="toolbar-right">
+            <button class="tbtn" onclick="toggleAll()">Expand All</button>
+            <button class="tbtn" onclick="saveJSON()">Save JSON</button>
+            <button class="tbtn" onclick="exportCSV()">CSV</button>
+        </div>
+    </div>
+</div>
+<div class="counter" id="counter"></div>
+<div class="cards" id="cards">
+    
+        <div class="card" data-verdict="production_ready" data-type="meta-ad" data-angle="quality-craft" data-id="BR-101" data-score="0.9158">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">BR-101</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">quality-craft</span>
+                <span class="hl-preview">Paddock on Tuesday, yours by Thursday</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.92</span>
+                    <span class="verdict-label">PRODUCTION READY</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-101','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-101','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-101','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.9158 &nbsp; Rubric: 67.5/71.2 &nbsp; Rules: 32/32 &nbsp; Facts: 0.67 &nbsp; Hook: question</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="BR-101" data-field="primary_text" rows="8">Last Tuesday a farmer in Kempsey pulled beef from the cool room. By Thursday it was at the Brookvale hub.
+
+No middlemen. No weeks in cold storage.
+
+100% grass-fed beef, raised on open pasture. No hormones, no feedlots. The farm name is on every cut.
+
+Deeper red. Golden fat. Clean smell when it hits the pan.
+
+No commitment. Collect from Brookvale, Monday to Friday.
+
+See the general CSF risk warning + offer document.</textarea>
+                    <div class="char-count">418/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="BR-101" data-field="headline" rows="2">Paddock on Tuesday, yours by Thursday</textarea>
+                    <div class="char-count">37/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="BR-101" data-field="description" rows="3">100% grass-fed beef from named NSW farms. Collect fresh from the Brookvale hub.</textarea>
+                    <div class="char-count">79/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: brand</span>
+            <span class="tag">Tactic: sensory-detail</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Close-up hero shot of richly marbled, deep-red grass-fed beef on butcher paper, slightly unwrapped, with visible moisture and texture. Warm, natural lighting. No packaging. Small text overlay: 'Straight from farm to hub.'</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-101" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="quality-craft" data-id="BR-102" data-score="0.6147">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">BR-102</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">quality-craft</span>
+                <span class="hl-preview">Straight from farm to hub</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#f59e0b">0.61</span>
+                    <span class="verdict-label">NEEDS WORK</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-102','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-102','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-102','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.6147 &nbsp; Rubric: 54.8/71.2 &nbsp; Rules: 32/32 &nbsp; Facts: 0.50 &nbsp; Hook: statistic</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="BR-102" data-field="primary_text" rows="8">Three weeks. That's how long supermarket beef can sit in cold storage before you cook it.
+
+Our beef goes straight from farm to hub. Rachel Ward's grass-fed cattle graze regenerative pastures in Kempsey, NSW.
+
+No hormones. No feedlots. The farmer's name is on every cut.
+
+No middlemen. No wholesalers. Real farms straight to Brookvale.
+
+Collect when it suits, Monday to Friday. No commitment.
+
+See the general CSF risk warning + offer document.</textarea>
+                    <div class="char-count">443/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="BR-102" data-field="headline" rows="2">Straight from farm to hub</textarea>
+                    <div class="char-count">25/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="BR-102" data-field="description" rows="3">Farm-direct beef, chicken, salmon and eggs. Collect from Brookvale, no commitment.</textarea>
+                    <div class="char-count">82/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: brand</span>
+            <span class="tag">Tactic: supply-chain-contrast</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Split-screen visual: left side shows a long, grey highway with refrigerated trucks, desaturated and industrial. Right side shows close-up grass-fed beef on butcher paper with a handwritten farm name tag from Kempsey, NSW.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-102" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="rewrite" data-type="meta-ad" data-angle="empathy-founder" data-id="BR-103" data-score="0.0000">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">BR-103</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">empathy-founder</span>
+                <span class="hl-preview">I was lying to my kids about food</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#ef4444">0.00</span>
+                    <span class="verdict-label">REWRITE</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-103','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-103','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-103','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.0000 &nbsp; Rubric: 62.2/71.2 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: quoted_objection</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="BR-103" data-field="primary_text" rows="8">&quot;I never used to read the label.&quot;
+
+That's how it starts for most families. 'Farm fresh' chicken that never saw grass. 'Free range' eggs from sheds.
+
+I wanted to build what didn't exist: real farm-direct groceries you collect from local hubs. Zero middlemen.
+
+No commitment. Sydney families collect from the Brookvale hub, Monday to Friday.
+
+See the general CSF risk warning + offer document.</textarea>
+                    <div class="char-count">391/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="BR-103" data-field="headline" rows="2">I was lying to my kids about food</textarea>
+                    <div class="char-count">33/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="BR-103" data-field="description" rows="3">Built FarmThru so families finally know where their groceries come from. Real farms, fair prices.</textarea>
+                    <div class="char-count">97/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_campaign</span>
+            <span class="tag">Tactic: before-after</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Founder Rachel in a real grocery aisle looking frustrated (before), then smiling at a FarmThru hub holding labelled farm produce (after). Split-screen format. Warm, natural lighting.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-103" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="production_ready" data-type="meta-ad" data-angle="cause-purpose" data-id="BR-104" data-score="0.8526">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">BR-104</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">cause-purpose</span>
+                <span class="hl-preview">When did we stop knowing our farmers?</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.85</span>
+                    <span class="verdict-label">PRODUCTION READY</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-104','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-104','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-104','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.8526 &nbsp; Rubric: 60.8/71.2 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: invitation</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="BR-104" data-field="primary_text" rows="8">When did you last know the name of the farmer who raised your beef?
+
+Most of us stopped asking. The supermarket made it easy not to.
+
+FarmThru is a farm-direct grocery store. Every product traces to a named NSW farm. No middlemen between them and your family.
+
+Collect from the Brookvale hub, Monday to Friday. No commitment.
+
+See the general CSF risk warning + offer document.</textarea>
+                    <div class="char-count">377/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="BR-104" data-field="headline" rows="2">When did we stop knowing our farmers?</textarea>
+                    <div class="char-count">37/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="BR-104" data-field="description" rows="3">Farm-direct from named NSW farms. Zero middlemen. Collect from Brookvale, no commitment.</textarea>
+                    <div class="char-count">88/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_campaign</span>
+            <span class="tag">Tactic: reconnection</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Warm, nostalgic split-frame: left side shows a faded photo of a farmer handing produce over a gate; right side shows a modern FarmThru hub with real farm names on crates. Earthy palette.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-104" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="production_ready" data-type="meta-ad" data-angle="social-belonging" data-id="BR-105" data-score="0.8877">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">BR-105</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">social-belonging</span>
+                <span class="hl-preview">Ever feel proud buying groceries?</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.89</span>
+                    <span class="verdict-label">PRODUCTION READY</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-105','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-105','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-105','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.8877 &nbsp; Rubric: 63.2/71.2 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: question</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="BR-105" data-field="primary_text" rows="8">When was the last time you bought groceries and actually felt good about it?
+
+Not guilty. Not confused by labels. Just genuinely proud of what you're feeding your family.
+
+That feeling comes from knowing your food's story.
+
+FarmThru connects you with farms like Bundarra (pork) and Collins (wild-caught seafood). Honest food from people who grow it.
+
+No commitment. Collect from Brookvale Mon to Fri.
+
+See the general CSF risk warning + offer document.</textarea>
+                    <div class="char-count">452/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="BR-105" data-field="headline" rows="2">Ever feel proud buying groceries?</textarea>
+                    <div class="char-count">33/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="BR-105" data-field="description" rows="3">Farm-direct groceries from NSW farms you can name. Order online, collect from Brookvale.</textarea>
+                    <div class="char-count">88/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: brand</span>
+            <span class="tag">Tactic: curiosity-gap</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Warm overhead shot of a family unpacking a FarmThru bag on a kitchen bench: pork cuts in brown paper, wild-caught fish, farm eggs. Soft natural light. Small FarmThru logo bottom-right.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-105" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="production_ready" data-type="meta-ad" data-angle="transparency" data-id="BR-106" data-score="0.9158">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">BR-106</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">transparency</span>
+                <span class="hl-preview">See your farm before you buy</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.92</span>
+                    <span class="verdict-label">PRODUCTION READY</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-106','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-106','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-106','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.9158 &nbsp; Rubric: 65.2/71.2 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: direct_address</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="BR-106" data-field="primary_text" rows="8">Do you know the name of the farm that raised your last steak?
+
+Rachel's cattle graze on regenerative pastures in Kempsey NSW. No hormones, no feedlots.
+
+Collins catches our salmon wild off the South Coast. Every product shows the farmer's name and story. No middlemen marking up prices through long supply chains.
+
+Collect fresh from Brookvale, Monday to Friday. No commitment.
+
+See the general CSF risk warning + offer document.</textarea>
+                    <div class="char-count">429/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="BR-106" data-field="headline" rows="2">See your farm before you buy</textarea>
+                    <div class="char-count">28/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="BR-106" data-field="description" rows="3">Every product shows the farmer's name and story. Collect from Brookvale hub.</textarea>
+                    <div class="char-count">76/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_campaign</span>
+            <span class="tag">Tactic: product-origin-specificity</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Split screen showing a product label with farm details next to the actual farm/farmer photo, emphasizing the direct connection.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-106" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="comparison-switching" data-id="BR-107" data-score="0.5870">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">BR-107</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">comparison-switching</span>
+                <span class="hl-preview">Beef that didn't travel 10x further</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#f59e0b">0.59</span>
+                    <span class="verdict-label">NEEDS WORK</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-107','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-107','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-107','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.5870 &nbsp; Rubric: 59.8/71.2 &nbsp; Rules: 32/32 &nbsp; Facts: 0.33 &nbsp; Hook: if_then</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="BR-107" data-field="primary_text" rows="8">If your beef travelled 10x the distance before reaching the shelf, how fresh can it really be?
+
+Supermarket meat sits in cold storage for weeks. The farmer is far away. You'll never know their name.
+
+FarmThru is different. Grass-fed beef from named NSW farms goes direct to Brookvale. The farmer earns a fairer price.
+
+No commitment. Collect from Brookvale, Mon to Fri.
+
+See the general CSF risk warning + offer document.</textarea>
+                    <div class="char-count">421/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="BR-107" data-field="headline" rows="2">Beef that didn't travel 10x further</textarea>
+                    <div class="char-count">35/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="BR-107" data-field="description" rows="3">Farm-direct regenerative beef. Zero middlemen. Collect from Brookvale.</textarea>
+                    <div class="char-count">70/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_campaign</span>
+            <span class="tag">Tactic: supply-chain-comparison</span>
+            <span class="tag">Funnel: MOF</span>
+        </div><div class="creative-brief"><em>Split-screen visual: left side shows a long highway with a refrigerated truck (distance overlay) fading into grey; right side shows a vibrant NSW pasture with cattle and a short dotted line to a FarmThru hub.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-107" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="quality-craft" data-id="BR-108" data-score="0.8480">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">BR-108</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">quality-craft</span>
+                <span class="hl-preview">You can tell by the colour of the yolk</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.85</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-108','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-108','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-108','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.8480 &nbsp; Rubric: 62.5/71.2 &nbsp; Rules: 32/32 &nbsp; Facts: 0.67 &nbsp; Hook: seasonal</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="BR-108" data-field="primary_text" rows="8">Crack one of these eggs and the yolk is almost orange. Thick, vivid, the kind of colour that stops you mid-pour.
+
+That colour comes from pasture. Farmer Brown's hens roam regenerative land in NSW. No cages. No hormones.
+
+Straight from farm to hub. You taste the difference the moment they hit the pan.
+
+No middlemen. No commitment. Collect from Brookvale, Mon to Fri.
+
+See the general CSF risk warning + offer document.</textarea>
+                    <div class="char-count">419/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="BR-108" data-field="headline" rows="2">You can tell by the colour of the yolk</textarea>
+                    <div class="char-count">38/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="BR-108" data-field="description" rows="3">Pasture-raised NSW eggs, straight from farm. Zero middlemen. Collect from Brookvale.</textarea>
+                    <div class="char-count">84/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: brand</span>
+            <span class="tag">Tactic: seasonal-urgency</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Close-up of cracked egg showing vivid orange yolk against white shell, natural lighting on rustic wooden surface.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-108" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="rewrite" data-type="meta-ad" data-angle="empathy-founder" data-id="BR-109" data-score="0.0000">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">BR-109</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">empathy-founder</span>
+                <span class="hl-preview">I wonder about supermarket beef</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#ef4444">0.00</span>
+                    <span class="verdict-label">REWRITE</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-109','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-109','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-109','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.0000 &nbsp; Rubric: 62.0/71.2 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: Rachel_voice</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="BR-109" data-field="primary_text" rows="8">I've been farming cattle in Kempsey for years. When I see beef in supermarkets, I wonder: which farm? What feed? How many trucks did it pass through?
+
+That's why I partnered with FarmThru. Every piece of beef comes direct from named farms. You'll know exactly where it came from.
+
+No commitment. Collect from Brookvale, Mon to Fri.
+
+See the general CSF risk warning + offer document.</textarea>
+                    <div class="char-count">383/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="BR-109" data-field="headline" rows="2">I wonder about supermarket beef</textarea>
+                    <div class="char-count">31/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="BR-109" data-field="description" rows="3">Rachel Ward, Kempsey farmer, on partnering with FarmThru for transparent farm-direct food.</textarea>
+                    <div class="char-count">90/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_campaign</span>
+            <span class="tag">Tactic: personal-credibility</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Close-up of Rachel Ward looking thoughtfully at cattle grazing in open pasture, authentic farming setting.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-109" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="cause-purpose" data-id="BR-110" data-score="0.8175">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">BR-110</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">cause-purpose</span>
+                <span class="hl-preview">A grocery store that names farmers</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.82</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('BR-110','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('BR-110','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('BR-110','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.8175 &nbsp; Rubric: 58.2/71.2 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: if_then</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="BR-110" data-field="primary_text" rows="8">Every week you buy groceries that quietly erase the farmer who grew them.
+
+No name. No face. Just a barcode and a long cold chain.
+
+FarmThru exists because that erasure isn't inevitable. We built a grocery store with zero wholesalers. Pork from Bundarra. Wild-caught fish from Collins. Eggs from Farmer Brown.
+
+Collect from Brookvale, Mon to Fri.
+
+Own a piece of the grocery store that pays farmers first.
+
+See the general CSF risk warning + offer document.</textarea>
+                    <div class="char-count">457/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="BR-110" data-field="headline" rows="2">A grocery store that names farmers</textarea>
+                    <div class="char-count">34/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="BR-110" data-field="description" rows="3">Farm-direct. No middlemen. Real names behind every product you collect.</textarea>
+                    <div class="char-count">71/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_campaign</span>
+            <span class="tag">Tactic: positioning-statement</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Split frame: left side shows a generic supermarket barcode on shrink-wrapped meat, cold and anonymous. Right side shows a hand-written farm name tag on butcher paper (e.g. 'Bundarra Farm, NSW') with warm, natural light.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="BR-110" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="investment-thesis" data-id="CFE-101" data-score="0.7011">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">CFE-101</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">investment-thesis</span>
+                <span class="hl-preview">Closer farms, fairer prices.</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.70</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('CFE-101','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('CFE-101','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('CFE-101','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7011 &nbsp; Rubric: 51.5/71.2 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: if_then</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="CFE-101" data-field="primary_text" rows="8">Rachel's beef travels a fraction of the distance supermarket beef does, from Kempsey to families in Sydney.
+
+Supermarket beef can pass through warehouses spanning thousands of km.
+
+We built FarmThru to close that gap. Around 15 to 20 partner farms across NSW, all traceable.
+
+No commitment. Order online, collect from Brookvale.
+
+We're building something worth owning. Be part of it.
+
+See the general CSF risk warning + offer document.</textarea>
+                    <div class="char-count">435/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="CFE-101" data-field="headline" rows="2">Closer farms, fairer prices.</textarea>
+                    <div class="char-count">28/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="CFE-101" data-field="description" rows="3">Farm-direct grocery changing how Sydney families eat. No middlemen.</textarea>
+                    <div class="char-count">67/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_campaign</span>
+            <span class="tag">Tactic: traction-proof</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Split-screen visual: left side shows a long, winding conveyor belt with multiple checkpoints between a farm and a kitchen table. Right side shows a single clean line from farm to a FarmThru hub. Muted, documentary tone.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="CFE-101" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="production_ready" data-type="meta-ad" data-angle="investment-thesis" data-id="CFE-102" data-score="0.8632">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">CFE-102</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">investment-thesis</span>
+                <span class="hl-preview">Your fridge changed. Your portfolio?</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.86</span>
+                    <span class="verdict-label">PRODUCTION READY</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('CFE-102','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('CFE-102','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('CFE-102','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.8632 &nbsp; Rubric: 61.5/71.2 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: direct_address</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="CFE-102" data-field="primary_text" rows="8">You switched to regenerative groceries because the old system felt wrong.
+
+So why is your money still backing that same system?
+
+FarmThru is building a farm-direct grocery store with zero middlemen. Real farms across NSW, food that travels 10x less than the big chains.
+
+Now you can own a piece of what you already believe in.
+
+Values and money pointing the same direction.
+
+See the general CSF risk warning + offer document.</textarea>
+                    <div class="char-count">425/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="CFE-102" data-field="headline" rows="2">Your fridge changed. Your portfolio?</textarea>
+                    <div class="char-count">36/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="CFE-102" data-field="description" rows="3">Own a piece of the farm-direct grocery store you'd actually shop at.</textarea>
+                    <div class="char-count">68/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_campaign</span>
+            <span class="tag">Tactic: values-aligned-investing</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Split screen: left side shows a hand placing regenerative produce into a reusable bag at the Brookvale hub. Right side shows the same hand on a laptop, with a subtle FarmThru ownership page visible.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="CFE-102" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="cause-purpose" data-id="CFE-103" data-score="0.8105">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">CFE-103</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">cause-purpose</span>
+                <span class="hl-preview">She raises the beef. You can back it</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.81</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('CFE-103','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('CFE-103','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('CFE-103','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.8105 &nbsp; Rubric: 57.8/71.2 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: story</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="CFE-103" data-field="primary_text" rows="8">Rachel Ward used to lose money on every kilo of beef she sold through the supermarket supply chain.
+
+Her beef disappeared into a chain that added weeks and thousands of km. The farm name never reached the customer.
+
+FarmThru changed that. Now her beef goes straight from farm to Brookvale. Families trace every cut to her paddock.
+
+Be part of what we're building.
+
+See the general CSF risk warning + offer document.</textarea>
+                    <div class="char-count">415/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="CFE-103" data-field="headline" rows="2">She raises the beef. You can back it</textarea>
+                    <div class="char-count">36/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="CFE-103" data-field="description" rows="3">Farm-direct grocery, built by farmers and families. Be part of it.</textarea>
+                    <div class="char-count">66/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_campaign</span>
+            <span class="tag">Tactic: movement-narrative</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Close-up of a hand turning over generic supermarket meat packaging, label deliberately blurred. Contrast with a second frame showing a handwritten Bundarra Farm label on butcher paper.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="CFE-103" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="urgency-scarcity" data-id="CFE-104" data-score="0.7692">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">CFE-104</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">urgency-scarcity</span>
+                <span class="hl-preview">10x closer to your next meal</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.77</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('CFE-104','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('CFE-104','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('CFE-104','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7692 &nbsp; Rubric: 56.5/71.2 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: bold_claim</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="CFE-104" data-field="primary_text" rows="8">Most grocery runs feel routine. But what if I told you the food in your fridge travelled 10x further than your last weekend trip?
+
+The big chains move beef thousands of km through cold storage. Rachel Ward's regenerative cattle travel a fraction of that to Brookvale.
+
+Same quality. Fraction of the distance. No middlemen.
+
+Join the waitlist for early access when our hub capacity expands.
+
+No commitment.
+
+See the general CSF risk warning + offer document.</textarea>
+                    <div class="char-count">457/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="CFE-104" data-field="headline" rows="2">10x closer to your next meal</textarea>
+                    <div class="char-count">28/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="CFE-104" data-field="description" rows="3">Waitlist members get early access to FarmThru's Brookvale hub.</textarea>
+                    <div class="char-count">62/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_waitlist</span>
+            <span class="tag">Tactic: waitlist-early-access</span>
+            <span class="tag">Funnel: MOF</span>
+        </div><div class="creative-brief"><em>Split-screen visual: left side shows a long, winding highway with a refrigerated truck (overlaid '10x further'), right side shows a short country road from green pasture to the Brookvale hub. Clean, warm tones.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="CFE-104" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="meta-ad" data-angle="transparency-safety" data-id="CFE-105" data-score="0.7439">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">CFE-105</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">transparency-safety</span>
+                <span class="hl-preview">We asked where your food's been</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.74</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('CFE-105','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('CFE-105','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('CFE-105','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7439 &nbsp; Rubric: 53.0/71.2 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: confession</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="CFE-105" data-field="primary_text" rows="8">Most supermarket food can't tell you where it's been.
+
+Long supply chains lose traceability between the farm gate and the shelf. FarmThru exists because we thought you deserved better.
+
+Every product traces back to a named NSW farm or supplier. No middlemen. Just a short chain you can actually follow.
+
+See the general CSF risk warning + offer document.</textarea>
+                    <div class="char-count">354/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="CFE-105" data-field="headline" rows="2">We asked where your food's been</textarea>
+                    <div class="char-count">31/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="CFE-105" data-field="description" rows="3">Farm-direct groceries from named NSW farms. Traceable from paddock to pick-up.</textarea>
+                    <div class="char-count">78/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: brand</span>
+            <span class="tag">Tactic: radical-honesty</span>
+            <span class="tag">Funnel: MOF</span>
+        </div><div class="creative-brief"><em>Split screen: left side shows a blurred, generic supermarket aisle with a large question mark overlay. Right side shows a clear photo of a named NSW farm with produce and a visible farm name tag.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="CFE-105" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="production_ready" data-type="meta-ad" data-angle="social-belonging" data-id="CFE-106" data-score="0.9228">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">CFE-106</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">social-belonging</span>
+                <span class="hl-preview">They didn't shop. They wanted to own it.</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.92</span>
+                    <span class="verdict-label">PRODUCTION READY</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('CFE-106','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('CFE-106','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('CFE-106','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.9228 &nbsp; Rubric: 65.8/71.2 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: social_proof</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="CFE-106" data-field="primary_text" rows="8">When Rachel Ward started supplying us from her farm in Kempsey, something shifted.
+
+Families collecting from Brookvale started talking to each other. Swapping recipes. Asking which farm grew the carrots their kids actually ate.
+
+Then they asked: how do we become part of this? Not as customers. As co-owners.
+
+A community that owns what it eats.
+
+See the general CSF risk warning + offer document.</textarea>
+                    <div class="char-count">397/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="CFE-106" data-field="headline" rows="2">They didn't shop. They wanted to own it.</textarea>
+                    <div class="char-count">40/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="CFE-106" data-field="description" rows="3">Be part of a farm-direct grocery store built by the people who eat from it.</textarea>
+                    <div class="char-count">75/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_campaign</span>
+            <span class="tag">Tactic: community-ownership</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Photo-style image: a real moment at the Brookvale hub where a farmer and a customer are talking over a counter with recognisable produce (pork cuts, eggs). Warm lighting. Community feel, not retail feel.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="CFE-106" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="needs_work" data-type="meta-ad" data-angle="comparison-switching" data-id="CFE-107" data-score="0.6849">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">CFE-107</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">comparison-switching</span>
+                <span class="hl-preview">Same country, different food system</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#f59e0b">0.68</span>
+                    <span class="verdict-label">NEEDS WORK</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('CFE-107','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('CFE-107','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('CFE-107','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.6849 &nbsp; Rubric: 61.0/71.2 &nbsp; Rules: 32/32 &nbsp; Facts: 0.50 &nbsp; Hook: narrative</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="CFE-107" data-field="primary_text" rows="8">Last week I opened a pack of supermarket beef. The fine print said it travelled thousands of km and sat in cold storage for up to three weeks.
+
+Then I opened a box from FarmThru. Grass-fed beef from a named NSW farm. Straight from farm to hub.
+
+Same country. Completely different food system.
+
+Zero middlemen. Order online, collect from Brookvale. No commitment.
+
+Be part of what we're building.
+
+See the general CSF risk warning + offer document.</textarea>
+                    <div class="char-count">447/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="CFE-107" data-field="headline" rows="2">Same country, different food system</textarea>
+                    <div class="char-count">35/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="CFE-107" data-field="description" rows="3">Farm-direct grocery. Straight from farm to hub. Collect from Brookvale.</textarea>
+                    <div class="char-count">71/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_campaign</span>
+            <span class="tag">Tactic: system-alternative</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Split frame: left side shows a child at a dinner table looking curiously at her plate, warm kitchen lighting. Right side shows a sunlit pasture with cattle grazing. Text overlay at bottom: 'Straight from farm to hub.'</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="CFE-107" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="production_ready" data-type="meta-ad" data-angle="empathy-founder" data-id="CFE-108" data-score="0.8807">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">CFE-108</span>
+                <span class="type-badge" style="background:#2563eb">AD</span>
+                <span class="angle-label">empathy-founder</span>
+                <span class="hl-preview">She was losing money on every kilo</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.88</span>
+                    <span class="verdict-label">PRODUCTION READY</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('CFE-108','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('CFE-108','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('CFE-108','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.8807 &nbsp; Rubric: 62.8/71.2 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: story</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">PRIMARY TEXT</div>
+                    <textarea class="field-edit" data-id="CFE-108" data-field="primary_text" rows="8">Three months ago, Rachel Ward told me she was losing around two dollars on every kilo of beef she sold.
+
+The wholesalers took their cut. The supermarkets took theirs. Rachel got what was left.
+
+Now her beef goes straight from her farm to Sydney families via FarmThru. No middlemen. Just Rachel's farm to your nearest hub.
+
+Be part of what we're building.
+
+See the general CSF risk warning + offer document.</textarea>
+                    <div class="char-count">406/500</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">HEADLINE</div>
+                    <textarea class="field-edit" data-id="CFE-108" data-field="headline" rows="2">She was losing money on every kilo</textarea>
+                    <div class="char-count">34/40</div>
+                    <div class="field-label" style="margin-top:12px">DESCRIPTION</div>
+                    <textarea class="field-edit" data-id="CFE-108" data-field="description" rows="3">Real food from real farms. Be part of what we're building.</textarea>
+                    <div class="char-count">58/125</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_campaign</span>
+            <span class="tag">Tactic: founder-motivation</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Close-up of Rachel Ward on her farm, weathered hands holding fresh produce, with rolling green pastures in the background.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="CFE-108" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+</div>
+<script>
+const statuses = {};
+const notes = {};
+const filters = { type: 'all', status: 'all' };
+
+function toggleCard(topEl) {
+    const card = topEl.closest('.card');
+    card.classList.toggle('expanded');
+}
+
+function toggleAll() {
+    const cards = document.querySelectorAll('.card');
+    const anyExpanded = document.querySelector('.card.expanded');
+    cards.forEach(c => {
+        if (anyExpanded) c.classList.remove('expanded');
+        else c.classList.add('expanded');
+    });
+}
+
+function setStatus(id, status, btn) {
+    statuses[id] = status;
+    const card = document.querySelector(`[data-id="${id}"]`);
+    card.className = card.className.replace(/status-\w+/g, '') + ` status-${status}`;
+    card.querySelectorAll('.card-right .btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    updatePills();
+    updateCounter();
+}
+
+function setFilter(group, value, btn) {
+    filters[group] = value;
+    // Update active state in toolbar
+    if (group === 'type') {
+        document.querySelectorAll('.toolbar .tbtn').forEach((b, i) => {
+            if (i < 4) b.classList.remove('active');
+        });
+    }
+    btn.classList.add('active');
+    filterCards();
+}
+
+function filterCards() {
+    document.querySelectorAll('.card').forEach(c => {
+        const matchType = filters.type === 'all' || c.dataset.type === filters.type;
+        const id = c.dataset.id;
+        const matchStatus = filters.status === 'all' ||
+            (filters.status === 'unreviewed' && !statuses[id]) ||
+            statuses[id] === filters.status;
+        c.style.display = matchType && matchStatus ? '' : 'none';
+    });
+    updateCounter();
+}
+
+function setSort(mode, btn) {
+    const container = document.getElementById('cards');
+    const cards = Array.from(container.querySelectorAll('.card'));
+    // Update active state on sort buttons
+    btn.parentElement.querySelectorAll('.tbtn').forEach(b => {
+        if (b.textContent.includes('Score') || b.textContent.includes('Name'))
+            b.classList.remove('active');
+    });
+    btn.classList.add('active');
+    if (mode === 'score') {
+        cards.sort((a, b) => parseFloat(b.dataset.score) - parseFloat(a.dataset.score));
+    } else {
+        cards.sort((a, b) => a.dataset.id.localeCompare(b.dataset.id));
+    }
+    cards.forEach(c => container.appendChild(c));
+}
+
+function updatePills() {
+    const counts = { approved: 0, revise: 0, kill: 0 };
+    Object.values(statuses).forEach(s => { if (counts[s] !== undefined) counts[s]++; });
+    const total = 18;
+    const reviewed = Object.keys(statuses).length;
+    document.getElementById('pillPending').textContent = `Pending: ${total - reviewed}`;
+    document.getElementById('pillApproved').textContent = `Approved: ${counts.approved}`;
+    document.getElementById('pillEdited').textContent = `Edited: ${counts.revise}`;
+    document.getElementById('pillKilled').textContent = `Killed: ${counts.kill}`;
+}
+
+function updateCounter() {
+    const visible = document.querySelectorAll('.card:not([style*="display: none"])').length;
+    document.getElementById('counter').textContent = `Showing ${visible}/18`;
+}
+
+function saveJSON() {
+    document.querySelectorAll('.notes').forEach(n => {
+        if (n.value.trim()) notes[n.dataset.id] = n.value.trim();
+    });
+    // Also collect edited field values
+    const edits = {};
+    document.querySelectorAll('.field-edit').forEach(el => {
+        const id = el.dataset.id;
+        const field = el.dataset.field;
+        if (!edits[id]) edits[id] = {};
+        edits[id][field] = el.value;
+    });
+    const data = { statuses, notes, edits, exported: new Date().toISOString() };
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'review-r3-decisions.json';
+    a.click();
+}
+
+function exportCSV() {
+    document.querySelectorAll('.notes').forEach(n => {
+        if (n.value.trim()) notes[n.dataset.id] = n.value.trim();
+    });
+    let csv = 'id,type,angle,verdict,composite,status,notes\n';
+    document.querySelectorAll('.card').forEach(c => {
+        const id = c.dataset.id;
+        csv += `${id},${c.dataset.type},${c.dataset.angle},${c.dataset.verdict},` +
+               `${c.querySelector('.score-circle').textContent},${statuses[id]||'pending'},` +
+               `"${(notes[id]||'').replace(/"/g,'""')}"\n`;
+    });
+    const blob = new Blob([csv], {type: 'text/csv'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'review-r3.csv';
+    a.click();
+}
+
+updateCounter();
+</script>
+</body>
+</html>
