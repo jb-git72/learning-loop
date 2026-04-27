@@ -1,3 +1,7 @@
+# ARCHIVED 2026-04-27 pending Birchal v2 approval
+
+> Status: VIP scheme withdrawn from production on 2026-04-27 after Birchal pushed back on the s738ZE financial-assistance / fund-custody / investor-risk concerns. Replacement v2 proposal at `clients/farm-thru/BIRCHAL-PROPOSAL-V2.md` (decoupled $10 product credit + free CSF waitlist). If Birchal blesses the v1 VIP scheme below, restore via `clients/farm-thru/VIP-ARCHIVE-MANIFEST.md`. Do not reuse this content live until restoration.
+
 # FarmThru VIP — copy package
 
 **Issuer**: FarmThru Pty Ltd · **Date**: 2026-04-26 (revised post-Birchal response)
