@@ -1,4 +1,4 @@
-# Pre-campaign offer v2 — for review
+# Pre-campaign offer v2: for review
 
 **Date**: 2026-04-27
 **Purpose**: Revised proposal in response to your 2026-04-27 feedback. Replaces the original Pre-campaign VIP Access pitch.
@@ -50,16 +50,16 @@ The $5 buys product credit. The investor relationship is separate, free, and unc
 ## 6. Funds and refund handling
 
 - Voucher purchases settle to FarmThru's operating account
-- $5 is recognised as deferred revenue (voucher liability) on FarmThru's balance sheet, not held in trust. The CSF trust-account requirements in s981B + regs 7.8.01–7.8.03 (RG 262.103, RG 262.164–.165) bind the AFS-licensed intermediary that receives application money for share acquisition (Birchal). FarmThru's $5 is product consideration paid to the merchant for a $10 voucher; it is not application money and is not received by an AFS licensee for the purpose of acquiring shares
+- $5 is recognised as deferred revenue (voucher liability) on FarmThru's balance sheet, not held in trust. The CSF trust-account requirements in s981B + regs 7.8.01-7.8.03 (RG 262.103, RG 262.164-.165) bind the AFS-licensed intermediary that receives application money for share acquisition (Birchal). FarmThru's $5 is product consideration paid to the merchant for a $10 voucher; it is not application money and is not received by an AFS licensee for the purpose of acquiring shares
 - No refund of the $5 once the voucher is issued
-- If a voucher goes unredeemed by 2026-04-30 the $5 is retained per the promo terms (disclosed at purchase). The 3-year minimum expiry rule for gift cards in Schedule 2 of the Competition and Consumer Act 2010 (the Australian Consumer Law) does not apply because reg 89C of the Competition and Consumer Regulations 2010 exempts gift cards "supplied as part of a temporary marketing promotion to the purchaser of goods or services in connection with the purchase of the goods or services" — the ACCC's published example of an exempt promotion is structurally identical (voucher tied to the purchase of a particular good within a defined campaign window)
+- If a voucher goes unredeemed by 2026-04-30 the $5 is retained per the promo terms (disclosed at purchase). The 3-year minimum expiry rule for gift cards in Schedule 2 of the Competition and Consumer Act 2010 (the Australian Consumer Law) does not apply because reg 89C of the Competition and Consumer Regulations 2010 exempts gift cards "supplied as part of a temporary marketing promotion to the purchaser of goods or services in connection with the purchase of the goods or services". The ACCC's published example of an exempt promotion is structurally identical (voucher tied to the purchase of a particular good within a defined campaign window)
 - Voucher holders are unsecured creditors of FarmThru in insolvency (disclosed at purchase)
 
 ## 7. Mandatory disclosures on every CSF-touching channel
 
 These appear on the CSF waitlist landing page, welcome email, and any drip email referencing the offer:
 
-1. **s738ZG(6) safe-harbour statement**: *"Always consider the general CSF risk warning and offer document before investing."* (s738ZG(6) does not prescribe verbatim wording — RG 261.92 requires the statement to direct readers to the offer document and the general risk warning. We use the canonical formulation our internal compliance scorer enforces across all FarmThru CSF-touching content per `shared/regulatory/csf-australia/compliance_rules.json` rule ADV-001.)
+1. **s738ZG(6) safe-harbour statement**: *"Always consider the general CSF risk warning and offer document before investing."* (s738ZG(6) does not prescribe verbatim wording. RG 261.92 requires the statement to direct readers to the offer document and the general risk warning. We use the canonical formulation our internal compliance scorer enforces across all FarmThru CSF-touching content per `shared/regulatory/csf-australia/compliance_rules.json` rule ADV-001.)
 2. **No-link statement**: *"The Save $10 product promo on farmthru.com.au is a separate consumer offer. Buying a voucher does not entitle you to invest, secure shares, or affect your access to any future investment offer."*
 
 ## 8. Mandatory disclosures on the Save $10 promo page
@@ -88,5 +88,5 @@ These appear on the CSF waitlist landing page, welcome email, and any drip email
 - Please confirm the decoupled structure is acceptable
 - Please review the attached draft copy across all touchpoints. All copy will be run through our internal compliance scorer (`shared/regulatory/csf-australia/compliance_rules.json`, derived from RG 261/262) before final submission for your sign-off
 - Please review the CSF-waitlist thank-you page wording in particular, since it is the one place where a CSF-touching channel may mention the voucher (per section 5)
-- Please flag any concerns about the internal monitoring proxy we propose to apply (the ~25% non-waitlist voucher buyer KPI) — we recognise this is an internal proxy, not a regulatory threshold
+- Please flag any concerns about the internal monitoring proxy we propose to apply (the ~25% non-waitlist voucher buyer KPI). We recognise this is an internal proxy, not a regulatory threshold
 - Please confirm Birchal's RG 262.144 gatekeeper review of this design treats the structure as "not misleading"
