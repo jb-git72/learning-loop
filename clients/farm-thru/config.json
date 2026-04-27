@@ -46,13 +46,17 @@
         "differentiation": 1.5,
         "opening_diversity": 0.75,
         "sentence_variance": 0.5,
-        "emotional_register": 0.75
+        "emotional_register": 0.75,
+        "ownership_framing": 0.75,
+        "scarcity_register": 0.5,
+        "founder_voice": 0.5,
+        "csf_placement": 0.5
       },
-      "max_score": 71.25,
+      "max_score": 87.50,
       "thresholds": {
-        "production_ready": 51,
-        "strong_draft": 44,
-        "needs_work": 32,
+        "production_ready": 63,
+        "strong_draft": 54,
+        "needs_work": 39,
         "rewrite": 0
       }
     },

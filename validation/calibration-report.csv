@@ -1,0 +1,7 @@
+ad_id,label,old_composite,new_composite,delta,verdict,d_ownership_framing,d_scarcity_register,d_founder_voice,d_csf_placement,d_scroll_stop_hook,d_specificity,d_cta_clarity
+LIVE-FMTH-NEVER-DONE,live_2_dollar_lead,0.7133,0.7247,0.0114,strong_draft,5,5,5,5,5,4,5
+BR-101,loop_prior_production_ready_0.929,0.9294,0.6034,-0.326,needs_work,3,3,2,5,5,4,5
+BR-103,loop_prior_production_ready_0.905,0.9053,0.464,-0.4413,rewrite,3,3,2,5,5,3,5
+BR-106,loop_prior_production_ready_0.933,0.9333,0.7,-0.2333,strong_draft,3,3,2,5,4,4,5
+BR-109,loop_prior_production_ready_0.937,0.9368,0.6886,-0.2482,needs_work,3,3,4,5,4,3,5
+CFE-108,loop_prior_production_ready_0.944,0.9439,0.0,-0.9439,rewrite,4,3,5,5,5,4,5
