@@ -26,7 +26,5 @@ Drips 1-2 are signup-anchored. Drip 3 is launch-anchored (2026-06-23).
 - Non-VIP: convince. Upgrade CTA each touch.
 - VIP: prepare. Build confidence, pre-empt paralysis, reward commitment.
 
-## Investment disclaimer
-If email mentions investment, Birchal, equity, $50, $5 deposit, or waitlist: add as FINAL paragraph before sign-off: "This is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal."
-</content>
-</invoke>
+## Investment disclaimer (Wave 5b canonical)
+If email mentions investment/Birchal/equity/$50/$5 deposit/waitlist, append as FINAL paragraph: "Always consider the general CSF risk warning and offer document before investing." Post-Birchal-pivot. Do NOT use older "not financial advice" boilerplate.

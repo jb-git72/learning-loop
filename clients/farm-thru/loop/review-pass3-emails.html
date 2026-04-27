@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmThru Round 3 Review</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #1a1a1a; padding: 16px 20px; }
+.header { max-width: 1400px; margin: 0 auto 12px; }
+.header-info { font-size: 13px; color: #666; margin-bottom: 10px; }
+.status-bar { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+.status-pill { padding: 4px 12px; border-radius: 4px; font-size: 13px; font-weight: 500; background: #f0f0f0; }
+.status-pill.green { border: 1.5px solid #22c55e; color: #166534; }
+.status-pill.blue { border: 1.5px solid #3b82f6; color: #1d4ed8; }
+.status-pill.red { border: 1.5px solid #ef4444; color: #991b1b; }
+.toolbar { display: flex; gap: 0; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+.toolbar .sep { width: 16px; }
+.tbtn { padding: 6px 14px; border: 1px solid #ddd; background: white; cursor: pointer; font-size: 13px; font-weight: 500; color: #555; }
+.tbtn:first-child { border-radius: 6px 0 0 6px; }
+.tbtn:last-child { border-radius: 0 6px 6px 0; }
+.tbtn:not(:first-child) { border-left: none; }
+.tbtn.active { background: #1a1a1a; color: white; border-color: #1a1a1a; }
+.toolbar-right { margin-left: auto; display: flex; gap: 6px; }
+.toolbar-right .tbtn { border-radius: 6px; border: 1px solid #ddd; }
+.toolbar-right .tbtn:not(:first-child) { border-left: 1px solid #ddd; }
+.cards { max-width: 1400px; margin: 0 auto; }
+.card { background: white; border-radius: 8px; margin-bottom: 12px; padding: 16px 20px; border-left: 4px solid transparent; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.card.status-approved { border-left-color: #22c55e; }
+.card.status-revise { border-left-color: #3b82f6; }
+.card.status-kill { border-left-color: #ef4444; }
+.card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
+.card-id { font-weight: 700; font-size: 16px; }
+.type-badge { color: white; padding: 2px 10px; border-radius: 3px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; }
+.angle-label { color: #666; font-size: 13px; }
+.hl-preview { color: #444; font-size: 13px; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.card-right { display: flex; align-items: center; gap: 8px; margin-left: auto; flex-shrink: 0; }
+.score-circle { color: white; font-weight: 700; font-size: 13px; padding: 4px 10px; border-radius: 20px; min-width: 50px; text-align: center; }
+.verdict-label { font-size: 12px; font-weight: 600; color: #666; text-transform: uppercase; min-width: 80px; text-align: center; }
+.btn { padding: 5px 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px; cursor: pointer; background: white; font-weight: 500; }
+.btn-approve.active { background: #22c55e; color: white; border-color: #22c55e; }
+.btn-revise.active { background: #3b82f6; color: white; border-color: #3b82f6; }
+.btn-kill.active { background: #ef4444; color: white; border-color: #ef4444; }
+.btn:hover { opacity: 0.85; }
+.score-summary { font-size: 12px; color: #888; margin-bottom: 12px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 12px; }
+.field-label { font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.field-edit { width: 100%; padding: 10px; border: 1px solid #e0e0e0; border-radius: 6px; font-family: inherit; font-size: 14px; line-height: 1.6; resize: vertical; color: #1a1a1a; }
+.field-edit:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 2px rgba(59,130,246,0.15); }
+.field-static { font-size: 14px; color: #444; padding: 4px 0; }
+.char-count { font-size: 11px; color: #aaa; text-align: right; margin-top: 2px; }
+.tags-row { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.tag { background: #f0f0f0; padding: 3px 10px; border-radius: 4px; font-size: 12px; color: #555; }
+.creative-brief { font-size: 13px; color: #777; margin-bottom: 10px; }
+.notes-row { margin-top: 8px; }
+.notes { width: 100%; height: 50px; padding: 8px; border: 1px solid #e0e0e0; border-radius: 6px; font-family: inherit; font-size: 13px; resize: vertical; }
+.counter { max-width: 1400px; margin: 0 auto 12px; font-size: 13px; color: #888; }
+.card-top { cursor: pointer; user-select: none; }
+.card-top:hover { opacity: 0.85; }
+.card-body { display: none; }
+.card.expanded .card-body { display: block; }
+.collapse-indicator { font-size: 12px; color: #aaa; margin-right: 4px; transition: transform 0.15s; }
+.card.expanded .collapse-indicator { transform: rotate(90deg); }
+</style>
+</head>
+<body>
+<div class="header">
+    <div class="header-info">8 items | Brand guidelines v1.1 | Hub-and-collect | No named competitors | 0 critical failures</div>
+    <div class="status-bar" id="statusBar">
+        <span class="status-pill">8 items</span>
+        <span class="status-pill" id="pillPending">Pending: 8</span>
+        <span class="status-pill green" id="pillApproved">Approved: 0</span>
+        <span class="status-pill blue" id="pillEdited">Edited: 0</span>
+        <span class="status-pill red" id="pillKilled">Killed: 0</span>
+    </div>
+    <div class="toolbar">
+        <button class="tbtn active" onclick="setFilter('type','all',this)">All</button>
+        <button class="tbtn" onclick="setFilter('type','meta-ad',this)">Ads</button>
+        <button class="tbtn" onclick="setFilter('type','landing-page',this)">Pages</button>
+        <button class="tbtn" onclick="setFilter('type','email',this)">Emails</button>
+        <div class="sep"></div>
+        <button class="tbtn" onclick="setFilter('status','unreviewed',this)">Pending</button>
+        <button class="tbtn" onclick="setFilter('status','approved',this)">Approved</button>
+        <button class="tbtn" onclick="setFilter('status','revise',this)">Edited</button>
+        <button class="tbtn" onclick="setFilter('status','kill',this)">Killed</button>
+        <div class="sep"></div>
+        <button class="tbtn active" onclick="setSort('score',this)">Score &#9660;</button>
+        <button class="tbtn" onclick="setSort('name',this)">Name</button>
+        <div class="toolbar-right">
+            <button class="tbtn" onclick="toggleAll()">Expand All</button>
+            <button class="tbtn" onclick="saveJSON()">Save JSON</button>
+            <button class="tbtn" onclick="exportCSV()">CSV</button>
+        </div>
+    </div>
+</div>
+<div class="counter" id="counter"></div>
+<div class="cards" id="cards">
+    
+        <div class="card" data-verdict="strong_draft" data-type="email" data-angle="product-first" data-id="EM-NONVIP-01" data-score="0.7778">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">EM-NONVIP-01</span>
+                <span class="type-badge" style="background:#059669">EMAIL</span>
+                <span class="angle-label">product-first</span>
+                <span class="hl-preview">What's actually inside the Brookvale hub</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.78</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('EM-NONVIP-01','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('EM-NONVIP-01','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('EM-NONVIP-01','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7778 &nbsp; Rubric: 62.2/73.8 &nbsp; Rules: 31/32 &nbsp; Facts: 0.50 &nbsp; Hook: story</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">BODY</div>
+                    <textarea class="field-edit" data-id="EM-NONVIP-01" data-field="body" rows="12">Hi {first_name},
+
+Yesterday a van pulled up to our Brookvale site.
+
+Local farms unloaded their produce, packed the same morning they left the farm. Things you'd recognise if you ever stood in the paddock yourself.
+
+No distribution centre. No 2,400km detour. Straight from farm to hub.
+
+Here's what that actually means for you: you order online, you collect from Brookvale Monday to Friday, and you know exactly which farm your dinner came from. That's the whole model.
+
+We're not open yet. But the farms are ready, the hub is coming, and the waitlist is how you get first access when we do.
+
+No commitment. Order when you want. Collect from Brookvale Monday to Friday.
+
+If you want to go further than just being a customer — if you want to own a piece of the grocery store that pays farmers first — there's a way to do that too. More on that in a few days.
+
+For now, get on the list.
+
+Rachel &amp; the FarmThru team
+
+Always consider the general CSF risk warning and offer document before investing.</textarea>
+                    <div class="char-count">994/2000</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">SUBJECT</div>
+                    <textarea class="field-edit" data-id="EM-NONVIP-01" data-field="subject" rows="2">What's actually inside the Brookvale hub</textarea>
+                    <div class="char-count">40/60</div>
+                    <div class="field-label" style="margin-top:12px">PREHEADER</div>
+                    <textarea class="field-edit" data-id="EM-NONVIP-01" data-field="preheader" rows="2">Local farms, one cold room, and a grocery store that doesn't exist yet, but almost does.</textarea>
+                    <div class="char-count">88/100</div>
+                    <div class="field-label" style="margin-top:12px">SENDER</div>
+                    <div class="field-static">Rachel &amp; the FarmThru team</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: brand</span>
+            <span class="tag">Tactic: segment:nonvip|drip-1|signup+3d|named-farms</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Clean, editorial layout. Hero image: a van unloading produce at a hub door, morning light. Farm names in bold inline. One text CTA button below sign-off.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="EM-NONVIP-01" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="rewrite" data-type="email" data-angle="cause-purpose" data-id="EM-NONVIP-02" data-score="0.0000">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">EM-NONVIP-02</span>
+                <span class="type-badge" style="background:#059669">EMAIL</span>
+                <span class="angle-label">cause-purpose</span>
+                <span class="hl-preview">Buying organic doesn't fix the problem</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#ef4444">0.00</span>
+                    <span class="verdict-label">REWRITE</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('EM-NONVIP-02','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('EM-NONVIP-02','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('EM-NONVIP-02','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.0000 &nbsp; Rubric: 54.8/73.8 &nbsp; Rules: 31/32 &nbsp; Facts: 1.00 &nbsp; Hook: contrarian</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">BODY</div>
+                    <textarea class="field-edit" data-id="EM-NONVIP-02" data-field="body" rows="12">Hi {first_name},
+
+You switched to organic. Maybe you started reading labels.
+
+But here's what nobody tells you: the farmer growing that certified organic beef still gets paid last, after the wholesaler, the warehouse, and the supermarket take their cut.
+
+The label changed. The structure didn't.
+
+At FarmThru, we cut every middleman between farm and hub. No wholesalers. No warehouses. Zero. Farmers like Bundarra Farm (pork), Collins Wild Caught (South Coast seafood), and Farmer Brown (eggs) get paid more because there's nobody else in the way.
+
+But here's the thing: a grocery store built this way needs owners who actually care about it.
+
+Not a venture fund. Not a supermarket chain buying us out in five years. People like you.
+
+That's why we're opening a community equity round on Birchal in June. You'd become a part-owner of FarmThru, alongside the farmers and the families already ordering from us.
+
+The minimum is small enough that this isn't a big financial decision. But it is a structural one. You'd own a piece of the grocery store that pays farmers first.
+
+No commitment to invest today. The round opens 23 June 2026. Getting on the VIP waitlist means you see the offer 24 hours before the public, while allocation is still open.
+
+If that sounds like where you want your values and your money pointing, join the VIP list below.
+
+Rachel &amp; the FarmThru team
+
+Always consider the general CSF risk warning and offer document before investing.</textarea>
+                    <div class="char-count">1454/2000</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">SUBJECT</div>
+                    <textarea class="field-edit" data-id="EM-NONVIP-02" data-field="subject" rows="2">Buying organic doesn't fix the problem</textarea>
+                    <div class="char-count">38/60</div>
+                    <div class="field-label" style="margin-top:12px">PREHEADER</div>
+                    <textarea class="field-edit" data-id="EM-NONVIP-02" data-field="preheader" rows="2">The farmer still gets squeezed. Here's what actually changes it.</textarea>
+                    <div class="char-count">64/100</div>
+                    <div class="field-label" style="margin-top:12px">SENDER</div>
+                    <div class="field-static">Rachel &amp; the FarmThru team</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_waitlist</span>
+            <span class="tag">Tactic: segment:nonvip|drip-2|signup+10d|cfe-mechanism</span>
+            <span class="tag">Funnel: MOF</span>
+        </div><div class="creative-brief"><em>Clean, text-forward founder email. No hero image. Optional inline photo of a real partner farm (Bundarra or Collins) mid-scroll to ground the proof point. Single CTA button: 'Join the VIP waitlist' in FarmThru brand green.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="EM-NONVIP-02" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="rewrite" data-type="email" data-angle="launch-countdown" data-id="EM-NONVIP-03" data-score="0.0000">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">EM-NONVIP-03</span>
+                <span class="type-badge" style="background:#059669">EMAIL</span>
+                <span class="angle-label">launch-countdown</span>
+                <span class="hl-preview">One week, {first_name}. The round opens 23 June.</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#ef4444">0.00</span>
+                    <span class="verdict-label">REWRITE</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('EM-NONVIP-03','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('EM-NONVIP-03','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('EM-NONVIP-03','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.0000 &nbsp; Rubric: 54.5/73.8 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: announcement</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">BODY</div>
+                    <textarea class="field-edit" data-id="EM-NONVIP-03" data-field="body" rows="12">Hi {first_name},
+
+Seven days from now, the FarmThru round opens.
+
+Not a soft launch. Not a waitlist shuffle. The actual moment you can own a piece of the grocery store that pays farmers first.
+
+You joined because something felt wrong. The supermarket didn't know where your food came from. Honestly, neither did you. FarmThru fixes that: order online, collect from your nearest hub, and know exactly which farm grew it.
+
+But this email isn't about the food.
+
+It's about Tuesday, 23 June.
+
+Here's your two-minute game plan before the round opens:
+
+1. Block 23 June in your calendar now. Early investors on day one set the tone for the whole round.
+2. Read the offer document on Birchal before you invest. Not after. Before.
+3. Decide your number. Minimum is $50. Take sixty seconds and pick a figure you're genuinely comfortable with.
+
+That's it. Three steps. Two minutes.
+
+When the round opens next Tuesday, you won't be scrambling. You'll already know your answer.
+
+If you want early access and a 24-hour head start before the public, upgrade to a VIP spot before Sunday. Details on the page below.
+
+Always consider the general CSF risk warning and offer document before investing.</textarea>
+                    <div class="char-count">1182/2000</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">SUBJECT</div>
+                    <textarea class="field-edit" data-id="EM-NONVIP-03" data-field="subject" rows="2">One week, {first_name}. The round opens 23 June.</textarea>
+                    <div class="char-count">48/60</div>
+                    <div class="field-label" style="margin-top:12px">PREHEADER</div>
+                    <textarea class="field-edit" data-id="EM-NONVIP-03" data-field="preheader" rows="2">Here's exactly what to do before Tuesday. Takes two minutes.</textarea>
+                    <div class="char-count">60/100</div>
+                    <div class="field-label" style="margin-top:12px">SENDER</div>
+                    <div class="field-static">Rachel &amp; the FarmThru team</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_waitlist</span>
+            <span class="tag">Tactic: segment:nonvip|drip-3|launch-7d|calendar-prep</span>
+            <span class="tag">Funnel: BOF</span>
+        </div><div class="creative-brief"><em>Clean, single-column layout. Bold '23 June' as a visual anchor near the top. Numbered list styled as a simple checklist graphic. Warm off-white background, FarmThru green CTA button.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="EM-NONVIP-03" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="email" data-angle="insider-note" data-id="EM-VIP-01" data-score="0.8034">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">EM-VIP-01</span>
+                <span class="type-badge" style="background:#059669">EMAIL</span>
+                <span class="angle-label">insider-note</span>
+                <span class="hl-preview">What I told the farmer on Tuesday</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.80</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('EM-VIP-01','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('EM-VIP-01','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('EM-VIP-01','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.8034 &nbsp; Rubric: 59.2/73.8 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: story</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">BODY</div>
+                    <textarea class="field-edit" data-id="EM-VIP-01" data-field="body" rows="12">Hi {first_name},
+
+On Tuesday I was on the phone with one of our partner farmers. He asked me straight: &quot;Rachel, why didn't you just take investor money and scale fast?&quot;
+
+I told him the truth. Every VC conversation I had came back to the same pressure point. Lift margins, trim the farm gate price, optimise the unit economics. Polite language for the same old outcome: farmers absorb the cost so the cap table wins.
+
+That's the moment FarmThru stopped being a business plan and became something I had to own differently.
+
+So we chose equity crowdfunding on Birchal. The people who believe in paying farmers first get to be part of the structure that makes it stick, not just customers of it.
+
+You're on the VIP list because you placed a refundable deposit. That means on 22 June 2026, you get the Birchal link 24 hours before it goes public. Day one funding matters. It signals to every farmer we work with that this model has real backing.
+
+I won't send you a pitch deck. But if you have questions before launch, just reply to this email. I read every one.
+
+Always consider the general CSF risk warning and offer document before investing.</textarea>
+                    <div class="char-count">1140/2000</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">SUBJECT</div>
+                    <textarea class="field-edit" data-id="EM-VIP-01" data-field="subject" rows="2">What I told the farmer on Tuesday</textarea>
+                    <div class="char-count">33/60</div>
+                    <div class="field-label" style="margin-top:12px">PREHEADER</div>
+                    <textarea class="field-edit" data-id="EM-VIP-01" data-field="preheader" rows="2">An honest note I'd only share with people already in. Keep it between us.</textarea>
+                    <div class="char-count">73/100</div>
+                    <div class="field-label" style="margin-top:12px">SENDER</div>
+                    <div class="field-static">Rachel &amp; the FarmThru team</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_waitlist</span>
+            <span class="tag">Tactic: segment:vip|drip-1|deposit+3d|behind-scenes</span>
+            <span class="tag">Funnel: MOF</span>
+        </div><div class="creative-brief"><em>Clean founder-letter format. No hero image. Rachel's name in the sign-off with a handwritten-style font if available. Warm off-white background, single column, generous line spacing to match the personal tone.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="EM-VIP-01" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="email" data-angle="mechanism-walkthrough" data-id="EM-VIP-02" data-score="0.7864">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">EM-VIP-02</span>
+                <span class="type-badge" style="background:#059669">EMAIL</span>
+                <span class="angle-label">mechanism-walkthrough</span>
+                <span class="hl-preview">Your 24-hour head start: here's exactly how it works</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.79</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('EM-VIP-02','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('EM-VIP-02','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('EM-VIP-02','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7864 &nbsp; Rubric: 58.0/73.8 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: story</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">BODY</div>
+                    <textarea class="field-edit" data-id="EM-VIP-02" data-field="body" rows="12">Hi {first_name},
+
+Last week a VIP asked me: &quot;What actually happens when the round opens?&quot;
+
+I realised I'd never spelled it out properly. So here it is.
+
+---
+
+On the evening of 22 June, you get an email from me. Subject line will be unmissable. Inside is your direct Birchal link, live 24 hours before the public sees anything.
+
+You click through. You choose your amount. You confirm. That's it.
+
+No scramble. No watching a countdown with everyone else. You're already in.
+
+---
+
+Why does the head start matter?
+
+Crowdfunding rounds can fill fast, especially when a community has been waiting. VIPs who move on day one lock their position before the public wave arrives.
+
+The refundable deposit you placed is your proof of intent. It's not deducted from your investment. It just held your spot.
+
+---
+
+If you want to think it over before 23 June, that's exactly what this window is for. Have a number in mind. Know your &quot;yes&quot; before the link lands.
+
+I'll be in your inbox on 22 June.
+
+Rachel
+
+---
+
+Always consider the general CSF risk warning and offer document before investing.</textarea>
+                    <div class="char-count">1076/2000</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">SUBJECT</div>
+                    <textarea class="field-edit" data-id="EM-VIP-02" data-field="subject" rows="2">Your 24-hour head start: here's exactly how it works</textarea>
+                    <div class="char-count">52/60</div>
+                    <div class="field-label" style="margin-top:12px">PREHEADER</div>
+                    <textarea class="field-edit" data-id="EM-VIP-02" data-field="preheader" rows="2">Walk through the mechanics before launch day. No surprises.</textarea>
+                    <div class="char-count">59/100</div>
+                    <div class="field-label" style="margin-top:12px">SENDER</div>
+                    <div class="field-static">Rachel &amp; the FarmThru team</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_campaign</span>
+            <span class="tag">Tactic: segment:vip|drip-2|deposit+10d|offer-mechanics</span>
+            <span class="tag">Funnel: MOF</span>
+        </div><div class="creative-brief"><em>Clean, editorial layout. No hero image needed. Use a simple horizontal rule to separate the three sections. Warm off-white background, dark text. CTA button below sign-off: 'See the Birchal offer page'.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="EM-VIP-02" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="email" data-angle="head-start-announcement" data-id="EM-VIP-03" data-score="0.8068">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">EM-VIP-03</span>
+                <span class="type-badge" style="background:#059669">EMAIL</span>
+                <span class="angle-label">head-start-announcement</span>
+                <span class="hl-preview">Tomorrow is yours, {first_name}</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.81</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('EM-VIP-03','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('EM-VIP-03','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('EM-VIP-03','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.8068 &nbsp; Rubric: 59.5/73.8 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: announcement</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">BODY</div>
+                    <textarea class="field-edit" data-id="EM-VIP-03" data-field="body" rows="12">Hi {first_name},
+
+Remember why you placed that refundable deposit?
+
+Not for a discount. Not for a freebie. Because you wanted to be the kind of person who owns a piece of the grocery store that pays farmers first, not the kind who hears about it six months later and wishes they'd moved sooner.
+
+Tomorrow is that moment.
+
+23 June 2026. The FarmThru round opens on Birchal, and your VIP link lands in this inbox 24 hours before the public list sees it. Day one funding matters. The investors who move first set the tone for every family and farmer who comes after.
+
+The link is yours. The timing is yours.
+
+Watch for our email tomorrow morning.
+
+Always consider the general CSF risk warning and offer document before investing.
+
+Rachel &amp; the FarmThru team</textarea>
+                    <div class="char-count">754/2000</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">SUBJECT</div>
+                    <textarea class="field-edit" data-id="EM-VIP-03" data-field="subject" rows="2">Tomorrow is yours, {first_name}</textarea>
+                    <div class="char-count">31/60</div>
+                    <div class="field-label" style="margin-top:12px">PREHEADER</div>
+                    <textarea class="field-edit" data-id="EM-VIP-03" data-field="preheader" rows="2">Your VIP link goes live 23 June. 24 hours before anyone else sees it.</textarea>
+                    <div class="char-count">69/100</div>
+                    <div class="field-label" style="margin-top:12px">SENDER</div>
+                    <div class="field-static">Rachel &amp; the FarmThru team</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_campaign</span>
+            <span class="tag">Tactic: segment:vip|drip-3|launch-1d|birchal-link</span>
+            <span class="tag">Funnel: BOF</span>
+        </div><div class="creative-brief"><em>Clean, warm founder-voice layout. Single column, no hero image needed. Bold the date '23 June 2026' and '$50' minimum in-body. Soft off-white background, FarmThru green CTA button reading 'Go to Birchal tomorrow' — greyed out or replaced with a countdown-style note since the link arrives the next day.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="EM-VIP-03" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="email" data-angle="onboarding-welcome" data-id="EM-WELCOME-NONVIP" data-score="0.7181">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">EM-WELCOME-NONVIP</span>
+                <span class="type-badge" style="background:#059669">EMAIL</span>
+                <span class="angle-label">onboarding-welcome</span>
+                <span class="hl-preview">You're on the list. Here's what that actually means.</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.72</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('EM-WELCOME-NONVIP','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('EM-WELCOME-NONVIP','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('EM-WELCOME-NONVIP','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7181 &nbsp; Rubric: 55.8/73.8 &nbsp; Rules: 31/32 &nbsp; Facts: 1.00 &nbsp; Hook: direct_address</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">BODY</div>
+                    <textarea class="field-edit" data-id="EM-WELCOME-NONVIP" data-field="body" rows="12">Hi {first_name},
+
+Someone asked me last week: &quot;What do I actually get by joining the FarmThru waitlist?&quot;
+
+I realised I'd never spelled it out. So here it is.
+
+You're first to know when our Brookvale hub opens. You'll get early access to order direct from farms like Rachel's Farm, before we open to the public. No commitment. Order when you want. Collect Monday to Friday.
+
+That's the waitlist. It's genuinely useful, and it costs nothing.
+
+But there's a second thing happening alongside it.
+
+We're raising a crowdfunding round on Birchal so everyday people can own a piece of FarmThru, not just shop here. VIP supporters get to see the offer 24 hours before anyone else, on the morning of 23 June.
+
+To lock in VIP access, there's a small refundable deposit. If you decide not to invest when the round opens, it comes straight back to you. No questions.
+
+If you want to be a partner in this, not just a customer, upgrading takes about 60 seconds.
+
+Always consider the general CSF risk warning and offer document before investing.</textarea>
+                    <div class="char-count">1029/2000</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">SUBJECT</div>
+                    <textarea class="field-edit" data-id="EM-WELCOME-NONVIP" data-field="subject" rows="2">You're on the list. Here's what that actually means.</textarea>
+                    <div class="char-count">52/60</div>
+                    <div class="field-label" style="margin-top:12px">PREHEADER</div>
+                    <textarea class="field-edit" data-id="EM-WELCOME-NONVIP" data-field="preheader" rows="2">No commitment. Order when you want. Collect from Brookvale Monday to Friday.</textarea>
+                    <div class="char-count">76/100</div>
+                    <div class="field-label" style="margin-top:12px">SENDER</div>
+                    <div class="field-static">Rachel &amp; the FarmThru team</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_waitlist</span>
+            <span class="tag">Tactic: segment:nonvip|welcome|upgrade-to-vip</span>
+            <span class="tag">Funnel: TOF</span>
+        </div><div class="creative-brief"><em>Clean, founder-voice layout. Rachel's signature at close. Single upgrade CTA button below the final paragraph, above the disclaimer. Warm off-white background, no hero image needed.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="EM-WELCOME-NONVIP" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="email" data-angle="vip-confirmation" data-id="EM-WELCOME-VIP" data-score="0.7661">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">EM-WELCOME-VIP</span>
+                <span class="type-badge" style="background:#059669">EMAIL</span>
+                <span class="angle-label">vip-confirmation</span>
+                <span class="hl-preview">Your VIP spot is locked. Here's what that means.</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.77</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('EM-WELCOME-VIP','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('EM-WELCOME-VIP','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('EM-WELCOME-VIP','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7661 &nbsp; Rubric: 56.5/73.8 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: direct_address</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">BODY</div>
+                    <textarea class="field-edit" data-id="EM-WELCOME-VIP" data-field="body" rows="12">Hi {first_name},
+
+Someone asked me recently: &quot;What does VIP actually get me?&quot;
+
+Fair question. So let me spell it out.
+
+Your refundable deposit locked your spot in the first group to see the FarmThru equity round. Not the waitlist. Not the queue. The first group.
+
+Here's what happens:
+
+On the evening of 22 June, you get an email with your Birchal link. The public round opens 23 June. That 24-hour head start is yours because you committed early, and early investors in community rounds like this often fill the first tranche before most people have even read the announcement.
+
+You choose your amount when you're ready, and there's no pressure to decide tonight.
+
+If you change your mind before the round opens, your deposit comes straight back. No questions.
+
+Over the next few weeks I'll send you a couple of notes: how the offer is structured, what we're building at the Brookvale hub, and which farms are already committed to supplying it. Real numbers, real names.
+
+If anything comes up before then, just reply to this email. I read every one.
+
+Always consider the general CSF risk warning and offer document before investing.</textarea>
+                    <div class="char-count">1133/2000</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">SUBJECT</div>
+                    <textarea class="field-edit" data-id="EM-WELCOME-VIP" data-field="subject" rows="2">Your VIP spot is locked. Here's what that means.</textarea>
+                    <div class="char-count">48/60</div>
+                    <div class="field-label" style="margin-top:12px">PREHEADER</div>
+                    <textarea class="field-edit" data-id="EM-WELCOME-VIP" data-field="preheader" rows="2">On 22 June, you get a link. The public waits until the 23rd. Here's exactly how it works.</textarea>
+                    <div class="char-count">89/100</div>
+                    <div class="field-label" style="margin-top:12px">SENDER</div>
+                    <div class="field-static">Rachel &amp; the FarmThru team</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: cfe_campaign</span>
+            <span class="tag">Tactic: segment:vip|welcome|lock-in-head-start</span>
+            <span class="tag">Funnel: MOF</span>
+        </div><div class="creative-brief"><em>Clean, minimal layout. No hero image needed. Rachel's signature at the bottom in a handwritten-style font. Single CTA button: 'See the offer on Birchal' placed after the body, before the disclaimer paragraph.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="EM-WELCOME-VIP" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+</div>
+<script>
+const statuses = {};
+const notes = {};
+const filters = { type: 'all', status: 'all' };
+
+function toggleCard(topEl) {
+    const card = topEl.closest('.card');
+    card.classList.toggle('expanded');
+}
+
+function toggleAll() {
+    const cards = document.querySelectorAll('.card');
+    const anyExpanded = document.querySelector('.card.expanded');
+    cards.forEach(c => {
+        if (anyExpanded) c.classList.remove('expanded');
+        else c.classList.add('expanded');
+    });
+}
+
+function setStatus(id, status, btn) {
+    statuses[id] = status;
+    const card = document.querySelector(`[data-id="${id}"]`);
+    card.className = card.className.replace(/status-\w+/g, '') + ` status-${status}`;
+    card.querySelectorAll('.card-right .btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    updatePills();
+    updateCounter();
+}
+
+function setFilter(group, value, btn) {
+    filters[group] = value;
+    // Update active state in toolbar
+    if (group === 'type') {
+        document.querySelectorAll('.toolbar .tbtn').forEach((b, i) => {
+            if (i < 4) b.classList.remove('active');
+        });
+    }
+    btn.classList.add('active');
+    filterCards();
+}
+
+function filterCards() {
+    document.querySelectorAll('.card').forEach(c => {
+        const matchType = filters.type === 'all' || c.dataset.type === filters.type;
+        const id = c.dataset.id;
+        const matchStatus = filters.status === 'all' ||
+            (filters.status === 'unreviewed' && !statuses[id]) ||
+            statuses[id] === filters.status;
+        c.style.display = matchType && matchStatus ? '' : 'none';
+    });
+    updateCounter();
+}
+
+function setSort(mode, btn) {
+    const container = document.getElementById('cards');
+    const cards = Array.from(container.querySelectorAll('.card'));
+    // Update active state on sort buttons
+    btn.parentElement.querySelectorAll('.tbtn').forEach(b => {
+        if (b.textContent.includes('Score') || b.textContent.includes('Name'))
+            b.classList.remove('active');
+    });
+    btn.classList.add('active');
+    if (mode === 'score') {
+        cards.sort((a, b) => parseFloat(b.dataset.score) - parseFloat(a.dataset.score));
+    } else {
+        cards.sort((a, b) => a.dataset.id.localeCompare(b.dataset.id));
+    }
+    cards.forEach(c => container.appendChild(c));
+}
+
+function updatePills() {
+    const counts = { approved: 0, revise: 0, kill: 0 };
+    Object.values(statuses).forEach(s => { if (counts[s] !== undefined) counts[s]++; });
+    const total = 8;
+    const reviewed = Object.keys(statuses).length;
+    document.getElementById('pillPending').textContent = `Pending: ${total - reviewed}`;
+    document.getElementById('pillApproved').textContent = `Approved: ${counts.approved}`;
+    document.getElementById('pillEdited').textContent = `Edited: ${counts.revise}`;
+    document.getElementById('pillKilled').textContent = `Killed: ${counts.kill}`;
+}
+
+function updateCounter() {
+    const visible = document.querySelectorAll('.card:not([style*="display: none"])').length;
+    document.getElementById('counter').textContent = `Showing ${visible}/8`;
+}
+
+function saveJSON() {
+    document.querySelectorAll('.notes').forEach(n => {
+        if (n.value.trim()) notes[n.dataset.id] = n.value.trim();
+    });
+    // Also collect edited field values
+    const edits = {};
+    document.querySelectorAll('.field-edit').forEach(el => {
+        const id = el.dataset.id;
+        const field = el.dataset.field;
+        if (!edits[id]) edits[id] = {};
+        edits[id][field] = el.value;
+    });
+    const data = { statuses, notes, edits, exported: new Date().toISOString() };
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'review-r3-decisions.json';
+    a.click();
+}
+
+function exportCSV() {
+    document.querySelectorAll('.notes').forEach(n => {
+        if (n.value.trim()) notes[n.dataset.id] = n.value.trim();
+    });
+    let csv = 'id,type,angle,verdict,composite,status,notes\n';
+    document.querySelectorAll('.card').forEach(c => {
+        const id = c.dataset.id;
+        csv += `${id},${c.dataset.type},${c.dataset.angle},${c.dataset.verdict},` +
+               `${c.querySelector('.score-circle').textContent},${statuses[id]||'pending'},` +
+               `"${(notes[id]||'').replace(/"/g,'""')}"\n`;
+    });
+    const blob = new Blob([csv], {type: 'text/csv'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'review-r3.csv';
+    a.click();
+}
+
+updateCounter();
+</script>
+</body>
+</html>

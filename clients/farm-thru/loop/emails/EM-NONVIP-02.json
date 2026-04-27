@@ -4,16 +4,13 @@
   "hook_type": "contrarian",
   "funnel": "MOF",
   "content_type": "email",
-  "creative_brief": "Clean, editorial layout. No hero image needed. Use a single pull-quote callout: 'Values and money, finally pointing the same direction.' Minimal colour, high contrast. The copy does the work.",
-  "generated_at": "2026-04-24T22:22:05.317050",
+  "creative_brief": "Clean, text-forward founder email. No hero image. Optional inline photo of a real partner farm (Bundarra or Collins) mid-scroll to ground the proof point. Single CTA button: 'Join the VIP waitlist' in FarmThru brand green.",
+  "generated_at": "2026-04-27T10:08:14.005347",
   "email_id": "EM-NONVIP-02",
-  "subject": "Supermarkets don't fail farmers by accident",
-  "preheader": "It's structural. And there's one way to build something that works differently.",
-  "body": "Hi {first_name},\n\nMost people assume the big chains squeeze farmers because they're greedy.\n\nIt's not greed. It's structure. When shareholders own the supply chain, cutting the farmer's margin is just good business.\n\nThat's not a bug. That's the model.\n\nSo here's the question we kept coming back to when we built FarmThru: what if the people who care about the food own the store?\n\nNot a charity. Not a co-op that charges to join. A proper equity stake, with a low minimum entry.\n\nHere's how it works.\n\nFarmThru is raising through Birchal, Australia's leading equity crowdfunding platform. The round opens 23 June 2026.\n\nWe have 15 to 20 partner farms already supplying the Brookvale hub. Farms like Bundarra (pork), Collins Wild Caught (South Coast seafood), Farmer Brown (eggs), Paris Creek Farms (bio-dynamic dairy from Meadows, SA).\n\nNo warehouses. No wholesalers. Straight from farm to hub.\n\nWhen you invest, you're not donating to a cause. You're owning a piece of the supply chain that pays farmers first.\n\nValues and money, finally pointing the same direction.\n\nAs a non-VIP waitlist member, you'll get access when the round opens publicly on 23 June. Upgrade to VIP with a small refundable deposit and you'll see the offer 24 hours before everyone else.\n\nNo commitment to invest now. Just a decision about whether you want to be part of building this.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "subject": "Buying organic doesn't fix the problem",
+  "preheader": "The farmer still gets squeezed. Here's what actually changes it.",
+  "body": "Hi {first_name},\n\nYou switched to organic. Maybe you started reading labels.\n\nBut here's what nobody tells you: the farmer growing that certified organic beef still gets paid last, after the wholesaler, the warehouse, and the supermarket take their cut.\n\nThe label changed. The structure didn't.\n\nAt FarmThru, we cut every middleman between farm and hub. No wholesalers. No warehouses. Zero. Farmers like Bundarra Farm (pork), Collins Wild Caught (South Coast seafood), and Farmer Brown (eggs) get paid more because there's nobody else in the way.\n\nBut here's the thing: a grocery store built this way needs owners who actually care about it.\n\nNot a venture fund. Not a supermarket chain buying us out in five years. People like you.\n\nThat's why we're opening a community equity round on Birchal in June. You'd become a part-owner of FarmThru, alongside the farmers and the families already ordering from us.\n\nThe minimum is small enough that this isn't a big financial decision. But it is a structural one. You'd own a piece of the grocery store that pays farmers first.\n\nNo commitment to invest today. The round opens 23 June 2026. Getting on the VIP waitlist means you see the offer 24 hours before the public, while allocation is still open.\n\nIf that sounds like where you want your values and your money pointing, join the VIP list below.\n\nRachel & the FarmThru team\n\nAlways consider the general CSF risk warning and offer document before investing.",
   "cta": "cfe_waitlist",
   "sender_name": "Rachel & the FarmThru team",
-  "email_type": "nurture",
-  "user_review_status": "revise",
-  "user_review_note": "We need to remove anything about investing dollar amounts. No minimum investment, no maximum. We can say that we are going to do a raise, but not those parts.",
-  "updated_at": "2026-04-25T03:50:00+10:00"
+  "email_type": "nurture"
 }
