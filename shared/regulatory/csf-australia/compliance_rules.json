@@ -10,10 +10,11 @@
     {
       "rule_id": "ADV-001",
       "category": "advertising",
-      "claim": "Marketing must direct readers to the offer document and general CSF risk warning per s738ZG(6)",
+      "claim": "Marketing must direct readers to the offer document and general CSF risk warning per s738ZG(6) — UNIVERSAL across every channel we send (meta-ad, landing-page, email, sms, social-post)",
       "source_ref": [
         "RG-261.92",
-        "s738ZG(6)"
+        "s738ZG(6)",
+        "founder directive 2026-04-27"
       ],
       "severity": "BLOCKING",
       "scope": {
@@ -21,7 +22,8 @@
           "email",
           "landing-page",
           "meta-ad",
-          "social-post"
+          "social-post",
+          "sms"
         ],
         "phase": "during-offer",
         "applies_to": "issuer"
@@ -31,7 +33,7 @@
         "Always consider the general CSF risk warning",
         "general CSF risk warning"
       ],
-      "violation_message": "Add 'Always consider the general CSF risk warning and offer document before investing.' to the bottom of the content."
+      "violation_message": "Add 'Always consider the general CSF risk warning and offer document before investing.' to the bottom of the content. Founder-directed UNIVERSAL gate (2026-04-27): the canonical safe-harbour line must appear on every channel we send — meta-ads, landing pages, emails, SMS — without exception. The shorter substring 'general CSF risk warning' is also accepted (e.g. SMS character-budget paraphrasing 'See the general CSF risk warning + offer doc.')."
     },
     {
       "rule_id": "ADV-002",

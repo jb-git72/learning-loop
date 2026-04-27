@@ -121,8 +121,10 @@ def check_compliance(
     Args:
         text: The marketing copy to evaluate (single concatenated string).
         content_type: One of "email", "landing-page", "meta-ad",
-            "social-post", "offer-document". Rules without this content
-            type in their scope are skipped.
+            "sms", "social-post", "offer-document". Rules without this
+            content type in their scope are skipped. SMS is a recognised
+            content type from 2026-04-27 onward — ADV-001 (universal CSF
+            safe-harbour) is enforced on it identically to other channels.
         applies_to: Caller role — "issuer", "intermediary", or "both".
             Rules whose scope.applies_to is the other role are skipped.
             Rules marked "both" always apply.

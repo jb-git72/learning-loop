@@ -390,3 +390,80 @@ def test_fmth_no_dollar_metaad_does_not_fire_on_email():
     result = check_compliance(text, content_type="email", enable_llm=False)
 
     assert "FMTH-NO-DOLLAR-METAAD" not in result.evaluated_rule_ids
+
+
+# -------------------------------------------------------------------------
+# 10. ADV-001 — UNIVERSAL CSF safe-harbour (founder directive 2026-04-27)
+# -------------------------------------------------------------------------
+# The canonical safe-harbour line — "Always consider the general CSF risk
+# warning and offer document before investing." — must be present on EVERY
+# channel we send: meta-ads, landing pages, emails, AND SMS. The compliance
+# gate hard-fails any item missing it, regardless of content_type. These
+# tests pin the universal scope so a future scope edit cannot silently drop
+# a channel.
+
+UNIVERSAL_CHANNELS = ["meta-ad", "landing-page", "email", "sms"]
+
+
+@pytest.mark.parametrize("content_type", UNIVERSAL_CHANNELS)
+def test_adv001_fires_on_every_channel_when_missing(content_type):
+    """ADV-001 must hard-block missing safe-harbour on every channel we
+    send. Pins the universal-scope requirement (founder directive
+    2026-04-27): no channel may quietly fall out of scope."""
+    text = (
+        "Own a piece of FarmThru. Our community round opens 23 June 2026. "
+        "Reserve your spot today."
+    )
+    result = check_compliance(text, content_type=content_type, enable_llm=False)
+
+    blocking_ids = [v.rule_id for v in result.blocking_violations]
+    assert "ADV-001" in blocking_ids, (
+        f"ADV-001 must fire on content_type={content_type!r} when the "
+        f"safe-harbour line is missing — universal-channel gate."
+    )
+    assert result.passed is False
+
+
+@pytest.mark.parametrize("content_type", UNIVERSAL_CHANNELS)
+def test_adv001_passes_on_every_channel_with_canonical_phrase(content_type):
+    """ADV-001 must accept the canonical safe-harbour line on every
+    channel — confirms the rule is satisfiable from each content_type."""
+    text = (
+        "FarmThru opens its CSF round on Birchal on 23 June 2026. Reserve "
+        "your spot with a small refundable deposit. Always consider the "
+        "general CSF risk warning and offer document before investing."
+    )
+    result = check_compliance(text, content_type=content_type, enable_llm=False)
+
+    blocking_ids = [v.rule_id for v in result.blocking_violations]
+    assert "ADV-001" not in blocking_ids, (
+        f"ADV-001 must accept the canonical safe-harbour line on "
+        f"content_type={content_type!r}."
+    )
+
+
+def test_adv001_accepts_short_paraphrase_for_sms_budget():
+    """SMS has a 160-char budget. The shortened substring 'general CSF
+    risk warning' (less than the full canonical line) must satisfy
+    ADV-001 so SMS copy can fit."""
+    text = (
+        "FarmThru: VIP link live. Reserve before 23 Jun. See the general "
+        "CSF risk warning + offer doc: birchal.com/farmthru"
+    )
+    result = check_compliance(text, content_type="sms", enable_llm=False)
+
+    blocking_ids = [v.rule_id for v in result.blocking_violations]
+    assert "ADV-001" not in blocking_ids
+
+
+def test_adv001_in_evaluated_rules_for_sms():
+    """SMS is a recognised content_type from 2026-04-27 — confirm ADV-001
+    actually runs (is in evaluated_rule_ids), not just silently
+    out-of-scope."""
+    text = (
+        "FarmThru: VIP link live. Reserve before 23 Jun. See the general "
+        "CSF risk warning + offer doc: birchal.com/farmthru"
+    )
+    result = check_compliance(text, content_type="sms", enable_llm=False)
+
+    assert "ADV-001" in result.evaluated_rule_ids

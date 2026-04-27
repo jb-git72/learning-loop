@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-001_pass_canonical_sms",
+  "description": "SMS copy that fits the 160-char SMS budget while including the shortened safe-harbour substring 'general CSF risk warning' — must pass ADV-001 under the universal-channel gate (2026-04-27 founder directive). Demonstrates the canonical SMS paraphrase pattern.",
+  "text": "FarmThru: your VIP link is live. Reserve your spot before 23 Jun. See the general CSF risk warning + offer doc: https://birchal.com/legal-pages/general-csf-risk-warning",
+  "content_type": "sms",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-001": "pass"
+  }
+}

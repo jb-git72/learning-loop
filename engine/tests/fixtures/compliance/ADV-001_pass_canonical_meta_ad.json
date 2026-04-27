@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-001_pass_canonical_meta_ad",
+  "description": "Meta-ad copy that contains the shortened safe-harbour reference 'general CSF risk warning' — must pass ADV-001 under the universal-channel gate (2026-04-27 founder directive). Mirrors the canonical Task 3/4 meta-ad rewrite pattern (PR #94).",
+  "text": "Be part of FarmThru. Lock in early access to invest when our CSF round opens. Reserve your spot with a small refundable deposit. See the general CSF risk warning + offer document.",
+  "content_type": "meta-ad",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-001": "pass"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "fixture_id": "ADV-001_pass_canonical_landing_page",
+  "description": "Landing-page hero + subhead + footer copy that includes the canonical safe-harbour line at the foot — must pass ADV-001 under the universal-channel gate (2026-04-27 founder directive).",
+  "text": "Own a piece of regen-ag\n\nFarmThru opens its CSF round on Birchal on 23 June 2026. Place a $5 refundable deposit to lock in early access to the investment offer when the round opens.\n\n100% refundable. No obligation to invest.\n\nAlways consider the general CSF risk warning and offer document before investing.",
+  "content_type": "landing-page",
+  "applies_to": "issuer",
+  "expected": {
+    "ADV-001": "pass"
+  }
+}
