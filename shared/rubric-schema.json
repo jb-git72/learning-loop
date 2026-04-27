@@ -205,6 +205,62 @@
         "4": "Good scannability with clear paragraphs, concise sentences (10-20 words avg), concise subhead. Minor issues.",
         "5": "Excellent readability. 6+ short paragraphs, 10-20 word avg sentences, no em dashes, subhead under 120 chars."
       }
+    },
+    {
+      "id": "ownership_framing",
+      "name": "Ownership Framing",
+      "default_weight": 0.0,
+      "scoring_method": "deterministic",
+      "description": "Reward identity-level investment language ('own a piece of', 'be part of') over transactional 'invest in / minimum X' language. Encoded after the live $2-lead FMTH ad outperformed loop output partly via ownership framing.",
+      "scoring_guide": {
+        "1": "Pure transactional 'invest from $X' or no investment frame at all where one is expected.",
+        "2": "Transactional invest language with no ownership / belonging frame.",
+        "3": "Neutral. No ownership framing detected, but no aggressive transactional language either.",
+        "4": "One clear ownership / belonging phrase ('own a piece of', 'be part of', 'your share').",
+        "5": "Two or more ownership phrases reinforcing identity-level participation."
+      }
+    },
+    {
+      "id": "scarcity_register",
+      "name": "Scarcity Register",
+      "default_weight": 0.0,
+      "scoring_method": "deterministic",
+      "description": "Reward soft / future-tense scarcity ('opens soon', 'first in gets first access') over hard pressure ('ends today', 'act now'). Hard scarcity triggers suspicion on considered or regulated purchases.",
+      "scoring_guide": {
+        "1": "Hard-pressure scarcity language only. Suspicion-triggering for CFE / considered audiences.",
+        "2": "Mixed soft and hard scarcity — hard signals undermine the soft signals.",
+        "3": "No scarcity signals at all (neutral default).",
+        "4": "Soft scarcity present, no hard pressure. Reads as a queue forming.",
+        "5": "Two or more soft / future-scarcity signals working together. Calm urgency."
+      }
+    },
+    {
+      "id": "founder_voice",
+      "name": "Founder Voice",
+      "default_weight": 0.0,
+      "scoring_method": "deterministic",
+      "description": "Reward first-person plural with build-language ('we've built', 'we're about to', 'we made'). Signals founder credibility and earned authority over corporate distance.",
+      "scoring_guide": {
+        "1": "Pure third-person corporate voice. No I / we / our anywhere.",
+        "2": "Corporate / third-person dominates with at most one 'we' reference.",
+        "3": "First-person plural present but no build / origin language ('we've built', 'we made').",
+        "4": "One build-language phrase plus natural 'we' references throughout.",
+        "5": "Two or more build-language phrases — the founder is unmistakably present in the copy."
+      }
+    },
+    {
+      "id": "csf_placement",
+      "name": "CSF Placement",
+      "default_weight": 0.0,
+      "scoring_method": "deterministic",
+      "description": "Reward CSF / risk disclaimer placed as an asterisked footnote in the final paragraph rather than blended into body sentences. Presence is a separate hard rule — this dimension judges placement quality.",
+      "scoring_guide": {
+        "1": "No body text to evaluate.",
+        "2": "Disclaimer blended into body sentences — dampens momentum and reads compliance-first.",
+        "3": "No disclaimer language present (rule_checker handles presence elsewhere).",
+        "4": "Disclaimer in the final paragraph but not asterisked, or asterisked but long-winded.",
+        "5": "Disclaimer is a tight asterisked final-paragraph footnote (≤30 words). Compliance present without crowding the message."
+      }
     }
   ]
 }

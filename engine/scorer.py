@@ -116,7 +116,15 @@ def score_ad(
     # Support per-content-type rubric config
     if isinstance(rubric_config, dict) and content_type in rubric_config:
         rubric_config = rubric_config[content_type]
-    max_score = rubric_config.get("max_score", 66.25)
+    # Prefer the dynamic max_possible computed by the rubric scorer (sum of
+    # weights that actually applied × 5). Falls back to config max_score only
+    # if the dynamic value is zero (defensive — should never happen in practice).
+    # Recalibration-v1 fix: previously we trusted the static config max_score,
+    # which silently understated the divisor when dimensions without a scorer
+    # for the content_type still credited a dummy 3/5 to the numerator.
+    dynamic_max = rubric_result.get("max_possible", 0)
+    config_max = rubric_config.get("max_score", 66.25)
+    max_score = dynamic_max if dynamic_max > 0 else config_max
     rubric_normalized = rubric_result["weighted_total"] / max_score if max_score > 0 else 0
 
     # Start with rubric as the base score

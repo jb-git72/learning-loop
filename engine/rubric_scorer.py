@@ -71,6 +71,11 @@ def score_rubric(
     dimension_details = {}
     weighted_total = 0.0
 
+    # Track which dims actually contribute so we can compute max_possible from
+    # weights that actually applied — instead of trusting a static config value
+    # that drifts when dimensions are added/removed or content_type changes.
+    applied_weight_sum = 0.0
+
     for dim in dimensions:
         dim_id = dim["id"]
         weight = weights.get(dim_id, dim.get("default_weight", 1.0))
@@ -85,9 +90,22 @@ def score_rubric(
             # LLM disabled — use heuristic fallback
             score, detail = _score_heuristic_fallback(dim_id, ad)
 
+        # Skip dims that don't apply to this content_type. _score_deterministic
+        # signals "no scorer for this content_type" by returning score=None.
+        # Previously this returned a dummy 3/5, inflating composite by ~3.0
+        # weighted points on every meta-ad (lp_readability) and would now also
+        # silently inflate other clients' scores via the new dimensions.
+        if score is None:
+            continue
+
+        # Skip dims that have zero weight — they're opt-in for this client.
+        if weight <= 0:
+            continue
+
         score = max(1, min(5, score))  # Clamp to 1-5
         raw_scores[dim_id] = score
         weighted_total += score * weight
+        applied_weight_sum += weight
         dimension_details[dim_id] = {
             "score": score,
             "weight": weight,
@@ -96,9 +114,14 @@ def score_rubric(
             "detail": detail,
         }
 
+    # Compute max_possible from the weights that actually applied (× 5 max raw).
+    # Fall back to the config value only if no dims applied at all (defensive).
+    computed_max = applied_weight_sum * 5
+    effective_max = computed_max if computed_max > 0 else max_possible
+
     return {
         "weighted_total": round(weighted_total, 2),
-        "max_possible": max_possible,
+        "max_possible": round(effective_max, 2),
         "raw_scores": raw_scores,
         "dimension_details": dimension_details,
     }
@@ -119,6 +142,11 @@ def _score_deterministic(
         "opening_diversity": _score_opening_diversity,
         "sentence_variance": _score_sentence_variance,
         "emotional_register": _score_emotional_register,
+        # Recalibration-v1 additions (calibrated against the live $2-lead FMTH ad)
+        "ownership_framing": _score_ownership_framing,
+        "scarcity_register": _score_scarcity_register,
+        "founder_voice": _score_founder_voice,
+        "csf_placement": _score_csf_placement,
     }
 
     # Meta-ad specific
@@ -177,7 +205,9 @@ def _score_deterministic(
             return scorer(ad, config)
         else:
             return scorer(ad)
-    return 3, "No scorer available for dimension"
+    # No scorer registered for this dim under this content_type — caller skips
+    # the dim instead of crediting it with a dummy 3/5.
+    return None, "No scorer available for dimension"
 
 
 def _score_specificity(ad: dict) -> tuple[int, str]:
@@ -192,16 +222,26 @@ def _score_specificity(ad: dict) -> tuple[int, str]:
         r'|farms?|customers?|families|days?|hours?|km|stops?|investors?|spots?)',
         text, re.IGNORECASE
     ))
-    # Count specific names (pet names, brand names, client-specific names)
+    # Spelled-out cardinal numbers used as specifics ("Eight NSW farms", "One hub")
+    # Recalibration-v1: live ad uses "Eight farms. One hub." which previously scored 0.
+    word_number_count = len(re.findall(
+        r'\b(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|'
+        r'twenty|thirty|forty|fifty|hundred|thousand)\s+'
+        r'(?:nsw|au|sydney|farms?|hubs?|families|customers?|years?|days?|months?|weeks?)',
+        text, re.IGNORECASE
+    ))
+    # Count specific names (pet names, brand names, client-specific names, geographies)
     name_count = len(re.findall(
         r'\b(?:Luna|Max|Bella|Charlie|Milo|Best for Pet|VetChat|My Pawtal'
         r'|FarmThru|Farm Thru|Rachel|Bundarra|Collins|Brookvale|Birchal'
-        r'|Paris Creek|Farmer Brown|Little Yarran)\b',
+        r'|Paris Creek|Farmer Brown|Little Yarran|Northern Beaches|Kempsey'
+        r'|South.?Western NSW|Sydney|Australia)\b',
         text, re.IGNORECASE
     ))
 
-    total = money_count + number_count + name_count
-    detail = f"{money_count} dollar amounts, {number_count} numbers, {name_count} names = {total} specifics"
+    total = money_count + number_count + word_number_count + name_count
+    detail = (f"{money_count} dollar amounts, {number_count} numbers, "
+              f"{word_number_count} spelled-out, {name_count} names = {total} specifics")
 
     if total >= 7:
         return 5, detail
@@ -260,30 +300,67 @@ def _score_receptionist_test(ad: dict, config: dict) -> tuple[int, str]:
 
 
 def _score_cta_clarity(ad: dict, config: dict) -> tuple[int, str]:
-    """Check if CTA is on the approved list and clear."""
+    """Check if CTA is on the approved list and clear.
+
+    Recalibration-v1: funnel-aware approved list (TOF=email/notify, MOF=register,
+    BOF=invest) and a +1 bonus when the body links the CTA action to a concrete
+    consequence ("leave your email — we'll tell you the moment it goes live").
+    """
     cta = ad.get("cta", "").strip()
+    funnel = ad.get("funnel", "").upper()
+    body = _get_primary_text(ad)
     approved = config.get("approved_ctas", [])
 
-    # Handle multi-content-type format (dict of lists)
+    # Handle multi-content-type format (dict of lists or dict of dict-by-funnel)
     if isinstance(approved, dict):
         content_type = ad.get("content_type", "meta-ad")
         approved = approved.get(content_type, approved.get("meta-ad", []))
 
+    # Some clients (FMTH) use a dict keyed by funnel/campaign bucket
+    # (e.g. {"brand": [...], "cfe_waitlist": [...], "cfe_campaign": [...]}).
+    if isinstance(approved, dict):
+        # Flatten across all buckets — exact matching against any approved CTA wins.
+        flattened = []
+        for bucket, ctas in approved.items():
+            if isinstance(ctas, list):
+                flattened.extend(ctas)
+        approved = flattened
+
     if not cta:
         return 1, "No CTA found"
 
-    # Exact match
+    # Outcome-stated CTA detection: body explains what happens after the action.
+    # Patterns the live $2-lead ad uses: "Leave your email — we'll tell you the
+    # moment it goes live." Body links action to its consequence.
+    outcome_patterns = [
+        r"leave\s+your\s+email[^.]*?we'?ll\s+(?:tell|let|notify|email)",
+        r"sign\s+up[^.]*?we'?ll\s+(?:tell|let|notify|send)",
+        r"register[^.]*?(?:we'?ll|you'?ll)\s+(?:tell|hear|get|receive)",
+        r"join[^.]*?(?:we'?ll|you'?ll)\s+(?:tell|let|notify|send|hear)",
+        r"(?:we'?ll|you'?ll)\s+(?:tell|let|notify)\s+you\s+(?:the\s+moment|when)",
+    ]
+    has_outcome = any(re.search(p, body, re.IGNORECASE) for p in outcome_patterns)
+
+    # Exact match (case-sensitive)
     if cta in approved:
+        if has_outcome:
+            return 5, f"CTA matches approved list AND body states outcome: '{cta}'"
         return 5, f"CTA matches approved list: '{cta}'"
 
     # Close match (case-insensitive)
     for approved_cta in approved:
         if cta.lower() == approved_cta.lower():
-            return 4, f"CTA close match (case diff): '{cta}'"
+            return 5 if has_outcome else 4, (
+                f"CTA close match (case diff)" + (" + outcome stated" if has_outcome else "") + f": '{cta}'"
+            )
 
-    # Has a CTA but not on approved list
-    if re.search(r'(find|check|see|get|learn|start|sign|join|try)', cta, re.IGNORECASE):
-        return 3, f"CTA present but not on approved list: '{cta}'"
+    # Has a CTA but not on approved list — check if it's a sensible TOF/MOF action verb
+    if re.search(r'(find|check|see|get|learn|start|sign|join|try|leave|register|reserve|save|secure)', cta, re.IGNORECASE):
+        # Outcome stated lifts a non-approved-list CTA from 3 to 4 — the reader
+        # knows what happens next regardless of literal CTA wording.
+        return (4, f"CTA off-list but outcome stated in body: '{cta}'") if has_outcome else (
+            3, f"CTA present but not on approved list: '{cta}'"
+        )
 
     return 2, f"Weak or unclear CTA: '{cta}'"
 
@@ -395,6 +472,27 @@ def _score_scroll_stop_hook(ad: dict) -> tuple[int, str]:
 
     if not first_line:
         return 1, "No opening line found"
+
+    # Curiosity-gap / novelty hook: low-cost-to-investigate mystery with a narrow,
+    # plausible boundary. Live $2-lead FMTH ad opens this way:
+    # "We're about to open something up that's never been done with a grocery store in Australia."
+    # Pre-recalibration this was scored as a generic opener (2/5).
+    # Curiosity-gap patterns. Tightened so the loose phrase "for the first time"
+    # only fires when bound by a category/geography (e.g. "first time in Australia")
+    # — otherwise it lifts every generic "for the first time, we're shipping..." ad.
+    curiosity_phrases = [
+        r"we'?re\s+about\s+to\s+(?:open|launch|unveil|do|share|show|tell)",
+        r"(?:something|what)\s+that'?s?\s+never\s+been",
+        r"never\s+been\s+done\s+(?:with|by|in|before)",
+        r"for\s+the\s+first\s+time\s+(?:ever|in\s+(?:australia|nsw|sydney|grocery|retail))",
+        r"(?:something|what|the\s+thing)\s+we'?ve\s+(?:been\s+)?(?:working|building|quietly)",
+        r"we'?ve\s+been\s+quietly\s+(?:building|working)",
+        r"open\s+something\s+up",
+        r"about\s+to\s+do\s+something\s+(?:no|new)",
+    ]
+    for pat in curiosity_phrases:
+        if re.search(pat, first_line, re.IGNORECASE):
+            return 5, f"Curiosity-gap hook: '{first_line[:60]}...'"
 
     # Story hook: specific moment, person, action, or named subject doing something
     if re.search(r'(last\s+\w+day|yesterday|this morning|walked in|picked up|called|booked|was\s+\w+ing|started|lost|changed|grew up|moved|quit|left)', first_line, re.IGNORECASE):
@@ -1109,6 +1207,161 @@ def _score_emotional_register(ad: dict, existing_ads: list[dict]) -> tuple[int, 
     elif pct <= 50:
         return 2, detail
     return 1, detail
+
+
+# --- Recalibration-v1 dimensions ---
+#
+# These were added after the live $2-lead Farm Thru ad ("never been done with a
+# grocery store in Australia…") scored 0.71 / strong_draft on the prior rubric
+# despite being a top performer in market. Each dimension encodes a lever that
+# the prior rubric missed or actively penalised. See validation/scorer-recalibration-v1.json
+# for the canonical positive example and target deltas.
+
+def _score_ownership_framing(ad: dict) -> tuple[int, str]:
+    """Reward ownership / belonging language over transactional 'invest in' language.
+
+    'Own a piece of', 'be part of', 'you'll be able to own', 'your share' all
+    convert investment from a transaction into an identity. Confirmed in the live
+    ad and in two of the loop's prior 'production_ready' CFE outputs.
+    """
+    text = _get_all_text(ad).lower()
+    # Investment context required for ownership framing to be credited — without
+    # it, "your share" or "joining the family" mean grocery-share or community,
+    # not ownership. This avoids spurious 4/5 on pure brand/grocery ads.
+    investment_context = bool(
+        re.search(r"\b(invest|investment|raise|raising|csf|crowdfund|own\s+a\s+piece|equity)\b", text)
+    )
+    patterns = [
+        (r"\bown\s+a\s+piece\s+of\b", "own a piece"),
+        (r"\bown\s+the\s+(?:future|outcome|story)\b", "own the future"),
+        (r"\byou'?ll\s+be\s+able\s+to\s+own\b", "you'll be able to own"),
+        (r"\bbe\s+part\s+of\s+(?:it|what|building|something)\b", "be part of it"),
+    ]
+    # These patterns can fire on non-investment copy, so only count them when
+    # an investment context is present elsewhere in the ad.
+    investment_only_patterns = [
+        (r"\byour\s+(?:share|stake|piece)\b", "your share/stake"),
+        (r"\bjoin(?:ing)?\s+(?:us|the\s+(?:movement|family|community))\b", "join us / the movement"),
+    ]
+    found = [label for pat, label in patterns if re.search(pat, text)]
+    if investment_context:
+        found.extend(label for pat, label in investment_only_patterns if re.search(pat, text))
+    if len(found) >= 2:
+        return 5, f"Ownership framing: {', '.join(found)}"
+    if len(found) == 1:
+        return 4, f"Ownership framing: {found[0]}"
+    # Penalise transactional-only investment language with no ownership frame
+    if re.search(r"\binvest\s+(?:in|now|from\s+\$)", text) and not found:
+        return 2, "Transactional 'invest' language only — no ownership frame"
+    return 3, "No ownership framing detected (neutral)"
+
+
+def _score_scarcity_register(ad: dict) -> tuple[int, str]:
+    """Reward soft / future-tense scarcity. Penalise hard-pressure scarcity.
+
+    Soft: 'opens soon', 'first in gets first access', 'we'll tell you the moment',
+    'registration opens'. Reads as a queue forming, not a panic.
+
+    Hard: 'ends today', 'last chance', 'act now', 'limited time only'. Triggers
+    suspicion on considered / regulated purchases (CFE, large basket grocery).
+    """
+    text = _get_all_text(ad).lower()
+    soft = [
+        r"opens?\s+soon",
+        r"first\s+in\s+gets?\s+first\s+access",
+        r"we'?ll\s+tell\s+you\s+(?:the\s+moment|when)",
+        r"registration\s+opens?",
+        r"be\s+ready\s+when",
+        r"early\s+access",
+        r"join\s+the\s+(?:waitlist|notify\s+list)",
+        r"get\s+(?:in|on)\s+(?:early|the\s+list)",
+    ]
+    hard = [
+        r"ends?\s+today",
+        r"last\s+chance",
+        r"limited\s+time\s+only",
+        r"act\s+now",
+        r"hurry",
+        r"don'?t\s+miss\s+out",
+        r"while\s+supplies\s+last",
+        r"only\s+\d+\s+(?:hours?|minutes?|spots?\s+left)",
+    ]
+    soft_hits = [p for p in soft if re.search(p, text)]
+    hard_hits = [p for p in hard if re.search(p, text)]
+
+    if soft_hits and not hard_hits:
+        if len(soft_hits) >= 2:
+            return 5, f"{len(soft_hits)} soft scarcity signals (queue, not panic)"
+        return 4, "Soft scarcity present, no hard pressure"
+    if not soft_hits and not hard_hits:
+        return 3, "No scarcity signals"
+    if soft_hits and hard_hits:
+        return 2, f"Mixed: {len(soft_hits)} soft + {len(hard_hits)} hard (hard pressure undermines)"
+    return 1, f"{len(hard_hits)} hard-pressure signals (suspicion-triggering for CFE/considered)"
+
+
+def _score_founder_voice(ad: dict) -> tuple[int, str]:
+    """Reward first-person plural with build-language: 'we've built',
+    'we're opening', 'we made'. This signals founder credibility and earned
+    authority rather than corporate distance.
+    """
+    text = _get_all_text(ad).lower()
+    patterns = [
+        r"we'?ve\s+(?:built|made|created|been\s+(?:building|working))",
+        r"we'?re\s+(?:about\s+to|opening|launching|building)",
+        r"we\s+built\b",
+        r"we\s+(?:partnered|connect|started|made)\b",
+        r"i'?ve\s+been\s+(?:farming|working|building)",
+    ]
+    hits = [p for p in patterns if re.search(p, text)]
+    # Pronoun balance: first-person plural should appear naturally
+    we_count = len(re.findall(r"\bwe(?:'(?:re|ve|ll))?\b", text))
+    if len(hits) >= 2:
+        return 5, f"Founder voice: {len(hits)} build-language hits, {we_count} 'we' refs"
+    if len(hits) == 1:
+        return 4, f"Founder voice: 1 build-language hit, {we_count} 'we' refs"
+    if we_count >= 3:
+        return 3, f"First-person plural present but no build language ({we_count} 'we')"
+    return 2, "Corporate / third-person voice"
+
+
+def _score_csf_placement(ad: dict) -> tuple[int, str]:
+    """Reward CSF disclaimer placed as an asterisked / footnoted final line.
+
+    The live $2-lead ad puts the CSF warning behind '*' as the final paragraph.
+    The loop has historically blended compliance language into the body, which
+    dampens momentum. This dimension separates *presence* (which the rule_checker
+    already enforces as a hard gate) from *placement quality*.
+    """
+    text = _get_primary_text(ad)
+    if not text:
+        return 1, "No body text"
+
+    # Detect CSF / disclaimer language
+    csf_re = re.compile(
+        r"(?:general\s+CSF\s+risk\s+warning|consider\s+the\s+general\s+csf|"
+        r"offer\s+document\s+before\s+investing|disclosure\s+document\s+on\s+birchal|"
+        r"not\s+financial\s+advice)",
+        re.IGNORECASE,
+    )
+    if not csf_re.search(text):
+        return 3, "No CSF/disclaimer language present (placement N/A)"
+
+    paragraphs = [p.strip() for p in text.split("\n\n") if p.strip()]
+    if not paragraphs:
+        return 3, "Could not split into paragraphs"
+
+    last_para = paragraphs[-1]
+    # Best: final paragraph, asterisked, contains CSF language, nothing else
+    if last_para.lstrip().startswith("*") and csf_re.search(last_para):
+        # And the asterisked paragraph is short — it's a footnote, not a sermon
+        if len(last_para.split()) <= 30:
+            return 5, "CSF as asterisked final-paragraph footnote"
+        return 4, "CSF asterisked final paragraph but long-winded"
+    if csf_re.search(last_para):
+        return 4, "CSF in final paragraph but not asterisked"
+    # CSF appears mid-body — dampens momentum
+    return 2, "CSF blended into body (dampens momentum)"
 
 
 def _classify_register(ad: dict) -> str:

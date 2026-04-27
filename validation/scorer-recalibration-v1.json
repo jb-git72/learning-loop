@@ -1,0 +1,106 @@
+{
+  "purpose": "Validation set for scorer recalibration v1. Anchored on the live $2-lead Farm Thru ad as the canonical positive — encodes the levers we want the rubric to reward. Comparison cohort = the loop's prior 'production_ready' meta-ads that were NOT approved by FMTH; they should remain credible scores but not dominate the canonical positive.",
+  "target": {
+    "positive_min_composite": 0.85,
+    "comparison_max_composite": 0.90,
+    "expected_pattern": "live ad should clear 0.85 and outscore at least 2 of the 5 prior production_ready ads on the new rubric. If it stays below 0.80, the new dimensions aren't carrying enough weight."
+  },
+  "levers_encoded_in_positive": {
+    "curiosity_gap_hook": "We're about to open something up that's never been done with a grocery store in Australia",
+    "ownership_framing": "you'll be able to own a piece of the farm-direct grocery model we've built",
+    "founder_voice_plural": "we've built / we're about to / we'll tell you",
+    "cadence_of_three": "Eight NSW farms. One hub in Brookvale. A network ready to scale across Sydney.",
+    "soft_scarcity": "Registration opens soon. First in gets first access.",
+    "outcome_stated_cta": "Leave your email — we'll tell you the moment it goes live",
+    "asterisked_csf": "*Always consider the general CSF risk warning and offer document before investing.",
+    "no_questions": "all declarative — no '?'",
+    "narrow_bold_claim": "never been done with a grocery store in Australia (category + geo bounded)",
+    "no_jargon_in_hook": "no 'regenerative' or 'sustainable' in line 1"
+  },
+  "positive": {
+    "ad_id": "LIVE-FMTH-NEVER-DONE",
+    "label": "live_2_dollar_lead",
+    "content_type": "meta-ad",
+    "angle": "urgency-scarcity",
+    "hook_type": "curiosity",
+    "funnel": "TOF",
+    "tactic": "novelty-insider-access",
+    "motivation": "Emotional",
+    "primary_text": "We're about to open something up that's never been done with a grocery store in Australia.\n\nFor the first time, you'll be able to own a piece of the farm-direct grocery model we've built on the Northern Beaches. Eight NSW farms. One hub in Brookvale. A network ready to scale across Sydney.\n\nRegistration opens soon. First in gets first access.\n\nLeave your email — we'll tell you the moment it goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+    "headline": "Own a piece of an Aussie-first grocery model",
+    "description": "Registration opens soon. Leave your email.",
+    "cta": "Join the Waitlist"
+  },
+  "comparison_cohort": [
+    {
+      "ad_id": "BR-101",
+      "label": "loop_prior_production_ready_0.929",
+      "content_type": "meta-ad",
+      "angle": "quality-craft",
+      "hook_type": "story",
+      "funnel": "TOF",
+      "tactic": "story",
+      "motivation": "Rational",
+      "primary_text": "Last Tuesday a farmer in Kempsey pulled beef from the cool room. By Thursday it was at the Brookvale hub.\n\nNo middlemen. No distribution centre. No weeks in cold storage.\n\nJust 100% grass-fed beef, raised on regenerative pasture, served fresh.\n\nThis is what farm-direct actually means.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+      "headline": "Paddock on Tuesday, yours by Thursday",
+      "description": "Farm-direct beef from Kempsey to Brookvale.",
+      "cta": "Find your nearest hub"
+    },
+    {
+      "ad_id": "BR-103",
+      "label": "loop_prior_production_ready_0.905",
+      "content_type": "meta-ad",
+      "angle": "empathy-founder",
+      "hook_type": "confession",
+      "funnel": "TOF",
+      "tactic": "founder-story",
+      "motivation": "Emotional",
+      "primary_text": "\"I never used to read the label.\"\n\nThat's how it starts for most families. 'Farm fresh' chicken that never saw grass. 'Free range' eggs from warehouses.\n\nI wanted to create what didn't exist: real food, from real farms, with real names you can know.\n\nRachel raises grass-fed cattle in Kempsey. Farmer Brown's hens roam paddocks in South-Western NSW.\n\nKnow who grew your food.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+      "headline": "I was lying to my kids about food",
+      "description": "Real food. Real farms. Real names.",
+      "cta": "Find your nearest hub"
+    },
+    {
+      "ad_id": "BR-106",
+      "label": "loop_prior_production_ready_0.933",
+      "content_type": "meta-ad",
+      "angle": "transparency",
+      "hook_type": "question",
+      "funnel": "TOF",
+      "tactic": "transparency",
+      "motivation": "Rational",
+      "primary_text": "Do you know the name of the farm that raised your last steak?\n\nRachel's cattle graze on regenerative pastures in Kempsey NSW.\n\nNo hormones, no feedlots.\n\nCollins catches our salmon wild off the South Coast. Farmer Brown's hens roam paddocks in South-Western NSW.\n\nEvery product on FarmThru shows the farm, the farmer, and how the food was raised.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+      "headline": "See your farm before you buy",
+      "description": "Every product. Named farm. Real story.",
+      "cta": "Shop your local hub"
+    },
+    {
+      "ad_id": "BR-109",
+      "label": "loop_prior_production_ready_0.937",
+      "content_type": "meta-ad",
+      "angle": "empathy-founder",
+      "hook_type": "confession",
+      "funnel": "TOF",
+      "tactic": "founder-story",
+      "motivation": "Emotional",
+      "primary_text": "I've been farming cattle in Kempsey for years. When I see beef in supermarkets, I wonder: which farm? What feed? How many trucks and warehouses did it pass through?\n\nThat's why I partnered with FarmThru.\n\nMy beef leaves the paddock and is at the Brookvale hub in days. Not weeks. Not months.\n\nKnow who grew your food.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+      "headline": "I wonder about supermarket beef",
+      "description": "Farmer's perspective. Days from paddock to hub.",
+      "cta": "Find your nearest hub"
+    },
+    {
+      "ad_id": "CFE-108",
+      "label": "loop_prior_production_ready_0.944",
+      "content_type": "meta-ad",
+      "angle": "empathy-founder",
+      "hook_type": "story",
+      "funnel": "TOF",
+      "tactic": "founder-story",
+      "motivation": "Emotional",
+      "primary_text": "Three months ago, Rachel Ward told me she was losing $2 on every kilo of beef she sold.\n\nThe wholesalers took their cut.\n\nThe supermarkets took theirs. Rachel got what was left.\n\nNow her beef goes paddock to Brookvale hub in days. She earns more. Families eat better.\n\nBe part of what we're building.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+      "headline": "She was losing money on every kilo",
+      "description": "Why we built a different model.",
+      "cta": "Join the Waitlist"
+    }
+  ]
+}
