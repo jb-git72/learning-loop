@@ -114,14 +114,18 @@ done
 
 ## 3. Template sections commented out (LP variants + thank-you)
 
-All commented-out blocks use this exact grep-able marker:
+All wrapped blocks use ONE HTML comment around the markup, with grep-able BEGIN/END marker text inside the comment. This guarantees the markup is invisible in the rendered DOM AND searchable for restoration:
 
 ```html
-<!-- VIP_ARCHIVED_2026-04-27_PENDING_BIRCHAL_V2_APPROVAL_BEGIN
-     Restore by uncommenting block; see clients/farm-thru/VIP-ARCHIVE-MANIFEST.md -->
+<!--
+VIP_ARCHIVED_2026-04-27_PENDING_BIRCHAL_V2_APPROVAL_BEGIN
+Restore by uncommenting block; see clients/farm-thru/VIP-ARCHIVE-MANIFEST.md
 ...the original VIP card markup, untouched...
-<!-- VIP_ARCHIVED_2026-04-27_PENDING_BIRCHAL_V2_APPROVAL_END -->
+VIP_ARCHIVED_2026-04-27_PENDING_BIRCHAL_V2_APPROVAL_END
+-->
 ```
+
+(Earlier draft of this manifest used two separate `<!-- ... -->` comments around the markup, which would have left the markup in the rendered DOM. The shipped sales-skill PR #226 uses the one-big-comment style above. The archival script `sales-skill:scripts/archive_fmth_vip_card.py` auto-detects + fixes the broken style if it ever appears.)
 
 ### 3.1 LP variants (16 files — index-o.html had no VIP block, no change needed)
 
@@ -154,31 +158,42 @@ The `{% else %}` VIP-confirmed branch (lines 75–80) is LEFT IN PLACE so existi
 
 ### 3.3 Restoration (all template sections)
 
+For the one-big-comment style shipped in sales-skill PR #226, restoration strips:
+- the leading `<!--\n` line
+- the `VIP_ARCHIVED_2026-04-27_PENDING_BIRCHAL_V2_APPROVAL_BEGIN\n` line
+- the `Restore by uncommenting...\n` line
+- the trailing `VIP_ARCHIVED_2026-04-27_PENDING_BIRCHAL_V2_APPROVAL_END\n` line
+- the trailing `-->\n` line
+
+leaving the original markup intact.
+
 ```bash
 cd /Users/jb/Documents/GitHub/sales-skill
-# Find every commented block:
+
+# Find every wrapped block:
 grep -rl 'VIP_ARCHIVED_2026-04-27_PENDING_BIRCHAL_V2_APPROVAL_BEGIN' web/
 
-# Strip the markers and restore (per-file). Example for one file:
-python3 -c "
-import re, sys
-p = sys.argv[1]
-s = open(p).read()
-s = re.sub(r'<!-- VIP_ARCHIVED_2026-04-27_PENDING_BIRCHAL_V2_APPROVAL_BEGIN[^>]*-->\n', '', s)
-s = re.sub(r'<!-- VIP_ARCHIVED_2026-04-27_PENDING_BIRCHAL_V2_APPROVAL_END -->\n', '', s)
-open(p, 'w').write(s)
-" web/campaigns/FMTH/index-b.html
-# Repeat for each file from grep output, OR loop:
-for f in $(grep -rl 'VIP_ARCHIVED_2026-04-27_PENDING_BIRCHAL_V2_APPROVAL_BEGIN' web/); do
-  python3 -c "
-import re, sys
-p = sys.argv[1]
-s = open(p).read()
-s = re.sub(r'<!-- VIP_ARCHIVED_2026-04-27_PENDING_BIRCHAL_V2_APPROVAL_BEGIN[^>]*-->\n', '', s)
-s = re.sub(r'<!-- VIP_ARCHIVED_2026-04-27_PENDING_BIRCHAL_V2_APPROVAL_END -->\n', '', s)
-open(p, 'w').write(s)
-" "$f"
-done
+# Strip the wrapping comment + marker text, restore the markup:
+python3 - <<'PY'
+import re
+from pathlib import Path
+ROOT = Path("/Users/jb/Documents/GitHub/sales-skill/web")
+WRAPPER = re.compile(
+    r'<!--\s*\nVIP_ARCHIVED_2026-04-27_PENDING_BIRCHAL_V2_APPROVAL_BEGIN\n'
+    r'Restore by uncommenting block; see clients/farm-thru/VIP-ARCHIVE-MANIFEST\.md\n'
+    r'(.*?)\n'
+    r'VIP_ARCHIVED_2026-04-27_PENDING_BIRCHAL_V2_APPROVAL_END\n-->',
+    re.DOTALL,
+)
+for p in list(ROOT.rglob("index-?.html")) + [ROOT / "templates" / "campaign_thankyou.html"]:
+    if not p.is_file():
+        continue
+    s = p.read_text()
+    new = WRAPPER.sub(lambda m: m.group(1), s)
+    if new != s:
+        p.write_text(new)
+        print(f"restored {p.relative_to(ROOT.parent)}")
+PY
 ```
 
 ---
@@ -257,16 +272,49 @@ grep 'FMTH_VIP_ENABLED = ' web/app.py
 Run these against the deployed sales-skill revision (or `localhost:5000` for local).
 
 ```bash
-# 1. LP variants — VIP card should NOT appear in rendered HTML
+# 1. LP variants — VIP card should be wrapped in an HTML comment (not in the rendered DOM).
+# Two checks: (a) the marker is present (proof the archive happened);
+# (b) Python HTMLParser confirms zero visible vip-classed tags after parsing.
 for v in b c d e f g h i j k l m n o p q; do
   url="https://join.farmthru.com.au/campaigns/fmth/?v=$v"
-  count=$(curl -s "$url" | grep -c 'class="vip__card"')
-  echo "variant=$v vip_card_count=$count"  # all should be 0
+  body=$(curl -s "$url")
+  has_marker=$(echo "$body" | grep -c 'VIP_ARCHIVED_2026-04-27' | head -1)
+  visible=$(echo "$body" | python3 -c "
+import sys
+from html.parser import HTMLParser
+class V(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.n = 0
+    def handle_starttag(self, tag, attrs):
+        if any('vip' in (v or '') for k, v in attrs if k == 'class'):
+            self.n += 1
+p = V()
+p.feed(sys.stdin.read())
+print(p.n)
+")
+  echo "variant=$v has_marker=$has_marker visible_vip_tags=$visible  # marker should be 1 (or 0 for index-o), visible should be 0"
 done
 
-# 2. Thank-you template — VIP deposit prompt should NOT appear (visit fresh, no ?vip=success)
-curl -s 'https://join.farmthru.com.au/campaigns/fmth/thank-you' | grep -c 'Secure VIP Access'
-# Expected: 0
+# 2. Thank-you template — VIP deposit prompt should NOT appear (visit fresh, no ?vip=success).
+# The {% else %} VIP-confirmed branch IS still rendered if ?vip=success is set; that's intentional.
+body=$(curl -s 'https://join.farmthru.com.au/campaigns/fmth/thank-you')
+has_marker=$(echo "$body" | grep -c 'VIP_ARCHIVED_2026-04-27' | head -1)
+visible=$(echo "$body" | python3 -c "
+import sys
+from html.parser import HTMLParser
+class V(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.n = 0
+    def handle_starttag(self, tag, attrs):
+        if any('vip' in (v or '') for k, v in attrs if k == 'class'):
+            self.n += 1
+p = V()
+p.feed(sys.stdin.read())
+print(p.n)
+")
+echo "thank-you (no vip): has_marker=$has_marker visible_vip_tags=$visible  # marker=1, visible=0"
 
 # 3. VIP checkout endpoint — should return HTTP 503 + structured JSON
 curl -s -X POST 'https://join.farmthru.com.au/campaigns/fmth/vip-checkout' \
