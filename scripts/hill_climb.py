@@ -90,7 +90,7 @@ def parse_args():
 # ---------------------------------------------------------------------------
 
 def _get_ad_id(ad: dict) -> str:
-    return ad.get("ad_id", ad.get("page_id", ad.get("email_id", "?")))
+    return ad.get("ad_id", ad.get("page_id", ad.get("email_id", ad.get("sms_id", "?"))))
 
 
 def _get_weak_dimensions(report: dict, threshold: int = 3, max_dims: int = 2) -> list:
@@ -216,7 +216,7 @@ def _generate_and_lint(ad, item, client_dir, shared_dir, client, all_ads, recent
         )
 
         # Preserve metadata from original
-        for key in ["ad_id", "page_id", "email_id", "email_type"]:
+        for key in ["ad_id", "page_id", "email_id", "email_type", "sms_id", "purpose", "audience"]:
             if key in ad:
                 new_ad[key] = ad[key]
 
@@ -698,6 +698,7 @@ def run_map_elites(all_items, all_ads, client, client_dir, shared_dir,
         "meta-ad": "meta-ads",
         "email": "emails",
         "landing-page": "landing-pages",
+        "sms": "sms",
     }
     output_subdir = subdir_map.get(content_type, f"{content_type}s")
 
@@ -1068,7 +1069,7 @@ def main():
     # Collect all content
     loop_dir = client_dir / "loop"
     all_items = []
-    for subdir in ["meta-ads", "landing-pages", "emails"]:
+    for subdir in ["meta-ads", "landing-pages", "emails", "sms"]:
         content_dir = loop_dir / subdir
         if not content_dir.exists():
             continue

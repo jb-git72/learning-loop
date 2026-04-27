@@ -6,7 +6,7 @@
   "product": "Farm-direct regenerative grocery store with hub-and-collect model + equity crowdfunding campaign",
   "currency": "AUD",
   "market": "AU",
-  "content_types": ["meta-ad", "landing-page", "email"],
+  "content_types": ["meta-ad", "landing-page", "email", "sms"],
   "files": {
     "rules": "rules.json",
     "facts": "facts.json",
@@ -104,6 +104,25 @@
         "needs_work": 31,
         "rewrite": 0
       }
+    },
+    "sms": {
+      "weights": {
+        "angle_clarity": 1.5,
+        "motivation_match": 1.0,
+        "specificity": 1.25,
+        "char_efficiency": 1.5,
+        "cta_clarity": 1.0,
+        "compliance_fit": 1.25,
+        "tone_brand_fit": 1.0,
+        "differentiation": 0.5
+      },
+      "max_score": 45.0,
+      "thresholds": {
+        "production_ready": 38,
+        "strong_draft": 32,
+        "needs_work": 25,
+        "rewrite": 0
+      }
     }
   },
   "composite_weights": {
@@ -130,6 +149,11 @@
       "preheader_max_chars": 100,
       "body_max_chars": 2000,
       "platform": "email"
+    },
+    "sms": {
+      "body_single_segment_max": 160,
+      "body_max_chars": 320,
+      "platform": "sms"
     }
   },
   "angles_in_use": [
@@ -158,6 +182,11 @@
       "brand": ["See what's fresh this week", "Shop your local hub", "Meet the farmer"],
       "cfe_waitlist": ["Join the Waitlist", "Reserve Your Spot", "Secure VIP Access"],
       "cfe_campaign": ["Invest Now", "Read the Disclosure", "Secure VIP Access"]
+    },
+    "sms": {
+      "cfe_waitlist": ["Tap link", "Reply STOP to opt out"],
+      "cfe_campaign": ["Tap link to invest", "Tap link", "Reply STOP to opt out"],
+      "transactional": ["No action needed"]
     }
   },
   "critical_rules": [
@@ -195,12 +224,14 @@
   "prompt_rules": {
     "meta-ad": "- NO compliance disclaimers ANYWHERE in meta-ads (not primary_text, not headline, not description). \"Not financial advice\" = instant zero.\n- NO investment amounts ($50, $10K), \"equity crowdfunding\", \"Birchal\", \"minimum investment\" in ANY meta-ad field\n- CFE meta-ads: tease the opportunity (\"be part of it\", \"own a piece\"), never detail investment terms\n- Description must complement headline with benefit or proof — never compliance or investment details\n- Structure: customer pain/question → validation → product proof (specific) → \"why act now\" → CTA\n- Sentences: 13-18 words max. Killed ads averaged 23-28. Keep it tight.",
     "landing-page": "- Investment content MUST include financial disclaimer\n- When mentioning $5 deposit, must say \"refundable\"",
-    "email": "- Investment content MUST include financial disclaimer\n- When mentioning $5 deposit, must say \"refundable\""
+    "email": "- Investment content MUST include financial disclaimer\n- When mentioning $5 deposit, must say \"refundable\"",
+    "sms": "- Hard 160-char single-segment target. 320-char two-segment max.\n- The Birchal URL is the regulatory safe-harbour route — it carries recipients to the CSF risk-warning page. Always include the URL on investment-context SMS.\n- Marketing sends MUST include 'Reply STOP to opt out'. Transactional confirmations do not.\n- Never include explicit dollar amounts ($5, $50, $10K) in SMS body."
   },
   "prompt_extra_rules": {
     "meta-ad": "- No em-dashes (use full stops, commas, or colons)\n- No commands (\"stop\", \"add it up\", \"do the maths\")\n- No condescension (\"we'll wait\", \"simple maths\")\n- Lead with value/benefit, not price\n- Every number must trace to a verified fact above\n- Structure: customer pain/question → acknowledgment/validation → product proof (specific) → transition (\"why act now\") → CTA\n- Sentences: 13-18 words max. Killed ads averaged 23-28. Keep it tight.\n- Description field should complement the headline, not repeat it",
     "landing-page": "- NEVER use em dashes or en dashes. Use full stops, commas, or colons instead.\n- Subhead MUST be under 120 characters. Short, scannable, not a paragraph.\n- Short paragraphs throughout. Max 3 sentences per paragraph. Lots of line breaks.\n- Sentences: 13-18 words max. If a sentence is over 20 words, split it.\n- Headlines must be general-purpose (not 'your kids' which excludes non-parents).\n- No specific dollar amounts ($50, $10K) unless confirmed.\n- Include financial disclaimer if discussing investment\n- Risks and benefits must have equal prominence\n- No return projections or guarantees\n- Every number must trace to a verified fact above\n- Last section MUST be titled \"Compliance\" with the exact disclaimer text shown in the output format above\n- Do NOT omit the Compliance section even if the page doesn't discuss investment — include it for all CFE/waitlist pages",
-    "email": "- Single CTA per email\n- Short paragraphs (max 3 sentences each)\n- Founder voice when appropriate\n- Every number must trace to a verified fact above\n- ALWAYS add as the FINAL paragraph before the sign-off (every email, no exception — universal CSF safe-harbour gate ADV-001 hard-blocks if missing): \"Always consider the general CSF risk warning and offer document before investing.\" The older wording 'This is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.' is BANNED by DISC-001 — never use it."
+    "email": "- Single CTA per email\n- Short paragraphs (max 3 sentences each)\n- Founder voice when appropriate\n- Every number must trace to a verified fact above\n- ALWAYS add as the FINAL paragraph before the sign-off (every email, no exception — universal CSF safe-harbour gate ADV-001 hard-blocks if missing): \"Always consider the general CSF risk warning and offer document before investing.\" The older wording 'This is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.' is BANNED by DISC-001 — never use it.",
+    "sms": "- ONE job per SMS. Confirmation = reassure. Round-opens = drive to link. Never both in one send.\n- Fit a single segment (≤160 chars) when possible — count the EXPANDED merge tag length, not '{{birchal_url}}'.\n- The link in an investment-context SMS IS the regulatory workaround — it routes to the CSF risk-warning page. Always include the URL on investment SMS so ADV-001 short-paraphrase 'general CSF risk warning' is satisfied via the destination page (the SMS itself does not need the full canonical line if the URL is present and goes to the risk-warning route).\n- For SMS that DON'T include a link (e.g. purchase confirmations): include the short paraphrase 'See the general CSF risk warning + offer doc.' if the SMS references the investment.\n- Marketing sends to a list (round-opens, reminders): MUST end with 'Reply STOP to opt out.'\n- Transactional confirmations sent in response to a user action: opt-out NOT required.\n- Founder voice OK but factual takes priority. No hype words ('huge', 'unmissable'), no exclamation marks beyond one.\n- No em-dashes. No 'priority'. No explicit dollar amounts."
   },
   "compliance": {
     "enabled": true,

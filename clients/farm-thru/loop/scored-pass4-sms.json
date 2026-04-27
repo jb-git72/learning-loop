@@ -1,0 +1,272 @@
+{
+  "summary": {
+    "total": 2,
+    "avg_composite": 0.7777,
+    "verdicts": {
+      "strong_draft": 2
+    },
+    "critical_failures": 0
+  },
+  "results": [
+    {
+      "ad_id": "SMS-VIP-CONFIRM",
+      "composite": 0.7833,
+      "verdict": "strong_draft",
+      "compliance": {
+        "enabled": true,
+        "passed": true,
+        "rules_evaluated": 1,
+        "rules_skipped_out_of_scope": 97,
+        "blocking_violations": [],
+        "warnings": [],
+        "advisory": []
+      },
+      "rule_compliance": {
+        "score": 1.0,
+        "passed": 32,
+        "total": 32,
+        "failures": [],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 1,
+        "verified": 1,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": [
+          {
+            "claim": "Birchal platform",
+            "fact_id": "INV-005",
+            "status": "verified",
+            "confidence": "HIGH"
+          }
+        ]
+      },
+      "rubric": {
+        "weighted_total": 35.25,
+        "max_possible": 45.0,
+        "raw_scores": {
+          "angle_clarity": 4,
+          "motivation_match": 3,
+          "specificity": 2,
+          "char_efficiency": 5,
+          "cta_clarity": 5,
+          "compliance_fit": 5,
+          "tone_brand_fit": 3,
+          "differentiation": 4
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 4,
+            "weight": 1.5,
+            "weighted": 6.0,
+            "method": "llm",
+            "detail": "LLM(batch): The angle is clear and dominant\u2014VIP early access to a crowdfunding round\u2014though it prioritizes transactional confirmation over the brand's core strategic position (farm-direct grocery access)."
+          },
+          "motivation_match": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(batch): The message addresses the investment motivation (ownership, early access) at a rational level, but doesn't activate the deeper felt need\u2014belief in rebuilding food systems or trust in the FarmThru mission."
+          },
+          "specificity": {
+            "score": 2,
+            "weight": 1.25,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 0 numbers, 2 names = 2 specifics"
+          },
+          "char_efficiency": {
+            "score": 5,
+            "weight": 1.5,
+            "weighted": 7.5,
+            "method": "deterministic",
+            "detail": "140 chars expanded (140 raw) \u2014 tight single segment"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Confirmation with clear status signal \u2014 no link needed"
+          },
+          "compliance_fit": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "5/5 compliance: transactional \u2014 no opt-out required; short paraphrase 'general CSF risk warning' present"
+          },
+          "tone_brand_fit": {
+            "score": 3,
+            "weight": 1.0,
+            "weighted": 3.0,
+            "method": "llm",
+            "detail": "LLM(haiku-cli): Brand details present (Birchal, email) and 'You're in' has warmth, but tone is predominantly transactional \u2014 compliance language dominates and lacks distinctly FarmThru voice that would survive without context."
+          },
+          "differentiation": {
+            "score": 4,
+            "weight": 0.5,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "No comparable ads of same content_type"
+          }
+        }
+      },
+      "overrides": {
+        "compliance_blocking": false,
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 0,
+        "compliance_warnings": 0
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 5,
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
+      },
+      "_file": "clients/farm-thru/loop/sms/SMS-VIP-CONFIRM.json",
+      "content_type": "sms",
+      "angle": "transparency-safety",
+      "hook_type": "confirmation",
+      "original_ad_name": "",
+      "headline": "purchase-confirmation",
+      "primary_text": "You're in. VIP early access secured. We'll text when the round opens at Birchal. See general CSF risk warning. Refund: hello@farmthru.com.au"
+    },
+    {
+      "ad_id": "SMS-VIP-OPEN",
+      "composite": 0.7722,
+      "verdict": "strong_draft",
+      "compliance": {
+        "enabled": true,
+        "passed": true,
+        "rules_evaluated": 1,
+        "rules_skipped_out_of_scope": 97,
+        "blocking_violations": [],
+        "warnings": [],
+        "advisory": []
+      },
+      "rule_compliance": {
+        "score": 1.0,
+        "passed": 32,
+        "total": 32,
+        "failures": [],
+        "critical_failure": false
+      },
+      "fact_accuracy": {
+        "score": 1.0,
+        "claims_found": 1,
+        "verified": 1,
+        "unverified": 0,
+        "contradicted": 0,
+        "details": [
+          {
+            "claim": "Birchal platform",
+            "fact_id": "INV-005",
+            "status": "verified",
+            "confidence": "HIGH"
+          }
+        ]
+      },
+      "rubric": {
+        "weighted_total": 34.75,
+        "max_possible": 45.0,
+        "raw_scores": {
+          "angle_clarity": 5,
+          "motivation_match": 2,
+          "specificity": 2,
+          "char_efficiency": 5,
+          "cta_clarity": 5,
+          "compliance_fit": 5,
+          "tone_brand_fit": 2,
+          "differentiation": 4
+        },
+        "dimension_details": {
+          "angle_clarity": {
+            "score": 5,
+            "weight": 1.5,
+            "weighted": 7.5,
+            "method": "llm",
+            "detail": "LLM(batch): The angle is unmistakable: FarmThru's equity crowdfunding round is now open and available to VIP investors\u2014a single, dominant strategic position with zero competing themes."
+          },
+          "motivation_match": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "llm",
+            "detail": "LLM(batch): The ad names the investment opportunity but fails to activate the felt need\u2014it doesn't articulate why this investor should care now, what they're building toward, or why FarmThru matters beyond a financial transaction."
+          },
+          "specificity": {
+            "score": 2,
+            "weight": 1.25,
+            "weighted": 2.5,
+            "method": "deterministic",
+            "detail": "0 dollar amounts, 0 numbers, 1 names = 1 specifics"
+          },
+          "char_efficiency": {
+            "score": 5,
+            "weight": 1.5,
+            "weighted": 7.5,
+            "method": "deterministic",
+            "detail": "104 chars expanded (89 raw) \u2014 tight single segment"
+          },
+          "cta_clarity": {
+            "score": 5,
+            "weight": 1.0,
+            "weighted": 5.0,
+            "method": "deterministic",
+            "detail": "Link present \u2014 natural single tap target"
+          },
+          "compliance_fit": {
+            "score": 5,
+            "weight": 1.25,
+            "weighted": 6.25,
+            "method": "deterministic",
+            "detail": "5/5 compliance: opt-out present; URL routes to risk-warning page (safe-harbour OK); short paraphrase 'general CSF risk warning' present"
+          },
+          "tone_brand_fit": {
+            "score": 2,
+            "weight": 1.0,
+            "weighted": 2.0,
+            "method": "llm",
+            "detail": "LLM(haiku-cli): Brand name only, no founder voice or warmth\u2014reads like generic fintech boilerplate despite CSF audience being VIP investors who trust FarmThru's vision."
+          },
+          "differentiation": {
+            "score": 4,
+            "weight": 0.5,
+            "weighted": 2.0,
+            "method": "deterministic",
+            "detail": "No comparable ads of same content_type"
+          }
+        }
+      },
+      "overrides": {
+        "compliance_blocking": false,
+        "critical_rule_failure": false,
+        "fact_contradiction": false
+      },
+      "penalties": {
+        "unverified_claims": 0,
+        "non_critical_rule_failures": 0,
+        "compliance_warnings": 0
+      },
+      "scoring_method": {
+        "deterministic_dimensions": 5,
+        "llm_judged_dimensions": 3,
+        "heuristic_dimensions": 0
+      },
+      "_file": "clients/farm-thru/loop/sms/SMS-VIP-OPEN.json",
+      "content_type": "sms",
+      "angle": "urgency-scarcity",
+      "hook_type": "announcement",
+      "original_ad_name": "",
+      "headline": "round-opens-vip",
+      "primary_text": "FarmThru CSF offer is live: {{birchal_url}} See the general CSF risk warning. Reply STOP."
+    }
+  ]
+}
