@@ -517,6 +517,30 @@ Focus specifically on improving these while maintaining everything else:
 - Every number must trace to a verified fact above
 - The sender must be '{email_sender}'"""
 
+    elif content_type == "sms":
+        single_seg = constraints.get("body_single_segment_max", 160)
+        body_max = constraints.get("body_max_chars", 320)
+        constraints_text = f"""- Body: target single segment ({single_seg} chars expanded), hard max {body_max}
+- Count the EXPANDED merge tag, not the literal {{{{birchal_url}}}}
+- Platform: sms
+- One job only — no compound messages"""
+        output_format = """{
+  "body": "the SMS message text (single segment ideal)",
+  "purpose": "round-opens-vip | purchase-confirmation | reminder",
+  "audience": "vip-investors | waitlist | customers | all-subscribers",
+  "creative_brief": "1 sentence on send context (manual via SMS provider, etc.)"
+}"""
+        content_label = "SMS variant"
+        config_extra = config.get("prompt_extra_rules", {}).get("sms", "")
+        if config_extra:
+            extra_rules = config_extra
+        else:
+            extra_rules = """- Single segment (≤160 chars expanded) when possible
+- Marketing sends: end with 'Reply STOP to opt out.'
+- Investment-context SMS: include URL OR short paraphrase 'general CSF risk warning'
+- No em-dashes, no 'priority', no explicit dollar amounts
+- One job per SMS — never combine confirmation + drive-to-link"""
+
     else:  # meta-ad (default)
         constraints_text = f"""- Primary text: max {constraints.get('primary_text_max_chars', 500)} characters
 - Headline: max {constraints.get('headline_max_chars', 40)} characters

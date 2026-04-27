@@ -1,0 +1,18 @@
+{
+  "sms_id": "SMS-VIP-OPEN",
+  "content_type": "sms",
+  "purpose": "round-opens-vip",
+  "audience": "vip-investors",
+  "body": "FarmThru CSF offer is live: {{birchal_url}} See the general CSF risk warning. Reply STOP.",
+  "char_count": 89,
+  "merge_tags": ["{{birchal_url}}"],
+  "send_segment": "single",
+  "cta": "Tap link",
+  "creative_brief": "Sent manually by founder/agency at the moment the CSF offer goes live on Birchal. The {{birchal_url}} expands to the canonical Birchal CSF risk-warning landing route. Recipient already knows what FarmThru is (they paid the $5 VIP deposit). Job: drive one tap. Tone: factual, calm, no hype. Single SMS segment after merge-tag expansion (~104 chars). The short paraphrase 'general CSF risk warning' satisfies the universal ADV-001 safe-harbour gate within the 160-char budget; the URL itself routes to the same canonical disclosures.",
+  "angle": "urgency-scarcity",
+  "tactic": "vip-round-opens-direct",
+  "hook_type": "announcement",
+  "funnel": "BOF",
+  "generated_at": "2026-04-27T13:00:00+10:00",
+  "source": "clients/farm-thru/CSF-VIP-COPY-PACKAGE.md §SMS round opens (compliance-revised: added 'See the general CSF risk warning' to satisfy ADV-001 + FMTH-001 within 160-char single-segment budget)"
+}

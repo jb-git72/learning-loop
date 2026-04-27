@@ -26,7 +26,7 @@ def build_html(scored_json_path: str, output_path: str):
         else:
             ad = {}
 
-        ad_id = ad.get("ad_id", ad.get("page_id", ad.get("email_id", "unknown")))
+        ad_id = ad.get("ad_id", ad.get("page_id", ad.get("email_id", ad.get("sms_id", "unknown"))))
         content_type = ad.get("content_type", r.get("content_type", "meta-ad"))
         angle = ad.get("angle", r.get("angle", ""))
         hook_type = ad.get("hook_type", "")
@@ -36,8 +36,8 @@ def build_html(scored_json_path: str, output_path: str):
         composite = r["composite"]
 
         # Type badge
-        type_labels = {"meta-ad": "AD", "landing-page": "PAGE", "email": "EMAIL"}
-        type_colors = {"meta-ad": "#2563eb", "landing-page": "#7c3aed", "email": "#059669"}
+        type_labels = {"meta-ad": "AD", "landing-page": "PAGE", "email": "EMAIL", "sms": "SMS"}
+        type_colors = {"meta-ad": "#2563eb", "landing-page": "#7c3aed", "email": "#059669", "sms": "#dc2626"}
         type_label = type_labels.get(content_type, "?")
         type_color = type_colors.get(content_type, "#666")
 
@@ -55,7 +55,7 @@ def build_html(scored_json_path: str, output_path: str):
         verdict_label = verdict.replace("_", " ").upper()
 
         # Headline preview
-        headline = ad.get("headline", ad.get("subject", ""))
+        headline = ad.get("headline", ad.get("subject", ad.get("purpose", "")))
 
         # Score summary line
         rubric_total = r.get("rubric", {}).get("weighted_total", 0)
@@ -110,6 +110,28 @@ def build_html(scored_json_path: str, output_path: str):
                     <div class="char-count">{len(pre)}/100</div>
                     <div class="field-label" style="margin-top:12px">SENDER</div>
                     <div class="field-static">{_esc(sender)}</div>
+                </div>
+            </div>"""
+        elif content_type == "sms":
+            body = ad.get("body", "")
+            purpose = ad.get("purpose", "")
+            audience = ad.get("audience", "")
+            # Estimate expanded length (replace {{...}} with ~30 chars to mirror engine)
+            import re as _re
+            expanded = _re.sub(r"\{\{[^{}]+\}\}", "X" * 30, body)
+            seg_label = "1 segment" if len(expanded) <= 160 else ("2 segments" if len(expanded) <= 320 else f"{((len(expanded)-1)//160)+1} segments")
+            content_html = f"""
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">SMS BODY</div>
+                    <textarea class="field-edit" data-id="{ad_id}" data-field="body" rows="6">{_esc(body)}</textarea>
+                    <div class="char-count">{len(body)} raw / {len(expanded)} expanded ({seg_label})</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">PURPOSE</div>
+                    <div class="field-static">{_esc(purpose)}</div>
+                    <div class="field-label" style="margin-top:12px">AUDIENCE</div>
+                    <div class="field-static">{_esc(audience)}</div>
                 </div>
             </div>"""
         else:  # landing-page
@@ -266,6 +288,7 @@ body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans
         <button class="tbtn" onclick="setFilter('type','meta-ad',this)">Ads</button>
         <button class="tbtn" onclick="setFilter('type','landing-page',this)">Pages</button>
         <button class="tbtn" onclick="setFilter('type','email',this)">Emails</button>
+        <button class="tbtn" onclick="setFilter('type','sms',this)">SMS</button>
         <div class="sep"></div>
         <button class="tbtn" onclick="setFilter('status','unreviewed',this)">Pending</button>
         <button class="tbtn" onclick="setFilter('status','approved',this)">Approved</button>

@@ -149,7 +149,7 @@ def check_client(client_slug: str, auto_trim: bool = False) -> int:
         errors += 1
 
     # Check type-specific files
-    for ct in ["meta-ad", "landing-page", "email"]:
+    for ct in ["meta-ad", "landing-page", "email", "sms"]:
         f = client_dir / f"learnings-{ct}.md"
         if not f.exists():
             print(f"[INFO] learnings-{ct}.md not found (optional)")

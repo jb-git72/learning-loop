@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "content_type": "sms",
+  "description": "Marketing or transactional SMS message. Used for round-open notifications, purchase confirmations, and other founder-direct one-shot sends. Hard 160-char single-segment ceiling, 320-char two-segment ceiling. Manually sent via SMS provider — no automated pipeline.",
+  "required_fields": ["sms_id", "content_type", "body", "purpose", "audience"],
+  "optional_fields": ["cta", "char_count", "merge_tags", "send_segment", "creative_brief", "status", "scores", "version_of", "round"],
+  "field_constraints": {
+    "body": {"max_length": 320, "description": "SMS body. Aim for single segment (160 chars). Two-segment max (320). Merge tags like {{birchal_url}} count toward the limit when expanded."},
+    "cta": {"description": "Implicit CTA — usually a tappable URL embedded in body. Optional explicit CTA label for tracking."},
+    "purpose": {"enum": ["round-opens-vip", "round-opens-public", "purchase-confirmation", "abandoned-checkout", "founder-update", "reminder"], "description": "What job the SMS does in the funnel."},
+    "audience": {"enum": ["vip-investors", "waitlist", "customers", "all-subscribers"], "description": "Recipient segment."}
+  },
+  "platform": "sms",
+  "rubric": "sms"
+}

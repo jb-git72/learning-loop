@@ -25,6 +25,9 @@ def _format_content_block(ad):
     if ct == "email":
         return "SUBJECT: %s\nPREHEADER: %s\nBODY: %s" % (
             ad.get("subject", ""), ad.get("preheader", ""), ad.get("body", "")[:500])
+    elif ct == "sms":
+        return "SMS BODY (purpose=%s, audience=%s):\n%s" % (
+            ad.get("purpose", "?"), ad.get("audience", "?"), ad.get("body", ""))
     elif ct == "landing-page":
         parts = ["HEADLINE: %s" % ad.get("headline", ""),
                  "SUBHEAD: %s" % ad.get("subhead", ""),
@@ -439,6 +442,8 @@ def _heuristic_fallback(dim_id, ad):
     ct = ad.get("content_type", "meta-ad")
     if ct == "email":
         text = " ".join(ad.get(f, "") for f in ["subject", "preheader", "body"])
+    elif ct == "sms":
+        text = ad.get("body", "")
     elif ct == "landing-page":
         text = " ".join(ad.get(f, "") for f in ["headline", "subhead", "hero_copy"])
     else:
@@ -466,5 +471,17 @@ def _heuristic_fallback(dim_id, ad):
         else:
             has_parts = sum([bool(ad.get("headline")), len(ad.get("primary_text", "")) > 50, bool(ad.get("cta"))])
         return min(1 + has_parts, 3), "HEURISTIC(degraded): %d/3 structural parts, no LLM available" % has_parts
+
+    if dim_id == "tone_brand_fit":
+        # SMS-specific dimension. Rough heuristic: short and on-brand if body
+        # contains the brand and avoids hype words.
+        body = ad.get("body", "")
+        has_brand = bool(re.search(r"farm.?thru", body, re.IGNORECASE))
+        hype = bool(re.search(r"\b(huge|amazing|unmissable|don't miss|act now)\b", body, re.IGNORECASE))
+        if has_brand and not hype:
+            return 3, "HEURISTIC(degraded): brand present, no hype, no LLM available"
+        if has_brand:
+            return 2, "HEURISTIC(degraded): brand present but hype detected, no LLM available"
+        return 2, "HEURISTIC(degraded): brand not detected, no LLM available"
 
     return 2, "HEURISTIC(degraded): default, no LLM available"

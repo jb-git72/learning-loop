@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmThru Round 3 Review</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #1a1a1a; padding: 16px 20px; }
+.header { max-width: 1400px; margin: 0 auto 12px; }
+.header-info { font-size: 13px; color: #666; margin-bottom: 10px; }
+.status-bar { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+.status-pill { padding: 4px 12px; border-radius: 4px; font-size: 13px; font-weight: 500; background: #f0f0f0; }
+.status-pill.green { border: 1.5px solid #22c55e; color: #166534; }
+.status-pill.blue { border: 1.5px solid #3b82f6; color: #1d4ed8; }
+.status-pill.red { border: 1.5px solid #ef4444; color: #991b1b; }
+.toolbar { display: flex; gap: 0; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+.toolbar .sep { width: 16px; }
+.tbtn { padding: 6px 14px; border: 1px solid #ddd; background: white; cursor: pointer; font-size: 13px; font-weight: 500; color: #555; }
+.tbtn:first-child { border-radius: 6px 0 0 6px; }
+.tbtn:last-child { border-radius: 0 6px 6px 0; }
+.tbtn:not(:first-child) { border-left: none; }
+.tbtn.active { background: #1a1a1a; color: white; border-color: #1a1a1a; }
+.toolbar-right { margin-left: auto; display: flex; gap: 6px; }
+.toolbar-right .tbtn { border-radius: 6px; border: 1px solid #ddd; }
+.toolbar-right .tbtn:not(:first-child) { border-left: 1px solid #ddd; }
+.cards { max-width: 1400px; margin: 0 auto; }
+.card { background: white; border-radius: 8px; margin-bottom: 12px; padding: 16px 20px; border-left: 4px solid transparent; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.card.status-approved { border-left-color: #22c55e; }
+.card.status-revise { border-left-color: #3b82f6; }
+.card.status-kill { border-left-color: #ef4444; }
+.card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
+.card-id { font-weight: 700; font-size: 16px; }
+.type-badge { color: white; padding: 2px 10px; border-radius: 3px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; }
+.angle-label { color: #666; font-size: 13px; }
+.hl-preview { color: #444; font-size: 13px; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.card-right { display: flex; align-items: center; gap: 8px; margin-left: auto; flex-shrink: 0; }
+.score-circle { color: white; font-weight: 700; font-size: 13px; padding: 4px 10px; border-radius: 20px; min-width: 50px; text-align: center; }
+.verdict-label { font-size: 12px; font-weight: 600; color: #666; text-transform: uppercase; min-width: 80px; text-align: center; }
+.btn { padding: 5px 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px; cursor: pointer; background: white; font-weight: 500; }
+.btn-approve.active { background: #22c55e; color: white; border-color: #22c55e; }
+.btn-revise.active { background: #3b82f6; color: white; border-color: #3b82f6; }
+.btn-kill.active { background: #ef4444; color: white; border-color: #ef4444; }
+.btn:hover { opacity: 0.85; }
+.score-summary { font-size: 12px; color: #888; margin-bottom: 12px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 12px; }
+.field-label { font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.field-edit { width: 100%; padding: 10px; border: 1px solid #e0e0e0; border-radius: 6px; font-family: inherit; font-size: 14px; line-height: 1.6; resize: vertical; color: #1a1a1a; }
+.field-edit:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 2px rgba(59,130,246,0.15); }
+.field-static { font-size: 14px; color: #444; padding: 4px 0; }
+.char-count { font-size: 11px; color: #aaa; text-align: right; margin-top: 2px; }
+.tags-row { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.tag { background: #f0f0f0; padding: 3px 10px; border-radius: 4px; font-size: 12px; color: #555; }
+.creative-brief { font-size: 13px; color: #777; margin-bottom: 10px; }
+.notes-row { margin-top: 8px; }
+.notes { width: 100%; height: 50px; padding: 8px; border: 1px solid #e0e0e0; border-radius: 6px; font-family: inherit; font-size: 13px; resize: vertical; }
+.counter { max-width: 1400px; margin: 0 auto 12px; font-size: 13px; color: #888; }
+.card-top { cursor: pointer; user-select: none; }
+.card-top:hover { opacity: 0.85; }
+.card-body { display: none; }
+.card.expanded .card-body { display: block; }
+.collapse-indicator { font-size: 12px; color: #aaa; margin-right: 4px; transition: transform 0.15s; }
+.card.expanded .collapse-indicator { transform: rotate(90deg); }
+</style>
+</head>
+<body>
+<div class="header">
+    <div class="header-info">2 items | Brand guidelines v1.1 | Hub-and-collect | No named competitors | 0 critical failures</div>
+    <div class="status-bar" id="statusBar">
+        <span class="status-pill">2 items</span>
+        <span class="status-pill" id="pillPending">Pending: 2</span>
+        <span class="status-pill green" id="pillApproved">Approved: 0</span>
+        <span class="status-pill blue" id="pillEdited">Edited: 0</span>
+        <span class="status-pill red" id="pillKilled">Killed: 0</span>
+    </div>
+    <div class="toolbar">
+        <button class="tbtn active" onclick="setFilter('type','all',this)">All</button>
+        <button class="tbtn" onclick="setFilter('type','meta-ad',this)">Ads</button>
+        <button class="tbtn" onclick="setFilter('type','landing-page',this)">Pages</button>
+        <button class="tbtn" onclick="setFilter('type','email',this)">Emails</button>
+        <button class="tbtn" onclick="setFilter('type','sms',this)">SMS</button>
+        <div class="sep"></div>
+        <button class="tbtn" onclick="setFilter('status','unreviewed',this)">Pending</button>
+        <button class="tbtn" onclick="setFilter('status','approved',this)">Approved</button>
+        <button class="tbtn" onclick="setFilter('status','revise',this)">Edited</button>
+        <button class="tbtn" onclick="setFilter('status','kill',this)">Killed</button>
+        <div class="sep"></div>
+        <button class="tbtn active" onclick="setSort('score',this)">Score &#9660;</button>
+        <button class="tbtn" onclick="setSort('name',this)">Name</button>
+        <div class="toolbar-right">
+            <button class="tbtn" onclick="toggleAll()">Expand All</button>
+            <button class="tbtn" onclick="saveJSON()">Save JSON</button>
+            <button class="tbtn" onclick="exportCSV()">CSV</button>
+        </div>
+    </div>
+</div>
+<div class="counter" id="counter"></div>
+<div class="cards" id="cards">
+    
+        <div class="card" data-verdict="strong_draft" data-type="sms" data-angle="transparency-safety" data-id="SMS-VIP-CONFIRM" data-score="0.7833">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">SMS-VIP-CONFIRM</span>
+                <span class="type-badge" style="background:#dc2626">SMS</span>
+                <span class="angle-label">transparency-safety</span>
+                <span class="hl-preview">purchase-confirmation</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.78</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('SMS-VIP-CONFIRM','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('SMS-VIP-CONFIRM','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('SMS-VIP-CONFIRM','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7833 &nbsp; Rubric: 35.2/45.0 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: confirmation</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">SMS BODY</div>
+                    <textarea class="field-edit" data-id="SMS-VIP-CONFIRM" data-field="body" rows="6">You're in. VIP early access secured. We'll text when the round opens at Birchal. See general CSF risk warning. Refund: hello@farmthru.com.au</textarea>
+                    <div class="char-count">140 raw / 140 expanded (1 segment)</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">PURPOSE</div>
+                    <div class="field-static">purchase-confirmation</div>
+                    <div class="field-label" style="margin-top:12px">AUDIENCE</div>
+                    <div class="field-static">vip-investors</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: No action needed</span>
+            <span class="tag">Tactic: vip-purchase-confirmation</span>
+            <span class="tag">Funnel: BOF</span>
+        </div><div class="creative-brief"><em>Sent immediately after the recipient pays the $5 refundable VIP deposit on Stripe. Job: confirm + reassure + give the refund channel + remind them the next SMS is the round-opens trigger. Transactional under Spam Act 2003 (sent in response to a user action) — no opt-out required. Single segment, 140 chars. The phrase 'general CSF risk warning' satisfies the universal ADV-001 safe-harbour gate even though no link is included; explicit Birchal mention triggers FMTH-001 disclaimer-required, which the same paraphrase also satisfies.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="SMS-VIP-CONFIRM" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-verdict="strong_draft" data-type="sms" data-angle="urgency-scarcity" data-id="SMS-VIP-OPEN" data-score="0.7722">
+            <div class="card-top" onclick="toggleCard(this)">
+                <span class="collapse-indicator">&#9654;</span>
+                <span class="card-id">SMS-VIP-OPEN</span>
+                <span class="type-badge" style="background:#dc2626">SMS</span>
+                <span class="angle-label">urgency-scarcity</span>
+                <span class="hl-preview">round-opens-vip</span>
+                <div class="card-right">
+                    <span class="score-circle" style="background:#22c55e">0.77</span>
+                    <span class="verdict-label">STRONG DRAFT</span>
+                    <button class="btn btn-approve" onclick="event.stopPropagation();setStatus('SMS-VIP-OPEN','approved',this)">Approve</button>
+                    <button class="btn btn-revise" onclick="event.stopPropagation();setStatus('SMS-VIP-OPEN','revise',this)">Revise</button>
+                    <button class="btn btn-kill" onclick="event.stopPropagation();setStatus('SMS-VIP-OPEN','kill',this)">Kill</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="score-summary">Composite: 0.7722 &nbsp; Rubric: 34.8/45.0 &nbsp; Rules: 32/32 &nbsp; Facts: 1.00 &nbsp; Hook: announcement</div>
+                
+            <div class="two-col">
+                <div class="col-left">
+                    <div class="field-label">SMS BODY</div>
+                    <textarea class="field-edit" data-id="SMS-VIP-OPEN" data-field="body" rows="6">FarmThru CSF offer is live: {{birchal_url}} See the general CSF risk warning. Reply STOP.</textarea>
+                    <div class="char-count">89 raw / 104 expanded (1 segment)</div>
+                </div>
+                <div class="col-right">
+                    <div class="field-label">PURPOSE</div>
+                    <div class="field-static">round-opens-vip</div>
+                    <div class="field-label" style="margin-top:12px">AUDIENCE</div>
+                    <div class="field-static">vip-investors</div>
+                </div>
+            </div>
+                
+        <div class="tags-row">
+            <span class="tag">CTA: Tap link</span>
+            <span class="tag">Tactic: vip-round-opens-direct</span>
+            <span class="tag">Funnel: BOF</span>
+        </div><div class="creative-brief"><em>Sent manually by founder/agency at the moment the CSF offer goes live on Birchal. The {{birchal_url}} expands to the canonical Birchal CSF risk-warning landing route. Recipient already knows what FarmThru is (they paid the $5 VIP deposit). Job: drive one tap. Tone: factual, calm, no hype. Single SMS segment after merge-tag expansion (~104 chars). The short paraphrase 'general CSF risk warning' satisfies the universal ADV-001 safe-harbour gate within the 160-char budget; the URL itself routes to the same canonical disclosures.</em></div>
+                <div class="notes-row">
+                    <div class="field-label">NOTES</div>
+                    <textarea class="notes" data-id="SMS-VIP-OPEN" placeholder="Add review notes..."></textarea>
+                </div>
+            </div>
+        </div>
+</div>
+<script>
+const statuses = {};
+const notes = {};
+const filters = { type: 'all', status: 'all' };
+
+function toggleCard(topEl) {
+    const card = topEl.closest('.card');
+    card.classList.toggle('expanded');
+}
+
+function toggleAll() {
+    const cards = document.querySelectorAll('.card');
+    const anyExpanded = document.querySelector('.card.expanded');
+    cards.forEach(c => {
+        if (anyExpanded) c.classList.remove('expanded');
+        else c.classList.add('expanded');
+    });
+}
+
+function setStatus(id, status, btn) {
+    statuses[id] = status;
+    const card = document.querySelector(`[data-id="${id}"]`);
+    card.className = card.className.replace(/status-\w+/g, '') + ` status-${status}`;
+    card.querySelectorAll('.card-right .btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    updatePills();
+    updateCounter();
+}
+
+function setFilter(group, value, btn) {
+    filters[group] = value;
+    // Update active state in toolbar
+    if (group === 'type') {
+        document.querySelectorAll('.toolbar .tbtn').forEach((b, i) => {
+            if (i < 4) b.classList.remove('active');
+        });
+    }
+    btn.classList.add('active');
+    filterCards();
+}
+
+function filterCards() {
+    document.querySelectorAll('.card').forEach(c => {
+        const matchType = filters.type === 'all' || c.dataset.type === filters.type;
+        const id = c.dataset.id;
+        const matchStatus = filters.status === 'all' ||
+            (filters.status === 'unreviewed' && !statuses[id]) ||
+            statuses[id] === filters.status;
+        c.style.display = matchType && matchStatus ? '' : 'none';
+    });
+    updateCounter();
+}
+
+function setSort(mode, btn) {
+    const container = document.getElementById('cards');
+    const cards = Array.from(container.querySelectorAll('.card'));
+    // Update active state on sort buttons
+    btn.parentElement.querySelectorAll('.tbtn').forEach(b => {
+        if (b.textContent.includes('Score') || b.textContent.includes('Name'))
+            b.classList.remove('active');
+    });
+    btn.classList.add('active');
+    if (mode === 'score') {
+        cards.sort((a, b) => parseFloat(b.dataset.score) - parseFloat(a.dataset.score));
+    } else {
+        cards.sort((a, b) => a.dataset.id.localeCompare(b.dataset.id));
+    }
+    cards.forEach(c => container.appendChild(c));
+}
+
+function updatePills() {
+    const counts = { approved: 0, revise: 0, kill: 0 };
+    Object.values(statuses).forEach(s => { if (counts[s] !== undefined) counts[s]++; });
+    const total = 2;
+    const reviewed = Object.keys(statuses).length;
+    document.getElementById('pillPending').textContent = `Pending: ${total - reviewed}`;
+    document.getElementById('pillApproved').textContent = `Approved: ${counts.approved}`;
+    document.getElementById('pillEdited').textContent = `Edited: ${counts.revise}`;
+    document.getElementById('pillKilled').textContent = `Killed: ${counts.kill}`;
+}
+
+function updateCounter() {
+    const visible = document.querySelectorAll('.card:not([style*="display: none"])').length;
+    document.getElementById('counter').textContent = `Showing ${visible}/2`;
+}
+
+function saveJSON() {
+    document.querySelectorAll('.notes').forEach(n => {
+        if (n.value.trim()) notes[n.dataset.id] = n.value.trim();
+    });
+    // Also collect edited field values
+    const edits = {};
+    document.querySelectorAll('.field-edit').forEach(el => {
+        const id = el.dataset.id;
+        const field = el.dataset.field;
+        if (!edits[id]) edits[id] = {};
+        edits[id][field] = el.value;
+    });
+    const data = { statuses, notes, edits, exported: new Date().toISOString() };
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'review-r3-decisions.json';
+    a.click();
+}
+
+function exportCSV() {
+    document.querySelectorAll('.notes').forEach(n => {
+        if (n.value.trim()) notes[n.dataset.id] = n.value.trim();
+    });
+    let csv = 'id,type,angle,verdict,composite,status,notes\n';
+    document.querySelectorAll('.card').forEach(c => {
+        const id = c.dataset.id;
+        csv += `${id},${c.dataset.type},${c.dataset.angle},${c.dataset.verdict},` +
+               `${c.querySelector('.score-circle').textContent},${statuses[id]||'pending'},` +
+               `"${(notes[id]||'').replace(/"/g,'""')}"\n`;
+    });
+    const blob = new Blob([csv], {type: 'text/csv'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'review-r3.csv';
+    a.click();
+}
+
+updateCounter();
+</script>
+</body>
+</html>

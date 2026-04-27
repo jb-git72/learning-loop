@@ -149,11 +149,19 @@ def _score_deterministic(
         "scroll_stop_hook": _score_scroll_stop_hook,  # reuse for opening hook
     }
 
+    # SMS specific (small set — most email/meta dimensions don't apply at 160 chars)
+    sms_scorers = {
+        "char_efficiency": _score_sms_char_efficiency,
+        "compliance_fit": _score_sms_compliance_fit,
+        "cta_clarity": _score_sms_cta_clarity,
+    }
+
     # Select scorer set based on content type
     type_scorers = {
         "meta-ad": meta_scorers,
         "landing-page": landing_scorers,
         "email": email_scorers,
+        "sms": sms_scorers,
     }
 
     scorers = {**common_scorers, **type_scorers.get(content_type, meta_scorers)}
@@ -163,7 +171,7 @@ def _score_deterministic(
         # Handle different scorer signatures
         if dim_id in ("differentiation", "opening_diversity", "emotional_register"):
             return scorer(ad, existing_ads)
-        elif dim_id in ("receptionist_test", "cta_clarity", "platform_fit", "cta_prominence", "objection_preemption"):
+        elif dim_id in ("receptionist_test", "cta_clarity", "platform_fit", "cta_prominence", "objection_preemption", "compliance_fit"):
             return scorer(ad, config)
         elif dim_id in ("hero_clarity",):
             return scorer(ad, config)
@@ -305,6 +313,9 @@ def _score_platform_fit(ad: dict, config: dict) -> tuple[int, str]:
             ("subject", "subject_max_chars", 60),
             ("preheader", "preheader_max_chars", 100),
             ("body", "body_max_chars", 2000),
+        ],
+        "sms": [
+            ("body", "body_max_chars", 320),
         ],
     }
 
@@ -828,6 +839,132 @@ def _score_personalization(ad: dict) -> tuple[int, str]:
     return score, f"{score}/5 personalization: {', '.join(details) if details else 'generic'}"
 
 
+# --- SMS-specific deterministic scorers ---
+
+# Average expanded URL length used to estimate SMS segment fit when merge tags
+# are still in {{birchal_url}} form. Birchal short URLs and most produced shortlinks
+# land in the 25-32 char range; 30 is conservative.
+_SMS_URL_PLACEHOLDER_EXPANDED = 30
+
+
+def _expanded_sms_length(body: str) -> int:
+    """Estimate the real on-the-wire SMS length, expanding {{...}} merge tags
+    to a realistic URL length. Plain text is counted verbatim."""
+    if not body:
+        return 0
+    # Replace any {{...}} merge tag with an estimated expanded length placeholder
+    expanded = re.sub(r"\{\{[^{}]+\}\}", "X" * _SMS_URL_PLACEHOLDER_EXPANDED, body)
+    return len(expanded)
+
+
+def _score_sms_char_efficiency(ad: dict) -> tuple[int, str]:
+    """Score SMS for single-segment fit. <=140 = 5; 141-160 single-seg = 4;
+    161-320 with justification = 3; 161-320 without justification = 2; >320 = 1."""
+    body = ad.get("body", "")
+    if not body:
+        return 1, "No body content"
+    expanded_len = _expanded_sms_length(body)
+    raw_len = len(body)
+    purpose = ad.get("purpose", "")
+    # Confirmations and compliance-required content can justify two segments
+    two_seg_justified = purpose in ("purchase-confirmation", "founder-update")
+
+    if expanded_len > 320:
+        return 1, f"{expanded_len} chars expanded ({raw_len} raw) — over 320 (3+ segments)"
+    if expanded_len > 160:
+        if two_seg_justified:
+            return 3, f"{expanded_len} chars expanded ({raw_len} raw) — 2 segments, justified by purpose={purpose}"
+        return 2, f"{expanded_len} chars expanded ({raw_len} raw) — 2 segments, single segment was achievable"
+    if expanded_len > 140:
+        return 4, f"{expanded_len} chars expanded ({raw_len} raw) — single segment, could be tighter"
+    return 5, f"{expanded_len} chars expanded ({raw_len} raw) — tight single segment"
+
+
+def _score_sms_cta_clarity(ad: dict, config: dict) -> tuple[int, str]:
+    """SMS CTA clarity: link present (the URL IS the CTA) or transactional
+    confirmation explicitly says no action needed."""
+    body = ad.get("body", "")
+    purpose = ad.get("purpose", "")
+    cta = ad.get("cta", "").strip()
+
+    # Detect link or merge tag pointing to a URL
+    has_link = bool(
+        re.search(r"https?://|\{\{[^{}]*url[^{}]*\}\}", body, re.IGNORECASE)
+    )
+    # Confirmations don't need a link — they need a clear "you're in" signal
+    is_confirmation = purpose in ("purchase-confirmation", "transactional")
+
+    if is_confirmation:
+        if re.search(r"\b(you'?re in|secured|confirmed|locked in|received)\b", body, re.IGNORECASE):
+            return 5, f"Confirmation with clear status signal — no link needed"
+        if cta:
+            return 4, f"Confirmation with explicit cta={cta!r}"
+        return 3, "Confirmation present but no clear status word — recipient may be unsure"
+
+    # Marketing / round-opens etc.: link is the CTA
+    if has_link:
+        # Bonus if the link sits naturally in the message (not at very end after opt-out)
+        return 5, "Link present — natural single tap target"
+    if cta:
+        return 3, f"No link but explicit cta={cta!r}"
+    return 1, "No link and no explicit CTA — recipient unsure what to do"
+
+
+def _score_sms_compliance_fit(ad: dict, config: dict) -> tuple[int, str]:
+    """SMS compliance signals:
+    - Marketing sends (audience != transactional/customers replying to action) need 'Reply STOP'
+    - Investment-context SMS need either a URL (→ risk warning page) OR the short paraphrase
+    - Transactional confirmations need neither
+    """
+    body = ad.get("body", "")
+    purpose = ad.get("purpose", "")
+    audience = ad.get("audience", "")
+
+    is_transactional = purpose in ("purchase-confirmation", "transactional")
+    is_marketing_send = audience in ("vip-investors", "waitlist", "all-subscribers") and not is_transactional
+
+    has_opt_out = bool(re.search(r"\b(reply\s+stop|stop\s+to\s+opt\s*out)\b", body, re.IGNORECASE))
+    has_url = bool(re.search(r"https?://|\{\{[^{}]*url[^{}]*\}\}", body, re.IGNORECASE))
+    has_short_paraphrase = bool(re.search(r"general\s+CSF\s+risk\s+warning", body, re.IGNORECASE))
+
+    # Investment context: anything that mentions the offer, Birchal, or VIP early access
+    investment_context = bool(
+        re.search(r"\b(birchal|csf|invest|offer|early access|vip)\b", body, re.IGNORECASE)
+    )
+
+    notes = []
+
+    # Marketing send opt-out check
+    if is_marketing_send:
+        if has_opt_out:
+            notes.append("opt-out present")
+            opt_out_score = 2
+        else:
+            notes.append("MARKETING SEND missing 'Reply STOP'")
+            opt_out_score = 0
+    else:
+        notes.append("transactional — no opt-out required")
+        opt_out_score = 2
+
+    # Investment context safe-harbour route
+    if investment_context:
+        if has_url or has_short_paraphrase:
+            if has_url:
+                notes.append("URL routes to risk-warning page (safe-harbour OK)")
+            if has_short_paraphrase:
+                notes.append("short paraphrase 'general CSF risk warning' present")
+            inv_score = 3
+        else:
+            notes.append("INVESTMENT CONTEXT but no URL and no risk-warning paraphrase")
+            inv_score = 0
+    else:
+        notes.append("non-investment SMS")
+        inv_score = 3
+
+    total = opt_out_score + inv_score  # 0..5
+    return max(1, total), f"{total}/5 compliance: {'; '.join(notes)}"
+
+
 def _score_opening_diversity(ad: dict, existing_ads: list[dict]) -> tuple[int, str]:
     """Score how unique this ad's opening is relative to other same-type ads."""
     content_type = ad.get("content_type", "meta-ad")
@@ -1024,7 +1161,7 @@ def _classify_register(ad: dict) -> str:
 def _get_primary_text(ad: dict) -> str:
     """Get the primary text field based on content type."""
     content_type = ad.get("content_type", "meta-ad")
-    if content_type == "email":
+    if content_type in ("email", "sms"):
         return ad.get("body", ad.get("primary_text", ""))
     elif content_type == "landing-page":
         return ad.get("hero_copy", ad.get("primary_text", ""))

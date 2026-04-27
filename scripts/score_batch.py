@@ -75,7 +75,7 @@ def main():
     all_results = []
 
     # Collect all content files, honoring --type filter at scan time
-    for subdir in ["meta-ads", "landing-pages", "emails"]:
+    for subdir in ["meta-ads", "landing-pages", "emails", "sms"]:
         content_dir = loop_dir / subdir
         if not content_dir.exists():
             continue
@@ -99,14 +99,14 @@ def main():
         file_path = ad.pop("_file")
         report = score_ad(ad, client, existing_ads=all_ads, use_llm=use_llm)
         # Resolve ID from all possible fields (scorer only checks ad_id)
-        resolved_id = ad.get("ad_id", ad.get("page_id", ad.get("email_id", "unknown")))
+        resolved_id = ad.get("ad_id", ad.get("page_id", ad.get("email_id", ad.get("sms_id", "unknown"))))
         report["ad_id"] = resolved_id
         report["_file"] = file_path
         report["content_type"] = ad.get("content_type", "meta-ad")
         report["angle"] = ad.get("angle", "")
         report["hook_type"] = ad.get("hook_type", "")
         report["original_ad_name"] = ad.get("original_ad_name", "")
-        report["headline"] = ad.get("headline", ad.get("subject", ""))
+        report["headline"] = ad.get("headline", ad.get("subject", ad.get("purpose", "")))
         report["primary_text"] = ad.get("primary_text", ad.get("body", ad.get("hero_copy", "")))[:200]
         all_results.append(report)
 

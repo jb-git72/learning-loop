@@ -1,0 +1,135 @@
+{
+  "version": "1.0",
+  "content_type": "sms",
+  "description": "SMS copy evaluation rubric. 8 dimensions tuned for ultra-short (≤160 char) one-shot messages. Many email/meta dimensions don't apply — there's no subject line, no body flow, no scroll. The score rewards: clear single purpose, fits one segment, link/CTA present when needed, opt-out present for marketing sends, and brand voice intact in tiny space.",
+  "max_raw_score": 40,
+  "max_weighted_score": 45.0,
+  "thresholds": {
+    "production_ready": 38,
+    "strong_draft": 32,
+    "needs_work": 25,
+    "rewrite": 0
+  },
+  "dimensions": [
+    {
+      "id": "angle_clarity",
+      "name": "Angle Clarity",
+      "default_weight": 1.5,
+      "scoring_method": "llm",
+      "description": "Is the single job of the SMS unmistakable in one read? SMS has no scroll — clarity is everything.",
+      "scoring_guide": {
+        "1": "Cryptic. Recipient has to re-read or guess what the message is for.",
+        "2": "Multiple themes packed in. Reader has to parse which thing matters.",
+        "3": "Job is identifiable but blurred by extra detail.",
+        "4": "Clear single job. Reader gets it on first read.",
+        "5": "Unmistakable in one read. Every word reinforces the one purpose."
+      }
+    },
+    {
+      "id": "motivation_match",
+      "name": "Motivation Match",
+      "default_weight": 1.0,
+      "scoring_method": "llm",
+      "description": "Does the SMS hit what the recipient cares about right now (e.g. round opens = act, confirmation = relief)?",
+      "scoring_guide": {
+        "1": "Wrong motivation entirely. Tone or job mismatched to audience state.",
+        "2": "Generic. Could be sent to anyone — no recognition of recipient context.",
+        "3": "Right motivation but flatly stated.",
+        "4": "Lands the felt need (urgency, reassurance, etc.) appropriately for the audience segment.",
+        "5": "Reads like it was written for this recipient at this exact moment."
+      }
+    },
+    {
+      "id": "specificity",
+      "name": "Specificity",
+      "default_weight": 1.25,
+      "scoring_method": "deterministic",
+      "description": "Concrete brand name, link, or named action — not vague filler.",
+      "scoring_guide": {
+        "1": "Entirely vague. No brand, no link, no concrete handle.",
+        "2": "One concrete element (brand or link) but the rest is filler.",
+        "3": "Brand named + one other concrete element.",
+        "4": "Brand + link + clear named action all present.",
+        "5": "Every word earns its place — brand, action, link, opt-out, all surgical."
+      }
+    },
+    {
+      "id": "char_efficiency",
+      "name": "Character Efficiency",
+      "default_weight": 1.5,
+      "scoring_method": "deterministic",
+      "description": "Fits in one SMS segment (≤160 chars including merge-tag expansion). Two-segment max acceptable for confirmations.",
+      "scoring_guide": {
+        "1": "Over 320 chars (3+ segments). Fails platform.",
+        "2": "Two segments (161-320) when single was achievable.",
+        "3": "Two segments and content justifies it (e.g. confirmation with email contact).",
+        "4": "Single segment but uses 140-160 chars — could be tighter.",
+        "5": "Single segment, ≤140 chars. Maximum punch per character."
+      },
+      "deterministic_rules": {
+        "single_segment_target": "≤160 chars including expanded merge tags",
+        "two_segment_max": "≤320 chars for confirmations or compliance-required content"
+      }
+    },
+    {
+      "id": "cta_clarity",
+      "name": "CTA Clarity",
+      "default_weight": 1.0,
+      "scoring_method": "deterministic",
+      "description": "Is the next action obvious — tap the link, reply, or no action needed (confirmation)?",
+      "scoring_guide": {
+        "1": "Action ambiguous. Recipient unsure what to do.",
+        "2": "Implied action only.",
+        "3": "Action present but generic.",
+        "4": "Clear single action — tap link, reply, or 'no action needed' explicit.",
+        "5": "Action is obvious and frictionless — link is the natural focal point or 'you're in' confirms no action."
+      }
+    },
+    {
+      "id": "compliance_fit",
+      "name": "Compliance Fit",
+      "default_weight": 1.25,
+      "scoring_method": "deterministic",
+      "description": "Marketing sends include opt-out (Reply STOP). Investment/CSF sends route via link to risk-warning page (the regulatory workaround for SMS char limits). Transactional confirmations need neither.",
+      "scoring_guide": {
+        "1": "Marketing send missing opt-out, OR investment-context SMS with no link to risk warning.",
+        "2": "Opt-out attempted but unclear; or risk-warning link buried.",
+        "3": "Opt-out present for marketing, OR link to risk-warning context for investment SMS.",
+        "4": "Both compliance signals correct for context (marketing = opt-out; investment = link).",
+        "5": "Compliance is woven naturally — the link IS the offer destination, the opt-out IS the final phrase, no awkward bolt-ons."
+      },
+      "deterministic_rules": {
+        "marketing_opt_out": "Look for 'Reply STOP' or 'STOP to opt out' (only required for marketing audience, not transactional confirmations)",
+        "investment_link_workaround": "Investment-context SMS should contain a URL — that URL is the safe-harbour route to the risk-warning page"
+      }
+    },
+    {
+      "id": "tone_brand_fit",
+      "name": "Tone & Brand Fit",
+      "default_weight": 1.0,
+      "scoring_method": "llm",
+      "description": "Does the SMS sound like the brand in 160 chars — not robotic, not corporate?",
+      "scoring_guide": {
+        "1": "Generic platform-template tone. No brand voice.",
+        "2": "Slight brand reference but flat.",
+        "3": "Brand name present, voice neutral.",
+        "4": "Brand voice intact — warm/founder/factual as appropriate to segment.",
+        "5": "Sounds unmistakably like the brand — even at 160 chars the voice is preserved."
+      }
+    },
+    {
+      "id": "differentiation",
+      "name": "Differentiation",
+      "default_weight": 0.5,
+      "scoring_method": "deterministic",
+      "description": "Distinct from other SMS in the set (e.g. confirmation vs round-opens vs reminder all sound different).",
+      "scoring_guide": {
+        "1": "Indistinguishable from another SMS in set.",
+        "2": "Surface differences (URL only) but core message overlaps.",
+        "3": "Different purpose but similar phrasing.",
+        "4": "Clearly distinct purpose AND phrasing.",
+        "5": "Unique entry point — recipient seeing both would know exactly which is which."
+      }
+    }
+  ]
+}
