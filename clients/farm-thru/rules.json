@@ -553,6 +553,39 @@
       "rationale": "Birchal response 2026-04-26 (logged in CSF-VIP-BIRCHAL-SUBMISSION.md §9, item 2): the VIP product is now positioned as genuinely providing early access to invest at Birchal, not merely a thank-you communications product. This rule is documentation-only — the engine ignores 'documentation_note' check_type. Acts as an audit trail to prevent regressions where a future reviewer adds an 'early access' ban.",
       "supersedes": [],
       "ack_source": "Birchal review email 2026-04-26"
+    },
+    {
+      "rule_id": "FMTH-NO-HARD-SCARCITY-PRECAMPAIGN",
+      "name": "no_hard_scarcity_pre_campaign",
+      "severity": "critical",
+      "type": "regex_absent",
+      "description": "Block hard-pressure / fake-urgency phrases on FMTH ads in the pre-campaign phase. There is no real deadline yet (Birchal goes live 2026-06-23), so any 'act now / ends today / last chance / only N spots' framing manufactures urgency that does not exist — that is a MISL-001 risk under ASIC (false or misleading statements). Soft scarcity ('opens soon', 'first in gets first access', 'early access', 'join the waitlist') is allowed and explicitly approved by Birchal (FMTH-EARLY-ACCESS-001).",
+      "fields": [
+        "primary_text",
+        "headline",
+        "description",
+        "subject",
+        "body",
+        "hero_copy",
+        "subhead"
+      ],
+      "campaign_phases": ["pre-campaign"],
+      "patterns": [
+        "\\bact\\s+now\\b",
+        "\\bends?\\s+today\\b",
+        "\\blast\\s+chance\\b",
+        "\\blimited\\s+time\\s+only\\b",
+        "\\bdon'?t\\s+miss\\s+out\\b",
+        "\\bwhile\\s+supplies\\s+last\\b",
+        "\\bhurry\\s+(?:up|now|while|before|today|in)\\b",
+        "\\bonly\\s+\\d+\\s+(?:spots?|seats?|places?)\\s+(?:left|remaining|available)\\b",
+        "\\bonly\\s+\\d+\\s+(?:hours?|minutes?|days?)\\s+(?:left|to\\s+go|remaining|until\\s+(?:close|end))\\b",
+        "\\b(?:limited|few)\\s+spots?\\s+(?:left|remaining|available)\\b",
+        "\\bspots?\\s+filling\\s+fast\\b",
+        "\\b(?:offer|campaign|round|registration|waitlist|signup)\\s+closing\\s+soon\\b"
+      ],
+      "case_sensitive": false,
+      "rationale": "MISL-001 risk pre-campaign — manufactured urgency is misleading because there is no actual deadline. The shared scarcity_register rubric dim also penalises this in the score, but a hard rule_checker block is the defensible position when no offer is live. Will not match 'opens soon', 'first access', 'early access', 'join the waitlist', or 'we'll tell you the moment it goes live' — those are explicitly soft-scarcity / waitlist framings approved by Birchal (FMTH-EARLY-ACCESS-001). Flip campaign_phase to 'during-offer' on Birchal launch day to relax this gate."
     }
   ]
 }

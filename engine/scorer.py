@@ -97,6 +97,7 @@ def score_ad(
         ad,
         client["rules"],
         critical_rules=config.get("critical_rules", []),
+        default_phase=config.get("campaign_phase_default", "pre-campaign"),
     )
 
     # Gate 2: Fact accuracy

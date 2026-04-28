@@ -1,0 +1,13 @@
+{
+  "ad_id": "TEST-INVEST-NOW-PRECAMPAIGN",
+  "content_type": "meta-ad",
+  "campaign_phase": "pre-campaign",
+  "angle": "investment-thesis",
+  "hook_type": "direct",
+  "funnel": "BOF",
+  "tactic": "investment-cta",
+  "primary_text": "Own a piece of the farm-direct grocery store. Eight NSW farms. One hub in Brookvale.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "Own a piece of FarmThru",
+  "description": "Invest in farm-direct grocery.",
+  "cta": "Invest Now"
+}
