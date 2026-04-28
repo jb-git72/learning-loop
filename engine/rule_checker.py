@@ -438,13 +438,17 @@ def _check_deposit_refundable(ad: dict) -> dict:
         if not text:
             continue
         text_lower = text.lower()
-        # Check if deposit is mentioned
-        if re.search(r'\$5\s*(?:deposit|vip|refundable)', text_lower) or "deposit" in text_lower:
+        # Check if a dollar-amount deposit is mentioned (e.g. "$5 deposit", "$10 deposit").
+        # The bare "deposit" substring is intentionally NOT a trigger — farming, real-estate, and
+        # banking copy all use "deposit" in unrelated contexts and would false-positive constantly.
+        # The rule's intent is specifically the VIP / pre-purchase small-dollar deposit used by
+        # FMTH, which always appears as "$5 deposit" or "a small refundable deposit".
+        if re.search(r'\$\d+\s*(?:deposit|vip)', text_lower) or re.search(r'(?:small|tiny|token)\s+(?:refundable\s+)?deposit', text_lower):
             # Must also mention refundable
             if "refundable" not in text_lower:
                 return {
                     "passed": False,
                     "field": field,
-                    "detail": f"Deposit mentioned in {field} without 'refundable' disclaimer",
+                    "detail": f"Dollar-amount deposit mentioned in {field} without 'refundable' disclaimer",
                 }
     return {"passed": True}

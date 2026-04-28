@@ -6,7 +6,12 @@
   "product": "Farm-direct regenerative grocery store with hub-and-collect model + equity crowdfunding campaign",
   "currency": "AUD",
   "market": "AU",
-  "content_types": ["meta-ad", "landing-page", "email", "sms"],
+  "content_types": [
+    "meta-ad",
+    "landing-page",
+    "email",
+    "sms"
+  ],
   "files": {
     "rules": "rules.json",
     "facts": "facts.json",
@@ -14,29 +19,38 @@
     "learnings": "learnings.md"
   },
   "scoring_context": {
-    "product": "FarmThru — a new kind of grocery store. Farm-direct, regenerative, priced for everyday families. Hub-and-collect model (Brookvale hub, Monday-Friday). Also delivers to Sydney, Central Coast, Wollongong. Partner farms across NSW. Rachel Ward (founder of Rachel's Farm) is a key partner. Equity crowdfunding campaign on Birchal launches 23 June 2026.",
+    "product": "FarmThru \u2014 a new kind of grocery store. Farm-direct, regenerative, priced for everyday families. Hub-and-collect model (Brookvale hub, Monday-Friday). Also delivers to Sydney, Central Coast, Wollongong. Partner farms across NSW. Rachel Ward (founder of Rachel's Farm) is a key partner. Equity crowdfunding campaign on Birchal launches 23 June 2026.",
     "sender": "Rachel & the FarmThru team",
-    "brand_positioning": "FarmThru is a new kind of grocery store — farm-direct, regenerative, and priced for everyday families — with hubs designed to keep costs low and bring the farm closer to your door.",
+    "brand_positioning": "FarmThru is a new kind of grocery store \u2014 farm-direct, regenerative, and priced for everyday families \u2014 with hubs designed to keep costs low and bring the farm closer to your door.",
     "tagline": "We'll show you where your food comes from.",
-    "audience": "Sydney households. Four segments: (1) Conscious Family — parents 30-45, Northern Beaches, health-conscious, values-driven, time-poor. Lead with quality and provenance. (2) Foodie/Quality Seeker — 25-55, passionate cooks. Lead with product stories, farm detail. (3) Pragmatic Switcher — 30-50, mainstream shoppers currently at Coles/Woolies. Lead with value, convenience, better product. (4) Rachel Ward Audience — 40+, trust her voice. Lead with Rachel's personal connection.",
+    "audience": "Sydney households. Four segments: (1) Conscious Family \u2014 parents 30-45, Northern Beaches, health-conscious, values-driven, time-poor. Lead with quality and provenance. (2) Foodie/Quality Seeker \u2014 25-55, passionate cooks. Lead with product stories, farm detail. (3) Pragmatic Switcher \u2014 30-50, mainstream shoppers currently at Coles/Woolies. Lead with value, convenience, better product. (4) Rachel Ward Audience \u2014 40+, trust her voice. Lead with Rachel's personal connection.",
     "key_motivations": [
-      "Access — great local food, finally within reach for everyday families",
-      "Transparency — know exactly where food comes from, who grew it, how it was raised",
-      "Quality — regenerative, seasonal, real food from named farms",
-      "Value — bulk buying direct means honest prices without farms earning less",
-      "Community — being part of rebuilding the connection between growers and eaters",
-      "Investment — owning a piece of a business they believe in (CFE campaign only)"
+      "Access \u2014 great local food, finally within reach for everyday families",
+      "Transparency \u2014 know exactly where food comes from, who grew it, how it was raised",
+      "Quality \u2014 regenerative, seasonal, real food from named farms",
+      "Value \u2014 bulk buying direct means honest prices without farms earning less",
+      "Community \u2014 being part of rebuilding the connection between growers and eaters",
+      "Investment \u2014 owning a piece of a business they believe in (CFE campaign only)"
     ],
     "brand_values": "Honest, Warm, Confident, Grounded, Never Preachy. Lead with the food, not the model. Communication hierarchy: (1) Great products, (2) Human relationships, (3) Reconnection to food, (4) Learning, (5) Model/tech last.",
-    "campaign_context": "Pre-launch equity crowdfunding via Birchal. Content types: (1) Brand/product ads — pure grocery awareness, no investment messaging, (2) CFE waitlist ads — investment angle, waitlist CTA, (3) CFE campaign ads — investment is live, invest CTA. All investment content must comply with ASIC RG 234. VIP deposit ($5 refundable) messaging belongs on landing pages and emails, NOT ads.",
+    "campaign_context": "Pre-launch equity crowdfunding via Birchal. Content types: (1) Brand/product ads \u2014 pure grocery awareness, no investment messaging, (2) CFE waitlist ads \u2014 investment angle, waitlist CTA, (3) CFE campaign ads \u2014 investment is live, invest CTA. All investment content must comply with ASIC RG 234. VIP deposit ($5 refundable) messaging belongs on landing pages and emails, NOT ads.",
     "success_looks_like": "Reader understands FarmThru is a grocery store where you can get great food from real farms at honest prices. They want to find their nearest hub. For CFE content: reader feels informed, trusts the brand, joins the waitlist."
   },
   "campaign_phase_default": "pre-campaign",
   "campaign_phase_notes": "Until Birchal goes live (planned 2026-06-23), every FMTH ad is pre-campaign. Pre-campaign forbids hard scarcity (no real deadline = MISL-001 risk) and rejects 'Invest Now' CTAs (only waitlist/notify CTAs apply). Flip to 'during-offer' on launch day; flip to 'post-offer' on the offer end-date.",
   "campaign_phase_cta_buckets": {
-    "pre-campaign": ["brand", "cfe_waitlist"],
-    "during-offer": ["brand", "cfe_waitlist", "cfe_campaign"],
-    "post-offer": ["brand"]
+    "pre-campaign": [
+      "brand",
+      "cfe_waitlist"
+    ],
+    "during-offer": [
+      "brand",
+      "cfe_waitlist",
+      "cfe_campaign"
+    ],
+    "post-offer": [
+      "brand"
+    ]
   },
   "rubric": {
     "meta-ad": {
@@ -59,7 +73,7 @@
         "founder_voice": 0.5,
         "csf_placement": 0.5
       },
-      "max_score": 87.50,
+      "max_score": 87.5,
       "thresholds": {
         "production_ready": 63,
         "strong_draft": 54,
@@ -180,24 +194,76 @@
   ],
   "approved_ctas": {
     "meta-ad": {
-      "brand": ["Shop your local hub", "See what's fresh this week", "Meet the farmer", "Find your nearest hub", "Start your first order"],
-      "cfe_waitlist": ["Join the Waitlist", "Sign Up", "Learn More", "Leave your email", "Get notified", "Notify me", "Save My Spot"],
-      "cfe_campaign": ["Invest Now", "Learn More", "See the Opportunity"]
+      "brand": [
+        "Shop your local hub",
+        "See what's fresh this week",
+        "Meet the farmer",
+        "Find your nearest hub",
+        "Start your first order"
+      ],
+      "cfe_waitlist": [
+        "Join the Waitlist",
+        "Sign Up",
+        "Learn More",
+        "Leave your email",
+        "Get notified",
+        "Notify me",
+        "Save My Spot"
+      ],
+      "cfe_campaign": [
+        "Invest Now",
+        "Learn More",
+        "See the Opportunity"
+      ]
     },
     "landing-page": {
-      "brand": ["Shop your local hub", "Start your first order", "Find your nearest hub"],
-      "cfe_waitlist": ["Join the Waitlist", "Save My Spot", "Reserve Your Spot", "Secure VIP Access"],
-      "cfe_campaign": ["Invest Now", "Secure VIP Access", "See the Disclosure"]
+      "brand": [
+        "Shop your local hub",
+        "Start your first order",
+        "Find your nearest hub"
+      ],
+      "cfe_waitlist": [
+        "Join the Waitlist",
+        "Save My Spot",
+        "Reserve Your Spot",
+        "Secure VIP Access"
+      ],
+      "cfe_campaign": [
+        "Invest Now",
+        "Secure VIP Access",
+        "See the Disclosure"
+      ]
     },
     "email": {
-      "brand": ["See what's fresh this week", "Shop your local hub", "Meet the farmer"],
-      "cfe_waitlist": ["Join the Waitlist", "Reserve Your Spot", "Secure VIP Access"],
-      "cfe_campaign": ["Invest Now", "Read the Disclosure", "Secure VIP Access"]
+      "brand": [
+        "See what's fresh this week",
+        "Shop your local hub",
+        "Meet the farmer"
+      ],
+      "cfe_waitlist": [
+        "Join the Waitlist",
+        "Reserve Your Spot",
+        "Secure VIP Access"
+      ],
+      "cfe_campaign": [
+        "Invest Now",
+        "Read the Disclosure",
+        "Secure VIP Access"
+      ]
     },
     "sms": {
-      "cfe_waitlist": ["Tap link", "Reply STOP to opt out"],
-      "cfe_campaign": ["Tap link to invest", "Tap link", "Reply STOP to opt out"],
-      "transactional": ["No action needed"]
+      "cfe_waitlist": [
+        "Tap link",
+        "Reply STOP to opt out"
+      ],
+      "cfe_campaign": [
+        "Tap link to invest",
+        "Tap link",
+        "Reply STOP to opt out"
+      ],
+      "transactional": [
+        "No action needed"
+      ]
     }
   },
   "critical_rules": [
@@ -215,34 +281,74 @@
     "Why should I act now?"
   ],
   "receptionist_test_patterns": [
-    ["what", "\\b(farm.?thru|regenerative|farm.to.door|food delivery|online grocer|grocery)\\b"],
-    ["source", "\\b(farm|paddock|regenerative|pasture|grass.fed|rachel|bundarra|kempsey|named farm)\\b"],
-    ["different", "(days?\\s+(?:old|not)|not\\s+weeks|cold storage|middlem|no warehouse|wholesal|direct|hub.and.collect)"],
-    ["how", "(waitlist|join|sign up|reserve|save.*spot|nearest hub|brookvale|collect|order)"],
-    ["why_now", "(be part of|own a piece|limited|first access|opening|launching|movement|vote.*wallet)"]
+    [
+      "what",
+      "\\b(farm.?thru|regenerative|farm.to.door|food delivery|online grocer|grocery)\\b"
+    ],
+    [
+      "source",
+      "\\b(farm|paddock|regenerative|pasture|grass.fed|rachel|bundarra|kempsey|named farm)\\b"
+    ],
+    [
+      "different",
+      "(days?\\s+(?:old|not)|not\\s+weeks|cold storage|middlem|no warehouse|wholesal|direct|hub.and.collect)"
+    ],
+    [
+      "how",
+      "(waitlist|join|sign up|reserve|save.*spot|nearest hub|brookvale|collect|order)"
+    ],
+    [
+      "why_now",
+      "(be part of|own a piece|limited|first access|opening|launching|movement|vote.*wallet)"
+    ]
   ],
   "objection_preemption_patterns": [
-    ["no commitment", "no\\s+commitment|order when you want|no lock.in"],
-    ["hub clarity", "brookvale|nearest hub|collect from|hub.and.collect|monday.*friday"],
-    ["risk acknowledged", "can't\\s+promise|no\\s+guarantee|honest about"],
-    ["no middlemen", "no\\s+(?:warehouse|wholesaler|middlem)|direct|zero middlem"],
-    ["provenance", "named farm|know.*farmer|trace|where.*food.*comes|paddock"]
+    [
+      "no commitment",
+      "no\\s+commitment|order when you want|no lock.in"
+    ],
+    [
+      "hub clarity",
+      "brookvale|nearest hub|collect from|hub.and.collect|monday.*friday"
+    ],
+    [
+      "risk acknowledged",
+      "can't\\s+promise|no\\s+guarantee|honest about"
+    ],
+    [
+      "no middlemen",
+      "no\\s+(?:warehouse|wholesaler|middlem)|direct|zero middlem"
+    ],
+    [
+      "provenance",
+      "named farm|know.*farmer|trace|where.*food.*comes|paddock|\\b\\d+\\s+(?:nsw|qld|vic|sa|wa|tas|nt|act)\\s+farms?|\\b(?:eight|nine|ten|eleven|twelve|fifteen|twenty)\\s+(?:nsw|qld|vic)\\s+farms?"
+    ]
   ],
-  "brand_names": ["FarmThru", "Farm Thru", "Rachel", "Bundarra", "Collins", "Brookvale", "Birchal", "Paris Creek", "Kempsey"],
+  "brand_names": [
+    "FarmThru",
+    "Farm Thru",
+    "Rachel",
+    "Bundarra",
+    "Collins",
+    "Brookvale",
+    "Birchal",
+    "Paris Creek",
+    "Kempsey"
+  ],
   "prompt_objection_signals": "Include: \"No commitment. Order when you want. Collect from Brookvale Monday to Friday.\" For CFE: \"be part of it\", \"own a piece\", acknowledge risk honestly.",
   "email_sender": "Rachel & the FarmThru team",
   "landing_page_compliance": "This is a pre-registration page for an upcoming equity crowdfunding campaign. No money is being raised at this stage. Any future offer will be made via a disclosure document on Birchal. Always consider the general CSF risk warning and offer document before investing.",
   "prompt_rules": {
-    "meta-ad": "- ALWAYS end primary_text with this exact asterisked footnote on its own final paragraph: \"*Always consider the general CSF risk warning and offer document before investing.\" (Founder-directed UNIVERSAL gate ADV-001, 2026-04-27 — required on every channel including meta-ads. The asterisk + final-paragraph placement is what the scorer's csf_placement dim rewards.)\n- The CSF footnote is the ONLY compliance language allowed in meta-ads. The OLD wording \"This is not financial advice / consult a financial advisor / disclosure document on Birchal\" is BANNED by DISC-001 — never use it.\n- NO investment amounts ($50, $10K), \"equity crowdfunding\", \"Birchal\", \"minimum investment\" in ANY meta-ad field\n- CFE meta-ads: tease the opportunity (\"be part of it\", \"own a piece\"), never detail investment terms\n- Description must complement headline with benefit or proof — never compliance or investment details\n- Structure: customer pain/question → validation → product proof (specific) → \"why act now\" → CTA → asterisked CSF footnote\n- Sentences: 13-18 words max. Killed ads averaged 23-28. Keep it tight.",
+    "meta-ad": "- ALWAYS end primary_text with this exact asterisked footnote on its own final paragraph: \"*Always consider the general CSF risk warning and offer document before investing.\" (Founder-directed UNIVERSAL gate ADV-001, 2026-04-27 \u2014 required on every channel including meta-ads. The asterisk + final-paragraph placement is what the scorer's csf_placement dim rewards.)\n- The CSF footnote is the ONLY compliance language allowed in meta-ads. The OLD wording \"This is not financial advice / consult a financial advisor / disclosure document on Birchal\" is BANNED by DISC-001 \u2014 never use it.\n- NO investment amounts ($50, $10K), \"equity crowdfunding\", \"Birchal\", \"minimum investment\" in ANY meta-ad field\n- CFE meta-ads: tease the opportunity (\"be part of it\", \"own a piece\"), never detail investment terms\n- Description must complement headline with benefit or proof \u2014 never compliance or investment details\n- Structure: customer pain/question \u2192 validation \u2192 product proof (specific) \u2192 \"why act now\" \u2192 CTA \u2192 asterisked CSF footnote\n- Sentences: 13-18 words max. Killed ads averaged 23-28. Keep it tight.",
     "landing-page": "- Investment content MUST include financial disclaimer\n- When mentioning $5 deposit, must say \"refundable\"",
     "email": "- Investment content MUST include financial disclaimer\n- When mentioning $5 deposit, must say \"refundable\"",
-    "sms": "- Hard 160-char single-segment target. 320-char two-segment max.\n- The Birchal URL is the regulatory safe-harbour route — it carries recipients to the CSF risk-warning page. Always include the URL on investment-context SMS.\n- Marketing sends MUST include 'Reply STOP to opt out'. Transactional confirmations do not.\n- Never include explicit dollar amounts ($5, $50, $10K) in SMS body."
+    "sms": "- Hard 160-char single-segment target. 320-char two-segment max.\n- The Birchal URL is the regulatory safe-harbour route \u2014 it carries recipients to the CSF risk-warning page. Always include the URL on investment-context SMS.\n- Marketing sends MUST include 'Reply STOP to opt out'. Transactional confirmations do not.\n- Never include explicit dollar amounts ($5, $50, $10K) in SMS body."
   },
   "prompt_extra_rules": {
-    "meta-ad": "- No em-dashes (use full stops, commas, or colons)\n- No commands (\"stop\", \"add it up\", \"do the maths\")\n- No condescension (\"we'll wait\", \"simple maths\")\n- Lead with value/benefit, not price\n- Every number must trace to a verified fact above\n- Structure: customer pain/question → acknowledgment/validation → product proof (specific) → transition (\"why act now\") → CTA\n- Sentences: 13-18 words max. Killed ads averaged 23-28. Keep it tight.\n- Description field should complement the headline, not repeat it",
-    "landing-page": "- NEVER use em dashes or en dashes. Use full stops, commas, or colons instead.\n- Subhead MUST be under 120 characters. Short, scannable, not a paragraph.\n- Short paragraphs throughout. Max 3 sentences per paragraph. Lots of line breaks.\n- Sentences: 13-18 words max. If a sentence is over 20 words, split it.\n- Headlines must be general-purpose (not 'your kids' which excludes non-parents).\n- No specific dollar amounts ($50, $10K) unless confirmed.\n- Include financial disclaimer if discussing investment\n- Risks and benefits must have equal prominence\n- No return projections or guarantees\n- Every number must trace to a verified fact above\n- Last section MUST be titled \"Compliance\" with the exact disclaimer text shown in the output format above\n- Do NOT omit the Compliance section even if the page doesn't discuss investment — include it for all CFE/waitlist pages",
-    "email": "- Single CTA per email\n- Short paragraphs (max 3 sentences each)\n- Founder voice when appropriate\n- Every number must trace to a verified fact above\n- ALWAYS add as the FINAL paragraph before the sign-off (every email, no exception — universal CSF safe-harbour gate ADV-001 hard-blocks if missing): \"Always consider the general CSF risk warning and offer document before investing.\" The older wording 'This is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.' is BANNED by DISC-001 — never use it.",
-    "sms": "- ONE job per SMS. Confirmation = reassure. Round-opens = drive to link. Never both in one send.\n- Fit a single segment (≤160 chars) when possible — count the EXPANDED merge tag length, not '{{birchal_url}}'.\n- The link in an investment-context SMS IS the regulatory workaround — it routes to the CSF risk-warning page. Always include the URL on investment SMS so ADV-001 short-paraphrase 'general CSF risk warning' is satisfied via the destination page (the SMS itself does not need the full canonical line if the URL is present and goes to the risk-warning route).\n- For SMS that DON'T include a link (e.g. purchase confirmations): include the short paraphrase 'See the general CSF risk warning + offer doc.' if the SMS references the investment.\n- Marketing sends to a list (round-opens, reminders): MUST end with 'Reply STOP to opt out.'\n- Transactional confirmations sent in response to a user action: opt-out NOT required.\n- Founder voice OK but factual takes priority. No hype words ('huge', 'unmissable'), no exclamation marks beyond one.\n- No em-dashes. No 'priority'. No explicit dollar amounts."
+    "meta-ad": "- No em-dashes (use full stops, commas, or colons)\n- No commands (\"stop\", \"add it up\", \"do the maths\")\n- No condescension (\"we'll wait\", \"simple maths\")\n- Lead with value/benefit, not price\n- Every number must trace to a verified fact above\n- Structure: customer pain/question \u2192 acknowledgment/validation \u2192 product proof (specific) \u2192 transition (\"why act now\") \u2192 CTA\n- Sentences: 13-18 words max. Killed ads averaged 23-28. Keep it tight.\n- Description field should complement the headline, not repeat it",
+    "landing-page": "- NEVER use em dashes or en dashes. Use full stops, commas, or colons instead.\n- Subhead MUST be under 120 characters. Short, scannable, not a paragraph.\n- Short paragraphs throughout. Max 3 sentences per paragraph. Lots of line breaks.\n- Sentences: 13-18 words max. If a sentence is over 20 words, split it.\n- Headlines must be general-purpose (not 'your kids' which excludes non-parents).\n- No specific dollar amounts ($50, $10K) unless confirmed.\n- Include financial disclaimer if discussing investment\n- Risks and benefits must have equal prominence\n- No return projections or guarantees\n- Every number must trace to a verified fact above\n- Last section MUST be titled \"Compliance\" with the exact disclaimer text shown in the output format above\n- Do NOT omit the Compliance section even if the page doesn't discuss investment \u2014 include it for all CFE/waitlist pages",
+    "email": "- Single CTA per email\n- Short paragraphs (max 3 sentences each)\n- Founder voice when appropriate\n- Every number must trace to a verified fact above\n- ALWAYS add as the FINAL paragraph before the sign-off (every email, no exception \u2014 universal CSF safe-harbour gate ADV-001 hard-blocks if missing): \"Always consider the general CSF risk warning and offer document before investing.\" The older wording 'This is not financial advice. Consider seeking independent financial advice. Full details in the disclosure document on Birchal.' is BANNED by DISC-001 \u2014 never use it.",
+    "sms": "- ONE job per SMS. Confirmation = reassure. Round-opens = drive to link. Never both in one send.\n- Fit a single segment (\u2264160 chars) when possible \u2014 count the EXPANDED merge tag length, not '{{birchal_url}}'.\n- The link in an investment-context SMS IS the regulatory workaround \u2014 it routes to the CSF risk-warning page. Always include the URL on investment SMS so ADV-001 short-paraphrase 'general CSF risk warning' is satisfied via the destination page (the SMS itself does not need the full canonical line if the URL is present and goes to the risk-warning route).\n- For SMS that DON'T include a link (e.g. purchase confirmations): include the short paraphrase 'See the general CSF risk warning + offer doc.' if the SMS references the investment.\n- Marketing sends to a list (round-opens, reminders): MUST end with 'Reply STOP to opt out.'\n- Transactional confirmations sent in response to a user action: opt-out NOT required.\n- Founder voice OK but factual takes priority. No hype words ('huge', 'unmissable'), no exclamation marks beyond one.\n- No em-dashes. No 'priority'. No explicit dollar amounts."
   },
   "compliance": {
     "enabled": true,
@@ -254,6 +360,6 @@
       "FMTH-EQUAL-ACCESS-001",
       "FMTH-EARLY-ACCESS-001"
     ],
-    "notes": "compliance.enabled stays false through Phase B; Phase C activation flips to true. Sonnet 4.6 is the validated judge for FMTH copy (100% accuracy on labeled fixtures as of 2026-04-26). client_rule_overrides is informational — it lists the FMTH-only client rules in clients/farm-thru/rules.json that customise the shared CSF rules. The shared compliance_rules.json never enforces an 'early/first access' ban or an equal-access disclosure requirement, so no shared-rule suppression is needed. The 'priority' ban is enforced via clients/farm-thru/rules.json (FMTH-PRIORITY-001) under engine/rule_checker.py — it runs every score regardless of compliance.enabled. Birchal acknowledgements logged in clients/farm-thru/CSF-VIP-BIRCHAL-SUBMISSION.md §9."
+    "notes": "compliance.enabled stays false through Phase B; Phase C activation flips to true. Sonnet 4.6 is the validated judge for FMTH copy (100% accuracy on labeled fixtures as of 2026-04-26). client_rule_overrides is informational \u2014 it lists the FMTH-only client rules in clients/farm-thru/rules.json that customise the shared CSF rules. The shared compliance_rules.json never enforces an 'early/first access' ban or an equal-access disclosure requirement, so no shared-rule suppression is needed. The 'priority' ban is enforced via clients/farm-thru/rules.json (FMTH-PRIORITY-001) under engine/rule_checker.py \u2014 it runs every score regardless of compliance.enabled. Birchal acknowledgements logged in clients/farm-thru/CSF-VIP-BIRCHAL-SUBMISSION.md \u00a79."
   }
 }
