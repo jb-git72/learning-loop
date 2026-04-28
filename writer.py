@@ -202,9 +202,12 @@ def generate_variant(
 
 
 _CSF_CANONICAL = "*Always consider the general CSF risk warning and offer document before investing."
+# Require the FULL canonical line — loose paraphrase checks were passing DISC-001-banned
+# wording ("See the general CSF risk warning + offer document") because the substring
+# "general CSF risk warning" matched. The canonical asterisked line is the ONLY accepted
+# form (ADV-001 + DISC-001); anything else fails compliance and should trigger auto-append.
 _CSF_SHORT_PARAPHRASE_RE = re.compile(
-    r"general\s+CSF\s+risk\s+warning|consider\s+the\s+general\s+csf|"
-    r"offer\s+document\s+before\s+investing",
+    r"\*Always\s+consider\s+the\s+general\s+CSF\s+risk\s+warning\s+and\s+offer\s+document\s+before\s+investing",
     re.IGNORECASE,
 )
 
@@ -401,6 +404,10 @@ _HOOK_SWAP_JSON_RE = re.compile(r"\{[\s\S]*?\"new_opening_paragraph\"[\s\S]*?\}"
 
 def _parse_hook_swap_output(raw):
     if not raw:
+        return None
+    # Reject top-level JSON arrays — valid output is always a dict.
+    raw_stripped = raw.strip()
+    if raw_stripped.startswith("["):
         return None
     # Strip markdown fences if present
     fence_match = re.search(r"```(?:json)?\s*([\s\S]*?)```", raw, re.IGNORECASE)

@@ -75,6 +75,14 @@ META_AD_INVESTMENT_BLOCKLIST = [
     r"\$5\s+deposit\b",
 ]
 
+# ADV-001 canonical CSF safe-harbour line. Must appear verbatim (asterisked) in
+# the primary_text of every FMTH meta-ad. Loose paraphrases are not accepted —
+# the compliance checker fires on any wording that doesn't match the canonical form.
+_ADV001_CANONICAL_RE = re.compile(
+    r"\*Always\s+consider\s+the\s+general\s+CSF\s+risk\s+warning\s+and\s+offer\s+document\s+before\s+investing",
+    re.IGNORECASE,
+)
+
 
 # ---------------------------------------------------------------------------
 # Layer 1 — Rule compliance
@@ -279,6 +287,28 @@ def _check_structural(ad: dict, config: dict) -> list:
                         "detail": f'Investment term "{match.group()}" found in meta-ad {field_name}',
                         "severity": "critical",
                     })
+
+    # 3d. ADV-001 — CSF safe-harbour gate for compliance-enabled clients.
+    # For meta-ads, the canonical asterisked line is required. Any other phrasing
+    # (including the old "See the general CSF risk warning + offer document" form
+    # used by earlier BR-104/105 seeds) is NOT accepted. This lint check runs
+    # BEFORE scoring so the writer.py lint-retry loop can surface the violation
+    # and trigger a regenerate rather than burning a full scoring API call.
+    compliance_cfg = config.get("compliance", {}) or {}
+    if compliance_cfg.get("enabled") and content_type == "meta-ad":
+        primary_text = ad.get("primary_text", "")
+        if primary_text and not _ADV001_CANONICAL_RE.search(primary_text):
+            violations.append({
+                "layer": "structural",
+                "rule_id": "ADV-001",
+                "field": "primary_text",
+                "detail": (
+                    "primary_text is missing the canonical CSF safe-harbour line. "
+                    "Add: '*Always consider the general CSF risk warning and offer "
+                    "document before investing.' as the final paragraph."
+                ),
+                "severity": "critical",
+            })
 
     return violations
 
