@@ -2,7 +2,7 @@
   "version": "1.0",
   "description": "Canonical ad JSON schema. All ads — input and output — conform to this format. Client-specific field constraints (e.g., approved CTA list, angle IDs) live in clients/<client>/config.json.",
   "required_fields": ["ad_id", "angle", "hook_type", "funnel", "primary_text", "headline", "cta"],
-  "optional_fields": ["tactic", "format", "description", "creative_brief", "motivation", "status", "feedback", "scores", "version_of", "round"],
+  "optional_fields": ["tactic", "format", "description", "creative_brief", "motivation", "status", "feedback", "scores", "version_of", "round", "campaign_phase"],
   "field_definitions": {
     "ad_id": {
       "type": "string",
@@ -100,6 +100,12 @@
       "type": "integer",
       "description": "Review round number. 1 = first draft, 2 = first revision, etc. Increments each time the ad goes through the review loop.",
       "default": 1
+    },
+    "campaign_phase": {
+      "type": "string",
+      "enum": ["pre-campaign", "during-offer", "post-offer"],
+      "description": "Where this ad sits in the CSF / equity-crowdfunding lifecycle. pre-campaign = waitlist period before the Birchal offer goes live (no actual deadline yet — hard scarcity is misleading per MISL-001; CTAs limited to waitlist/notify). during-offer = offer is live on Birchal (during-offer ASIC rules apply: ADV-002 dollar amounts, ADV-009 next-round, ADV-014 inducements; investment CTAs allowed). post-offer = offer closed (advisory rules apply). Default: pre-campaign for FMTH until 2026-06-23 launch.",
+      "default": "pre-campaign"
     }
   },
   "example": {

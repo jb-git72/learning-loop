@@ -199,7 +199,7 @@ def _score_deterministic(
         # Handle different scorer signatures
         if dim_id in ("differentiation", "opening_diversity", "emotional_register"):
             return scorer(ad, existing_ads)
-        elif dim_id in ("receptionist_test", "cta_clarity", "platform_fit", "cta_prominence", "objection_preemption", "compliance_fit"):
+        elif dim_id in ("receptionist_test", "cta_clarity", "platform_fit", "cta_prominence", "objection_preemption", "compliance_fit", "scarcity_register"):
             return scorer(ad, config)
         elif dim_id in ("hero_clarity",):
             return scorer(ad, config)
@@ -302,12 +302,20 @@ def _score_receptionist_test(ad: dict, config: dict) -> tuple[int, str]:
 def _score_cta_clarity(ad: dict, config: dict) -> tuple[int, str]:
     """Check if CTA is on the approved list and clear.
 
-    Recalibration-v1: funnel-aware approved list (TOF=email/notify, MOF=register,
-    BOF=invest) and a +1 bonus when the body links the CTA action to a concrete
-    consequence ("leave your email — we'll tell you the moment it goes live").
+    Recalibration-v1: funnel-aware approved list and a +1 bonus when the body
+    links the CTA action to a concrete consequence ("leave your email — we'll
+    tell you the moment it goes live").
+
+    Phase-aware (v2): the approved list is filtered by campaign_phase. Pre-
+    campaign FMTH ads only get brand + cfe_waitlist CTAs — 'Invest Now' / 'See
+    the Opportunity' are explicitly OUT-of-PHASE because no offer is live yet
+    (ADV-002 + ADV-009 risk once we go live; manufactured-investment-action
+    risk under MISL-001 pre-launch). Phase-mismatched CTAs score 1/5 with a
+    flag rather than 3/5 (the prior "off-list but action verb" path).
     """
     cta = ad.get("cta", "").strip()
     funnel = ad.get("funnel", "").upper()
+    phase = (ad.get("campaign_phase") or (config.get("campaign_phase_default") if config else None) or "pre-campaign").lower()
     body = _get_primary_text(ad)
     approved = config.get("approved_ctas", [])
 
@@ -316,18 +324,35 @@ def _score_cta_clarity(ad: dict, config: dict) -> tuple[int, str]:
         content_type = ad.get("content_type", "meta-ad")
         approved = approved.get(content_type, approved.get("meta-ad", []))
 
-    # Some clients (FMTH) use a dict keyed by funnel/campaign bucket
-    # (e.g. {"brand": [...], "cfe_waitlist": [...], "cfe_campaign": [...]}).
+    # Resolve the per-phase bucket allowlist. Default behaviour (no
+    # campaign_phase_cta_buckets configured) is the prior flatten-all.
+    phase_buckets_map = config.get("campaign_phase_cta_buckets", {})
+    allowed_buckets = phase_buckets_map.get(phase) if phase_buckets_map else None
+
+    out_of_phase_ctas: list[str] = []
     if isinstance(approved, dict):
-        # Flatten across all buckets — exact matching against any approved CTA wins.
-        flattened = []
+        in_phase: list[str] = []
         for bucket, ctas in approved.items():
-            if isinstance(ctas, list):
-                flattened.extend(ctas)
-        approved = flattened
+            if not isinstance(ctas, list):
+                continue
+            if allowed_buckets is None or bucket in allowed_buckets:
+                in_phase.extend(ctas)
+            else:
+                out_of_phase_ctas.extend(ctas)
+        approved = in_phase
 
     if not cta:
         return 1, "No CTA found"
+
+    # Phase-mismatched CTA — the literal CTA is on the global approved list but
+    # not for this campaign_phase (e.g. 'Invest Now' on a pre-campaign ad).
+    # Hard 1/5 because it implies an action that can't legally / actually happen yet.
+    if cta in out_of_phase_ctas or any(cta.lower() == c.lower() for c in out_of_phase_ctas):
+        return 1, (
+            f"OUT-OF-PHASE CTA — '{cta}' is approved for a different phase, not "
+            f"'{phase}'. Pre-campaign should use waitlist/notify CTAs only "
+            f"(no offer is live, so action verbs implying investment mislead)."
+        )
 
     # Outcome-stated CTA detection: body explains what happens after the action.
     # Patterns the live $2-lead ad uses: "Leave your email — we'll tell you the
@@ -1256,7 +1281,7 @@ def _score_ownership_framing(ad: dict) -> tuple[int, str]:
     return 3, "No ownership framing detected (neutral)"
 
 
-def _score_scarcity_register(ad: dict) -> tuple[int, str]:
+def _score_scarcity_register(ad: dict, config: dict = None) -> tuple[int, str]:
     """Reward soft / future-tense scarcity. Penalise hard-pressure scarcity.
 
     Soft: 'opens soon', 'first in gets first access', 'we'll tell you the moment',
@@ -1264,8 +1289,16 @@ def _score_scarcity_register(ad: dict) -> tuple[int, str]:
 
     Hard: 'ends today', 'last chance', 'act now', 'limited time only'. Triggers
     suspicion on considered / regulated purchases (CFE, large basket grocery).
+
+    Phase-aware: pre-campaign hard scarcity is a hard 1/5 + flag because no real
+    deadline exists yet — manufactured urgency is a MISL-001 risk under ASIC.
+    The hard-scarcity rule_checker rule (FMTH-NO-HARD-SCARCITY-PRECAMPAIGN) also
+    blocks this at the rule layer; this dim signals the same in the rubric.
     """
     text = _get_all_text(ad).lower()
+    config = config or {}
+    default_phase = config.get("campaign_phase_default", "pre-campaign")
+    phase = (ad.get("campaign_phase") or default_phase).lower()
     soft = [
         r"opens?\s+soon",
         r"first\s+in\s+gets?\s+first\s+access",
@@ -1295,9 +1328,16 @@ def _score_scarcity_register(ad: dict) -> tuple[int, str]:
         return 4, "Soft scarcity present, no hard pressure"
     if not soft_hits and not hard_hits:
         return 3, "No scarcity signals"
+
+    # Hard scarcity present.
+    if phase == "pre-campaign":
+        return 1, (
+            f"PRE-CAMPAIGN — {len(hard_hits)} hard-pressure signal(s) (no real "
+            f"deadline yet). MISL-001 risk under ASIC."
+        )
     if soft_hits and hard_hits:
         return 2, f"Mixed: {len(soft_hits)} soft + {len(hard_hits)} hard (hard pressure undermines)"
-    return 1, f"{len(hard_hits)} hard-pressure signals (suspicion-triggering for CFE/considered)"
+    return 2, f"{len(hard_hits)} hard-pressure signals (suspicion-triggering for CFE/considered)"
 
 
 def _score_founder_voice(ad: dict) -> tuple[int, str]:

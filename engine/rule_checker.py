@@ -99,7 +99,7 @@ def _normalize_rules(rules: list[dict]) -> list[dict]:
     return normalized
 
 
-def check_rules(ad: dict, rules: list[dict], critical_rules: list[str] = None) -> dict:
+def check_rules(ad: dict, rules: list[dict], critical_rules: list[str] = None, default_phase: str = "pre-campaign") -> dict:
     """Run all rules against an ad. Returns score report.
 
     Args:
@@ -121,9 +121,25 @@ def check_rules(ad: dict, rules: list[dict], critical_rules: list[str] = None) -
     total = 0
     passed = 0
 
+    ad_content_type = ad.get("content_type", "meta-ad")
+    ad_phase = (ad.get("campaign_phase") or default_phase or "pre-campaign").lower()
+
     for rule in rules:
         rule_id = rule["rule_id"]
         check_type = rule["check_type"]
+
+        # content_types filter — rule only applies if ad's content_type is listed
+        # (or the rule omits the filter). Lets us scope a rule to e.g. meta-ads only.
+        rule_cts = rule.get("content_types")
+        if rule_cts and ad_content_type not in rule_cts:
+            continue
+
+        # campaign_phases filter — rule only applies if ad's campaign_phase is
+        # listed (or the rule omits the filter). Lets us scope a rule to e.g.
+        # pre-campaign only (FMTH-NO-HARD-SCARCITY-PRECAMPAIGN).
+        rule_phases = rule.get("campaign_phases")
+        if rule_phases and ad_phase not in [p.lower() for p in rule_phases]:
+            continue
 
         # Override severity if rule_id is in client's critical list
         # Map rule names to IDs for matching (e.g., "no_vet_villain" matches "BFP-001" with name "no_vet_villain")

@@ -31,6 +31,13 @@
     "campaign_context": "Pre-launch equity crowdfunding via Birchal. Content types: (1) Brand/product ads — pure grocery awareness, no investment messaging, (2) CFE waitlist ads — investment angle, waitlist CTA, (3) CFE campaign ads — investment is live, invest CTA. All investment content must comply with ASIC RG 234. VIP deposit ($5 refundable) messaging belongs on landing pages and emails, NOT ads.",
     "success_looks_like": "Reader understands FarmThru is a grocery store where you can get great food from real farms at honest prices. They want to find their nearest hub. For CFE content: reader feels informed, trusts the brand, joins the waitlist."
   },
+  "campaign_phase_default": "pre-campaign",
+  "campaign_phase_notes": "Until Birchal goes live (planned 2026-06-23), every FMTH ad is pre-campaign. Pre-campaign forbids hard scarcity (no real deadline = MISL-001 risk) and rejects 'Invest Now' CTAs (only waitlist/notify CTAs apply). Flip to 'during-offer' on launch day; flip to 'post-offer' on the offer end-date.",
+  "campaign_phase_cta_buckets": {
+    "pre-campaign": ["brand", "cfe_waitlist"],
+    "during-offer": ["brand", "cfe_waitlist", "cfe_campaign"],
+    "post-offer": ["brand"]
+  },
   "rubric": {
     "meta-ad": {
       "weights": {
@@ -174,7 +181,7 @@
   "approved_ctas": {
     "meta-ad": {
       "brand": ["Shop your local hub", "See what's fresh this week", "Meet the farmer", "Find your nearest hub", "Start your first order"],
-      "cfe_waitlist": ["Join the Waitlist", "Sign Up", "Learn More"],
+      "cfe_waitlist": ["Join the Waitlist", "Sign Up", "Learn More", "Leave your email", "Get notified", "Notify me", "Save My Spot"],
       "cfe_campaign": ["Invest Now", "Learn More", "See the Opportunity"]
     },
     "landing-page": {
