@@ -448,6 +448,55 @@ def _ensure_csf_safeharbour(ad: dict, content_type: str) -> dict:
     return ad
 
 
+def build_synthetic_hypothesis_from_dim(dim_name: str, seed_ad: dict) -> dict:
+    """Build a minimal hypothesis dict from a single weak rubric dimension.
+
+    Used when routing random-mode targeted hill-climbing to hook_swap: instead of
+    rewriting the entire primary_text (which loses locked high-scoring dims), we
+    produce a hook_swap variant whose instruction is derived from the known dimension
+    improvement guidance. This preserves the body, description, CTA, and CSF footnote
+    from the seed while generating a new opening + headline targeting the weak dim.
+
+    The returned dict is compatible with generate_hook_swap_variant's hypothesis arg.
+    """
+    guidance = _dimension_improvement_guidance(dim_name)
+    # Map dimension names to hook directions that commonly target them
+    _dim_to_hook_direction = {
+        "scroll_stop_hook": "curiosity-gap or story-moment opener that avoids generic framing",
+        "motivation_match": "emotionally resonant opener that names the felt need, not the product",
+        "angle_clarity": "opener that states ONE clear proposition and removes all competing themes",
+        "specificity": "opener that leads with a concrete detail (number, name, location, or action)",
+        "objection_preemption": "opener that directly addresses the reader's most likely hesitation",
+        "cta_clarity": "opener that makes the next action and its consequence vivid",
+        "ownership_framing": "opener that frames the opportunity as identity/belonging, not transaction",
+        "scarcity_register": "opener that implies future scarcity without using hard-sell urgency language",
+        "founder_voice": "opener with a specific founder-voice moment ('We've built', 'We're about to')",
+        "differentiation": "opener that uses entirely different language from the existing body",
+        "tactic_execution": "opener that clearly establishes the Hook → Proof → Bridge → CTA structure",
+    }
+    hook_direction = _dim_to_hook_direction.get(
+        dim_name,
+        f"opener specifically engineered to lift the '{dim_name}' rubric dimension",
+    )
+    seed_id = seed_ad.get("ad_id", "seed")
+    return {
+        "id": f"SYN-{dim_name[:12].upper()}",
+        "claim": (
+            f"The '{dim_name}' dimension is underperforming in {seed_id}. "
+            f"A new opening that targets this dimension should lift the composite "
+            f"without degrading the locked body elements."
+        ),
+        "load_bearing_element": dim_name,
+        "test": f"Replace the opening paragraph with one that maximises '{dim_name}'. Keep all other content identical.",
+        "alternative_hook_seed": hook_direction,
+        "alternative_headline_seed": f"New headline that reinforces the '{dim_name}' improvement",
+        "expected_direction": "performance_lifts",
+        "confidence_prior": 0.55,
+        "knowledge_used": [f"dimension/{dim_name}", "targeted_improvement_guidance"],
+        "_synthetic": True,
+    }
+
+
 def _build_scoring_guide(content_type: str, config: dict) -> str:
     """Build a condensed scoring guide so the writer knows what it'll be scored on."""
     client_id = config.get("client_id", "")
