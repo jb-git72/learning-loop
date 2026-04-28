@@ -1,0 +1,142 @@
+{
+  "industry": "cfe-au",
+  "full_name": "Crowdfunded Equity — Australia (pre-campaign)",
+  "source": "ASIC RG 261/262 + Farm Thru live $2-lead ad (LIVE-FMTH-NEVER-DONE) + PR #125 hypothesis validation 2026-04-28 + Motion Creative Benchmarks 2026",
+  "notes": "Pre-campaign = before the Birchal offer document is live. Investment mechanics (dollar amounts, equity %, return projections) are PROHIBITED in ads per RG 261.96/99. The goal of pre-campaign ads is waitlist capture only — not conversion to investor. Every ad must include the general CSF risk warning (ADV-001, s738ZG(6)).",
+  "phase": "pre-campaign",
+  "regulatory_baseline": ["ADV-001", "ADV-002", "ADV-003"],
+  "hook_weights": {
+    "curiosity_gap_narrow_bound": 3.0,
+    "ownership_invitation": 2.5,
+    "exclusivity": 1.8,
+    "newness": 1.6,
+    "curiosity": 1.5,
+    "founder_voice_build": 1.5,
+    "story": 1.3,
+    "fomo": 1.2,
+    "cadence_of_three_proof": 1.2,
+    "outcome_stated_cta": 1.1,
+    "question": 1.0,
+    "confession": 1.0,
+    "statistic": 0.9,
+    "if_then": 0.8,
+    "price_anchor": 0.3,
+    "urgency": 0.3,
+    "bold_claim": 0.6
+  },
+  "hook_weight_rationale": {
+    "curiosity_gap_narrow_bound": "Live $2-lead ad (LIVE-FMTH-NEVER-DONE) used narrow novelty + category + geography bound. PR #125 H1 confirmed: removing the geographic/category bound dropped composite 0.7926 -> 0.6053. Most powerful pre-campaign hook pattern observed to date.",
+    "ownership_invitation": "PR #125 H2 confirmed: removing 'own a piece of' framing dropped composite 0.7926 -> 0.6053 — identical magnitude to removing the curiosity bound. Ownership identity beats investment transaction language.",
+    "price_anchor": "BLOCKED for pre-campaign ads. ADV-002 prohibits specific investment amounts outside offer document. Do not use.",
+    "urgency": "HIGH RISK in pre-campaign. Hard deadline scarcity ('last chance', 'closes in 24h') before an offer exists is misleading per ACL. Use soft future scarcity only.",
+    "founder_voice_build": "PR #125 H3 DISCONFIRMED: replacing curiosity-gap with founder-voice alone dropped composite 0.7926 -> 0.6161. Founder voice is a support layer, not a replacement for the curiosity hook. Use founder voice in body, not opening line."
+  },
+  "audience_motivation_hierarchy": {
+    "order": ["ownership", "returns", "novelty", "belonging"],
+    "ownership": "Primary driver. 'Own a piece of' activates identity, not transaction. The reader wants to be a stakeholder in something they believe in. This is the lever that converts curiosity to action in pre-campaign.",
+    "returns": "Secondary. Relevant but cannot be stated in pre-campaign per ADV-002. Imply through outcome language ('pays farmers first', 'community-owned grocery model') — never project returns or cite percentages.",
+    "novelty": "Tertiary. 'Never been done in Australia' resonates because early-stage equity buyers self-identify as first-movers. Narrow the novelty: category + geography + mechanic, not generic 'disruption'.",
+    "belonging": "Quaternary. 'Join the people who eat with intention', 'FarmThru families' — activates community identity. Works best in body copy as proof layer, not hook."
+  },
+  "scarcity_conventions": {
+    "allowed": [
+      "opens soon",
+      "first in gets first access",
+      "we'll tell you the moment it goes live",
+      "registration opens soon",
+      "leave your email — we'll tell you when"
+    ],
+    "prohibited": [
+      "act now",
+      "last chance",
+      "limited time only",
+      "closes in [N] hours",
+      "only [N] spots left at this price"
+    ],
+    "rationale": "Soft/future scarcity creates anticipation without implying a deadline that does not yet exist. Hard scarcity before an offer document is live risks misleading conduct (ACL s18). ASIC also views manufactured urgency in CSF ads as a trust-damaging signal per RG 261."
+  },
+  "cta_conventions_by_phase": {
+    "pre-campaign": {
+      "primary_ctas": ["Join the Waitlist", "Get Early Access", "Leave Your Email"],
+      "outcome_statement_required": true,
+      "outcome_statement_template": "Leave your email — we'll tell you the moment it goes live.",
+      "rationale": "CTA must name the action AND its consequence. 'Join the Waitlist' alone scores lower than 'Join the Waitlist' + outcome body sentence (PR #125 seed vs alternatives; cta_clarity dimension). The consequence anchors the reader's expectation and reduces friction."
+    },
+    "during-offer": {
+      "primary_ctas": ["Invest Now", "Secure Your Stake", "Join the Campaign"],
+      "compliance_gate": "ADV-001 required on all. ADV-002 prohibits specific $ amounts in ads.",
+      "note": "Different playbook applies. Refer to compliance_rules.json."
+    }
+  },
+  "csf_placement": {
+    "rule": "Asterisked footnote in the final paragraph only. Never in body sentences.",
+    "canonical_phrase": "Always consider the general CSF risk warning and offer document before investing.",
+    "short_form_accepted": "general CSF risk warning",
+    "placement_guidance": "The compliance line dampens momentum when it appears mid-ad. Final-paragraph placement satisfies ADV-001 while preserving body copy flow. LIVE-FMTH-NEVER-DONE placed it as a starred line after 'Leave your email' — this pattern scores 5/5 on csf_placement dimension."
+  },
+  "confirmed_hypotheses": [
+    {
+      "id": "H1",
+      "hypothesis": "Narrow geographic + category bound is load-bearing in the curiosity hook",
+      "test": "PR #125 hook_swap: removed 'in Australia' + grocery category framing",
+      "result": "CONFIRMED — composite dropped 0.7926 -> 0.6053 (-0.1873)",
+      "implication": "Lead with the bound, not the proof. 'Never been done with a grocery store in Australia' outperforms generic 'revolutionary new model'."
+    },
+    {
+      "id": "H2",
+      "hypothesis": "Ownership framing ('own a piece of') is load-bearing",
+      "test": "PR #125 hook_swap: replaced ownership language with investment/return framing",
+      "result": "CONFIRMED — composite dropped 0.7926 -> 0.6053 (-0.1873)",
+      "implication": "Every pre-campaign FMTH ad should contain at least one ownership phrase in the first two paragraphs."
+    },
+    {
+      "id": "H3",
+      "hypothesis": "Founder voice alone could replace or lift the curiosity hook",
+      "test": "PR #125 hook_swap: led with founder voice, buried curiosity element",
+      "result": "DISCONFIRMED — composite dropped 0.7926 -> 0.6161 (-0.1765). Curiosity gap > founder voice as opening gambit.",
+      "implication": "Use founder voice in body ('we've built', 'we're about to') not as the opening line. Curiosity gap must come first."
+    },
+    {
+      "id": "H4",
+      "hypothesis": "Soft scarcity ('opens soon', 'first access') is load-bearing",
+      "test": "PR #125 hook_swap: scarcity language is in locked body — could not isolate cleanly",
+      "result": "INVALID PROBE — scarcity is body-level, hook_swap only tests hook. Could not confirm or disconfirm.",
+      "implication": "Treat soft scarcity as best-practice until a body_swap probe is run. Do not remove it."
+    }
+  ],
+  "gold_standard_ad": {
+    "id": "LIVE-FMTH-NEVER-DONE",
+    "composite": 0.7926,
+    "cpl_observed": "$2 (live Meta campaign, AU-Northern Beaches targeting)",
+    "hook_pattern": "curiosity_gap_narrow_bound",
+    "ownership_phrases": ["own a piece of the farm-direct grocery model"],
+    "scarcity_phrases": ["Registration opens soon", "First in gets first access"],
+    "outcome_cta": "Leave your email — we'll tell you the moment it goes live.",
+    "csf_placement": "asterisked_footnote_final_paragraph",
+    "headline": "Own a piece of an Aussie-first grocery model"
+  },
+  "recommended_angles": [
+    "novelty-first-mover",
+    "cause-purpose",
+    "social-belonging",
+    "transparency-safety",
+    "empathy-founder"
+  ],
+  "recommended_tactics": ["curiosity-gap", "founder-story", "social-proof-stack", "educational"],
+  "top_visual_formats": [
+    "Text-forward (highest hit rate ~12%, spend use ratio ~1.9 — Motion Benchmarks 2026)",
+    "Founder (authentic over polished)",
+    "Behind the Scene",
+    "Offer-First Banner"
+  ],
+  "anti_patterns": [
+    "Specific investment dollar amounts (ADV-002 BLOCKING)",
+    "Birchal, equity%, return projections — prohibited pre-campaign",
+    "Hard scarcity ('last chance', 'act now') — misleading before offer exists",
+    "Founder voice as opening line — H3 DISCONFIRMED (curiosity gap outperforms)",
+    "Investment language in body ('invest from $X', 'earn returns') — reframe as ownership",
+    "Title Case headlines",
+    "Em dashes or en dashes",
+    "Bolted-on investment tease ('be part of it') without ownership framing"
+  ]
+}
