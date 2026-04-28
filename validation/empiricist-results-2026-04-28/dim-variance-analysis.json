@@ -1,0 +1,143 @@
+{
+  "dim_stats": {
+    "angle_clarity": {
+      "mean": 3,
+      "std": 0.0,
+      "min": 3,
+      "max": 3,
+      "corr": 0.0,
+      "weight": 2.0
+    },
+    "motivation_match": {
+      "mean": 2,
+      "std": 0.0,
+      "min": 2,
+      "max": 2,
+      "corr": 0.0,
+      "weight": 2.0
+    },
+    "tactic_execution": {
+      "mean": 4,
+      "std": 0.0,
+      "min": 4,
+      "max": 4,
+      "corr": 0.0,
+      "weight": 1.5
+    },
+    "csf_placement": {
+      "mean": 4.0526,
+      "std": 0.2294,
+      "min": 4,
+      "max": 5,
+      "corr": 0.2833,
+      "weight": 0.5
+    },
+    "platform_fit": {
+      "mean": 4.8947,
+      "std": 0.4588,
+      "min": 3,
+      "max": 5,
+      "corr": -0.2833,
+      "weight": 0.75
+    },
+    "differentiation": {
+      "mean": 4.6316,
+      "std": 0.4956,
+      "min": 4,
+      "max": 5,
+      "corr": 0.482,
+      "weight": 1.5
+    },
+    "sentence_variance": {
+      "mean": 3,
+      "std": 0.5774,
+      "min": 2,
+      "max": 4,
+      "corr": 0.3365,
+      "weight": 0.5
+    },
+    "ownership_framing": {
+      "mean": 3.4211,
+      "std": 0.607,
+      "min": 3,
+      "max": 5,
+      "corr": 0.2138,
+      "weight": 0.75
+    },
+    "scarcity_register": {
+      "mean": 3.2105,
+      "std": 0.6306,
+      "min": 3,
+      "max": 5,
+      "corr": 0.3371,
+      "weight": 0.5
+    },
+    "receptionist_test": {
+      "mean": 4.2632,
+      "std": 0.6534,
+      "min": 3,
+      "max": 5,
+      "corr": 0.1929,
+      "weight": 0.75
+    },
+    "specificity": {
+      "mean": 3.3684,
+      "std": 0.684,
+      "min": 2,
+      "max": 4,
+      "corr": 0.3076,
+      "weight": 1.25
+    },
+    "cta_clarity": {
+      "mean": 2.1579,
+      "std": 0.6882,
+      "min": 2,
+      "max": 5,
+      "corr": 0.2833,
+      "weight": 1.0
+    },
+    "opening_diversity": {
+      "mean": 4.1579,
+      "std": 0.6882,
+      "min": 3,
+      "max": 5,
+      "corr": -0.1782,
+      "weight": 0.75
+    },
+    "objection_preemption": {
+      "mean": 2.8421,
+      "std": 0.8342,
+      "min": 1,
+      "max": 4,
+      "corr": -0.0369,
+      "weight": 0.75
+    },
+    "emotional_register": {
+      "mean": 2.7895,
+      "std": 0.9177,
+      "min": 2,
+      "max": 5,
+      "corr": 0.206,
+      "weight": 0.75
+    },
+    "founder_voice": {
+      "mean": 2.8421,
+      "std": 1.1673,
+      "min": 2,
+      "max": 5,
+      "corr": 0.2348,
+      "weight": 0.5
+    },
+    "scroll_stop_hook": {
+      "mean": 3.5263,
+      "std": 1.3892,
+      "min": 2,
+      "max": 5,
+      "corr": 0.4937,
+      "weight": 1.75
+    }
+  },
+  "n_ads": 19,
+  "composite_mean": 0.6441421052631578,
+  "composite_std": 0.07843587129899654
+}

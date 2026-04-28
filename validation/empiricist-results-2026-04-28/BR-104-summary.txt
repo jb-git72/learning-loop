@@ -1,0 +1,12 @@
+=== HYPOTHESIS-DRIVEN HILL-CLIMB SUMMARY ===
+Seed: BR-104 | Score: 0.6743 [needs_work]
+Run at: 2026-04-28T09:50:14.306922+00:00
+Elapsed: 33.0s
+
+HYPOTHESES TESTED:
+  [            no]           motivation_match | gap=3 | LBE=emotional_resonance | delta=-0.6743
+  [            no]              angle_clarity | gap=2 | LBE=single_proposition | delta=-0.6743
+  [            no]                cta_clarity | gap=3 | LBE=cta_outcome_statement | delta=-0.6743
+  [            no]                specificity | gap=2 | LBE=concrete_details | delta=-0.6743
+
+VERDICT: 0/4 confirmed | best delta=-0.6743 | best score=0.0000
