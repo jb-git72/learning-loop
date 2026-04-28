@@ -1,0 +1,12 @@
+=== HYPOTHESIS-DRIVEN HILL-CLIMB SUMMARY ===
+Seed: LIVE-FMTH-NEVER-DONE | Score: 0.7410 [strong_draft]
+Run at: 2026-04-28T09:51:10.977633+00:00
+Elapsed: 71.3s
+
+HYPOTHESES TESTED:
+  [ INVALID_PROBE]           motivation_match | gap=3 | LBE=emotional_resonance | delta=N/A
+  [            no]              angle_clarity | gap=2 | LBE=single_proposition | delta=-0.2010
+  [            no]       objection_preemption | gap=3 | LBE=objection_signals | delta=-0.2019
+  [            no]          sentence_variance | gap=1 | LBE=sentence_length_range | delta=-0.7410
+
+VERDICT: 0/4 confirmed | best delta=-0.2010 | best score=0.5400
