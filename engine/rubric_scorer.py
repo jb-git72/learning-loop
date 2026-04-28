@@ -463,7 +463,7 @@ def _score_objection_preemption(ad: dict, config: dict = None) -> tuple[int, str
                 ("hub clarity", r'brookvale|nearest hub|collect from|hub.and.collect|monday.*friday'),
                 ("risk acknowledged", r'can\'t\s+promise|no\s+guarantee|honest about'),
                 ("no middlemen", r'no\s+(?:warehouse|wholesaler|middlem)|direct|zero middlem'),
-                ("provenance", r'named farm|know.*farmer|trace|where.*food.*comes|paddock'),
+                ("provenance", r'named farm|know.*farmer|trace|where.*food.*comes|paddock|\b\d+\s+(?:nsw|qld|vic|sa|wa|tas|nt|act)\s+farms?|\b(?:eight|nine|ten|eleven|twelve|fifteen|twenty)\s+(?:nsw|qld|vic)\s+farms?'),
             ]
         else:
             checks = [
@@ -1424,8 +1424,11 @@ def _classify_register(ad: dict) -> str:
     if re.match(r'^(?:you|your)\b', first_sent, re.IGNORECASE):
         return "direct"
 
-    # Confession — starts with "I " or "We "
-    if re.match(r'^(?:I |We )', first_sent):
+    # Confession — starts with first-person singular or plural (including contracted
+    # forms: "I ", "I've", "I'm", "We ", "We're", "We've", "We'll").
+    # The original r'^(?:I |We )' missed contractions like "We're about to open…"
+    # (the live $2-lead ad opener) and classified them as "other".
+    if re.match(r'^(?:I\b|We\b)', first_sent):
         return "confession"
 
     # Statistic — contains $ or a number in first sentence
