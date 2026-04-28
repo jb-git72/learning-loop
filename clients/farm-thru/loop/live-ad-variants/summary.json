@@ -1,0 +1,60 @@
+{
+  "seed_ad_id": "LIVE-FMTH-NEVER-DONE",
+  "seed_composite": 0.7926,
+  "seed_verdict": "strong_draft",
+  "generated_at": "2026-04-28T07:50:26Z",
+  "max_minutes": 6.0,
+  "attempts": 4,
+  "viable": 4,
+  "kept": 4,
+  "results": [
+    {
+      "rank": 1,
+      "ad_id": "LIVE-VARIANT-01",
+      "composite": 0.6976,
+      "verdict": "needs_work",
+      "mode": "hook_swap",
+      "weak_dim": null,
+      "headline": "Know who grew your food",
+      "primary_text": "Sydney, do you actually know where your groceries come from?\n\nFor the first time, you'll be able to own a piece of the farm-direct grocery model we've built on the Northern Beaches. Eight NSW farms. One hub in Brookvale. A network ready to scale across Sydney.\n\nRegistration opens soon. First in gets first access.\n\nLeave your email \u2014 we'll tell you the moment it goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+      "description": "Registration opens soon. Leave your email.",
+      "cta": "Join the Waitlist"
+    },
+    {
+      "rank": 2,
+      "ad_id": "LIVE-VARIANT-02",
+      "composite": 0.6161,
+      "verdict": "needs_work",
+      "mode": "hook_swap",
+      "weak_dim": null,
+      "headline": "Eight farms. One hub. Now open.",
+      "primary_text": "We've spent years building this on the Northern Beaches. Now we're opening the door.\n\nFor the first time, you'll be able to own a piece of the farm-direct grocery model we've built on the Northern Beaches. Eight NSW farms. One hub in Brookvale. A network ready to scale across Sydney.\n\nRegistration opens soon. First in gets first access.\n\nLeave your email \u2014 we'll tell you the moment it goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+      "description": "Registration opens soon. Leave your email.",
+      "cta": "Join the Waitlist"
+    },
+    {
+      "rank": 3,
+      "ad_id": "LIVE-VARIANT-03",
+      "composite": 0.6053,
+      "verdict": "needs_work",
+      "mode": "hook_swap",
+      "weak_dim": null,
+      "headline": "A better way to buy groceries",
+      "primary_text": "There's a better way to buy groceries in Sydney, and you can own a piece of it.\n\nFor the first time, you'll be able to own a piece of the farm-direct grocery model we've built on the Northern Beaches. Eight NSW farms. One hub in Brookvale. A network ready to scale across Sydney.\n\nRegistration opens soon. First in gets first access.\n\nLeave your email \u2014 we'll tell you the moment it goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+      "description": "Registration opens soon. Leave your email.",
+      "cta": "Join the Waitlist"
+    },
+    {
+      "rank": 4,
+      "ad_id": "LIVE-VARIANT-04",
+      "composite": 0.6053,
+      "verdict": "needs_work",
+      "mode": "hook_swap",
+      "weak_dim": null,
+      "headline": "Be first to shop the new hub",
+      "primary_text": "Shop the farm-direct grocery hub before anyone else.\n\nFor the first time, you'll be able to own a piece of the farm-direct grocery model we've built on the Northern Beaches. Eight NSW farms. One hub in Brookvale. A network ready to scale across Sydney.\n\nRegistration opens soon. First in gets first access.\n\nLeave your email \u2014 we'll tell you the moment it goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+      "description": "Registration opens soon. Leave your email.",
+      "cta": "Join the Waitlist"
+    }
+  ]
+}
