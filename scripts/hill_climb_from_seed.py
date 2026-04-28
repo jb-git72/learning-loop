@@ -27,8 +27,17 @@ if env_path.exists():
             os.environ.setdefault(k.strip(), v.strip())
 
 from engine.scorer import load_client, score_ad
-from writer import generate_variant, generate_hook_swap_variant
+from writer import generate_variant, generate_hook_swap_variant, build_synthetic_hypothesis_from_dim
 from engine.hypothesis_generator import generate_hypotheses
+
+# Composite threshold above which a seed is "strong" and targeted-mode random hill-climbing
+# routes to hook_swap instead of full-ad rewrite. PR #128 analysis (HYPOTHESIS-DOSSIER.md §5)
+# confirmed that full-ad rewrites for targeted dims degrade locked high-scoring dims
+# (scroll_stop_hook=5, founder_voice=5, scarcity_register=5) by 0.2–0.3 composite.
+# Option A from project_loop_2026_04_29_autonomous_plan.md Phase 2: when seed is strong
+# (composite >= 0.65) and mode is targeted, route to hook_swap with a synthetic hypothesis
+# derived from the weak dim. This preserves locked body elements.
+_STRONG_SEED_COMPOSITE_THRESHOLD = 0.65
 
 
 MODES = [
@@ -170,20 +179,42 @@ def main():
                   + (f", targeting={weak_dim}" if weak_dim else ""))
 
             try:
-                kwargs = {
-                    "angle": seed_ad.get("angle", "urgency-scarcity"),
-                    "tactic": seed_ad.get("tactic", "novelty-insider-access"),
-                    "hook_type": seed_ad.get("hook_type", "curiosity"),
-                    "funnel": seed_ad.get("funnel", "TOF"),
-                    "client_dir": client_dir,
-                    "current_best": seed_ad,
-                    "content_type": "meta-ad",
-                    "mode": mode,
-                }
-                if mode == "targeted" and weak_dim:
-                    # Pass weak_dimensions as a list of (name, score, max) tuples
-                    kwargs["weak_dimensions"] = [(weak_dim, 2, 5)]
-                variant = generate_variant(**kwargs)
+                # Route strong-seed targeted mode to hook_swap to preserve locked dims.
+                # Full-ad rewrite (generate_variant mode=targeted) degrades high-scoring
+                # locked dims by 0.2-0.3 composite (validated in HYPOTHESIS-DOSSIER.md §5).
+                # When seed composite >= 0.65 and mode is targeted, use hook_swap with a
+                # synthetic hypothesis derived from the weak dim instead.
+                if (
+                    mode == "targeted"
+                    and weak_dim
+                    and seed_report["composite"] >= _STRONG_SEED_COMPOSITE_THRESHOLD
+                    and seed_ad.get("content_type", "meta-ad") == "meta-ad"
+                ):
+                    synth_hyp = build_synthetic_hypothesis_from_dim(weak_dim, seed_ad)
+                    print(f"  [routed targeted→hook_swap] dim={weak_dim} seed_composite={seed_report['composite']:.4f}")
+                    variant = generate_hook_swap_variant(
+                        seed_ad=seed_ad,
+                        hypothesis=synth_hyp,
+                        client_dir=client_dir,
+                        content_type="meta-ad",
+                    )
+                    variant["_routed_from"] = "targeted"
+                    variant["_routed_weak_dim"] = weak_dim
+                else:
+                    kwargs = {
+                        "angle": seed_ad.get("angle", "urgency-scarcity"),
+                        "tactic": seed_ad.get("tactic", "novelty-insider-access"),
+                        "hook_type": seed_ad.get("hook_type", "curiosity"),
+                        "funnel": seed_ad.get("funnel", "TOF"),
+                        "client_dir": client_dir,
+                        "current_best": seed_ad,
+                        "content_type": "meta-ad",
+                        "mode": mode,
+                    }
+                    if mode == "targeted" and weak_dim:
+                        # Pass weak_dimensions as a list of (name, score, max) tuples
+                        kwargs["weak_dimensions"] = [(weak_dim, 2, 5)]
+                    variant = generate_variant(**kwargs)
             except Exception as e:
                 print(f"  FAIL gen: {type(e).__name__}: {e}")
                 continue
