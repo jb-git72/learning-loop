@@ -1,20 +1,29 @@
-# Pre-campaign offer v3: for review
+# Pre-campaign offer v4: for review
 
 **Date**: 2026-04-28
-**Purpose**: Revised proposal in response to your 2026-04-27 feedback. The free CSF investor waitlist is unchanged. The only addition is a separate optional consumer offer that runs alongside it.
+**Purpose**: Revised proposal in response to your 2026-04-27 feedback. The free CSF investor waitlist is unchanged. The new addition is an optional consumer product offer (the Pre-launch Supporter Pack) presented as a post-signup upsell on the waitlist thank-you page, and also publicly available on farmthru.com.au.
 
 ## What stays the same
 
-The free CSF investor waitlist at join.farmthru.com.au continues exactly as is. Email signup, priority SMS when the offer opens at Birchal, drip updates. No fee. No change to mechanics, copy, or compliance handling.
+The free CSF investor waitlist at join.farmthru.com.au continues exactly as is. Email signup, priority SMS when the offer opens at Birchal, drip updates. No fee. No change.
 
-## What's new
+## What's new: the Pre-launch Supporter Pack
 
-A standalone consumer offer on farmthru.com.au:
+A standalone consumer product offer:
 
 - **Offer**: pay $10, get $20 of FarmThru product credit
 - **Redeemable**: any FarmThru order of $25 or more
 - **Expires**: 30 May 2026
-- **Audience**: anyone who wants to try FarmThru products at half price
+- **Audience**: anyone who wants to support FarmThru and try our products at half price
+
+## How a customer encounters it
+
+1. User clicks an ad and lands on join.farmthru.com.au
+2. User signs up to the free CSF investor waitlist (no money exchanged)
+3. On the thank-you page, the Supporter Pack is presented as an optional next step: *"While you're here, buy a $20 FarmThru product credit for $10. Use it on any order over $25 by 30 May 2026."*
+4. User can take the Supporter Pack or decline. Either way they stay on the free waitlist.
+
+The Supporter Pack is also publicly available at farmthru.com.au for anyone who finds it directly. It is not gated to waitlist members. Anyone can buy it without signing up; any waitlist member can ignore it.
 
 ## What the $10 does NOT buy
 
@@ -28,20 +37,21 @@ The $10 buys $20 of product credit. Nothing more.
 
 ## How the two offers stay separate
 
-- The product offer lives at farmthru.com.au, not at join.farmthru.com.au
-- We run the product offer to lifestyle and food audiences, not investor audiences
-- A buyer can take the product offer without joining the waitlist; a waitlist member can ignore the product offer
-- Marketing copy never bundles the two
-- The waitlist thank-you page may mention the product offer alongside other ways to support FarmThru, without saying it is required
+- The waitlist signup is free. No money flows in connection with joining the investor list.
+- The Supporter Pack purchase is a separate, optional consumer transaction that happens after the free signup.
+- A buyer can take the Supporter Pack without joining the waitlist.
+- A waitlist member can ignore the Supporter Pack.
+- Marketing copy never says you must buy the Supporter Pack to be on the waitlist or to invest later.
 
 ## Touchpoints (draft copy attached separately)
 
-- Product offer landing page on farmthru.com.au
-- Redemption flow on farmthru.com.au shop
-- One soft reference to the product offer on the existing CSF waitlist thank-you page
+- Free CSF waitlist landing page (unchanged)
+- Free CSF waitlist thank-you page (Supporter Pack upsell added)
+- Pre-launch Supporter Pack landing page on farmthru.com.au (public, ungated)
+- Redemption flow on the farmthru.com.au shop
 
 ## Ask
 
-- Please confirm the product offer is acceptable as a standalone consumer offer that runs alongside the waitlist
+- Please confirm the Pre-launch Supporter Pack is acceptable as a standalone consumer product offer
 - Please review the attached draft copy
 - Please flag any concerns
