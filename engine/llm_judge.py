@@ -329,9 +329,9 @@ def _try_api(prompt):
 
 def _parse_response(text):
     """Parse LLM response. Returns (score, explanation) or (None, None)."""
-    # Try JSON parse
+    # Try JSON parse — use DOTALL so explanations containing {} don't truncate
     try:
-        json_match = re.search(r'\{[^}]+\}', text)
+        json_match = re.search(r'\{.*\}', text, re.DOTALL)
         if json_match:
             data = json.loads(json_match.group())
             score = int(data.get("score", 0))
@@ -422,7 +422,8 @@ Respond with ONLY valid JSON: {"score": <1-5>, "reason": "<one sentence>"}""" % 
 def _parse_pairwise_response(text):
     """Parse pairwise JSON response. Returns (score, reason) or None."""
     try:
-        json_match = re.search(r'\{[^}]+\}', text)
+        # Use DOTALL so reasons containing {} don't truncate the match
+        json_match = re.search(r'\{.*\}', text, re.DOTALL)
         if json_match:
             data = json.loads(json_match.group())
             score = int(data.get("score", 0))

@@ -239,6 +239,102 @@
         "email": "Exclusivity in subject. Body explains what makes this group special.",
         "landing-page": "Exclusivity as headline. Sections detail the early-access benefits."
       }
+    },
+    {
+      "id": "curiosity_gap_narrow_bound",
+      "template": "Open by announcing something unprecedented, bounded by a specific category AND a specific geography. 'We're about to open something up that's never been done with a grocery store in Australia.' The bound (category + geo) is what makes the gap feel real, not generic novelty.",
+      "benchmark_hit_rate": 0.11,
+      "benchmark_spend_use_ratio": 1.9,
+      "benchmark_source": "Derived: curiosity hook ~0.08 base (Motion 2026 CH-011) x ~1.4x multiplier from narrow-bound confirmation (PR #125 H1: removing bound dropped composite -0.19). Text-forward asset class ~12% hit rate, 1.9 spend use (CH-012).",
+      "best_verticals": ["cfe-au", "fintech", "food-nutrition", "health-wellness"],
+      "best_content_types": ["meta-ad", "email"],
+      "scorer_compatible_pattern": "statistic",
+      "content_type_adaptations": {
+        "meta-ad": "One sentence, present tense build ('we're about to', 'about to open'). Category + geography bound in same sentence. Do NOT replace with vague disruption language — the bound is load-bearing (PR #125 H1: dropping it cost -0.19 composite).",
+        "email": "Curiosity gap in subject line or first body sentence. Bound the novelty: industry + market. Body opens the gap wider before the CTA closes it.",
+        "landing-page": "Headline as the bound claim. Hero copy expands on what makes it unprecedented. Sections close the gap with proof."
+      },
+      "evidence": {
+        "source": "PR #125 hypothesis validation 2026-04-28",
+        "seed_composite": 0.7926,
+        "H1_result": "CONFIRMED — removing geo+category bound dropped composite to 0.6053 (-0.1873)",
+        "gold_standard_ad": "LIVE-FMTH-NEVER-DONE ($2 CPL observed in market)"
+      }
+    },
+    {
+      "id": "ownership_invitation",
+      "template": "Open with or lead into an ownership identity offer. 'Own a piece of the farm-direct grocery model we've built.' Not 'invest in' — own. The reader becomes a stakeholder, not a buyer.",
+      "benchmark_hit_rate": 0.09,
+      "benchmark_spend_use_ratio": 1.4,
+      "benchmark_source": "Derived from confession hook baseline (Motion 2026 CH-011: ~0.09 hit rate, 1.4 spend use ratio). Ownership identity framing confirmed load-bearing for CFE pre-campaign by PR #125 H2.",
+      "best_verticals": ["cfe-au", "fintech", "food-nutrition"],
+      "best_content_types": ["meta-ad", "email", "landing-page"],
+      "scorer_compatible_pattern": "story",
+      "content_type_adaptations": {
+        "meta-ad": "Use in first two paragraphs. Phrases: 'own a piece of', 'be a partner in', 'be part of what we've built'. Never 'invest from $X' — ADV-002 violation and loses ownership identity. PR #125 H2: removing this framing dropped composite -0.19.",
+        "email": "Ownership invitation as the emotional core of the email. Subject can be curiosity; body pivots to 'here's what owning a piece of this means'.",
+        "landing-page": "Hero copy: ownership framing. Subheads build out what ownership entails. CTA: 'Own a piece of it'."
+      },
+      "evidence": {
+        "source": "PR #125 hypothesis validation 2026-04-28",
+        "H2_result": "CONFIRMED — removing ownership framing dropped composite 0.7926 -> 0.6053 (-0.1873)"
+      }
+    },
+    {
+      "id": "founder_voice_build",
+      "template": "Use past-tense build language in the body to establish founder authority. 'We've built a network of eight NSW farms. We're about to open it up.' The 'we've built' construction earns authority through evidence of completed work, not aspiration.",
+      "benchmark_hit_rate": 0.07,
+      "benchmark_spend_use_ratio": 1.2,
+      "benchmark_source": "Derived from founder visual format (Motion 2026 CH-010: top spend-sustainer in Food & Nutrition). Conservative estimate because this hook functions as a BODY layer, not an opening. PR #125 H3 DISCONFIRMED as opener.",
+      "best_verticals": ["cfe-au", "food-nutrition", "health-wellness", "fintech"],
+      "best_content_types": ["meta-ad", "email", "landing-page"],
+      "scorer_compatible_pattern": "story",
+      "content_type_adaptations": {
+        "meta-ad": "Use in paragraph 2, not opening. 'We've built' + specific proof (farms, hubs, network). CRITICAL: PR #125 H3 DISCONFIRMED as opener — curiosity gap outperformed by 0.06 composite. Founder voice lifts when it follows the curiosity hook.",
+        "email": "Founder voice as body layer after curiosity or ownership hook in subject/first line. Works especially well in plain-text.",
+        "landing-page": "Founder voice in hero_copy after headline. 'We started FarmThru because...' — past-tense build. Avoid corporate third-person."
+      },
+      "evidence": {
+        "source": "PR #125 hypothesis validation 2026-04-28",
+        "H3_result": "DISCONFIRMED as opener — composite 0.7926 -> 0.6161 (-0.1765). Curiosity > founder voice as opening gambit."
+      }
+    },
+    {
+      "id": "cadence_of_three_proof",
+      "template": "Build proof through three short, parallel fragments. 'Eight NSW farms. One hub in Brookvale. A network ready to scale across Sydney.' Each fragment is a concrete fact; the cadence creates forward momentum.",
+      "benchmark_hit_rate": 0.08,
+      "benchmark_spend_use_ratio": 1.3,
+      "benchmark_source": "Consistent with curiosity and statistic hook performance (Motion 2026 CH-011). Pattern extracted from LIVE-FMTH-NEVER-DONE body copy — the $2-lead gold standard.",
+      "best_verticals": ["cfe-au", "food-nutrition", "health-wellness", "pet-care"],
+      "best_content_types": ["meta-ad", "email"],
+      "scorer_compatible_pattern": "statistic",
+      "content_type_adaptations": {
+        "meta-ad": "Use in paragraph 2 as proof sequence. Three fragments, each one sentence. Each must be a named fact (farm count, hub name, geography). Specificity dimension scores high with named specifics.",
+        "email": "Three-fragment proof in body after the hook. Scannable — each fragment is a reason to keep reading.",
+        "landing-page": "Three-fragment sequence under the hero. Works as bullet list or centred fragment trio."
+      },
+      "evidence": {
+        "source": "Pattern extracted from LIVE-FMTH-NEVER-DONE body: 'Eight NSW farms. One hub in Brookvale. A network ready to scale across Sydney.' $2 CPL."
+      }
+    },
+    {
+      "id": "outcome_stated_cta",
+      "template": "State the action AND its consequence in one sentence. 'Leave your email -- we'll tell you the moment it goes live.' Action + consequence removes the uncertainty that kills opt-in rate.",
+      "benchmark_hit_rate": 0.08,
+      "benchmark_spend_use_ratio": 1.3,
+      "benchmark_source": "Consistent with offer_first hook (Motion 2026 CH-011, ~0.08 hit rate). Pattern is from LIVE-FMTH-NEVER-DONE -- the CTA that achieved $2 CPL. Internal evidence only; no Motion benchmark isolates this construction independently.",
+      "best_verticals": ["cfe-au", "fintech", "food-nutrition", "health-wellness"],
+      "best_content_types": ["meta-ad", "email", "landing-page", "sms"],
+      "scorer_compatible_pattern": "if_then",
+      "content_type_adaptations": {
+        "meta-ad": "Place outcome statement in the paragraph immediately before the CSF footnote. 'Leave your email -- we'll tell you the moment it goes live.' cta_clarity scores 4-5 when action + consequence both appear.",
+        "email": "Outcome statement as the final sentence before the CTA button. Reduces ambiguity about what the reader is signing up for.",
+        "landing-page": "Below the CTA button as reinforcing copy. 'We'll email you the moment registration opens.'",
+        "sms": "Outcome stated in the SMS body before the link. 'Reply FARM to join -- we'll text you the moment registration opens.'"
+      },
+      "evidence": {
+        "source": "LIVE-FMTH-NEVER-DONE: 'Leave your email -- we'll tell you the moment it goes live.' $2 CPL. cta_clarity scores higher with action+consequence vs action alone."
+      }
     }
   ]
 }

@@ -1,311 +1,340 @@
+"""Hypothesis Generator — turns a seed ad into structured falsifiable hypotheses
+about why it works, plus a probe (hook-swap test) for each.
+
+Used by hill_climb_from_seed.py in `--hypothesis-driven` mode. Each hypothesis
+gets one hook_swap variant; the resulting variant scores tell us whether the
+hypothesised load-bearing element actually carries the seed.
+
+Output format (strict JSON list):
+    [
+      {
+        "id": "H1",
+        "claim": "<plain-English thesis about what makes the seed work>",
+        "load_bearing_element": "<which element the hypothesis attributes the win to>",
+        "test": "<concrete instruction for the hook-swap probe>",
+        "alternative_hook_seed": "<one-sentence direction for the new line 1>",
+        "alternative_headline_seed": "<one-line direction for the new headline>",
+        "expected_direction": "performance_drops" | "performance_holds" | "performance_lifts",
+        "confidence_prior": 0.0-1.0,
+        "knowledge_used": ["hooks/<id>", "tactics/<id>", "learnings", "benchmarks", ...]
+      },
+      ...
+    ]
 """
-Hypothesis Generator — PR #125 addition.
-
-Takes a seed ad and its rubric score report and generates testable
-hypotheses about which load-bearing elements to swap/improve.
-
-A hypothesis is a claim: "If we change element X in direction D,
-the rubric score should change by Z."
-
-Each hypothesis maps to a `generate_variant` mode + targeted weak_dim
-so the hill_climb_from_seed script can execute and verify it.
-"""
-
 from __future__ import annotations
 
-import random
-from typing import Any
-
-
-# ---------------------------------------------------------------------------
-# Dimension metadata — load-bearing element classification
-# ---------------------------------------------------------------------------
-
-# Each entry: dim_id -> {load_bearing_element, testable_swap, predicted_direction,
-#                        hypothesis_template, mode_hint, confidence_prior}
-_DIM_META: dict[str, dict] = {
-    "scroll_stop_hook": {
-        "load_bearing_element": "hook_type",
-        "testable_swap": "hook_swap",
-        "predicted_direction": "LIFT",
-        "hypothesis_template": (
-            "Swapping a score-{score} hook ({current}) to a higher-potential hook "
-            "type should raise scroll_stop_hook toward 5/5 and lift composite."
-        ),
-        "mode_hint": "mutate",
-        "confidence_prior": 0.70,
-    },
-    "specificity": {
-        "load_bearing_element": "concrete_details",
-        "testable_swap": "add_specifics",
-        "predicted_direction": "LIFT",
-        "hypothesis_template": (
-            "Adding named farms, geographies, or spelled-out cardinals should raise "
-            "specificity from {score}/5 toward 4-5 and lift composite."
-        ),
-        "mode_hint": "targeted",
-        "confidence_prior": 0.65,
-    },
-    "motivation_match": {
-        "load_bearing_element": "emotional_resonance",
-        "testable_swap": "reframe_felt_need",
-        "predicted_direction": "LIFT",
-        "hypothesis_template": (
-            "Reframing the primary_text to speak to the reader's felt need "
-            "(not product features) should raise motivation_match from {score}/5."
-        ),
-        "mode_hint": "targeted",
-        "confidence_prior": 0.60,
-    },
-    "cta_clarity": {
-        "load_bearing_element": "cta_outcome_statement",
-        "testable_swap": "add_outcome_cta",
-        "predicted_direction": "LIFT",
-        "hypothesis_template": (
-            "Replacing the cta with an outcome-stated version "
-            "should raise cta_clarity from {score}/5."
-        ),
-        "mode_hint": "targeted",
-        "confidence_prior": 0.55,
-    },
-    "objection_preemption": {
-        "load_bearing_element": "objection_signals",
-        "testable_swap": "add_objection_signals",
-        "predicted_direction": "LIFT",
-        "hypothesis_template": (
-            "Adding explicit objection signals (hub clarity, no commitment, "
-            "no middlemen, provenance) should raise objection_preemption from {score}/5."
-        ),
-        "mode_hint": "targeted",
-        "confidence_prior": 0.60,
-    },
-    "angle_clarity": {
-        "load_bearing_element": "single_proposition",
-        "testable_swap": "tighten_angle",
-        "predicted_direction": "LIFT",
-        "hypothesis_template": (
-            "Removing competing themes and focusing every sentence on one "
-            "proposition should raise angle_clarity from {score}/5."
-        ),
-        "mode_hint": "targeted",
-        "confidence_prior": 0.55,
-    },
-    "tactic_execution": {
-        "load_bearing_element": "tactic_pattern",
-        "testable_swap": "strengthen_tactic",
-        "predicted_direction": "LIFT",
-        "hypothesis_template": (
-            "Strengthening the tactic execution (e.g. more vivid proof, "
-            "stronger social proof) should raise tactic_execution from {score}/5."
-        ),
-        "mode_hint": "improve",
-        "confidence_prior": 0.50,
-    },
-    "platform_fit": {
-        "load_bearing_element": "headline_length",
-        "testable_swap": "trim_headline",
-        "predicted_direction": "LIFT",
-        "hypothesis_template": (
-            "Trimming the headline to <=40 chars should resolve the platform_fit "
-            "penalty (current score: {score}/5)."
-        ),
-        "mode_hint": "targeted",
-        "confidence_prior": 0.75,
-    },
-    "founder_voice": {
-        "load_bearing_element": "first_person_build_language",
-        "testable_swap": "add_founder_voice",
-        "predicted_direction": "LIFT",
-        "hypothesis_template": (
-            "Adding 'we've built' or 'we're about to' language should raise "
-            "founder_voice from {score}/5."
-        ),
-        "mode_hint": "targeted",
-        "confidence_prior": 0.55,
-    },
-    "ownership_framing": {
-        "load_bearing_element": "ownership_language",
-        "testable_swap": "add_ownership_signals",
-        "predicted_direction": "LIFT",
-        "hypothesis_template": (
-            "Adding 'own a piece' or 'you'll be able to own' with an investment "
-            "context trigger should raise ownership_framing from {score}/5."
-        ),
-        "mode_hint": "targeted",
-        "confidence_prior": 0.60,
-    },
-    "scarcity_register": {
-        "load_bearing_element": "soft_scarcity_signals",
-        "testable_swap": "add_soft_scarcity",
-        "predicted_direction": "LIFT",
-        "hypothesis_template": (
-            "Adding soft-scarcity signals (first access, registration opens soon, "
-            "limited spots) should raise scarcity_register from {score}/5."
-        ),
-        "mode_hint": "targeted",
-        "confidence_prior": 0.55,
-    },
-    "differentiation": {
-        "load_bearing_element": "vocabulary_diversity",
-        "testable_swap": "diversify_vocabulary",
-        "predicted_direction": "LIFT",
-        "hypothesis_template": (
-            "Rewriting with less overlap against the existing ads (bigram Jaccard) "
-            "should raise differentiation from {score}/5."
-        ),
-        "mode_hint": "mutate",
-        "confidence_prior": 0.45,
-    },
-    "emotional_register": {
-        "load_bearing_element": "emotional_vocabulary",
-        "testable_swap": "enrich_emotion",
-        "predicted_direction": "LIFT",
-        "hypothesis_template": (
-            "Enriching emotional vocabulary (values-aligned words, feeling nouns) "
-            "should raise emotional_register from {score}/5."
-        ),
-        "mode_hint": "targeted",
-        "confidence_prior": 0.50,
-    },
-    # Dims that are usually locked (score=5) — probe shows no room to improve
-    "csf_placement": {
-        "load_bearing_element": "asterisked_csf_footnote",
-        "testable_swap": "none",
-        "predicted_direction": "NEUTRAL",
-        "hypothesis_template": (
-            "csf_placement is already at {score}/5 — hook_swap variants "
-            "should preserve this (body is locked)."
-        ),
-        "mode_hint": "improve",
-        "confidence_prior": 0.90,
-    },
-    "receptionist_test": {
-        "load_bearing_element": "brand_clarity_signals",
-        "testable_swap": "none",
-        "predicted_direction": "NEUTRAL",
-        "hypothesis_template": (
-            "receptionist_test at {score}/5 — most variants should preserve this."
-        ),
-        "mode_hint": "improve",
-        "confidence_prior": 0.80,
-    },
-    "opening_diversity": {
-        "load_bearing_element": "opening_uniqueness",
-        "testable_swap": "swap_opener",
-        "predicted_direction": "LIFT",
-        "hypothesis_template": (
-            "Changing the opening pattern should raise opening_diversity "
-            "from {score}/5 by reducing overlap with cohort openers."
-        ),
-        "mode_hint": "mutate",
-        "confidence_prior": 0.50,
-    },
-    "sentence_variance": {
-        "load_bearing_element": "sentence_length_range",
-        "testable_swap": "vary_sentence_length",
-        "predicted_direction": "LIFT",
-        "hypothesis_template": (
-            "Mixing short punchy lines with longer flowing sentences should "
-            "raise sentence_variance from {score}/5."
-        ),
-        "mode_hint": "targeted",
-        "confidence_prior": 0.50,
-    },
-}
+import json
+import re
+from pathlib import Path
 
 
 def generate_hypotheses(
-    ad: dict,
-    score_report: dict,
+    seed_ad: dict,
+    client_config: dict,
+    client_dir: Path,
+    shared_dir: Path,
     n: int = 4,
-    exclude_neutral: bool = True,
-    min_score_gap: int = 1,
-    random_seed: int | None = None,
+    use_llm: bool = True,
 ) -> list[dict]:
-    """Generate n testable hypotheses ranked by expected improvement.
+    """Generate N structured hypotheses about why the seed works + a probe per
+    hypothesis. Falls back to a deterministic template list when use_llm=False
+    so the loop still runs in --no-llm mode."""
+    if not use_llm:
+        return _fallback_hypotheses(seed_ad, n)
 
-    Each hypothesis is:
-    {
-        "dim_id": str,
-        "load_bearing_element": str,
-        "current_score": int,
-        "max_score": 5,
-        "score_gap": int,
-        "predicted_direction": "LIFT" | "NEUTRAL" | "DROP",
-        "claim": str,
-        "mode_hint": str,       # maps to generate_variant mode
-        "confidence_prior": float,
-        "expected_gain": float, # confidence_prior * score_gap * weight
-        "testable_swap": str,
-    }
-    """
-    if random_seed is not None:
-        random.seed(random_seed)
+    hooks = _load_hooks(shared_dir)
+    tactics = _load_tactics(shared_dir)
+    playbook = _load_playbook(shared_dir, client_config)
+    learnings = _load_learnings(client_dir, content_type=seed_ad.get("content_type", "meta-ad"))
 
-    dim_details = score_report.get("rubric", {}).get("dimension_details", {})
-    content_type = ad.get("content_type", "meta-ad")
+    prompt = _build_prompt(
+        seed_ad=seed_ad,
+        client_config=client_config,
+        hooks=hooks,
+        tactics=tactics,
+        playbook=playbook,
+        learnings=learnings,
+        n=n,
+    )
 
-    # Build candidate hypotheses from dims with room to improve
-    candidates = []
-    for dim_id, meta in _DIM_META.items():
-        if dim_id not in dim_details:
-            continue
-        current_score = dim_details[dim_id].get("score", 5)
-        weight = dim_details[dim_id].get("weight", 1.0)
-        score_gap = 5 - current_score
-
-        if score_gap < min_score_gap:
-            continue
-        if exclude_neutral and meta["predicted_direction"] == "NEUTRAL":
-            continue
-
-        claim = meta["hypothesis_template"].format(
-            score=current_score,
-            current=ad.get("hook_type", "?"),
-        )
-
-        expected_gain = meta["confidence_prior"] * score_gap * weight
-
-        candidates.append({
-            "dim_id": dim_id,
-            "load_bearing_element": meta["load_bearing_element"],
-            "current_score": current_score,
-            "max_score": 5,
-            "score_gap": score_gap,
-            "predicted_direction": meta["predicted_direction"],
-            "claim": claim,
-            "mode_hint": meta["mode_hint"],
-            "confidence_prior": meta["confidence_prior"],
-            "expected_gain": round(expected_gain, 4),
-            "testable_swap": meta["testable_swap"],
-        })
-
-    # Sort by expected_gain descending (best hypothesis first)
-    candidates.sort(key=lambda x: x["expected_gain"], reverse=True)
-
-    # Always include the highest-expected-gain dims; add a random low-priority
-    # one for diversity of probe.
-    if len(candidates) > n:
-        top = candidates[: n - 1]
-        rest = candidates[n - 1:]
-        wildcard = random.choice(rest) if rest else None
-        selected = top + ([wildcard] if wildcard else [])
-        selected = selected[:n]
-    else:
-        selected = candidates[:n]
-
-    return selected
+    raw = _call_llm_for_hypotheses(prompt)
+    parsed = _parse_hypothesis_json(raw)
+    if not parsed:
+        return _fallback_hypotheses(seed_ad, n)
+    # Cap at n and stamp IDs
+    out = []
+    for i, h in enumerate(parsed[:n], start=1):
+        h["id"] = h.get("id") or f"H{i}"
+        out.append(h)
+    return out
 
 
-def hypothesis_summary(hypotheses: list[dict]) -> str:
-    """Return a compact table for logging."""
-    lines = [
-        f"{'Dim':>26} {'Gap':>4} {'LBE':>28} {'Prior':>6} {'ExpGain':>8} {'Mode':>10}"
-    ]
-    lines.append("-" * 90)
-    for h in hypotheses:
-        lines.append(
-            f"{h['dim_id']:>26} {h['score_gap']:>4} {h['load_bearing_element']:>28} "
-            f"{h['confidence_prior']:>6.2f} {h['expected_gain']:>8.4f} {h['mode_hint']:>10}"
-        )
+# ---------------------------------------------------------------------------
+# Prompt construction
+# ---------------------------------------------------------------------------
+
+def _build_prompt(seed_ad, client_config, hooks, tactics, playbook, learnings, n) -> str:
+    seed_block = _format_seed(seed_ad)
+    hooks_block = _format_hooks(hooks)
+    tactics_block = _format_tactics(tactics)
+    playbook_block = _format_playbook(playbook)
+    client_block = _format_client_context(client_config)
+
+    return f"""You are a senior performance-marketing strategist analysing a high-performing ad.
+The ad is shipping low-cost leads in market. Your job is to identify the LOAD-BEARING ELEMENTS that make it work and propose falsifiable probes that would test each one.
+
+You will return EXACTLY {n} structured hypotheses as a strict JSON array. Each hypothesis names ONE specific element of the seed (a hook pattern, a frame, a structural choice, a piece of language) and proposes a hook-swap probe — a new opening paragraph + headline that holds everything else constant but breaks/replaces that element.
+
+PRINCIPLE: Most ad-variant work fails because it changes too many things at once. A good probe holds the body, description, CTA, and CSF footnote IDENTICAL to the seed and varies ONLY the opening hook + headline. The variant's score then tells us whether the hypothesised element was actually carrying the win.
+
+=== SEED AD ===
+{seed_block}
+
+=== CLIENT CONTEXT ===
+{client_block}
+
+=== HOOK ARCHETYPES (with benchmark hit rates) ===
+{hooks_block}
+
+=== TACTICS ===
+{tactics_block}
+
+=== INDUSTRY PLAYBOOK ===
+{playbook_block}
+
+=== CLIENT LEARNINGS ===
+{learnings}
+
+=== OUTPUT FORMAT ===
+Return ONLY a JSON array of {n} hypotheses. Each hypothesis MUST include:
+
+- "id": "H1" through "H{n}"
+- "claim": one-sentence thesis about what specific element of the seed is doing the work
+- "load_bearing_element": what part of the ad the hypothesis attributes the win to (e.g. "narrow-novelty bound", "ownership framing", "cadence-of-three proof", "founder voice", "soft scarcity", "outcome-stated CTA", "asterisked CSF placement")
+- "test": concrete instruction for the probe — "swap line 1 to X to break Y"
+- "alternative_hook_seed": one-sentence DIRECTION for the new opening line (NOT the actual line — the writer will write it)
+- "alternative_headline_seed": one-line direction for the new headline
+- "expected_direction": "performance_drops" if breaking the element should hurt | "performance_holds" if the element doesn't matter | "performance_lifts" if the proposed alt is genuinely stronger
+- "confidence_prior": 0.0-1.0 — your confidence in expected_direction before seeing data
+- "knowledge_used": list of references that informed this hypothesis (e.g. ["hooks/curiosity_gap", "tactics/pas", "learnings", "benchmarks"])
+
+Diversity rules:
+- Hypotheses must cover DIFFERENT elements — not 4 variations on the same idea
+- At least ONE hypothesis must propose breaking a hypothesised load-bearing element (expected_direction: performance_drops)
+- At least ONE hypothesis must propose an alternative that the priors suggest could LIFT performance (expected_direction: performance_lifts)
+- Avoid pure cosmetic swaps. Each test must change the ad's *strategic* hook frame, not just the wording.
+
+Return ONLY the JSON array — no preamble, no commentary, no code fences."""
+
+
+def _format_seed(ad: dict) -> str:
+    fields = []
+    for k in ("primary_text", "headline", "description", "cta", "angle", "campaign_phase"):
+        v = ad.get(k, "")
+        if v:
+            fields.append(f"{k}: {v}")
+    return "\n".join(fields)
+
+
+def _format_client_context(config: dict) -> str:
+    sc = config.get("scoring_context", {})
+    parts = []
+    if sc.get("product"):
+        parts.append(f"Product: {sc['product'][:300]}")
+    if sc.get("audience"):
+        parts.append(f"Audience: {sc['audience'][:400]}")
+    if sc.get("brand_values"):
+        parts.append(f"Brand values: {sc['brand_values'][:200]}")
+    return "\n".join(parts)
+
+
+def _format_hooks(hooks: list) -> str:
+    """One-line summary per hook — id, hit-rate, what it does."""
+    lines = []
+    for h in hooks:
+        hr = h.get("benchmark_hit_rate", 0)
+        line = f"- {h.get('id')}: hit-rate {hr:.0%}. {h.get('template', '')[:120]}"
+        lines.append(line)
     return "\n".join(lines)
+
+
+def _format_tactics(tactics: list) -> str:
+    lines = []
+    for t in tactics:
+        lines.append(f"- {t.get('id')}: {t.get('structure', '')[:120]}")
+    return "\n".join(lines)
+
+
+def _format_playbook(playbook) -> str:
+    if not playbook:
+        return "(no industry playbook for this client)"
+    parts = []
+    for k in ("hook_priors", "best_angles", "audience_motivations", "scarcity_norms"):
+        v = playbook.get(k)
+        if v:
+            parts.append(f"{k}: {json.dumps(v)[:300]}")
+    return "\n".join(parts) or "(playbook present but empty for relevant fields)"
+
+
+def _load_hooks(shared_dir: Path) -> list:
+    p = shared_dir / "hooks.json"
+    if not p.is_file():
+        return []
+    data = json.loads(p.read_text())
+    return data.get("hooks", data) if isinstance(data, dict) else data
+
+
+def _load_tactics(shared_dir: Path) -> list:
+    p = shared_dir / "tactics.json"
+    if not p.is_file():
+        return []
+    data = json.loads(p.read_text())
+    return data.get("tactics", data) if isinstance(data, dict) else data
+
+
+def _load_playbook(shared_dir: Path, client_config: dict):
+    industry = (client_config.get("industry") or "").lower().replace(" ", "-")
+    if not industry:
+        return None
+    candidates = [
+        shared_dir / "playbooks" / f"{industry}.json",
+        shared_dir / "playbooks" / f"{industry}-grocery.json",
+    ]
+    for p in candidates:
+        if p.is_file():
+            return json.loads(p.read_text())
+    return None
+
+
+def _load_learnings(client_dir: Path, content_type: str) -> str:
+    """Concatenate common learnings.md + content-type-specific learnings."""
+    parts = []
+    base = client_dir / "learnings.md"
+    if base.is_file():
+        parts.append(base.read_text())
+    typed = client_dir / f"learnings-{content_type}.md"
+    if typed.is_file():
+        parts.append(typed.read_text())
+    return "\n\n".join(parts)[:4000]
+
+
+# ---------------------------------------------------------------------------
+# LLM call (reuses writer.py's _call_llm pattern via lazy import to avoid
+# circular dep in tests)
+# ---------------------------------------------------------------------------
+
+def _call_llm_for_hypotheses(prompt: str) -> str:
+    """Call Sonnet to produce the JSON hypothesis array."""
+    from writer import _call_llm
+    # Hypothesis generation benefits from low temperature — we want diverse but
+    # rigorous structural analysis, not creative riffing.
+    return _call_llm(prompt, temperature=0.4)
+
+
+# ---------------------------------------------------------------------------
+# Parsing
+# ---------------------------------------------------------------------------
+
+_JSON_FENCE_RE = re.compile(r"```(?:json)?\s*([\s\S]*?)```", re.IGNORECASE)
+_ARRAY_RE = re.compile(r"\[\s*\{[\s\S]*\}\s*\]")
+
+
+def _parse_hypothesis_json(raw: str) -> list[dict]:
+    if not raw:
+        return []
+
+    def _coerce(data):
+        # Sonnet sometimes returns a single hypothesis dict instead of a list.
+        # Wrap it so downstream code can assume list-of-dicts.
+        if isinstance(data, dict):
+            return [data]
+        if isinstance(data, list):
+            return data
+        return None
+
+    # Try direct parse first
+    try:
+        data = json.loads(raw)
+        coerced = _coerce(data)
+        if coerced is not None:
+            return coerced
+    except json.JSONDecodeError:
+        pass
+    # Strip markdown fences
+    m = _JSON_FENCE_RE.search(raw)
+    if m:
+        try:
+            data = json.loads(m.group(1))
+            coerced = _coerce(data)
+            if coerced is not None:
+                return coerced
+        except json.JSONDecodeError:
+            pass
+    # Last-ditch: regex out the array
+    m = _ARRAY_RE.search(raw)
+    if m:
+        try:
+            data = json.loads(m.group(0))
+            coerced = _coerce(data)
+            if coerced is not None:
+                return coerced
+        except json.JSONDecodeError:
+            pass
+    return []
+
+
+# ---------------------------------------------------------------------------
+# Deterministic fallback (no-LLM mode + LLM-failure recovery)
+# ---------------------------------------------------------------------------
+
+def _fallback_hypotheses(seed_ad: dict, n: int) -> list[dict]:
+    """Deterministic hypothesis list. Used when LLM is disabled or fails to
+    return parseable JSON. Generic enough to apply to most ads but obviously
+    weaker than the LLM-driven variant."""
+    base = [
+        {
+            "id": "H1",
+            "claim": "The opening hook is the load-bearing element. Without it the body proof can't earn attention.",
+            "load_bearing_element": "scroll_stop_hook",
+            "test": "Replace the curiosity-gap opener with a direct declarative statement of the offer.",
+            "alternative_hook_seed": "Open with a direct statement of what's being offered, no curiosity gap.",
+            "alternative_headline_seed": "Direct headline naming the offer without intrigue.",
+            "expected_direction": "performance_drops",
+            "confidence_prior": 0.7,
+            "knowledge_used": ["hooks/curiosity_gap"],
+        },
+        {
+            "id": "H2",
+            "claim": "Identity-level framing (ownership) outperforms transactional framing in CFE pre-campaign copy.",
+            "load_bearing_element": "ownership_framing",
+            "test": "Replace ownership language with outcome/return language to test which converts.",
+            "alternative_hook_seed": "Lead with the benefit / outcome rather than identity / belonging.",
+            "alternative_headline_seed": "Outcome-led headline (results, returns) — not 'own a piece' framing.",
+            "expected_direction": "performance_drops",
+            "confidence_prior": 0.6,
+            "knowledge_used": ["learnings", "ownership_framing_rubric"],
+        },
+        {
+            "id": "H3",
+            "claim": "Soft / future-tense scarcity is what makes the close-out feel like a queue forming, not a panic.",
+            "load_bearing_element": "soft_scarcity",
+            "test": "Strip scarcity entirely (no opens-soon language). Test whether neutral pacing converts.",
+            "alternative_hook_seed": "Lead with the proof, no scarcity / waitlist framing in the opener.",
+            "alternative_headline_seed": "Headline with no urgency or scarcity signal.",
+            "expected_direction": "performance_drops",
+            "confidence_prior": 0.5,
+            "knowledge_used": ["scarcity_register_rubric"],
+        },
+        {
+            "id": "H4",
+            "claim": "A statistic-led hook (specific number first) could outperform the curiosity-gap opener.",
+            "load_bearing_element": "scroll_stop_hook",
+            "test": "Open with a specific number / dollar amount and let the reader infer the angle.",
+            "alternative_hook_seed": "Open with a concrete statistic that hints at the offer without explaining it.",
+            "alternative_headline_seed": "Number-led headline.",
+            "expected_direction": "performance_lifts",
+            "confidence_prior": 0.45,
+            "knowledge_used": ["hooks/statistic", "benchmarks"],
+        },
+    ]
+    return base[:n]

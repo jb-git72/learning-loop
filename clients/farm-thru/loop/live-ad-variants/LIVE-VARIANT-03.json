@@ -1,0 +1,23 @@
+{
+  "content_type": "meta-ad",
+  "angle": "Novelty & First-Mover",
+  "hook_type": "Curiosity",
+  "funnel": "TOF",
+  "tactic": "scarcity-insider-access",
+  "motivation": "Emotional",
+  "primary_text": "There's a better way to buy groceries in Sydney, and you can own a piece of it.\n\nFor the first time, you'll be able to own a piece of the farm-direct grocery model we've built on the Northern Beaches. Eight NSW farms. One hub in Brookvale. A network ready to scale across Sydney.\n\nRegistration opens soon. First in gets first access.\n\nLeave your email \u2014 we'll tell you the moment it goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "A better way to buy groceries",
+  "description": "Registration opens soon. Leave your email.",
+  "cta": "Join the Waitlist",
+  "campaign_phase": "pre-campaign",
+  "_hypothesis_id": "H1",
+  "_hypothesis_claim": "The narrow-novelty bound ('never been done with a grocery store in Australia') is the load-bearing curiosity gap \u2014 it's category+geo-specific enough to feel real, not hype.",
+  "_hypothesis_element": "narrow-novelty curiosity-gap hook (category+geo bounded)",
+  "_hypothesis_expected": "performance_drops",
+  "_mode": "hook_swap",
+  "generated_at": "2026-04-28T17:44:39.914013",
+  "ad_id": "LIVE-VARIANT-03",
+  "_composite": 0.6053,
+  "_verdict": "needs_work",
+  "_weak_dim": null
+}

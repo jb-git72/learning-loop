@@ -1,0 +1,23 @@
+{
+  "content_type": "meta-ad",
+  "angle": "Novelty & First-Mover",
+  "hook_type": "Curiosity",
+  "funnel": "TOF",
+  "tactic": "scarcity-insider-access",
+  "motivation": "Emotional",
+  "primary_text": "We've spent years building this on the Northern Beaches. Now we're opening the door.\n\nFor the first time, you'll be able to own a piece of the farm-direct grocery model we've built on the Northern Beaches. Eight NSW farms. One hub in Brookvale. A network ready to scale across Sydney.\n\nRegistration opens soon. First in gets first access.\n\nLeave your email \u2014 we'll tell you the moment it goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "Eight farms. One hub. Now open.",
+  "description": "Registration opens soon. Leave your email.",
+  "cta": "Join the Waitlist",
+  "campaign_phase": "pre-campaign",
+  "_hypothesis_id": "H3",
+  "_hypothesis_claim": "A founder-voice 'we built this' opener could lift performance further by trading abstract novelty for concrete proof of what already exists on the Northern Beaches.",
+  "_hypothesis_element": "founder voice + cadence-of-three proof (eight farms / one hub / Sydney network)",
+  "_hypothesis_expected": "performance_lifts",
+  "_mode": "hook_swap",
+  "generated_at": "2026-04-28T17:47:14.082521",
+  "ad_id": "LIVE-VARIANT-02",
+  "_composite": 0.6161,
+  "_verdict": "needs_work",
+  "_weak_dim": null
+}
