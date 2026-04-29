@@ -45,17 +45,20 @@
     {
       "fact_id": "BM-003",
       "category": "business_model",
-      "claim": "Partner farms and suppliers across NSW (~15-20 identified on site)",
+      "claim": "Eight NSW farms supplying the Brookvale hub (user-confirmed 2026-04-29). Site historically listed ~15-20 named suppliers; 8 is the current core farm count for ad copy.",
       "claim_patterns": [
         "partner farms",
         "farms across",
         "regenerative farms",
-        "local farms"
+        "local farms",
+        "eight NSW farms",
+        "8 NSW farms",
+        "Eight NSW farms"
       ],
-      "source": "farmthru.com.au (verified 2026-04-03)",
+      "source": "User confirmation 2026-04-29 (jeremy@launcherlab.com.au); farmthru.com.au (verified 2026-04-03)",
       "confidence": "HIGH",
-      "last_verified": "2026-04-03",
-      "note": "VERIFIED: Site lists ~15-20 suppliers including Rachel's Farm, Bundarra Farm, Collins Wild Caught, Paris Creek, Farmer Brown, Nonies, Mandole Orchard, etc. '50+ farms' was FABRICATED — never use a specific count. Say 'partner farms across NSW' or 'named farms'."
+      "last_verified": "2026-04-29",
+      "note": "VERIFIED 2026-04-29: 'Eight NSW farms' is the user-confirmed count for the live $2-lead ad and all variants. Site historically lists ~15-20 named suppliers (Rachel's Farm, Bundarra Farm, Collins Wild Caught, Paris Creek, Farmer Brown, Nonies, Mandole Orchard, etc.) — that's the broader supplier list, not the core farm count. Both '8 NSW farms' and 'partner farms across NSW' are acceptable. NEVER use larger counts like '50+ farms' (FABRICATED). NEVER invent a count not listed here."
     },
     {
       "fact_id": "BM-004",
