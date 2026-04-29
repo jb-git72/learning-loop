@@ -6,10 +6,16 @@ internal hierarchy, tiny grey caps labels, checkbox + Comments column,
 landing-page column, auto-fit row heights). Reads the seed live $2-lead ad
 plus the top hill-climb variants from clients/farm-thru/loop/live-ad-variants/.
 
-Usage:
+PREFERRED USAGE — add a tab to the canonical sheet (no sprawl):
+    python3 scripts/build_fmth_approval_sheet.py --max-variants 4 \\
+      --sheet-id 1UrejvBt9m2PtPb0EpCwgwZnUjCtUS3UVDMHxiUVqYs0 \\
+      --tab-name "Novelty hooks (2026-04-29)"
+
+Default mode (creates a NEW spreadsheet — avoid unless you genuinely need a
+fresh sheet; on 2026-04-29 the canonical sheet ID was committed and we should
+add tabs to it, not spawn orphans):
     python3 scripts/build_fmth_approval_sheet.py
     python3 scripts/build_fmth_approval_sheet.py --share-with jeremy@launcherlab.com.au,client@example.com
-    python3 scripts/build_fmth_approval_sheet.py --landing-url https://farmthru.com.au/ --max-variants 3
 
 Service-account key reused from sister repo (per CLAUDE.md). Impersonates a
 real human so the sheet's owner is not the SA; share via notify=False so the
@@ -112,10 +118,11 @@ def load_ads(max_variants: int) -> list[dict]:
     return ads
 
 
-def build_sheet(sh, ads, landing_url):
+def build_sheet(sh, ads, landing_url, ws=None, tab_title=None):
     n = len(HEADERS)
-    ws = sh.sheet1
-    ws.update_title("Copy for Approval")
+    if ws is None:
+        ws = sh.sheet1
+        ws.update_title(tab_title or "Copy for Approval")
     ws.resize(rows=200, cols=n)
     sheet_id = ws._properties["sheetId"]
 
@@ -321,7 +328,15 @@ def main():
     parser.add_argument("--max-variants", type=int, default=3,
                         help="Max non-seed variants to include (default 3).")
     parser.add_argument("--title", default=DEFAULT_TITLE)
+    parser.add_argument("--sheet-id", default=None,
+                        help="Existing spreadsheet ID. If set, adds a new tab to that sheet "
+                             "instead of creating a new spreadsheet (avoids sheet sprawl).")
+    parser.add_argument("--tab-name", default=None,
+                        help="Tab title when using --sheet-id. Required if --sheet-id is set.")
     args = parser.parse_args()
+
+    if args.sheet_id and not args.tab_name:
+        sys.exit("--tab-name is required when --sheet-id is set.")
 
     print(f"Loading seed + variants (max {args.max_variants})...")
     ads = load_ads(args.max_variants)
@@ -329,18 +344,35 @@ def main():
     for ad in ads:
         print(f"  - {ad.get('_source_label','')} | {ad.get('headline','')[:60]}")
 
-    print(f"\nCreating Sheet: {args.title}")
     gc = get_client()
-    sh = gc.create(args.title)
-    print(f"  spreadsheet_id: {sh.id}")
 
-    build_sheet(sh, ads, args.landing_url)
+    if args.sheet_id:
+        sh = gc.open_by_key(args.sheet_id)
+        print(f"\nAdding tab to existing sheet: {sh.title}")
+        print(f"  spreadsheet_id: {sh.id}")
+        existing_titles = [w.title for w in sh.worksheets()]
+        if args.tab_name in existing_titles:
+            sys.exit(f"Tab {args.tab_name!r} already exists in sheet. Pick a different name.")
+        ws = sh.add_worksheet(title=args.tab_name, rows=200, cols=len(HEADERS))
+        print(f"  new tab: {args.tab_name!r}")
+        build_sheet(sh, ads, args.landing_url, ws=ws, tab_title=args.tab_name)
+        # Sharing already in place on parent sheet — skip re-share unless user adds new emails
+        for email in [e.strip() for e in args.share_with.split(",") if e.strip()]:
+            try:
+                sh.share(email, perm_type="user", role="writer", notify=False)
+            except Exception:
+                pass  # already shared
+        url = f"https://docs.google.com/spreadsheets/d/{sh.id}/edit#gid={ws.id}"
+    else:
+        print(f"\nCreating Sheet: {args.title}")
+        sh = gc.create(args.title)
+        print(f"  spreadsheet_id: {sh.id}")
+        build_sheet(sh, ads, args.landing_url)
+        for email in [e.strip() for e in args.share_with.split(",") if e.strip()]:
+            sh.share(email, perm_type="user", role="writer", notify=False)
+            print(f"  shared with: {email}")
+        url = f"https://docs.google.com/spreadsheets/d/{sh.id}/edit"
 
-    for email in [e.strip() for e in args.share_with.split(",") if e.strip()]:
-        sh.share(email, perm_type="user", role="writer", notify=False)
-        print(f"  shared with: {email}")
-
-    url = f"https://docs.google.com/spreadsheets/d/{sh.id}/edit"
     print(f"\nDone: {url}")
     return url
 
