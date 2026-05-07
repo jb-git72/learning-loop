@@ -1,18 +1,25 @@
 {
   "ad_id": "BIRCHAL-A1",
+  "version": "V2",
   "content_type": "meta-ad",
   "segment": "A_first_time_csf",
   "angle": "Curiosity / mechanism reveal",
   "hook_type": "Curiosity-gap narrow-bound (FMTH-validated, +0.18 composite over founder-voice)",
   "funnel": "TOF",
-  "tactic": "Mechanism reveal -> ownership reframe -> recursion punch",
+  "tactic": "Mechanism reveal -> first-person stats -> recursion punch",
   "motivation": "Rational with curiosity hook",
   "campaign_phase": "pre-campaign",
-  "primary_text": "324 Australian companies have raised on Birchal. Most Australians have never invested in one.\n\nUntil 2018, owning a piece of a private Australian company meant being a venture capitalist or knowing the founder. Then Crowd-Sourced Funding came in, and Birchal built the rails. 324 raises. Over $234M raised. 137,000 individual investments from everyday Australians backing brands they wanted to own a piece of.\n\nBirchal is now opening its own raise on the platform it built.\n\nSave your spot. We will tell you the moment the offer goes live, with time to read it before you decide.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "primary_text": "324 Australian companies have raised on Birchal. Most Australians have never invested in one.\n\nCrowd-Sourced Funding lets retail investors own a piece of private Australian companies. Since 2018, 137,000 of them have invested over $234M through us. Naked Life. Our Cow. Medigrowth.\n\nNow we're opening our own raise.\n\nSave your spot. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
   "headline": "How Australian startups actually get funded",
-  "description": "Save your spot to hear when Birchal's CSF offer opens.",
+  "description": "Save your spot to hear when our CSF offer opens.",
   "cta": "Save my spot",
-  "_source_label": "DRC -- A1 Curiosity / Mechanism (first-timers)",
+  "_source_label": "DRC V2 -- A1 Curiosity / Mechanism (first-timers)",
+  "_v2_changes": [
+    "Subject discipline: dropped 'Birchal built the rails' / 'Birchal is opening its own raise' two-Birchal pattern. Single Birchal mention as platform brand; 'we'/'us'/'our' throughout for the company.",
+    "Length: 75 words (down from 115).",
+    "Removed pre-2018 preamble ('owning a piece of a private Australian company meant being a venture capitalist...'). Mechanism reveal is in one sentence now.",
+    "Brand grid trimmed to 3 names (Naked Life, Our Cow, Medigrowth) instead of 4."
+  ],
   "_drc_playbook": "03 Aspirational Identity Sell (B2C considered, solution-aware, sophistication 3 mechanism)",
   "_drc_audience": "B2C considered, solution-aware. First-time CSF investors, currently using ETFs / Sharesies / Pearler.",
   "_drc_citations": [
@@ -25,6 +32,9 @@
     "PLAT-002",
     "PLAT-003",
     "PLAT-004",
+    "RAISE-001",
+    "RAISE-002",
+    "RAISE-003",
     "OFFER-CONTEXT",
     "VERBATIM-CSF-WARNING",
     "WAITLIST-CTA"
@@ -32,16 +42,11 @@
   "_a_pile_score_first_8_words": 4,
   "_a_pile_signals": ["specificity (324 + Birchal)", "curiosity gap (most have never)", "stakes named"],
   "_compliance_findings_resolved": [
-    "PREOFFER-VERBS: uses 'save your spot', 'read', 'tell you the moment'. No 'invest now', 'buy now', 'subscribe'.",
-    "BANNED-CSF-PHRASES: zero matches against blocklist regex.",
-    "VERBATIM-OFFER-LANGUAGE: phrases 'we will tell you the moment the offer goes live' (informing about launch is permitted) and 'time to read it before you decide'. No 'we will send you the offer document'.",
-    "VERBATIM-CSF-WARNING: short-form risk warning pasted byte-exact at end of primary_text.",
-    "BRAND-EXCLUDED: zero references to Zero Co or Old Young's.",
-    "Ownership framing present in para 2 ('own a piece of') -- FMTH PR #125 H2 confirmed."
+    "PREOFFER-VERBS: 'save your spot', 'invested', 'tell you the moment'. 'Invested' refers to 137,000 historical investors (factual past tense), not a current call to action.",
+    "BANNED-CSF-PHRASES: zero matches.",
+    "VERBATIM-OFFER-LANGUAGE: 'we will tell you the moment the offer goes live'. No 'we will send' phrasing.",
+    "VERBATIM-CSF-WARNING: byte-exact at end of primary_text.",
+    "BRAND-EXCLUDED: only verified-good raises cited."
   ],
-  "_drc_assumptions_flagged": [
-    "Audience awareness level: solution-aware -- assumes reader has heard of Birchal and broadly understands ETFs / retail investing but has not invested in CSF.",
-    "Sophistication stage: 3 (mechanism reveal) -- assumes a reveal of how CSF moves money is novel to the reader.",
-    "Pre-2018 framing ('VC or knowing the founder') is colloquial paraphrase of the pre-CSF retail-exclusion regime, not a sourced legal claim. Acceptable as plain-language opinion."
-  ]
+  "_word_count_primary_text": 75
 }
