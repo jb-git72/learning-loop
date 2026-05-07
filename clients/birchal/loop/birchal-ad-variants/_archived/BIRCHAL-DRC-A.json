@@ -1,0 +1,31 @@
+{
+  "ad_id": "BIRCHAL-DRC-A",
+  "content_type": "meta-ad",
+  "angle": "Platform-as-product / mechanism",
+  "hook_type": "Mechanism reveal",
+  "funnel": "TOF",
+  "tactic": "anti-preferential-terms compliant pre-CSF marketing",
+  "motivation": "Rational",
+  "primary_text": "Most Australians have no idea how a startup actually gets funded.\n\nBirchal is the rails. A retail investor reads an offer document, the platform handles the legals and the cap table, and the money moves to the founder. That is Crowd-Sourced Funding. It is how [PLACEHOLDER:total-raised-on-Birchal] has reached Australian companies through Birchal so far.\n\nNow Birchal is running its own CSF campaign on the platform it built.\n\nFollow the campaign to read the offer document the moment it goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "How Australian startups actually get funded",
+  "description": "Follow Birchal's CSF campaign. Read the offer when it opens.",
+  "cta": "Follow campaign",
+  "campaign_phase": "pre-campaign",
+  "_source_label": "DRC SKILL -- Mechanism",
+  "_variant_note": "Platform-as-product hook. Leads with mechanism (how CSF actually moves money). Audience: solution-aware retail investors who have seen Birchal campaigns but not invested. CTA is 'Follow campaign' (pre-offer-safe). Verbatim CSF warning preserved.",
+  "_drc_skill_test": true,
+  "_drc_playbook": "03 Aspirational Identity Sell",
+  "_drc_audience": "B2C considered, solution-aware, sophistication 3 (mechanism)",
+  "_drc_citations": [
+    "fact:authority-edelman-2024-peer-parity"
+  ],
+  "_compliance_findings_resolved": [
+    "Rule 1 equal terms (s 738G): no VIP/exclusive/first-access language",
+    "Rule 2 pre-offer language (INFO 217): no 'invest', 'buy', 'subscribe' verbs; uses 'follow', 'read'",
+    "Rule 3 verbatim warning (s 738ZG short-form): pasted character-for-character from FarmThru/Birchal canonical line",
+    "Rule 4 cap and cooling-off: not in hero, will appear on offer page (acceptable for pre-campaign)"
+  ],
+  "_compliance_findings_open_at_publish": [
+    "PLACEHOLDER:total-raised-on-Birchal -- verify a public, citable Birchal aggregate (e.g. '$X raised across Y companies') before publishing. Replace tag or remove the sentence."
+  ]
+}

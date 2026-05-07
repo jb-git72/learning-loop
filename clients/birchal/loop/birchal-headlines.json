@@ -1,0 +1,34 @@
+{
+  "set_id": "BIRCHAL-HEADLINES-V1",
+  "generated": "2026-05-07",
+  "rules": "Max 8 words. Sentence case. AU English. No em-dashes. No banned CSF phrases. No transaction verbs. Pre-offer compliant.",
+  "headlines": [
+    {"id": "H-CUR-01", "text": "How Australian startups actually get funded", "angle": "curiosity / mechanism", "segment": "A", "words": 6, "caples_pattern": "How..."},
+    {"id": "H-CUR-02", "text": "324 raises. Most Australians missed all of them.", "angle": "curiosity / specificity", "segment": "A", "words": 8, "caples_pattern": "Use facts and figures"},
+    {"id": "H-CUR-03", "text": "324 Aussie companies funded. None of them by you?", "angle": "curiosity / question", "segment": "A", "words": 9, "caples_pattern": "Ask a question"},
+    {"id": "H-CUR-04", "text": "How 137,000 Australians invested before you", "angle": "curiosity / social proof", "segment": "A", "words": 6, "caples_pattern": "How..."},
+    {"id": "H-CUR-05", "text": "Until 2018, this was for VCs only", "angle": "curiosity / loss frame", "segment": "A", "words": 7, "caples_pattern": "Story / scene opener"},
+    {"id": "H-COM-01", "text": "If you back Aussie brands", "angle": "belonging / identity", "segment": "A", "words": 5, "caples_pattern": "If..."},
+    {"id": "H-COM-02", "text": "Built by 137,000 investors. Now opening up.", "angle": "belonging / co-ownership", "segment": "A_or_B", "words": 7, "caples_pattern": "Use facts and figures"},
+    {"id": "H-COM-03", "text": "Own a piece of the platform you've used", "angle": "belonging / recursion", "segment": "B", "words": 8, "caples_pattern": "Speak directly to reader"},
+    {"id": "H-COM-04", "text": "324 companies. 137,000 investors. One platform.", "angle": "belonging / cadence-of-three", "segment": "A_or_B", "words": 6, "caples_pattern": "Use facts and figures"},
+    {"id": "H-COM-05", "text": "The crowd built it. Now invited to own it.", "angle": "belonging / recursion", "segment": "A_or_B", "words": 9, "caples_pattern": "Story / poetic reversal"},
+    {"id": "H-EMP-01", "text": "What VCs got, retail investors got too", "angle": "empathy / access", "segment": "A", "words": 7, "caples_pattern": "Story / contrast"},
+    {"id": "H-EMP-02", "text": "From private capital to public access", "angle": "empathy / access", "segment": "A", "words": 6, "caples_pattern": "News / shift"},
+    {"id": "H-INV-01", "text": "Founder seat, investor seat, same answer", "angle": "investor-validation / peer", "segment": "B", "words": 6, "caples_pattern": "Quoted objection / paraphrase"},
+    {"id": "H-INV-02", "text": "Built the dominant platform in the category", "angle": "investor-validation / authority", "segment": "B", "words": 7, "caples_pattern": "Quoted objection / near-verbatim"}
+  ],
+  "_compliance_summary": "All 14 headlines scanned against BANNED-CSF-PHRASES regex (zero matches), PREOFFER-VERBS regex (no transaction verbs), em-dash / en-dash check (zero), banned AI-tell words (zero), max-8-words rule (one 9-word entry: H-CUR-03 and H-COM-05 -- minor exceptions for question / poetic reversal patterns; flag for JB).",
+  "_client_facts_referenced": ["PLAT-001", "PLAT-003", "PLAT-004", "QUOTE-001", "QUOTE-002"],
+  "_drc_citations": [
+    "fact:authority-edelman-2024-peer-parity",
+    "fact:specificity-buzzsumo-numbers",
+    "fact:headline-length-buzzsumo-100m",
+    "fact:headline-buzzsumo-instructional-wins-fb"
+  ],
+  "_assumptions_flagged": [
+    "H-CUR-03 'None of them by you?' -- direct second-person dig. May feel accusatory; soft alternative: 'Could one of them have been you?'",
+    "H-COM-05 'The crowd built it. Now invited to own it.' -- 9 words, breaks the strict max-8 rule. Trim to 'Crowd built it. Now invited to own it.' (8) if hard-cap required.",
+    "H-INV-02 'Built the dominant platform in the category' is near-verbatim from QUOTE-002 (Nick Carter). Originating quote should appear as the body if this headline is used."
+  ]
+}

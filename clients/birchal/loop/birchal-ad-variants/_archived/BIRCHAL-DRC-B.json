@@ -1,0 +1,32 @@
+{
+  "ad_id": "BIRCHAL-DRC-B",
+  "content_type": "meta-ad",
+  "angle": "Peer-parity / democratisation",
+  "hook_type": "Contrarian framing (VC vs everyone else)",
+  "funnel": "TOF",
+  "tactic": "anti-preferential-terms compliant pre-CSF marketing",
+  "motivation": "Values-led",
+  "primary_text": "Venture capital backs about 1% of Australian startups. The other 99% have to find another way.\n\nCrowd-Sourced Funding is the other way. It lets everyday Australians read an offer document and decide for themselves, on the same terms as everyone else on the platform. No closed rooms. No paid waitlists. Same offer, same terms.\n\nBirchal helped run notable CSF raises like Zero Co's. Now Birchal is running its own.\n\nLeave your email, we'll tell you the moment it goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "VC funds the 1%. CSF funds the rest.",
+  "description": "Pre-register to be notified when Birchal's offer document opens.",
+  "cta": "Pre-register",
+  "campaign_phase": "pre-campaign",
+  "_source_label": "DRC SKILL -- Peer-parity",
+  "_variant_note": "Peer-parity / democratisation hook. Throws rocks at VC as the 'enemy' (Blair Warren). Names Zero Co as a verifiable Birchal-associated raise (public knowledge). Reinforces equal-terms language to actively communicate s 738G compliance posture inside the copy. CTA is 'Pre-register' (pre-offer-safe). Verbatim CSF warning preserved.",
+  "_drc_skill_test": true,
+  "_drc_playbook": "03 Aspirational Identity Sell",
+  "_drc_audience": "B2C considered, solution-aware, sophistication 4 (better mechanism / values frame)",
+  "_drc_citations": [
+    "fact:authority-edelman-2024-peer-parity",
+    "fact:narrative-transportation-green-brock"
+  ],
+  "_compliance_findings_resolved": [
+    "Rule 1 equal terms (s 738G): explicitly reinforced ('same offer, same terms'); no VIP/founding/early-bird language",
+    "Rule 2 pre-offer language (INFO 217): uses 'pre-register', 'leave your email', 'be notified'; no offer-like verbs",
+    "Rule 3 verbatim warning: pasted character-for-character",
+    "Rule 4 cap and cooling-off: deferred to offer page (acceptable for pre-campaign)"
+  ],
+  "_compliance_findings_open_at_publish": [
+    "Verify '1%' VC figure is defensible if challenged. Cushman/Cut Through Venture data supports it directionally; consider hedging to 'around 1%' if Birchal compliance prefers."
+  ]
+}

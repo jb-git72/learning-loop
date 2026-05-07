@@ -1,0 +1,33 @@
+{
+  "ad_id": "BIRCHAL-DRC-C",
+  "content_type": "meta-ad",
+  "angle": "Founder-side / back the platform that backs founders",
+  "hook_type": "Identity (founder-adjacent)",
+  "funnel": "TOF",
+  "tactic": "anti-preferential-terms compliant pre-CSF marketing",
+  "motivation": "Identity / values",
+  "primary_text": "Every Australian founder who has run a CSF raise knows the feeling. You spend years building the thing. You watch the door for the people who said they'd back you.\n\nBirchal is the platform that opens that door. [PLACEHOLDER:companies-funded-via-Birchal] Australian companies have run CSF raises through Birchal so far. Real cap tables. Real cheques from real people.\n\nNow Birchal is running its own raise on the platform it built for founders.\n\nFollow the campaign to back the platform that backs founders.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "The platform that backs Australian founders",
+  "description": "Follow the campaign and read the offer when it opens.",
+  "cta": "Follow campaign",
+  "campaign_phase": "pre-campaign",
+  "_source_label": "DRC SKILL -- Founder-side",
+  "_variant_note": "Founder-side hook. Speaks to founder-adjacent retail (people who have considered raising or have founder-friend networks). Identity framing per playbook 03. CTA is 'Follow campaign' (pre-offer-safe). Verbatim CSF warning preserved.",
+  "_drc_skill_test": true,
+  "_drc_playbook": "03 Aspirational Identity Sell",
+  "_drc_audience": "B2C considered, solution-aware, sophistication 5 (identity)",
+  "_drc_citations": [
+    "fact:authority-edelman-2024-peer-parity",
+    "fact:story-hasson-neural-coupling"
+  ],
+  "_compliance_findings_resolved": [
+    "Rule 1 equal terms (s 738G): no preferential-terms or queue-jump language",
+    "Rule 2 pre-offer language (INFO 217): uses 'follow' and 'read'; no offer-like verbs",
+    "Rule 3 verbatim warning: pasted character-for-character",
+    "Rule 4 cap and cooling-off: deferred to offer page (acceptable for pre-campaign)"
+  ],
+  "_compliance_findings_open_at_publish": [
+    "PLACEHOLDER:companies-funded-via-Birchal -- verify exact public number Birchal cites in its own materials (e.g. '200+ companies funded'). Replace tag before publishing.",
+    "Confirm 'back the platform that backs founders' framing is acceptable to Birchal compliance; framing is intentional aspirational identity, not a returns claim."
+  ]
+}
