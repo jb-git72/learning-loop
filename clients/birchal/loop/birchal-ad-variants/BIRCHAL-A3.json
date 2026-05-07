@@ -1,19 +1,26 @@
 {
   "ad_id": "BIRCHAL-A3",
+  "version": "V2",
   "content_type": "meta-ad",
   "segment": "A_first_time_csf",
   "angle": "Empathy + access + recursion",
   "hook_type": "Stakes-named loss-frame opener, 'until X, this was for Y'",
   "funnel": "TOF",
-  "tactic": "Empathy lead -> community as proof -> recursion punch",
-  "motivation": "Empathy + access (FMTH-validated empathy angle, 'this food exists, just never been easy to get to')",
+  "tactic": "Empathy lead -> first-person community proof -> recursion punch",
+  "motivation": "Empathy + access (FMTH-validated empathy angle)",
   "campaign_phase": "pre-campaign",
-  "primary_text": "Until 2018, backing the next big Aussie brand was for VCs and family offices.\n\nThen Crowd-Sourced Funding came in. Birchal built the rails. Eight years later, 324 Australian companies have raised on Birchal. Over $234M, from 137,000 retail investors. Naked Life. Our Cow. Earthletica. Aquafab. Australians who used to be locked out of early-stage equity, owning pieces of brands they believed in.\n\nNow Birchal is opening its own raise on the platform it built.\n\nSave your spot. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "primary_text": "Until 2018, backing the next big Aussie brand was for VCs and family offices.\n\nThen Crowd-Sourced Funding came in, and we built the rails. 324 raises. $234M+. 137,000 retail investors. Naked Life. Our Cow. Earthletica. Aquafab.\n\nNow we're opening our own raise on the platform we built.\n\nSave your spot. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
   "headline": "What VCs got, you can get too",
-  "description": "324 companies. $234M+. 137,000 retail investors. Save your spot.",
+  "description": "324 raises. $234M+. 137,000 retail investors. Save your spot.",
   "cta": "Save my spot",
-  "_source_label": "DRC -- A3 Empathy + Access + Recursion (first-timers)",
-  "_drc_playbook": "03 Aspirational Identity Sell (B2C considered, solution-aware, sophistication 3-4 mechanism / better mechanism)",
+  "_source_label": "DRC V2 -- A3 Empathy + Access + Recursion (first-timers)",
+  "_v2_changes": [
+    "Subject discipline: 'we built the rails' (Birchal-the-company built the platform). 'Our own raise on the platform we built' is unambiguous: same Birchal opens its raise on its own platform.",
+    "Length: 70 words (down from 108).",
+    "Cut 'Eight years later, 324 Australian companies have raised on Birchal' -- redundant with the cadence-of-three that follows.",
+    "Cut 'Australians who used to be locked out of early-stage equity, owning pieces of brands they believed in' -- flabby clause that rephrases the opener."
+  ],
+  "_drc_playbook": "03 Aspirational Identity Sell (B2C considered, solution-aware, sophistication 3-4)",
   "_drc_audience": "B2C considered, solution-aware. First-time CSF investors who feel locked out of startup equity.",
   "_drc_citations": [
     "fact:authority-edelman-2024-peer-parity",
@@ -24,7 +31,6 @@
     "PLAT-001",
     "PLAT-002",
     "PLAT-003",
-    "PLAT-004",
     "RAISE-001",
     "RAISE-002",
     "RAISE-004",
@@ -38,14 +44,9 @@
   "_compliance_findings_resolved": [
     "PREOFFER-VERBS: 'save your spot'. No transaction verbs.",
     "BANNED-CSF-PHRASES: zero matches.",
-    "VERBATIM-OFFER-LANGUAGE: 'we will tell you the moment the offer goes live' -- informing, not sending.",
+    "VERBATIM-OFFER-LANGUAGE: 'we will tell you the moment the offer goes live'.",
     "VERBATIM-CSF-WARNING: byte-exact.",
-    "BRAND-EXCLUDED: only verified-good raises cited (Naked Life, Our Cow, Earthletica, Aquafab from RAISE-001/002/004/005).",
-    "Ownership framing: 'owning pieces of brands they believed in' in para 2.",
-    "Anti-preferential terms (s 738G): 'opening its own raise on the platform it built' is generic, no implied special access."
+    "BRAND-EXCLUDED: only verified-good raises (Naked Life, Our Cow, Earthletica, Aquafab)."
   ],
-  "_drc_assumptions_flagged": [
-    "'Locked out of early-stage equity' is a colloquial paraphrase of pre-CSF sophisticated/professional-investor regime. Plain-language opinion, not sourced legal claim.",
-    "'For VCs and family offices' is a colloquial summary of the wholesale-investor regime under Corps Act."
-  ]
+  "_word_count_primary_text": 70
 }

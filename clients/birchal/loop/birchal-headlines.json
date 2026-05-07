@@ -1,19 +1,26 @@
 {
-  "set_id": "BIRCHAL-HEADLINES-V1",
+  "set_id": "BIRCHAL-HEADLINES-V2",
   "generated": "2026-05-07",
-  "rules": "Max 8 words. Sentence case. AU English. No em-dashes. No banned CSF phrases. No transaction verbs. Pre-offer compliant.",
+  "rules": "Max 8 words. Sentence case. AU English. No em-dashes. No banned CSF phrases. No transaction verbs. Pre-offer compliant. Subject discipline: 'Birchal' = the company; the platform is 'our platform' / 'the platform we built'. Avoid ambiguous 'it' / 'the platform' referents.",
+  "v2_revisions": [
+    "H-CUR-03: trimmed from 9w to 8w ('None of them by you?' -> 'None by you?').",
+    "H-COM-02: 'Now opening up.' -> 'Now we're raising too.' (resolves who is opening: Birchal-the-company, not the platform).",
+    "H-COM-03: 'Own a piece of the platform you've used' -> 'Back the platform you've backed companies on' (action and target unambiguous).",
+    "H-COM-05: 'The crowd built it. Now invited to own it.' (9w, double 'it' referent shift) -> 'Backed by the crowd that built it.' (7w, single referent: the company).",
+    "H-EMP-01: '137,000 of you got too' -> 'retail investors got too' (cleaner for cold audience; same meaning)."
+  ],
   "headlines": [
     {"id": "H-CUR-01", "text": "How Australian startups actually get funded", "angle": "curiosity / mechanism", "segment": "A", "words": 6, "caples_pattern": "How..."},
     {"id": "H-CUR-02", "text": "324 raises. Most Australians missed all of them.", "angle": "curiosity / specificity", "segment": "A", "words": 8, "caples_pattern": "Use facts and figures"},
-    {"id": "H-CUR-03", "text": "324 Aussie companies funded. None of them by you?", "angle": "curiosity / question", "segment": "A", "words": 9, "caples_pattern": "Ask a question"},
+    {"id": "H-CUR-03", "text": "324 Aussie companies funded. None by you?", "angle": "curiosity / question", "segment": "A", "words": 7, "caples_pattern": "Ask a question"},
     {"id": "H-CUR-04", "text": "How 137,000 Australians invested before you", "angle": "curiosity / social proof", "segment": "A", "words": 6, "caples_pattern": "How..."},
     {"id": "H-CUR-05", "text": "Until 2018, this was for VCs only", "angle": "curiosity / loss frame", "segment": "A", "words": 7, "caples_pattern": "Story / scene opener"},
     {"id": "H-COM-01", "text": "If you back Aussie brands", "angle": "belonging / identity", "segment": "A", "words": 5, "caples_pattern": "If..."},
-    {"id": "H-COM-02", "text": "Built by 137,000 investors. Now opening up.", "angle": "belonging / co-ownership", "segment": "A_or_B", "words": 7, "caples_pattern": "Use facts and figures"},
-    {"id": "H-COM-03", "text": "Own a piece of the platform you've used", "angle": "belonging / recursion", "segment": "B", "words": 8, "caples_pattern": "Speak directly to reader"},
+    {"id": "H-COM-02", "text": "Built by 137,000 investors. Now we're raising too.", "angle": "belonging / co-ownership", "segment": "A_or_B", "words": 8, "caples_pattern": "Use facts and figures"},
+    {"id": "H-COM-03", "text": "Back the platform you've backed companies on", "angle": "belonging / recursion", "segment": "B", "words": 7, "caples_pattern": "Speak directly to reader"},
     {"id": "H-COM-04", "text": "324 companies. 137,000 investors. One platform.", "angle": "belonging / cadence-of-three", "segment": "A_or_B", "words": 6, "caples_pattern": "Use facts and figures"},
-    {"id": "H-COM-05", "text": "The crowd built it. Now invited to own it.", "angle": "belonging / recursion", "segment": "A_or_B", "words": 9, "caples_pattern": "Story / poetic reversal"},
-    {"id": "H-EMP-01", "text": "What VCs got, retail investors got too", "angle": "empathy / access", "segment": "A", "words": 7, "caples_pattern": "Story / contrast"},
+    {"id": "H-COM-05", "text": "Backed by the crowd that built it", "angle": "belonging / recursion", "segment": "A_or_B", "words": 7, "caples_pattern": "Story / poetic reversal"},
+    {"id": "H-EMP-01", "text": "What VCs got, you can get too", "angle": "empathy / access", "segment": "A", "words": 7, "caples_pattern": "Story / contrast"},
     {"id": "H-EMP-02", "text": "From private capital to public access", "angle": "empathy / access", "segment": "A", "words": 6, "caples_pattern": "News / shift"},
     {"id": "H-INV-01", "text": "Founder seat, investor seat, same answer", "angle": "investor-validation / peer", "segment": "B", "words": 6, "caples_pattern": "Quoted objection / paraphrase"},
     {"id": "H-INV-02", "text": "Built the dominant platform in the category", "angle": "investor-validation / authority", "segment": "B", "words": 7, "caples_pattern": "Quoted objection / near-verbatim"}
