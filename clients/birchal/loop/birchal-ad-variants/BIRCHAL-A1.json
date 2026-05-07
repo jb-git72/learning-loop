@@ -1,30 +1,28 @@
 {
   "ad_id": "BIRCHAL-A1",
-  "version": "V2",
+  "version": "V3",
   "content_type": "meta-ad",
   "segment": "A_first_time_csf",
   "angle": "Curiosity / mechanism reveal",
-  "hook_type": "Curiosity-gap narrow-bound (FMTH-validated, +0.18 composite over founder-voice)",
+  "hook_type": "Cadence-of-three numbers + punch-line curiosity gap (Halbert pattern interrupt + specificity)",
   "funnel": "TOF",
-  "tactic": "Mechanism reveal -> first-person stats -> recursion punch",
-  "motivation": "Rational with curiosity hook",
+  "tactic": "Numbers-first scroll-stop -> mechanism reveal -> recursion punch",
+  "motivation": "Rational with specificity-driven curiosity",
   "campaign_phase": "pre-campaign",
-  "primary_text": "324 Australian companies have raised on Birchal. Most Australians have never invested in one.\n\nCrowd-Sourced Funding lets retail investors own a piece of private Australian companies. Since 2018, 137,000 of them have invested over $234M through us. Naked Life. Our Cow. Medigrowth.\n\nNow we're opening our own raise.\n\nSave your spot. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "primary_text": "$234M raised. 137,000 investors. None of them VCs.\n\nThat is what Crowd-Sourced Funding has done in Australia since 2018, and we built the rails. 324 raises through us so far: Naked Life, Our Cow, Medigrowth.\n\nNow we are opening our own raise.\n\nSave your spot. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
   "headline": "How Australian startups actually get funded",
   "description": "Save your spot to hear when our CSF offer opens.",
   "cta": "Save my spot",
-  "_source_label": "DRC V2 -- A1 Curiosity / Mechanism (first-timers)",
-  "_v2_changes": [
-    "Subject discipline: dropped 'Birchal built the rails' / 'Birchal is opening its own raise' two-Birchal pattern. Single Birchal mention as platform brand; 'we'/'us'/'our' throughout for the company.",
-    "Length: 75 words (down from 115).",
-    "Removed pre-2018 preamble ('owning a piece of a private Australian company meant being a venture capitalist...'). Mechanism reveal is in one sentence now.",
-    "Brand grid trimmed to 3 names (Naked Life, Our Cow, Medigrowth) instead of 4."
+  "_source_label": "DRC V3 -- A1 Curiosity / Mechanism (first-timers)",
+  "_v3_changes": [
+    "Hook rewrite: '324 Australian companies have raised on Birchal. Most Australians have never invested in one.' -> '$234M raised. 137,000 investors. None of them VCs.' Three specific numbers in 8 words; the third creates a mechanism gap (then who?). Halbert score 4->5.",
+    "Body restructured: opens with the punch line, then mechanism reveal as the gap-closer in para 2."
   ],
   "_drc_playbook": "03 Aspirational Identity Sell (B2C considered, solution-aware, sophistication 3 mechanism)",
   "_drc_audience": "B2C considered, solution-aware. First-time CSF investors, currently using ETFs / Sharesies / Pearler.",
   "_drc_citations": [
-    "fact:authority-edelman-2024-peer-parity",
     "fact:specificity-buzzsumo-numbers",
+    "fact:authority-edelman-2024-peer-parity",
     "fact:narrative-transportation-green-brock"
   ],
   "_client_facts_used": [
@@ -39,14 +37,14 @@
     "VERBATIM-CSF-WARNING",
     "WAITLIST-CTA"
   ],
-  "_a_pile_score_first_8_words": 4,
-  "_a_pile_signals": ["specificity (324 + Birchal)", "curiosity gap (most have never)", "stakes named"],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_signals": ["specificity (3 numbers)", "curiosity gap ('None of them VCs' -> who then?)", "pattern interrupt", "epic-feel via cadence"],
   "_compliance_findings_resolved": [
-    "PREOFFER-VERBS: 'save your spot', 'invested', 'tell you the moment'. 'Invested' refers to 137,000 historical investors (factual past tense), not a current call to action.",
+    "PREOFFER-VERBS: 'save your spot', 'tell you the moment'. No transaction verbs.",
     "BANNED-CSF-PHRASES: zero matches.",
-    "VERBATIM-OFFER-LANGUAGE: 'we will tell you the moment the offer goes live'. No 'we will send' phrasing.",
-    "VERBATIM-CSF-WARNING: byte-exact at end of primary_text.",
-    "BRAND-EXCLUDED: only verified-good raises cited."
+    "VERBATIM-OFFER-LANGUAGE: 'we will tell you the moment the offer goes live'. No 'we will send'.",
+    "VERBATIM-CSF-WARNING: byte-exact.",
+    "BRAND-EXCLUDED: only verified-good raises (Naked Life, Our Cow, Medigrowth)."
   ],
-  "_word_count_primary_text": 75
+  "_word_count_primary_text": 70
 }

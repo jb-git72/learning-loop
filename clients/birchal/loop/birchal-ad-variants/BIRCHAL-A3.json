@@ -1,26 +1,25 @@
 {
   "ad_id": "BIRCHAL-A3",
-  "version": "V2",
+  "version": "V3",
   "content_type": "meta-ad",
   "segment": "A_first_time_csf",
   "angle": "Empathy + access + recursion",
-  "hook_type": "Stakes-named loss-frame opener, 'until X, this was for Y'",
+  "hook_type": "Stakes-named loss-frame + community-since punch",
   "funnel": "TOF",
-  "tactic": "Empathy lead -> first-person community proof -> recursion punch",
-  "motivation": "Empathy + access (FMTH-validated empathy angle)",
+  "tactic": "Loss frame -> 'now 137K have' punch -> mechanism reveal -> recursion",
+  "motivation": "Empathy + access",
   "campaign_phase": "pre-campaign",
-  "primary_text": "Until 2018, backing the next big Aussie brand was for VCs and family offices.\n\nThen Crowd-Sourced Funding came in, and we built the rails. 324 raises. $234M+. 137,000 retail investors. Naked Life. Our Cow. Earthletica. Aquafab.\n\nNow we're opening our own raise on the platform we built.\n\nSave your spot. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
-  "headline": "What VCs got, you can get too",
+  "primary_text": "Before 2018, only the wealthy could invest in an Australian startup. Now 137,000 Australians have.\n\nThe law changed. Crowd-Sourced Funding came in. We built the rails. 324 raises since: Naked Life, Our Cow, Earthletica, Aquafab.\n\nNow we are opening our own raise on the platform we built.\n\nSave your spot. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "What only VCs used to access",
   "description": "324 raises. $234M+. 137,000 retail investors. Save your spot.",
   "cta": "Save my spot",
-  "_source_label": "DRC V2 -- A3 Empathy + Access + Recursion (first-timers)",
-  "_v2_changes": [
-    "Subject discipline: 'we built the rails' (Birchal-the-company built the platform). 'Our own raise on the platform we built' is unambiguous: same Birchal opens its raise on its own platform.",
-    "Length: 70 words (down from 108).",
-    "Cut 'Eight years later, 324 Australian companies have raised on Birchal' -- redundant with the cadence-of-three that follows.",
-    "Cut 'Australians who used to be locked out of early-stage equity, owning pieces of brands they believed in' -- flabby clause that rephrases the opener."
+  "_source_label": "DRC V3 -- A3 Empathy + Access + Recursion (first-timers)",
+  "_v3_changes": [
+    "Hook rewrite: 'Until 2018, backing the next big Aussie brand was for VCs and family offices.' -> 'Before 2018, only the wealthy could invest in an Australian startup. Now 137,000 Australians have.' Sharper antagonist ('only the wealthy'), then community FOMO punch in line 2 (137K already crossed the line). Halbert 4->5.",
+    "Body restructured into three short sentences: law changed, mechanism, we built it.",
+    "Headline retouched: 'What VCs got, you can get too' -> 'What only VCs used to access' (sharper, drops the abstract 'too')."
   ],
-  "_drc_playbook": "03 Aspirational Identity Sell (B2C considered, solution-aware, sophistication 3-4)",
+  "_drc_playbook": "03 Aspirational Identity Sell",
   "_drc_audience": "B2C considered, solution-aware. First-time CSF investors who feel locked out of startup equity.",
   "_drc_citations": [
     "fact:authority-edelman-2024-peer-parity",
@@ -40,13 +39,13 @@
     "WAITLIST-CTA"
   ],
   "_a_pile_score_first_8_words": 5,
-  "_a_pile_signals": ["specificity (2018, VCs, family offices)", "curiosity gap (what changed?)", "stakes named (locked out)", "pattern interrupt"],
+  "_a_pile_signals": ["specificity (2018 + 137,000)", "stakes named (only the wealthy)", "pattern interrupt", "community FOMO"],
   "_compliance_findings_resolved": [
-    "PREOFFER-VERBS: 'save your spot'. No transaction verbs.",
+    "PREOFFER-VERBS: 'save your spot'. 'Invest' appears in past-tense factual context ('only the wealthy could invest before 2018'), not as a current call to action.",
     "BANNED-CSF-PHRASES: zero matches.",
     "VERBATIM-OFFER-LANGUAGE: 'we will tell you the moment the offer goes live'.",
     "VERBATIM-CSF-WARNING: byte-exact.",
-    "BRAND-EXCLUDED: only verified-good raises (Naked Life, Our Cow, Earthletica, Aquafab)."
+    "BRAND-EXCLUDED: only verified-good raises."
   ],
-  "_word_count_primary_text": 70
+  "_word_count_primary_text": 73
 }

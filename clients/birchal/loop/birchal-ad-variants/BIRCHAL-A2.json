@@ -1,27 +1,26 @@
 {
   "ad_id": "BIRCHAL-A2",
-  "version": "V2",
+  "version": "V3",
   "content_type": "meta-ad",
   "segment": "A_first_time_csf",
   "angle": "Belonging / community-as-identity",
-  "hook_type": "Identity statement, second-person, FMTH belonging-equivalent ('FarmThru families know who grew their food')",
+  "hook_type": "Identity-then-FOMO: 'you do this, 137K do it bigger'",
   "funnel": "TOF",
-  "tactic": "Vote-with-wallet bridge -> brand grid social proof -> recursion punch",
-  "motivation": "Identity + community",
+  "tactic": "Shopping-to-ownership bridge with hard community number -> mechanism reveal -> recursion",
+  "motivation": "Identity + community FOMO",
   "campaign_phase": "pre-campaign",
-  "primary_text": "You vote with your wallet every time you buy from an Aussie brand. We let you vote with ownership.\n\nSince 2018, Birchal has helped 324 Australian companies raise over $234M from 137,000 retail investors. Naked Life. Our Cow. Medigrowth. People who used to be customers became part-owners.\n\nNow we're opening our own raise.\n\nSave your spot. Read the offer when it opens.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "primary_text": "You back Aussie brands when you shop. 137,000 Australians do it with ownership too.\n\nThat is Crowd-Sourced Funding, and Birchal is the platform. Since 2018 we have helped 324 Australian companies raise over $234M. Naked Life. Our Cow. Medigrowth.\n\nNow we are opening our own raise.\n\nSave your spot. Read the offer when it opens.\n\n*Always consider the general CSF risk warning and offer document before investing.",
   "headline": "Australians who back Aussie brands",
   "description": "You buy from them already. Now you can own a piece.",
   "cta": "Save my spot",
-  "_source_label": "DRC V2 -- A2 Belonging / Community (first-timers)",
-  "_v2_changes": [
-    "Subject discipline: 'we' = Birchal-the-company throughout. One 'Birchal' mention in para 2 to anchor brand identity. Old V1 'Birchal lets you' / 'Birchal is now doing the same for itself' confusion eliminated.",
-    "Length: 76 words (down from 108).",
-    "Trimmed 'None of those raises came from VCs alone. They came from 137,000 everyday Australians' (rephrasing) to 'People who used to be customers became part-owners' (one line, identity-led).",
-    "Dropped redundant 'who wanted to own a piece of what they had been buying' (clause repeats the lead)."
+  "_source_label": "DRC V3 -- A2 Belonging / Community (first-timers)",
+  "_v3_changes": [
+    "Hook rewrite: 'You vote with your wallet every time you buy from an Aussie brand. We let you vote with ownership.' -> 'You back Aussie brands when you shop. 137,000 Australians do it with ownership too.' Real number anchors the FOMO; 'do it with ownership too' implies the reader is missing what 137K already do. Halbert 3->4.",
+    "Cut metaphorical 'vote with your wallet' / 'vote with ownership' -- specificity beats metaphor (Hopkins' law).",
+    "Body unchanged from V2 (already strong)."
   ],
-  "_drc_playbook": "03 Aspirational Identity Sell (B2C considered, solution-aware, sophistication 3 mechanism)",
-  "_drc_audience": "B2C considered, solution-aware. First-time CSF investors who self-identify as backing Australian-made / Aussie-owned.",
+  "_drc_playbook": "03 Aspirational Identity Sell",
+  "_drc_audience": "B2C considered, solution-aware. First-time CSF investors who self-identify as backing Australian-made.",
   "_drc_citations": [
     "fact:authority-edelman-2024-peer-parity",
     "fact:narrative-transportation-green-brock",
@@ -40,13 +39,13 @@
     "WAITLIST-CTA"
   ],
   "_a_pile_score_first_8_words": 4,
-  "_a_pile_signals": ["personal address (You)", "pattern interrupt (vote with ownership)", "ownership framing"],
+  "_a_pile_signals": ["personal address (You)", "specificity (137,000)", "stakes named (do it with ownership too = you don't yet)"],
   "_compliance_findings_resolved": [
-    "PREOFFER-VERBS: 'save your spot', 'read', 'own a piece'. No transaction verbs.",
+    "PREOFFER-VERBS: 'save your spot', 'read', 'own a piece'.",
     "BANNED-CSF-PHRASES: zero matches.",
     "VERBATIM-OFFER-LANGUAGE: 'Read the offer when it opens'.",
-    "VERBATIM-CSF-WARNING: byte-exact at end.",
-    "BRAND-EXCLUDED: only verified-good raises (Naked Life, Our Cow, Medigrowth)."
+    "VERBATIM-CSF-WARNING: byte-exact.",
+    "BRAND-EXCLUDED: only verified-good raises."
   ],
-  "_word_count_primary_text": 76
+  "_word_count_primary_text": 71
 }

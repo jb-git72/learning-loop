@@ -62,6 +62,40 @@ Three V1 headlines had subject ambiguity:
 - Two paragraphs that re-explain the same proof.
 - Brand grid naming the same companies twice across paragraphs.
 
+### 4. Hooks: cadence-of-three numbers + punch line beats statement-then-observation.
+
+V2 openers were informational ("324 Australian companies have raised on Birchal. Most Australians have never invested in one."). Halbert score 3-4. JB flagged as needing more curiosity / epic stats / specificity / benefit.
+
+**Rule.** Lead the first 8 words with at least two of: a specific number, a named entity, a curiosity gap (why/what/how), or a pattern interrupt. Aim for Halbert score 4+. Refuse to ship below 4.
+
+**The four levers, ordered by lift:**
+
+1. **Numbers in the first 8 words.** Cadence-of-three numbers (e.g. "$234M raised. 137,000 investors. None of them VCs.") creates scroll-stop. Specifics imply truth; round numbers imply marketing. [fact:specificity-buzzsumo-numbers] -- numbers lift CTR ~36%.
+2. **Punch line that opens a gap.** The third beat of the cadence-of-three carries the curiosity (e.g. "None of them VCs" -- then who?). The reader scrolls to close the loop.
+3. **Named entity.** "Triple Bubble's first investment from their new fintech fund: Birchal." -- the specific fund + new-fund framing creates curiosity (why Birchal first?). Named entities outpull generic categories.
+4. **Pattern interrupt or news hook.** "Before 2018, only the wealthy could invest in an Australian startup. Now 137,000 Australians have." -- temporal contrast + specific community number = scroll-stop.
+
+**How to apply to Birchal hooks specifically:**
+
+- The strongest hooks for Birchal lean on the platform stats ($234M, 137,000, 324, 8 years) plus one of: a specific named fund (Triple Bubble, AVPF), a verbatim investor quote excerpt (Pym), or a pre-2018 stakes frame.
+- Avoid metaphors as openers ("vote with your wallet"). Specificity beats metaphor.
+- For headlines: every standalone headline should hit Halbert 4+ on its first 8 words. Statements without a hook ("324 companies. 137,000 investors. One platform.") are V2-grade and need a curiosity gap or recursion punch (V3 fix: "324 raises. $234M raised. Now our own.").
+
+**V3 hook examples that scored 5:**
+
+- A1: "$234M raised. 137,000 investors. None of them VCs." (cadence + punch + curiosity gap)
+- A3: "Before 2018, only the wealthy could invest in an Australian startup. Now 137,000 Australians have." (loss frame + community FOMO)
+- B1: "You are one of 137,000 investors who built this platform. Now we are raising on it." (personal address + specific number + ownership + recursion)
+- B2: "Triple Bubble's first investment from their new fintech fund: Birchal." (news pattern + named fund + curiosity)
+
+**V3 headline examples that scored 5:**
+
+- "$234M, no VCs needed" (5w, specific + pattern interrupt)
+- "Why Triple Bubble bet first on Birchal" (Caples Why + named fund)
+- "Why most Australians missed the last $234M" (Caples Why + FOMO + specific stat)
+- "324 raises. $234M raised. Now our own." (cadence + recursion punch)
+
 ## Open question for next pass
 
 - For Segment B (existing investors), should the ads call them out as "Birchal investors" explicitly (e.g. "If you've backed a company on our platform...") or stay implicit? V1 used "you backed a Birchal company" which is direct but cold-list-served could feel presumptuous. JB to confirm.
+- Possible 6th ad angle: Halbert-style confessional opener. "After 8 years funding other people's companies, we have kept ours private. That is about to change." -- first-person + confession-shape + specific timeframe + curiosity. Reserved for V4 if JB wants to test against the current 5.
