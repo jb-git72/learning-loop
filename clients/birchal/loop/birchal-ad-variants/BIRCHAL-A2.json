@@ -1,0 +1,48 @@
+{
+  "ad_id": "BIRCHAL-A2",
+  "content_type": "meta-ad",
+  "segment": "A_first_time_csf",
+  "angle": "Belonging / community-as-identity",
+  "hook_type": "Identity statement, second-person, FMTH belonging-equivalent ('FarmThru families know who grew their food')",
+  "funnel": "TOF",
+  "tactic": "Vote-with-wallet bridge -> brand grid social proof -> recursion punch",
+  "motivation": "Identity + community",
+  "campaign_phase": "pre-campaign",
+  "primary_text": "You vote with your wallet every time you buy from an Aussie brand. Birchal lets you vote with ownership too.\n\n324 Australian companies have raised on Birchal since 2018. Naked Life raised $2.95M. Our Cow raised $2M. Medigrowth raised $1.59M. None of those raises came from VCs alone. They came from 137,000 everyday Australians who wanted to own a piece of what they had been buying.\n\nBirchal is now doing the same for itself.\n\nSave your spot on the waitlist. Read the offer when it opens.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "Australians who back Aussie brands",
+  "description": "You buy from them already. Now you can own a piece.",
+  "cta": "Save my spot",
+  "_source_label": "DRC -- A2 Belonging / Community (first-timers)",
+  "_drc_playbook": "03 Aspirational Identity Sell (B2C considered, solution-aware, sophistication 3 mechanism)",
+  "_drc_audience": "B2C considered, solution-aware. First-time CSF investors who self-identify as backing Australian-made / Aussie-owned.",
+  "_drc_citations": [
+    "fact:authority-edelman-2024-peer-parity",
+    "fact:narrative-transportation-green-brock",
+    "fact:specificity-buzzsumo-numbers"
+  ],
+  "_client_facts_used": [
+    "PLAT-001",
+    "PLAT-003",
+    "PLAT-004",
+    "RAISE-001",
+    "RAISE-002",
+    "RAISE-003",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING",
+    "WAITLIST-CTA"
+  ],
+  "_a_pile_score_first_8_words": 4,
+  "_a_pile_signals": ["personal address (You)", "pattern interrupt (vote with ownership)", "ownership framing"],
+  "_compliance_findings_resolved": [
+    "PREOFFER-VERBS: uses 'save your spot', 'read', 'own a piece'. No 'invest now', 'buy now', 'subscribe'.",
+    "BANNED-CSF-PHRASES: zero matches.",
+    "VERBATIM-OFFER-LANGUAGE: 'Read the offer when it opens'. No 'we will send' phrasing.",
+    "VERBATIM-CSF-WARNING: byte-exact at end of primary_text.",
+    "BRAND-EXCLUDED: only verified-good raises cited (Naked Life, Our Cow, Medigrowth -- all from RAISE-001/002/003).",
+    "Ownership framing in opener and para 2 -- FMTH PR #125 H2 confirmed."
+  ],
+  "_drc_assumptions_flagged": [
+    "Reader recognises Naked Life / Our Cow / Medigrowth as supermarket-shelf brands. Likely true for Sydney / Melbourne / Brisbane metro audiences; less true for rural / regional. Mitigated by brand-name diversity across categories (drinks, meat, medicinal cannabis).",
+    "'None of those raises came from VCs alone' -- this is technically accurate (CSF raises by definition include retail investors) but understates VC participation in some Birchal-listed campaigns. Phrased as 'alone' to avoid implying VC absence."
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "client_id": "birchal",
+  "last_verified": "2026-05-07",
+  "source_of_truth": "Birchal-issued copy on join.birchal.com (sales-skill repo, web/campaigns/BIRCH/meta.json) + BIRCH/quotes.md (verbatim, 6 May 2026 from Kirstin) + BIRCH/LESSONS.md (5-7 May 2026 revision pass)",
+  "facts": [
+    {
+      "fact_id": "PLAT-001",
+      "category": "platform_stat",
+      "claim": "324 Australian companies have raised on Birchal since 2018",
+      "claim_patterns": ["324 Australian companies", "324 companies", "324 raises", "324 Aussie companies", "324 brands"],
+      "source": "join.birchal.com hero subhead + welcome email body (verified 2026-05-07)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "note": "User-confirmed 2026-05-07. Use '324 Australian companies' verbatim. Acceptable variants: '324 companies', '324 raises', '324 Aussie brands'. Always pair with 'on Birchal' or 'through Birchal' to avoid implying these are unrelated raises."
+    },
+    {
+      "fact_id": "PLAT-002",
+      "category": "platform_stat",
+      "claim": "$234M+ raised on Birchal across all CSF campaigns to date",
+      "claim_patterns": ["\\$234M\\+?", "\\$234 million", "234M\\+? raised", "more than \\$234M"],
+      "source": "join.birchal.com hero subhead + TRUST_STAT_1_VALUE in BIRCH/meta.json (verified 2026-05-07)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "note": "Always include the '+' suffix to indicate cumulative-and-growing. Acceptable: '$234M+ raised', 'more than $234M', 'over $234M'. Never round up to $235M or down to $230M."
+    },
+    {
+      "fact_id": "PLAT-003",
+      "category": "platform_stat",
+      "claim": "137,000 individual investments made on Birchal since 2018",
+      "claim_patterns": ["137,000 investors", "137000 investors", "137,000 individual investments", "137,000 investments"],
+      "source": "join.birchal.com hero subhead + TRUST_STAT_3_VALUE in BIRCH/meta.json (verified 2026-05-07)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "note": "Birchal-issued copy uses both '137,000 investors' (hero short) and '137,000 individual investments' (welcome email). Both acceptable. Investments != unique investors strictly, but Birchal uses 'investors' as shorthand. Do not invent unique-investor counts."
+    },
+    {
+      "fact_id": "PLAT-004",
+      "category": "platform_stat",
+      "claim": "Birchal has been operating CSF since 2018, eight years of platform traction at time of writing (2026)",
+      "claim_patterns": ["since 2018", "eight years", "8 years of CSF", "eight years of CSF traction", "for eight years"],
+      "source": "BIRCH/meta.json COMPARISON_NEW_POINT_2 + welcome email body (verified 2026-05-07)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "note": "'Eight years' is the user-facing framing. Spell out 'eight' in body copy; '8 years' acceptable in headline-only contexts."
+    },
+    {
+      "fact_id": "RAISE-001",
+      "category": "brand_grid",
+      "claim": "Naked Life raised $2.95M on Birchal in July 2023",
+      "claim_patterns": ["Naked Life.*\\$2\\.95M", "\\$2\\.95M.*Naked Life", "Naked Life.*July 2023"],
+      "source": "BIRCH/LESSONS.md brand grid (verified 2026-05-07) + birchal.com/company/nakedlife",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "note": "Verified-good raise. Safe to use as social proof in ad copy."
+    },
+    {
+      "fact_id": "RAISE-002",
+      "category": "brand_grid",
+      "claim": "Our Cow raised $2M on Birchal in March 2023",
+      "claim_patterns": ["Our Cow.*\\$2M", "\\$2M.*Our Cow", "Our Cow.*March 2023"],
+      "source": "BIRCH/LESSONS.md brand grid + birchal.com/company/our-cow",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "note": "Verified-good raise."
+    },
+    {
+      "fact_id": "RAISE-003",
+      "category": "brand_grid",
+      "claim": "Medigrowth raised $1.59M on Birchal in March 2025",
+      "claim_patterns": ["Medigrowth.*\\$1\\.59M", "\\$1\\.59M.*Medigrowth"],
+      "source": "BIRCH/LESSONS.md brand grid + birchal.com/company/medigrowth",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "note": "Verified-good raise. Australian medicinal cannabis grower."
+    },
+    {
+      "fact_id": "RAISE-004",
+      "category": "brand_grid",
+      "claim": "Earthletica raised $1.1M on Birchal in April 2026",
+      "claim_patterns": ["Earthletica.*\\$1\\.1M", "\\$1\\.1M.*Earthletica"],
+      "source": "BIRCH/LESSONS.md brand grid + birchal.com/company/earthletica",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "note": "Most recent verified raise. Pair with Chris Raleigh testimonial (QUOTE-005) for strong recency proof."
+    },
+    {
+      "fact_id": "RAISE-005",
+      "category": "brand_grid",
+      "claim": "Aquafab raised $600K on Birchal in March 2026",
+      "claim_patterns": ["Aquafab.*\\$600K", "\\$600K.*Aquafab"],
+      "source": "BIRCH/LESSONS.md brand grid + birchal.com/company/aquafab",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07"
+    },
+    {
+      "fact_id": "RAISE-006",
+      "category": "brand_grid",
+      "claim": "Pulse Tile raised $400K on Birchal in March 2026",
+      "claim_patterns": ["Pulse Tile.*\\$400K", "\\$400K.*Pulse Tile"],
+      "source": "BIRCH/LESSONS.md brand grid + birchal.com/company/pulsetile",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07"
+    },
+    {
+      "fact_id": "RAISE-007",
+      "category": "brand_grid",
+      "claim": "Reckless Brewery raised $513K on Birchal in March 2026",
+      "claim_patterns": ["Reckless Brewery.*\\$513K", "\\$513K.*Reckless"],
+      "source": "BIRCH/LESSONS.md brand grid + birchal.com/company/recklessbrewing",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07"
+    },
+    {
+      "fact_id": "BRAND-EXCLUDED",
+      "category": "compliance",
+      "claim": "Companies in administration must NOT be used as social proof",
+      "claim_patterns": ["Zero Co", "Old Young", "Old Young's"],
+      "source": "BIRCH/LESSONS.md item 5 of CSF compliance section (2026-05-07)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "contradicts_if": "(Zero Co|Old Young)",
+      "note": "BLOCK list. Zero Co (raised $5M from 3,107 investors) and Old Young's are both in administration. Do not feature in ads even though their raises were successful at the time. Always check live company page status before featuring any new brand."
+    },
+    {
+      "fact_id": "VERBATIM-CSF-WARNING",
+      "category": "verbatim",
+      "claim": "CSF short-form risk warning, byte-exact",
+      "verbatim_text": "*Always consider the general CSF risk warning and offer document before investing.",
+      "source": "FMTH live ad (clients/farm-thru/loop/live-ad-test.json) + BIRCH/LESSONS.md item 2 (footer FOOTER_DISCLAIMER is canonical for landing pages, this short-form is canonical for ads)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "note": "Pasted verbatim into every Meta primary_text as the final line. Leading asterisk + sentence-case + full stop, no Oxford comma, no 'Birchal' substitution. Must be byte-exact match — compliance script blocks ads where this line is missing or paraphrased."
+    },
+    {
+      "fact_id": "VERBATIM-OFFER-LANGUAGE",
+      "category": "verbatim",
+      "claim": "Use 'gain access to' or 'view the offer document', never 'we will send you the offer document'",
+      "claim_patterns": ["gain access to", "view the offer document", "read the offer", "follow the campaign"],
+      "source": "BIRCH/LESSONS.md CSF compliance item 1 (2026-05-07)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "contradicts_if": "(we will send you (the|our) offer document|we'll send you (the|our) offer)",
+      "note": "Birchal does not email the offer document. It goes live on the offer page when the round opens. Acceptable verbs: 'gain access to', 'view', 'read', 'follow'. Banned phrases: 'we will send you the offer', 'we'll email you the offer'. Acceptable to say 'we will tell you the moment the offer goes live' (informing about the launch is fine, just not sending the document)."
+    },
+    {
+      "fact_id": "BANNED-CSF-PHRASES",
+      "category": "compliance",
+      "claim": "ASIC RG 234 + INFO 217 + s 738G banned phrases for pre-offer CSF marketing",
+      "claim_patterns": [],
+      "contradicts_if": "(\\bbe first to invest\\b|\\bfirst in line\\b|\\binvest from \\$|\\bfrom as little as \\$|\\bguaranteed return\\b|\\bsecure your allocation\\b|\\bskip the queue\\b|\\bjump the queue\\b|\\binvest now\\b|\\bbuy now\\b|\\bsubscribe now\\b)",
+      "source": "web/scripts/validate_client.py CSF banned-phrase blocklist + ASIC RG 234 + INFO 217 + Corps Act s 738G (anti-preferential-terms)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "note": "HARD BLOCK. Any of these phrases in primary_text, headline, or description = ad fails compliance. Approved alternatives: 'Save my spot', 'Follow the campaign', 'Read the offer when it opens', 'Be on the waitlist', 'Hear when the offer goes live'. Do not imply preferential terms vs the public offer (s 738G anti-preferential-terms rule)."
+    },
+    {
+      "fact_id": "PREOFFER-VERBS",
+      "category": "compliance",
+      "claim": "Pre-offer ads use waitlist verbs only (follow, save, read, hear), never transaction verbs (invest, buy, subscribe)",
+      "claim_patterns": ["save my spot", "follow.*campaign", "read the offer", "hear when", "join the waitlist", "be on the waitlist"],
+      "contradicts_if": "(\\b(invest|buy|subscribe|purchase)\\s+(now|today|here))",
+      "source": "ASIC INFO 217 (pre-offer CSF marketing) + DRC SKILL.md regulated-industry handoff",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "note": "Approved CTAs for waitlist phase: 'Save my spot' (primary), 'Follow campaign', 'Read the offer when it opens', 'Hear when the offer goes live'. Once the offer document is live on Birchal's site, the rules change but we are not at that stage."
+    },
+    {
+      "fact_id": "QUOTE-001",
+      "category": "verbatim",
+      "claim": "Dom Pym (Co-founder Up, Triple Bubble) — primary investor-validation quote",
+      "verbatim_text": "I've looked at Birchal from the founder's seat and the investor's seat, and from both angles the answer is the same. Birchal is one of the most important companies in Australian fintech.",
+      "source": "BIRCH/quotes.md (Kirstin, 6 May 2026)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "note": "First two sentences of the full Pym quote. The 'founder's seat / investor's seat' line is the strongest single line in the deck. Acceptable to use the first sentence alone. Do not paraphrase. Attribute as 'Dom Pym, Co-founder Up + Triple Bubble' or 'Dom Pym, Triple Bubble'."
+    },
+    {
+      "fact_id": "QUOTE-002",
+      "category": "verbatim",
+      "claim": "Nick Carter (Triple Bubble) — fund-manager validation quote",
+      "verbatim_text": "Equity crowdfunding is core fintech infrastructure, the rails that let everyday Australians invest in the businesses they believe in, and Birchal has built the dominant platform in the category.",
+      "source": "BIRCH/quotes.md (Kirstin, 6 May 2026)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "note": "Mid-quote excerpt, lightly punctuation-edited (em-dashes converted to commas). Original uses em-dashes; ad copy must not. Attribute as 'Nick Carter, Triple Bubble'."
+    },
+    {
+      "fact_id": "QUOTE-003",
+      "category": "verbatim",
+      "claim": "Don McKenzie (Tribe Global) — VC-CSF bridge quote",
+      "verbatim_text": "Crowdfunding and venture capital shouldn't be rival pathways, they should reinforce each other. Birchal is leading the way in improving how CSF operates in Australia.",
+      "source": "BIRCH/quotes.md (Kirstin, 6 May 2026)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "note": "First and last sentences combined, em-dashes converted to commas. Attribute as 'Don McKenzie, Tribe Global'."
+    },
+    {
+      "fact_id": "QUOTE-004",
+      "category": "verbatim",
+      "claim": "Shayne Gary (Australia Venture Partners Fund) — operator validation",
+      "verbatim_text": "We first backed Kirstin as investors through the Techstars accelerator, and everything since has confirmed why we did. She's a category-defining operator with an unusually clear view of where the Australian capital markets need to go.",
+      "source": "BIRCH/quotes.md (Kirstin, 6 May 2026)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "note": "Verbatim. Attribute as 'Shayne Gary, Australia Venture Partners Fund'."
+    },
+    {
+      "fact_id": "QUOTE-005",
+      "category": "verbatim",
+      "claim": "Chris Raleigh (Earthletica founder, $1.1M April 2026) — recent founder testimonial",
+      "verbatim_text": "We loved working with the Birchal team. The process was seamless and the support throughout the campaign was exceptional. Kirstin is one of the best capital raising advisors in Australia right now.",
+      "source": "BIRCH/quotes.md (Kirstin, 6 May 2026)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "note": "Verbatim. Note 'seamless' is normally a banned AI-tell word but is verbatim from the testimonial source — acceptable inside attributed quotation marks only. Attribute as 'Chris Raleigh, Earthletica'. Pairs with RAISE-004 (Earthletica $1.1M, April 2026) for recency proof."
+    },
+    {
+      "fact_id": "OFFER-CONTEXT",
+      "category": "campaign_context",
+      "claim": "Birchal is running its own CSF campaign on its platform; offer goes live 26 June 2026",
+      "claim_patterns": ["26 June 2026", "Birchal's CSF campaign", "Birchal's own raise", "Birchal is raising"],
+      "source": "join.birchal.com meta.json launch_date + waitlist plan (2026-05-07)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "note": "The offer document goes live on the Birchal offer page on 26 June 2026. Waitlist signups are gathered before that date. Acceptable framings: 'Birchal is opening its own raise', 'Birchal is running a CSF campaign on the platform it built'. Do not give specific raise amount or valuation — those are in the offer document, not yet public."
+    },
+    {
+      "fact_id": "WAITLIST-CTA",
+      "category": "compliance",
+      "claim": "Approved waitlist CTAs and microcopy",
+      "verbatim_text": "Save my spot",
+      "source": "BIRCH/meta.json + landing-page audit (2026-05-07)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-07",
+      "note": "Primary CTA across the BIRCH landing page is 'Save my spot' (header, sticky, signup card). Use this verbatim in ad CTAs. Acceptable variants in body copy: 'Save your spot on the waitlist', 'Be on the waitlist', 'Hear when the offer goes live'."
+    }
+  ]
+}

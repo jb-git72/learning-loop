@@ -1,0 +1,51 @@
+{
+  "ad_id": "BIRCHAL-B2",
+  "content_type": "meta-ad",
+  "segment": "B_existing_birchal_investors",
+  "angle": "Investor-validation / peer-decision",
+  "hook_type": "Verbatim investor quote opener (peer signal at parity with experts, fact:authority-edelman-2024-peer-parity)",
+  "funnel": "TOF retargeting / list-targeted",
+  "tactic": "Peer-investor quote -> fund stack -> recursion punch",
+  "motivation": "Authority + peer validation",
+  "campaign_phase": "pre-campaign",
+  "primary_text": "\"I've looked at Birchal from the founder's seat and the investor's seat, and from both angles the answer is the same. Birchal is one of the most important companies in Australian fintech.\"\n\nDom Pym, Co-founder Up. Triple Bubble.\n\nBirchal is one of the first investments from Triple Bubble's new fintech fund. Australia Venture Partners Fund and Tribe Global have also backed Birchal. The funds spending their days inside Australian fintech think Birchal is the platform.\n\n324 companies have raised on Birchal. Over $234M. 137,000 investors. Now Birchal is opening its own raise.\n\nSave your spot. Read the offer when it opens.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "Founder seat, investor seat, same answer",
+  "description": "Why Triple Bubble, AVPF, and Tribe Global are backing Birchal.",
+  "cta": "Save my spot",
+  "_source_label": "DRC -- B2 Investor-validation / Peer-decision (existing investors)",
+  "_drc_playbook": "11 Lifecycle Email Promo / Launch (B2C considered, most-aware, active)",
+  "_drc_audience": "B2C considered, most-aware. Existing Birchal investors who understand CSF mechanics; peer signal weighs more than platform stats.",
+  "_drc_citations": [
+    "fact:authority-edelman-2024-peer-parity",
+    "fact:narrative-transportation-green-brock",
+    "fact:specificity-buzzsumo-numbers"
+  ],
+  "_client_facts_used": [
+    "QUOTE-001",
+    "QUOTE-003",
+    "QUOTE-004",
+    "PLAT-001",
+    "PLAT-002",
+    "PLAT-003",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING",
+    "WAITLIST-CTA"
+  ],
+  "_a_pile_score_first_8_words": 4,
+  "_a_pile_signals": ["quoted objection / thought (Dom Pym verbatim)", "personal voice ('I')", "specificity (Birchal, founder's seat, investor's seat)", "curiosity gap (what's the answer?)"],
+  "_compliance_findings_resolved": [
+    "PREOFFER-VERBS: 'save your spot', 'read'. No transaction verbs.",
+    "BANNED-CSF-PHRASES: zero matches.",
+    "VERBATIM-OFFER-LANGUAGE: 'Read the offer when it opens'. Compliant.",
+    "VERBATIM-CSF-WARNING: byte-exact at end.",
+    "QUOTE-001: Dom Pym quote pasted verbatim from clients/birchal/facts.json. No paraphrase.",
+    "Fund attribution ('Australia Venture Partners Fund and Tribe Global have also backed Birchal') is sourced from QUOTE-003 (Don McKenzie / Tribe Global) and QUOTE-004 (Shayne Gary / AVPF).",
+    "'Most important companies in Australian fintech' is verbatim opinion from Pym, attributed -- not a Birchal claim. Compliant.",
+    "Anti-preferential terms (s 738G): waitlist signup remains free and equal-access; quote does not imply differential investor terms."
+  ],
+  "_drc_assumptions_flagged": [
+    "Quote is from QUOTE-001 (verified verbatim 2026-05-07). If Pym's quote is updated by client, regenerate this ad.",
+    "'The funds spending their days inside Australian fintech think Birchal is the platform' is a paraphrase of QUOTE-002 (Carter: 'dominant platform in the category'). If preferred, swap for verbatim.",
+    "Audience is targeted via Birchal CRM list. Cold audience may not recognise Triple Bubble / AVPF / Tribe Global; B2 should not be served to first-time CSF audience."
+  ]
+}
