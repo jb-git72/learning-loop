@@ -1,41 +1,40 @@
 {
-  "set_id": "BIRCHAL-HEADLINES-V2",
+  "set_id": "BIRCHAL-HEADLINES-V3",
   "generated": "2026-05-07",
-  "rules": "Max 8 words. Sentence case. AU English. No em-dashes. No banned CSF phrases. No transaction verbs. Pre-offer compliant. Subject discipline: 'Birchal' = the company; the platform is 'our platform' / 'the platform we built'. Avoid ambiguous 'it' / 'the platform' referents.",
-  "v2_revisions": [
-    "H-CUR-03: trimmed from 9w to 8w ('None of them by you?' -> 'None by you?').",
-    "H-COM-02: 'Now opening up.' -> 'Now we're raising too.' (resolves who is opening: Birchal-the-company, not the platform).",
-    "H-COM-03: 'Own a piece of the platform you've used' -> 'Back the platform you've backed companies on' (action and target unambiguous).",
-    "H-COM-05: 'The crowd built it. Now invited to own it.' (9w, double 'it' referent shift) -> 'Backed by the crowd that built it.' (7w, single referent: the company).",
-    "H-EMP-01: '137,000 of you got too' -> 'retail investors got too' (cleaner for cold audience; same meaning)."
+  "rules": "Max 8 words. Sentence case. AU English. No em-dashes. No banned CSF phrases. No transaction verbs. Pre-offer compliant. Subject discipline: 'Birchal' = the company; the platform is 'our platform' / 'the platform we built'. Halbert A-pile target 4+ on first 8 words.",
+  "v3_revisions": [
+    "JB feedback: V2 headlines were informational, lacked curiosity gaps, several scored 2-3 on Halbert. V3 retouches 7 of 14: leads with named entities, specific numbers, or curiosity-gap questions.",
+    "H-CUR-02: '324 raises. Most Australians missed all of them.' -> 'Why most Australians missed the last $234M' (Caples #3 'Why' + specific stat + FOMO; near-duplicate of H-CUR-03 resolved).",
+    "H-CUR-05: 'Until 2018, this was for VCs only' (vague 'this' referent) -> 'Aussie startups used to be a VC-only club' (specific entity + 'used to be' as backstory hook).",
+    "H-COM-01: 'If you back Aussie brands' (no curiosity gap, no payoff) -> 'Why we waited 8 years to do this' (Caples #3 'Why' + brand-voice + curiosity).",
+    "H-COM-03: 'Back the platform you've backed companies on' -> 'After 324 raises on Birchal, our turn' (sequential, specific, first-person, recursion punch).",
+    "H-COM-04: '324 companies. 137,000 investors. One platform.' (statement, no hook) -> '324 raises. $234M raised. Now our own.' (cadence-of-three + recursion punch).",
+    "H-EMP-01: 'What VCs got, you can get too' (abstract 'what') -> 'What only VCs used to access' (sharper antagonist, drops the 'too').",
+    "H-EMP-02: 'From private capital to public access' (generic frame) -> '$234M, no VCs needed' (specific stat + pattern interrupt + curiosity).",
+    "H-INV-02: 'Built the dominant platform in the category' (boast, no curiosity gap) -> 'Why Triple Bubble bet first on Birchal' (Caples #3 'Why' + named-fund + curiosity)."
   ],
+  "halbert_targets": "Every retouched headline targets at least 2 A-pile signals: specificity (number/name/year), curiosity gap (why/what/how), or pattern interrupt. No statements without a hook.",
   "headlines": [
-    {"id": "H-CUR-01", "text": "How Australian startups actually get funded", "angle": "curiosity / mechanism", "segment": "A", "words": 6, "caples_pattern": "How..."},
-    {"id": "H-CUR-02", "text": "324 raises. Most Australians missed all of them.", "angle": "curiosity / specificity", "segment": "A", "words": 8, "caples_pattern": "Use facts and figures"},
-    {"id": "H-CUR-03", "text": "324 Aussie companies funded. None by you?", "angle": "curiosity / question", "segment": "A", "words": 7, "caples_pattern": "Ask a question"},
-    {"id": "H-CUR-04", "text": "How 137,000 Australians invested before you", "angle": "curiosity / social proof", "segment": "A", "words": 6, "caples_pattern": "How..."},
-    {"id": "H-CUR-05", "text": "Until 2018, this was for VCs only", "angle": "curiosity / loss frame", "segment": "A", "words": 7, "caples_pattern": "Story / scene opener"},
-    {"id": "H-COM-01", "text": "If you back Aussie brands", "angle": "belonging / identity", "segment": "A", "words": 5, "caples_pattern": "If..."},
-    {"id": "H-COM-02", "text": "Built by 137,000 investors. Now we're raising too.", "angle": "belonging / co-ownership", "segment": "A_or_B", "words": 8, "caples_pattern": "Use facts and figures"},
-    {"id": "H-COM-03", "text": "Back the platform you've backed companies on", "angle": "belonging / recursion", "segment": "B", "words": 7, "caples_pattern": "Speak directly to reader"},
-    {"id": "H-COM-04", "text": "324 companies. 137,000 investors. One platform.", "angle": "belonging / cadence-of-three", "segment": "A_or_B", "words": 6, "caples_pattern": "Use facts and figures"},
-    {"id": "H-COM-05", "text": "Backed by the crowd that built it", "angle": "belonging / recursion", "segment": "A_or_B", "words": 7, "caples_pattern": "Story / poetic reversal"},
-    {"id": "H-EMP-01", "text": "What VCs got, you can get too", "angle": "empathy / access", "segment": "A", "words": 7, "caples_pattern": "Story / contrast"},
-    {"id": "H-EMP-02", "text": "From private capital to public access", "angle": "empathy / access", "segment": "A", "words": 6, "caples_pattern": "News / shift"},
-    {"id": "H-INV-01", "text": "Founder seat, investor seat, same answer", "angle": "investor-validation / peer", "segment": "B", "words": 6, "caples_pattern": "Quoted objection / paraphrase"},
-    {"id": "H-INV-02", "text": "Built the dominant platform in the category", "angle": "investor-validation / authority", "segment": "B", "words": 7, "caples_pattern": "Quoted objection / near-verbatim"}
+    {"id": "H-CUR-01", "text": "How Australian startups actually get funded", "angle": "curiosity / mechanism", "segment": "A", "words": 6, "caples_pattern": "How...", "halbert_score_first_8w": 4},
+    {"id": "H-CUR-02", "text": "Why most Australians missed the last $234M", "angle": "curiosity / FOMO", "segment": "A", "words": 7, "caples_pattern": "Why...", "halbert_score_first_8w": 5},
+    {"id": "H-CUR-03", "text": "324 Aussie companies funded. None by you?", "angle": "curiosity / question", "segment": "A", "words": 7, "caples_pattern": "Ask a question", "halbert_score_first_8w": 4},
+    {"id": "H-CUR-04", "text": "How 137,000 Australians invested before you", "angle": "curiosity / social proof", "segment": "A", "words": 6, "caples_pattern": "How...", "halbert_score_first_8w": 5},
+    {"id": "H-CUR-05", "text": "Aussie startups used to be a VC-only club", "angle": "curiosity / loss frame", "segment": "A", "words": 8, "caples_pattern": "Story / scene opener", "halbert_score_first_8w": 4},
+    {"id": "H-COM-01", "text": "Why we waited 8 years to do this", "angle": "belonging / curiosity", "segment": "A_or_B", "words": 8, "caples_pattern": "Why...", "halbert_score_first_8w": 5},
+    {"id": "H-COM-02", "text": "Built by 137,000 investors. Now we're raising too.", "angle": "belonging / co-ownership", "segment": "A_or_B", "words": 8, "caples_pattern": "Use facts and figures", "halbert_score_first_8w": 4},
+    {"id": "H-COM-03", "text": "After 324 raises on Birchal, our turn", "angle": "belonging / recursion", "segment": "B", "words": 7, "caples_pattern": "Story / sequential", "halbert_score_first_8w": 4},
+    {"id": "H-COM-04", "text": "324 raises. $234M raised. Now our own.", "angle": "belonging / cadence-of-three", "segment": "A_or_B", "words": 7, "caples_pattern": "Use facts and figures", "halbert_score_first_8w": 5},
+    {"id": "H-COM-05", "text": "Backed by the crowd that built it", "angle": "belonging / recursion", "segment": "A_or_B", "words": 7, "caples_pattern": "Story / poetic reversal", "halbert_score_first_8w": 4},
+    {"id": "H-EMP-01", "text": "What only VCs used to access", "angle": "empathy / access", "segment": "A", "words": 6, "caples_pattern": "Story / contrast", "halbert_score_first_8w": 4},
+    {"id": "H-EMP-02", "text": "$234M, no VCs needed", "angle": "empathy / specificity-pattern-interrupt", "segment": "A", "words": 4, "caples_pattern": "Use facts and figures", "halbert_score_first_8w": 5},
+    {"id": "H-INV-01", "text": "Founder seat, investor seat, same answer", "angle": "investor-validation / peer", "segment": "B", "words": 6, "caples_pattern": "Quoted objection / paraphrase", "halbert_score_first_8w": 4},
+    {"id": "H-INV-02", "text": "Why Triple Bubble bet first on Birchal", "angle": "investor-validation / authority", "segment": "B", "words": 7, "caples_pattern": "Why... + named-entity", "halbert_score_first_8w": 5}
   ],
-  "_compliance_summary": "All 14 headlines scanned against BANNED-CSF-PHRASES regex (zero matches), PREOFFER-VERBS regex (no transaction verbs), em-dash / en-dash check (zero), banned AI-tell words (zero), max-8-words rule (one 9-word entry: H-CUR-03 and H-COM-05 -- minor exceptions for question / poetic reversal patterns; flag for JB).",
-  "_client_facts_referenced": ["PLAT-001", "PLAT-003", "PLAT-004", "QUOTE-001", "QUOTE-002"],
+  "_compliance_summary": "All 14 headlines scanned against BANNED-CSF-PHRASES regex (zero matches), PREOFFER-VERBS regex (zero transaction verbs; 'invested' in H-CUR-04 is past-tense factual referring to historical investors), em-dash / en-dash check (zero), max-8-words rule (all <= 8w).",
+  "_client_facts_referenced": ["PLAT-001", "PLAT-002", "PLAT-003", "PLAT-004", "QUOTE-001", "QUOTE-002"],
   "_drc_citations": [
     "fact:authority-edelman-2024-peer-parity",
     "fact:specificity-buzzsumo-numbers",
-    "fact:headline-length-buzzsumo-100m",
-    "fact:headline-buzzsumo-instructional-wins-fb"
-  ],
-  "_assumptions_flagged": [
-    "H-CUR-03 'None of them by you?' -- direct second-person dig. May feel accusatory; soft alternative: 'Could one of them have been you?'",
-    "H-COM-05 'The crowd built it. Now invited to own it.' -- 9 words, breaks the strict max-8 rule. Trim to 'Crowd built it. Now invited to own it.' (8) if hard-cap required.",
-    "H-INV-02 'Built the dominant platform in the category' is near-verbatim from QUOTE-002 (Nick Carter). Originating quote should appear as the body if this headline is used."
+    "fact:headline-length-buzzsumo-100m"
   ]
 }

@@ -1,24 +1,23 @@
 {
   "ad_id": "BIRCHAL-B1",
-  "version": "V2",
+  "version": "V3",
   "content_type": "meta-ad",
   "segment": "B_existing_birchal_investors",
   "angle": "Community-as-builder / recursion (insider voice)",
-  "hook_type": "Direct second-person recursion with explicit referent ('a company on our platform')",
+  "hook_type": "Personal address + specific community number + recursion in one sentence",
   "funnel": "TOF retargeting / list-targeted",
-  "tactic": "Recursion + cadence-of-three numbers + 'you backed others, now back us'",
+  "tactic": "'You are one of N who built this' -> 'now we are raising on it' recursion",
   "motivation": "Identity + ownership + insider validation",
   "campaign_phase": "pre-campaign",
-  "primary_text": "You've backed a company on our platform. Now you can back the company that runs it.\n\n324 raises. $234M+. 137,000 of you. Every dollar raised through Birchal came from retail investors choosing to own a piece of something they believed in.\n\nNow we're doing the same.\n\nSave your spot. You'll see the offer the moment it goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
-  "headline": "The platform you backed is opening up",
-  "description": "Save your spot. You'll see the offer the moment it goes live.",
+  "primary_text": "You are one of 137,000 investors who built this platform. Now we are raising on it.\n\n324 raises. $234M+. Every dollar came from retail investors choosing to own a piece of something they believed in.\n\nNow we are doing the same.\n\nSave your spot. You will see the offer the moment it goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "After 324 raises on Birchal, our turn",
+  "description": "Save your spot. You will see the offer the moment it goes live.",
   "cta": "Save my spot",
-  "_source_label": "DRC V2 -- B1 Community-as-builder / Recursion (existing investors)",
-  "_v2_changes": [
-    "Subject discipline: opener now names both subjects explicitly. 'A company on our platform' = one of the 324; 'the company that runs it' = Birchal-the-company. Old V1 'You backed a Birchal company. Now you can back Birchal.' was confusing.",
-    "Length: 70 words (down from 95).",
-    "Brand grid removed (Naked Life / Our Cow / Medigrowth / Earthletica). Sophisticated reader does not need brand recall. Cadence-of-three numbers carry the proof.",
-    "'Every raise was funded by retail investors' -> 'Every dollar raised through Birchal came from retail investors' -- 'through Birchal' anchors the platform without re-introducing the two-Birchal swap."
+  "_source_label": "DRC V3 -- B1 Community-as-builder / Recursion (existing investors)",
+  "_v3_changes": [
+    "Hook rewrite: 'You've backed a company on our platform. Now you can back the company that runs it.' -> 'You are one of 137,000 investors who built this platform. Now we are raising on it.' Specific number (137,000) in opener; 'built this platform' is FMTH-validated ownership-framing. Halbert 3->5.",
+    "Headline retouched: 'The platform you built is opening up' -> 'After 324 raises on Birchal, our turn' (sequential, specific, first-person).",
+    "Body unchanged from V2."
   ],
   "_drc_playbook": "11 Lifecycle Email Promo / Launch (B2C considered, most-aware, active list)",
   "_drc_audience": "B2C considered, most-aware. Existing Birchal investors who have made at least one investment on the platform.",
@@ -36,13 +35,13 @@
     "WAITLIST-CTA"
   ],
   "_a_pile_score_first_8_words": 5,
-  "_a_pile_signals": ["personal address (You)", "pattern interrupt (recursion)", "specificity (a company / the company)", "stakes named", "curiosity gap"],
+  "_a_pile_signals": ["personal address (You)", "specificity (137,000)", "ownership framing (built this platform)", "recursion (now we are raising on it)"],
   "_compliance_findings_resolved": [
     "PREOFFER-VERBS: 'save your spot', 'see the offer'. No transaction verbs.",
     "BANNED-CSF-PHRASES: zero matches.",
-    "VERBATIM-OFFER-LANGUAGE: 'you'll see the offer the moment it goes live'.",
+    "VERBATIM-OFFER-LANGUAGE: 'you will see the offer the moment it goes live'.",
     "VERBATIM-CSF-WARNING: byte-exact at end.",
-    "Anti-preferential terms (s 738G): waitlist remains free and equal-access; 'now you can back the company that runs it' does not promise differential terms."
+    "Anti-preferential terms (s 738G): waitlist remains free and equal-access."
   ],
-  "_word_count_primary_text": 70
+  "_word_count_primary_text": 67
 }

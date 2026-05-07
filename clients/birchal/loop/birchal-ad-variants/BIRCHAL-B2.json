@@ -1,26 +1,25 @@
 {
   "ad_id": "BIRCHAL-B2",
-  "version": "V2",
+  "version": "V3",
   "content_type": "meta-ad",
   "segment": "B_existing_birchal_investors",
   "angle": "Investor-validation / peer-decision",
-  "hook_type": "Verbatim investor quote opener (peer signal at parity with experts, fact:authority-edelman-2024-peer-parity)",
+  "hook_type": "News-pattern setup before verbatim quote (Caples #20 'Announcing' + named-fund specificity)",
   "funnel": "TOF retargeting / list-targeted",
-  "tactic": "Peer-investor quote -> fund stack -> first-person recursion",
+  "tactic": "Specific news hook -> verbatim peer quote -> fund stack -> recursion",
   "motivation": "Authority + peer validation",
   "campaign_phase": "pre-campaign",
-  "primary_text": "\"I've looked at Birchal from the founder's seat and the investor's seat, and from both angles the answer is the same. Birchal is one of the most important companies in Australian fintech.\"\n\nDom Pym, Triple Bubble.\n\nTriple Bubble's first investment from their new fund. Australia Venture Partners Fund and Tribe Global have followed.\n\nNow we're opening our own raise.\n\nSave your spot. Read the offer when it opens.\n\n*Always consider the general CSF risk warning and offer document before investing.",
-  "headline": "Founder seat, investor seat, same answer",
-  "description": "Why Triple Bubble, AVPF, and Tribe Global are backing us.",
+  "primary_text": "Triple Bubble's first investment from their new fintech fund: Birchal.\n\n\"I've looked at Birchal from the founder's seat and the investor's seat, and from both angles the answer is the same. Birchal is one of the most important companies in Australian fintech.\"\n\nDom Pym, Triple Bubble.\n\nAustralia Venture Partners Fund and Tribe Global have followed.\n\nNow we are opening our own raise.\n\nSave your spot. Read the offer when it opens.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "Why Triple Bubble bet first on Birchal",
+  "description": "The first investment from their new fintech fund.",
   "cta": "Save my spot",
-  "_source_label": "DRC V2 -- B2 Investor-validation / Peer-decision (existing investors)",
-  "_v2_changes": [
-    "Subject discipline: Pym quote treats Birchal as a company (correct). Then 'we're opening our own raise' = same Birchal. No platform/company swap.",
-    "Length: 79 words (down from 100). Most of the cut came from removing 'The funds spending their days inside Australian fintech think Birchal is the platform' (paraphrase of QUOTE-002 that re-introduced the platform/company tension) and the redundant cadence-of-three platform stats line.",
-    "Description: 'are backing Birchal' -> 'are backing us' to stay in first-person voice.",
-    "'Co-founder Up. Triple Bubble.' attribution simplified to 'Triple Bubble' alone -- Pym's main affiliation in this context."
+  "_source_label": "DRC V3 -- B2 Investor-validation / Peer-decision (existing investors)",
+  "_v3_changes": [
+    "Hook setup: added news-pattern lead-in 'Triple Bubble's first investment from their new fintech fund: Birchal.' BEFORE the Pym verbatim. Reader gets specific (Triple Bubble, new fund) + curiosity (why Birchal first?) before the quote lands. Halbert 4->5.",
+    "Headline retouched: 'Founder seat, investor seat, same answer' -> 'Why Triple Bubble bet first on Birchal' (Caples #3 'Why' pattern, named fund + curiosity).",
+    "H-INV-01 'Founder seat, investor seat, same answer' kept in headlines tab as alternate."
   ],
-  "_drc_playbook": "11 Lifecycle Email Promo / Launch (B2C considered, most-aware, active)",
+  "_drc_playbook": "11 Lifecycle Email Promo / Launch",
   "_drc_audience": "B2C considered, most-aware. Existing Birchal investors who understand CSF mechanics; peer signal weighs more than platform stats.",
   "_drc_citations": [
     "fact:authority-edelman-2024-peer-parity",
@@ -35,15 +34,15 @@
     "VERBATIM-CSF-WARNING",
     "WAITLIST-CTA"
   ],
-  "_a_pile_score_first_8_words": 4,
-  "_a_pile_signals": ["quoted objection / thought (Dom Pym verbatim)", "personal voice ('I')", "specificity (Birchal, founder's seat, investor's seat)", "curiosity gap (what's the answer?)"],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_signals": ["specificity (Triple Bubble, new fintech fund, Birchal)", "curiosity gap (why first?)", "news pattern", "named-fund authority"],
   "_compliance_findings_resolved": [
-    "PREOFFER-VERBS: 'save your spot', 'read'. No transaction verbs.",
+    "PREOFFER-VERBS: 'save your spot', 'read'.",
     "BANNED-CSF-PHRASES: zero matches.",
     "VERBATIM-OFFER-LANGUAGE: 'Read the offer when it opens'.",
     "VERBATIM-CSF-WARNING: byte-exact at end.",
-    "QUOTE-001: Dom Pym pasted verbatim from facts.json.",
-    "Fund attribution from QUOTE-003 (Don McKenzie / Tribe Global) and QUOTE-004 (Shayne Gary / AVPF). Verbatim or near-verbatim phrasing."
+    "QUOTE-001: Dom Pym pasted verbatim.",
+    "Fund attribution from QUOTE-003 / QUOTE-004."
   ],
-  "_word_count_primary_text": 79
+  "_word_count_primary_text": 84
 }
