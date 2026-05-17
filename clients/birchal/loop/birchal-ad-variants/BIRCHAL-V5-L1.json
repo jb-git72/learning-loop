@@ -1,0 +1,58 @@
+{
+  "ad_id": "BIRCHAL-V5-L1",
+  "version": "V5",
+  "content_type": "meta-ad",
+  "phase": "offer-live",
+  "status": "draft-phase-gated",
+  "compliance_note": "ships only after the offer document is live on Birchal; requires RG 234 balance-test re-review against the live disclosure document; the waitlist-scoped validator will flag transaction verbs ('invest') by design and that is EXPECTED for this draft. Do not ship until the offer document is public and copy is matched line-by-line to it. Any minimum is the {{OFFER_MIN_TBC}} placeholder until the offer document is public (facts.json OFFER-CONTEXT) and must not be hardcoded.",
+  "segment": "A_first_time_csf",
+  "angle": "Raise-specific (Offer-Live: the offer is live on Birchal, read it and decide)",
+  "hook_type": "Cadence numbers + 'our own offer is now live' (RG 234 balance: benefit paired with risk-reversal)",
+  "funnel": "BOF (offer live)",
+  "tactic": "Proof cadence -> offer-is-live anchor -> risk/benefit equal-prominence -> read-and-decide CTA",
+  "motivation": "Specificity + offer-is-real urgency, balanced with risk-reversal",
+  "campaign_phase": "offer-live",
+  "primary_text": "324 raises, $234M+, and our own offer is now live on Birchal.\n\nFor eight years our platform helped Australians own a piece of companies like Naked Life and Our Cow. 137,000 of them did. Now you can read our offer and decide for yourself.\n\nEvery investment carries risk and the value can fall as well as rise. The offer document sets out the risks, the terms and the minimum.\n\nRead the offer document and decide for yourself. The offer is live on Birchal now.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "Our offer is live. Read it and decide.",
+  "description": "The offer is live on Birchal. Read the offer document and decide for yourself.",
+  "cta": "Read the offer",
+  "_source_label": "DRC V5 -- L1 Raise-specific (Offer-Live, first-timers, phase-gated)",
+  "_iterates": "BIRCHAL-V5-W1 raise-clarity angle, re-framed for the RG 234 offer-live regime.",
+  "_v5_rationale": [
+    "RG 234 balance test: the benefit ('own a piece', the offer is live) is paired with equal-prominence risk language ('Every investment carries risk and the value can fall as well as rise. The offer document sets out the risks, the terms and the minimum') and the risk-reversal CTA 'Read the offer document and decide for yourself'. No return/guarantee/'guaranteed' language.",
+    "No hardcoded share price/parcel minimum. The minimum is referenced only as 'the minimum' set out in the offer document; if a token is needed it is {{OFFER_MIN_TBC}} (flagged). facts.json OFFER-CONTEXT: raise amount/valuation/minimum are not yet public.",
+    "Waitlist-scoped validator WILL flag 'invest'/'investment' transaction verbs here BY DESIGN. This is EXPECTED and documented; the copy is written for the offer-live regime, not the waitlist regime. Anchored to 'The offer is live on Birchal'.",
+    "Hook Halbert 5/5 in --primary-text mode (cadence + offer-is-live specificity)."
+  ],
+  "_drc_playbook": "11 Lifecycle Email Promo / Launch (offer-live variant, RG 234 balanced)",
+  "_drc_audience": "B2C considered, solution-aware. First-time CSF investors, offer-live phase.",
+  "_drc_citations": [
+    "fact:specificity-buzzsumo-numbers",
+    "fact:narrative-transportation-green-brock"
+  ],
+  "_client_facts_used": [
+    "PLAT-001",
+    "PLAT-002",
+    "PLAT-003",
+    "PLAT-004",
+    "RAISE-001",
+    "RAISE-002",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING"
+  ],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_score_primary_text_first_sentence": 5,
+  "_a_pile_signals": ["specificity (324 + $234M in first 8 words)", "multiple numbers (cadence)", "named entity (client fact)", "news/offer-live opener"],
+  "_offer_min_placeholder": "{{OFFER_MIN_TBC}} -- not used as a literal in copy; the minimum is referenced only as 'the minimum set out in the offer document'. Do NOT hardcode any share price/parcel value ($0.50/$250/etc); those are in the not-yet-public offer document (OFFER-CONTEXT).",
+  "_compliance_findings_resolved": [
+    "RG 234 balance test: benefit and risk at equal prominence; explicit 'Every investment carries risk and the value can fall as well as rise'; risk-reversal CTA 'Read the offer document and decide for yourself'. No return/guarantee/'guaranteed' language.",
+    "EXPECTED PHASE-GATED FLAG: waitlist-scoped validator will hard-block 'invest'/'investment' BY DESIGN. This is expected for an offer-live draft and is NOT a defect; re-clear under RG 234 against the live disclosure document before shipping.",
+    "No hardcoded minimum / share price / parcel value. Minimum referenced only via the offer document; placeholder token {{OFFER_MIN_TBC}} flagged, not rendered in copy.",
+    "VERBATIM-OFFER-LANGUAGE: no 'we will send you the offer'; the offer is live on Birchal and the reader reads it there.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once (retained for the offer-live phase as the short-form ad warning; the offer page itself carries the longer Corps Act s 738ZG warning, which is out of scope for this ad and must come from Birchal compliance).",
+    "BRAND-EXCLUDED: only verified-good raises (Naked Life RAISE-001, Our Cow RAISE-002).",
+    "Subject discipline: 'Birchal' appears twice (offer-is-live anchor); first-person we/our elsewhere; no platform-vs-company swap.",
+    "Number traceability: 324=PLAT-001, $234M+=PLAT-002, 137,000=PLAT-003, eight years=PLAT-004, brands=RAISE-001/002. No market-share / #1 / first / valuation / $1B claim."
+  ],
+  "_word_count_primary_text": 95
+}

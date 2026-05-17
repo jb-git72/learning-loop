@@ -1,0 +1,56 @@
+{
+  "ad_id": "BIRCHAL-V5-L5",
+  "version": "V5",
+  "content_type": "meta-ad",
+  "phase": "offer-live",
+  "status": "draft-phase-gated",
+  "compliance_note": "ships only after the offer document is live on Birchal; requires RG 234 balance-test re-review against the live disclosure document; the waitlist-scoped validator will flag transaction verbs ('invest') by design and that is EXPECTED for this draft. Do not ship until the offer document is public and copy is matched line-by-line to it. Any minimum is the {{OFFER_MIN_TBC}} placeholder until the offer document is public (facts.json OFFER-CONTEXT).",
+  "segment": "A_first_time_csf",
+  "angle": "Democratisation / access (Offer-Live, Aubrey Blanche category validation)",
+  "hook_type": "Cadence + 'none from VCs' punch into a third-party validation excerpt (RG 234 balanced)",
+  "funnel": "BOF (offer live)",
+  "tactic": "Numbers + no-gatekeeper punch -> Aubrey Blanche category quote -> offer-is-live anchor -> risk/benefit balance -> read-and-decide",
+  "motivation": "Access + democratisation + offer-is-real, balanced with risk-reversal",
+  "campaign_phase": "offer-live",
+  "primary_text": "324 raises, $234M+, none from VCs.\n\n\"Crowdfunding opens up the ability to invest in excellent businesses to a significantly broader set of investors.\" Aubrey Blanche.\n\nThat is what 137,000 Australians did on our platform. Now our own offer is live on Birchal.\n\nEvery investment carries risk and the value can fall as well as rise. The offer document sets out the risks, the terms and the minimum.\n\nRead the offer document and decide for yourself.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "324 raises, $234M+, none from VCs",
+  "description": "The offer is live on Birchal. Read the offer document and decide for yourself.",
+  "cta": "Read the offer",
+  "_source_label": "DRC V5 -- L5 Democratisation / Access (Offer-Live, first-timers, phase-gated)",
+  "_iterates": "BIRCHAL-V5-W5 democratisation angle, re-framed for the RG 234 offer-live regime.",
+  "_v5_rationale": [
+    "Uses QUOTE-006 ad_safe excerpt verbatim, attributed 'Aubrey Blanche' (no invented title). Third-party CSF-category validation, not a Birchal claim; external voice before the Birchal proof.",
+    "RG 234 balance: the access/democratisation benefit is paired with the equal-prominence risk sentence and the risk-reversal CTA. No return/guarantee language.",
+    "'invest in excellent businesses' is inside Blanche's attributed quote (her word, exempt). The reader's instruction is 'Read the offer document and decide for yourself', not a directive to invest.",
+    "No hardcoded minimum/share price; {{OFFER_MIN_TBC}} placeholder flagged. Waitlist-scoped validator WILL flag 'invest'/'investment' BY DESIGN. Expected, phase-gated. Hook Halbert 5/5 in --primary-text mode."
+  ],
+  "_drc_playbook": "11 Lifecycle Email Promo / Launch (offer-live variant, RG 234 balanced)",
+  "_drc_audience": "B2C considered, solution-aware. First-time CSF investors, offer-live phase.",
+  "_drc_citations": [
+    "fact:authority-edelman-2024-peer-parity",
+    "fact:specificity-buzzsumo-numbers"
+  ],
+  "_client_facts_used": [
+    "PLAT-001",
+    "PLAT-002",
+    "PLAT-003",
+    "QUOTE-006",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING"
+  ],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_score_primary_text_first_sentence": 5,
+  "_a_pile_signals": ["specificity (324 + $234M in first 8 words)", "multiple numbers (cadence)", "named entity (client fact)", "curiosity-gap punch (none from VCs)"],
+  "_offer_min_placeholder": "{{OFFER_MIN_TBC}} -- not rendered in copy; minimum referenced only via the offer document. Do NOT hardcode $0.50/$250/etc (OFFER-CONTEXT, not public).",
+  "_compliance_findings_resolved": [
+    "RG 234 balance test: benefit and risk equal prominence; 'Every investment carries risk and the value can fall as well as rise'; risk-reversal CTA. No return/guarantee/'guaranteed' language.",
+    "EXPECTED PHASE-GATED FLAG: waitlist-scoped validator will hard-block 'invest'/'investment' BY DESIGN. Expected for an offer-live draft; re-clear under RG 234 against the live disclosure document.",
+    "No hardcoded minimum / share price / parcel value; {{OFFER_MIN_TBC}} placeholder flagged, not rendered.",
+    "QUOTE-006: Aubrey Blanche ad_safe excerpt verbatim (contiguous sub-span), attributed 'Aubrey Blanche', no invented title. CSF-category validation, not merged with any Birchal stat. 'invest in excellent businesses' is inside her attributed verbatim.",
+    "VERBATIM-OFFER-LANGUAGE: no 'we will send you the offer'; offer is live on Birchal.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "Subject discipline: 'Birchal' appears once (offer-is-live anchor); 'our platform' / first-person we/our elsewhere; one referent.",
+    "Number traceability: 324=PLAT-001, $234M+=PLAT-002, 137,000=PLAT-003. No market-share / #1 / first claim."
+  ],
+  "_word_count_primary_text": 86
+}

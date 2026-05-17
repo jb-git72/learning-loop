@@ -1,0 +1,54 @@
+{
+  "ad_id": "BIRCHAL-V4-A3",
+  "version": "V4",
+  "content_type": "meta-ad",
+  "segment": "A_first_time_csf",
+  "angle": "Empathy + access + recursion",
+  "hook_type": "Stakes-named loss-frame + community-changed punch",
+  "funnel": "TOF",
+  "tactic": "Loss frame -> '137,000 changed that' punch -> mechanism reveal -> recursion",
+  "motivation": "Empathy + access",
+  "campaign_phase": "pre-campaign",
+  "primary_text": "Before 2018, only the wealthy could back an Aussie startup. 137,000 changed that.\n\nThe law opened up, Crowd-Sourced Funding arrived, and we built the rails. 324 raises followed: Naked Life, Our Cow, Earthletica, Aquafab. Backing an early Aussie company stopped being VC-only.\n\nNow we are opening our own raise on the platform we built.\n\nSave your spot. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "What only VCs used to access",
+  "description": "324 raises. $234M+. 137,000 retail investors. Save your spot.",
+  "cta": "Save my spot",
+  "_source_label": "DRC V4 -- A3 Empathy + Access + Recursion (first-timers)",
+  "_iterates": "BIRCHAL-A3 (V3)",
+  "_v4_changes": [
+    "Hook tightened: 'Before 2018, only the wealthy could invest in an Australian startup. Now 137,000 Australians have.' -> 'Before 2018, only the wealthy could back an Aussie startup. 137,000 changed that.' Same loss-frame DNA and Halbert 5/5, but the punch '137,000 changed that' is a sharper agency frame than 'Now 137,000 Australians have' (the crowd did the changing, not time). 'back' replaces 'invest' so no transaction verb sits near the opener at all.",
+    "Para 2 compressed into a tricolon ('The law opened up, Crowd-Sourced Funding arrived, and we built the rails.') replacing V3's three separate short sentences. 'stopped being VC-only' replaces 'stopped being a VC-only thing' to land at 79 words (V3 A3 was 73; V4 keeps the same beats inside the band while sharpening cadence).",
+    "Brand grid kept identical to V3 A3 (Naked Life, Our Cow, Earthletica, Aquafab) for recency proof."
+  ],
+  "_drc_playbook": "03 Aspirational Identity Sell",
+  "_drc_audience": "B2C considered, solution-aware. First-time CSF investors who feel locked out of startup equity.",
+  "_drc_citations": [
+    "fact:authority-edelman-2024-peer-parity",
+    "fact:specificity-buzzsumo-numbers",
+    "fact:narrative-transportation-green-brock"
+  ],
+  "_client_facts_used": [
+    "PLAT-001",
+    "PLAT-002",
+    "PLAT-003",
+    "PLAT-004",
+    "RAISE-001",
+    "RAISE-002",
+    "RAISE-004",
+    "RAISE-005",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING",
+    "WAITLIST-CTA"
+  ],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_signals": ["specificity (2018 + 137,000)", "stakes named (only the wealthy)", "curiosity-gap construct (Before YYYY / only X could)", "named entity (client fact)"],
+  "_compliance_findings_resolved": [
+    "PREOFFER-VERBS: 'save your spot', 'we will tell you the moment'. No transaction verbs as a CTA; 'back' is the action verb, no 'now/today/here' attached.",
+    "BANNED-CSF-PHRASES: zero matches.",
+    "VERBATIM-OFFER-LANGUAGE: 'we will tell you the moment the offer goes live'. No 'we will send'.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "BRAND-EXCLUDED: only verified-good raises (Naked Life, Our Cow, Earthletica RAISE-004, Aquafab RAISE-005).",
+    "Subject discipline: zero literal 'Birchal' in body; 'the platform we built' + first-person we/our throughout, no referent swap."
+  ],
+  "_word_count_primary_text": 79
+}

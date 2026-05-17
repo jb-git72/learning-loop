@@ -1,0 +1,56 @@
+{
+  "ad_id": "BIRCHAL-V5-E6",
+  "version": "V5",
+  "content_type": "meta-ad",
+  "phase": "eoi",
+  "status": "draft-phase-gated",
+  "compliance_note": "ships only when the EOI phase is active; re-clear against live conditions. Non-binding expression of interest only. No payment, no commitment, no allocation, no priority, no minimum. Verbatim CSF warning retained. Re-run the full compliance battery against live offer conditions before this phase goes live.",
+  "segment": "A_first_time_csf",
+  "angle": "Recursion punch (EOI: eight years for other founders, now ours, indicate interest)",
+  "hook_type": "Cadence numbers + 'for other founders' recursion gap (interest-only frame)",
+  "funnel": "MOF (formal EOI)",
+  "tactic": "Proof cadence with recursion bound -> name the raise -> non-binding interest ask",
+  "motivation": "Curiosity + recursion + this-is-a-real-raise clarity + low-friction signal",
+  "campaign_phase": "formal-eoi",
+  "primary_text": "324 raises and $234M+ for other founders since 2018. Now indicate your interest in ours.\n\nFor eight years our platform helped 137,000 Australians own a piece of companies like Naked Life and Medigrowth. We stayed private the whole time. Now we are opening our own Crowd-Sourced Funding raise.\n\nTelling us is non-binding. No payment, no commitment, and you decide nothing until you read the offer document.\n\nIndicate your interest. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "Eight years for others. Now our own raise.",
+  "description": "Non-binding. No payment, no commitment. Indicate your interest.",
+  "cta": "Register my interest",
+  "_source_label": "DRC V5 -- E6 Recursion punch (EOI, first-timers, phase-gated)",
+  "_iterates": "BIRCHAL-V5-W8 recursion angle, re-framed for the EOI phase regime.",
+  "_v5_rationale": [
+    "Recursion-as-community spine in interest-only form. 'for other founders ... Now indicate your interest in ours' is the explicit recursion that answers the client's 'doesn't read like a raise' note while staying non-binding.",
+    "Hook rewrite from the original scratch draft (which opened '8 years.' and scored Halbert 3): now '324 raises and $234M+ for other founders since 2018. Now indicate your interest in ours.' Halbert 5/5 in --primary-text mode (cadence + recursion gap).",
+    "'We stayed private the whole time' confessional beat retained. EOI language: 'Telling us is non-binding. No payment, no commitment'. No allocation/priority/minimum/preferential."
+  ],
+  "_drc_playbook": "03 Aspirational Identity Sell (EOI variant)",
+  "_drc_audience": "B2C considered, solution-aware. First-time CSF investors, EOI phase.",
+  "_drc_citations": [
+    "fact:specificity-buzzsumo-numbers",
+    "fact:narrative-transportation-green-brock"
+  ],
+  "_client_facts_used": [
+    "PLAT-001",
+    "PLAT-002",
+    "PLAT-003",
+    "PLAT-004",
+    "RAISE-001",
+    "RAISE-003",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING"
+  ],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_score_primary_text_first_sentence": 5,
+  "_a_pile_signals": ["specificity (324 + $234M in first 8 words)", "multiple numbers (cadence)", "named entity (client fact)", "recursion gap (now indicate your interest in ours)"],
+  "_compliance_findings_resolved": [
+    "EOI regime: 'Telling us is non-binding', 'No payment, no commitment', 'indicate your interest'. Allowed EOI language only.",
+    "STILL HARD-BLOCK clear: no 'first in line', no priority access/allocation, no 'secure/reserve your allocation/place/spot in the raise', no 'shares allocated to early registrants', no minimum, no 'same terms as institutional/insiders', no 'be first in the queue'. Zero matches.",
+    "BANNED-CSF-PHRASES (waitlist set): zero matches. No 'invest/buy/subscribe now'.",
+    "VERBATIM-OFFER-LANGUAGE: 'we will tell you the moment the offer goes live'. No 'we will send'.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "BRAND-EXCLUDED: only verified-good raises (Naked Life RAISE-001, Medigrowth RAISE-003).",
+    "Subject discipline: 'Birchal' appears zero times in body; 'our platform' / first-person we/our; recursion referents explicit (other founders vs us).",
+    "Number traceability: 324=PLAT-001, $234M+=PLAT-002, 2018/eight years=PLAT-004, 137,000=PLAT-003, brands=RAISE-001/003. No market-share / #1 / first claim."
+  ],
+  "_word_count_primary_text": 88
+}

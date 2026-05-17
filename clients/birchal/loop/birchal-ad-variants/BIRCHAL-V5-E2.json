@@ -1,0 +1,53 @@
+{
+  "ad_id": "BIRCHAL-V5-E2",
+  "version": "V5",
+  "content_type": "meta-ad",
+  "phase": "eoi",
+  "status": "draft-phase-gated",
+  "compliance_note": "ships only when the EOI phase is active; re-clear against live conditions. Non-binding expression of interest only. No payment, no commitment, no allocation, no priority, no minimum. Verbatim CSF warning retained. Re-run the full compliance battery against live offer conditions before this phase goes live.",
+  "segment": "B_existing_birchal_investors",
+  "angle": "Recursion / community (EOI: you built this, tell us if our raise interests you)",
+  "hook_type": "Personal address + cadence numbers + recursion (interest-only frame)",
+  "funnel": "MOF (formal EOI)",
+  "tactic": "'You did this' proof -> the platform is raising -> non-binding interest ask",
+  "motivation": "Identity + recursion + low-friction interest signal",
+  "campaign_phase": "formal-eoi",
+  "primary_text": "137,000 of you backed 324 companies on our platform. Now we want to know if our own raise interests you.\n\nEvery one of those raises, $234M+ in total, came from people choosing to own a piece of something they believed in, not from VCs. You built that.\n\nTelling us is a non-binding expression of interest. No payment, no commitment, and you decide nothing until you read the offer document.\n\nIndicate your interest. You will see the offer the moment it goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "137,000 of you built this. Are you in?",
+  "description": "Non-binding. No payment, no commitment. Indicate your interest.",
+  "cta": "Register my interest",
+  "_source_label": "DRC V5 -- E2 Recursion / Community (EOI, existing investors, phase-gated)",
+  "_iterates": "BIRCHAL-V5-W3 recursion angle, re-framed for the EOI phase regime.",
+  "_v5_rationale": [
+    "Client's EOI examples used 'secure your spot in the Birchal raise' / 'priority'. This rewrites recursion to interest-only with both referents explicit (you = the investor; we/the platform = the company raising).",
+    "Hook Halbert 5/5 in --primary-text mode (personal address + 137,000 + 324 cadence + recursion). EOI regime does not force a softer hook here.",
+    "'choosing to own a piece' retains the load-bearing ownership phrase (FMTH evidence). No allocation/priority/minimum/preferential language."
+  ],
+  "_drc_playbook": "11 Lifecycle Email Promo / Launch (EOI variant)",
+  "_drc_audience": "B2C considered, most-aware. Existing Birchal investors, EOI phase.",
+  "_drc_citations": [
+    "fact:authority-edelman-2024-peer-parity",
+    "fact:specificity-buzzsumo-numbers"
+  ],
+  "_client_facts_used": [
+    "PLAT-001",
+    "PLAT-002",
+    "PLAT-003",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING"
+  ],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_score_primary_text_first_sentence": 5,
+  "_a_pile_signals": ["personal address (you)", "specificity (137,000 + 324)", "multiple numbers (cadence)", "recursion (now we want to know if our own raise interests you)"],
+  "_compliance_findings_resolved": [
+    "EOI regime: 'non-binding expression of interest', 'no payment, no commitment', 'indicate your interest'. Allowed EOI language only.",
+    "STILL HARD-BLOCK clear: no 'first in line', no priority access/allocation, no 'secure/reserve your allocation/place/spot in the raise', no 'shares allocated to early registrants', no minimum, no 'same terms as institutional/insiders', no 'be first in the queue'. Zero matches.",
+    "BANNED-CSF-PHRASES (waitlist set): zero matches. No 'invest/buy/subscribe now'.",
+    "VERBATIM-OFFER-LANGUAGE: 'you will see the offer the moment it goes live'. No 'we will send'.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "Anti-preferential terms (s 738G): no preferential framing vs the public offer; EOI is free, non-binding, equal-access.",
+    "Subject discipline: 'Birchal' appears zero times in body; 'our platform' / first-person we/our; recursion referents explicit.",
+    "Number traceability: 137,000=PLAT-003, 324=PLAT-001, $234M+=PLAT-002."
+  ],
+  "_word_count_primary_text": 88
+}

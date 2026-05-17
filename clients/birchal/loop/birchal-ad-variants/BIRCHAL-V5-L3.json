@@ -1,0 +1,55 @@
+{
+  "ad_id": "BIRCHAL-V5-L3",
+  "version": "V5",
+  "content_type": "meta-ad",
+  "phase": "offer-live",
+  "status": "draft-phase-gated",
+  "compliance_note": "ships only after the offer document is live on Birchal; requires RG 234 balance-test re-review against the live disclosure document; the waitlist-scoped validator will flag transaction verbs ('invest') by design and that is EXPECTED for this draft. Do not ship until the offer document is public and copy is matched line-by-line to it. Any minimum is the {{OFFER_MIN_TBC}} placeholder until the offer document is public (facts.json OFFER-CONTEXT).",
+  "segment": "B_existing_birchal_investors",
+  "angle": "Recursion / community (Offer-Live: you built this, the offer is live)",
+  "hook_type": "Personal address + cadence numbers + 'our offer is live' (RG 234 balanced)",
+  "funnel": "BOF (offer live)",
+  "tactic": "'You did this' proof -> offer-is-live anchor -> risk/benefit balance -> read-and-decide",
+  "motivation": "Identity + recursion + offer-is-real, balanced with risk-reversal",
+  "campaign_phase": "offer-live",
+  "primary_text": "137,000 of you backed 324 companies on our platform. Now our own offer is live on Birchal.\n\nEvery one of those raises, $234M+ in total, came from people choosing to own a piece of something they believed in. You built that. Now you can read our offer and decide for yourself.\n\nEvery investment carries risk and the value can fall as well as rise. The offer document sets out the risks, the terms and the minimum.\n\nRead the offer document and decide for yourself.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "You built this. The offer is live.",
+  "description": "The offer is live on Birchal. Read the offer document and decide for yourself.",
+  "cta": "Read the offer",
+  "_source_label": "DRC V5 -- L3 Recursion / Community (Offer-Live, existing investors, phase-gated)",
+  "_iterates": "BIRCHAL-V5-W3 recursion angle, re-framed for the RG 234 offer-live regime.",
+  "_v5_rationale": [
+    "Recursion-as-community spine, offer-live form. Both referents explicit (you = the investor; we/the platform = the company whose offer is live).",
+    "RG 234 balance: 'You built that. Now you can read our offer and decide for yourself' (benefit) paired with the equal-prominence risk sentence and risk-reversal CTA. No return/guarantee language.",
+    "No hardcoded minimum/share price; referenced via the offer document only; {{OFFER_MIN_TBC}} placeholder flagged.",
+    "Waitlist-scoped validator WILL flag 'invest'/'investment' BY DESIGN. Expected, phase-gated. Hook Halbert 5/5 in --primary-text mode."
+  ],
+  "_drc_playbook": "11 Lifecycle Email Promo / Launch (offer-live variant, RG 234 balanced)",
+  "_drc_audience": "B2C considered, most-aware. Existing Birchal investors, offer-live phase.",
+  "_drc_citations": [
+    "fact:authority-edelman-2024-peer-parity",
+    "fact:specificity-buzzsumo-numbers"
+  ],
+  "_client_facts_used": [
+    "PLAT-001",
+    "PLAT-002",
+    "PLAT-003",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING"
+  ],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_score_primary_text_first_sentence": 5,
+  "_a_pile_signals": ["personal address (you)", "specificity (137,000 + 324)", "multiple numbers (cadence)", "news/offer-live opener"],
+  "_offer_min_placeholder": "{{OFFER_MIN_TBC}} -- not rendered in copy; minimum referenced only via the offer document. Do NOT hardcode $0.50/$250/etc (OFFER-CONTEXT, not public).",
+  "_compliance_findings_resolved": [
+    "RG 234 balance test: benefit and risk equal prominence; 'Every investment carries risk and the value can fall as well as rise'; risk-reversal CTA. No return/guarantee/'guaranteed' language.",
+    "EXPECTED PHASE-GATED FLAG: waitlist-scoped validator will hard-block 'invest'/'investment' BY DESIGN. Expected for an offer-live draft; re-clear under RG 234 against the live disclosure document.",
+    "No hardcoded minimum / share price / parcel value; {{OFFER_MIN_TBC}} placeholder flagged, not rendered.",
+    "Anti-preferential terms (s 738G): no preferential framing vs the public offer; existing investors read the same public offer document.",
+    "VERBATIM-OFFER-LANGUAGE: no 'we will send you the offer'; offer is live on Birchal.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "Subject discipline: 'Birchal' appears once (offer-is-live anchor); 'our platform' / first-person we/our elsewhere; recursion referents explicit.",
+    "Number traceability: 137,000=PLAT-003, 324=PLAT-001, $234M+=PLAT-002. No market-share / #1 / first claim."
+  ],
+  "_word_count_primary_text": 94
+}

@@ -1,0 +1,56 @@
+{
+  "ad_id": "BIRCHAL-V5-E4",
+  "version": "V5",
+  "content_type": "meta-ad",
+  "phase": "eoi",
+  "status": "draft-phase-gated",
+  "compliance_note": "ships only when the EOI phase is active; re-clear against live conditions. Non-binding expression of interest only. No payment, no commitment, no allocation, no priority, no minimum. Verbatim CSF warning retained. Re-run the full compliance battery against live offer conditions before this phase goes live.",
+  "segment": "B_existing_birchal_investors",
+  "angle": "Investor-validation / peer-decision (EOI, endorsement language only)",
+  "hook_type": "Caples Why + named investor + numbers, into verbatim Pym quote (interest-only frame)",
+  "funnel": "MOF (formal EOI)",
+  "tactic": "Why-named-investor hook -> verbatim Pym endorsement -> non-binding interest ask",
+  "motivation": "Authority + peer validation + low-friction signal",
+  "campaign_phase": "formal-eoi",
+  "primary_text": "Why Dom Pym rates us after 324 raises and $234M+.\n\n\"I've looked at Birchal from the founder's seat and the investor's seat, and from both angles the answer is the same. Birchal is one of the most important companies in Australian fintech.\"\n\nDom Pym, Triple Bubble.\n\nAfter eight years funding other founders, we are opening our own raise. If that interests you, lodge a non-binding expression of interest. No payment, no commitment, and you decide nothing until you read the offer document.\n\nIndicate your interest. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "Why Dom Pym rates Birchal from both seats",
+  "description": "Non-binding. No payment, no commitment. Indicate your interest.",
+  "cta": "Register my interest",
+  "_source_label": "DRC V5 -- E4 Investor-validation (EOI, existing investors, phase-gated)",
+  "_iterates": "BIRCHAL-V5-W4 / V4-B2 investor-validation DNA, re-framed for the EOI phase regime. Inherits the V4 endorsement-only correction.",
+  "_v5_rationale": [
+    "Inherits the V4-B2 VERIFY-PASS lesson exactly: 'rates us' is Pym's verbatim endorsement (QUOTE-001), NOT a claim he invested in / backed Birchal-the-company or this raise. No 'backed/followed/invested'. No multi-fund 'followed' claim.",
+    "Hook Halbert 5/5 in --primary-text mode (Why + named investor + 324 + $234M). EOI regime does not force a softer hook here.",
+    "EOI language layered after the quote: 'lodge a non-binding expression of interest. No payment, no commitment'. No allocation/priority/minimum/preferential.",
+    "Pym quote (QUOTE-001) byte-exact, attribution 'Dom Pym, Triple Bubble' unchanged. Two in-body 'Birchal' are inside the attributed verbatim (exempt); one further 'Birchal' in the headline only."
+  ],
+  "_drc_playbook": "11 Lifecycle Email Promo / Launch (EOI variant)",
+  "_drc_audience": "B2C considered, most-aware. Existing Birchal investors, EOI phase; peer signal weighs more than platform stats.",
+  "_drc_citations": [
+    "fact:authority-edelman-2024-peer-parity",
+    "fact:narrative-transportation-green-brock"
+  ],
+  "_client_facts_used": [
+    "QUOTE-001",
+    "PLAT-001",
+    "PLAT-002",
+    "PLAT-004",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING"
+  ],
+  "_a_pile_score_first_8_words": 4,
+  "_a_pile_score_primary_text_first_sentence": 4,
+  "_a_pile_signals": ["question / interrogative opener (Why)", "specificity (324 + $234M)", "named entity (Dom Pym, client fact)"],
+  "_compliance_findings_resolved": [
+    "EOI regime: 'lodge a non-binding expression of interest', 'no payment, no commitment', 'indicate your interest'. Allowed EOI language only.",
+    "STILL HARD-BLOCK clear: no 'first in line', no priority access/allocation, no 'secure/reserve your allocation/place/spot in the raise', no 'shares allocated to early registrants', no minimum, no 'same terms as institutional/insiders', no 'be first in the queue'. Zero matches.",
+    "BANNED-CSF-PHRASES (waitlist set): zero matches. No 'invest/buy/subscribe now'.",
+    "VERBATIM-OFFER-LANGUAGE: 'we will tell you the moment the offer goes live'. No 'we will send'.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "QUOTE-001: Dom Pym pasted verbatim, em-dash-free as stored, attributed 'Dom Pym, Triple Bubble'.",
+    "INVESTOR-ASSOCIATION (RG 234 / ACL s 18): no claim Pym invested in / backed Birchal-the-company or this raise. 'rates us' = his verbatim endorsement (QUOTE-001). No multi-fund 'followed/backed' claim present.",
+    "Subject discipline: 'Birchal' outside the quote appears once (headline only); the two in-body 'Birchal' mentions are inside the attributed verbatim Pym quote and exempt from the brand-count rule.",
+    "Number traceability: 324=PLAT-001, $234M+=PLAT-002, eight years=PLAT-004."
+  ],
+  "_word_count_primary_text": 101
+}

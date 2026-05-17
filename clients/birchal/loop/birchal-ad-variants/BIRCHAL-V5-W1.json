@@ -1,0 +1,56 @@
+{
+  "ad_id": "BIRCHAL-V5-W1",
+  "version": "V5",
+  "content_type": "meta-ad",
+  "phase": "waitlist",
+  "status": "ready",
+  "segment": "A_first_time_csf",
+  "angle": "Raise-specific: this is a live CSF offer happening",
+  "hook_type": "Cadence-of-three numbers + recursion-to-offer punch (Halbert specificity + pattern interrupt)",
+  "funnel": "TOF",
+  "tactic": "Numbers-first scroll-stop -> name it as a CSF offer on Birchal -> waitlist outcome",
+  "motivation": "Rational specificity + this-is-actually-an-offer clarity",
+  "campaign_phase": "pre-campaign",
+  "primary_text": "324 raises, $234M+, and the next CSF offer on Birchal is our own.\n\nFor eight years we built the rails so Australians could own a piece of companies like Naked Life, Our Cow and Medigrowth. 137,000 of them have. Now it is our turn: a Crowd-Sourced Funding raise, on the platform we built.\n\nThe waitlist is free. You decide nothing until you read the offer document.\n\nSave your spot. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "324 raises. The next one is ours.",
+  "description": "The next CSF offer is our own. Save your spot.",
+  "cta": "Save my spot",
+  "_source_label": "DRC V5 -- W1 Raise-specific / live CSF offer (first-timers)",
+  "_iterates": "BIRCHAL-V4-A1 (V4 quality bar). Directly answers the client's core feedback: make it unmistakably a raise, not brand content.",
+  "_v5_rationale": [
+    "Client's central note: current ads sit between 'share the opportunity' and self-promotional brand content; they don't read like a LIVE CSF offer. W1 names it three times as what it is: 'the next CSF offer on Birchal is our own', 'a Crowd-Sourced Funding raise', 'the moment the offer goes live'. Still pre-offer compliant: 'is our own' / 'it is our turn' is first-person factual, not a transaction CTA to the reader. CTA stays 'Save my spot'.",
+    "Hook scores Halbert 5/5 in --primary-text mode (specificity + cadence + named-entity-from-client-fact). Keeps the V4-A1 cadence DNA but the third beat now states the offer explicitly.",
+    "Risk reversal made explicit ('You decide nothing until you read the offer document') per brief.md item 10."
+  ],
+  "_drc_playbook": "03 Aspirational Identity Sell (B2C considered, solution-aware, sophistication 3 mechanism)",
+  "_drc_audience": "B2C considered, solution-aware. First-time CSF investors, currently using ETFs / Sharesies / Pearler / Stake.",
+  "_drc_citations": [
+    "fact:specificity-buzzsumo-numbers",
+    "fact:narrative-transportation-green-brock"
+  ],
+  "_client_facts_used": [
+    "PLAT-001",
+    "PLAT-002",
+    "PLAT-003",
+    "PLAT-004",
+    "RAISE-001",
+    "RAISE-002",
+    "RAISE-003",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING",
+    "WAITLIST-CTA"
+  ],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_score_primary_text_first_sentence": 5,
+  "_a_pile_signals": ["specificity (324 + $234M in first 8 words)", "multiple numbers (cadence)", "named entity (client fact)", "recursion/offer gap (our own)"],
+  "_compliance_findings_resolved": [
+    "PREOFFER-VERBS: 'save your spot', 'we will tell you the moment'. No transaction verbs. 'CSF offer / raise' are nouns describing the event, not a CTA telling the reader to invest.",
+    "BANNED-CSF-PHRASES: zero matches (no 'be first to invest', no 'first in line', no '$ minimum', no 'secure your allocation', no queue language, no 'invest/buy/subscribe now').",
+    "VERBATIM-OFFER-LANGUAGE: 'we will tell you the moment the offer goes live'. No 'we will send you the offer'.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "BRAND-EXCLUDED: only verified-good raises (Naked Life RAISE-001, Our Cow RAISE-002, Medigrowth RAISE-003); no Zero Co / Old Young's.",
+    "Subject discipline: 'Birchal' appears once (as the platform identity anchor in the hook); everywhere else first-person we/our. No platform-vs-company referent swap.",
+    "No unsourced market-share / #1 / first / valuation / $1B / 82,659 claim. Every number traces: 324=PLAT-001, $234M+=PLAT-002, 137,000=PLAT-003, eight years=PLAT-004, brands=RAISE-001/002/003."
+  ],
+  "_word_count_primary_text": 80
+}
