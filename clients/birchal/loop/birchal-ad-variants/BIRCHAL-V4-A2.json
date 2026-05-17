@@ -1,0 +1,51 @@
+{
+  "ad_id": "BIRCHAL-V4-A2",
+  "version": "V4",
+  "content_type": "meta-ad",
+  "segment": "A_first_time_csf",
+  "angle": "Belonging / community-as-identity",
+  "hook_type": "Identity-then-FOMO: 'you do this, 137K do it as owners'",
+  "funnel": "TOF",
+  "tactic": "Customer-to-owner bridge with hard community number -> mechanism reveal -> recursion",
+  "motivation": "Identity + community FOMO",
+  "campaign_phase": "pre-campaign",
+  "primary_text": "You back Aussie brands every week, and 137,000 Australians own them too.\n\nBuying Naked Life or Our Cow makes you a customer. Crowd-Sourced Funding lets you own a piece instead of just buying. 324 raises, $234M+, all from everyday investors, not VCs.\n\nNow we are opening our own raise on Birchal.\n\nSave your spot. Read the offer when it opens.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "Australians who back Aussie brands",
+  "description": "You buy from them already. Now you can own a piece.",
+  "cta": "Save my spot",
+  "_source_label": "DRC V4 -- A2 Belonging / Community (first-timers)",
+  "_iterates": "BIRCHAL-A2 (V3, JB-attached Winner 3)",
+  "_v4_changes": [
+    "Hook rewrite: 'You back Aussie brands when you shop. 137,000 Australians do it with ownership too.' -> 'You back Aussie brands every week, and 137,000 Australians own them too.' Single sentence (was two) so the full first sentence scores Halbert 5/5 in --primary-text mode, where V3's first sentence alone scored 4. 'every week' makes the behaviour concrete; 'own them too' is the FOMO punch.",
+    "Para 2 tightened: explicit customer-vs-owner contrast ('makes you a customer ... own a piece instead of just buying') replaces the looser V3 'you are choosing Australian-made' framing. Adds 'not VCs' to the cadence-of-three proof for the no-gatekeeper note.",
+    "Cut to 72 words (V3 A2 was 71). Kept the winning belonging DNA (shop -> own bridge, 137,000 anchor, brand grid) and the 'own a piece' ownership phrase the FMTH evidence flags as load-bearing."
+  ],
+  "_drc_playbook": "03 Aspirational Identity Sell",
+  "_drc_audience": "B2C considered, solution-aware. First-time CSF investors who self-identify as backing Australian-made.",
+  "_drc_citations": [
+    "fact:authority-edelman-2024-peer-parity",
+    "fact:narrative-transportation-green-brock",
+    "fact:specificity-buzzsumo-numbers"
+  ],
+  "_client_facts_used": [
+    "PLAT-001",
+    "PLAT-002",
+    "PLAT-003",
+    "RAISE-001",
+    "RAISE-002",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING",
+    "WAITLIST-CTA"
+  ],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_signals": ["personal address (You)", "specificity (137,000)", "named entity (client fact)"],
+  "_compliance_findings_resolved": [
+    "PREOFFER-VERBS: 'save your spot', 'read', 'own a piece'. No transaction verbs.",
+    "BANNED-CSF-PHRASES: zero matches.",
+    "VERBATIM-OFFER-LANGUAGE: 'Read the offer when it opens'. No 'we will send'.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "BRAND-EXCLUDED: only verified-good raises (Naked Life RAISE-001, Our Cow RAISE-002).",
+    "Subject discipline: 'Birchal' once; first-person we/our elsewhere."
+  ],
+  "_word_count_primary_text": 72
+}

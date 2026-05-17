@@ -1,0 +1,50 @@
+{
+  "ad_id": "BIRCHAL-V4-B1",
+  "version": "V4",
+  "content_type": "meta-ad",
+  "segment": "B_existing_birchal_investors",
+  "angle": "Community-as-builder / recursion (insider voice)",
+  "hook_type": "Personal address + specific stat + recursion in one sentence",
+  "funnel": "TOF retargeting / list-targeted",
+  "tactic": "'You helped build a $234M platform' -> 'now we are raising on it' recursion",
+  "motivation": "Identity + ownership + insider validation",
+  "campaign_phase": "pre-campaign",
+  "primary_text": "You helped build a $234M platform. Now we are raising on it.\n\nYou are one of 137,000 investors who put money behind 324 Australian companies on Birchal. Every dollar came from people choosing to own a piece of something they believed in, not from VCs.\n\nNow we are doing the same, opening our own raise.\n\nSave your spot. You will see the offer the moment it goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "You helped fund 324 companies. Our turn now.",
+  "description": "Save your spot. You will see the offer the moment it goes live.",
+  "cta": "Save my spot",
+  "_source_label": "DRC V4 -- B1 Community-as-builder / Recursion (existing investors)",
+  "_iterates": "BIRCHAL-B1 (V3)",
+  "_v4_changes": [
+    "Hook rewrite: 'You are one of 137,000 investors who built this platform. Now we are raising on it.' -> 'You helped build a $234M platform. Now we are raising on it.' Adds a number ($234M) into the first 8 words for the specificity signal the V3 first sentence lacked (V3 first sentence 'You are one of 137,000 investors who built this platform.' carried personal address + 137,000 but reads slower). V4 first sentence scores Halbert 5/5 in --primary-text mode: personal address + $234M specificity + named entity, with a tighter recursion beat.",
+    "Para 2 keeps the 137,000 / 324 / 'not VCs' proof but moves the community number into the body where it supports rather than competes with the $234M hook. 'choosing to own a piece' retains the load-bearing ownership phrase.",
+    "Headline rewrite: 'After 324 raises on Birchal, our turn' -> 'You helped fund 324 companies. Our turn now.' Direct second-person address for the existing-investor list, recursion punch, Halbert 5/5 (V3 headline scored 4).",
+    "80 words (V3 B1 was 67; V4 adds the $234M hook specificity and 324-companies detail while staying at the top of the band)."
+  ],
+  "_drc_playbook": "11 Lifecycle Email Promo / Launch (B2C considered, most-aware, active list)",
+  "_drc_audience": "B2C considered, most-aware. Existing Birchal investors who have made at least one investment on the platform.",
+  "_drc_citations": [
+    "fact:authority-edelman-2024-peer-parity",
+    "fact:specificity-buzzsumo-numbers",
+    "fact:narrative-transportation-green-brock"
+  ],
+  "_client_facts_used": [
+    "PLAT-001",
+    "PLAT-002",
+    "PLAT-003",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING",
+    "WAITLIST-CTA"
+  ],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_signals": ["personal address (You)", "specificity ($234M)", "named entity (client fact)", "recursion (now we are raising on it)"],
+  "_compliance_findings_resolved": [
+    "PREOFFER-VERBS: 'save your spot', 'you will see the offer'. No transaction verbs.",
+    "BANNED-CSF-PHRASES: zero matches.",
+    "VERBATIM-OFFER-LANGUAGE: 'you will see the offer the moment it goes live'. No 'we will send'.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "Anti-preferential terms (s 738G): waitlist remains free and equal-access, no preferential framing vs the public offer.",
+    "Subject discipline: 'Birchal' once; first-person we/our elsewhere; recursion subjects unambiguous (you = the investor, we = the company raising)."
+  ],
+  "_word_count_primary_text": 80
+}

@@ -1,0 +1,58 @@
+{
+  "ad_id": "BIRCHAL-V5-L6",
+  "version": "V5",
+  "content_type": "meta-ad",
+  "phase": "offer-live",
+  "status": "draft-phase-gated",
+  "compliance_note": "ships only after the offer document is live on Birchal; requires RG 234 balance-test re-review against the live disclosure document; the waitlist-scoped validator will flag transaction verbs ('invest') by design and that is EXPECTED for this draft. Do not ship until the offer document is public and copy is matched line-by-line to it. Any minimum is the {{OFFER_MIN_TBC}} placeholder until the offer document is public (facts.json OFFER-CONTEXT).",
+  "segment": "A_first_time_csf",
+  "angle": "Recursion punch (Offer-Live: eight years for other founders, our offer is live)",
+  "hook_type": "Cadence numbers + 'for other founders' recursion gap (RG 234 balanced)",
+  "funnel": "BOF (offer live)",
+  "tactic": "Proof cadence with recursion bound -> offer-is-live anchor -> risk/benefit balance -> read-and-decide",
+  "motivation": "Recursion + offer-is-real, balanced with risk-reversal",
+  "campaign_phase": "offer-live",
+  "primary_text": "324 raises and $234M+ for other founders since 2018. Our own offer is now live on Birchal.\n\nFor eight years our platform helped 137,000 Australians own a piece of companies like Naked Life and Medigrowth. We stayed private the whole time. Now you can read our offer and decide for yourself.\n\nEvery investment carries risk and the value can fall as well as rise. The offer document sets out the risks, the terms and the minimum.\n\nRead the offer document and decide for yourself.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "Eight years for others. Our offer is live.",
+  "description": "The offer is live on Birchal. Read the offer document and decide for yourself.",
+  "cta": "Read the offer",
+  "_source_label": "DRC V5 -- L6 Recursion punch (Offer-Live, first-timers, phase-gated)",
+  "_iterates": "BIRCHAL-V5-W8 recursion angle, re-framed for the RG 234 offer-live regime.",
+  "_v5_rationale": [
+    "Recursion-as-community spine, offer-live form. 'for other founders ... Now you can read our offer' is the explicit recursion that answers the client's 'doesn't read like a raise' note.",
+    "Hook rewrite from the original scratch draft (which opened '8 years.' and scored Halbert 3): now '324 raises and $234M+ for other founders since 2018. Our own offer is now live on Birchal.' Halbert 5/5 in --primary-text mode (cadence + recursion gap + offer-live news).",
+    "RG 234 balance: 'We stayed private the whole time. Now you can read our offer and decide for yourself' (benefit) paired with the equal-prominence risk sentence and risk-reversal CTA. No return/guarantee language.",
+    "No hardcoded minimum/share price; {{OFFER_MIN_TBC}} placeholder flagged. Waitlist-scoped validator WILL flag 'invest'/'investment' BY DESIGN. Expected, phase-gated."
+  ],
+  "_drc_playbook": "11 Lifecycle Email Promo / Launch (offer-live variant, RG 234 balanced)",
+  "_drc_audience": "B2C considered, solution-aware. First-time CSF investors, offer-live phase.",
+  "_drc_citations": [
+    "fact:specificity-buzzsumo-numbers",
+    "fact:narrative-transportation-green-brock"
+  ],
+  "_client_facts_used": [
+    "PLAT-001",
+    "PLAT-002",
+    "PLAT-003",
+    "PLAT-004",
+    "RAISE-001",
+    "RAISE-003",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING"
+  ],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_score_primary_text_first_sentence": 5,
+  "_a_pile_signals": ["specificity (324 + $234M in first 8 words)", "multiple numbers (cadence)", "named entity (client fact)", "recursion gap + offer-live news"],
+  "_offer_min_placeholder": "{{OFFER_MIN_TBC}} -- not rendered in copy; minimum referenced only via the offer document. Do NOT hardcode $0.50/$250/etc (OFFER-CONTEXT, not public).",
+  "_compliance_findings_resolved": [
+    "RG 234 balance test: benefit and risk equal prominence; 'Every investment carries risk and the value can fall as well as rise'; risk-reversal CTA. No return/guarantee/'guaranteed' language.",
+    "EXPECTED PHASE-GATED FLAG: waitlist-scoped validator will hard-block 'invest'/'investment' BY DESIGN. Expected for an offer-live draft; re-clear under RG 234 against the live disclosure document.",
+    "No hardcoded minimum / share price / parcel value; {{OFFER_MIN_TBC}} placeholder flagged, not rendered.",
+    "VERBATIM-OFFER-LANGUAGE: no 'we will send you the offer'; offer is live on Birchal.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "BRAND-EXCLUDED: only verified-good raises (Naked Life RAISE-001, Medigrowth RAISE-003).",
+    "Subject discipline: 'Birchal' appears once (offer-is-live anchor); 'our platform' / first-person we/our elsewhere; recursion referents explicit (other founders vs us/you).",
+    "Number traceability: 324=PLAT-001, $234M+=PLAT-002, 2018/eight years=PLAT-004, 137,000=PLAT-003, brands=RAISE-001/003. No market-share / #1 / first claim."
+  ],
+  "_word_count_primary_text": 92
+}

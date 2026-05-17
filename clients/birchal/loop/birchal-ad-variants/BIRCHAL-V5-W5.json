@@ -1,0 +1,56 @@
+{
+  "ad_id": "BIRCHAL-V5-W5",
+  "version": "V5",
+  "content_type": "meta-ad",
+  "phase": "waitlist",
+  "status": "ready",
+  "segment": "A_first_time_csf",
+  "angle": "Democratisation / access (Aubrey Blanche category validation)",
+  "hook_type": "Cadence-of-three + 'none from VCs' curiosity punch, into a third-party validation excerpt",
+  "funnel": "TOF",
+  "tactic": "Numbers + no-gatekeeper punch -> Aubrey Blanche category quote -> the platform is raising -> waitlist",
+  "motivation": "Access + democratisation + third-party credibility",
+  "campaign_phase": "pre-campaign",
+  "primary_text": "324 raises, $234M+, none from VCs.\n\n\"Crowdfunding opens up the ability to invest in excellent businesses to a significantly broader set of investors.\" Aubrey Blanche.\n\nThat is what 137,000 Australians did on our platform, owning a piece of companies like Naked Life and Our Cow. Now we are opening our own Crowd-Sourced Funding raise.\n\nThe waitlist is free. You read the offer document before you decide.\n\nSave your spot. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "324 raises, $234M+, none from VCs",
+  "description": "Investing that used to be VC-only. Save your spot.",
+  "cta": "Save my spot",
+  "_source_label": "DRC V5 -- W5 Democratisation / Access (first-timers)",
+  "_iterates": "BIRCHAL-V4-A3 access DNA + new QUOTE-006 (Aubrey Blanche) third-party category validation.",
+  "_v5_rationale": [
+    "Uses QUOTE-006 ad_safe excerpt verbatim, attributed 'Aubrey Blanche' (no invented title). Brief: this is third-party validation of the CSF CATEGORY, not a Birchal claim, so it sits as an external voice before the Birchal-specific proof, never merged with a Birchal stat.",
+    "Hook '324 raises, $234M+, none from VCs.' Halbert 5/5 in --primary-text mode (cadence + no-gatekeeper curiosity punch). Carried from the validated V3/V4 hook family.",
+    "'invest in excellent businesses' is inside Blanche's attributed quote (her word, exempt); the surrounding ad prose uses no transaction verb as a CTA. The reader's action remains 'save your spot'."
+  ],
+  "_drc_playbook": "03 Aspirational Identity Sell",
+  "_drc_audience": "B2C considered, solution-aware. First-time CSF investors who feel startup investing is gated to VCs and family offices.",
+  "_drc_citations": [
+    "fact:authority-edelman-2024-peer-parity",
+    "fact:specificity-buzzsumo-numbers"
+  ],
+  "_client_facts_used": [
+    "PLAT-001",
+    "PLAT-002",
+    "PLAT-003",
+    "RAISE-001",
+    "RAISE-002",
+    "QUOTE-006",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING",
+    "WAITLIST-CTA"
+  ],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_score_primary_text_first_sentence": 5,
+  "_a_pile_signals": ["specificity (324 + $234M in first 8 words)", "multiple numbers (cadence)", "named entity (client fact)", "curiosity-gap punch (none from VCs)"],
+  "_compliance_findings_resolved": [
+    "PREOFFER-VERBS: 'save your spot', 'we will tell you the moment', 'read'. No transaction verbs as a CTA. 'invest in excellent businesses' is inside Blanche's attributed verbatim, not a reader instruction.",
+    "BANNED-CSF-PHRASES: zero matches.",
+    "VERBATIM-OFFER-LANGUAGE: 'we will tell you the moment the offer goes live'. No 'we will send'.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "BRAND-EXCLUDED: only verified-good raises (Naked Life RAISE-001, Our Cow RAISE-002).",
+    "QUOTE-006: Aubrey Blanche ad_safe excerpt verbatim (contiguous sub-span), attributed 'Aubrey Blanche', no invented title. Used as CSF-category validation, NOT a Birchal-specific claim; not merged with any Birchal stat.",
+    "Subject discipline: 'Birchal' appears zero times in body; 'our platform' / first-person we/our; one referent.",
+    "Number traceability: 324=PLAT-001, $234M+=PLAT-002, 137,000=PLAT-003, brands=RAISE-001/002. No market-share / #1 / first claim."
+  ],
+  "_word_count_primary_text": 85
+}

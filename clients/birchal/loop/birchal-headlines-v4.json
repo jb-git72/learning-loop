@@ -1,0 +1,45 @@
+{
+  "set_id": "BIRCHAL-HEADLINES-V4",
+  "generated": "2026-05-17",
+  "rules": "Max 8 words. Sentence case. AU English. No em-dashes. No banned CSF phrases. No transaction verbs. Pre-offer compliant. Subject discipline: 'Birchal' = the company; the platform is 'our platform' / 'the platform we built'. Halbert A-pile target 4+ on first 8 words. Unsourced market-leadership claims (64% / #1 / largest / first) reframed to fact-backed by-volume equivalents only (324 raises, $234M+, 137,000, since 2018).",
+  "v4_revisions": [
+    "Iterates BIRCHAL-HEADLINES-V3. JB asked to add 'first in Australia', 'vision for the future', '64% market share' angles. None of those are in facts.json, so they are reframed: market leadership -> by-volume proof ('the platform behind 324 Aussie raises', 'since 2018, $234M raised'); 'first in Australia' -> the eight-years-since-2018 traction (PLAT-004) without claiming literal 'first' or '#1'; 'vision for the future' -> the recursion/category narrative ('eight years funding others, now our own raise'). See FLAGS in the delivery report for the unshippable literal claims.",
+    "H-CUR-04 reframed-leadership: added 'Since 2018, $234M raised. None from VCs.' (by-volume + since-2018 substitute for the banned '#1 / largest' claim, Halbert 5).",
+    "H-CUR-05 reframed-leadership: 'The platform behind 324 Aussie raises' (by-volume leadership, no superlative, Halbert 4).",
+    "H-COM-04 recursion: 'You helped fund 324 companies. Our turn now.' (Segment B second-person recursion, Halbert 5; carried into BIRCHAL-V4-B1).",
+    "H-INV-01 / H-INV-02 kept the V3 named-fund / Pym DNA but rebuilt for Halbert 4+ as standalone lines (the bare 'Founder seat, investor seat, same answer' scores only 2 alone, so it lives in BIRCHAL-V4-B2 description, not as a standalone headline).",
+    "VERIFY-PASS CORRECTION (2026-05-17): H-INV-01 'Why Triple Bubble bet first on Birchal' and H-INV-02 'Why Dom Pym backed Birchal from both seats' asserted that Triple Bubble / Dom Pym INVESTED IN Birchal ('bet first on' / 'backed'). facts.json QUOTE-001 (Pym) and QUOTE-002 (Carter, Triple Bubble) are ENDORSEMENT quotes only; no fact states Triple Bubble or Pym invested in Birchal-the-company or this raise. Unsourced investor-association claim (RG 234 burden-of-proof + ACL s 18). Reframed to endorsement language the register supports: 'bet first on' -> 'rates ... so highly', 'backed' -> 'rates'. Both still Halbert 4 (Why + named entity), <=8 words, sentence case. Mirrors the same fix applied to BIRCHAL-V4-B2 hook + headline.",
+    "H-VIS-01 new vision/category sub-angle: 'Eight years funding others. Why we waited.' (Caples Why + recursion vision, Halbert 5)."
+  ],
+  "halbert_targets": "Every headline scores >= 4 on hook_audit.py first-8-words against clients/birchal/facts.json. At least 2 A-pile signals each: specificity (number/name/year), curiosity gap (why/what/how), pattern interrupt, or personal address. No statements without a hook.",
+  "headlines": [
+    {"id": "H-CUR-01", "text": "How Australian startups actually get funded", "angle": "curiosity / mechanism", "segment": "A", "words": 6, "caples_pattern": "How...", "halbert_score_first_8w": 4},
+    {"id": "H-CUR-02", "text": "Why most Australians missed the last $234M", "angle": "curiosity / FOMO", "segment": "A", "words": 7, "caples_pattern": "Why...", "halbert_score_first_8w": 5},
+    {"id": "H-CUR-03", "text": "Why 137,000 invested before you did", "angle": "curiosity / social proof", "segment": "A", "words": 6, "caples_pattern": "Why...", "halbert_score_first_8w": 5},
+    {"id": "H-CUR-04", "text": "Since 2018, $234M raised. None from VCs.", "angle": "curiosity / reframed market-leadership-by-volume", "segment": "A", "words": 7, "caples_pattern": "Use facts and figures + curiosity gap", "halbert_score_first_8w": 5},
+    {"id": "H-CUR-05", "text": "The platform behind 324 Aussie raises", "angle": "curiosity / reframed market-leadership-by-volume", "segment": "A", "words": 6, "caples_pattern": "Use facts and figures", "halbert_score_first_8w": 4},
+    {"id": "H-COM-01", "text": "324 raises. $234M raised. Now our own.", "angle": "belonging / cadence-of-three recursion", "segment": "A_or_B", "words": 7, "caples_pattern": "Use facts and figures", "halbert_score_first_8w": 5},
+    {"id": "H-COM-02", "text": "Built by 137,000 investors. Now we're raising too.", "angle": "belonging / co-ownership recursion", "segment": "A_or_B", "words": 8, "caples_pattern": "Use facts and figures", "halbert_score_first_8w": 4},
+    {"id": "H-COM-03", "text": "You helped fund 324 companies. Our turn now.", "angle": "belonging / recursion (insider)", "segment": "B", "words": 8, "caples_pattern": "Story / sequential recursion", "halbert_score_first_8w": 5},
+    {"id": "H-COM-04", "text": "Why 137,000 of you built this with us", "angle": "belonging / community", "segment": "A_or_B", "words": 8, "caples_pattern": "Why... + personal address", "halbert_score_first_8w": 5},
+    {"id": "H-EMP-01", "text": "What only VCs used to access", "angle": "empathy / access", "segment": "A", "words": 6, "caples_pattern": "Story / contrast", "halbert_score_first_8w": 4},
+    {"id": "H-EMP-02", "text": "Before 2018, you were locked out", "angle": "empathy / loss frame", "segment": "A", "words": 6, "caples_pattern": "Story / scene + loss frame", "halbert_score_first_8w": 5},
+    {"id": "H-INV-01", "text": "Why Triple Bubble rates Birchal so highly", "angle": "investor-validation / named fund", "segment": "B", "words": 7, "caples_pattern": "Why... + named-entity", "halbert_score_first_8w": 4},
+    {"id": "H-INV-02", "text": "Why Dom Pym rates Birchal from both seats", "angle": "investor-validation / peer", "segment": "B", "words": 8, "caples_pattern": "Why... + named-entity", "halbert_score_first_8w": 4},
+    {"id": "H-VIS-01", "text": "Eight years funding others. Why we waited.", "angle": "vision / category-building recursion", "segment": "A_or_B", "words": 7, "caples_pattern": "Why... + recursion vision", "halbert_score_first_8w": 5}
+  ],
+  "_angle_band_coverage": {
+    "curiosity (incl. mechanism + reframed market-leadership-by-volume + reframed since-2018)": ["H-CUR-01", "H-CUR-02", "H-CUR-03", "H-CUR-04", "H-CUR-05"],
+    "belonging / recursion": ["H-COM-01", "H-COM-02", "H-COM-03", "H-COM-04"],
+    "empathy / access": ["H-EMP-01", "H-EMP-02"],
+    "investor-validation (Pym / named fund)": ["H-INV-01", "H-INV-02"],
+    "vision / category sub-angle": ["H-VIS-01"]
+  },
+  "_compliance_summary": "All 14 headlines scanned against BANNED-CSF-PHRASES regex (zero matches), PREOFFER-VERBS regex (zero transaction verbs + now/today/here; 'invested' in H-CUR-03 and 'funded'/'fund' in H-CUR-01/H-CUR-05/H-COM-03/H-VIS-01 are past-tense/gerund factual references to historical raises, not a current call to action), em-dash / en-dash / smart-quote check (zero), max-8-words rule (all <= 8w). No literal '64% / #1 / largest / first / 82,659 / $5M / $1B' claims: reframed to by-volume facts only (see FLAGS in delivery report).",
+  "_client_facts_referenced": ["PLAT-001", "PLAT-002", "PLAT-003", "PLAT-004", "QUOTE-001"],
+  "_drc_citations": [
+    "fact:authority-edelman-2024-peer-parity",
+    "fact:specificity-buzzsumo-numbers",
+    "fact:headline-length-buzzsumo-100m"
+  ]
+}

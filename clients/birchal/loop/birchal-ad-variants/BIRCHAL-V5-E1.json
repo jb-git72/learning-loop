@@ -1,0 +1,57 @@
+{
+  "ad_id": "BIRCHAL-V5-E1",
+  "version": "V5",
+  "content_type": "meta-ad",
+  "phase": "eoi",
+  "status": "draft-phase-gated",
+  "compliance_note": "ships only when the EOI phase is active; re-clear against live conditions. Non-binding expression of interest only. No payment, no commitment, no allocation, no priority, no minimum. Verbatim CSF warning retained. Re-run the full compliance battery against live offer conditions before this phase goes live.",
+  "segment": "A_first_time_csf",
+  "angle": "Birchal Next / vision (EOI: indicate interest in the next chapter)",
+  "hook_type": "Cadence numbers + 'a new chapter we want your read on' curiosity (interest-only frame)",
+  "funnel": "MOF (formal EOI)",
+  "tactic": "Proof cadence -> forward-looking chapter -> non-binding interest ask",
+  "motivation": "Vision + low-friction interest signal",
+  "campaign_phase": "formal-eoi",
+  "primary_text": "324 raises, $234M+, and a new chapter we want your read on.\n\nWe built the platform Australians used to back Naked Life and Our Cow. From mid 2026 we are modernising it: better analytics, smoother onboarding, faster from prep to settlement. We call it Birchal Next.\n\nIf our own raise interests you, tell us. It is a non-binding expression of interest. No payment, no commitment, and you decide nothing until you read the offer document.\n\nIndicate your interest. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "Tell us if Birchal Next interests you",
+  "description": "Non-binding. No payment, no commitment. Indicate your interest.",
+  "cta": "Register my interest",
+  "_source_label": "DRC V5 -- E1 Birchal Next / Vision (EOI, first-timers, phase-gated)",
+  "_iterates": "BIRCHAL-V5-W2 vision angle, re-framed for the EOI phase regime (interest-only, non-binding).",
+  "_v5_rationale": [
+    "Client supplied EOI examples that breach CSF (priority/allocation/reserve/'first in line'). This rewrites the vision angle to interest-only: 'a non-binding expression of interest. No payment, no commitment'. No allocation, no priority, no minimum, no preferential terms.",
+    "Hook Halbert 5/5 in --primary-text mode (cadence + 'a new chapter we want your read on' curiosity). The EOI regime does not force a softer hook here; the numbers cadence still carries it.",
+    "BIRCHAL-NEXT used forward-looking only ('from mid 2026 we are modernising'); no present-state capability claim; no 'backed by X and Y'.",
+    "Verbatim CSF warning retained byte-exact (still required while pre-offer-document)."
+  ],
+  "_drc_playbook": "03 Aspirational Identity Sell (EOI variant)",
+  "_drc_audience": "B2C considered, solution-aware. First-time CSF investors, EOI phase.",
+  "_drc_citations": [
+    "fact:narrative-transportation-green-brock",
+    "fact:specificity-buzzsumo-numbers"
+  ],
+  "_client_facts_used": [
+    "PLAT-001",
+    "PLAT-002",
+    "RAISE-001",
+    "RAISE-002",
+    "BIRCHAL-NEXT",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING"
+  ],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_score_primary_text_first_sentence": 5,
+  "_a_pile_signals": ["specificity (324 + $234M in first 8 words)", "multiple numbers (cadence)", "named entity (client fact)", "curiosity gap (a new chapter we want your read on)"],
+  "_compliance_findings_resolved": [
+    "EOI regime: 'non-binding expression of interest', 'no payment, no commitment', 'indicate your interest'. Allowed EOI language only.",
+    "STILL HARD-BLOCK clear: no 'first in line', no priority access/allocation, no 'secure/reserve your allocation/place/spot in the raise', no 'shares allocated to early registrants', no '$X / from $X' minimum, no 'same terms as institutional/insiders', no 'be first in the queue'. Zero matches.",
+    "BANNED-CSF-PHRASES (waitlist set, still applies): zero matches. No 'invest/buy/subscribe now'.",
+    "VERBATIM-OFFER-LANGUAGE: 'we will tell you the moment the offer goes live'. No 'we will send'.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "BRAND-EXCLUDED: only verified-good raises (Naked Life RAISE-001, Our Cow RAISE-002).",
+    "BIRCHAL-NEXT forward-looking only; no 'backed by X and Y'; banned AI-tells from the verbatim positioning not used in ad prose.",
+    "Subject discipline: 'Birchal' appears once ('Birchal Next'); first-person we/our elsewhere.",
+    "Number traceability: 324=PLAT-001, $234M+=PLAT-002, brands=RAISE-001/002."
+  ],
+  "_word_count_primary_text": 92
+}

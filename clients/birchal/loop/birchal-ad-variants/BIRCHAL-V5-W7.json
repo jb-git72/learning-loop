@@ -1,0 +1,53 @@
+{
+  "ad_id": "BIRCHAL-V5-W7",
+  "version": "V5",
+  "content_type": "meta-ad",
+  "phase": "waitlist",
+  "status": "ready",
+  "segment": "B_existing_birchal_investors",
+  "angle": "Vision / category-building (Kirstin Hunter, Denholm-report policy framing)",
+  "hook_type": "Cadence numbers + 'a clear view of where capital goes next' curiosity, into Kirstin verbatim",
+  "funnel": "TOF retargeting / list-targeted",
+  "tactic": "Proof cadence -> category-vision curiosity -> Kirstin Denholm quote -> the platform is raising -> waitlist",
+  "motivation": "Vision + category conviction (sophisticated reader)",
+  "campaign_phase": "pre-campaign",
+  "primary_text": "324 raises, $234M+, and a clear view of where Australian capital goes next.\n\n\"When retail investors, not just wholesale investors and VCs, can back the next generation of Australian deeptech, medtech, and cleantech companies we get a richer, more resilient innovation ecosystem.\" Kirstin Hunter, CEO, Birchal.\n\nWe built the rails for that. Now we are opening our own Crowd-Sourced Funding raise.\n\nThe waitlist is free. Read the offer document before you decide.\n\nSave your spot. We will tell you the moment it goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "Where Australian capital goes next",
+  "description": "The category vision, in the CEO's words. Save your spot.",
+  "cta": "Save my spot",
+  "_source_label": "DRC V5 -- W7 Vision / Category-building (existing investors)",
+  "_iterates": "New vision/category angle the client + JB asked for; uses QUOTE-009 (Kirstin, Denholm report).",
+  "_v5_rationale": [
+    "Uses QUOTE-009 ad_safe excerpt verbatim, attributed 'Kirstin Hunter, CEO, Birchal'. Policy/category-vision framing for the sophisticated Segment B reader. 'ecosystem' is a banned AI-tell but is inside the attributed verbatim (exempt, same precedent as QUOTE-005 'seamless'); not used in surrounding prose.",
+    "Hook Halbert 5/5 in --primary-text mode (cadence + category-vision curiosity gap). 'a clear view of where Australian capital goes next' is the curiosity bound; the Kirstin quote pays it off.",
+    "Category vision is opinion/vision per the quotes register: licenses NO market-share / #1 / largest / first claim. Body states none. The only numbers are the verified spine (324, $234M+)."
+  ],
+  "_drc_playbook": "11 Lifecycle Email Promo / Launch",
+  "_drc_audience": "B2C considered, most-aware. Existing Birchal investors who think in terms of the capital-markets category, not just one raise.",
+  "_drc_citations": [
+    "fact:authority-edelman-2024-peer-parity",
+    "fact:narrative-transportation-green-brock"
+  ],
+  "_client_facts_used": [
+    "PLAT-001",
+    "PLAT-002",
+    "QUOTE-009",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING",
+    "WAITLIST-CTA"
+  ],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_score_primary_text_first_sentence": 5,
+  "_a_pile_signals": ["specificity (324 + $234M in first 8 words)", "multiple numbers (cadence)", "named entity (client fact)", "curiosity gap (where capital goes next)"],
+  "_compliance_findings_resolved": [
+    "PREOFFER-VERBS: 'save your spot', 'we will tell you the moment', 'read'. No transaction verbs as a CTA. 'back the next generation' is inside Kirstin's attributed verbatim, not a reader instruction.",
+    "BANNED-CSF-PHRASES: zero matches.",
+    "VERBATIM-OFFER-LANGUAGE: 'we will tell you the moment the offer goes live'. No 'we will send'.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "QUOTE-009: Kirstin Hunter ad_safe excerpt verbatim (en-dashes converted to commas, contiguous span), attributed 'Kirstin Hunter, CEO, Birchal'. Banned AI-tell 'ecosystem' exempt inside the attributed verbatim only.",
+    "Vision/policy framing licenses no numeric claim: zero market-share / #1 / largest / first / valuation / $1B. Only verified spine numbers used.",
+    "Subject discipline: 'Birchal' appears once, inside the attributed quote attribution ('Kirstin Hunter, CEO, Birchal'); body otherwise first-person we/our; no platform-vs-company swap.",
+    "Number traceability: 324=PLAT-001, $234M+=PLAT-002."
+  ],
+  "_word_count_primary_text": 86
+}

@@ -233,6 +233,71 @@
       "confidence": "HIGH",
       "last_verified": "2026-05-07",
       "note": "Primary CTA across the BIRCH landing page is 'Save my spot' (header, sticky, signup card). Use this verbatim in ad CTAs. Acceptable variants in body copy: 'Save your spot on the waitlist', 'Be on the waitlist', 'Hear when the offer goes live'."
+    },
+    {
+      "fact_id": "QUOTE-006",
+      "category": "verbatim",
+      "claim": "Aubrey Blanche, on why crowdfunding matters (CSF category validation, NOT a Birchal claim)",
+      "verbatim_text": "There are a ton of reasons that crowdfunding is not only a good–but sometimes the best–option for businesses. It can democratise ownership, provide capital without requiring unrealistic growth targets, and is more available to non-traditional founders. In short, it's an excellent vehicle to bring more businesses online, which can only be seen as a good thing. Crowdfunding–whether through equity, reward, donation, or debt–opens up the ability to invest in excellent businesses to a significantly broader set of investors.",
+      "ad_safe_text": "Crowdfunding opens up the ability to invest in excellent businesses to a significantly broader set of investors.",
+      "source": "https://www.startupdaily.net/advice/opinion/why-crowdfunding-is-an-important-part-of-australias-capital-mix/ (client-supplied 2026-05-17, Kirstin Hunter; published opinion piece by Aubrey Blanche)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-17",
+      "note": "Third-party validation of the CSF category, NOT a Birchal-specific claim. Attribute exactly as 'Aubrey Blanche' (no invented title). Use the ad_safe_text excerpt (contiguous sub-span) in ads; verbatim_text uses en-dashes and is the integrity record only. Does NOT license any market-share, valuation, '#1', 'largest', 'leading', or 'first' numeric claim. Opinion/vision only."
+    },
+    {
+      "fact_id": "QUOTE-007",
+      "category": "verbatim",
+      "claim": "Kirstin Hunter (CEO, Birchal), Forbes: mission beyond numbers / vision",
+      "verbatim_text": "Birchal's mission goes beyond numbers: it's about fostering an innovation ecosystem where every investor, entrepreneur, and idea can find a place to thrive. Crowdsourced funding represents a paradigm shift towards inclusivity and breadth. By empowering a diverse community of investors, Birchal enables founders from all backgrounds – women, people of colour, LGBTQIA+ individuals, migrants, and First Nations people – to draw on the power of the crowd to access capital and realise their entrepreneurial visions. Successful crowdsourced funding campaigns result in hundreds, if not thousands, of individual investors putting their money behind ideas they believe in. And when those investments pay off, we see hundreds, if not thousands, of winners.",
+      "ad_safe_text": "Birchal's mission goes beyond numbers: it's about fostering an innovation ecosystem where every investor, entrepreneur, and idea can find a place to thrive.",
+      "source": "https://www.forbes.com.au/news/leadership/crowdsourcing-our-way-to-economic-growth-and-diversity-in-startups/ (client-supplied 2026-05-17, Kirstin Hunter wrote 'Forbes quotes from me'; published)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-17",
+      "note": "Vision / cause-purpose angle. Pairs with the BIRCHAL-NEXT positioning. Attribute exactly 'Kirstin Hunter, CEO, Birchal'. Use ad_safe_text (contiguous first sentence) in ads; verbatim_text uses en-dashes and contains banned AI-tell words ('fostering', 'ecosystem', 'thrive', 'paradigm', 'empowering') which are exempt ONLY inside this attributed verbatim quotation, never in surrounding prose. Opinion/vision only; no numeric claim licensed."
+    },
+    {
+      "fact_id": "QUOTE-008",
+      "category": "verbatim",
+      "claim": "Kirstin Hunter (CEO, Birchal), on retail investor power + CEO-appointment bio (co-founder Future Super, ex-Techstars)",
+      "verbatim_text": "What really excites me is crowdsourced equity increases the economic power of retail investors by taking business funding decisions away from a small number of professional investors and placing it in the hands of the community. As the new CEO of Birchal, I'm thrilled to leverage my experience as co-founder of Future Super combining people and financial power to change the superannuation sector, and more recently shaping the next generation of innovative business leaders as an investor at Techstars Tech Central Sydney Accelerator.",
+      "ad_safe_text": "Crowdsourced equity increases the economic power of retail investors by taking business funding decisions away from a small number of professional investors and placing it in the hands of the community.",
+      "source": "https://www.startupdaily.net/topic/people/former-techstars-boss-kirstin-hunter-takes-on-birchal-ceo-role/ (client-supplied 2026-05-17, Kirstin Hunter wrote 'Me taking on Birchal'; published)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-17",
+      "note": "Democratisation / retail-investor-power angle (Segment A) + Kirstin bio (co-founder Future Super, investor at Techstars Tech Central Sydney Accelerator). Attribute exactly 'Kirstin Hunter, CEO, Birchal'. The published source's trailing ', she said.' is the publication's attribution tag, NOT part of the quote. Published bio sentence contains a double space in 'my  experience'; ad_safe collapses to single space. ad_safe_text is the retail-investor-power excerpt (contiguous). 'leverage' / 'innovative' in the bio sentence are banned AI-tells, exempt ONLY inside this attributed verbatim, never in surrounding prose. Opinion/bio only; no numeric claim licensed."
+    },
+    {
+      "fact_id": "QUOTE-009",
+      "category": "verbatim",
+      "claim": "Kirstin Hunter (CEO, Birchal), on CSF + the Denholm R&D report (category/policy vision)",
+      "verbatim_text": "Crowdsourced funding sits at the intersection of two of the report's central ambitions: mobilising more private capital for innovation, and democratising access to that capital. When retail investors – not just wholesale investors and VCs – can back the next generation of Australian deeptech, medtech, and cleantech companies we get a richer, more resilient innovation ecosystem.",
+      "ad_safe_text": "When retail investors, not just wholesale investors and VCs, can back the next generation of Australian deeptech, medtech, and cleantech companies we get a richer, more resilient innovation ecosystem.",
+      "source": "https://www.startupdaily.net/topic/funding/the-denholm-rd-report-made-the-case-for-crowdfunding-reform-so-its-time-for-government-to-act/ (client-supplied 2026-05-17, Kirstin Hunter; published)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-17",
+      "note": "Vision / category-building / policy angle (Segment B, sophisticated). Attribute exactly 'Kirstin Hunter, CEO, Birchal'. Use ad_safe_text (en-dashes converted to commas, contiguous span) in ads; verbatim_text is the integrity record. 'ecosystem' is a banned AI-tell, exempt ONLY inside this attributed verbatim, never in surrounding prose. Policy framing, no numeric claim licensed."
+    },
+    {
+      "fact_id": "REF-001",
+      "category": "reference",
+      "claim": "Backing female founders (supporting reference link for the diversity/inclusion angle; NOT a quote, NOT an offer minimum)",
+      "claim_patterns": [],
+      "source": "https://www.startupdaily.net/advice/investing/want-more-investment-in-women-founders-here-are-4-you-can-back-for-just-250/ (client-supplied 2026-05-17, Kirstin Hunter)",
+      "confidence": "HIGH",
+      "last_verified": "2026-05-17",
+      "note": "Supporting reference for the diversity/inclusion angle (pairs with QUOTE-007). NOT a quote. The '$250' in the URL slug is the article's framing, NOT a Birchal offer minimum: do NOT lift '$250' into ad copy as an investment minimum (BANNED-CSF-PHRASES + brief.md item 2 prohibit quoting any minimum pre-offer). Reference context only; cite no number from this."
+    },
+    {
+      "fact_id": "BIRCHAL-NEXT",
+      "category": "campaign_context",
+      "claim": "Birchal Next: client-stated forward-looking positioning / vision for the modernised platform (mid 2026 onward)",
+      "verbatim_text": "From mid 2026, Birchal is doing things differently. We built the platform, now we're reinvigorating and modernising it: supreme analytics, excellent onboarding, fast time from prep to settlement, and a smooth, stress-free UX. It's next-generation. It's called Birchal Next. We're backed by X and Y, we have a new team, and we're turning a corner. We need help to do so.",
+      "ad_safe_text": "From mid 2026, Birchal is doing things differently. We built the platform, now we're modernising it. It's called Birchal Next.",
+      "source": "client email 2026-05-17, Kirstin Hunter, forward-looking positioning — NOT a verified product claim",
+      "confidence": "MED",
+      "last_verified": "2026-05-17",
+      "note": "This is the client's stated VISION/positioning, framed forward-looking ('we're modernising', 'next-generation', 'turning a corner') — never as proven fact or current-state stat. Use future/aspirational voice only ('we're modernising', 'what's coming', 'the next chapter'), NEVER 'Birchal now has supreme analytics' or any present-tense capability claim. 'backed by X and Y' is a placeholder: must be replaced with the real, sourced named backers using ENDORSEMENT language only (rates/endorses/backs the model), never 'invested in us / backed this raise / on our cap table' — facts.json QUOTE-001..004 only support Pym/Carter/McKenzie endorsing Birchal + Gary backing Kirstin via Techstars, NOT investing in Birchal-the-company or this raise. All ad_safe rules apply: no en/em-dashes or smart quotes in shipped copy. 'next-generation' / 'supreme' are banned AI-tells exempt ONLY inside the attributed verbatim positioning, never in surrounding ad prose. Confidence MED because forward-looking, not a verified state."
     }
   ]
 }

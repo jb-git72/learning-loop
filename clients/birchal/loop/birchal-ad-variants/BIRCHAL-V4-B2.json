@@ -1,0 +1,55 @@
+{
+  "ad_id": "BIRCHAL-V4-B2",
+  "version": "V4",
+  "content_type": "meta-ad",
+  "segment": "B_existing_birchal_investors",
+  "angle": "Investor-validation / peer-decision",
+  "hook_type": "Caples Why + named-investor + numbers, setting up the verbatim quote",
+  "funnel": "TOF retargeting / list-targeted",
+  "tactic": "Why-named-investor hook -> verbatim Pym quote -> fund stack -> recursion",
+  "motivation": "Authority + peer validation",
+  "campaign_phase": "pre-campaign",
+  "primary_text": "Why Dom Pym rates us after $234M and 324 raises.\n\n\"I've looked at Birchal from the founder's seat and the investor's seat, and from both angles the answer is the same. Birchal is one of the most important companies in Australian fintech.\"\n\nDom Pym, Triple Bubble.\n\nAustralia Venture Partners Fund and Tribe Global back the model too. Now we are raising too.\n\nSave your spot. Read the offer when it opens.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "Why Dom Pym rates Birchal from both seats",
+  "description": "Founder seat, investor seat, same answer.",
+  "cta": "Save my spot",
+  "_source_label": "DRC V4 -- B2 Investor-validation / Peer-decision (existing investors)",
+  "_iterates": "BIRCHAL-B2 (V3, JB-attached Winner 2)",
+  "_v4_changes": [
+    "Hook rewrite: 'Triple Bubble's first investment from their new fintech fund: Birchal.' -> 'Why Dom Pym rates us after $234M and 324 raises.' Keeps the investor-validation DNA but leads with the Caples Why pattern + the named investor (Dom Pym, the strongest single line in the deck per the brief) + two numbers ($234M, 324) in the first sentence. Scores Halbert 5/5 in --primary-text mode where V3's first sentence alone scored 4 (the V3 news lead-in only fired the curiosity-gap + named-entity signals; V4 adds the question opener + numeric specificity). The 'two seats, one answer' idea is telegraphed by 'Why ... rates us' and paid off by the verbatim quote that follows.",
+    "VERIFY-PASS CORRECTION (2026-05-17): original V4 draft said 'Dom Pym backed us' / 'AVPF and Tribe Global followed' / headline 'backed Birchal'. facts.json (QUOTE-001/003/004) only supports that Pym/McKenzie endorse Birchal and Gary backed Kirstin via Techstars: it does NOT assert any of them invested in / are on the cap table of Birchal-the-company or this CSF raise. 'backed/followed' was an unsourced investor-association claim (Check-5 fact-traceability HARD FAIL + compliance-au CRITICAL: RG 234 burden-of-proof + ACL s 18 misleading-by-overstatement). Minimal reframe to endorsement language the register DOES support: 'backed us' -> 'rates us', 'followed' -> 'back the model too', headline 'backed Birchal' -> 'rates Birchal'. Verbatim Pym quote (QUOTE-001) unchanged. Re-ran full battery: PASS.",
+    "Pym quote (QUOTE-001) preserved byte-exact, attribution 'Dom Pym, Triple Bubble' unchanged.",
+    "Fund stack tightened: 'Australia Venture Partners Fund and Tribe Global have followed. After 324 raises for other founders, we are opening our own.' -> 'Australia Venture Partners Fund and Tribe Global back the model too. Now we are raising too.' '324 raises' moved into the hook (no longer repeated here); 'back the model' is endorsement language supported by QUOTE-003 (McKenzie: CSF and VC should reinforce each other, Birchal leading the way) + QUOTE-004 (Gary on Kirstin as category-defining operator), NOT an investment claim. 'raising too' makes the recursion implicit. Lands at 83 words: 3 over the 65-80 target band but well inside the 90-word hard cap; the 3-word cost buys removal of the unsourced 'followed' investor-association claim, a correct trade.",
+    "Headline: kept the V3-alternate 'Founder seat, investor seat, same answer' DNA but rebuilt to 'Why Dom Pym rates Birchal from both seats' (Caples Why + named investor, Halbert 4/5; 'rates ... from both seats' maps directly to the verbatim quote 'looked at Birchal from the founder's seat and the investor's seat ... the answer is the same'; the bare 'Founder seat, investor seat, same answer' scores only 2 standalone). Original kept verbatim in description as the paraphrase line."
+  ],
+  "_drc_playbook": "11 Lifecycle Email Promo / Launch",
+  "_drc_audience": "B2C considered, most-aware. Existing Birchal investors who understand CSF mechanics; peer signal weighs more than platform stats.",
+  "_drc_citations": [
+    "fact:authority-edelman-2024-peer-parity",
+    "fact:narrative-transportation-green-brock",
+    "fact:specificity-buzzsumo-numbers"
+  ],
+  "_client_facts_used": [
+    "QUOTE-001",
+    "QUOTE-003",
+    "QUOTE-004",
+    "PLAT-001",
+    "PLAT-002",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING",
+    "WAITLIST-CTA"
+  ],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_signals": ["question / interrogative opener (Why)", "specificity ($234M + 324)", "named entity (Dom Pym, client fact)"],
+  "_compliance_findings_resolved": [
+    "PREOFFER-VERBS: 'save your spot', 'read'. No transaction verbs. 'rates' is present-tense endorsement about Pym, not a CTA to the reader.",
+    "BANNED-CSF-PHRASES: zero matches.",
+    "VERBATIM-OFFER-LANGUAGE: 'Read the offer when it opens'. No 'we will send'.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "QUOTE-001: Dom Pym pasted verbatim, em-dash-free as stored, attributed 'Dom Pym, Triple Bubble'.",
+    "INVESTOR-ASSOCIATION (RG 234 / ACL s 18): no claim that Pym, AVPF, or Tribe Global invested in / backed Birchal-the-company or this raise. 'rates us' = Pym's verbatim endorsement (QUOTE-001); 'back the model too' = AVPF/Tribe Global endorsing equity crowdfunding / Birchal's leadership of it (QUOTE-003 McKenzie, QUOTE-004 Gary), not a cap-table claim. Substantiable from the supplied register.",
+    "Fund attribution (Australia Venture Partners Fund, Tribe Global) consistent with QUOTE-003 / QUOTE-004 endorsement sources (opinion/vision, not investment).",
+    "Subject discipline: 'Birchal' appears outside the quote once (in the headline); the two in-body 'Birchal' mentions are inside the attributed verbatim Pym quote and are exempt from the brand-count rule."
+  ],
+  "_word_count_primary_text": 83
+}

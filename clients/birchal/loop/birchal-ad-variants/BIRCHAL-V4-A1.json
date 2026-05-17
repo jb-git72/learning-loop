@@ -1,0 +1,53 @@
+{
+  "ad_id": "BIRCHAL-V4-A1",
+  "version": "V4",
+  "content_type": "meta-ad",
+  "segment": "A_first_time_csf",
+  "angle": "Curiosity / mechanism reveal",
+  "hook_type": "Cadence-of-three numbers + recursion punch (Halbert pattern interrupt + specificity)",
+  "funnel": "TOF",
+  "tactic": "Numbers-first scroll-stop -> eight-year mechanism reveal -> recursion punch",
+  "motivation": "Rational with specificity-driven curiosity",
+  "campaign_phase": "pre-campaign",
+  "primary_text": "324 raises, $234M+ raised, and now we are raising ourselves.\n\nFor eight years we built the rails so Australians could own a piece of companies like Naked Life, Our Cow and Medigrowth. 137,000 of them have. The platform did the funding. The company stayed private.\n\nNow we are opening our own raise on Birchal.\n\nSave your spot. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "How Australian startups actually get funded",
+  "description": "Save your spot to hear when our CSF offer opens.",
+  "cta": "Save my spot",
+  "_source_label": "DRC V4 -- A1 Curiosity / Mechanism (first-timers)",
+  "_iterates": "BIRCHAL-A1 (V3, JB-attached Winner 1)",
+  "_v4_changes": [
+    "Hook rewrite: '$234M raised. 137,000 investors. None of them VCs.' -> '324 raises, $234M+ raised, and now we are raising ourselves.' Keeps the cadence-of-three numbers DNA but the third beat now carries the recursion gap (raising ourselves -> the platform raising on itself), tying the hook directly to the offer. First sentence (not just first 8 words) scores Halbert 5/5 in --primary-text mode; V3 first sentence alone scored 5 too but V4 fuses proof + recursion in a single sentence so the gap is the offer itself.",
+    "Para 2 sharpened: 'For eight years we built the rails ... The platform did the funding. The company stayed private.' Adds the eight-year traction (PLAT-004) and a two-beat 'platform vs company' contrast that sets up the recursion without the V1 referent confusion (first-person 'we' throughout, 'Birchal' once).",
+    "Tighter to 79 words (V3 A1 was 70; V4 adds the eight-year proof + platform/company contrast while staying inside the 65-80 band)."
+  ],
+  "_drc_playbook": "03 Aspirational Identity Sell (B2C considered, solution-aware, sophistication 3 mechanism)",
+  "_drc_audience": "B2C considered, solution-aware. First-time CSF investors, currently using ETFs / Sharesies / Pearler.",
+  "_drc_citations": [
+    "fact:specificity-buzzsumo-numbers",
+    "fact:authority-edelman-2024-peer-parity",
+    "fact:narrative-transportation-green-brock"
+  ],
+  "_client_facts_used": [
+    "PLAT-001",
+    "PLAT-002",
+    "PLAT-003",
+    "PLAT-004",
+    "RAISE-001",
+    "RAISE-002",
+    "RAISE-003",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING",
+    "WAITLIST-CTA"
+  ],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_signals": ["specificity (324 + $234M in first 8 words)", "multiple numbers (cadence)", "named entity (client fact)", "recursion gap (raising ourselves)"],
+  "_compliance_findings_resolved": [
+    "PREOFFER-VERBS: 'save your spot', 'we will tell you the moment'. No transaction verbs. 'raising' is first-person factual, not a CTA to the reader.",
+    "BANNED-CSF-PHRASES: zero matches.",
+    "VERBATIM-OFFER-LANGUAGE: 'we will tell you the moment the offer goes live'. No 'we will send'.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "BRAND-EXCLUDED: only verified-good raises (Naked Life RAISE-001, Our Cow RAISE-002, Medigrowth RAISE-003).",
+    "Subject discipline: 'Birchal' appears once; everywhere else first-person we/our. No platform-vs-company referent swap."
+  ],
+  "_word_count_primary_text": 79
+}

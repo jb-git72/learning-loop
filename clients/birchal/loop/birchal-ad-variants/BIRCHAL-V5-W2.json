@@ -1,0 +1,55 @@
+{
+  "ad_id": "BIRCHAL-V5-W2",
+  "version": "V5",
+  "content_type": "meta-ad",
+  "phase": "waitlist",
+  "status": "ready",
+  "segment": "A_first_time_csf",
+  "angle": "Birchal Next / vision / modernisation",
+  "hook_type": "Numbers + 'doing things differently' curiosity gap (forward-looking vision voice)",
+  "funnel": "TOF",
+  "tactic": "Proof cadence -> forward-looking modernisation reveal -> name Birchal Next -> waitlist",
+  "motivation": "Vision + curiosity (what is changing, and why now)",
+  "campaign_phase": "pre-campaign",
+  "primary_text": "After 324 raises and $234M+, we are doing things differently.\n\nWe built the platform Australians used to back Naked Life and Our Cow. From mid 2026 we are modernising it: better analytics, smoother onboarding, faster from prep to settlement. We call it Birchal Next. To fund it, we are opening our own Crowd-Sourced Funding raise.\n\nThe waitlist is free. You read the offer document before you decide.\n\nSave your spot. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "What comes next for the platform",
+  "description": "Birchal Next is coming. Save your spot to hear when.",
+  "cta": "Save my spot",
+  "_source_label": "DRC V5 -- W2 Birchal Next / Vision (first-timers)",
+  "_iterates": "BIRCHAL-V4-A1 structure; new BIRCHAL-NEXT positioning angle the client introduced 2026-05-17.",
+  "_v5_rationale": [
+    "Uses the BIRCHAL-NEXT fact in strictly forward-looking voice: 'From mid 2026 we are modernising it', 'we call it Birchal Next', 'the next chapter'. NEVER present-tense capability ('Birchal now has supreme analytics'). 'better analytics, smoother onboarding, faster from prep to settlement' is the client's stated plan rephrased into non-banned, future-framed language (avoids the banned AI-tells 'supreme'/'next-generation' from the verbatim positioning; those are exempt only inside the attributed verbatim, not in ad prose).",
+    "'doing things differently' is the client's own verbatim friend-pitch opener; kept because it is her positioning language and it opens a curiosity gap (what is different?). Hook Halbert 5/5 in --primary-text mode.",
+    "No 'backed by X and Y' claim included: per BIRCHAL-NEXT note, that placeholder must be replaced with sourced endorsement language only. W2 omits backer claims entirely (the investor-validation angle is carried by W4). Vision angle stays clean of any cap-table implication."
+  ],
+  "_drc_playbook": "03 Aspirational Identity Sell",
+  "_drc_audience": "B2C considered, solution-aware. First-time CSF investors who respond to a forward-looking platform story.",
+  "_drc_citations": [
+    "fact:narrative-transportation-green-brock",
+    "fact:specificity-buzzsumo-numbers"
+  ],
+  "_client_facts_used": [
+    "PLAT-001",
+    "PLAT-002",
+    "RAISE-001",
+    "RAISE-002",
+    "BIRCHAL-NEXT",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING",
+    "WAITLIST-CTA"
+  ],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_score_primary_text_first_sentence": 5,
+  "_a_pile_signals": ["specificity (324 + $234M in first 8 words)", "multiple numbers (cadence)", "named entity (client fact)", "curiosity gap (doing things differently)"],
+  "_compliance_findings_resolved": [
+    "PREOFFER-VERBS: 'save your spot', 'we will tell you the moment'. No transaction verbs.",
+    "BANNED-CSF-PHRASES: zero matches.",
+    "VERBATIM-OFFER-LANGUAGE: 'we will tell you the moment the offer goes live'. No 'we will send'.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "BRAND-EXCLUDED: only verified-good raises (Naked Life RAISE-001, Our Cow RAISE-002).",
+    "BIRCHAL-NEXT used as VISION only: all references forward-looking ('from mid 2026 we are modernising', 'the next chapter'), never proven-fact or present-state. No 'backed by X and Y' / no unsourced backer claim. Banned AI-tells from the verbatim positioning ('supreme', 'next-generation') not used in ad prose.",
+    "Subject discipline: 'Birchal' appears once, in 'Birchal Next' (product/positioning name). First-person we/our elsewhere. No platform-vs-company swap.",
+    "Number traceability: 324=PLAT-001, $234M+=PLAT-002, brands=RAISE-001/002. 'mid 2026' is from BIRCHAL-NEXT verbatim (client-stated timeframe), labelled forward-looking."
+  ],
+  "_word_count_primary_text": 86
+}
