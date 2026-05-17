@@ -11,7 +11,7 @@
   "tactic": "'You did this' personal-address proof -> the platform you used is now raising -> waitlist",
   "motivation": "Identity + ownership + insider recursion",
   "campaign_phase": "pre-campaign",
-  "primary_text": "137,000 of you backed 324 companies on our platform. Now the platform is raising.\n\nEvery one of those raises, $234M+ in total, came from people choosing to own a piece of something they believed in, not from VCs. You built that. Now we are opening our own Crowd-Sourced Funding raise on it.\n\nThe waitlist is free. You see the offer document before you decide anything.\n\nSave your spot. You will see the offer the moment it goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "primary_text": "137,000 of you backed 324 companies on our platform. Now the platform is raising.\n\nEvery one of those raises, $234M+ in total, came from people choosing to own a piece of something they believed in, not from VCs. You built that. Now we are opening our own Crowd-Sourced Funding raise on it.\n\nThe waitlist is free. You see the offer document before you decide anything.\n\nLeave your email and we will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
   "headline": "You built this. Now we are raising.",
   "description": "Save your spot. You will see the offer the moment it goes live.",
   "cta": "Save my spot",
@@ -20,7 +20,8 @@
   "_v5_rationale": [
     "Carries the proven recursion-as-community spine the brief flags as strongest (fuses ownership + belonging + proof). 'You backed 324 companies ... now the platform is raising ... You built that. Now we are opening our own raise on it' makes both referents explicit (you = the investor; we/the platform = the company raising). No ambiguous 'it'/'itself' (learnings anti-pattern).",
     "Hook Halbert 5/5 in --primary-text mode: personal address + 137,000 + 324 cadence + recursion.",
-    "Names it a 'Crowd-Sourced Funding raise' once so Segment B is clear this is the live-offer event, addressing the client's 'doesn't read like a raise' note in the most-aware cluster too."
+    "Names it a 'Crowd-Sourced Funding raise' once so Segment B is clear this is the live-offer event, addressing the client's 'doesn't read like a raise' note in the most-aware cluster too.",
+    "V5b: stronger email-capture CTA (FarmThru-proven pattern). Closing CTA changed from the weaker 'save your spot' framing to an explicit email-capture micro-action ('Leave your email...'), per clients/farm-thru/learnings-meta-ad.md verbatim ('Outcome-stated CTA: leave your email, we will tell you the moment it goes live'). Notification-framed, no transaction verb, AU English, no contractions, CSF-compliant. Risk-reversal sentence, hook, headline, proof cadence, fact citations, and the verbatim CSF warning all unchanged. Button cta field 'Save my spot' (approved WAITLIST-CTA verbatim) unchanged."
   ],
   "_drc_playbook": "11 Lifecycle Email Promo / Launch (B2C considered, most-aware, active list)",
   "_drc_audience": "B2C considered, most-aware. Existing Birchal investors who have made at least one investment on the platform.",
@@ -38,7 +39,12 @@
   ],
   "_a_pile_score_first_8_words": 5,
   "_a_pile_score_primary_text_first_sentence": 5,
-  "_a_pile_signals": ["personal address (you)", "specificity (137,000 + 324)", "multiple numbers (cadence)", "recursion (now the platform is raising)"],
+  "_a_pile_signals": [
+    "personal address (you)",
+    "specificity (137,000 + 324)",
+    "multiple numbers (cadence)",
+    "recursion (now the platform is raising)"
+  ],
   "_compliance_findings_resolved": [
     "PREOFFER-VERBS: 'save your spot', 'you will see the offer'. No transaction verbs. 'backed' is past-tense factual about prior raises.",
     "BANNED-CSF-PHRASES: zero matches.",
@@ -48,5 +54,5 @@
     "Subject discipline: 'Birchal' appears zero times in body; 'our platform' / first-person we/our throughout; recursion subjects unambiguous (you = investor, we/platform = company raising).",
     "Number traceability: 137,000=PLAT-003, 324=PLAT-001, $234M+=PLAT-002."
   ],
-  "_word_count_primary_text": 81
+  "_word_count_primary_text": 79
 }

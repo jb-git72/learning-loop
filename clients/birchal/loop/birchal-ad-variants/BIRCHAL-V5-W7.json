@@ -11,7 +11,7 @@
   "tactic": "Proof cadence -> category-vision curiosity -> Kirstin Denholm quote -> the platform is raising -> waitlist",
   "motivation": "Vision + category conviction (sophisticated reader)",
   "campaign_phase": "pre-campaign",
-  "primary_text": "324 raises, $234M+, and a clear view of where Australian capital goes next.\n\n\"When retail investors, not just wholesale investors and VCs, can back the next generation of Australian deeptech, medtech, and cleantech companies we get a richer, more resilient innovation ecosystem.\" Kirstin Hunter, CEO, Birchal.\n\nWe built the rails for that. Now we are opening our own Crowd-Sourced Funding raise.\n\nThe waitlist is free. Read the offer document before you decide.\n\nSave your spot. We will tell you the moment it goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "primary_text": "324 raises, $234M+, and a clear view of where Australian capital goes next.\n\n\"When retail investors, not just wholesale investors and VCs, can back the next generation of Australian deeptech, medtech, and cleantech companies we get a richer, more resilient innovation ecosystem.\" Kirstin Hunter, CEO, Birchal.\n\nWe built the rails for that. Now we are opening our own Crowd-Sourced Funding raise.\n\nThe waitlist is free. Read the offer document before you decide.\n\nLeave your email and we will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
   "headline": "Where Australian capital goes next",
   "description": "The category vision, in the CEO's words. Save your spot.",
   "cta": "Save my spot",
@@ -20,7 +20,8 @@
   "_v5_rationale": [
     "Uses QUOTE-009 ad_safe excerpt verbatim, attributed 'Kirstin Hunter, CEO, Birchal'. Policy/category-vision framing for the sophisticated Segment B reader. 'ecosystem' is a banned AI-tell but is inside the attributed verbatim (exempt, same precedent as QUOTE-005 'seamless'); not used in surrounding prose.",
     "Hook Halbert 5/5 in --primary-text mode (cadence + category-vision curiosity gap). 'a clear view of where Australian capital goes next' is the curiosity bound; the Kirstin quote pays it off.",
-    "Category vision is opinion/vision per the quotes register: licenses NO market-share / #1 / largest / first claim. Body states none. The only numbers are the verified spine (324, $234M+)."
+    "Category vision is opinion/vision per the quotes register: licenses NO market-share / #1 / largest / first claim. Body states none. The only numbers are the verified spine (324, $234M+).",
+    "V5b: stronger email-capture CTA (FarmThru-proven pattern). Closing CTA changed from the weaker 'save your spot' framing to an explicit email-capture micro-action ('Leave your email...'), per clients/farm-thru/learnings-meta-ad.md verbatim ('Outcome-stated CTA: leave your email, we will tell you the moment it goes live'). Notification-framed, no transaction verb, AU English, no contractions, CSF-compliant. Risk-reversal sentence, hook, headline, proof cadence, fact citations, and the verbatim CSF warning all unchanged. Button cta field 'Save my spot' (approved WAITLIST-CTA verbatim) unchanged."
   ],
   "_drc_playbook": "11 Lifecycle Email Promo / Launch",
   "_drc_audience": "B2C considered, most-aware. Existing Birchal investors who think in terms of the capital-markets category, not just one raise.",
@@ -38,7 +39,12 @@
   ],
   "_a_pile_score_first_8_words": 5,
   "_a_pile_score_primary_text_first_sentence": 5,
-  "_a_pile_signals": ["specificity (324 + $234M in first 8 words)", "multiple numbers (cadence)", "named entity (client fact)", "curiosity gap (where capital goes next)"],
+  "_a_pile_signals": [
+    "specificity (324 + $234M in first 8 words)",
+    "multiple numbers (cadence)",
+    "named entity (client fact)",
+    "curiosity gap (where capital goes next)"
+  ],
   "_compliance_findings_resolved": [
     "PREOFFER-VERBS: 'save your spot', 'we will tell you the moment', 'read'. No transaction verbs as a CTA. 'back the next generation' is inside Kirstin's attributed verbatim, not a reader instruction.",
     "BANNED-CSF-PHRASES: zero matches.",
