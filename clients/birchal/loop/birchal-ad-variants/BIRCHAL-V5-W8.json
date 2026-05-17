@@ -11,7 +11,7 @@
   "tactic": "Proof cadence with recursion bound -> name the CSF offer -> waitlist",
   "motivation": "Curiosity + recursion + this-is-a-real-offer clarity",
   "campaign_phase": "pre-campaign",
-  "primary_text": "324 raises and $234M+ funded for other founders since 2018. The next one is ours.\n\nFor eight years our platform helped Australians own a piece of companies like Naked Life and Medigrowth. 137,000 of them did. We stayed private the whole time. Now we are opening our own Crowd-Sourced Funding raise.\n\nThe waitlist is free. You read the offer document before you decide.\n\nSave your spot. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "primary_text": "324 raises and $234M+ funded for other founders since 2018. The next one is ours.\n\nFor eight years our platform helped Australians own a piece of companies like Naked Life and Medigrowth. 137,000 of them did. We stayed private the whole time. Now we are opening our own Crowd-Sourced Funding raise.\n\nThe waitlist is free. You read the offer document before you decide.\n\nLeave your email. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
   "headline": "Eight years funding others. Now our own.",
   "description": "324 raises for other founders. The next one is ours.",
   "cta": "Save my spot",
@@ -20,7 +20,8 @@
   "_v5_rationale": [
     "Hook rewrite from the first scratch draft (which opened '8 years.' and scored Halbert 3): now '324 raises and $234M+ funded for other founders since 2018. The next one is ours.' Halbert 5/5 in --primary-text mode (cadence + recursion gap). 'for other founders ... The next one is ours' is the explicit recursion that answers the client's 'doesn't read like a raise' note.",
     "'We stayed private the whole time' is the confessional-shape beat the V1 open-question flagged as a reserved V4+ angle: first-person + specific timeframe + curiosity, now landed here.",
-    "Names it 'our own Crowd-Sourced Funding raise' once so it is unmistakably a live CSF offer, not brand content."
+    "Names it 'our own Crowd-Sourced Funding raise' once so it is unmistakably a live CSF offer, not brand content.",
+    "V5b: stronger email-capture CTA (FarmThru-proven pattern). Closing CTA changed from the weaker 'save your spot' framing to an explicit email-capture micro-action ('Leave your email...'), per clients/farm-thru/learnings-meta-ad.md verbatim ('Outcome-stated CTA: leave your email, we will tell you the moment it goes live'). Notification-framed, no transaction verb, AU English, no contractions, CSF-compliant. Risk-reversal sentence, hook, headline, proof cadence, fact citations, and the verbatim CSF warning all unchanged. Button cta field 'Save my spot' (approved WAITLIST-CTA verbatim) unchanged."
   ],
   "_drc_playbook": "03 Aspirational Identity Sell",
   "_drc_audience": "B2C considered, solution-aware. First-time CSF investors.",
@@ -41,7 +42,12 @@
   ],
   "_a_pile_score_first_8_words": 5,
   "_a_pile_score_primary_text_first_sentence": 5,
-  "_a_pile_signals": ["specificity (324 + $234M in first 8 words)", "multiple numbers (cadence)", "named entity (client fact)", "recursion gap (the next one is ours)"],
+  "_a_pile_signals": [
+    "specificity (324 + $234M in first 8 words)",
+    "multiple numbers (cadence)",
+    "named entity (client fact)",
+    "recursion gap (the next one is ours)"
+  ],
   "_compliance_findings_resolved": [
     "PREOFFER-VERBS: 'save your spot', 'we will tell you the moment', 'read'. No transaction verbs. 'funded' is past-tense factual about prior raises.",
     "BANNED-CSF-PHRASES: zero matches.",
@@ -51,5 +57,5 @@
     "Subject discipline: 'Birchal' appears zero times in body; 'our platform' / first-person we/our; recursion referents explicit (other founders vs us).",
     "Number traceability: 324=PLAT-001, $234M+=PLAT-002, 2018/eight years=PLAT-004, 137,000=PLAT-003, brands=RAISE-001/003. No market-share / #1 / first claim."
   ],
-  "_word_count_primary_text": 80
+  "_word_count_primary_text": 76
 }

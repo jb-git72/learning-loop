@@ -11,7 +11,7 @@
   "tactic": "Before-2018 stakes -> the crowd changed it -> the platform they built is raising -> waitlist",
   "motivation": "Empathy + access + community agency",
   "campaign_phase": "pre-campaign",
-  "primary_text": "Before 2018, backing an early Aussie company meant being a VC. 137,000 Australians changed that.\n\nThe law opened up, Crowd-Sourced Funding arrived, and we built the rails. 324 raises followed: Naked Life, Our Cow, Earthletica, Aquafab. $234M+, none of it from VCs.\n\nNow the platform they built is opening its own raise.\n\nThe waitlist is free. You read the offer document before you decide.\n\nSave your spot. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "primary_text": "Before 2018, backing an early Aussie company meant being a VC. 137,000 Australians changed that.\n\nThe law opened up, Crowd-Sourced Funding arrived, and we built the rails. 324 raises followed: Naked Life, Our Cow, Earthletica, Aquafab. $234M+, none of it from VCs.\n\nNow the platform they built is opening its own raise.\n\nThe waitlist is free. You read the offer document before you decide.\n\nLeave your email. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
   "headline": "What only VCs used to access",
   "description": "Before 2018 you were locked out. 137,000 changed that.",
   "cta": "Save my spot",
@@ -20,7 +20,8 @@
   "_v5_rationale": [
     "Carries the validated V4-A3 loss-frame hook (Halbert 5/5 in --primary-text mode). '137,000 changed that' is the sharper agency punch (the crowd did the changing).",
     "Recursion close rewritten to 'Now the platform they built is opening its own raise' (V4-A3 said 'the platform we built'). Both referents explicit: 'they' = the 137,000 investors (the builders); the platform = what is raising. Avoids the learnings anti-pattern of an ambiguous 'it'/'itself' carrying the recursion.",
-    "Brand grid identical to V4-A3 (Naked Life, Our Cow, Earthletica, Aquafab) for recency proof; all verified-good (RAISE-001/002/004/005)."
+    "Brand grid identical to V4-A3 (Naked Life, Our Cow, Earthletica, Aquafab) for recency proof; all verified-good (RAISE-001/002/004/005).",
+    "V5b: stronger email-capture CTA (FarmThru-proven pattern). Closing CTA changed from the weaker 'save your spot' framing to an explicit email-capture micro-action ('Leave your email...'), per clients/farm-thru/learnings-meta-ad.md verbatim ('Outcome-stated CTA: leave your email, we will tell you the moment it goes live'). Notification-framed, no transaction verb, AU English, no contractions, CSF-compliant. Risk-reversal sentence, hook, headline, proof cadence, fact citations, and the verbatim CSF warning all unchanged. Button cta field 'Save my spot' (approved WAITLIST-CTA verbatim) unchanged."
   ],
   "_drc_playbook": "03 Aspirational Identity Sell",
   "_drc_audience": "B2C considered, solution-aware. First-time CSF investors who feel locked out of startup equity.",
@@ -43,7 +44,12 @@
   ],
   "_a_pile_score_first_8_words": 5,
   "_a_pile_score_primary_text_first_sentence": 5,
-  "_a_pile_signals": ["specificity (2018 + 137,000)", "stakes named (meant being a VC)", "curiosity-gap construct (Before YYYY)", "named entity (client fact)"],
+  "_a_pile_signals": [
+    "specificity (2018 + 137,000)",
+    "stakes named (meant being a VC)",
+    "curiosity-gap construct (Before YYYY)",
+    "named entity (client fact)"
+  ],
   "_compliance_findings_resolved": [
     "PREOFFER-VERBS: 'save your spot', 'we will tell you the moment', 'read'. No transaction verbs. 'backing' is gerund-factual; no now/today/here attached.",
     "BANNED-CSF-PHRASES: zero matches.",
@@ -53,5 +59,5 @@
     "Subject discipline: 'Birchal' appears zero times in body; 'the platform they built' + first-person we/our; recursion referents explicit (they = the 137,000 builders, platform = what is raising).",
     "Number traceability: 2018=PLAT-004, 137,000=PLAT-003, 324=PLAT-001, $234M+=PLAT-002, brands=RAISE-001/002/004/005."
   ],
-  "_word_count_primary_text": 85
+  "_word_count_primary_text": 77
 }

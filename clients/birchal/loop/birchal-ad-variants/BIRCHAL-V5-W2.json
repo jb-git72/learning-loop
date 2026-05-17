@@ -11,7 +11,7 @@
   "tactic": "Proof cadence -> forward-looking modernisation reveal -> name Birchal Next -> waitlist",
   "motivation": "Vision + curiosity (what is changing, and why now)",
   "campaign_phase": "pre-campaign",
-  "primary_text": "After 324 raises and $234M+, we are doing things differently.\n\nWe built the platform Australians used to back Naked Life and Our Cow. From mid 2026 we are modernising it: better analytics, smoother onboarding, faster from prep to settlement. We call it Birchal Next. To fund it, we are opening our own Crowd-Sourced Funding raise.\n\nThe waitlist is free. You read the offer document before you decide.\n\nSave your spot. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "primary_text": "After 324 raises and $234M+, we are doing things differently.\n\nWe built the platform Australians used to back Naked Life and Our Cow. From mid 2026 we are modernising it: better analytics, smoother onboarding, faster from prep to settlement. We call it Birchal Next. To fund it, we are opening our own Crowd-Sourced Funding raise.\n\nThe waitlist is free. You read the offer document before you decide.\n\nLeave your email and we will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
   "headline": "What comes next for the platform",
   "description": "Birchal Next is coming. Save your spot to hear when.",
   "cta": "Save my spot",
@@ -20,7 +20,8 @@
   "_v5_rationale": [
     "Uses the BIRCHAL-NEXT fact in strictly forward-looking voice: 'From mid 2026 we are modernising it', 'we call it Birchal Next', 'the next chapter'. NEVER present-tense capability ('Birchal now has supreme analytics'). 'better analytics, smoother onboarding, faster from prep to settlement' is the client's stated plan rephrased into non-banned, future-framed language (avoids the banned AI-tells 'supreme'/'next-generation' from the verbatim positioning; those are exempt only inside the attributed verbatim, not in ad prose).",
     "'doing things differently' is the client's own verbatim friend-pitch opener; kept because it is her positioning language and it opens a curiosity gap (what is different?). Hook Halbert 5/5 in --primary-text mode.",
-    "No 'backed by X and Y' claim included: per BIRCHAL-NEXT note, that placeholder must be replaced with sourced endorsement language only. W2 omits backer claims entirely (the investor-validation angle is carried by W4). Vision angle stays clean of any cap-table implication."
+    "No 'backed by X and Y' claim included: per BIRCHAL-NEXT note, that placeholder must be replaced with sourced endorsement language only. W2 omits backer claims entirely (the investor-validation angle is carried by W4). Vision angle stays clean of any cap-table implication.",
+    "V5b: stronger email-capture CTA (FarmThru-proven pattern). Closing CTA changed from the weaker 'save your spot' framing to an explicit email-capture micro-action ('Leave your email...'), per clients/farm-thru/learnings-meta-ad.md verbatim ('Outcome-stated CTA: leave your email, we will tell you the moment it goes live'). Notification-framed, no transaction verb, AU English, no contractions, CSF-compliant. Risk-reversal sentence, hook, headline, proof cadence, fact citations, and the verbatim CSF warning all unchanged. Button cta field 'Save my spot' (approved WAITLIST-CTA verbatim) unchanged."
   ],
   "_drc_playbook": "03 Aspirational Identity Sell",
   "_drc_audience": "B2C considered, solution-aware. First-time CSF investors who respond to a forward-looking platform story.",
@@ -40,7 +41,12 @@
   ],
   "_a_pile_score_first_8_words": 5,
   "_a_pile_score_primary_text_first_sentence": 5,
-  "_a_pile_signals": ["specificity (324 + $234M in first 8 words)", "multiple numbers (cadence)", "named entity (client fact)", "curiosity gap (doing things differently)"],
+  "_a_pile_signals": [
+    "specificity (324 + $234M in first 8 words)",
+    "multiple numbers (cadence)",
+    "named entity (client fact)",
+    "curiosity gap (doing things differently)"
+  ],
   "_compliance_findings_resolved": [
     "PREOFFER-VERBS: 'save your spot', 'we will tell you the moment'. No transaction verbs.",
     "BANNED-CSF-PHRASES: zero matches.",
@@ -51,5 +57,5 @@
     "Subject discipline: 'Birchal' appears once, in 'Birchal Next' (product/positioning name). First-person we/our elsewhere. No platform-vs-company swap.",
     "Number traceability: 324=PLAT-001, $234M+=PLAT-002, brands=RAISE-001/002. 'mid 2026' is from BIRCHAL-NEXT verbatim (client-stated timeframe), labelled forward-looking."
   ],
-  "_word_count_primary_text": 86
+  "_word_count_primary_text": 81
 }

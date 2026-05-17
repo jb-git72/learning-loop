@@ -11,7 +11,7 @@
   "tactic": "Why-named-investor hook -> verbatim Pym endorsement -> the platform is raising -> waitlist",
   "motivation": "Authority + peer validation",
   "campaign_phase": "pre-campaign",
-  "primary_text": "Why Dom Pym rates us after $234M and 324 raises.\n\n\"I've looked at Birchal from the founder's seat and the investor's seat, and from both angles the answer is the same. Birchal is one of the most important companies in Australian fintech.\"\n\nDom Pym, Triple Bubble.\n\nAfter eight years funding other founders, we are opening our own raise.\n\nThe waitlist is free. Read the offer document before you decide.\n\nSave your spot. We will tell you the moment it goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "primary_text": "Why Dom Pym rates us after $234M and 324 raises.\n\n\"I've looked at Birchal from the founder's seat and the investor's seat, and from both angles the answer is the same. Birchal is one of the most important companies in Australian fintech.\"\n\nDom Pym, Triple Bubble.\n\nAfter eight years funding other founders, we are opening our own raise.\n\nThe waitlist is free. Read the offer document before you decide.\n\nLeave your email. We will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
   "headline": "Why Dom Pym rates Birchal from both seats",
   "description": "Founder seat, investor seat, same answer. Save your spot.",
   "cta": "Save my spot",
@@ -20,7 +20,8 @@
   "_v5_rationale": [
     "Carries the V4-B2 hook verbatim (Halbert 5/5 in --primary-text mode). Inherits the V4 verify lesson exactly: 'rates us' is Pym's verbatim endorsement (QUOTE-001), NOT a claim he invested in / backed Birchal-the-company or this raise. No 'backed/followed/invested'. No fund-stack 'followed' claim at all in V5-W4 (dropped to keep the body tighter and remove any residual investor-association risk; the broader endorsement angle is implicit in the single Pym quote).",
     "Replaces the V4-B2 closing 'AVPF and Tribe Global back the model too' line with a clean recursion close ('After eight years funding other founders, we are opening our own raise'). This both shortens the body toward the target band AND removes the only line a verify agent could probe for an over-stated multi-fund endorsement.",
-    "Pym quote (QUOTE-001) byte-exact, attribution 'Dom Pym, Triple Bubble' unchanged. The two in-body 'Birchal' mentions are inside the attributed verbatim quote (exempt from brand-count rule); one further 'Birchal' is in the headline only."
+    "Pym quote (QUOTE-001) byte-exact, attribution 'Dom Pym, Triple Bubble' unchanged. The two in-body 'Birchal' mentions are inside the attributed verbatim quote (exempt from brand-count rule); one further 'Birchal' is in the headline only.",
+    "V5b: stronger email-capture CTA (FarmThru-proven pattern). Closing CTA changed from the weaker 'save your spot' framing to an explicit email-capture micro-action ('Leave your email...'), per clients/farm-thru/learnings-meta-ad.md verbatim ('Outcome-stated CTA: leave your email, we will tell you the moment it goes live'). Notification-framed, no transaction verb, AU English, no contractions, CSF-compliant. Risk-reversal sentence, hook, headline, proof cadence, fact citations, and the verbatim CSF warning all unchanged. Button cta field 'Save my spot' (approved WAITLIST-CTA verbatim) unchanged."
   ],
   "_drc_playbook": "11 Lifecycle Email Promo / Launch",
   "_drc_audience": "B2C considered, most-aware. Existing Birchal investors; peer signal weighs more than platform stats.",
@@ -39,7 +40,11 @@
   ],
   "_a_pile_score_first_8_words": 5,
   "_a_pile_score_primary_text_first_sentence": 5,
-  "_a_pile_signals": ["question / interrogative opener (Why)", "specificity ($234M + 324)", "named entity (Dom Pym, client fact)"],
+  "_a_pile_signals": [
+    "question / interrogative opener (Why)",
+    "specificity ($234M + 324)",
+    "named entity (Dom Pym, client fact)"
+  ],
   "_compliance_findings_resolved": [
     "PREOFFER-VERBS: 'save your spot', 'we will tell you the moment', 'read'. No transaction verbs. 'rates' is present-tense endorsement about Pym, not a CTA to the reader.",
     "BANNED-CSF-PHRASES: zero matches.",
@@ -50,5 +55,5 @@
     "Subject discipline: 'Birchal' outside the quote appears once (in the headline only); the two in-body 'Birchal' mentions are inside the attributed verbatim Pym quote and exempt from the brand-count rule.",
     "Number traceability: $234M=PLAT-002, 324=PLAT-001, eight years=PLAT-004."
   ],
-  "_word_count_primary_text": 84
+  "_word_count_primary_text": 82
 }
