@@ -56,6 +56,7 @@ Three V1 headlines had subject ambiguity:
 
 ## Anti-patterns (do not ship)
 
+- ANY market-share %, "#1", "largest", "leading", "first in Australia", valuation, or $ minimum. Unsourced and banned (ASIC RG 234 / BANNED-CSF-PHRASES / brief.md). The verified numeric spine is ONLY: $234M+ raised, 324 raises, 137,000 investors, operating since 2018. JB's own 2026-05-18 rewrite tripped this with "over 64% market share" -- adopt its structure, never that claim. See #5 compliance carve-out.
 - "Birchal is now doing the same for itself" -- "itself" is the problem.
 - "the platform it built" with `it = Birchal-the-company` and `platform = Birchal-the-platform` in the same sentence without first-person framing.
 - Body copy over 90 words.
@@ -95,7 +96,44 @@ V2 openers were informational ("324 Australian companies have raised on Birchal.
 - "Why most Australians missed the last $234M" (Caples Why + FOMO + specific stat)
 - "324 raises. $234M raised. Now our own." (cadence + recursion punch)
 
+### 5. Sentence-level structure: the 2026-05-18 JB-rewrite pattern.
+
+JB rewrote a V5-grade primary text and the edit was almost entirely structural, not factual. The lesson is the *shape of the sentences* and it generalises to every variant. Apply before the hook gate.
+
+**Rule. One idea per sentence. The full stop is the timing device.** Never open with a comma-spliced stat triplet. Open with ONE number as a complete sentence, full stop, then a short second sentence that turns. The hard stop forces the beat that makes the turn land.
+- Bad (AI V5): "324 raises, $234M+, and the next CSF offer on Birchal is our own."
+- Good (JB): "$234M+ raised on Birchal. And the next crowd-sourced funding offer is our own."
+
+**Rule. The reader is the grammatical subject at the turn and the CTA.** Pivot we->you exactly at the moment of opportunity. The payoff is about the reader's stake, not Birchal's milestone.
+- Bad: "Now it is our turn." (subject = Birchal)
+- Good: "Now, you can own a piece of the platform." (subject = the reader)
+
+**Rule. No third-party company names in the bridge.** The setup-to-turn paragraph keeps the spotlight on the platform and the reader. Naked Life / Our Cow / Medigrowth steal attention at the exact moment we want the reader thinking about their own stake. Named clients, if used at all, go in a dedicated proof line, never the connective tissue. (Stricter than #2: zero names in the bridge, not just no repeats.)
+
+**Rule. CTA = the literal micro-action, one sentence, with the exchange.** "Leave your email and we will tell you the moment the offer goes live." Beats "Save your spot ..." twice over: (a) it states the real conversion action, the email, matching the FMTH top performer; (b) "spot / place / allocation / secure / reserve" is a CSF place-metaphor smell, "email / notify" is the safe and higher-converting frame. Do not pad the close with separate "it's free / no obligation" sentences; a genuinely small ask defends itself and the disclaimer line carries compliance.
+
+**Rule. One proof point per beat.** At most one number in the hook, one in the bridge, none repeated. Four scattered stats read as a brag; one per beat reads as fact. (Tightens #4: cadence-of-three is a hook device inside one sentence; across the ad, do not re-scatter the same numbers.)
+
+**Observation worth keeping.** "324 raises. The next one is ours." was always the strongest line because it already had this shape: two short sentences, hard stop, turn at the end. JB's body rewrite simply propagated the headline's proven rhythm down into the primary text. When the headline reads well but the body does not, the usual fault is a rhythm mismatch: a punchy headline bolted onto a comma-stacked body. Make the body match the headline's cadence.
+
+**Compliance carve-out (load-bearing).** JB's rewrite also contained "over 64% market share of all crowd-sourced funding raises in Australia" and the misspelling "acheived". The *structural slot* it filled (a one-line dominance proof before the turn) is correct; the *claim* is a banned unsourced market-share statement and must never ship. Fill that slot with a verified-spine stat instead (324 raises since 2018 / 137,000 investors / $234M+). Adopt the shape, never the unsourced number. This is the canonical example of that rule.
+
 ## Open question for next pass
 
 - For Segment B (existing investors), should the ads call them out as "Birchal investors" explicitly (e.g. "If you've backed a company on our platform...") or stay implicit? V1 used "you backed a Birchal company" which is direct but cold-list-served could feel presumptuous. JB to confirm.
 - Possible 6th ad angle: Halbert-style confessional opener. "After 8 years funding other people's companies, we have kept ours private. That is about to change." -- first-person + confession-shape + specific timeframe + curiosity. Reserved for V4 if JB wants to test against the current 5.
+
+## Generation prompt addendum (paste into the DRC primary-text generate + refine step)
+
+Derived from the 2026-05-18 JB rewrite (#5). Each item is a gate, not a preference. Self-check every variant against the checklist before emitting.
+
+1. One idea per sentence. No comma-spliced stat triplets. Open with ONE verified number as a complete sentence, full stop, then a short sentence that turns. The full stop is the hook's timing device; do not replace it with a comma or colon.
+2. Hook = one verified number + a turn. Pattern: "[ONE spine stat] [verb] on Birchal. And [the turn]." Spine = $234M+ raised, 324 raises, 137,000 investors, since 2018. Never market-share %, "#1", "largest", "leading", "first", valuation, or $ minimum. If a draft contains any, delete the claim and substitute a spine stat in the same slot.
+3. The bridge names no third-party companies. Spotlight on the platform and the reader. Named clients only in a dedicated proof line, never setup-to-turn.
+4. The reader is the grammatical subject at the turn and the CTA. "Now, you can own a piece of the platform" / "Leave your email", never "Now it is our turn" / "Save your spot".
+5. Plain concrete nouns, not metaphor. "the platform" not "the rails". 5th to 7th grade reading level.
+6. CTA = the literal micro-action, one sentence, with the exchange: "Leave your email and we will tell you the moment the offer goes live." No "save your spot / secure / reserve / allocation". No separate "it's free / no obligation" sentence.
+7. One proof point per beat. At most one number in the hook, one in the bridge, none repeated.
+8. Terminator byte-exact, once: *Always consider the general CSF risk warning and offer document before investing.
+
+Self-check (all must be yes): (a) every sentence one idea; (b) reader is subject at the turn and CTA; (c) no third-party names in the bridge; (d) every number traces to the spine; (e) zero banned phrases incl. market-share / #1 / first / place-metaphor CTA; (f) reads 5th to 7th grade out loud; (g) body cadence matches the headline cadence.
