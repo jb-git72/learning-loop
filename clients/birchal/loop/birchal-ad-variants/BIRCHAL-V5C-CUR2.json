@@ -1,0 +1,56 @@
+{
+  "ad_id": "BIRCHAL-V5C-CUR2",
+  "version": "V5c",
+  "content_type": "meta-ad",
+  "phase": "waitlist",
+  "status": "ready",
+  "segment": "A_first_time_csf",
+  "angle": "Curiosity-led: mechanism-knowledge asymmetry (137,000 know how, you might not)",
+  "hook_type": "Caples Why + verified number (137,000) + 'and you might not' knowledge-gap",
+  "funnel": "TOF",
+  "tactic": "Knowledge-asymmetry hook -> reveal the mechanism (back companies straight through the platform) -> recursion -> waitlist",
+  "motivation": "Curiosity + mechanism reveal + mild FOMO",
+  "campaign_phase": "pre-campaign",
+  "primary_text": "Why do 137,000 Australians know how a startup gets funded and you might not?\n\nThey did not wait for a venture fund. They backed companies straight through one platform, eight years of it. That platform is now opening its own crowd-sourced funding offer.\n\nNow you can own a piece of it. You read the offer document first, the day it goes live.\n\nLeave your email and we will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "How 137,000 Australians fund startups",
+  "description": "The funding mechanism 137,000 already use. Leave your email.",
+  "cta": "Save my spot",
+  "_source_label": "DRC V5c -- CUR2 Curiosity-led / knowledge-asymmetry (first-timers)",
+  "_iterates": "BIRCHAL-V5-W set (waitlist regime). New V5c structure: 4 angles x 4 hook-distinct variants under learnings-meta-ad.md #5 + Generation prompt addendum (one idea per sentence, ONE number then a turn, reader is subject at the turn and CTA, literal email micro-action CTA per WAITLIST-CTA 2026-05-18).",
+  "_v5c_rationale": [
+    "One of 4 hook-distinct variants in its angle; the hook (first 1-2 sentences) is the primary differentiator, body adapted to fit the hook (JB-permitted 2026-05-18).",
+    "Built to the learnings-meta-ad.md #5 / Generation prompt addendum 8 structural gates: opens with ONE verified number (or Caples Why on a verified number) as a complete sentence, full stop, then a turn; the reader is the grammatical subject at the turn and the CTA; no third-party company names in the bridge; plain concrete nouns; one proof point per beat; CTA = literal email micro-action with the exchange; verbatim CSF warning byte-exact terminator.",
+    "CTA field is the WAITLIST-CTA approved verbatim 'Save my spot' (landing-page canonical button); the in-copy close uses the 2026-05-18 JB-preferred literal email micro-action 'Leave your email and we will tell you the moment the offer goes live' (FMTH top-performer pattern, CSF-clean notification framing).",
+    "Strict WAITLIST regime: Birchal's own CSF offer is not live until 26 June 2026 (OFFER-CONTEXT). No transaction verbs, no $ minimum, no preferential-terms framing. Pre-offer compliant."
+  ],
+  "_drc_playbook": "03 Aspirational Identity Sell (B2C considered, solution-aware, sophistication 3 mechanism)",
+  "_drc_audience": "B2C considered, solution-aware. First-time CSF investors who treat startup investing as inaccessible.",
+  "_drc_citations": [
+    "fact:specificity-buzzsumo-numbers",
+    "fact:narrative-transportation-green-brock"
+  ],
+  "_client_facts_used": [
+    "PLAT-003",
+    "PLAT-004",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING",
+    "WAITLIST-CTA"
+  ],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_score_primary_text_first_sentence": 5,
+  "_a_pile_signals": [
+    "specific number in first 8 words (137,000)",
+    "question / interrogative opener (Why)",
+    "named entity (client fact)"
+  ],
+  "_compliance_findings_resolved": [
+    "PREOFFER-VERBS: 'Leave your email', 'we will tell you the moment', 'read the offer document first'. No transaction verbs.",
+    "BANNED-CSF-PHRASES: zero matches.",
+    "VERBATIM-OFFER-LANGUAGE: 'we will tell you the moment the offer goes live'. No 'we will send'.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "Ownership phrase in first two paragraphs ('you can own a piece of it').",
+    "Subject discipline: 'Birchal' zero times; 'the platform' resolved with first-person 'its own offer'; no two-referent ambiguity.",
+    "Number traceability: 137,000=PLAT-003, eight years=PLAT-004. No unsourced market-share / #1 / first / valuation."
+  ],
+  "_word_count_primary_text": 76
+}

@@ -232,7 +232,7 @@
       "source": "BIRCH/meta.json + landing-page audit (2026-05-07)",
       "confidence": "HIGH",
       "last_verified": "2026-05-07",
-      "note": "Primary CTA across the BIRCH landing page is 'Save my spot' (header, sticky, signup card). Use this verbatim in ad CTAs. Acceptable variants in body copy: 'Save your spot on the waitlist', 'Be on the waitlist', 'Hear when the offer goes live'."
+      "note": "Primary CTA across the BIRCH landing page is 'Save my spot' (header, sticky, signup card). It remains the landing-page canonical button and is compliance-approved. UPDATE 2026-05-18 (JB): for AD copy specifically the preferred CTA is the literal micro-action 'Leave your email and we'll tell you the moment the offer goes live' (matches the FMTH top performer; see learnings-meta-ad.md #5). Use 'Save my spot' only as a variety alternate in ads, not the default. Both are CSF-clean: this is a conversion preference, not a compliance change. Body-copy variants still acceptable: 'Be on the waitlist', 'Hear when the offer goes live'."
     },
     {
       "fact_id": "QUOTE-006",
@@ -298,6 +298,19 @@
       "confidence": "MED",
       "last_verified": "2026-05-17",
       "note": "This is the client's stated VISION/positioning, framed forward-looking ('we're modernising', 'next-generation', 'turning a corner') — never as proven fact or current-state stat. Use future/aspirational voice only ('we're modernising', 'what's coming', 'the next chapter'), NEVER 'Birchal now has supreme analytics' or any present-tense capability claim. 'backed by X and Y' is a placeholder: must be replaced with the real, sourced named backers using ENDORSEMENT language only (rates/endorses/backs the model), never 'invested in us / backed this raise / on our cap table' — facts.json QUOTE-001..004 only support Pym/Carter/McKenzie endorsing Birchal + Gary backing Kirstin via Techstars, NOT investing in Birchal-the-company or this raise. All ad_safe rules apply: no en/em-dashes or smart quotes in shipped copy. 'next-generation' / 'supreme' are banned AI-tells exempt ONLY inside the attributed verbatim positioning, never in surrounding ad prose. Confidence MED because forward-looking, not a verified state."
+    },
+    {
+      "fact_id": "PLAT-005",
+      "category": "platform_stat",
+      "claim": "More than 64% of all funds raised through crowd-sourced funding in Australia has been raised on Birchal",
+      "claim_patterns": ["64%", "over 64%", "more than 64%", "64 per cent", "64 percent"],
+      "ad_safe_text": "More than 64% of all money raised through crowd-sourced funding in Australia has been raised on Birchal.",
+      "ad_safe_short": "64% of all the money raised through crowd-sourced funding in Australia has gone through Birchal.",
+      "source": "JB-authorised 2026-05-18 (verbal, client owner: 'We can use the 64% market share. It is fact and verifiable.'). Substantiation basis: Birchal's published crowd-sourced funding data / annual Birchal CSF Yearbook. EXACT PUBLIC CITATION TO BE CONFIRMED BY JB BEFORE LIVE.",
+      "confidence": "MED",
+      "last_verified": "2026-05-18",
+      "source_status": "OPEN. Verbal authorisation only. ASIC RG 234 requires documented substantiation on file before this runs on Meta. Safe to draft and send to the internal JB approval sheet. MUST attach the exact public citation (Birchal CSF Yearbook FY or published share-of-funds figure) before any V5c DOM ad goes live.",
+      "note": "JB-authorised dominance stat. Usage rules (hard): (1) use at most ONCE per ad; (2) use the registered wording or ad_safe_short, always scoped to 'crowd-sourced funding in Australia', never bare '64% market share' which over-claims scope; (3) NEVER combine with '#1', 'number one', 'largest', 'leading', or 'first', those remain banned unsourced claims and PLAT-005 is the ONLY permitted market-share statement; (4) pair with the verified spine (PLAT-001/002/003/004), do not stack two market-share figures; (5) AU English, no en/em dashes or smart quotes in shipped copy; (6) 'more than 64%' or 'over 64%' preferred over bare '64%' (under-claims, more defensible). This entry is the single carve-out to the learnings-meta-ad.md gate #2 and anti-pattern blanket market-share ban. Until source_status is closed, ads using PLAT-005 may be drafted and JB-reviewed but must NOT be marked live."
     }
   ]
 }

@@ -1,0 +1,328 @@
+{
+  "set_id": "BIRCHAL-HEADLINES-V5C",
+  "generated": "2026-05-18",
+  "rules": "Max 8 words. Sentence case. AU English. No em/en dashes or smart quotes. No banned CSF phrases. Strict WAITLIST regime (Birchal's own CSF offer not live until 26 June 2026): no transaction verbs, no $ minimum, no priority/allocation/queue language. Aligned to the 4 V5c angles (investor-led, curiosity-led, market-dominance/64%, vision/Birchal Next), >=4 per angle. hook_audit.py standalone score >=4 on EVERY headline against clients/birchal/facts.json. Subject discipline: 'Birchal' = the company; the platform = 'the platform' / 'our platform'.",
+  "v5c_notes": [
+    "Refreshed standalone set aligned to the V5c 4-angle structure. Supersedes the V5 single-file headline set for the V5c batch (kept separate, original V5 file untouched per scope discipline).",
+    "DOM headlines all rely on PLAT-005 (more than 64% of CSF in Australia), registered scoped wording, never combined with #1/first/largest. facts.json source_status OPEN: DRAFT/JB-review safe, MUST attach the exact public citation before any DOM headline goes live.",
+    "Every headline scored standalone with hook_audit.py --client-facts clients/birchal/facts.json: minimum 4, several 5. No unsourced market-leadership claim ('#1' / 'largest' / 'leading' / 'first' / valuation / $ minimum); the only market-share statement is the registered PLAT-005."
+  ],
+  "halbert_targets": "Every headline scores >= 4 on hook_audit.py standalone against clients/birchal/facts.json. At least 2 A-pile signals each (specificity, curiosity gap, pattern interrupt, personal address, named entity). No statements without a hook.",
+  "headlines": [
+    {
+      "id": "H5C-INV-01",
+      "text": "Why Dom Pym rates Birchal from both seats",
+      "phase": "waitlist",
+      "angle": "investor-led",
+      "segment": "B",
+      "words": 8,
+      "halbert_score_standalone": 4,
+      "fact_ids": [
+        "QUOTE-001"
+      ]
+    },
+    {
+      "id": "H5C-INV-02",
+      "text": "The platform behind 324 Australian raises",
+      "phase": "waitlist",
+      "angle": "investor-led",
+      "segment": "A",
+      "words": 6,
+      "halbert_score_standalone": 4,
+      "fact_ids": [
+        "PLAT-001"
+      ]
+    },
+    {
+      "id": "H5C-INV-03",
+      "text": "Why Shayne Gary backed our CEO early",
+      "phase": "waitlist",
+      "angle": "investor-led",
+      "segment": "B",
+      "words": 7,
+      "halbert_score_standalone": 4,
+      "fact_ids": [
+        "QUOTE-004"
+      ]
+    },
+    {
+      "id": "H5C-INV-04",
+      "text": "$234M+ raised, and a fund manager explains",
+      "phase": "waitlist",
+      "angle": "investor-led",
+      "segment": "B",
+      "words": 7,
+      "halbert_score_standalone": 4,
+      "fact_ids": [
+        "PLAT-002",
+        "QUOTE-002"
+      ]
+    },
+    {
+      "id": "H5C-INV-05",
+      "text": "Why a fund manager backs 324 raises",
+      "phase": "waitlist",
+      "angle": "investor-led",
+      "segment": "B",
+      "words": 7,
+      "halbert_score_standalone": 4,
+      "fact_ids": [
+        "PLAT-001",
+        "QUOTE-002"
+      ]
+    },
+    {
+      "id": "H5C-CUR-01",
+      "text": "Why none of $234M+ came from VCs",
+      "phase": "waitlist",
+      "angle": "curiosity-led",
+      "segment": "A",
+      "words": 7,
+      "halbert_score_standalone": 5,
+      "fact_ids": [
+        "PLAT-002"
+      ]
+    },
+    {
+      "id": "H5C-CUR-02",
+      "text": "How 137,000 Australians fund startups",
+      "phase": "waitlist",
+      "angle": "curiosity-led",
+      "segment": "A",
+      "words": 5,
+      "halbert_score_standalone": 5,
+      "fact_ids": [
+        "PLAT-003"
+      ]
+    },
+    {
+      "id": "H5C-CUR-03",
+      "text": "Why we funded 324 and not ourselves",
+      "phase": "waitlist",
+      "angle": "curiosity-led",
+      "segment": "A",
+      "words": 7,
+      "halbert_score_standalone": 5,
+      "fact_ids": [
+        "PLAT-001"
+      ]
+    },
+    {
+      "id": "H5C-CUR-04",
+      "text": "What 137,000 investors worked out first",
+      "phase": "waitlist",
+      "angle": "curiosity-led",
+      "segment": "A",
+      "words": 6,
+      "halbert_score_standalone": 5,
+      "fact_ids": [
+        "PLAT-003"
+      ]
+    },
+    {
+      "id": "H5C-CUR-05",
+      "text": "324 raises in. Guess who is next.",
+      "phase": "waitlist",
+      "angle": "curiosity-led",
+      "segment": "A",
+      "words": 7,
+      "halbert_score_standalone": 4,
+      "fact_ids": [
+        "PLAT-001"
+      ]
+    },
+    {
+      "id": "H5C-CUR-06",
+      "text": "Why 137,000 invested before you did",
+      "phase": "waitlist",
+      "angle": "curiosity-led",
+      "segment": "A",
+      "words": 6,
+      "halbert_score_standalone": 5,
+      "fact_ids": [
+        "PLAT-003"
+      ]
+    },
+    {
+      "id": "H5C-DOM-01",
+      "text": "More than 64% of CSF, one platform",
+      "phase": "waitlist",
+      "angle": "market-dominance / 64% (PLAT-005)",
+      "segment": "A",
+      "words": 7,
+      "halbert_score_standalone": 4,
+      "fact_ids": [
+        "PLAT-005"
+      ],
+      "status": "citation-pending"
+    },
+    {
+      "id": "H5C-DOM-02",
+      "text": "Why most Australian CSF goes one way",
+      "phase": "waitlist",
+      "angle": "market-dominance / 64% (PLAT-005)",
+      "segment": "A",
+      "words": 7,
+      "halbert_score_standalone": 5,
+      "fact_ids": [
+        "PLAT-005"
+      ],
+      "status": "citation-pending"
+    },
+    {
+      "id": "H5C-DOM-03",
+      "text": "Where most Australian CSF money went",
+      "phase": "waitlist",
+      "angle": "market-dominance / 64% (PLAT-005)",
+      "segment": "A",
+      "words": 6,
+      "halbert_score_standalone": 4,
+      "fact_ids": [
+        "PLAT-005"
+      ],
+      "status": "citation-pending"
+    },
+    {
+      "id": "H5C-DOM-04",
+      "text": "64% of Australian CSF, eight years",
+      "phase": "waitlist",
+      "angle": "market-dominance / 64% (PLAT-005)",
+      "segment": "A",
+      "words": 6,
+      "halbert_score_standalone": 4,
+      "fact_ids": [
+        "PLAT-005",
+        "PLAT-004"
+      ],
+      "status": "citation-pending"
+    },
+    {
+      "id": "H5C-DOM-05",
+      "text": "Where over 64% of Australian CSF went",
+      "phase": "waitlist",
+      "angle": "market-dominance / 64% (PLAT-005)",
+      "segment": "B",
+      "words": 7,
+      "halbert_score_standalone": 5,
+      "fact_ids": [
+        "PLAT-005"
+      ],
+      "status": "citation-pending"
+    },
+    {
+      "id": "H5C-VIS-01",
+      "text": "Why we waited 324 raises to raise",
+      "phase": "waitlist",
+      "angle": "vision / Birchal Next",
+      "segment": "A",
+      "words": 7,
+      "halbert_score_standalone": 5,
+      "fact_ids": [
+        "PLAT-001",
+        "BIRCHAL-NEXT"
+      ]
+    },
+    {
+      "id": "H5C-VIS-02",
+      "text": "324 raises run. Ours stayed private.",
+      "phase": "waitlist",
+      "angle": "vision / Birchal Next",
+      "segment": "A",
+      "words": 6,
+      "halbert_score_standalone": 4,
+      "fact_ids": [
+        "PLAT-001",
+        "BIRCHAL-NEXT"
+      ]
+    },
+    {
+      "id": "H5C-VIS-03",
+      "text": "Why the next 137,000 investors matter",
+      "phase": "waitlist",
+      "angle": "vision / Birchal Next",
+      "segment": "B",
+      "words": 6,
+      "halbert_score_standalone": 5,
+      "fact_ids": [
+        "PLAT-003",
+        "QUOTE-009"
+      ]
+    },
+    {
+      "id": "H5C-VIS-04",
+      "text": "Why 137,000 investors matter to what comes next",
+      "phase": "waitlist",
+      "angle": "vision / Birchal Next",
+      "segment": "A",
+      "words": 8,
+      "halbert_score_standalone": 5,
+      "fact_ids": [
+        "PLAT-003",
+        "QUOTE-007"
+      ]
+    },
+    {
+      "id": "H5C-VIS-05",
+      "text": "Why we kept ours private for 324 raises",
+      "phase": "waitlist",
+      "angle": "vision / Birchal Next",
+      "segment": "A",
+      "words": 8,
+      "halbert_score_standalone": 5,
+      "fact_ids": [
+        "PLAT-001",
+        "BIRCHAL-NEXT"
+      ]
+    }
+  ],
+  "_angle_coverage": {
+    "investor-led": [
+      "H5C-INV-01",
+      "H5C-INV-02",
+      "H5C-INV-03",
+      "H5C-INV-04",
+      "H5C-INV-05"
+    ],
+    "curiosity-led": [
+      "H5C-CUR-01",
+      "H5C-CUR-02",
+      "H5C-CUR-03",
+      "H5C-CUR-04",
+      "H5C-CUR-05",
+      "H5C-CUR-06"
+    ],
+    "market-dominance / 64% (PLAT-005)": [
+      "H5C-DOM-01",
+      "H5C-DOM-02",
+      "H5C-DOM-03",
+      "H5C-DOM-04",
+      "H5C-DOM-05"
+    ],
+    "vision / Birchal Next": [
+      "H5C-VIS-01",
+      "H5C-VIS-02",
+      "H5C-VIS-03",
+      "H5C-VIS-04",
+      "H5C-VIS-05"
+    ]
+  },
+  "_compliance_summary": "All 21 headlines scored standalone with hook_audit.py --client-facts clients/birchal/facts.json: every one >= 4. Scanned against BANNED-CSF-PHRASES (zero matches), PREOFFER-VERBS (zero transaction verbs; 'invested'/'funded'/'waited' are past-tense factual references to historical raises, not a present CTA), em/en dash + smart-quote check (zero), max-8-words rule (all <= 8). DOM headlines use the registered PLAT-005 only (scoped 'crowd-sourced funding in Australia'); no other market-share / #1 / largest / leading / first claim. PLAT-005 source_status OPEN: DRAFT/JB-review safe, citation must be attached before live.",
+  "_client_facts_referenced": [
+    "BIRCHAL-NEXT",
+    "PLAT-001",
+    "PLAT-002",
+    "PLAT-003",
+    "PLAT-004",
+    "PLAT-005",
+    "QUOTE-001",
+    "QUOTE-002",
+    "QUOTE-004",
+    "QUOTE-007",
+    "QUOTE-009"
+  ],
+  "_drc_citations": [
+    "fact:specificity-buzzsumo-numbers",
+    "fact:headline-length-buzzsumo-100m",
+    "fact:authority-edelman-2024-peer-parity"
+  ]
+}

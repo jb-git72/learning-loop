@@ -1,0 +1,59 @@
+{
+  "ad_id": "BIRCHAL-V5C-VIS3",
+  "version": "V5c",
+  "content_type": "meta-ad",
+  "phase": "waitlist",
+  "status": "ready",
+  "segment": "A_first_time_csf",
+  "angle": "Vision: forward-looking confession (why did we wait eight years and 324 raises before our own)",
+  "hook_type": "Caples Why + two verified spine references in one interrogative sentence (eight years, 324), confession",
+  "funnel": "TOF",
+  "tactic": "Why-wait confession hook -> we built it, kept ours private -> from mid 2026 that changes, own offer -> waitlist",
+  "motivation": "Vision + confession + forward-looking",
+  "campaign_phase": "pre-campaign",
+  "primary_text": "Why did we wait eight years and 324 raises before our own?\n\nWe built the platform Australians use to back the companies they believe in, and we kept ours private. From mid 2026 that changes, with our own crowd-sourced funding offer.\n\nYou can own a piece of what comes next. You read the offer document first, the day it goes live.\n\nLeave your email and we will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "Why we waited 324 raises to raise",
+  "description": "Eight years building. Now our own. Leave your email.",
+  "cta": "Save my spot",
+  "_source_label": "DRC V5c -- VIS3 Vision / forward-looking confession (first-timers)",
+  "_iterates": "BIRCHAL-V5-W set (waitlist regime). New V5c structure: 4 angles x 4 hook-distinct variants under learnings-meta-ad.md #5 + Generation prompt addendum (one idea per sentence, ONE number then a turn, reader is subject at the turn and CTA, literal email micro-action CTA per WAITLIST-CTA 2026-05-18).",
+  "_v5c_rationale": [
+    "One of 4 hook-distinct variants in its angle; the hook (first 1-2 sentences) is the primary differentiator, body adapted to fit the hook (JB-permitted 2026-05-18).",
+    "Built to the learnings-meta-ad.md #5 / Generation prompt addendum 8 structural gates: opens with ONE verified number (or Caples Why on a verified number) as a complete sentence, full stop, then a turn; the reader is the grammatical subject at the turn and the CTA; no third-party company names in the bridge; plain concrete nouns; one proof point per beat; CTA = literal email micro-action with the exchange; verbatim CSF warning byte-exact terminator.",
+    "CTA field is the WAITLIST-CTA approved verbatim 'Save my spot' (landing-page canonical button); the in-copy close uses the 2026-05-18 JB-preferred literal email micro-action 'Leave your email and we will tell you the moment the offer goes live' (FMTH top-performer pattern, CSF-clean notification framing).",
+    "Strict WAITLIST regime: Birchal's own CSF offer is not live until 26 June 2026 (OFFER-CONTEXT). No transaction verbs, no $ minimum, no preferential-terms framing. Pre-offer compliant."
+  ],
+  "_drc_playbook": "03 Aspirational Identity Sell (B2C considered, solution-aware, sophistication 3 mechanism)",
+  "_drc_audience": "B2C considered, solution-aware. First-time CSF investors; the Why-wait confession opens the forward-looking turn.",
+  "_drc_citations": [
+    "fact:specificity-buzzsumo-numbers",
+    "fact:narrative-transportation-green-brock"
+  ],
+  "_client_facts_used": [
+    "PLAT-001",
+    "PLAT-004",
+    "BIRCHAL-NEXT",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING",
+    "WAITLIST-CTA"
+  ],
+  "_a_pile_score_first_8_words": 5,
+  "_a_pile_score_primary_text_first_sentence": 5,
+  "_a_pile_signals": [
+    "specific number in first 8 words (eight years, 324)",
+    "question / interrogative opener (Why)",
+    "named entity (client fact)"
+  ],
+  "_compliance_findings_resolved": [
+    "Gate #1 note: a Caples Why interrogative is a single sentence (not a comma-spliced stat triplet); two spine references inside one question is permitted (gate #2 permits the Why pattern; gate #4 cadence-in-one-sentence). Validator confirmed comma_triplet=False.",
+    "BIRCHAL-NEXT used in FUTURE voice only ('From mid 2026 that changes'); no present-state capability claim; 'backed by X and Y' placeholder NOT used.",
+    "PREOFFER-VERBS: 'Leave your email', 'we will tell you the moment', 'read the offer document first'. No transaction verbs.",
+    "BANNED-CSF-PHRASES: zero matches.",
+    "VERBATIM-OFFER-LANGUAGE: 'we will tell you the moment the offer goes live'. No 'we will send'.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "No banned AI-tell words (BIRCHAL-NEXT verbatim not pasted; future-voice paraphrase only). Surrounding prose clean.",
+    "Subject discipline: 'Birchal' zero times; first-person we/our; 'ours private' / 'our own crowd-sourced funding offer' resolve the recursion.",
+    "Number traceability: 324=PLAT-001, eight years=PLAT-004. No unsourced market-share / #1 / first / valuation. BIRCHAL-NEXT confidence MED, forward-looking only."
+  ],
+  "_word_count_primary_text": 75
+}
