@@ -113,6 +113,8 @@ If `check_learnings.py` fails, you MUST trim before committing. The LLM prompt i
 
 ## Git workflow
 
+**MANDATORY, no exceptions (applies to the MAIN thread too, not just spawned agents).** Never edit, branch, stash, or `git checkout --` in the shared (top-level) working tree of this repo. Concurrent FMTH/CSF multi-agent sessions run in it (20+ locked worktrees observed 2026-05-18); touching it races them and contaminates branches. ALWAYS work in an isolated worktree off `origin/main`, even for a one-line doc change: `git -C <repo> worktree add -b <feature> /tmp/<wt> origin/main`, edit + verify there, scoped commit (never `git add -A`; unrelated WIP is always present), push, `gh pr merge --squash --delete-branch`, then `git worktree remove`. Leave all FMTH/CSF branches, commits, worktrees, and shared-tree WIP untouched; surface contamination to JB rather than fixing it in the shared tree.
+
 - **Always use worktrees** for code changes, new features, and scripts: `isolation: "worktree"` in Agent tool calls
 - Worktrees give each agent its own branch and repo copy — no merge conflicts between parallel agents
 - Main branch stays clean. Agents PR back to main when done.
