@@ -1,0 +1,56 @@
+{
+  "ad_id": "BIRCHAL-V5C-INV1",
+  "version": "V5c",
+  "content_type": "meta-ad",
+  "phase": "waitlist",
+  "status": "ready",
+  "segment": "B_existing_birchal_investors",
+  "angle": "Investor-led: peer-validation (Dom Pym, founder + investor lens, endorsement only)",
+  "hook_type": "Caples Why + named investor (Pym), one-sentence then verbatim endorsement",
+  "funnel": "TOF retargeting / list-targeted",
+  "tactic": "Why-Pym hook -> verbatim Pym endorsement -> the platform is opening its own offer -> waitlist",
+  "motivation": "Authority + peer validation (sophisticated reader deciding to back this)",
+  "campaign_phase": "pre-campaign",
+  "primary_text": "Why does Dom Pym back us from the founder's seat and the investor's seat?\n\n\"I've looked at Birchal from the founder's seat and the investor's seat, and from both angles the answer is the same. Birchal is one of the most important companies in Australian fintech.\"\n\nDom Pym, Triple Bubble.\n\nAfter eight years funding other founders, the next offer is our own. You read it the day it goes live, then you decide.\n\nLeave your email and we will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "Why Dom Pym rates Birchal from both seats",
+  "description": "Founder seat, investor seat, same answer. Leave your email.",
+  "cta": "Save my spot",
+  "_source_label": "DRC V5c -- INV1 Investor-led / peer-validation (Pym, endorsement only)",
+  "_iterates": "BIRCHAL-V5-W set (waitlist regime). New V5c structure: 4 angles x 4 hook-distinct variants under learnings-meta-ad.md #5 + Generation prompt addendum (one idea per sentence, ONE number then a turn, reader is subject at the turn and CTA, literal email micro-action CTA per WAITLIST-CTA 2026-05-18).",
+  "_v5c_rationale": [
+    "One of 4 hook-distinct variants in its angle; the hook (first 1-2 sentences) is the primary differentiator, body adapted to fit the hook (JB-permitted 2026-05-18).",
+    "Built to the learnings-meta-ad.md #5 / Generation prompt addendum 8 structural gates: opens with ONE verified number (or Caples Why on a verified number) as a complete sentence, full stop, then a turn; the reader is the grammatical subject at the turn and the CTA; no third-party company names in the bridge; plain concrete nouns; one proof point per beat; CTA = literal email micro-action with the exchange; verbatim CSF warning byte-exact terminator.",
+    "CTA field is the WAITLIST-CTA approved verbatim 'Save my spot' (landing-page canonical button); the in-copy close uses the 2026-05-18 JB-preferred literal email micro-action 'Leave your email and we will tell you the moment the offer goes live' (FMTH top-performer pattern, CSF-clean notification framing).",
+    "Strict WAITLIST regime: Birchal's own CSF offer is not live until 26 June 2026 (OFFER-CONTEXT). No transaction verbs, no $ minimum, no preferential-terms framing. Pre-offer compliant."
+  ],
+  "_drc_playbook": "11 Lifecycle Email Promo / Launch",
+  "_drc_audience": "B2C considered, most-aware. Sophisticated Segment A / Segment B deciding whether to back this; peer signal weighs more than platform stats.",
+  "_drc_citations": [
+    "fact:specificity-buzzsumo-numbers",
+    "fact:narrative-transportation-green-brock"
+  ],
+  "_client_facts_used": [
+    "QUOTE-001",
+    "PLAT-004",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING",
+    "WAITLIST-CTA"
+  ],
+  "_a_pile_score_first_8_words": 4,
+  "_a_pile_score_primary_text_first_sentence": 4,
+  "_a_pile_signals": [
+    "question / interrogative opener (Why)",
+    "named entity (Dom Pym, client fact)"
+  ],
+  "_compliance_findings_resolved": [
+    "PREOFFER-VERBS: 'Leave your email', 'we will tell you the moment', 'read'. No transaction verbs. 'back us' inside the Why-question refers to Pym's endorsement, not a reader instruction.",
+    "BANNED-CSF-PHRASES: zero matches (no first-to-invest / first-in-line / $ minimum / secure-allocation / queue / invest-buy-subscribe-now).",
+    "VERBATIM-OFFER-LANGUAGE: 'we will tell you the moment the offer goes live'. No 'we will send you the offer'.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "QUOTE-001: Dom Pym pasted verbatim (em-dash-free as stored), attributed 'Dom Pym, Triple Bubble'.",
+    "INVESTOR-ASSOCIATION (RG 234 / ACL s 18): no claim Pym invested in / backed Birchal-the-company or this raise. 'back us' / 'rates' = his verbatim endorsement (QUOTE-001) only.",
+    "Subject discipline: 'Birchal' zero times outside the attributed quote; the two in-quote 'Birchal' mentions are inside the verbatim Pym quote and exempt; first-person we/our otherwise.",
+    "Number traceability: eight years=PLAT-004. No unsourced market-share / #1 / first / valuation / $ minimum."
+  ],
+  "_word_count_primary_text": 87
+}

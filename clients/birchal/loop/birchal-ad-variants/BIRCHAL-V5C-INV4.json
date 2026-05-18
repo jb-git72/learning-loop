@@ -1,0 +1,55 @@
+{
+  "ad_id": "BIRCHAL-V5C-INV4",
+  "version": "V5c",
+  "content_type": "meta-ad",
+  "phase": "waitlist",
+  "status": "ready",
+  "segment": "B_existing_birchal_investors",
+  "angle": "Investor-led: fund-manager weight (Shayne Gary backed the CEO via Techstars, endorsement only)",
+  "hook_type": "Caples Why + named fund-manager (Shayne Gary), one-sentence then verbatim operator-validation",
+  "funnel": "TOF retargeting / list-targeted",
+  "tactic": "Why-Gary hook -> verbatim Gary endorsement of the CEO -> the platform she runs is opening its own offer -> waitlist",
+  "motivation": "Authority + operator validation",
+  "campaign_phase": "pre-campaign",
+  "primary_text": "Why did Shayne Gary back our CEO before almost anyone else did?\n\n\"We first backed Kirstin as investors through the Techstars accelerator, and everything since has confirmed why we did. She's a category-defining operator with an unusually clear view of where the Australian capital markets need to go.\"\n\nShayne Gary, Australia Venture Partners Fund.\n\nThe platform she runs is now opening its own offer. You can read it the day it goes live.\n\nLeave your email and we will tell you the moment the offer goes live.\n\n*Always consider the general CSF risk warning and offer document before investing.",
+  "headline": "Why Shayne Gary backed our CEO early",
+  "description": "An early backer on the operator running this. Leave your email.",
+  "cta": "Save my spot",
+  "_source_label": "DRC V5c -- INV4 Investor-led / operator-validation (Gary, endorsement only)",
+  "_iterates": "BIRCHAL-V5-W set (waitlist regime). New V5c structure: 4 angles x 4 hook-distinct variants under learnings-meta-ad.md #5 + Generation prompt addendum (one idea per sentence, ONE number then a turn, reader is subject at the turn and CTA, literal email micro-action CTA per WAITLIST-CTA 2026-05-18).",
+  "_v5c_rationale": [
+    "One of 4 hook-distinct variants in its angle; the hook (first 1-2 sentences) is the primary differentiator, body adapted to fit the hook (JB-permitted 2026-05-18).",
+    "Built to the learnings-meta-ad.md #5 / Generation prompt addendum 8 structural gates: opens with ONE verified number (or Caples Why on a verified number) as a complete sentence, full stop, then a turn; the reader is the grammatical subject at the turn and the CTA; no third-party company names in the bridge; plain concrete nouns; one proof point per beat; CTA = literal email micro-action with the exchange; verbatim CSF warning byte-exact terminator.",
+    "CTA field is the WAITLIST-CTA approved verbatim 'Save my spot' (landing-page canonical button); the in-copy close uses the 2026-05-18 JB-preferred literal email micro-action 'Leave your email and we will tell you the moment the offer goes live' (FMTH top-performer pattern, CSF-clean notification framing).",
+    "Strict WAITLIST regime: Birchal's own CSF offer is not live until 26 June 2026 (OFFER-CONTEXT). No transaction verbs, no $ minimum, no preferential-terms framing. Pre-offer compliant."
+  ],
+  "_drc_playbook": "11 Lifecycle Email Promo / Launch",
+  "_drc_audience": "B2C considered, most-aware. Sophisticated reader who weights an institutional fund backing the operator.",
+  "_drc_citations": [
+    "fact:specificity-buzzsumo-numbers",
+    "fact:narrative-transportation-green-brock"
+  ],
+  "_client_facts_used": [
+    "QUOTE-004",
+    "OFFER-CONTEXT",
+    "VERBATIM-CSF-WARNING",
+    "WAITLIST-CTA"
+  ],
+  "_a_pile_score_first_8_words": 4,
+  "_a_pile_score_primary_text_first_sentence": 4,
+  "_a_pile_signals": [
+    "question / interrogative opener (Why)",
+    "named entity (Shayne Gary, client fact)"
+  ],
+  "_compliance_findings_resolved": [
+    "PREOFFER-VERBS: 'Leave your email', 'we will tell you the moment', 'read'. No transaction verbs.",
+    "BANNED-CSF-PHRASES: zero matches.",
+    "VERBATIM-OFFER-LANGUAGE: 'we will tell you the moment the offer goes live'. No 'we will send'.",
+    "VERBATIM-CSF-WARNING: byte-exact final line, appears exactly once.",
+    "QUOTE-004: Shayne Gary pasted verbatim, attributed 'Shayne Gary, Australia Venture Partners Fund'.",
+    "INVESTOR-ASSOCIATION (RG 234 / ACL s 18): the quote states Gary backed KIRSTIN as investors through Techstars (verbatim QUOTE-004), NOT that Gary/AVPF invested in Birchal-the-company or this raise. Surrounding prose says only 'The platform she runs is now opening its own offer' (no investor-in-Birchal claim).",
+    "Subject discipline: 'Birchal' zero times outside the quote; first-person we/our; CEO referenced as 'our CEO' / 'she'.",
+    "No empirical number used; no unsourced market-share / #1 / first / valuation."
+  ],
+  "_word_count_primary_text": 87
+}

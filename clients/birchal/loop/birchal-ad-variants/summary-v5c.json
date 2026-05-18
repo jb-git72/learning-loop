@@ -1,0 +1,340 @@
+{
+  "set_id": "BIRCHAL-V5C",
+  "generated": "2026-05-18",
+  "regime": "waitlist (strict). Birchal's own CSF offer is NOT live until 26 June 2026 (OFFER-CONTEXT). All 16 bodies pre-offer compliant: no transaction verbs, no $ minimum, no preferential-terms framing, verbatim CSF risk warning byte-exact as the final line of every primary_text.",
+  "structure": "4 angles x 4 hook-distinct variants = 16 bodies. Within each angle the 4 variants differ primarily in the hook (first 1-2 sentences); body adapted to fit the hook (JB-permitted 2026-05-18). Built to learnings-meta-ad.md #5 + Generation prompt addendum (8 structural gates).",
+  "gates_enforced": [
+    "Hook >=4 on hook_audit.py in --primary-text mode (strict first-sentence gate) AND every standalone/ad headline >=4.",
+    "One idea per sentence; open with ONE verified number (or Caples Why on a verified number) as a complete sentence, full stop, then a turn; no comma-spliced stat-triplet openers.",
+    "Reader is the grammatical subject at the turn and the CTA. CTA = literal email micro-action 'Leave your email and we will tell you the moment the offer goes live' (WAITLIST-CTA 2026-05-18 default; cta button field = approved 'Save my spot' verbatim).",
+    "No third-party company names in the bridge. Plain concrete nouns. One proof point per beat.",
+    "Primary text 65-90 words, body only excluding the mandatory 12-word verbatim CSF terminator (learnings #2 governs; body range 71-87). Headlines <=8 words, sentence case.",
+    "BANNED-CSF-PHRASES / PREOFFER-VERBS / VERBATIM-OFFER-LANGUAGE / BRAND-EXCLUDED / DOLLAR-MIN: zero matches. No FarmThru / cross-client contamination. No em/en dashes or smart quotes in any shipped field.",
+    "Every empirical claim traces to a facts.json fact_id. Banned AI-tell words only inside attributed verbatim quotes (documented QUOTE-007 / QUOTE-009 exemptions), zero leak into surrounding prose (humaniser-confirmed)."
+  ],
+  "plat005_status": "PLAT-005 (more than 64% of CSF in Australia) used ONLY in the 4 DOM bodies, at most once per ad, registered scoped wording, 'crowd-sourced funding in Australia' scope inline (not headline-dependent), never combined with #1/first/largest/leading, paired with the verified spine. facts.json source_status OPEN: verbal JB authorisation only, exact public citation (Birchal CSF Yearbook / published share-of-funds) MUST be attached before any DOM ad is marked live. DOM ads are DRAFT/JB-review safe but NOT live-ready until the citation is closed.",
+  "_post_verify_fixes": "Adversarial verify 2026-05-18 (NO-GO as batch; 2/18 fail, 0 blockers). Resolved: DOM3 headline+description and headline H5C-DOM-05 carried a bare unscoped 'more than 64%' in Meta-independently-rotating fields (PLAT-005 rule #2). Rescoped to 'Where over 64% of Australian CSF went' (hook_audit 5/5, 7 words) and 'More than 64% of Australian CSF ran one way. Leave your email.' Every DOM share claim now scoped inline in every rotating field. MINOR #5 (reader-subject-at-turn on 5 quote-led ads, structurally forced by endorsement-before-turn) and #7 (INV1 'back us' verb, QUOTE-001-defensible) left for JB in-sheet review per the verify classification.",
+  "results": [
+    {
+      "ad_id": "BIRCHAL-V5C-INV1",
+      "angle": "investor-led",
+      "segment": "B_existing_birchal_investors",
+      "hook_one_liner": "Why does Dom Pym back us from the founder's seat and the investor's seat?",
+      "hook_audit_primary_text": 4,
+      "headline": "Why Dom Pym rates Birchal from both seats",
+      "headline_hook_audit": 4,
+      "humaniser_status": "clean",
+      "fact_ids": [
+        "QUOTE-001",
+        "PLAT-004",
+        "OFFER-CONTEXT",
+        "VERBATIM-CSF-WARNING",
+        "WAITLIST-CTA"
+      ],
+      "word_count": 87,
+      "cta_button": "Save my spot",
+      "cta_in_copy": "Leave your email and we will tell you the moment the offer goes live."
+    },
+    {
+      "ad_id": "BIRCHAL-V5C-INV2",
+      "angle": "investor-led",
+      "segment": "B_existing_birchal_investors",
+      "hook_one_liner": "$234M+ raised on this platform.",
+      "hook_audit_primary_text": 4,
+      "headline": "$234M+ raised, and a fund manager explains",
+      "headline_hook_audit": 4,
+      "humaniser_status": "clean",
+      "fact_ids": [
+        "PLAT-002",
+        "QUOTE-002",
+        "OFFER-CONTEXT",
+        "VERBATIM-CSF-WARNING",
+        "WAITLIST-CTA"
+      ],
+      "word_count": 80,
+      "cta_button": "Save my spot",
+      "cta_in_copy": "Leave your email and we will tell you the moment the offer goes live."
+    },
+    {
+      "ad_id": "BIRCHAL-V5C-INV3",
+      "angle": "investor-led",
+      "segment": "A_first_time_csf",
+      "hook_one_liner": "The platform behind 324 Australian raises is the thing you can back.",
+      "hook_audit_primary_text": 4,
+      "headline": "The platform behind 324 Australian raises",
+      "headline_hook_audit": 4,
+      "humaniser_status": "clean",
+      "fact_ids": [
+        "PLAT-001",
+        "PLAT-004",
+        "OFFER-CONTEXT",
+        "VERBATIM-CSF-WARNING",
+        "WAITLIST-CTA"
+      ],
+      "word_count": 71,
+      "cta_button": "Save my spot",
+      "cta_in_copy": "Leave your email and we will tell you the moment the offer goes live."
+    },
+    {
+      "ad_id": "BIRCHAL-V5C-INV4",
+      "angle": "investor-led",
+      "segment": "B_existing_birchal_investors",
+      "hook_one_liner": "Why did Shayne Gary back our CEO before almost anyone else did?",
+      "hook_audit_primary_text": 4,
+      "headline": "Why Shayne Gary backed our CEO early",
+      "headline_hook_audit": 4,
+      "humaniser_status": "clean",
+      "fact_ids": [
+        "QUOTE-004",
+        "OFFER-CONTEXT",
+        "VERBATIM-CSF-WARNING",
+        "WAITLIST-CTA"
+      ],
+      "word_count": 87,
+      "cta_button": "Save my spot",
+      "cta_in_copy": "Leave your email and we will tell you the moment the offer goes live."
+    },
+    {
+      "ad_id": "BIRCHAL-V5C-CUR1",
+      "angle": "curiosity-led",
+      "segment": "A_first_time_csf",
+      "hook_one_liner": "$234M+ raised on Birchal.",
+      "hook_audit_primary_text": 4,
+      "headline": "Why none of $234M+ came from VCs",
+      "headline_hook_audit": 5,
+      "humaniser_status": "clean",
+      "fact_ids": [
+        "PLAT-002",
+        "PLAT-004",
+        "OFFER-CONTEXT",
+        "VERBATIM-CSF-WARNING",
+        "WAITLIST-CTA"
+      ],
+      "word_count": 71,
+      "cta_button": "Save my spot",
+      "cta_in_copy": "Leave your email and we will tell you the moment the offer goes live."
+    },
+    {
+      "ad_id": "BIRCHAL-V5C-CUR2",
+      "angle": "curiosity-led",
+      "segment": "A_first_time_csf",
+      "hook_one_liner": "Why do 137,000 Australians know how a startup gets funded and you might not?",
+      "hook_audit_primary_text": 5,
+      "headline": "How 137,000 Australians fund startups",
+      "headline_hook_audit": 5,
+      "humaniser_status": "clean",
+      "fact_ids": [
+        "PLAT-003",
+        "PLAT-004",
+        "OFFER-CONTEXT",
+        "VERBATIM-CSF-WARNING",
+        "WAITLIST-CTA"
+      ],
+      "word_count": 76,
+      "cta_button": "Save my spot",
+      "cta_in_copy": "Leave your email and we will tell you the moment the offer goes live."
+    },
+    {
+      "ad_id": "BIRCHAL-V5C-CUR3",
+      "angle": "curiosity-led",
+      "segment": "A_first_time_csf",
+      "hook_one_liner": "Why did we fund 324 companies and never our own?",
+      "hook_audit_primary_text": 5,
+      "headline": "Why we funded 324 and not ourselves",
+      "headline_hook_audit": 5,
+      "humaniser_status": "clean",
+      "fact_ids": [
+        "PLAT-001",
+        "PLAT-004",
+        "OFFER-CONTEXT",
+        "VERBATIM-CSF-WARNING",
+        "WAITLIST-CTA"
+      ],
+      "word_count": 71,
+      "cta_button": "Save my spot",
+      "cta_in_copy": "Leave your email and we will tell you the moment the offer goes live."
+    },
+    {
+      "ad_id": "BIRCHAL-V5C-CUR4",
+      "angle": "curiosity-led",
+      "segment": "A_first_time_csf",
+      "hook_one_liner": "137,000 Australians did this before you.",
+      "hook_audit_primary_text": 5,
+      "headline": "What 137,000 investors worked out first",
+      "headline_hook_audit": 5,
+      "humaniser_status": "clean",
+      "fact_ids": [
+        "PLAT-003",
+        "PLAT-004",
+        "OFFER-CONTEXT",
+        "VERBATIM-CSF-WARNING",
+        "WAITLIST-CTA"
+      ],
+      "word_count": 75,
+      "cta_button": "Save my spot",
+      "cta_in_copy": "Leave your email and we will tell you the moment the offer goes live."
+    },
+    {
+      "ad_id": "BIRCHAL-V5C-DOM1",
+      "angle": "market-dominance / 64% (PLAT-005)",
+      "segment": "A_first_time_csf",
+      "hook_one_liner": "More than 64% of Australian crowd-sourced funding ran through one platform.",
+      "hook_audit_primary_text": 4,
+      "headline": "More than 64% of CSF, one platform",
+      "headline_hook_audit": 4,
+      "humaniser_status": "clean",
+      "fact_ids": [
+        "PLAT-005",
+        "PLAT-004",
+        "OFFER-CONTEXT",
+        "VERBATIM-CSF-WARNING",
+        "WAITLIST-CTA"
+      ],
+      "word_count": 72,
+      "cta_button": "Save my spot",
+      "cta_in_copy": "Leave your email and we will tell you the moment the offer goes live."
+    },
+    {
+      "ad_id": "BIRCHAL-V5C-DOM2",
+      "angle": "market-dominance / 64% (PLAT-005)",
+      "segment": "A_first_time_csf",
+      "hook_one_liner": "Why has more than 64% of Australian crowd-sourced funding gone one way?",
+      "hook_audit_primary_text": 5,
+      "headline": "Why most CSF money goes one way",
+      "headline_hook_audit": 5,
+      "humaniser_status": "clean",
+      "fact_ids": [
+        "PLAT-005",
+        "PLAT-004",
+        "OFFER-CONTEXT",
+        "VERBATIM-CSF-WARNING",
+        "WAITLIST-CTA"
+      ],
+      "word_count": 71,
+      "cta_button": "Save my spot",
+      "cta_in_copy": "Leave your email and we will tell you the moment the offer goes live."
+    },
+    {
+      "ad_id": "BIRCHAL-V5C-DOM3",
+      "angle": "market-dominance / 64% (PLAT-005)",
+      "segment": "B_existing_birchal_investors",
+      "hook_one_liner": "More than 64% of Australian crowd-sourced funding ran one way.",
+      "hook_audit_primary_text": 4,
+      "headline": "Where over 64% of Australian CSF went",
+      "headline_hook_audit": 5,
+      "humaniser_status": "clean",
+      "fact_ids": [
+        "PLAT-005",
+        "PLAT-004",
+        "OFFER-CONTEXT",
+        "VERBATIM-CSF-WARNING",
+        "WAITLIST-CTA"
+      ],
+      "word_count": 75,
+      "cta_button": "Save my spot",
+      "cta_in_copy": "Leave your email and we will tell you the moment the offer goes live."
+    },
+    {
+      "ad_id": "BIRCHAL-V5C-DOM4",
+      "angle": "market-dominance / 64% (PLAT-005)",
+      "segment": "A_first_time_csf",
+      "hook_one_liner": "Guess where more than 64% of Australian crowd-sourced funding ended up.",
+      "hook_audit_primary_text": 4,
+      "headline": "Where most Australian CSF money went",
+      "headline_hook_audit": 4,
+      "humaniser_status": "clean",
+      "fact_ids": [
+        "PLAT-005",
+        "PLAT-004",
+        "OFFER-CONTEXT",
+        "VERBATIM-CSF-WARNING",
+        "WAITLIST-CTA"
+      ],
+      "word_count": 71,
+      "cta_button": "Save my spot",
+      "cta_in_copy": "Leave your email and we will tell you the moment the offer goes live."
+    },
+    {
+      "ad_id": "BIRCHAL-V5C-VIS1",
+      "angle": "vision / Birchal Next",
+      "segment": "A_first_time_csf",
+      "hook_one_liner": "We ran 324 raises and kept ours private.",
+      "hook_audit_primary_text": 4,
+      "headline": "324 raises done. Why ours comes next.",
+      "headline_hook_audit": 4,
+      "humaniser_status": "clean",
+      "fact_ids": [
+        "PLAT-001",
+        "PLAT-004",
+        "BIRCHAL-NEXT",
+        "OFFER-CONTEXT",
+        "VERBATIM-CSF-WARNING",
+        "WAITLIST-CTA"
+      ],
+      "word_count": 75,
+      "cta_button": "Save my spot",
+      "cta_in_copy": "Leave your email and we will tell you the moment the offer goes live."
+    },
+    {
+      "ad_id": "BIRCHAL-V5C-VIS2",
+      "angle": "vision / Birchal Next",
+      "segment": "A_first_time_csf",
+      "hook_one_liner": "You are one of 137,000 investors.",
+      "hook_audit_primary_text": 4,
+      "headline": "Why 137,000 investors matter to what comes next",
+      "headline_hook_audit": 5,
+      "humaniser_status": "clean (in-quote verbatim AI-tell exemption: QUOTE-007 'ecosystem','thrive', zero prose leak)",
+      "fact_ids": [
+        "PLAT-003",
+        "QUOTE-007",
+        "OFFER-CONTEXT",
+        "VERBATIM-CSF-WARNING",
+        "WAITLIST-CTA"
+      ],
+      "word_count": 78,
+      "cta_button": "Save my spot",
+      "cta_in_copy": "Leave your email and we will tell you the moment the offer goes live."
+    },
+    {
+      "ad_id": "BIRCHAL-V5C-VIS3",
+      "angle": "vision / Birchal Next",
+      "segment": "A_first_time_csf",
+      "hook_one_liner": "Why did we wait eight years and 324 raises before our own?",
+      "hook_audit_primary_text": 5,
+      "headline": "Why we waited 324 raises to raise",
+      "headline_hook_audit": 5,
+      "humaniser_status": "clean",
+      "fact_ids": [
+        "PLAT-001",
+        "PLAT-004",
+        "BIRCHAL-NEXT",
+        "OFFER-CONTEXT",
+        "VERBATIM-CSF-WARNING",
+        "WAITLIST-CTA"
+      ],
+      "word_count": 75,
+      "cta_button": "Save my spot",
+      "cta_in_copy": "Leave your email and we will tell you the moment the offer goes live."
+    },
+    {
+      "ad_id": "BIRCHAL-V5C-VIS4",
+      "angle": "vision / Birchal Next",
+      "segment": "B_existing_birchal_investors",
+      "hook_one_liner": "Why does Kirstin Hunter say the next 137,000 investors change everything?",
+      "hook_audit_primary_text": 5,
+      "headline": "Why the next 137,000 investors matter",
+      "headline_hook_audit": 5,
+      "humaniser_status": "clean (in-quote verbatim AI-tell exemption: QUOTE-009 'ecosystem', zero prose leak)",
+      "fact_ids": [
+        "PLAT-003",
+        "QUOTE-009",
+        "OFFER-CONTEXT",
+        "VERBATIM-CSF-WARNING",
+        "WAITLIST-CTA"
+      ],
+      "word_count": 80,
+      "cta_button": "Save my spot",
+      "cta_in_copy": "Leave your email and we will tell you the moment the offer goes live."
+    }
+  ]
+}
